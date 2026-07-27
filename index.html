@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jayson Quindao — Builder. Operator. AI Engineer.</title>
+  <meta name="description" content="Jayson Quindao — I architect AI systems, deploy agentic workflows, and build production SaaS from scratch. Open to Forward Deployed Engineer and Applied AI roles.">
+  <meta name="keywords" content="Jayson Quindao, AI Engineer, Forward Deployed Engineer, Full Stack Developer, GG Loop, Node.js, Python, AWS, Claude API, Agentic AI, Grand Prairie TX">
+  <meta name="author" content="Jayson Quindao">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / LinkedIn / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jaysonquindao.github.io">
+  <meta property="og:title" content="Jayson Quindao — Builder. Operator. AI Engineer.">
+  <meta property="og:description" content="Full-stack engineer and AI systems builder. Founder of GG Loop LLC. Built a production SaaS solo, autonomous AI agents, and financial automation systems. Open to $150k+ roles.">
+  <meta property="og:image" content="https://jaysonquindao.github.io/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jayson Quindao — AI Engineer & Builder">
+  <meta name="twitter:description" content="I build AI systems, agentic workflows, and production SaaS from scratch. Currently open to Forward Deployed Engineer roles.">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://jaysonquindao.github.io">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:         #04040c;
+      --surface:    #080814;
+      --card:       #0c0c1a;
+      --card-hover: #101026;
+      --border:     #16162e;
+      --border-hi:  #2a2a50;
+      --blue:       #3b82f6;
+      --blue-glow:  rgba(59,130,246,0.2);
+      --blue-dim:   rgba(59,130,246,0.1);
+      --purple:     #a855f7;
+      --purple-dim: rgba(168,85,247,0.1);
+      --cyan:       #06b6d4;
+      --green:      #22c55e;
+      --orange:     #f97316;
+      --text:       #f0f0ff;
+      --muted:      #5a5a90;
+      --muted2:     #9090c0;
+      --mono:       'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── AMBIENT ORBS ── */
+    .orb {
+      position: fixed; border-radius: 50%;
+      filter: blur(110px); pointer-events: none; z-index: 0;
+    }
+    .orb-1 { width:700px;height:700px;background:rgba(59,130,246,0.06);top:-250px;right:-200px; }
+    .orb-2 { width:500px;height:500px;background:rgba(168,85,247,0.05);bottom:-100px;left:-150px; }
+    .orb-3 { width:400px;height:400px;background:rgba(6,182,212,0.04);top:50%;left:40%; }
+
+    /* ── NOISE ── */
+    body::after {
+      content:''; position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+      pointer-events:none; z-index:9999;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:18px 60px;
+      background:rgba(4,4,12,0.85); backdrop-filter:blur(28px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-logo {
+      font-family:var(--mono); font-size:15px; font-weight:700; letter-spacing:1px;
+      background:linear-gradient(135deg,var(--blue),var(--purple));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      text-decoration:none;
+    }
+    .nav-links { display:flex; gap:32px; list-style:none; }
+    .nav-links a {
+      color:var(--muted2); text-decoration:none; font-size:14px; font-weight:500;
+      transition:color .2s; position:relative; padding-bottom:2px;
+    }
+    .nav-links a::after {
+      content:''; position:absolute; bottom:0; left:0; right:0; height:1px;
+      background:var(--blue); transform:scaleX(0); transition:transform .2s;
+    }
+    .nav-links a:hover { color:var(--text); }
+    .nav-links a:hover::after { transform:scaleX(1); }
+    .nav-hire {
+      background:linear-gradient(135deg,var(--blue),var(--purple));
+      color:#fff; padding:10px 26px; border-radius:8px;
+      font-size:14px; font-weight:700; text-decoration:none;
+      box-shadow:0 0 25px rgba(59,130,246,0.35);
+      transition:transform .2s, box-shadow .2s;
+    }
+    .nav-hire:hover { transform:translateY(-2px); box-shadow:0 4px 40px rgba(59,130,246,0.5); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height:100vh; display:flex; flex-direction:column;
+      justify-content:center; align-items:flex-start;
+      padding:150px 60px 100px;
+      max-width:1200px; margin:0 auto; position:relative; z-index:1;
+    }
+    .hero-status {
+      display:inline-flex; align-items:center; gap:10px;
+      font-family:var(--mono); font-size:12px; font-weight:700; letter-spacing:2px;
+      color:var(--green); text-transform:uppercase; margin-bottom:32px;
+      background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.25);
+      padding:7px 16px; border-radius:100px;
+    }
+    .live-dot {
+      width:8px; height:8px; border-radius:50%; background:var(--green);
+      box-shadow:0 0 10px var(--green);
+      animation:livepulse 2s ease-in-out infinite;
+    }
+    @keyframes livepulse { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);} }
+
+    h1 {
+      font-size:clamp(56px,9vw,112px); font-weight:900;
+      letter-spacing:-5px; line-height:.95; margin-bottom:20px;
+    }
+    .name-white {
+      background:linear-gradient(180deg,#ffffff 0%,rgba(255,255,255,0.7) 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    }
+    .hero-tagline {
+      font-size:clamp(20px,3.5vw,38px); font-weight:800; letter-spacing:-1px;
+      background:linear-gradient(90deg,var(--blue),var(--purple),var(--cyan));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      margin-bottom:28px; line-height:1.2;
+    }
+    .hero-bio {
+      font-size:clamp(16px,1.8vw,19px); color:var(--muted2); max-width:620px;
+      line-height:1.8; margin-bottom:52px;
+    }
+    .hero-bio strong { color:var(--text); font-weight:600; }
+
+    .cta-row { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:72px; }
+    .cta-primary {
+      background:linear-gradient(135deg,var(--blue),var(--purple));
+      color:#fff; padding:16px 38px; border-radius:10px;
+      font-size:15px; font-weight:700; text-decoration:none;
+      box-shadow:0 0 40px rgba(59,130,246,0.3);
+      transition:transform .2s, box-shadow .2s;
+    }
+    .cta-primary:hover { transform:translateY(-3px); box-shadow:0 8px 60px rgba(59,130,246,0.5); }
+    .cta-ghost {
+      border:1px solid var(--border-hi); color:var(--muted2); padding:16px 38px;
+      border-radius:10px; font-size:15px; font-weight:600; text-decoration:none;
+      transition:all .2s;
+    }
+    .cta-ghost:hover { border-color:var(--blue); color:var(--text); background:var(--blue-dim); }
+
+    .hero-proof {
+      display:grid; grid-template-columns:repeat(4,1fr); gap:2px;
+      background:var(--border); border-radius:14px; overflow:hidden;
+      border:1px solid var(--border);
+    }
+    .proof-cell {
+      background:var(--card); padding:24px 20px; text-align:center;
+      transition:background .2s;
+    }
+    .proof-cell:hover { background:var(--card-hover); }
+    .proof-num {
+      font-family:var(--mono); font-size:30px; font-weight:700;
+      background:linear-gradient(135deg,var(--blue),var(--cyan));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      display:block; margin-bottom:6px;
+    }
+    .proof-label { font-size:12px; color:var(--muted); line-height:1.4; }
+
+    /* ── SHARED ── */
+    .z1 { position:relative; z-index:1; }
+    .wrap { padding:110px 0; }
+    .container { max-width:1120px; margin:0 auto; padding:0 60px; }
+    .sec-eyebrow {
+      font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:3px;
+      color:var(--blue); text-transform:uppercase; display:block; margin-bottom:14px;
+    }
+    .sec-h2 {
+      font-size:clamp(30px,4.5vw,56px); font-weight:900; letter-spacing:-2.5px;
+      line-height:1.05; margin-bottom:16px;
+    }
+    .sec-p { font-size:17px; color:var(--muted2); max-width:540px; line-height:1.75; margin-bottom:60px; }
+
+    /* ── PROJECTS ── */
+    #work { background:var(--bg); }
+    .proj-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    @media(max-width:800px){.proj-grid{grid-template-columns:1fr;}}
+
+    .proj-card {
+      background:var(--card); border:1px solid var(--border); border-radius:18px;
+      padding:38px; position:relative; overflow:hidden;
+      transition:border-color .35s, transform .35s, background .35s;
+    }
+    .proj-card.wide { grid-column:1/-1; }
+    .proj-card:hover {
+      border-color:var(--border-hi); transform:translateY(-5px); background:var(--card-hover);
+    }
+    .proj-card::before {
+      content:''; position:absolute; top:0;left:0;right:0; height:1px;
+      background:linear-gradient(90deg,transparent,var(--blue),var(--purple),transparent);
+      opacity:0; transition:opacity .35s;
+    }
+    .proj-card:hover::before { opacity:1; }
+
+    .proj-badge {
+      display:inline-flex; align-items:center; gap:6px;
+      font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:1.5px;
+      text-transform:uppercase; padding:5px 12px; border-radius:6px; margin-bottom:22px;
+    }
+    .badge-live { background:rgba(34,197,94,0.1); color:var(--green); border:1px solid rgba(34,197,94,0.3); }
+    .badge-built { background:rgba(59,130,246,0.1); color:var(--blue); border:1px solid rgba(59,130,246,0.2); }
+    .badge-ai { background:rgba(168,85,247,0.1); color:var(--purple); border:1px solid rgba(168,85,247,0.2); }
+    .badge-ops { background:rgba(6,182,212,0.1); color:var(--cyan); border:1px solid rgba(6,182,212,0.2); }
+
+    .proj-icon { font-size:36px; display:block; margin-bottom:16px; }
+    .proj-title { font-size:22px; font-weight:800; margin-bottom:12px; letter-spacing:-.4px; }
+    .proj-desc { font-size:14px; color:var(--muted2); line-height:1.75; margin-bottom:24px; }
+    .proj-desc strong { color:var(--text); }
+
+    .tag-row { display:flex; flex-wrap:wrap; gap:8px; }
+    .ptag {
+      font-family:var(--mono); font-size:10px; font-weight:600; padding:5px 11px;
+      border-radius:6px; background:rgba(255,255,255,0.04); color:var(--muted2);
+      border:1px solid var(--border-hi); letter-spacing:.3px; transition:all .2s;
+    }
+    .proj-card:hover .ptag { border-color:rgba(59,130,246,0.3); color:var(--blue); background:var(--blue-dim); }
+
+    /* ── EXPERIENCE ── */
+    #experience { background:var(--surface); }
+    .tl { position:relative; }
+    .tl::before {
+      content:''; position:absolute; left:0; top:12px; bottom:40px; width:1px;
+      background:linear-gradient(to bottom,var(--blue) 0%,rgba(59,130,246,0) 100%);
+    }
+    .tl-row {
+      display:grid; grid-template-columns:1fr; gap:0;
+      padding-left:36px; position:relative; margin-bottom:52px;
+    }
+    .tl-row:last-child { margin-bottom:0; }
+    .tl-node {
+      position:absolute; left:-6px; top:8px;
+      width:13px; height:13px; border-radius:50%;
+      background:var(--blue); border:2px solid var(--surface);
+      box-shadow:0 0 16px rgba(59,130,246,0.7);
+      transition:transform .2s;
+    }
+    .tl-row:hover .tl-node { transform:scale(1.4); }
+    .tl-row.past .tl-node { background:var(--muted); box-shadow:none; }
+
+    .tl-top { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:4px; }
+    .tl-co { font-size:20px; font-weight:800; }
+    .tl-period { font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:1px; }
+    .tl-role-title { font-size:14px; font-weight:600; color:var(--blue); margin-bottom:12px; }
+    .tl-list { padding-left:18px; }
+    .tl-list li { font-size:14px; color:var(--muted2); line-height:1.75; margin-bottom:8px; }
+    .tl-list li strong { color:var(--text); }
+
+    /* ── SKILLS ── */
+    #skills { background:var(--bg); }
+    .sk-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; }
+    .sk-group {
+      background:var(--card); border:1px solid var(--border); border-radius:14px; padding:30px;
+      transition:border-color .2s;
+    }
+    .sk-group:hover { border-color:var(--border-hi); }
+    .sk-label {
+      font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:2px;
+      text-transform:uppercase; color:var(--muted); margin-bottom:18px; display:flex; align-items:center; gap:8px;
+    }
+    .sk-tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .sk-tag {
+      font-size:13px; font-weight:500; padding:7px 14px; border-radius:8px;
+      background:rgba(255,255,255,0.03); border:1px solid var(--border-hi);
+      color:var(--muted2); cursor:default; transition:all .2s;
+    }
+    .sk-tag:hover { background:var(--blue-dim); border-color:var(--blue); color:var(--text); }
+
+    /* ── EDUCATION ── */
+    #education { background:var(--surface); }
+    .edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    @media(max-width:700px){.edu-grid{grid-template-columns:1fr;}}
+    .edu-card {
+      background:var(--card); border:1px solid var(--border); border-radius:14px; padding:32px;
+      transition:border-color .2s, transform .2s;
+    }
+    .edu-card:hover { border-color:var(--border-hi); transform:translateY(-3px); }
+    .edu-school { font-size:18px; font-weight:800; margin-bottom:6px; }
+    .edu-degree { font-size:14px; color:var(--blue); font-weight:600; margin-bottom:8px; }
+    .edu-period { font-family:var(--mono); font-size:11px; color:var(--muted); }
+
+    /* ── OPEN TO ── */
+    #open { background:var(--bg); }
+    .open-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+    .open-card {
+      background:var(--card); border:1px solid var(--border); border-radius:14px; padding:28px;
+      display:flex; align-items:flex-start; gap:18px; transition:all .25s;
+    }
+    .open-card:hover { border-color:var(--blue-glow); background:var(--blue-dim); transform:translateY(-3px); }
+    .open-emoji { font-size:28px; flex-shrink:0; }
+    .open-title { font-size:16px; font-weight:700; margin-bottom:4px; }
+    .open-desc { font-size:13px; color:var(--muted2); line-height:1.6; }
+    .open-range { font-family:var(--mono); font-size:12px; color:var(--blue); font-weight:700; margin-top:8px; display:block; }
+
+    /* ── CONTACT ── */
+    #contact { background:var(--surface); }
+    .contact-wrap {
+      background:var(--card); border:1px solid var(--border); border-radius:22px;
+      padding:80px; text-align:center; position:relative; overflow:hidden;
+    }
+    .contact-wrap::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 50% -20%,rgba(59,130,246,0.08) 0%,transparent 55%);
+      pointer-events:none;
+    }
+    .contact-h2 { font-size:clamp(30px,5vw,60px); font-weight:900; letter-spacing:-2.5px; margin-bottom:18px; }
+    .contact-sub { font-size:18px; color:var(--muted2); max-width:500px; margin:0 auto 52px; line-height:1.7; }
+
+    .contact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:40px; }
+    .contact-item {
+      background:var(--surface); border:1px solid var(--border-hi); border-radius:12px;
+      padding:20px; text-align:center; text-decoration:none;
+      transition:all .2s;
+    }
+    .contact-item:hover { border-color:var(--blue); background:var(--blue-dim); transform:translateY(-3px); }
+    .contact-icon { font-size:24px; display:block; margin-bottom:10px; }
+    .contact-label { font-size:13px; color:var(--muted2); margin-bottom:4px; font-weight:500; }
+    .contact-value { font-size:14px; color:var(--text); font-weight:700; word-break:break-all; }
+
+    .contact-email-btn {
+      display:inline-block;
+      background:linear-gradient(135deg,var(--blue),var(--purple));
+      color:#fff; padding:18px 52px; border-radius:12px;
+      font-size:17px; font-weight:800; text-decoration:none;
+      box-shadow:0 0 50px rgba(59,130,246,0.35);
+      transition:transform .2s, box-shadow .2s;
+      letter-spacing:-.2px;
+    }
+    .contact-email-btn:hover { transform:translateY(-4px); box-shadow:0 10px 70px rgba(59,130,246,0.55); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top:1px solid var(--border); padding:28px 60px;
+      display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;
+      position:relative; z-index:1;
+    }
+    footer p { font-size:13px; color:var(--muted); }
+    .avail-pill {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.3);
+      color:var(--green); font-family:var(--mono); font-size:11px; font-weight:700;
+      letter-spacing:1.5px; text-transform:uppercase; padding:7px 16px; border-radius:100px;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .r {
+      opacity:0; transform:translateY(24px);
+      transition:opacity .65s ease, transform .65s ease;
+    }
+    .r.in { opacity:1; transform:translateY(0); }
+    .r[data-delay="1"] { transition-delay:.1s; }
+    .r[data-delay="2"] { transition-delay:.2s; }
+    .r[data-delay="3"] { transition-delay:.3s; }
+    .r[data-delay="4"] { transition-delay:.4s; }
+
+    @media(max-width:900px){
+      nav { padding:16px 24px; }
+      .nav-links { display:none; }
+      #hero { padding:120px 24px 80px; }
+      .container { padding:0 24px; }
+      .hero-proof { grid-template-columns:1fr 1fr; }
+      .contact-wrap { padding:48px 24px; }
+      footer { padding:24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- ══ NAV ══ -->
+  <nav>
+    <a href="#" class="nav-logo">JAYSON QUINDAO</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#open">Open To</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:jquindao1@icloud.com" class="nav-hire">Hire Me →</a>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section id="hero" class="z1">
+    <div class="hero-status">
+      <span class="live-dot"></span>
+      Available Now · Grand Prairie, TX · Open to Remote
+    </div>
+
+    <h1><span class="name-white">Jayson<br>Quindao</span></h1>
+    <div class="hero-tagline">Builder. Operator.<br>AI Engineer.</div>
+
+    <p class="hero-bio">
+      I architect <strong>AI systems</strong>, deploy <strong>agentic workflows</strong>,
+      and build <strong>production SaaS from scratch</strong> — solo, end to end.
+      I operate at the intersection of engineering, enterprise operations, and business outcomes.
+      I don't just write code — I understand the layer it's solving for.
+    </p>
+
+    <div class="cta-row">
+      <a href="#work" class="cta-primary">View My Work</a>
+      <a href="mailto:jquindao1@icloud.com" class="cta-ghost">Get In Touch</a>
+      <a href="https://linkedin.com/in/jaysonquindao" target="_blank" class="cta-ghost">LinkedIn ↗</a>
+      <a href="https://github.com/djjrip" target="_blank" class="cta-ghost">GitHub ↗</a>
+    </div>
+
+    <div class="hero-proof">
+      <div class="proof-cell">
+        <span class="proof-num">1</span>
+        <span class="proof-label">Production SaaS built solo, zero to live</span>
+      </div>
+      <div class="proof-cell">
+        <span class="proof-num">80%</span>
+        <span class="proof-label">Dev cycle reduction via AI agents</span>
+      </div>
+      <div class="proof-cell">
+        <span class="proof-num">40%</span>
+        <span class="proof-label">Reconciliation time cut via SQL automation</span>
+      </div>
+      <div class="proof-cell">
+        <span class="proof-num">99.9%</span>
+        <span class="proof-label">Accuracy on multi-million dollar financial networks</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ WORK ══ -->
+  <section id="work" class="z1">
+    <div class="container wrap">
+      <span class="sec-eyebrow r">// What I Build</span>
+      <h2 class="sec-h2 r">Real code.<br>Real infrastructure.</h2>
+      <p class="sec-p r">No tutorial repos. Every project is production-grade, solving a real problem, with real stakes.</p>
+
+      <div class="proj-grid">
+
+        <div class="proj-card wide r">
+          <span class="proj-badge badge-live"><span>●</span> LIVE · FOUNDER</span>
+          <span class="proj-icon">🏗️</span>
+          <div class="proj-title">GG Loop LLC — B2B SaaS Platform</div>
+          <p class="proj-desc">
+            Sole architect, engineer, and operator. I took this from <strong>zero to production</strong> —
+            market validation, database schema, backend infrastructure, frontend, payment processing,
+            and customer onboarding. No team. No agency. Just execution.
+            <br><br>
+            Built a resilient backend using <strong>Node.js + PostgreSQL + AWS Kinesis</strong>.
+            Automated CI/CD pipelines cut deployment overhead by <strong>60%</strong>.
+            Integrated <strong>Stripe + PayPal</strong>. Deployed <strong>Claude + GPT-4 agentic workflows</strong>
+            reducing debugging cycles by <strong>80%</strong>.
+          </p>
+          <div class="tag-row">
+            <span class="ptag">Node.js</span><span class="ptag">TypeScript</span>
+            <span class="ptag">PostgreSQL</span><span class="ptag">React</span>
+            <span class="ptag">AWS App Runner</span><span class="ptag">AWS Kinesis</span>
+            <span class="ptag">AWS RDS · S3</span><span class="ptag">GitHub Actions CI/CD</span>
+            <span class="ptag">Docker</span><span class="ptag">Stripe API</span><span class="ptag">PayPal API</span>
+          </div>
+        </div>
+
+        <div class="proj-card r" data-delay="1">
+          <span class="proj-badge badge-ai">AI · AUTOMATION</span>
+          <span class="proj-icon">🤖</span>
+          <div class="proj-title">Autonomous AI Job Application Engine</div>
+          <p class="proj-desc">
+            Built a <strong>fully headless Puppeteer system</strong> that applies to jobs autonomously.
+            Tailors resumes per company via Claude API, injects ATS-optimized prompt streams invisibly,
+            converts HTML to pixel-perfect PDF, navigates Greenhouse/Ashby forms, uploads files, and submits.
+            <strong>No GUI. No flash. Runs silently in the background.</strong>
+          </p>
+          <div class="tag-row">
+            <span class="ptag">Puppeteer</span><span class="ptag">Node.js</span>
+            <span class="ptag">Claude API</span><span class="ptag">Headless Chrome</span>
+            <span class="ptag">HTML→PDF</span><span class="ptag">ATS Engineering</span>
+          </div>
+        </div>
+
+        <div class="proj-card r" data-delay="2">
+          <span class="proj-badge badge-built">AI · AGENTIC</span>
+          <span class="proj-icon">⚡</span>
+          <div class="proj-title">AI Agentic Workflow Systems</div>
+          <p class="proj-desc">
+            Designed and deployed <strong>autonomous multi-agent systems</strong> using Claude, GPT-4,
+            and AWS Bedrock. Task decomposition, code review pipelines, automated testing, and
+            deployment orchestration chained across agents via <strong>MCP protocol</strong>.
+            Reduced debugging and review cycles by <strong>80%</strong>.
+          </p>
+          <div class="tag-row">
+            <span class="ptag">Claude API</span><span class="ptag">GPT-4</span>
+            <span class="ptag">AWS Bedrock</span><span class="ptag">MCP Protocol</span>
+            <span class="ptag">LLM Orchestration</span><span class="ptag">Python</span>
+          </div>
+        </div>
+
+        <div class="proj-card r" data-delay="3">
+          <span class="proj-badge badge-ops">ENTERPRISE · FINOPS</span>
+          <span class="proj-icon">📊</span>
+          <div class="proj-title">Financial Operations Automation @ NCR Atleos</div>
+          <p class="proj-desc">
+            Engineered <strong>SQL automation pipelines</strong> replacing legacy manual workflows
+            across national ATM financial networks. Cut reconciliation cycle time by <strong>40%</strong>.
+            Managed <strong>multi-million dollar transaction portfolios</strong> at 99.9%+ accuracy.
+            Built executive compliance dashboards used by senior leadership.
+          </p>
+          <div class="tag-row">
+            <span class="ptag">SQL</span><span class="ptag">Data Pipelines</span>
+            <span class="ptag">FinOps</span><span class="ptag">Reconciliation</span>
+            <span class="ptag">Executive Reporting</span><span class="ptag">Compliance</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ EXPERIENCE ══ -->
+  <section id="experience" class="z1">
+    <div class="container wrap">
+      <span class="sec-eyebrow r">// Experience</span>
+      <h2 class="sec-h2 r">Where I've<br>done the work.</h2>
+      <p class="sec-p r">From national logistics networks to enterprise financial infrastructure to solo SaaS — I go deep and deliver.</p>
+
+      <div class="tl">
+
+        <div class="tl-row r">
+          <div class="tl-node"></div>
+          <div class="tl-top">
+            <div class="tl-co">GG Loop LLC</div>
+            <div class="tl-period">NOV 2025 — PRESENT</div>
+          </div>
+          <div class="tl-role-title">Founder & CEO — Full-Stack AI Engineer · Grand Prairie, TX</div>
+          <ul class="tl-list">
+            <li><strong>Product Leadership:</strong> Sole architect of a production B2B SaaS platform — from schema design to live AWS cloud deployment.</li>
+            <li><strong>Technical Execution:</strong> Node.js + PostgreSQL + AWS Kinesis backend. Automated CI/CD cut deployment overhead by 60%.</li>
+            <li><strong>AI Agents:</strong> Deployed Claude + GPT-4 agentic workflows reducing debugging cycles by 80%.</li>
+            <li><strong>GTM & Sales:</strong> Led founder-led sales — translating complex technical architecture into enterprise business value.</li>
+            <li><strong>FinOps:</strong> Integrated Stripe/PayPal; mapped every engineering decision to revenue and ROI.</li>
+          </ul>
+        </div>
+
+        <div class="tl-row r">
+          <div class="tl-node"></div>
+          <div class="tl-top">
+            <div class="tl-co">NCR Atleos</div>
+            <div class="tl-period">AUG 2023 — NOV 2025</div>
+          </div>
+          <div class="tl-role-title">Financial Operations Engineer · Frisco, TX</div>
+          <ul class="tl-list">
+            <li><strong>High-Stakes Operations:</strong> Managed multi-million dollar ATM transaction portfolios at 99.9%+ accuracy in a zero-error-tolerance environment.</li>
+            <li><strong>Automation:</strong> Built SQL pipelines replacing legacy exception-balancing workflows — 40% faster reconciliation cycles.</li>
+            <li><strong>Executive Reporting:</strong> Produced compliance dashboards and variance analysis reports used by senior leadership for regulatory decisions.</li>
+            <li><strong>Cross-Functional:</strong> Bridged technical infrastructure teams and business operations to resolve root-cause data anomalies.</li>
+          </ul>
+        </div>
+
+        <div class="tl-row past r">
+          <div class="tl-node"></div>
+          <div class="tl-top">
+            <div class="tl-co">Mentalix, Inc.</div>
+            <div class="tl-period">SEP 2022 — SEP 2023</div>
+          </div>
+          <div class="tl-role-title">Data Operations Specialist · Plano, TX</div>
+          <ul class="tl-list">
+            <li><strong>Data Governance:</strong> Managed sensitive operational data pipelines with HIPAA-adjacent compliance standards.</li>
+            <li><strong>Quality Assurance:</strong> Identified systemic data inconsistencies, streamlined workflows, reduced error rates organization-wide.</li>
+          </ul>
+        </div>
+
+        <div class="tl-row past r">
+          <div class="tl-node"></div>
+          <div class="tl-top">
+            <div class="tl-co">U.S. Postal Service</div>
+            <div class="tl-period">SEP 2021 — SEP 2022</div>
+          </div>
+          <div class="tl-role-title">Logistics & Operations · Coppell, TX</div>
+          <ul class="tl-list">
+            <li>Operated within a 24/7 hub-and-spoke logistics network. Inspected pipeline data and resolved operational bottlenecks in real-time under strict deadlines.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SKILLS ══ -->
+  <section id="skills" class="z1">
+    <div class="container wrap">
+      <span class="sec-eyebrow r">// Stack & Skills</span>
+      <h2 class="sec-h2 r">Full-stack.<br>Full-context.</h2>
+      <p class="sec-p r">I work across the entire product — from database schema to customer conversation.</p>
+
+      <div class="sk-grid">
+        <div class="sk-group r">
+          <div class="sk-label">⚡ AI & Agents</div>
+          <div class="sk-tags">
+            <span class="sk-tag">Claude API</span><span class="sk-tag">GPT-4 / OpenAI</span>
+            <span class="sk-tag">AWS Bedrock</span><span class="sk-tag">MCP Protocol</span>
+            <span class="sk-tag">LLM Orchestration</span><span class="sk-tag">Agentic Workflows</span>
+            <span class="sk-tag">Prompt Engineering</span><span class="sk-tag">RAG Systems</span>
+          </div>
+        </div>
+        <div class="sk-group r" data-delay="1">
+          <div class="sk-label">🛠️ Engineering</div>
+          <div class="sk-tags">
+            <span class="sk-tag">TypeScript</span><span class="sk-tag">Python</span>
+            <span class="sk-tag">Node.js</span><span class="sk-tag">React</span>
+            <span class="sk-tag">SQL / PostgreSQL</span><span class="sk-tag">REST APIs</span>
+            <span class="sk-tag">Docker</span><span class="sk-tag">Puppeteer</span>
+            <span class="sk-tag">HTML / CSS</span>
+          </div>
+        </div>
+        <div class="sk-group r" data-delay="2">
+          <div class="sk-label">☁️ Cloud & DevOps</div>
+          <div class="sk-tags">
+            <span class="sk-tag">AWS App Runner</span><span class="sk-tag">AWS RDS</span>
+            <span class="sk-tag">AWS S3</span><span class="sk-tag">AWS Kinesis</span>
+            <span class="sk-tag">GitHub Actions CI/CD</span><span class="sk-tag">Cloudflare Workers</span>
+            <span class="sk-tag">Stripe API</span><span class="sk-tag">PayPal API</span>
+          </div>
+        </div>
+        <div class="sk-group r" data-delay="3">
+          <div class="sk-label">📈 Business & GTM</div>
+          <div class="sk-tags">
+            <span class="sk-tag">GTM Strategy</span><span class="sk-tag">Founder-led Sales</span>
+            <span class="sk-tag">Technical Account Mgmt</span><span class="sk-tag">FinOps</span>
+            <span class="sk-tag">Agile / Scrum</span><span class="sk-tag">Variance Analysis</span>
+            <span class="sk-tag">Regulatory Compliance</span><span class="sk-tag">Executive Reporting</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ EDUCATION ══ -->
+  <section id="education" class="z1">
+    <div class="container wrap">
+      <span class="sec-eyebrow r">// Education</span>
+      <h2 class="sec-h2 r">Academic<br>foundation.</h2>
+      <div class="edu-grid">
+        <div class="edu-card r">
+          <div class="edu-school">University of Texas at Dallas</div>
+          <div class="edu-degree">Computer Science Coursework</div>
+          <div class="edu-period">Aug 2022 — Dec 2025 · Richardson, TX</div>
+        </div>
+        <div class="edu-card r" data-delay="1">
+          <div class="edu-school">Tarrant County College</div>
+          <div class="edu-degree">Associate of Arts (AA)</div>
+          <div class="edu-period">2014 — 2022 · Fort Worth, TX</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ OPEN TO ══ -->
+  <section id="open" class="z1">
+    <div class="container wrap">
+      <span class="sec-eyebrow r">// Open To</span>
+      <h2 class="sec-h2 r">The right role<br>at the right company.</h2>
+      <p class="sec-p r">I build AI systems, own the full loop from engineering to customer, and move fast. If that's your team — let's talk.</p>
+
+      <div class="open-grid">
+        <div class="open-card r">
+          <span class="open-emoji">🚀</span>
+          <div>
+            <div class="open-title">Forward Deployed Engineer</div>
+            <div class="open-desc">Embed with customers, understand their systems, build the solution on-site. This is what I do — technically deep and customer-facing.</div>
+            <span class="open-range">$150k – $300k · Remote</span>
+          </div>
+        </div>
+        <div class="open-card r" data-delay="1">
+          <span class="open-emoji">🤖</span>
+          <div>
+            <div class="open-title">Applied AI / ML Engineer</div>
+            <div class="open-desc">Ship AI systems to production. Agentic workflows, LLM pipelines, real customer impact — not research.</div>
+            <span class="open-range">$150k – $250k · Remote</span>
+          </div>
+        </div>
+        <div class="open-card r" data-delay="2">
+          <span class="open-emoji">🏗️</span>
+          <div>
+            <div class="open-title">Solutions / AI Architect</div>
+            <div class="open-desc">Design AI-native systems at enterprise scale. Translate complex technical architectures into business outcomes.</div>
+            <span class="open-range">$150k – $280k · Remote</span>
+          </div>
+        </div>
+        <div class="open-card r" data-delay="3">
+          <span class="open-emoji">⚡</span>
+          <div>
+            <div class="open-title">Early-Stage / Founding Engineer</div>
+            <div class="open-desc">I've already built a company solo. I know what it takes to ship fast, own the stack, and make decisions without a roadmap.</div>
+            <span class="open-range">Equity + $120k+ · Remote</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ══ -->
+  <section id="contact" class="z1">
+    <div class="container wrap">
+      <div class="contact-wrap r">
+        <span class="sec-eyebrow" style="display:block;margin-bottom:14px;">// Let's Build</span>
+        <h2 class="contact-h2">Ready when<br><span style="background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">you are.</span></h2>
+        <p class="contact-sub">I'm actively open to the right opportunity. Reach out directly — I respond fast, I'm direct, and I respect your time.</p>
+
+        <div class="contact-grid">
+          <a href="mailto:jquindao1@icloud.com" class="contact-item">
+            <span class="contact-icon">📧</span>
+            <div class="contact-label">Primary Email</div>
+            <div class="contact-value">jquindao1@icloud.com</div>
+          </a>
+          <a href="mailto:jaysonquindao@ggloop.io" class="contact-item">
+            <span class="contact-icon">🏢</span>
+            <div class="contact-label">Work Email</div>
+            <div class="contact-value">jaysonquindao@ggloop.io</div>
+          </a>
+          <a href="tel:+19728855810" class="contact-item">
+            <span class="contact-icon">📱</span>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">(972) 885-5810</div>
+          </a>
+          <a href="https://linkedin.com/in/jaysonquindao" target="_blank" class="contact-item">
+            <span class="contact-icon">💼</span>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">linkedin.com/in/jaysonquindao</div>
+          </a>
+          <a href="https://github.com/djjrip" target="_blank" class="contact-item">
+            <span class="contact-icon">💻</span>
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value">github.com/djjrip</div>
+          </a>
+          <a href="https://ggloop.io" target="_blank" class="contact-item">
+            <span class="contact-icon">🌐</span>
+            <div class="contact-label">Company</div>
+            <div class="contact-value">ggloop.io</div>
+          </a>
+        </div>
+
+        <a href="mailto:jquindao1@icloud.com?subject=Let's Talk — [Role Name]&body=Hi Jayson," class="contact-email-btn">
+          Send Me A Message →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="z1">
+    <p>© 2026 Jayson Quindao · Grand Prairie, TX · Built with intention, not desperation.</p>
+    <div class="avail-pill">
+      <span style="width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);display:inline-block;"></span>
+      Open to Work
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.r').forEach(el => obs.observe(el));
+  </script>
+
+</body>
+</html>
