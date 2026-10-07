@@ -1,0 +1,382 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//GG Loop//Jayson Samsung Calendar Opportunities//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Jayson Opportunities & Interviews
+X-WR-TIMEZONE:America/Chicago
+BEGIN:VEVENT
+UID:k2space-prep-20261007@ggloop.io
+DTSTAMP:20261007T190500Z
+DTSTART:20261007T210000Z
+DTEND:20261007T214500Z
+SUMMARY:🎯 [PREP] K2 Space — Ground Software Engineer ($150k-$200k)
+LOCATION:Microsoft Teams / Dossier Review (No Math - Web Dashboard & DB Role)
+DESCRIPTION:OPPORTUNITY: K2 Space — Ground Software Engineer ($150,000 - $200,000 Base + Equity)\nINTERVIEWER: Manon Newell (manon@k2space.com, 323-829-3619) | CC: Jaylah Wilson\nWHAT TO KNOW: Zero complex math or physics. Ground Software is the TypeScript/React web dashboard and PostgreSQL database on Earth.\nKEY TALKING POINTS:\n1. Built GG Loop Rust anti-cheat SDK + TypeScript/PostgreSQL web dashboard.\n2. Built automated Python/SQL ATM settlement anomaly pipelines at NCR Atleos (40% faster triage).\n3. U.S. Citizen (ITAR eligible) & open to Torrance, CA (LA) or Seattle, WA onsite.\n4. Target comp: $165k-$185k base + equity.
+ORGANIZER;CN=Jayson CTO Scheduler:mailto:jquindao1@icloud.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jaysonquindao1@gmail.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jquindao1@icloud.com
+STATUS:CONFIRMED
+SEQUENCE:1
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:24h Reminder: 🎯 [PREP] K2 Space — Ground Software Engineer ($150k-$200k)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:1h Reminder: 🎯 [PREP] K2 Space — Ground Software Engineer ($150k-$200k)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:30m Reminder: 🎯 [PREP] K2 Space — Ground Software Engineer ($150k-$200k)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Starting in 10m: 🎯 [PREP] K2 Space — Ground Software Engineer ($150k-$200k)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uta-admissions-walkin-20261008@ggloop.io
+DTSTAMP:20261007T190500Z
+DTSTART:20261008T140000Z
+DTEND:20261008T150000Z
+SUMMARY:🎓 [ACTION] UTA Admissions Check-In & MyMav Fee Waiver (BS AI for Business)
+LOCATION:UTA Admissions (Arlington, TX) or Call 817-272-2090
+DESCRIPTION:OPPORTUNITY: UT Arlington Transfer Enrollment (BS in AI for Business)\nCONTACT: MavCentral (mavcentral@uta.edu / 817-272-2090)\nACTION ITEMS:\n1. Complete the pending Fee Waiver task inside your MyMav portal.\n2. Call 817-272-2090 or walk into UTA Admissions (8 AM - 5 PM Mon-Fri) for 1-on-1 Transfer Advisor check-in.
+ORGANIZER;CN=Jayson CTO Scheduler:mailto:jquindao1@icloud.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jaysonquindao1@gmail.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jquindao1@icloud.com
+STATUS:CONFIRMED
+SEQUENCE:1
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:24h Reminder: 🎓 [ACTION] UTA Admissions Check-In & MyMav Fee Waiver (BS AI for Business)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:1h Reminder: 🎓 [ACTION] UTA Admissions Check-In & MyMav Fee Waiver (BS AI for Business)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:30m Reminder: 🎓 [ACTION] UTA Admissions Check-In & MyMav Fee Waiver (BS AI for Business)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Starting in 10m: 🎓 [ACTION] UTA Admissions Check-In & MyMav Fee Waiver (BS AI for Business)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:k2space-window-thu-20261008@ggloop.io
+DTSTAMP:20261007T190500Z
+DTSTART:20261008T150000Z
+DTEND:20261008T213000Z
+SUMMARY:📅 [INTERVIEW WINDOW] K2 Space — Manon Newell ($150k-$200k)
+LOCATION:Microsoft Teams / Phone: (469) 371-8556
+DESCRIPTION:OPPORTUNITY: K2 Space — Ground Software Engineer ($150k-$200k + Equity)\nSTATUS: Availability submitted on Greenhouse portal & emailed to Manon Newell (manon@k2space.com) and Jaylah Wilson (jaylah.wilson@k2space.com).\nREMINDER: Keep phone ringer ON and watch for Microsoft Teams calendar link confirming exact 30-min slot.
+ORGANIZER;CN=Jayson CTO Scheduler:mailto:jquindao1@icloud.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jaysonquindao1@gmail.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jquindao1@icloud.com
+STATUS:CONFIRMED
+SEQUENCE:1
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:24h Reminder: 📅 [INTERVIEW WINDOW] K2 Space — Manon Newell ($150k-$200k)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:1h Reminder: 📅 [INTERVIEW WINDOW] K2 Space — Manon Newell ($150k-$200k)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:30m Reminder: 📅 [INTERVIEW WINDOW] K2 Space — Manon Newell ($150k-$200k)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Starting in 10m: 📅 [INTERVIEW WINDOW] K2 Space — Manon Newell ($150k-$200k)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:k2space-window-fri-20261009@ggloop.io
+DTSTAMP:20261007T190500Z
+DTSTART:20261009T150000Z
+DTEND:20261009T213000Z
+SUMMARY:📅 [INTERVIEW WINDOW] K2 Space — Manon Newell ($150k-$200k)
+LOCATION:Microsoft Teams / Phone: (469) 371-8556
+DESCRIPTION:OPPORTUNITY: K2 Space — Ground Software Engineer ($150k-$200k + Equity)\nSTATUS: Submitted on Greenhouse availability calendar (8:00 AM - 2:30 PM PT / 10:00 AM - 4:30 PM CT).
+ORGANIZER;CN=Jayson CTO Scheduler:mailto:jquindao1@icloud.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jaysonquindao1@gmail.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jquindao1@icloud.com
+STATUS:CONFIRMED
+SEQUENCE:1
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:24h Reminder: 📅 [INTERVIEW WINDOW] K2 Space — Manon Newell ($150k-$200k)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:1h Reminder: 📅 [INTERVIEW WINDOW] K2 Space — Manon Newell ($150k-$200k)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:30m Reminder: 📅 [INTERVIEW WINDOW] K2 Space — Manon Newell ($150k-$200k)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Starting in 10m: 📅 [INTERVIEW WINDOW] K2 Space — Manon Newell ($150k-$200k)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nhc-architect-hold-20261012@ggloop.io
+DTSTAMP:20261007T190500Z
+DTSTART:20261012T160000Z
+DTEND:20261012T170000Z
+SUMMARY:🧠 [INTERVIEW HOLD] Neuro Health Collective — Cloud/AI Chief Architect
+LOCATION:Remote Video Call / hiring@neurohealthcollective.com
+DESCRIPTION:OPPORTUNITY: Neuro Health Collective — Cloud/AI Chief Architect\nCONTACT: Heather & NHC Hiring Team (hiring@neurohealthcollective.com)\nSTATUS: Application & updated resume confirmed received (MSG 99852 & MSG 100035). Proposed Mon Oct 12 - Wed Oct 14 availability window.
+ORGANIZER;CN=Jayson CTO Scheduler:mailto:jquindao1@icloud.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jaysonquindao1@gmail.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jquindao1@icloud.com
+STATUS:CONFIRMED
+SEQUENCE:1
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:24h Reminder: 🧠 [INTERVIEW HOLD] Neuro Health Collective — Cloud/AI Chief Architect
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:1h Reminder: 🧠 [INTERVIEW HOLD] Neuro Health Collective — Cloud/AI Chief Architect
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:30m Reminder: 🧠 [INTERVIEW HOLD] Neuro Health Collective — Cloud/AI Chief Architect
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Starting in 10m: 🧠 [INTERVIEW HOLD] Neuro Health Collective — Cloud/AI Chief Architect
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:k2space-window-mon-20261012@ggloop.io
+DTSTAMP:20261007T190500Z
+DTSTART:20261012T180000Z
+DTEND:20261012T213000Z
+SUMMARY:📅 [INTERVIEW WINDOW] K2 Space & Tier-1 Greenhouse Callbacks
+LOCATION:Microsoft Teams / Zoom / Phone: (469) 371-8556
+DESCRIPTION:OPPORTUNITY: K2 Space (Ground Software Engineer) + 83 Confirmed Greenhouse ATS Submissions (Tailscale, Vercel, Cloudflare, Relativity Space, Oklo, Stripe, Anthropic, Scale AI, Discord, Riot Games, Twitch, Roblox, etc.).
+ORGANIZER;CN=Jayson CTO Scheduler:mailto:jquindao1@icloud.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jaysonquindao1@gmail.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jquindao1@icloud.com
+STATUS:CONFIRMED
+SEQUENCE:1
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:24h Reminder: 📅 [INTERVIEW WINDOW] K2 Space & Tier-1 Greenhouse Callbacks
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:1h Reminder: 📅 [INTERVIEW WINDOW] K2 Space & Tier-1 Greenhouse Callbacks
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:30m Reminder: 📅 [INTERVIEW WINDOW] K2 Space & Tier-1 Greenhouse Callbacks
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Starting in 10m: 📅 [INTERVIEW WINDOW] K2 Space & Tier-1 Greenhouse Callbacks
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:k2space-window-tue-20261013@ggloop.io
+DTSTAMP:20261007T190500Z
+DTSTART:20261013T150000Z
+DTEND:20261013T213000Z
+SUMMARY:📅 [INTERVIEW WINDOW] K2 Space & Tier-1 Engineering Callbacks
+LOCATION:Microsoft Teams / Zoom / Phone: (469) 371-8556
+DESCRIPTION:OPPORTUNITY: K2 Space (Manon Newell) & Active Greenhouse/Direct Founder Callbacks.\nSubmitted on Greenhouse availability calendar (10:00 AM - 4:30 PM CT).
+ORGANIZER;CN=Jayson CTO Scheduler:mailto:jquindao1@icloud.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jaysonquindao1@gmail.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jquindao1@icloud.com
+STATUS:CONFIRMED
+SEQUENCE:1
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:24h Reminder: 📅 [INTERVIEW WINDOW] K2 Space & Tier-1 Engineering Callbacks
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:1h Reminder: 📅 [INTERVIEW WINDOW] K2 Space & Tier-1 Engineering Callbacks
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:30m Reminder: 📅 [INTERVIEW WINDOW] K2 Space & Tier-1 Engineering Callbacks
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Starting in 10m: 📅 [INTERVIEW WINDOW] K2 Space & Tier-1 Engineering Callbacks
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:k2space-window-wed-20261014@ggloop.io
+DTSTAMP:20261007T190500Z
+DTSTART:20261014T150000Z
+DTEND:20261014T213000Z
+SUMMARY:📅 [INTERVIEW WINDOW] K2 Space & Tier-1 Engineering Callbacks
+LOCATION:Microsoft Teams / Zoom / Phone: (469) 371-8556
+DESCRIPTION:OPPORTUNITY: K2 Space (Manon Newell) & Active Greenhouse/Direct Founder Callbacks.\nSubmitted on Greenhouse availability calendar (10:00 AM - 4:30 PM CT).
+ORGANIZER;CN=Jayson CTO Scheduler:mailto:jquindao1@icloud.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jaysonquindao1@gmail.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jquindao1@icloud.com
+STATUS:CONFIRMED
+SEQUENCE:1
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:24h Reminder: 📅 [INTERVIEW WINDOW] K2 Space & Tier-1 Engineering Callbacks
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:1h Reminder: 📅 [INTERVIEW WINDOW] K2 Space & Tier-1 Engineering Callbacks
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:30m Reminder: 📅 [INTERVIEW WINDOW] K2 Space & Tier-1 Engineering Callbacks
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Starting in 10m: 📅 [INTERVIEW WINDOW] K2 Space & Tier-1 Engineering Callbacks
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nhc-followup-nudge-20261014@ggloop.io
+DTSTAMP:20261007T190500Z
+DTSTART:20261014T140000Z
+DTEND:20261014T143000Z
+SUMMARY:🔔 [FOLLOW-UP] Neuro Health Collective — 1-Week Nudge (Heather)
+LOCATION:Email: hiring@neurohealthcollective.com
+DESCRIPTION:OPPORTUNITY: Neuro Health Collective — Cloud/AI Chief Architect\nHeather's email (MSG 100035) explicitly said: 'We will respond within a week. If you haven't heard from us by then, please nudge — we read every email, but things move fast here.'\nCTO Sentinel will also auto-nudge if not scheduled yet.
+ORGANIZER;CN=Jayson CTO Scheduler:mailto:jquindao1@icloud.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jaysonquindao1@gmail.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jquindao1@icloud.com
+STATUS:CONFIRMED
+SEQUENCE:1
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:24h Reminder: 🔔 [FOLLOW-UP] Neuro Health Collective — 1-Week Nudge (Heather)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:1h Reminder: 🔔 [FOLLOW-UP] Neuro Health Collective — 1-Week Nudge (Heather)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:30m Reminder: 🔔 [FOLLOW-UP] Neuro Health Collective — 1-Week Nudge (Heather)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Starting in 10m: 🔔 [FOLLOW-UP] Neuro Health Collective — 1-Week Nudge (Heather)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:columbia-housing-open-20261015@ggloop.io
+DTSTAMP:20261007T190500Z
+DTSTART:20261015T140000Z
+DTEND:20261015T150000Z
+SUMMARY:🏛️ [DEADLINE] Columbia University Spring 2027 Housing Portal Opens
+LOCATION:residential.columbia.edu / residential@columbia.edu
+DESCRIPTION:OPPORTUNITY: Columbia University GS Spring 2027 Transfer Housing Priority\nCONFIRMED BY COLUMBIA RESIDENTIAL (MSG 99935):\nSpring 2027 housing applications open October 15th. Submit Day-1 application at 9:00 AM CT for priority school approval window (Nov 10 - Dec 15).
+ORGANIZER;CN=Jayson CTO Scheduler:mailto:jquindao1@icloud.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jaysonquindao1@gmail.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jquindao1@icloud.com
+STATUS:CONFIRMED
+SEQUENCE:1
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:24h Reminder: 🏛️ [DEADLINE] Columbia University Spring 2027 Housing Portal Opens
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:1h Reminder: 🏛️ [DEADLINE] Columbia University Spring 2027 Housing Portal Opens
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:30m Reminder: 🏛️ [DEADLINE] Columbia University Spring 2027 Housing Portal Opens
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Starting in 10m: 🏛️ [DEADLINE] Columbia University Spring 2027 Housing Portal Opens
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uta-ticket-to-transfer-20261016@ggloop.io
+DTSTAMP:20261007T190500Z
+DTSTART:20261016T140000Z
+DTEND:20261016T180000Z
+SUMMARY:🎓 [EVENT] UTA Ticket to Transfer (BS in AI for Business)
+LOCATION:University of Texas at Arlington, Arlington, TX 76019
+DESCRIPTION:OPPORTUNITY: UTA Ticket to Transfer Campus Event\nMeet with Transfer Counselor Julie Garcia Flores to confirm fee waiver status and credit evaluation for BS in AI for Business.
+ORGANIZER;CN=Jayson CTO Scheduler:mailto:jquindao1@icloud.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jaysonquindao1@gmail.com
+ATTENDEE;CN=Jayson Quindao;RSVP=TRUE;PARTSTAT=ACCEPTED:mailto:jquindao1@icloud.com
+STATUS:CONFIRMED
+SEQUENCE:1
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:24h Reminder: 🎓 [EVENT] UTA Ticket to Transfer (BS in AI for Business)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:1h Reminder: 🎓 [EVENT] UTA Ticket to Transfer (BS in AI for Business)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:30m Reminder: 🎓 [EVENT] UTA Ticket to Transfer (BS in AI for Business)
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Starting in 10m: 🎓 [EVENT] UTA Ticket to Transfer (BS in AI for Business)
+END:VALARM
+END:VEVENT
+END:VCALENDAR
