@@ -1,9 +1,9 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//GG Loop//Jayson Clean Executive Calendar//EN
+PRODID:-//GG Loop//Jayson Verified Single Interview Calendar//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Jayson Verified Executive Calendar
+X-WR-CALNAME:Jayson Verified Interview
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VTIMEZONE
 TZID:America/Chicago
@@ -24,12 +24,12 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:k2space-confirmed-interview-20261012@ggloop.io
-DTSTAMP:20261009T170000Z
+DTSTAMP:20261010T193500Z
 DTSTART;TZID=America/Chicago:20261012T141500
 DTEND;TZID=America/Chicago:20261012T144500
 SUMMARY:🚀 [CONFIRMED INTERVIEW] K2 Space — Ground Software Engineer (Manon Newell)
 LOCATION:Microsoft Teams (GCC High) / 1-Click Desktop Launcher
-DESCRIPTION:CONFIRMED INTERVIEW: K2 Space ($150k-$200k Base + Equity)\nINTERVIEWER: Manon Newell (Senior Technical Recruiter)\nJOIN CALL: 1-Click LAUNCH_K2_INTERVIEW_SUITE.bat on Desktop\nTALKING POINTS: Rust anti-cheat SDK + live Gravitas Ground C2 Telemetry Console (djjrip.github.io/k2-ground-telemetry.html).
+DESCRIPTION:CONFIRMED INTERVIEW: K2 Space ($150,000 - $200,000 Base + Equity)\nINTERVIEWER: Manon Newell (Senior Technical Recruiter)\nTIME: Monday, Oct 12, 2026 @ 2:15 PM - 2:45 PM CT (Preflight @ 2:00 PM CT)\nJOIN CALL: 1-Click LAUNCH_K2_INTERVIEW_SUITE.bat on Desktop\nTALKING POINTS: Rust anti-cheat SDK + live Gravitas Ground C2 Telemetry Console (djjrip.github.io/k2-ground-telemetry.html).
 STATUS:CONFIRMED
 BEGIN:VALARM
 TRIGGER:-PT30M
@@ -37,39 +37,9 @@ ACTION:DISPLAY
 DESCRIPTION:30m Reminder: K2 Space Interview
 END:VALARM
 BEGIN:VALARM
-TRIGGER:-PT10M
+TRIGGER:-PT15M
 ACTION:DISPLAY
-DESCRIPTION:10m Prep: K2 Space Interview
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:columbia-housing-20261015@ggloop.io
-DTSTAMP:20261009T170000Z
-DTSTART;TZID=America/Chicago:20261015T090000
-DTEND;TZID=America/Chicago:20261015T100000
-SUMMARY:🏛️ [DEADLINE] Columbia University Spring 2027 Housing Portal Opens
-LOCATION:Columbia Residential Housing Portal
-DESCRIPTION:Submit Columbia University Spring 2027 Transfer Housing Application on Day 1 for priority school approval review.
-STATUS:CONFIRMED
-BEGIN:VALARM
-TRIGGER:-PT1H
-ACTION:DISPLAY
-DESCRIPTION:1h Reminder: Columbia Housing Application Opens
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:uta-maverick-experience-20261024@ggloop.io
-DTSTAMP:20261009T170000Z
-DTSTART;TZID=America/Chicago:20261024T090000
-DTEND;TZID=America/Chicago:20261024T130000
-SUMMARY:🎓 [CAMPUS EVENT] UTA Maverick Experience — On-the-Spot Admission
-LOCATION:University Administration Building, Suite 123, 701 S Nedderman Dr, Arlington, TX 76019
-DESCRIPTION:Bring official/unofficial transcripts for on-the-spot transfer admission decision and $1k-$6k/year scholarship verification from Julie Garcia Flores (817-272-3271).
-STATUS:CONFIRMED
-BEGIN:VALARM
-TRIGGER:-P1D
-ACTION:DISPLAY
-DESCRIPTION:Tomorrow: UTA Maverick Experience
+DESCRIPTION:15m Prep & Preflight: K2 Space Interview
 END:VALARM
 END:VEVENT
 END:VCALENDAR
