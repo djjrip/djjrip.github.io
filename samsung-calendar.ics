@@ -36,5 +36,33 @@ TRIGGER:-PT1H
 ACTION:DISPLAY
 DESCRIPTION:1h Reminder: Workforce Solutions Grand Prairie
 END:VALARM
+BEGIN:VEVENT
+UID:anduril-screen-20261012@anduril.com
+DTSTAMP:20261012T143703Z
+DTSTART;TZID=America/Chicago:20261012T123000
+DTEND;TZID=America/Chicago:20261012T130000
+SUMMARY:Anduril Recruiter Screen — Battlespace Awareness (Amber Yatteau)
+LOCATION:Phone: +1 469-371-8556 (Amber will call)
+DESCRIPTION:Phone screen with Amber Yatteau (ayatteau@anduril.com, 949-814-4864) for Lead Systems Engineer / Battlespace Awareness. Desktop cheat sheet: ANDURIL_CALL_CHEAT_SHEET.txt.
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:15m Reminder: Anduril Screen
+END:VEVENT
+BEGIN:VEVENT
+UID:sidekick-labs-interview-20261022@sidekicklabs.com
+DTSTAMP:20261012T182000Z
+DTSTART;TZID=America/Chicago:20261022T121500
+DTEND;TZID=America/Chicago:20261022T124500
+SUMMARY:Sidekick Labs — Preliminary Interview (Eric McIntyre)
+LOCATION:https://meet.google.com/wmi-mbia-phf
+DESCRIPTION:Senior SWE / Intelligence & Data Processing Engineer. Google Meet: https://meet.google.com/wmi-mbia-phf | Phone: +1 916-836-2708 PIN: 146 513 706
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:15m Reminder: Sidekick Labs Interview
+END:VALARM
 END:VEVENT
 END:VCALENDAR
