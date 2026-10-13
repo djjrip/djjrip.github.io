@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GG LOOP — Turnkey Tournament Operations & Event Kit</title>
+  <meta name="description" content="Turnkey tournament operations, live brackets, automated sign-ups, and anti-cheat verification for campus LANs, arcades, and competitive venues.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card: #111726;
+      --card-border: #1f293d;
+      --primary: #10b981;
+      --primary-glow: rgba(16, 185, 129, 0.25);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.6;
+      padding: 0 20px 80px;
+    }
+    .header {
+      max-width: 900px;
+      margin: 40px auto 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+    .logo span { color: var(--primary); }
+    .badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--primary);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-family: var(--mono);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .hero {
+      max-width: 900px;
+      margin: 40px auto 50px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 46px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 auto 32px;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #04120b;
+      font-weight: 800;
+      font-size: 16px;
+      padding: 14px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 20px var(--primary-glow);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+    }
+    .btn-secondary {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--card-border);
+      font-weight: 700;
+      font-size: 16px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-secondary:hover {
+      background: #182238;
+      border-color: #334155;
+    }
+    .grid {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 28px;
+    }
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .pricing-box {
+      max-width: 900px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #131c30 0%, #0d1322 100%);
+      border: 1px solid #24324f;
+      border-radius: 18px;
+      padding: 44px;
+      text-align: center;
+    }
+    .pricing-box h2 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .price {
+      font-size: 54px;
+      font-weight: 900;
+      color: var(--primary);
+      font-family: var(--mono);
+      margin-bottom: 16px;
+    }
+    .price-period {
+      font-size: 16px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .features-list {
+      max-width: 500px;
+      margin: 24px auto 36px;
+      text-align: left;
+      list-style: none;
+    }
+    .features-list li {
+      font-size: 15px;
+      color: #cbd5e1;
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .features-list li::before {
+      content: '✓';
+      color: var(--primary);
+      font-weight: 900;
+      font-family: var(--mono);
+    }
+    .footer {
+      max-width: 900px;
+      margin: 50px auto 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid var(--card-border);
+      padding-top: 30px;
+    }
+    .footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">GG <span>LOOP</span></div>
+    <span class="badge">Production Verified</span>
+  </div>
+
+  <div class="hero">
+    <h1>Turnkey Tournament Infrastructure <span>Ready Tonight</span></h1>
+    <p>Eliminate manual spreadsheets, paper brackets, and chaotic Discord check-ins. GG LOOP delivers a self-updating bracket engine, custom player sign-up portal, and anti-cheat verified rosters in under 24 hours.</p>
+    <div class="btn-group">
+      <a href="https://buy.stripe.com/cNi5kEgBd5C05Rlbzd1B603" class="btn-primary">Book $49 Starter Kit</a>
+      <a href="https://gg-loop-tournament.vercel.app" class="btn-secondary">Launch Live Bracket Engine →</a>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>🎮 Live Display-Ready Brackets</h3>
+      <p>Single & double elimination brackets that run seamlessly on arena projectors, venue TVs, Twitch/OBS stream overlays, or mobile screens with zero delay.</p>
+    </div>
+    <div class="card">
+      <h3>⚡ Instant Player Sign-Up Portal</h3>
+      <p>Share a single link or QR code at your venue door. Players register, link their game IDs, and seed automatically before match time.</p>
+    </div>
+    <div class="card">
+      <h3>🛡️ Integrated Anti-Tamper Verification</h3>
+      <p>Powered by our native Win32 process security and memory scanner to ensure clean play across competitive PC titles.</p>
+    </div>
+  </div>
+
+  <div class="pricing-box">
+    <h2>$49 Tournament Operations Starter Kit</h2>
+    <div class="price">$49 <span class="price-period">/ event flat</span></div>
+    <p style="color: var(--muted); max-width: 550px; margin: 0 auto;">Everything your staff or student officers need to run a flawless competitive gaming event without manual overhead.</p>
+    <ul class="features-list">
+      <li>Custom live bracket URL (self-updating, real-time)</li>
+      <li>Dedicated digital player & team registration portal</li>
+      <li>Custom promotional copy tailored for your Discord & Instagram</li>
+      <li>Automated prize pool & score sheet generator</li>
+      <li>Dedicated 48-hour founder support from Jayson Quindao</li>
+    </ul>
+    <a href="https://buy.stripe.com/cNi5kEgBd5C05Rlbzd1B603" class="btn-primary" style="font-size: 18px; padding: 16px 40px; display: inline-block;">Lock In Event Kit ($49)</a>
+  </div>
+
+  <div class="footer">
+    <p>GG LOOP LLC · Grand Prairie, TX · Operations & Tech Hotline: <a href="tel:4693718556">(469) 371-8556</a> · <a href="mailto:jquindao1@icloud.com">jquindao1@icloud.com</a></p>
+    <p style="margin-top: 8px;">Explore live engine: <a href="https://gg-loop-tournament.vercel.app">gg-loop-tournament.vercel.app</a></p>
+  </div>
+</body>
+</html>
