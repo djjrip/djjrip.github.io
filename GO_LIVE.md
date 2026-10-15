@@ -38,7 +38,7 @@ I architect AI systems, deploy agentic workflows, and build production SaaS from
 
 Most recently: Founder & CEO of GG Loop LLC, where I built a B2B SaaS platform from zero to live cloud deployment — schema design, backend, CI/CD, payment processing, and AI agent integration, all solo.
 
-Before that: Financial Operations Engineer at NCR Atleos — managing multi-million dollar ATM transaction networks at 99.9% accuracy and building SQL automation pipelines that cut reconciliation time by 40%.
+Before that: Finance Associate II (ATM Settlement Operations) at NCR Atleos — managing high-volume cash flows across national ATM networks, configuring deposit fees, and executing monthly cash settlements and ledger reconciliations.
 
 I operate at the intersection of engineering, enterprise operations, and business outcomes. I don't just write code — I understand the business layer it's solving for.
 
