@@ -3,80 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jayson Quindao (DJ J-Rip / GG Loop LLC) — Instant 48-Hr Engineering Sprint & DFW Live DJ Booking</title>
+<title>GG LOOP LLC — 48-Hour Production Engineering Sprints ($499 Flat)</title>
 <style>
   :root { --bg: #090d16; --panel: #111827; --border: #1f2937; --accent: #10b981; --cyan: #06b6d4; --text: #f3f4f6; --muted: #9ca3af; }
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, sans-serif; }
-  body { background: var(--bg); color: var(--text); padding: 32px 20px; max-width: 960px; margin: 0 auto; line-height: 1.5; }
+  body { background: var(--bg); color: var(--text); padding: 40px 20px; max-width: 960px; margin: 0 auto; line-height: 1.6; }
   .badge { display: inline-block; background: rgba(16,185,129,0.15); border: 1px solid var(--accent); color: var(--accent); padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; margin-bottom: 12px; }
-  h1 { font-size: 28px; margin-bottom: 8px; }
-  p.sub { color: var(--muted); margin-bottom: 28px; font-size: 15px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; margin-bottom: 28px; }
-  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; }
+  h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
+  p.sub { color: var(--muted); margin-bottom: 32px; font-size: 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; margin-bottom: 32px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
   .card.featured { border-color: var(--accent); box-shadow: 0 0 24px rgba(16,185,129,0.12); }
   .price { font-size: 28px; font-weight: 800; color: var(--accent); margin: 10px 0; }
-  .card h2 { font-size: 18px; color: #fff; }
+  .card h2 { font-size: 18px; color: #fff; margin-bottom: 6px; }
   ul { margin: 12px 0 20px 18px; color: var(--muted); font-size: 13.5px; }
   li { margin-bottom: 6px; }
-  .btn { display: block; text-align: center; background: var(--accent); color: #04130d; font-weight: 800; text-decoration: none; padding: 12px 16px; border-radius: 8px; font-size: 14px; transition: opacity 0.15s; }
+  .btn { display: block; text-align: center; background: var(--accent); color: #04130d; font-weight: 800; text-decoration: none; padding: 12px 16px; border-radius: 8px; font-size: 14px; transition: opacity 0.15s; margin-top: 8px; }
+  .btn.secondary { background: transparent; border: 1px solid var(--cyan); color: var(--cyan); }
   .btn:hover { opacity: 0.9; }
-  .pay-box { background: #0d1322; border: 1px solid var(--cyan); border-radius: 12px; padding: 20px; margin-top: 16px; }
-  .pay-box h3 { color: var(--cyan); font-size: 16px; margin-bottom: 8px; }
-  code { background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #38bdf8; font-family: monospace; }
+  .deliverables-box { background: #0d1322; border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+  .deliverables-box h3 { color: #fff; font-size: 18px; margin-bottom: 12px; }
+  .pay-box { background: #0d1322; border: 1px solid var(--cyan); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+  .pay-box h3 { color: var(--cyan); font-size: 18px; margin-bottom: 8px; }
+  code { background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #38bdf8; font-family: monospace; font-size: 13px; }
+  .dj-footer { text-align: center; padding: 16px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); margin-top: 32px; }
+  .dj-footer a { color: var(--cyan); text-decoration: none; }
 </style>
 </head>
 <body>
-  <span class="badge">IMMEDIATE AVAILABILITY • OCT 2026</span>
-  <h1>Jayson Quindao — Instant Execution & Booking Portal</h1>
-  <p class="sub">Founder & Lead Systems Architect @ GG Loop LLC • Open-Format Resident & Event DJ (DJ J-Rip) • Grand Prairie / Dallas-Fort Worth, TX</p>
+  <span class="badge">GUARANTEED 48-HOUR PRODUCTION SPRINTS • OCT 2026</span>
+  <h1>GG LOOP LLC — Productized Engineering Sprints</h1>
+  <p class="sub">Fixed-Price, Fixed-Scope Systems Engineering • Tested Code, Passing PRs, Zero Placeholders • Delivered in 48 Hours</p>
 
   <div class="grid">
     <div class="card featured">
       <div>
-        <h2>1. 48-Hour Production Engineering Sprint</h2>
+        <h2>1. PostgreSQL Batch Ingest Pipeline</h2>
         <div class="price">$499 Flat</div>
         <ul>
-          <li><strong>Deliverable in 48 Hours:</strong> PostgreSQL <code>unnest()</code> high-throughput telemetry ingest, Stripe Connect double-entry webhook ledger, or custom FastAPI + React/TypeScript C2 dashboard.</li>
-          <li><strong>Live Demo Proof:</strong> <a href="https://djjrip.github.io/k2-ground-telemetry.html" style="color:var(--cyan);">K2 Ground Telemetry C2 Sandbox</a></li>
-          <li>100% production-ready Git PR with zero-placeholder code.</li>
+          <li><strong>The Problem:</strong> Row-by-row inserts saturating database connection pools and killing write throughput.</li>
+          <li><strong>Deliverable:</strong> Drop-in SQL array migration + async handler (Python/Node/Rust) using single-roundtrip <code>unnest()</code> bulk ingestion.</li>
+          <li><strong>Benchmark:</strong> 10x+ write throughput increase with automated benchmark script.</li>
+          <li><strong>Live Proof:</strong> <a href="https://djjrip.github.io/k2-ground-telemetry.html" style="color:var(--cyan);">K2 Telemetry Sandbox</a></li>
         </ul>
       </div>
-      <a class="btn" href="https://buy.stripe.com/dRmdRb1NiaYpeDh6h20Fi04" target="_blank">Book 48-Hr Sprint Now ($499)</a>
+      <div>
+        <a class="btn" href="https://buy.stripe.com/dRmdRb1NiaYpeDh6h20Fi04" target="_blank">Instant Deposit ($499 via Stripe)</a>
+        <a class="btn secondary" href="mailto:jquindao1@icloud.com?subject=PostgreSQL%20Batch%20Ingest%20Sprint%20($499)&body=Hi%20Jayson,%20we%20want%20to%20book%20the%20$499%20Postgres%20Ingest%20sprint.%20Our%20stack:">Book via Email / Scope First</a>
+      </div>
     </div>
 
     <div class="card">
       <div>
-        <h2>2. Same-Weekend DFW Live DJ Set (DJ J-Rip)</h2>
-        <div class="price">$350 – $500 / Set</div>
+        <h2>2. Stripe Webhook Ledger & Idempotency</h2>
+        <div class="price">$499 Flat</div>
         <ul>
-          <li><strong>Available This Weekend (Friday Oct 16 – Sunday Oct 18):</strong> Last-minute fill-ins, rooftop sets, nightlife venues, private VIP & corporate activations across Dallas, Fort Worth, Grand Prairie, & Arlington.</li>
-          <li><strong>Genres:</strong> High-energy Open Format, Hip-Hop/R&B, House, Top 40, Latin, Throwbacks.</li>
-          <li>Full Pioneer DJ rig + PA system ready within 60 minutes notice.</li>
+          <li><strong>The Problem:</strong> Duplicate charges, unhandled event retries, and reconciliation variances between Stripe and your DB.</li>
+          <li><strong>Deliverable:</strong> Replay-proof HMAC webhook ingestion service, atomic PostgreSQL idempotency key ledger, and exception alerting.</li>
+          <li><strong>Safety:</strong> Strict ACID transaction boundaries; zero duplicate ledger entries under network retry bursts.</li>
         </ul>
       </div>
-      <a class="btn" href="sms:+14693718556?body=Hi%20DJ%20J-Rip,%20are%20you%20available%20for%20a%20set%20on%20">Text 469-371-8556 for Instant Hold</a>
+      <a class="btn" href="mailto:jquindao1@icloud.com?subject=Stripe%20Webhook%20Sprint%20($499)&body=Hi%20Jayson,%20we%20want%20to%20book%20the%20$499%20Stripe%20Webhook%20sprint.%20Our%20stack:">Book Stripe Sprint</a>
     </div>
 
     <div class="card">
       <div>
-        <h2>3. AI Automation & Scraper Pipeline Build</h2>
+        <h2>3. Native Rust Utilities & C-FFI Sentry</h2>
         <div class="price">$750 Flat</div>
         <ul>
-          <li><strong>Deliverable in 72 Hours:</strong> Autonomous Playwright/Python lead enrichment, multi-agent MCP workflow, or automated CRM/SMTP dispatch engine with cryptographic verification.</li>
-          <li>Built on the same architecture powering <strong>GG Loop LLC</strong>.</li>
+          <li><strong>The Problem:</strong> Need high-performance system monitoring or binary integrity checking without bloated dependencies.</li>
+          <li><strong>Deliverable:</strong> Standalone compiled binary or C-FFI shared library (.dll/.so) in safe Rust with Win32/POSIX process inspection.</li>
+          <li><strong>Security:</strong> FIPS 180-4 standard SHA-256 binary validation and stdio JSON-RPC MCP integration.</li>
+          <li><strong>Proof:</strong> <a href="https://github.com/djjrip/anti-cheat-sdk" style="color:var(--cyan);">Anti-Cheat SDK v1.0.0 (13/13 Tests)</a></li>
         </ul>
       </div>
-      <a class="btn" href="mailto:jquindao1@icloud.com?subject=AI%20Automation%20Build%20($750)&body=Hi%20Jayson,%20we%20need%20an%20automation%20pipeline%20built:">Start Automation Build</a>
+      <a class="btn" href="mailto:jquindao1@icloud.com?subject=Rust%20Systems%20Sprint%20($750)&body=Hi%20Jayson,%20we%20want%20to%20book%20the%20$750%20Rust%20Systems%20sprint.%20Our%20stack:">Book Rust Sprint</a>
     </div>
   </div>
 
+  <div class="deliverables-box">
+    <h3>Strict 48-Hour Sprint Terms</h3>
+    <ul style="margin-left: 20px; font-size: 14px; color: var(--muted);">
+      <li><strong>Fixed Scope:</strong> Every sprint is constrained to a single, well-defined technical module with explicit acceptance criteria.</li>
+      <li><strong>Deliverable Package:</strong> Clean Git branch / Pull Request with production-ready code, unit test coverage, and documentation.</li>
+      <li><strong>Exclusions:</strong> Does not cover broad architecture rewrites, full-stack app redesigns, or unbounded bug hunts.</li>
+      <li><strong>Settlement:</strong> 50% retainer deposit upfront to initiate sprint; 50% upon delivery of verified passing test harness.</li>
+    </ul>
+  </div>
+
   <div class="pay-box">
-    <h3>Instant Deposit / Settlement Rails (Zero-Friction)</h3>
-    <p style="font-size:14px; color:var(--text);">
-      • <strong>Zelle / Direct Instant Transfer:</strong> <code>469-371-8556</code> or <code>jaysonquindao@ggloop.io</code> (Jayson Quindao / GG Loop LLC)<br>
-      • <strong>Direct Phone / SMS (24/7 Dispatch):</strong> <code>(469) 371-8556</code><br>
-      • <strong>Direct Email:</strong> <code>jquindao1@icloud.com</code> | <strong>GitHub:</strong> <a href="https://github.com/djjrip" style="color:var(--cyan);">github.com/djjrip</a>
+    <h3>Direct Founder Contact & Settlement Rails</h3>
+    <p style="font-size:14.5px; color:var(--text); margin-bottom: 8px;">
+      Engineering Operator: <strong>Jayson Quindao</strong> (Founder & Principal Systems Architect, GG LOOP LLC)
     </p>
+    <p style="font-size:14px; color:var(--muted);">
+      • <strong>Direct Inquiries:</strong> <code>jquindao1@icloud.com</code> / <code>jaysonquindao@ggloop.io</code><br>
+      • <strong>Instant Zelle / ACH Transfer:</strong> <code>469-371-8556</code> or <code>jaysonquindao@ggloop.io</code><br>
+      • <strong>Direct Phone / SMS:</strong> <code>(469) 371-8556</code> (Dallas-Fort Worth, TX)<br>
+      • <strong>GitHub Verification:</strong> <a href="https://github.com/djjrip" style="color:var(--cyan);">github.com/djjrip</a>
+    </p>
+  </div>
+
+  <div class="dj-footer">
+    Looking for DJ J-Rip live performance and event bookings? Visit the dedicated <a href="booking.html">DFW Live DJ Booking Portal</a>.
   </div>
 </body>
 </html>
