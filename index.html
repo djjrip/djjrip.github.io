@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GG LOOP LLC — Systems Engineering, Developer Infrastructure & Tournament Operations</title>
-  <meta name="description" content="GG LOOP LLC engineers low-level systems security tooling in Rust, zero-loss payment idempotency middleware, and turnkey tournament operations for competitive venues." />
+  <meta name="description" content="GG LOOP LLC builds practical developer tools, reviews payment-webhook reliability, and helps gaming venues run repeatable tournaments." />
   <meta name="keywords" content="GG LOOP, Jayson Quindao, Rust Systems Engineering, Anti-Cheat SDK, Stripe Webhook Guard, Tournament Operations, Gaming for Groceries" />
   <meta name="author" content="GG LOOP LLC" />
   <meta name="robots" content="index, follow" />
@@ -12,7 +12,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="GG LOOP LLC — Systems Engineering & Tournament Operations" />
-  <meta property="og:description" content="Developer infrastructure, payment reliability tooling, and turnkey arcade & esports tournament operations." />
+  <meta property="og:description" content="Practical developer tooling, scoped payment-reliability reviews, and repeatable tournament operations for gaming venues." />
   <meta property="og:url" content="https://djjrip.github.io/" />
 
   <!-- Fonts -->
@@ -257,7 +257,7 @@
         & Developer Infrastructure.
       </h1>
       <p>
-        GG LOOP LLC develops low-overhead systems tooling in Rust, zero-loss payment idempotency middleware, and turnkey tournament operations for competitive physical venues.
+        GG LOOP LLC builds practical developer tooling, reviews payment-webhook implementations, and helps gaming venues run repeatable tournaments.
       </p>
       <div class="hero-buttons">
         <a href="#services" class="btn btn-primary">Explore Commercial Offers</a>
@@ -272,17 +272,17 @@
           <div class="section-eyebrow">Pillar 01</div>
           <h2 class="section-title">Gaming & Tournament Operations</h2>
           <p class="section-desc">
-            Turnkey tournament administration, automated web bracketing, and zero-risk foot traffic models for arcades, campuses, and gaming venues.
+            Tournament administration, bracket workflows, and venue playbooks for arcades, campuses, and community events. Sponsor-funded rewards are offered only when funding is confirmed.
           </p>
         </div>
 
         <div class="grid-3">
           <div class="card">
             <div>
-              <span class="card-tag tag-green">LIVE CLOUD APPLICATION</span>
+              <span class="card-tag tag-green">CURRENT APP BUILD</span>
               <h3>Tournament Operating System</h3>
               <p>
-                Our production web application providing automated double-elimination brackets, mobile QR-code check-ins, and live participant queue tracking.
+                Explore the current tournament app for bracket management and participant workflows. Confirm the supported features and test the event flow before relying on it at a live tournament.
               </p>
             </div>
             <div class="card-footer">
@@ -310,7 +310,7 @@
               <span class="card-tag tag-green">VENUE PILOT MODEL</span>
               <h3>Single-Cabinet Arcade Runbook</h3>
               <p>
-                Engineered for fighting games (e.g. <i>Street Fighter III: 3rd Strike</i>). Completes a 16-player bracket in 97.5 minutes on a single cabinet while venue retains 100% of door admissions.
+                An event-day playbook for running a 16-player bracket on one cabinet. Actual run time depends on match length, player readiness, and venue operations; the venue controls its own admissions and pricing.
               </p>
             </div>
             <div class="card-footer">
@@ -329,7 +329,7 @@
           <div class="section-eyebrow">Pillar 02</div>
           <h2 class="section-title">Developer Infrastructure & Security</h2>
           <p class="section-desc">
-            Production-grade systems libraries written in Rust and Node.js. Built for memory efficiency, cryptographic verification, and transactional integrity.
+            Small developer tools and prototypes focused on code inspection, file-integrity checks, and payment-webhook reliability. Claims are limited to the behaviors that have been tested.
           </p>
         </div>
 
@@ -339,7 +339,7 @@
               <span class="card-tag tag-indigo">RUST SYSTEMS ENGINE</span>
               <h3>GG Loop Sentry SDK</h3>
               <p>
-                Win32 process snapshotting, memory boundary monitoring, and SHA-256 binary hashing without kernel drivers or CPU degradation.
+                A Windows user-mode prototype for process inspection and SHA-256 file-integrity checks. Unit tests cover selected code paths; they do not establish anti-cheat effectiveness or independently verified performance.
               </p>
               <div class="code-box">cargo test # 13 passed, 0 failed</div>
             </div>
@@ -354,7 +354,7 @@
               <span class="card-tag tag-indigo">PAYMENT INTEGRITY</span>
               <h3>Stripe Webhook Guard</h3>
               <p>
-                Node.js/TypeScript middleware preventing dropped transactions, webhook replay attacks, and duplicate billing via cryptographic idempotency locks.
+                Node.js/TypeScript tooling for reviewing selected webhook patterns and testing signature, replay, and tamper-handling logic. Results depend on the application architecture and require human review.
               </p>
               <div class="code-box">npm test # 3 passed, 0 failed</div>
             </div>
@@ -369,7 +369,7 @@
               <span class="card-tag tag-indigo">CLI DIAGNOSTIC</span>
               <h3>Webhook Static AST Auditor</h3>
               <p>
-                Free command-line scanner that audits Express and Next.js route handlers for raw-body corruption, missing signatures, and unhandled retry loops.
+                A command-line scanner that checks selected Express and Next.js route patterns for raw-body handling and signature-verification issues. It is a targeted static check, not a complete security audit.
               </p>
               <div class="code-box">npx stripe-webhook-guard audit ./src</div>
             </div>
@@ -383,7 +383,7 @@
         <div class="notice-box">
           <h4>Honest Technical Scope & Limitations</h4>
           <p>
-            Our security and reliability tooling is designed for specific structural problems. Sentry SDK operates in Windows user mode to verify binary integrity; it is not a ring-0 anti-rootkit kernel driver. Stripe Webhook Guard provides application-layer idempotency locks and does not alter external bank settlement times.
+            Our current security and reliability projects are prototypes and targeted developer tools—not a certified anti-cheat product, a complete penetration test, or a guarantee against payment loss. File hashing verifies file contents against a supplied expected hash; it does not by itself detect every form of runtime tampering. Webhook fixes must be tested against the customer’s actual application and database.
           </p>
         </div>
       </div>
@@ -396,7 +396,7 @@
           <div class="section-eyebrow">Pillar 03</div>
           <h2 class="section-title">Engineering Services & Sprints</h2>
           <p class="section-desc">
-            Direct technical execution by Jayson Quindao. Scoped engagements focused on payment infrastructure, API resilience, and low-level systems integration.
+            Scoped, AI-assisted implementation and workflow automation for well-defined reliability problems. Each engagement begins with an agreed scope and ends with a test-backed handoff describing what was and was not verified.
           </p>
         </div>
 
@@ -406,7 +406,7 @@
               <span class="card-tag tag-cyan">48-HOUR SPRINT ($499)</span>
               <h3>Webhook Reliability & Idempotency Audit</h3>
               <p>
-                Targeted inspection of your payment ingestion endpoints. We diagnose raw-body parsing flaws, implement atomic database idempotency locks, and eliminate duplicate order fulfillments caused by unhandled Stripe webhook retry bursts.
+                A scoped review of selected Stripe webhook routes for raw-body handling, signature verification, and idempotency risks. Any code remediation and database changes must fit the agreed scope and be verified against the customer’s environment; no absolute “zero duplicate” guarantee is made.
               </p>
             </div>
             <div class="card-footer">
@@ -418,9 +418,9 @@
           <div class="card">
             <div>
               <span class="card-tag tag-cyan">SYSTEMS CONTRACTING</span>
-              <h3>Rust & Low-Level Engineering</h3>
+              <h3>Prototype & API Integration</h3>
               <p>
-                Contract systems engineering for connected automotive telemetry, high-throughput network daemons, and security-critical desktop software.
+                Turn a defined workflow or integration need into a small working prototype, API connection, or automation. The stack, acceptance tests, and delivery scope are agreed before work begins; unsupported or untestable requirements are declined.
               </p>
             </div>
             <div class="card-footer">
@@ -477,7 +477,7 @@
         <div class="footer-brand">
           <h4>GG LOOP LLC</h4>
           <p>
-            An independent engineering and tournament operations practice based in Texas. Dedicated to zero-loss infrastructure and physical venue competition.
+            An independent Texas-based practice focused on practical software reliability and repeatable gaming-event operations.
           </p>
         </div>
         <div class="footer-col">
@@ -507,7 +507,7 @@
       </div>
       <div class="footer-bottom">
         <div>&copy; 2026 GG LOOP LLC. All rights reserved. Registered Texas Limited Liability Company.</div>
-        <div>SSOT Verified: (469) 371-8556 | jquindao1@icloud.com</div>
+        <div>Dallas–Fort Worth, Texas | jquindao1@icloud.com</div>
       </div>
     </div>
   </footer>
