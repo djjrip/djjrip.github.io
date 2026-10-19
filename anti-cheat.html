@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GG Loop Sentry — Zero-Overhead Anti-Cheat & Process Integrity SDK</title>
-  <meta name="description" content="Production-ready, zero-kernel-bloat Anti-Cheat and Process Verification SDK for Unity, Unreal Engine, and PC Games. Built by GG Loop LLC.">
+  <title>GG Loop Sentry — Windows Process Inspection Prototype</title>
+  <meta name="description" content="An experimental Windows user-mode process inspection and SHA-256 file-integrity project from GG LOOP LLC. Review the source and current limitations.">
   <style>
     :root {
       --bg: #090d16;
@@ -65,13 +65,13 @@
     </header>
 
     <main>
-      <span class="badge">RELEASE v1.0.0 LIVE</span>
-      <h1>Zero-Overhead Anti-Cheat & Process Integrity for PC Games</h1>
-      <p class="lead">Safe Rust binary verification, zero-latency process scanning, and FIPS 180-4 SHA-256 integrity audits. Drop directly into Unity, Unreal Engine 5, or run as a standalone sentinel daemon.</p>
+      <span class="badge">EXPERIMENTAL PROJECT • SOURCE AVAILABLE</span>
+      <h1>Process Inspection & File-Integrity Checks</h1>
+      <p class="lead">An experimental Rust project exploring Windows process inspection and SHA-256 file-integrity checks. The current code and tests demonstrate selected behaviors; they do not establish effective anti-cheat protection, zero performance cost, or production readiness.</p>
 
       <div class="btn-group">
         <a class="btn btn-primary" href="https://github.com/djjrip/anti-cheat-sdk/releases" target="_blank">
-          ⬇ Download v1.0.0 (Windows x64)
+          View available releases
         </a>
         <a class="btn btn-secondary" href="https://github.com/djjrip/anti-cheat-sdk" target="_blank">
           View on GitHub
@@ -80,16 +80,16 @@
 
       <div class="grid-3">
         <div class="card">
-          <h3>⚡ Zero Kernel Bloat</h3>
-          <p>No dangerous Ring-0 kernel drivers that crash user PCs. 100% safe userspace Win32 and macOS APIs with under 0.1% CPU consumption.</p>
+          <h3>Windows User Mode</h3>
+          <p>The project explores user-mode inspection and does not require a kernel driver for the currently implemented paths. CPU and memory overhead have not been independently benchmarked.</p>
         </div>
         <div class="card">
-          <h3>🔒 FIPS SHA-256 Integrity</h3>
-          <p>Cryptographic hash verification of running game executables and DLLs to detect memory tampering, injectors, and binary substitution.</p>
+          <h3>SHA-256 File Hashing</h3>
+          <p>Hashes can be compared with an expected value to detect file-content changes. Hashing alone does not detect every form of runtime memory tampering, injection, or cheating.</p>
         </div>
         <div class="card">
-          <h3>🎮 Cross-Engine Support</h3>
-          <p>Native C-FFI exports (`anti_cheat_sdk.dll`) and `anti_cheat.h` headers ready for Unity (C# P/Invoke), Unreal Engine (C++), and Rust.</p>
+          <h3>Integration Requires Validation</h3>
+          <p>Native bindings and example snippets should be verified against the current build before use in Unity, Unreal, or a shipped game. Check the repository for the exact implemented exports.</p>
         </div>
       </div>
 
@@ -126,18 +126,18 @@ public class GGLoopAntiCheat : MonoBehaviour {
       </section>
 
       <section id="pricing">
-        <h2 style="font-size: 28px; font-weight: 800; margin-bottom: 24px; text-align: center;">Transparent Studio Pricing</h2>
+        <h2 style="font-size: 28px; font-weight: 800; margin-bottom: 24px; text-align: center;">Current Project Status</h2>
         <div class="pricing-grid">
           <div class="pricing-card">
             <div>
-              <h2>Indie / Starter</h2>
-              <p style="font-size: 13px; color: var(--muted);">For early-access & solo developers</p>
-              <div class="price-val">$0 <span>/ month</span></div>
+              <h2>Source & Experiments</h2>
+              <p style="font-size: 13px; color: var(--muted);">For review and experimentation</p>
+              <div class="price-val">Open <span>source</span></div>
               <ul class="features-list">
-                <li>Up to 1,000 Monthly Active Users</li>
-                <li>Full Win32 Process Scanning</li>
-                <li>Standalone `ggloop-sentry.exe`</li>
-                <li>Community GitHub Support</li>
+                <li>Inspect the source code</li>
+                <li>Review available tests</li>
+                <li>Experiment in a controlled environment</li>
+                <li>No production support or SLA implied</li>
               </ul>
             </div>
             <a class="btn btn-secondary" style="width: 100%; text-align: center;" href="https://github.com/djjrip/anti-cheat-sdk">Get Started Free</a>
@@ -145,32 +145,32 @@ public class GGLoopAntiCheat : MonoBehaviour {
 
           <div class="pricing-card popular">
             <div>
-              <span class="badge" style="margin-bottom: 8px;">MOST POPULAR</span>
-              <h2>Studio Pro</h2>
-              <p style="font-size: 13px; color: var(--muted);">For multiplayer indie studios & esports</p>
-              <div class="price-val">$199 <span>/ month</span></div>
+              <span class="badge" style="margin-bottom: 8px;">NOT CURRENTLY OFFERED</span>
+              <h2>Studio Pro Subscription</h2>
+              <p style="font-size: 13px; color: var(--muted);">Commercial service not yet validated</p>
+              <div class="price-val">Paused</div>
               <ul class="features-list">
-                <li>Up to 50,000 Monthly Active Users</li>
-                <li>Direct C#/C++ DLL Plugin Integration</li>
-                <li>HMAC-Signed Telemetry Webhooks</li>
-                <li>Automated Tamper Alerts</li>
-                <li>Priority Engineering Support</li>
+                <li>No verified production deployment</li>
+                <li>No validated user-capacity tier</li>
+                <li>No demonstrated alerting SLA</li>
+                <li>Capabilities require implementation and testing</li>
+                <li>Subscription offer paused pending validation</li>
               </ul>
             </div>
-            <a class="btn btn-primary" style="width: 100%; text-align: center;" href="https://buy.stripe.com/00wbJ3dw0d6x0Mr6h20Fi03" target="_blank">Deploy Studio Pro ($199/mo)</a>
+            <a class="btn btn-primary" style="width: 100%; text-align: center;" href="https://buy.stripe.com/00wbJ3dw0d6x0Mr6h20Fi03" target="_blank">Subscription paused</a>
           </div>
 
           <div class="pricing-card">
             <div>
-              <h2>Enterprise / League</h2>
-              <p style="font-size: 13px; color: var(--muted);">For esports leagues & publishers</p>
-              <div class="price-val">$999 <span>/ month</span></div>
+              <h2>Custom Collaboration</h2>
+              <p style="font-size: 13px; color: var(--muted);">Discuss a prototype review</p>
+              <div class="price-val">Scope first</div>
               <ul class="features-list">
-                <li>Unlimited Monthly Active Players</li>
-                <li>SOC 2 Type II Audit Logging</li>
-                <li>Custom Signature Verification</li>
-                <li>Dedicated Systems Architect (Jayson Quindao)</li>
-                <li>99.9% High-Availability SLA</li>
+                <li>Review the current code and project goals</li>
+                <li>Agree a specific prototype or test task</li>
+                <li>Define measurable acceptance criteria</li>
+                <li>No SOC 2 certification or uptime SLA claimed</li>
+                <li>Any paid work requires written scope agreement</li>
               </ul>
             </div>
             <a class="btn btn-secondary" style="width: 100%; text-align: center;" href="mailto:jquindao1@icloud.com?subject=Enterprise%20Anti-Cheat%20Licensing&body=Hi%20Jayson,%20let's%20schedule%20an%20architecture%20review%20for%20enterprise%20licensing.">Contact Architecture</a>
