@@ -314,16 +314,16 @@
         var n = document.getElementById('modal-name') ? document.getElementById('modal-name').value.trim() : '';
         var em = document.getElementById('modal-email') ? document.getElementById('modal-email').value.trim() : '';
         var gm = document.getElementById('modal-game') ? document.getElementById('modal-game').value : '';
-        
+
         // Save to browser storage immediately
         var signups = JSON.parse(localStorage.getItem('gfg_player_signups') || '[]');
         signups.push({ gamertag: n, email: em, game: gm, timestamp: new Date().toISOString() });
         localStorage.setItem('gfg_player_signups', JSON.stringify(signups));
-        
+
         // Instant visual feedback for player
         document.getElementById('modal-form-state').style.display='none';
         document.getElementById('modal-success').style.display='block';
-        
+
         // Async background sync
         var data=new FormData(form);
         fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}}).catch(function(){});
