@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GG LOOP LLC — 48-Hour Production Engineering Sprints ($499 Flat)</title>
+<title>GG LOOP LLC — Scoped Developer Reliability Sprints</title>
 <style>
   :root { --bg: #090d16; --panel: #111827; --border: #1f2937; --accent: #10b981; --cyan: #06b6d4; --text: #f3f4f6; --muted: #9ca3af; }
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, sans-serif; }
@@ -31,71 +31,72 @@
 </style>
 </head>
 <body>
-  <span class="badge">GUARANTEED 48-HOUR PRODUCTION SPRINTS • OCT 2026</span>
+  <span class="badge">SCOPED ENGINEERING SPRINTS • TESTED AGAINST AGREED CRITERIA</span>
   <h1>GG LOOP LLC — Productized Engineering Sprints</h1>
-  <p class="sub">Fixed-Price, Fixed-Scope Systems Engineering • Tested Code, Passing PRs, Zero Placeholders • Delivered in 48 Hours</p>
+  <p class="sub">Clear scope, reviewable changes, and a test-backed handoff. Any delivery window starts only after scope, access, and prerequisites are confirmed.</p>
 
   <div class="grid">
     <div class="card featured">
       <div>
-        <h2>1. PostgreSQL Batch Ingest Pipeline</h2>
+        <h2>1. Stripe Webhook Reliability Review</h2>
         <div class="price">$499 Flat</div>
         <ul>
-          <li><strong>The Problem:</strong> Row-by-row inserts saturating database connection pools and killing write throughput.</li>
-          <li><strong>Deliverable:</strong> Drop-in SQL array migration + async handler (Python/Node/Rust) using single-roundtrip <code>unnest()</code> bulk ingestion.</li>
-          <li><strong>Benchmark:</strong> 10x+ write throughput increase with automated benchmark script.</li>
-          <li><strong>Live Proof:</strong> <a href="https://djjrip.github.io/k2-ground-telemetry.html" style="color:var(--cyan);">K2 Telemetry Sandbox</a></li>
+          <li><strong>The Problem:</strong> Webhook handlers can mishandle raw request bodies, signatures, retries, or duplicate event processing.</li>
+          <li><strong>Review:</strong> Inspect selected Express/Next.js route patterns and report concrete findings with reproduction notes where possible.</li>
+          <li><strong>Optional remediation:</strong> One narrowly scoped code change and relevant tests may be included after repository, database, and environment requirements are reviewed and agreed in writing.</li>
+          <li><strong>Limits:</strong> This is not a penetration test, compliance certification, or guarantee against every duplicate transaction or payment failure.</li>
         </ul>
       </div>
       <div>
-        <a class="btn" href="https://buy.stripe.com/dRmdRb1NiaYpeDh6h20Fi04" target="_blank">Instant Deposit ($499 via Stripe)</a>
+        <a class="btn" href="mailto:jquindao1@icloud.com?subject=Scope%20a%20Stripe%20Webhook%20Review">Discuss scope before payment</a>
+        <a class="btn secondary" href="https://buy.stripe.com/dRmdRb1NiaYpeDh6h20Fi04" target="_blank" rel="noopener noreferrer">Proceed to $499 Stripe checkout after scope is agreed</a>
         <a class="btn secondary" href="mailto:jquindao1@icloud.com?subject=PostgreSQL%20Batch%20Ingest%20Sprint%20($499)&body=Hi%20Jayson,%20we%20want%20to%20book%20the%20$499%20Postgres%20Ingest%20sprint.%20Our%20stack:">Book via Email / Scope First</a>
       </div>
     </div>
 
     <div class="card">
       <div>
-        <h2>2. Stripe Webhook Ledger & Idempotency</h2>
-        <div class="price">$499 Flat</div>
+        <h2>2. Workflow Automation & API Integration</h2>
+        <div class="price">Scope first</div>
         <ul>
-          <li><strong>The Problem:</strong> Duplicate charges, unhandled event retries, and reconciliation variances between Stripe and your DB.</li>
-          <li><strong>Deliverable:</strong> Replay-proof HMAC webhook ingestion service, atomic PostgreSQL idempotency key ledger, and exception alerting.</li>
-          <li><strong>Safety:</strong> Strict ACID transaction boundaries; zero duplicate ledger entries under network retry bursts.</li>
+          <li><strong>The Problem:</strong> A repetitive manual step, brittle API connection, or workflow that needs a reliable handoff.</li>
+          <li><strong>Deliverable:</strong> A scoped prototype or integration with documented setup steps and tests for the agreed cases where feasible.</li>
+          <li><strong>Safety:</strong> Dependencies, access requirements, and limits are documented before implementation; no unsupported performance promise.</li>
         </ul>
       </div>
-      <a class="btn" href="mailto:jquindao1@icloud.com?subject=Stripe%20Webhook%20Sprint%20($499)&body=Hi%20Jayson,%20we%20want%20to%20book%20the%20$499%20Stripe%20Webhook%20sprint.%20Our%20stack:">Book Stripe Sprint</a>
+      <a class="btn" href="mailto:jquindao1@icloud.com?subject=Scope%20a%20Workflow%20Automation%20Project">Discuss a project</a>
     </div>
 
     <div class="card">
       <div>
-        <h2>3. Native Rust Utilities & C-FFI Sentry</h2>
-        <div class="price">$750 Flat</div>
+        <h2>3. Prototype Build & Technical Triage</h2>
+        <div class="price">Scope first</div>
         <ul>
-          <li><strong>The Problem:</strong> Need high-performance system monitoring or binary integrity checking without bloated dependencies.</li>
-          <li><strong>Deliverable:</strong> Standalone compiled binary or C-FFI shared library (.dll/.so) in safe Rust with Win32/POSIX process inspection.</li>
-          <li><strong>Security:</strong> FIPS 180-4 standard SHA-256 binary validation and stdio JSON-RPC MCP integration.</li>
-          <li><strong>Proof:</strong> <a href="https://github.com/djjrip/anti-cheat-sdk" style="color:var(--cyan);">Anti-Cheat SDK v1.0.0 (13/13 Tests)</a></li>
+          <li><strong>The Problem:</strong> You have an unclear product idea, manual process, or reproducible software issue.</li>
+          <li><strong>Deliverable:</strong> A small prototype, a reproducible bug report, or a test-backed change selected after a feasibility review.</li>
+          <li><strong>Approach:</strong> AI-assisted implementation with explicit acceptance tests and human review; language-specific work is accepted only when capability and scope are a fit.</li>
+          <li><strong>Limit:</strong> No claim of senior Rust expertise, production SLA, or security certification.</li>
         </ul>
       </div>
-      <a class="btn" href="mailto:jquindao1@icloud.com?subject=Rust%20Systems%20Sprint%20($750)&body=Hi%20Jayson,%20we%20want%20to%20book%20the%20$750%20Rust%20Systems%20sprint.%20Our%20stack:">Book Rust Sprint</a>
+      <a class="btn" href="mailto:jquindao1@icloud.com?subject=Discuss%20Prototype%20or%20Technical%20Triage">Discuss scope</a>
     </div>
   </div>
 
   <div class="deliverables-box">
     <h3>48-Hour Sprint Scope & Acceptance Terms</h3>
     <ul style="margin-left: 20px; font-size: 14px; color: var(--muted);">
-      <li><strong>Delivery Clock:</strong> The 48-hour turnaround clock begins once repository access, database schema, and test environment credentials are provisioned by the client.</li>
+      <li><strong>Delivery Clock:</strong> No fixed turnaround is promised until the written scope, acceptance criteria, and prerequisites are confirmed. Any agreed window starts after required access is provided.</li>
       <li><strong>Fixed Scope:</strong> Every sprint is constrained to a single, well-defined technical module with explicit acceptance criteria.</li>
-      <li><strong>Deliverable Package:</strong> Clean Git branch / Pull Request with production-ready code, unit test coverage, and documentation.</li>
+      <li><strong>Deliverable Package:</strong> Reviewable patch or pull request, tests for the agreed cases where feasible, setup notes, and a plain-language list of remaining risks.</li>
       <li><strong>Exclusions:</strong> Does not cover broad architecture rewrites, full-stack app redesigns, or penetration testing.</li>
-      <li><strong>Settlement:</strong> 50% retainer deposit upfront to initiate sprint; 50% upon delivery of verified passing test harness.</li>
+      <li><strong>Settlement:</strong> Payment terms and the checkout amount are confirmed in writing before work begins. Do not pay until the agreed scope and deliverables are clear.</li>
     </ul>
   </div>
 
   <div class="pay-box">
     <h3>Direct Founder Contact & Settlement Rails</h3>
     <p style="font-size:14.5px; color:var(--text); margin-bottom: 8px;">
-      Engineering Operator: <strong>Jayson Quindao</strong> (Founder & Principal Systems Architect, GG LOOP LLC)
+      Project Contact: <strong>Jayson Quindao</strong> (Founder, GG LOOP LLC)
     </p>
     <p style="font-size:14px; color:var(--muted);">
       • <strong>Direct Inquiries:</strong> <code>jquindao1@icloud.com</code> / <code>jaysonquindao@ggloop.io</code><br>
