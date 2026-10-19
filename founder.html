@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jayson Quindao — Builder. Operator. AI Engineer.</title>
+  <meta name="description" content="Jayson Quindao — I architect AI systems, deploy agentic workflows, and build production SaaS from scratch. Open to Forward Deployed Engineer and Applied AI roles.">
+  <meta name="keywords" content="Jayson Quindao, AI Engineer, Forward Deployed Engineer, Full Stack Developer, GG Loop, Node.js, Python, AWS, Claude API, Agentic AI, Grand Prairie TX">
+  <meta name="author" content="Jayson Quindao">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / LinkedIn / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jaysonquindao.github.io">
+  <meta property="og:title" content="Jayson Quindao — Builder. Operator. AI Engineer.">
+  <meta property="og:description" content="Full-stack engineer and AI systems builder. Founder of GG Loop LLC. Built a production SaaS solo, autonomous AI agents, and financial automation systems. Open to $150k+ roles.">
+  <meta property="og:image" content="https://jaysonquindao.github.io/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jayson Quindao — AI Engineer & Builder">
+  <meta name="twitter:description" content="I build AI systems, agentic workflows, and production SaaS from scratch. Currently open to Forward Deployed Engineer roles.">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://jaysonquindao.github.io">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:         #04040c;
+      --surface:    #080814;
+      --card:       #0c0c1a;
+      --card-hover: #101026;
+      --border:     #16162e;
+      --border-hi:  #2a2a50;
+      --blue:       #3b82f6;
+      --blue-glow:  rgba(59,130,246,0.2);
+      --blue-dim:   rgba(59,130,246,0.1);
+      --purple:     #a855f7;
+      --purple-dim: rgba(168,85,247,0.1);
+      --cyan:       #06b6d4;
+      --green:      #22c55e;
+      --orange:     #f97316;
+      --text:       #f0f0ff;
+      --muted:      #5a5a90;
+      --muted2:     #9090c0;
+      --mono:       'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── AMBIENT ORBS ── */
+    .orb {
+      position: fixed; border-radius: 50%;
+      filter: blur(110px); pointer-events: none; z-index: 0;
+    }
+    .orb-1 { width:700px;height:700px;background:rgba(59,130,246,0.06);top:-250px;right:-200px; }
+    .orb-2 { width:500px;height:500px;background:rgba(168,85,247,0.05);bottom:-100px;left:-150px; }
+    .orb-3 { width:400px;height:400px;background:rgba(6,182,212,0.04);top:50%;left:40%; }
+
+    /* ── NOISE ── */
+    body::after {
+      content:''; position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+      pointer-events:none; z-index:9999;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:18px 60px;
+      background:rgba(4,4,12,0.85); backdrop-filter:blur(28px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-logo {
+      font-family:var(--mono); font-size:15px; font-weight:700; letter-spacing:1px;
+      background:linear-gradient(135deg,var(--blue),var(--purple));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      text-decoration:none;
+    }
+    .nav-links { display:flex; gap:32px; list-style:none; }
+    .nav-links a {
+      color:var(--muted2); text-decoration:none; font-size:14px; font-weight:500;
+      transition:color .2s; position:relative; padding-bottom:2px;
+    }
+    .nav-links a::after {
+      content:''; position:absolute; bottom:0; left:0; right:0; height:1px;
+      background:var(--blue); transform:scaleX(0); transition:transform .2s;
+    }
+    .nav-links a:hover { color:var(--text); }
+    .nav-links a:hover::after { transform:scaleX(1); }
+    .nav-hire {
+      background:linear-gradient(135deg,var(--blue),var(--purple));
+      color:#fff; padding:10px 26px; border-radius:8px;
+      font-size:14px; font-weight:700; text-decoration:none;
+      box-shadow:0 0 25px rgba(59,130,246,0.35);
+      transition:transform .2s, box-shadow .2s;
+    }
+    .nav-hire:hover { transform:translateY(-2px); box-shadow:0 4px 40px rgba(59,130,246,0.5); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height:100vh; display:flex; flex-direction:column;
+      justify-content:center; align-items:flex-start;
+      padding:150px 60px 100px;
+      max-width:1200px; margin:0 auto; position:relative; z-index:1;
+    }
+    .hero-status {
+      display:inline-flex; align-items:center; gap:10px;
+      font-family:var(--mono); font-size:12px; font-weight:700; letter-spacing:2px;
+      color:var(--green); text-transform:uppercase; margin-bottom:32px;
+      background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.25);
+      padding:7px 16px; border-radius:100px;
+    }
+    .live-dot {
+      width:8px; height:8px; border-radius:50%; background:var(--green);
+      box-shadow:0 0 10px var(--green);
+      animation:livepulse 2s ease-in-out infinite;
+    }
+    @keyframes livepulse { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);} }
+
+    h1 {
+      font-size:clamp(56px,9vw,112px); font-weight:900;
+      letter-spacing:-5px; line-height:.95; margin-bottom:20px;
+    }
+    .name-white {
+      background:linear-gradient(180deg,#ffffff 0%,rgba(255,255,255,0.7) 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    }
+    .hero-tagline {
+      font-size:clamp(20px,3.5vw,38px); font-weight:800; letter-spacing:-1px;
+      background:linear-gradient(90deg,var(--blue),var(--purple),var(--cyan));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      margin-bottom:28px; line-height:1.2;
+    }
+    .hero-bio {
+      font-size:clamp(16px,1.8vw,19px); color:var(--muted2); max-width:620px;
+      line-height:1.8; margin-bottom:52px;
+    }
+    .hero-bio strong { color:var(--text); font-weight:600; }
+
+    .cta-row { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:72px; }
+    .cta-primary {
+      background:linear-gradient(135deg,var(--blue),var(--purple));
+      color:#fff; padding:16px 38px; border-radius:10px;
+      font-size:15px; font-weight:700; text-decoration:none;
+      box-shadow:0 0 40px rgba(59,130,246,0.3);
+      transition:transform .2s, box-shadow .2s;
+    }
+    .cta-primary:hover { transform:translateY(-3px); box-shadow:0 8px 60px rgba(59,130,246,0.5); }
+    .cta-ghost {
+      border:1px solid var(--border-hi); color:var(--muted2); padding:16px 38px;
+      border-radius:10px; font-size:15px; font-weight:600; text-decoration:none;
+      transition:all .2s;
+    }
+    .cta-ghost:hover { border-color:var(--blue); color:var(--text); background:var(--blue-dim); }
+
+    .hero-proof {
+      display:grid; grid-template-columns:repeat(4,1fr); gap:2px;
+      background:var(--border); border-radius:14px; overflow:hidden;
+      border:1px solid var(--border);
+    }
+    .proof-cell {
+      background:var(--card); padding:24px 20px; text-align:center;
+      transition:background .2s;
+    }
+    .proof-cell:hover { background:var(--card-hover); }
+    .proof-num {
+      font-family:var(--mono); font-size:30px; font-weight:700;
+      background:linear-gradient(135deg,var(--blue),var(--cyan));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      display:block; margin-bottom:6px;
+    }
+    .proof-label { font-size:12px; color:var(--muted); line-height:1.4; }
+
+    /* ── SHARED ── */
+    .z1 { position:relative; z-index:1; }
+    .wrap { padding:110px 0; }
+    .container { max-width:1120px; margin:0 auto; padding:0 60px; }
+    .sec-eyebrow {
+      font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:3px;
+      color:var(--blue); text-transform:uppercase; display:block; margin-bottom:14px;
+    }
+    .sec-h2 {
+      font-size:clamp(30px,4.5vw,56px); font-weight:900; letter-spacing:-2.5px;
+      line-height:1.05; margin-bottom:16px;
+    }
+    .sec-p { font-size:17px; color:var(--muted2); max-width:540px; line-height:1.75; margin-bottom:60px; }
+
+    /* ── PROJECTS ── */
+    #work { background:var(--bg); }
+    .proj-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    @media(max-width:800px){.proj-grid{grid-template-columns:1fr;}}
+
+    .proj-card {
+      background:var(--card); border:1px solid var(--border); border-radius:18px;
+      padding:38px; position:relative; overflow:hidden;
+      transition:border-color .35s, transform .35s, background .35s;
+    }
+    .proj-card.wide { grid-column:1/-1; }
+    .proj-card:hover {
+      border-color:var(--border-hi); transform:translateY(-5px); background:var(--card-hover);
+    }
+    .proj-card::before {
+      content:''; position:absolute; top:0;left:0;right:0; height:1px;
+      background:linear-gradient(90deg,transparent,var(--blue),var(--purple),transparent);
+      opacity:0; transition:opacity .35s;
+    }
+    .proj-card:hover::before { opacity:1; }
+
+    .proj-badge {
+      display:inline-flex; align-items:center; gap:6px;
+      font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:1.5px;
+      text-transform:uppercase; padding:5px 12px; border-radius:6px; margin-bottom:22px;
+    }
+    .badge-live { background:rgba(34,197,94,0.1); color:var(--green); border:1px solid rgba(34,197,94,0.3); }
+    .badge-built { background:rgba(59,130,246,0.1); color:var(--blue); border:1px solid rgba(59,130,246,0.2); }
+    .badge-ai { background:rgba(168,85,247,0.1); color:var(--purple); border:1px solid rgba(168,85,247,0.2); }
+    .badge-ops { background:rgba(6,182,212,0.1); color:var(--cyan); border:1px solid rgba(6,182,212,0.2); }
+
+    .proj-icon { font-size:36px; display:block; margin-bottom:16px; }
+    .proj-title { font-size:22px; font-weight:800; margin-bottom:12px; letter-spacing:-.4px; }
+    .proj-desc { font-size:14px; color:var(--muted2); line-height:1.75; margin-bottom:24px; }
+    .proj-desc strong { color:var(--text); }
+
+    .tag-row { display:flex; flex-wrap:wrap; gap:8px; }
+    .ptag {
+      font-family:var(--mono); font-size:10px; font-weight:600; padding:5px 11px;
+      border-radius:6px; background:rgba(255,255,255,0.04); color:var(--muted2);
+      border:1px solid var(--border-hi); letter-spacing:.3px; transition:all .2s;
+    }
+    .proj-card:hover .ptag { border-color:rgba(59,130,246,0.3); color:var(--blue); background:var(--blue-dim); }
+
+    /* ── EXPERIENCE ── */
+    #experience { background:var(--surface); }
+    .tl { position:relative; }
+    .tl::before {
+      content:''; position:absolute; left:0; top:12px; bottom:40px; width:1px;
+      background:linear-gradient(to bottom,var(--blue) 0%,rgba(59,130,246,0) 100%);
+    }
+    .tl-row {
+      display:grid; grid-template-columns:1fr; gap:0;
+      padding-left:36px; position:relative; margin-bottom:52px;
+    }
+    .tl-row:last-child { margin-bottom:0; }
+    .tl-node {
+      position:absolute; left:-6px; top:8px;
+      width:13px; height:13px; border-radius:50%;
+      background:var(--blue); border:2px solid var(--surface);
+      box-shadow:0 0 16px rgba(59,130,246,0.7);
+      transition:transform .2s;
+    }
+    .tl-row:hover .tl-node { transform:scale(1.4); }
+    .tl-row.past .tl-node { background:var(--muted); box-shadow:none; }
+
+    .tl-top { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:4px; }
+    .tl-co { font-size:20px; font-weight:800; }
+    .tl-period { font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:1px; }
+    .tl-role-title { font-size:14px; font-weight:600; color:var(--blue); margin-bottom:12px; }
+    .tl-list { padding-left:18px; }
+    .tl-list li { font-size:14px; color:var(--muted2); line-height:1.75; margin-bottom:8px; }
+    .tl-list li strong { color:var(--text); }
+
+    /* ── SKILLS ── */
+    #skills { background:var(--bg); }
+    .sk-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; }
+    .sk-group {
+      background:var(--card); border:1px solid var(--border); border-radius:14px; padding:30px;
+      transition:border-color .2s;
+    }
+    .sk-group:hover { border-color:var(--border-hi); }
+    .sk-label {
+      font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:2px;
+      text-transform:uppercase; color:var(--muted); margin-bottom:18px; display:flex; align-items:center; gap:8px;
+    }
+    .sk-tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .sk-tag {
+      font-size:13px; font-weight:500; padding:7px 14px; border-radius:8px;
+      background:rgba(255,255,255,0.03); border:1px solid var(--border-hi);
+      color:var(--muted2); cursor:default; transition:all .2s;
+    }
+    .sk-tag:hover { background:var(--blue-dim); border-color:var(--blue); color:var(--text); }
+
+    /* ── EDUCATION ── */
+    #education { background:var(--surface); }
+    .edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    @media(max-width:700px){.edu-grid{grid-template-columns:1fr;}}
+    .edu-card {
+      background:var(--card); border:1px solid var(--border); border-radius:14px; padding:32px;
+      transition:border-color .2s, transform .2s;
+    }
+    .edu-card:hover { border-color:var(--border-hi); transform:translateY(-3px); }
+    .edu-school { font-size:18px; font-weight:800; margin-bottom:6px; }
+    .edu-degree { font-size:14px; color:var(--blue); font-weight:600; margin-bottom:8px; }
+    .edu-period { font-family:var(--mono); font-size:11px; color:var(--muted); }
+
+    /* ── OPEN TO ── */
+    #open { background:var(--bg); }
+    .open-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+    .open-card {
+      background:var(--card); border:1px solid var(--border); border-radius:14px; padding:28px;
+      display:flex; align-items:flex-start; gap:18px; transition:all .25s;
+    }
+    .open-card:hover { border-color:var(--blue-glow); background:var(--blue-dim); transform:translateY(-3px); }
+    .open-emoji { font-size:28px; flex-shrink:0; }
+    .open-title { font-size:16px; font-weight:700; margin-bottom:4px; }
+    .open-desc { font-size:13px; color:var(--muted2); line-height:1.6; }
+    .open-range { font-family:var(--mono); font-size:12px; color:var(--blue); font-weight:700; margin-top:8px; display:block; }
+
+    /* ── CONTACT ── */
+    #contact { background:var(--surface); }
+    .contact-wrap {
+      background:var(--card); border:1px solid var(--border); border-radius:22px;
+      padding:80px; text-align:center; position:relative; overflow:hidden;
+    }
+    .contact-wrap::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 50% -20%,rgba(59,130,246,0.08) 0%,transparent 55%);
+      pointer-events:none;
+    }
+    .contact-h2 { font-size:clamp(30px,5vw,60px); font-weight:900; letter-spacing:-2.5px; margin-bottom:18px; }
+    .contact-sub { font-size:18px; color:var(--muted2); max-width:500px; margin:0 auto 52px; line-height:1.7; }
+
+    .contact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:40px; }
+    .contact-item {
+      background:var(--surface); border:1px solid var(--border-hi); border-radius:12px;
+      padding:20px; text-align:center; text-decoration:none;
+      transition:all .2s;
+    }
+    .contact-item:hover { border-color:var(--blue); background:var(--blue-dim); transform:translateY(-3px); }
+    .contact-icon { font-size:24px; display:block; margin-bottom:10px; }
+    .contact-label { font-size:13px; color:var(--muted2); margin-bottom:4px; font-weight:500; }
+    .contact-value { font-size:14px; color:var(--text); font-weight:700; word-break:break-all; }
+
+    .contact-email-btn {
+      display:inline-block;
+      background:linear-gradient(135deg,var(--blue),var(--purple));
+      color:#fff; padding:18px 52px; border-radius:12px;
+      font-size:17px; font-weight:800; text-decoration:none;
+      box-shadow:0 0 50px rgba(59,130,246,0.35);
+      transition:transform .2s, box-shadow .2s;
+      letter-spacing:-.2px;
+    }
+    .contact-email-btn:hover { transform:translateY(-4px); box-shadow:0 10px 70px rgba(59,130,246,0.55); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top:1px solid var(--border); padding:28px 60px;
+      display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;
+      position:relative; z-index:1;
+    }
+    footer p { font-size:13px; color:var(--muted); }
+    .avail-pill {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.3);
+      color:var(--green); font-family:var(--mono); font-size:11px; font-weight:700;
+      letter-spacing:1.5px; text-transform:uppercase; padding:7px 16px; border-radius:100px;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .r {
+      opacity:0; transform:translateY(24px);
+      transition:opacity .65s ease, transform .65s ease;
+    }
+    .r.in { opacity:1; transform:translateY(0); }
+    .r[data-delay="1"] { transition-delay:.1s; }
+    .r[data-delay="2"] { transition-delay:.2s; }
+    .r[data-delay="3"] { transition-delay:.3s; }
+    .r[data-delay="4"] { transition-delay:.4s; }
+
+    /* ── TECHNICAL DEFENSE MATRIX ── */
+    #defense { background: var(--surface); position: relative; }
+    .defense-grid { display: flex; flex-direction: column; gap: 16px; margin-top: 40px; }
+    .defense-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color .25s, box-shadow .25s, background .25s;
+    }
+    .defense-card[open] {
+      border-color: rgba(6, 182, 212, 0.45);
+      background: rgba(11, 15, 28, 0.95);
+      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.08);
+    }
+    .defense-card:hover { border-color: var(--border-hi); }
+    .defense-summary {
+      padding: 24px 28px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      user-select: none;
+    }
+    .defense-summary::-webkit-details-marker { display: none; }
+    .defense-summary-content { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .defense-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(6, 182, 212, 0.12);
+      color: var(--cyan);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+    .defense-q-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.2px;
+    }
+    .defense-chevron {
+      font-size: 14px;
+      color: var(--cyan);
+      font-family: var(--mono);
+      transition: transform .25s;
+      flex-shrink: 0;
+    }
+    .defense-card[open] .defense-chevron { transform: rotate(90deg); }
+    .defense-body {
+      padding: 0 28px 28px 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: 4px;
+      padding-top: 20px;
+    }
+    .defense-body p {
+      font-size: 14px;
+      color: var(--muted2);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .defense-body strong { color: var(--text); }
+    .defense-callout {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-left: 3px solid var(--cyan);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: #cbd5e1;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .defense-stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .defense-stat-pill {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-hi);
+      color: var(--muted2);
+    }
+    .defense-stat-pill strong { color: var(--cyan); }
+
+    @media(max-width:900px){
+      nav { padding:16px 24px; }
+      .nav-links { display:none; }
+      #hero { padding:120px 24px 80px; }
+      .container { padding:0 24px; }
+      .hero-proof { grid-template-columns:1fr 1fr; }
+      .contact-wrap { padding:48px 24px; }
+      footer { padding:24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- ══ NAV ══ -->
+  <nav>
+    <a href="#" class="nav-logo">JAYSON QUINDAO</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#defense">Tech Defense</a></li>
+      <li><a href="k2-ground-telemetry.html" target="_blank" style="color:var(--cyan);font-weight:700;">🛰️ C2 Sandbox ↗</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#open">Open To</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:jquindao1@icloud.com" class="nav-hire">Hire Me →</a>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section id="hero" class="z1">
+    <div class="hero-status">
+      <span class="live-dot"></span>
+      Available Now · New York, NY &amp; Dallas, TX · Immediate NYC / SF Onsite &amp; Remote Ready
+    </div>
+
+    <h1><span class="name-white">Jayson<br>Quindao</span></h1>
+    <div class="hero-tagline">Principal Systems Architect.<br>Rust, AI Agents &amp; FinTech Infra.</div>
+
+    <p class="hero-bio">
+      <strong>6+ years</strong> engineering high-throughput distributed telemetry pipelines, userspace security SDKs in <strong>Rust &amp; C++</strong>, full-stack <strong>TypeScript / Next.js / PostgreSQL</strong> platforms, autonomous <strong>MCP multi-agent workflows</strong>, and automated financial settlement ledgers.
+    </p>
+
+    <div class="cta-row">
+      <a href="k2-ground-telemetry.html" target="_blank" class="cta-primary" style="background:linear-gradient(135deg,#06b6d4,#2563eb);box-shadow:0 0 30px rgba(6,182,212,0.35);">🛰️ Launch Orbital C2 Sandbox ↗</a>
+      <a href="#defense" class="cta-ghost" style="border-color:rgba(6,182,212,0.4);color:var(--cyan);">Architecture Defense ↓</a>
+      <a href="/resume.pdf" target="_blank" class="cta-ghost">1-Page Resume (PDF) ↗</a>
+      <a href="https://github.com/djjrip/anti-cheat-sdk" target="_blank" class="cta-ghost">Rust Anti-Cheat SDK ↗</a>
+      <a href="https://github.com/djjrip" target="_blank" class="cta-ghost">GitHub ↗</a>
+    </div>
+
+    <div class="hero-proof">
+      <div class="proof-cell">
+        <span class="proof-num">&lt;50ms</span>
+        <span class="proof-label">Real-time WebSocket &amp; Rust telemetry latency</span>
+      </div>
+      <div class="proof-cell">
+        <span class="proof-num">6+ Yrs</span>
+        <span class="proof-label">Production Systems, Data &amp; FinTech Engineering</span>
+      </div>
+      <div class="proof-cell">
+        <span class="proof-num">$10M+</span>
+        <span class="proof-label">Monthly ATM Cash Settlement Flows &amp; Fee Structuring at NCR Atleos</span>
+      </div>
+      <div class="proof-cell">
+        <span class="proof-num">99.9%</span>
+        <span class="proof-label">Ledger accuracy across national ATM banking networks</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ WORK ══ -->
+  <section id="work" class="z1">
+    <div class="container wrap">
+      <span class="sec-eyebrow r">// Production Architecture</span>
+      <h2 class="sec-h2 r">Real code.<br>Real infrastructure.</h2>
+      <p class="sec-p r">Zero mockups. Every repository and platform is live in production, tested, and cryptographically verified.</p>
+
+      <div class="proj-grid">
+
+        <div class="proj-card wide r" style="border-color: rgba(6,182,212,0.4); background: radial-gradient(ellipse at top left, rgba(6,182,212,0.07), var(--card) 60%);">
+          <span class="proj-badge" style="background:rgba(6,182,212,0.12); color:var(--cyan); border:1px solid rgba(6,182,212,0.35);"><span>●</span> LIVE DEMO · AEROSPACE &amp; DEFENSE GROUND ARCHITECTURE</span>
+          <span class="proj-icon">🛰️</span>
+          <div class="proj-title">Gravitas Ground C2 &amp; Orbital Telemetry Ingest Console</div>
+          <p class="proj-desc">
+            Production interactive command &amp; control (C2) demonstration simulating a 20Hz spacecraft downlink stream (<a href="k2-ground-telemetry.html" target="_blank" style="color:var(--cyan); font-weight:700;">Launch Live Sandbox ↗</a>).
+            Demonstrates real-time telemetry decoding, sub-50ms browser Web Crypto <strong>HMAC-SHA256 frame verification</strong>, automated anomaly triage (HV bus voltage drops &lt;82V, reaction wheel RPM jitter &gt;5,800 RPM, payload thermal runaway &gt;65°C), and batch compaction into single-roundtrip <strong>PostgreSQL <code>unnest()</code></strong> columnar arrays.
+            <br><br>
+            Direct architectural alignment with <strong>K2 Space</strong> (Ground Software), <strong>Astranis</strong> (Flight / Network), and <strong>Mach Industries</strong> (Deployment &amp; Flight Systems).
+          </p>
+          <div class="tag-row">
+            <span class="ptag" style="color:var(--cyan); border-color:rgba(6,182,212,0.4);">Web Crypto HMAC-SHA256</span>
+            <span class="ptag">PostgreSQL unnest() Batch Ingest</span>
+            <span class="ptag">20Hz Real-Time Telemetry</span>
+            <span class="ptag">Sub-50ms WebSocket Framing</span>
+            <span class="ptag">Attitude &amp; Thermal Anomaly Engine</span>
+            <span class="ptag">Deterministic C2 Uplink</span>
+          </div>
+          <div style="margin-top:22px; display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="k2-ground-telemetry.html" target="_blank" class="cta-primary" style="padding:10px 24px; font-size:13px; text-decoration:none; background:linear-gradient(135deg,#06b6d4,#2563eb); box-shadow:0 0 25px rgba(6,182,212,0.3);">
+              Launch Live C2 Telemetry Sandbox →
+            </a>
+            <a href="#defense" class="cta-ghost" style="padding:10px 20px; font-size:13px; text-decoration:none;">
+              Read Architecture Defense ↓
+            </a>
+          </div>
+        </div>
+
+        <div class="proj-card wide r">
+          <span class="proj-badge badge-live"><span>●</span> LIVE · FOUNDER &amp; PRINCIPAL ARCHITECT</span>
+          <span class="proj-icon">🏗️</span>
+          <div class="proj-title">GG Loop LLC — Competitive Esports &amp; FinTech Tournament OS</div>
+          <p class="proj-desc">
+            Architected and deployed from zero to production (<a href="https://gg-loop-tournament.vercel.app" target="_blank" style="color:var(--blue);">gg-loop-tournament.vercel.app</a>).
+            Features a multi-tenant <strong>B2B Studio Telemetry Ingest Engine</strong> (<code>/api/v1/ingest</code>, <code>/api/v1/flags</code>) powered by single-roundtrip PostgreSQL <code>unnest()</code> bulk inserts, sub-50ms WebSocket state streams, and automated anti-cheat anomaly rules (flagging impossible input rates &gt;25 CPS and metronomic macro variance &lt;2ms).
+            <br><br>
+            Backed by an ACID-compliant <strong>double-entry PostgreSQL financial ledger</strong>, <strong>Stripe Connect</strong> multi-party payouts, and idempotent cryptographic webhook replay protection.
+          </p>
+          <div class="tag-row">
+            <span class="ptag">TypeScript</span><span class="ptag">Next.js</span>
+            <span class="ptag">PostgreSQL (Drizzle ORM)</span><span class="ptag">React</span>
+            <span class="ptag">WebSockets (Sub-50ms)</span><span class="ptag">AWS Kinesis</span>
+            <span class="ptag">Stripe Connect Ledger</span><span class="ptag">GitHub Actions CI/CD</span>
+            <span class="ptag">Docker</span>
+          </div>
+        </div>
+
+        <div class="proj-card r" data-delay="1">
+          <span class="proj-badge badge-built">RUST · SYSTEMS &amp; SECURITY</span>
+          <span class="proj-icon">🛡️</span>
+          <div class="proj-title">Open-Source Rust Anti-Cheat &amp; Telemetry SDK</div>
+          <p class="proj-desc">
+            Engineered a lightweight Ring-3 userspace behavioral telemetry and anti-cheat crate in <strong>Rust</strong> (<a href="https://github.com/djjrip/anti-cheat-sdk" target="_blank" style="color:var(--blue);">github.com/djjrip/anti-cheat-sdk</a>).
+            Implements Win32 process memory enumeration (<code>K32GetModuleFileNameExW</code>), <strong>SHA-256 binary integrity hashing</strong>, sub-millisecond click/input timing entropy analysis, and <strong>HMAC-SHA256</strong> cryptographic event signatures.
+          </p>
+          <div class="tag-row">
+            <span class="ptag">Rust</span><span class="ptag">Win32 API</span>
+            <span class="ptag">SHA-256 Integrity</span><span class="ptag">HMAC-SHA256</span>
+            <span class="ptag">Behavioral Entropy</span><span class="ptag">Cargo Tests (9/9)</span>
+          </div>
+        </div>
+
+        <div class="proj-card r" data-delay="2">
+          <span class="proj-badge badge-ai">AI · MCP ORCHESTRATION</span>
+          <span class="proj-icon">⚡</span>
+          <div class="proj-title">Autonomous Multi-Agent &amp; MCP Infrastructure</div>
+          <p class="proj-desc">
+            Designed and deployed production <strong>Model Context Protocol (MCP)</strong> tool servers and multi-agent LLM pipelines integrating Claude, OpenAI, and AWS Bedrock.
+            Features dynamic JSON schema validation, deterministic tool execution, automated telemetry incident triage, and <code>pgvector</code> RAG retrieval.
+          </p>
+          <div class="tag-row">
+            <span class="ptag">Model Context Protocol (MCP)</span><span class="ptag">Claude / OpenAI API</span>
+            <span class="ptag">AWS Bedrock</span><span class="ptag">Multi-Agent Systems</span>
+            <span class="ptag">pgvector RAG</span><span class="ptag">Python / TypeScript</span>
+          </div>
+        </div>
+
+        <div class="proj-card r" data-delay="3">
+          <span class="proj-badge badge-ops">ENTERPRISE FINTECH · NCR ATLEOS</span>
+          <span class="proj-icon">🏦</span>
+          <div class="proj-title">National ATM Settlement Operations &amp; Fee Structuring</div>
+          <p class="proj-desc">
+            Managed high-volume cash settlement operations across national ATM networks at <strong>NCR Atleos</strong>.
+            Audited daily transaction settlement flows, configured ATM deposit and interchange fee structures, and executed monthly cash payouts and account reconciliations in coordination with senior IT analysts.
+          </p>
+          <div class="tag-row">
+            <span class="ptag">ATM Settlement Operations</span><span class="ptag">Deposit Fee Structuring</span>
+            <span class="ptag">Cash Payouts</span><span class="ptag">Ledger Reconciliation</span>
+            <span class="ptag">Banking Networks</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TECHNICAL ARCHITECTURE DEFENSE ══ -->
+  <section id="defense" class="z1">
+    <div class="container wrap">
+      <span class="sec-eyebrow r" style="color:var(--cyan);">// Architecture &amp; Screener Defense</span>
+      <h2 class="sec-h2 r">The hard engineering questions.<br>Answered with production code.</h2>
+      <p class="sec-p r">Detailed engineering deep-dives covering high-throughput telemetry ingest, cryptographic tamper-resistance, autonomous MCP agents, and double-entry FinTech ledgers.</p>
+
+      <div class="defense-grid">
+
+        <!-- DEFENSE 1: TELEMETRY INGEST -->
+        <details class="defense-card r" open>
+          <summary class="defense-summary">
+            <div class="defense-summary-content">
+              <span class="defense-tag">TELEMETRY &amp; DISTRIBUTED INGEST</span>
+              <span class="defense-q-title">How do you ingest 20Hz–100Hz real-time telemetry streams without database lock contention or dropped packets?</span>
+            </div>
+            <span class="defense-chevron">▶</span>
+          </summary>
+          <div class="defense-body">
+            <p>
+              <strong>The Bottleneck:</strong> Naive ORM implementations execute discrete <code>INSERT</code> statements per packet. At 20Hz across multiple subsystems, this produces hundreds of individual database roundtrips per second, rapidly causing connection pool exhaustion, write-lock contention, and latency spikes exceeding 250ms.
+            </p>
+            <div class="defense-callout">
+              -- Single-roundtrip atomic batch insert via PostgreSQL unnest()<br>
+              INSERT INTO telemetry_downlink_frames (<br>
+              &nbsp;&nbsp;recorded_at, subsystem_id, telemetry_channel, raw_metric_value, signature<br>
+              )<br>
+              SELECT * FROM unnest(<br>
+              &nbsp;&nbsp;$1::timestamptz[], $2::text[], $3::text[], $4::float8[], $5::text[]<br>
+              );
+            </div>
+            <p>
+              <strong>The Architecture:</strong> Downlink frames arriving over WebSocket or UDP are buffered into high-resolution micro-batch windows (50ms–100ms). Rather than executing N network roundtrips, the edge ingestion worker packs typed columnar arrays into a single parameterized PostgreSQL query utilizing <code>unnest()</code>. This cuts database write latency by <strong>&gt;85%</strong>, eliminates lock starvation, and guarantees zero packet drops under high-rate burst.
+            </p>
+            <div class="defense-stats-row">
+              <span class="defense-stat-pill">LATENCY: <strong>&lt;50ms end-to-end</strong></span>
+              <span class="defense-stat-pill">WRITE REDUCTION: <strong>50 roundtrips &rarr; 1 batch</strong></span>
+              <span class="defense-stat-pill">INTEGRITY: <strong>ACID Atomic</strong></span>
+              <span class="defense-stat-pill">STACK: <strong>Rust Edge &bull; Node/TypeScript &bull; PostgreSQL</strong></span>
+            </div>
+          </div>
+        </details>
+
+        <!-- DEFENSE 2: CRYPTOGRAPHIC INTEGRITY -->
+        <details class="defense-card r">
+          <summary class="defense-summary">
+            <div class="defense-summary-content">
+              <span class="defense-tag" style="background:rgba(59,130,246,0.12);color:var(--blue);border-color:rgba(59,130,246,0.3);">SYSTEMS &amp; SECURITY</span>
+              <span class="defense-q-title">How do you verify packet integrity and detect tampering in low-latency environments without blowing your CPU budget?</span>
+            </div>
+            <span class="defense-chevron">▶</span>
+          </summary>
+          <div class="defense-body">
+            <p>
+              <strong>The Challenge:</strong> Asymmetric cryptographic algorithms (like RSA or ECDSA signature verification) introduce 1ms–5ms CPU compute overhead per packet, causing unrecoverable queue backpressure on high-frequency telemetry streams.
+            </p>
+            <div class="defense-callout">
+              // Rust Ring-3 / Web Crypto HMAC-SHA256 Payload Signer<br>
+              const frameBytes = encoder.encode(`${seqId}:${timestamp}:${subsystem}:${metricVal}`);<br>
+              const signature = await crypto.subtle.sign("HMAC", sessionCryptoKey, frameBytes);<br>
+              // Enforce strictly monotonic frame counters to eliminate replay vectors
+            </div>
+            <p>
+              <strong>The Architecture:</strong> We employ hardware-accelerated symmetric <strong>HMAC-SHA256</strong> signing (via Web Crypto API at the browser/edge and Ring-3 userspace primitives in Rust via <code>anti-cheat-sdk</code>). Frame headers contain monotonic sequence IDs, timestamp bounds, and cryptographic MAC digests. The ingest parser computes the hash in <strong>&lt;0.08ms per frame</strong>, rejecting replayed packets or out-of-order jitter before state propagation.
+            </p>
+            <div class="defense-stats-row">
+              <span class="defense-stat-pill">SIGN TIME: <strong>&lt;0.08ms/frame</strong></span>
+              <span class="defense-stat-pill">REPLAY ATTACK IMMUNITY: <strong>Strict Monotonic Seq</strong></span>
+              <span class="defense-stat-pill">STANDARDS: <strong>NIST FIPS 198-1</strong></span>
+            </div>
+          </div>
+        </details>
+
+        <!-- DEFENSE 3: AUTONOMOUS AGENT ORCHESTRATION -->
+        <details class="defense-card r">
+          <summary class="defense-summary">
+            <div class="defense-summary-content">
+              <span class="defense-tag" style="background:rgba(168,85,247,0.12);color:var(--purple);border-color:rgba(168,85,247,0.3);">AI &amp; MCP INFRASTRUCTURE</span>
+              <span class="defense-q-title">How do you deploy multi-agent LLM systems in production without hallucinations or infinite tool-call recursion?</span>
+            </div>
+            <span class="defense-chevron">▶</span>
+          </summary>
+          <div class="defense-body">
+            <p>
+              <strong>The Problem:</strong> Giving autonomous agents open-ended natural language prompts or loosely typed tools results in prompt drift, schema hallucination, and runaway tool recursion loops under complex multi-step failures.
+            </p>
+            <div class="defense-callout">
+              // Strict Model Context Protocol (MCP) tool schema enforcement<br>
+              tools: [<br>
+              &nbsp;&nbsp;{ name: "telemetry_query", schema: ZodSchema, timeoutMs: 3000, maxRetries: 2 },<br>
+              &nbsp;&nbsp;{ name: "execute_failover", schema: FailoverActionSchema, requireIdempotencyToken: true }<br>
+              ]<br>
+              // Finite state machine enforcing step quotas and structured recovery contexts
+            </div>
+            <p>
+              <strong>The Architecture:</strong> We isolate agent capabilities behind strict <strong>Model Context Protocol (MCP)</strong> servers with runtime Zod/Pydantic JSON schema boundaries. Every tool call is deterministic, strictly validated, and executed with idempotent mutation tokens. If a tool fails, deterministic error metadata is fed back to the model rather than raw stack traces, allowing self-correcting reasoning loops capped by finite state machine budgets.
+            </p>
+            <div class="defense-stats-row">
+              <span class="defense-stat-pill">TOOL SCHEMA: <strong>100% Type-Safe MCP</strong></span>
+              <span class="defense-stat-pill">DRIFT PROTECTION: <strong>Deterministic Middlewares</strong></span>
+              <span class="defense-stat-pill">RECOVERY: <strong>Self-Healing Context Injection</strong></span>
+            </div>
+          </div>
+        </details>
+
+        <!-- DEFENSE 4: FINANCIAL INTEGRITY & LEDGERS -->
+        <details class="defense-card r">
+          <summary class="defense-summary">
+            <div class="defense-summary-content">
+              <span class="defense-tag" style="background:rgba(34,197,94,0.12);color:var(--green);border-color:rgba(34,197,94,0.3);">FINTECH &amp; RECONCILIATION</span>
+              <span class="defense-q-title">How do you guarantee balance sheet integrity during webhook delivery retries and network partitions?</span>
+            </div>
+            <span class="defense-chevron">▶</span>
+          </summary>
+          <div class="defense-body">
+            <p>
+              <strong>The Failure Mode:</strong> Third-party payment gateways (Stripe Connect, interbank ACH/Fedwire) retry webhooks asynchronously on network timeouts. In naive systems, non-idempotent webhook handlers result in duplicate payouts and unbalanced balances.
+            </p>
+            <div class="defense-callout">
+              -- Double-entry accounting ledger transaction with idempotency guard<br>
+              BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;<br>
+              INSERT INTO processed_webhooks (event_id, payload_hash) VALUES ($1, $2);<br>
+              INSERT INTO ledger_entries (account_id, debit, credit) VALUES ($source, $amount, 0);<br>
+              INSERT INTO ledger_entries (account_id, debit, credit) VALUES ($dest, 0, $amount);<br>
+              COMMIT;
+            </div>
+            <p>
+              <strong>The Architecture:</strong> Multi-tenant ledger architecture engineered with <strong>strict double-entry bookkeeping</strong> in PostgreSQL. Every monetary transaction requires matching debit and credit entries committed atomically under serializable isolation. Inbound webhooks pass through cryptographic signature verification (<code>stripe-webhook-guard</code>) with atomic deduplication keys, ensuring idempotent processing even under aggressive retry floods.
+            </p>
+            <div class="defense-stats-row">
+              <span class="defense-stat-pill">ACCURACY: <strong>99.99%+ Balanced Ledger</strong></span>
+              <span class="defense-stat-pill">REPLAY GUARD: <strong>Cryptographic Event Locks</strong></span>
+              <span class="defense-stat-pill">PROVEN SCALE: <strong>80+ Global Markets at NCR Atleos</strong></span>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ EXPERIENCE ══ -->
+  <section id="experience" class="z1">
+    <div class="container wrap">
+      <span class="sec-eyebrow r">// Career Track Record</span>
+      <h2 class="sec-h2 r">6+ years shipping<br>high-consequence systems.</h2>
+      <p class="sec-p r">From regulated biometric security pipelines and national ATM banking networks to low-latency Rust &amp; TypeScript cloud infrastructure.</p>
+
+      <div class="tl">
+
+        <div class="tl-row r">
+          <div class="tl-node"></div>
+          <div class="tl-top">
+            <div class="tl-co">GG Loop LLC</div>
+            <div class="tl-period">NOV 2023 — PRESENT</div>
+          </div>
+          <div class="tl-role-title">Founder &amp; Principal Systems Architect · New York, NY / Remote</div>
+          <ul class="tl-list">
+            <li><strong>Rust Behavioral Telemetry SDK (<code>anti-cheat-sdk</code>):</strong> Engineered userspace Win32 process memory inspection (<code>K32GetModuleFileNameExW</code>), SHA-256 binary integrity hashing, sub-ms input timing entropy detection, and HMAC-SHA256 signed event streams.</li>
+            <li><strong>B2B Studio Telemetry Ingest API:</strong> Architected multi-tenant REST &amp; WebSocket ingestion endpoints utilizing PostgreSQL <code>unnest()</code> bulk inserts and automated anomaly detection rules.</li>
+            <li><strong>Double-Entry FinTech Ledger:</strong> Built ACID-compliant PostgreSQL financial ledgers, Stripe Connect multi-party payouts, and idempotent webhook verification middleware (<code>stripe-webhook-guard</code>).</li>
+            <li><strong>Autonomous AI &amp; MCP Toolchains:</strong> Built custom Model Context Protocol (MCP) servers and multi-agent LLM orchestration across AWS Bedrock, Claude, and OpenAI APIs.</li>
+          </ul>
+        </div>
+
+        <div class="tl-row r">
+          <div class="tl-node"></div>
+          <div class="tl-top">
+            <div class="tl-co">NCR Atleos (Formerly NCR Corporation)</div>
+            <div class="tl-period">AUG 2021 — NOV 2023</div>
+          </div>
+          <div class="tl-role-title">Finance Associate II — ATM Settlement Operations · Frisco, TX</div>
+          <ul class="tl-list">
+            <li><strong>National ATM Cash Settlement Management:</strong> Managed monthly cash settlement payouts, statements, and bank routing configurations across national ATM banking networks, ensuring zero-downtime cash settlement across financial partners.</li>
+            <li><strong>Deposit Fee &amp; Interchange Analysis:</strong> Audited and analyzed high-volume multi-million-dollar daily transaction settlement histories, structuring ATM deposit fee configurations and merchant account reconciliations.</li>
+            <li><strong>Discrepancy Investigation &amp; Compliance:</strong> Investigated settlement exceptions, variances, and transaction discrepancies in close coordination with senior IT analysts (such as Vanessa Arrington) to maintain 99.9%+ balance sheet consistency.</li>
+          </ul>
+        </div>
+
+        <div class="tl-row past r">
+          <div class="tl-node"></div>
+          <div class="tl-top">
+            <div class="tl-co">Mentalix, Inc.</div>
+            <div class="tl-period">SEP 2020 — SEP 2021</div>
+          </div>
+          <div class="tl-role-title">Data Security &amp; Pipeline Engineer · Plano, TX</div>
+          <ul class="tl-list">
+            <li><strong>Biometric Data Pipeline Governance:</strong> Engineered and audited high-volume sensitive biometric ingestion pipelines for federal and enterprise clients, enforcing strict encryption and RBAC compliance while improving throughput by 25%.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SKILLS ══ -->
+  <section id="skills" class="z1">
+    <div class="container wrap">
+      <span class="sec-eyebrow r">// Technical Stack</span>
+      <h2 class="sec-h2 r">Low-level systems<br>to cloud-scale AI.</h2>
+      <p class="sec-p r">Production fluency across systems programming, full-stack TypeScript, distributed data pipelines, and agentic AI.</p>
+
+      <div class="sk-grid">
+        <div class="sk-group r">
+          <div class="sk-label">🛡️ Systems, Rust &amp; Telemetry</div>
+          <div class="sk-tags">
+            <span class="sk-tag">Rust (Cargo)</span><span class="sk-tag">Win32 Process API</span>
+            <span class="sk-tag">C++ Watchdogs</span><span class="sk-tag">SHA-256 / HMAC Signing</span>
+            <span class="sk-tag">WebSockets (&lt;50ms)</span><span class="sk-tag">Electron.js</span>
+            <span class="sk-tag">AWS Kinesis Streams</span>
+          </div>
+        </div>
+        <div class="sk-group r" data-delay="1">
+          <div class="sk-label">🛠️ Full-Stack &amp; Data Engineering</div>
+          <div class="sk-tags">
+            <span class="sk-tag">TypeScript / Node.js</span><span class="sk-tag">React / Next.js</span>
+            <span class="sk-tag">Python (FastAPI, Pandas)</span><span class="sk-tag">PostgreSQL / Drizzle ORM</span>
+            <span class="sk-tag">Batch Unnest Ingest</span><span class="sk-tag">T-SQL Optimization</span>
+            <span class="sk-tag">REST &amp; GraphQL APIs</span>
+          </div>
+        </div>
+        <div class="sk-group r" data-delay="2">
+          <div class="sk-label">⚡ Applied AI &amp; MCP Agents</div>
+          <div class="sk-tags">
+            <span class="sk-tag">Model Context Protocol (MCP)</span><span class="sk-tag">Claude / OpenAI APIs</span>
+            <span class="sk-tag">AWS Bedrock</span><span class="sk-tag">Multi-Agent Orchestration</span>
+            <span class="sk-tag">pgvector RAG</span><span class="sk-tag">JSON Schema Validation</span>
+          </div>
+        </div>
+        <div class="sk-group r" data-delay="3">
+          <div class="sk-label">☁️ Cloud, DevOps &amp; FinTech</div>
+          <div class="sk-tags">
+            <span class="sk-tag">AWS (ECS, Lambda, RDS, S3)</span><span class="sk-tag">Docker Containers</span>
+            <span class="sk-tag">GitHub Actions CI/CD</span><span class="sk-tag">Stripe Connect Ledgers</span>
+            <span class="sk-tag">Idempotent Webhooks</span><span class="sk-tag">Interbank Reconciliation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ EDUCATION ══ -->
+  <section id="education" class="z1">
+    <div class="container wrap">
+      <span class="sec-eyebrow r">// Academic Credentials</span>
+      <h2 class="sec-h2 r">Academic<br>foundation.</h2>
+      <div class="edu-grid">
+        <div class="edu-card r">
+          <div class="edu-school">Columbia University</div>
+          <div class="edu-degree">B.S. in Computer Science (Incoming Transfer Candidate)</div>
+          <div class="edu-period">Spring 2027 · New York, NY</div>
+        </div>
+        <div class="edu-card r" data-delay="1">
+          <div class="edu-school">University of Texas at Dallas</div>
+          <div class="edu-degree">Computer Science &amp; Distributed Systems</div>
+          <div class="edu-period">Data Structures, Algorithms, Operating Systems, DB Design · Dallas, TX</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ OPEN TO ══ -->
+  <section id="open" class="z1">
+    <div class="container wrap">
+      <span class="sec-eyebrow r">// Open To</span>
+      <h2 class="sec-h2 r">The right role<br>at the right company.</h2>
+      <p class="sec-p r">I build AI systems, own the full loop from engineering to customer, and move fast. If that's your team — let's talk.</p>
+
+      <div class="open-grid">
+        <div class="open-card r">
+          <span class="open-emoji">🚀</span>
+          <div>
+            <div class="open-title">Forward Deployed Engineer</div>
+            <div class="open-desc">Embed with customers, understand their systems, build the solution on-site. This is what I do — technically deep and customer-facing.</div>
+            <span class="open-range">$150k – $300k · Remote</span>
+          </div>
+        </div>
+        <div class="open-card r" data-delay="1">
+          <span class="open-emoji">🤖</span>
+          <div>
+            <div class="open-title">Applied AI / ML Engineer</div>
+            <div class="open-desc">Ship AI systems to production. Agentic workflows, LLM pipelines, real customer impact — not research.</div>
+            <span class="open-range">$150k – $250k · Remote</span>
+          </div>
+        </div>
+        <div class="open-card r" data-delay="2">
+          <span class="open-emoji">🏗️</span>
+          <div>
+            <div class="open-title">Solutions / AI Architect</div>
+            <div class="open-desc">Design AI-native systems at enterprise scale. Translate complex technical architectures into business outcomes.</div>
+            <span class="open-range">$150k – $280k · Remote</span>
+          </div>
+        </div>
+        <div class="open-card r" data-delay="3">
+          <span class="open-emoji">⚡</span>
+          <div>
+            <div class="open-title">Early-Stage / Founding Engineer</div>
+            <div class="open-desc">I've already built a company solo. I know what it takes to ship fast, own the stack, and make decisions without a roadmap.</div>
+            <span class="open-range">Equity + $120k+ · Remote</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ══ -->
+  <section id="contact" class="z1">
+    <div class="container wrap">
+      <div class="contact-wrap r">
+        <span class="sec-eyebrow" style="display:block;margin-bottom:14px;">// Let's Build</span>
+        <h2 class="contact-h2">Ready when<br><span style="background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">you are.</span></h2>
+        <p class="contact-sub">I'm actively open to the right opportunity. Reach out directly — I respond fast, I'm direct, and I respect your time.</p>
+
+        <div class="contact-grid">
+          <a href="mailto:jquindao1@icloud.com" class="contact-item">
+            <span class="contact-icon">📧</span>
+            <div class="contact-label">Primary Email</div>
+            <div class="contact-value">jquindao1@icloud.com</div>
+          </a>
+          <a href="mailto:jaysonquindao@ggloop.io" class="contact-item">
+            <span class="contact-icon">🏢</span>
+            <div class="contact-label">Work Email</div>
+            <div class="contact-value">jaysonquindao@ggloop.io</div>
+          </a>
+          <a href="tel:+14693718556" class="contact-item">
+            <span class="contact-icon">📱</span>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">(469) 371-8556</div>
+          </a>
+          <a href="https://linkedin.com/in/jaysonquindao" target="_blank" class="contact-item">
+            <span class="contact-icon">💼</span>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">linkedin.com/in/jaysonquindao</div>
+          </a>
+          <a href="https://github.com/djjrip" target="_blank" class="contact-item">
+            <span class="contact-icon">💻</span>
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value">github.com/djjrip</div>
+          </a>
+          <a href="https://ggloop.io" target="_blank" class="contact-item">
+            <span class="contact-icon">🌐</span>
+            <div class="contact-label">Company</div>
+            <div class="contact-value">ggloop.io</div>
+          </a>
+        </div>
+
+        <a href="mailto:jquindao1@icloud.com?subject=Let's Talk — [Role Name]&body=Hi Jayson," class="contact-email-btn">
+          Send Me A Message →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="z1">
+    <p>© 2026 Jayson Quindao · Grand Prairie, TX · Built with intention, not desperation.</p>
+    <div class="avail-pill">
+      <span style="width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);display:inline-block;"></span>
+      Open to Work
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.r').forEach(el => obs.observe(el));
+  </script>
+
+</body>
+</html>
