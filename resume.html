@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jayson Quindao — Resume | Mercedes-Benz IT Digital CX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:      #0d0f14;
+      --ink-2:    #2e3340;
+      --muted:    #6b7280;
+      --rule:     #e4e7ec;
+      --dark:     #0d0f14;
+      --gold:     #c9a84c;
+      --gold-lt:  #f0d88a;
+      --gold-dim: rgba(201,168,76,.15);
+      --bg:       #ffffff;
+    }
+
+    @media print {
+      @page { size: Letter; margin: .45in .5in; }
+      body  { background: #fff !important; padding: 0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .no-print { display: none !important; }
+      .resume { box-shadow: none !important; border-radius: 0 !important; }
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #eef0f4;
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 36px 16px 60px;
+    }
+
+    /* ── Toolbar ─────────────────────── */
+    .toolbar {
+      width: 100%; max-width: 960px;
+      display: flex; justify-content: flex-end; gap: 10px;
+      margin-bottom: 18px;
+    }
+    .toolbar button {
+      font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 600;
+      border: none; border-radius: 7px; padding: 9px 20px; cursor: pointer;
+      letter-spacing: .3px; transition: all .18s;
+    }
+    .btn-dark { background: var(--dark); color: #fff; }
+    .btn-dark:hover { background: #1e2230; transform: translateY(-1px); }
+    .btn-gold { background: var(--gold); color: #1a1100; }
+    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-1px); }
+
+    /* ── Resume Shell ─────────────────── */
+    .resume {
+      width: 100%; max-width: 960px;
+      background: var(--bg);
+      box-shadow: 0 12px 48px rgba(0,0,0,.13);
+      border-radius: 5px; overflow: hidden;
+    }
+
+    /* ── Header ───────────────────────── */
+    .hd {
+      background: var(--dark);
+      padding: 44px 52px 36px;
+      position: relative; overflow: hidden;
+    }
+    .hd::before {
+      content:''; position:absolute; top:-80px; right:-80px;
+      width:300px; height:300px; border-radius:50%;
+      background: radial-gradient(circle, rgba(201,168,76,.12), transparent 70%);
+    }
+    .hd::after {
+      content:''; position:absolute; bottom:-100px; left:30%;
+      width:380px; height:380px; border-radius:50%;
+      background: radial-gradient(circle, rgba(201,168,76,.06), transparent 70%);
+    }
+    .hd-top { display:flex; justify-content:space-between; align-items:flex-start; gap:20px; }
+
+    .hd-name h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 46px; font-weight: 800; color: #fff;
+      letter-spacing: -1.5px; line-height: 1;
+    }
+    .hd-name h1 em { color: var(--gold); font-style: normal; }
+    .hd-title {
+      margin-top: 9px;
+      font-size: 11px; font-weight: 600; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold);
+    }
+
+    .hd-contact {
+      display: flex; flex-direction: column; gap: 5px;
+      text-align: right; flex-shrink: 0;
+    }
+    .hd-contact a, .hd-contact span {
+      font-size: 12.5px; color: rgba(255,255,255,.7); text-decoration: none;
+    }
+    .hd-contact a:hover { color: var(--gold); }
+
+    .hd-summary {
+      margin-top: 24px; padding-top: 22px;
+      border-top: 1px solid rgba(201,168,76,.25);
+      font-size: 13.5px; color: rgba(255,255,255,.72);
+      line-height: 1.75; max-width: 720px;
+    }
+    .hd-summary strong { color: var(--gold-lt); font-weight: 600; }
+
+    /* target strip */
+    .target-strip {
+      background: rgba(201,168,76,.1);
+      border-left: 3px solid var(--gold);
+      margin-top: 18px; padding: 10px 16px;
+      border-radius: 0 6px 6px 0;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .target-strip .ts-label {
+      font-size: 9.5px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .target-strip .ts-role {
+      font-size: 12.5px; color: rgba(255,255,255,.85); font-weight: 500;
+    }
+
+    /* ── Body Grid ────────────────────── */
+    .body-grid {
+      display: grid;
+      grid-template-columns: 1fr 252px;
+    }
+
+    /* ── Main Column ──────────────────── */
+    .main {
+      padding: 36px 40px 40px 52px;
+      border-right: 1px solid var(--rule);
+    }
+
+    .sec { margin-bottom: 32px; }
+    .sec:last-child { margin-bottom: 0; }
+
+    .sec-title {
+      font-size: 9.5px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .sec-title::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(to right, var(--rule), transparent);
+    }
+
+    /* Job entries */
+    .job { margin-bottom: 26px; }
+    .job:last-child { margin-bottom: 0; }
+
+    .job-top {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 12px;
+    }
+    .job-co {
+      font-size: 15px; font-weight: 700; color: var(--ink);
+    }
+    .job-loc-date {
+      font-size: 11.5px; color: var(--muted); font-weight: 500;
+      white-space: nowrap; text-align: right; line-height: 1.5;
+    }
+    .job-role {
+      font-size: 12.5px; font-weight: 600; color: var(--gold);
+      margin: 3px 0 10px;
+    }
+    .bullets { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .bullets li {
+      font-size: 12.5px; color: var(--ink-2); line-height: 1.65;
+      padding-left: 15px; position: relative;
+    }
+    .bullets li::before {
+      content: '▸'; position: absolute; left: 0; top: 2px;
+      color: var(--gold); font-size: 10px;
+    }
+    .bullets li strong { color: var(--ink); font-weight: 600; }
+
+    /* metric chips */
+    .metric {
+      display: inline-block;
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,168,76,.35);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 11px; font-weight: 700; color: #7a5800;
+      margin-left: 4px;
+    }
+
+    /* ── Sidebar ──────────────────────── */
+    .side {
+      padding: 36px 28px 40px;
+      background: #f8f9fb;
+    }
+
+    .s-sec { margin-bottom: 26px; }
+    .s-sec:last-child { margin-bottom: 0; }
+
+    .s-title {
+      font-size: 9px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--ink);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 7px; margin-bottom: 14px;
+    }
+
+    /* Skills */
+    .sk-group { margin-bottom: 13px; }
+    .sk-group-name {
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .pills { display: flex; flex-wrap: wrap; gap: 5px; }
+    .pill {
+      background: #fff; border: 1px solid var(--rule);
+      border-radius: 100px; padding: 3px 9px;
+      font-size: 11px; color: var(--ink-2); font-weight: 500;
+    }
+    .pill.hot { background: var(--dark); color: #fff; border-color: var(--dark); }
+    .pill.gold { background: var(--gold); color: #1a1100; border-color: var(--gold); font-weight: 700; }
+
+    /* Edu */
+    .edu-item { margin-bottom: 14px; }
+    .edu-school { font-size: 13px; font-weight: 700; color: var(--ink); }
+    .edu-deg    { font-size: 11.5px; color: var(--ink-2); margin-top: 2px; line-height: 1.5; }
+    .edu-yr     { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    /* Links */
+    .link-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; margin-bottom: 6px;
+    }
+    .link-item a { color: var(--ink-2); text-decoration: none; font-weight: 500; }
+    .link-item a:hover { color: var(--gold); }
+    .link-icon { font-size: 13px; width: 16px; text-align: center; }
+
+    /* highlight bar */
+    .highlight-bar {
+      background: var(--dark); border-radius: 8px;
+      padding: 14px; margin-bottom: 26px;
+    }
+    .hb-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 5px;
+    }
+    .hb-stat {
+      font-size: 22px; font-weight: 800; color: #fff;
+      font-family: 'Outfit', sans-serif; line-height: 1;
+    }
+    .hb-sub { font-size: 11px; color: rgba(255,255,255,.55); margin-top: 3px; }
+    .hb-row { display: flex; gap: 12px; }
+    .hb-item { flex: 1; }
+  </style>
+</head>
+<body>
+
+<div class="toolbar no-print">
+  <button class="btn-dark" onclick="window.print()">⬇ Export PDF</button>
+  <button class="btn-gold" onclick="document.body.style.background='#fff';document.querySelector('.toolbar').style.display='none'">🖨 Clean View</button>
+</div>
+
+<div class="resume">
+
+  <!-- HEADER -->
+  <header class="hd">
+    <div class="hd-top">
+      <div class="hd-name">
+        <h1>Jayson <em>Quindao</em></h1>
+        <div class="hd-title">Founder &amp; CTO &nbsp;·&nbsp; Full-Stack Engineer &nbsp;·&nbsp; Applied AI Architect</div>
+      </div>
+      <div class="hd-contact">
+        <span>Grand Prairie, TX (DFW) · Open to Relocation</span>
+        <a href="tel:4693718556">469-371-8556</a>
+        <a href="mailto:jquindao1@icloud.com">jquindao1@icloud.com</a>
+        <a href="https://linkedin.com/in/jaysonquindao" target="_blank">linkedin.com/in/jaysonquindao</a>
+        <a href="https://github.com/djjrip" target="_blank">github.com/djjrip</a>
+        <a href="https://jaysonquindao-com.pages.dev" target="_blank">jaysonquindao-com.pages.dev</a>
+      </div>
+    </div>
+
+    <p class="hd-summary">
+      Founder &amp; CTO of <strong>GG Loop LLC</strong> — a production B2B SaaS platform architected solo on AWS with a React/TypeScript frontend, Node.js/Express backend, PostgreSQL RDS, and fully automated CI/CD pipelines.
+      Former <strong>Finance Associate II at NCR Atleos</strong>, where I managed multi-million-dollar ATM transaction networks and <strong>cut reconciliation cycle time by 40%</strong> through SQL automation.
+      Deep expertise in <strong>AI-driven workflows, agentic systems (MCP), cloud infrastructure, and customer-facing digital product delivery</strong>.
+      5+ years bridging technical engineering with business operations and stakeholder communication.
+    </p>
+
+    <div class="target-strip">
+      <span class="ts-label">Targeting</span>
+      <span class="ts-role">Advisor, IT Digital Customer Experience Apps &nbsp;·&nbsp; Mercedes-Benz USA &nbsp;·&nbsp; Atlanta, GA</span>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body-grid">
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- EXPERIENCE -->
+      <section class="sec">
+        <div class="sec-title">Professional Experience</div>
+
+        <!-- GG Loop -->
+        <div class="job">
+          <div class="job-top">
+            <span class="job-co">GG Loop LLC &nbsp;<span style="font-weight:400;font-size:12px;color:#6b7280">· ggloop.io</span></span>
+            <span class="job-loc-date">Grand Prairie, TX<br>Nov 2025 – Present</span>
+          </div>
+          <div class="job-role">Founder &amp; Chief Technology Officer — Full-Stack Engineer</div>
+          <ul class="bullets">
+            <li>Architected and shipped a <strong>production-grade B2B SaaS platform</strong> from zero to live — React + Vite frontend (AWS Amplify), Express/TypeScript REST API (AWS App Runner), PostgreSQL on RDS, and Electron desktop app for Windows &amp; macOS.</li>
+            <li>Designed <strong>13+ production REST API endpoints</strong> with OpenAPI/JSON-Schema typed contracts, JWT auth (7-day tokens + refresh), and session-based web auth backed by PostgreSQL.</li>
+            <li>Implemented a <strong>real-time AWS Kinesis telemetry pipeline</strong> for event streaming and platform analytics, with CloudWatch monitoring and automated health checks across 13 endpoints every 30 minutes.</li>
+            <li>Integrated mission-critical payment and rewards APIs: <strong>Stripe, PayPal, Giftbit</strong>, and Riot Games API — with transaction-safe data integrity protocols throughout.</li>
+            <li>Built <strong>AI-driven agentic DevOps workflows</strong> (Claude, GPT-4, AWS Bedrock, MCP) that autonomously audit codebases, generate fixes, and validate deployments — reducing debugging cycles by <span class="metric">80%</span>.</li>
+            <li>Engineered a full growth engine: <strong>referral tracking, login streaks, daily challenges, global leaderboard</strong>, and live activity feed — all in PostgreSQL with Drizzle ORM.</li>
+            <li>Acted as primary technical representative in <strong>B2B partner negotiations</strong>, translating complex cloud architecture and database design into business-value outcomes for brand partners and sponsors.</li>
+          </ul>
+        </div>
+
+        <!-- Nexus -->
+        <div class="job">
+          <div class="job-top">
+            <span class="job-co">Nexus Ecosystem <span style="font-weight:400;font-size:12px;color:#6b7280">· Open Source (github.com/djjrip)</span></span>
+            <span class="job-loc-date">Dallas, TX<br>Aug 2023 – Present</span>
+          </div>
+          <div class="job-role">Lead Systems Architect</div>
+          <ul class="bullets">
+            <li>Designed and maintained a <strong>33,800+ line production monorepo</strong> integrating C++ core systems with Node.js microservices — featuring process watchdogs, heap monitoring, and zero-downtime CI guardrails.</li>
+            <li>Built the <strong>Never Ending Story</strong> LLM automation engine — integrating AWS Bedrock and OpenAI APIs via MCP and function-calling for autonomous, continuous agentic service generation.</li>
+            <li>Engineered a low-latency native C++ global orchestrator with a decoupled async background agent handling local OS file and network protocols.</li>
+          </ul>
+        </div>
+
+        <!-- NCR -->
+        <div class="job">
+          <div class="job-top">
+            <span class="job-co">NCR Atleos</span>
+            <span class="job-loc-date">Frisco, TX<br>Aug 2023 – Nov 2025</span>
+          </div>
+          <div class="job-role">Financial Operations Engineer (Finance Associate II)</div>
+          <ul class="bullets">
+            <li>Managed and reconciled <strong>daily multi-million-dollar transaction records</strong> across national ATM financial networks at <span class="metric">99.9%+</span> balance sheet accuracy under strict corporate governance.</li>
+            <li>Designed and implemented <strong>SQL pipeline automations</strong> replacing legacy manual exception-tracking systems — reducing reconciliation cycle time by <span class="metric">40%</span>.</li>
+            <li>Collaborated with hardware, network, and database ops teams to troubleshoot systemic transaction failures and resolve root-cause data anomalies across distributed financial infrastructure.</li>
+            <li>Authored comprehensive <strong>daily compliance dossiers and variance analyses</strong> delivered directly to senior directors and internal/external auditors.</li>
+          </ul>
+        </div>
+
+        <!-- Mentalix -->
+        <div class="job">
+          <div class="job-top">
+            <span class="job-co">Mentalix, Inc.</span>
+            <span class="job-loc-date">Plano, TX<br>Sep 2022 – Sep 2023</span>
+          </div>
+          <div class="job-role">Data Operations &amp; Security Specialist</div>
+          <ul class="bullets">
+            <li>Managed high-volume <strong>sensitive biometric data pipelines</strong> enforcing security, encryption, and HIPAA-adjacent compliance protocols with zero tolerance for breach.</li>
+            <li>Identified ETL anomalies and optimized data collection procedures, improving database input efficiency by <span class="metric">25%</span>.</li>
+          </ul>
+        </div>
+
+        <!-- USPS -->
+        <div class="job">
+          <div class="job-top">
+            <span class="job-co">United States Postal Service</span>
+            <span class="job-loc-date">Coppell, TX<br>Sep 2021 – Sep 2022</span>
+          </div>
+          <div class="job-role">Logistics &amp; Operations Assistant</div>
+          <ul class="bullets">
+            <li>Supervised automated processing pipelines in a high-velocity 24/7 postal hub, identifying mechanical and data inconsistencies to resolve routing bottlenecks in real time.</li>
+          </ul>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="side">
+
+      <!-- Stats -->
+      <div class="highlight-bar">
+        <div class="hb-label">Key Numbers</div>
+        <div class="hb-row">
+          <div class="hb-item">
+            <div class="hb-stat">40%</div>
+            <div class="hb-sub">Cycle time cut at NCR</div>
+          </div>
+          <div class="hb-item">
+            <div class="hb-stat">80%</div>
+            <div class="hb-sub">Debug time saved via AI</div>
+          </div>
+        </div>
+        <div style="margin-top:10px">
+          <div class="hb-stat" style="font-size:16px">33,800+</div>
+          <div class="hb-sub">Lines of production code shipped</div>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="s-sec">
+        <div class="s-title">Technical Skills</div>
+
+        <div class="sk-group">
+          <div class="sk-group-name">Languages</div>
+          <div class="pills">
+            <span class="pill hot">TypeScript</span>
+            <span class="pill hot">JavaScript</span>
+            <span class="pill">Python</span>
+            <span class="pill">C++</span>
+            <span class="pill">SQL</span>
+            <span class="pill">PowerShell</span>
+          </div>
+        </div>
+
+        <div class="sk-group">
+          <div class="sk-group-name">Frontend &amp; Apps</div>
+          <div class="pills">
+            <span class="pill">React</span>
+            <span class="pill">Next.js</span>
+            <span class="pill">Electron</span>
+            <span class="pill">Vite</span>
+            <span class="pill">Tailwind CSS</span>
+          </div>
+        </div>
+
+        <div class="sk-group">
+          <div class="sk-group-name">Backend &amp; Cloud</div>
+          <div class="pills">
+            <span class="pill hot">AWS (App Runner, RDS, S3, Kinesis, SES, IAM)</span>
+            <span class="pill">Node.js / Express</span>
+            <span class="pill">PostgreSQL</span>
+            <span class="pill">Docker</span>
+            <span class="pill">GitHub Actions CI/CD</span>
+            <span class="pill">REST / GraphQL APIs</span>
+          </div>
+        </div>
+
+        <div class="sk-group">
+          <div class="sk-group-name">AI &amp; Agentic</div>
+          <div class="pills">
+            <span class="pill gold">MCP (Model Context Protocol)</span>
+            <span class="pill">AWS Bedrock</span>
+            <span class="pill">OpenAI / Claude APIs</span>
+            <span class="pill">LLM Tool Calling</span>
+            <span class="pill">RAG / Vector DBs</span>
+            <span class="pill">Prompt Engineering</span>
+          </div>
+        </div>
+
+        <div class="sk-group">
+          <div class="sk-group-name">Payments &amp; APIs</div>
+          <div class="pills">
+            <span class="pill">Stripe</span>
+            <span class="pill">PayPal</span>
+            <span class="pill">Giftbit</span>
+            <span class="pill">Riot Games API</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="s-sec">
+        <div class="s-title">Education</div>
+        <div class="edu-item">
+          <div class="edu-school">Univ. of Texas at Dallas</div>
+          <div class="edu-deg">Computer Science Coursework<br>(Data Structures, OOP, Software Engineering)</div>
+          <div class="edu-yr">Aug 2022 – Dec 2025</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">Tarrant County College</div>
+          <div class="edu-deg">Associate of Arts (AA)</div>
+          <div class="edu-yr">2014 – 2022</div>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div class="s-sec">
+        <div class="s-title">Portfolio &amp; Links</div>
+        <div class="link-item"><span class="link-icon">🌐</span><a href="https://jaysonquindao-com.pages.dev" target="_blank">jaysonquindao-com.pages.dev</a></div>
+        <div class="link-item"><span class="link-icon">💻</span><a href="https://ggloop.io" target="_blank">ggloop.io</a></div>
+        <div class="link-item"><span class="link-icon">🐙</span><a href="https://github.com/djjrip" target="_blank">github.com/djjrip</a></div>
+        <div class="link-item"><span class="link-icon">💼</span><a href="https://linkedin.com/in/jaysonquindao" target="_blank">linkedin.com/in/jaysonquindao</a></div>
+      </div>
+
+      <!-- Additional -->
+      <div class="s-sec">
+        <div class="s-title">Additional</div>
+        <div style="font-size:11.5px;color:#3a3f4b;line-height:1.7">
+          🇺🇸 US Citizen — No sponsorship required<br>
+          ✈️ Open to domestic relocation<br>
+          🤝 B2B sales &amp; stakeholder engagement<br>
+          📋 Authored technical docs for non-technical audiences<br>
+          📡 Live streaming &amp; digital media production
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+</body>
+</html>
