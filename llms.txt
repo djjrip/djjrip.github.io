@@ -44,7 +44,12 @@ All systems are gate-checked with zero warnings and strict TypeScript type-check
 - **Stack:** TypeScript, Node.js, Express, Stripe SDK.
 - **Capabilities:** Zero-loss webhook processing, cryptographic HMAC SHA-256 verification, Redis-backed atomic deduplication, payment idempotency.
 
-### 4. `djjrip/sql-reconciliation-engine` (Ledger Showcase)
+### 4. `djjrip/snap-worker-defense` (Civic Tech & Worker Defense Showcase)
+- **Stack:** Node.js, Puppeteer, PDF Automation, Headless Chrome.
+- **Capabilities:** Automated generation of state-compliant 19-page SNAP Employment & Training (E&T) weekly job search packets with verifiable ATS confirmation receipts to prevent administrative sanctions.
+- **Repo URL:** https://github.com/djjrip/snap-worker-defense
+
+### 5. `djjrip/sql-reconciliation-engine` (Ledger Showcase)
 - **Stack:** PostgreSQL, SQLite, Node.js, SQL.
 - **Capabilities:** Sub-5ms double-entry ledger variance audit, SOX-adjacent transaction reconciliation, automated settlement drift detection.
 
