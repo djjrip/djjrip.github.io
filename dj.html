@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DJ J-Rip (Jayson Quindao) // DFW DJ & Production Assistant Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090a10;
+      --card-bg: #121420;
+      --border: #1f2438;
+      --accent-neon: #a855f7;
+      --accent-cyan: #06b6d4;
+      --accent-green: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      padding: 40px 20px 80px 20px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .header-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid var(--accent-neon);
+      color: #d8b4fe;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .hero-sub {
+      color: var(--text-muted);
+      font-size: 18px;
+      margin-bottom: 32px;
+      max-width: 760px;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    .metric-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      margin-bottom: 4px;
+    }
+    .metric-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 30px;
+      margin-bottom: 24px;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .library-bar {
+      display: flex;
+      height: 18px;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 18px 0 12px 0;
+      border: 1px solid var(--border);
+    }
+    .bar-hiphop { background: #ec4899; width: 43.9%; }
+    .bar-house { background: #8b5cf6; width: 35.2%; }
+    .bar-afro { background: #f59e0b; width: 16.0%; }
+    .bar-trap { background: #10b981; width: 4.9%; }
+    .legend-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .legend-item { display: flex; align-items: center; gap: 8px; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-hiphop { background: #ec4899; }
+    .dot-house { background: #8b5cf6; }
+    .dot-afro { background: #f59e0b; }
+    .dot-trap { background: #10b981; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width: 680px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 32px; }
+    }
+    .skill-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+    }
+    .skill-item h4 {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .skill-item p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(6, 182, 212, 0.15));
+      border: 1px solid var(--accent-neon);
+      border-radius: 14px;
+      padding: 36px 24px;
+      text-align: center;
+      margin-top: 36px;
+    }
+    .cta-box h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .cta-box p {
+      color: #cbd5e1;
+      max-width: 620px;
+      margin: 0 auto 24px auto;
+      font-size: 15px;
+    }
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: #a855f7; color: #fff; }
+    .btn-secondary { background: #1e293b; color: #f8fafc; border: 1px solid #334155; }
+  </style>
+</head>
+<body>
+
+  <div class="header-tag">
+    <span>●</span> DFW LIVE PERFORMANCE & PRODUCTION ASSISTANT
+  </div>
+
+  <h1>JAYSON QUINDAO // DJ J-RIP</h1>
+  <p class="hero-sub">
+    Open-format DJ & Technical Event Specialist based in Dallas-Fort Worth. Mastered on Pioneer DDJ-SB2 & Serato DJ Pro. Creator behind 300K+ viral live-set views on TikTok.
+  </p>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-num">300K+</div>
+      <div class="metric-label">TikTok Live Views</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">1,304</div>
+      <div class="metric-label">Serato Crated Tracks</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">100%</div>
+      <div class="metric-label">Harmonic Key Tagged</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">DFW</div>
+      <div class="metric-label">Metroplex Onsite</div>
+    </div>
+  </div>
+
+  <!-- MUSIC LIBRARY BREAKDOWN -->
+  <div class="section-card">
+    <div class="section-title">
+      <span>📊</span> Forensic Music Library Analysis (Serato Catalog)
+    </div>
+    <p style="font-size: 14px; color: var(--text-muted);">
+      Direct audit from personal Serato DJ database: 1,304 tracks calibrated with cue points, beatgrids, and Camelot harmonic keys.
+    </p>
+
+    <div class="library-bar">
+      <div class="bar-hiphop" title="Hip-Hop / R&B (43.9%)"></div>
+      <div class="bar-house" title="House / Club (35.2%)"></div>
+      <div class="bar-afro" title="Afrobeats / Latin (16.0%)"></div>
+      <div class="bar-trap" title="Trap / Jersey Club (4.9%)"></div>
+    </div>
+
+    <div class="legend-grid">
+      <div class="legend-item"><div class="legend-dot dot-hiphop"></div> <strong>Hip-Hop / R&B:</strong> 519 tracks (43.9%)</div>
+      <div class="legend-item"><div class="legend-dot dot-house"></div> <strong>House / Club / Tech:</strong> 416 tracks (35.2%)</div>
+      <div class="legend-item"><div class="legend-dot dot-afro"></div> <strong>Afrobeats / Latin:</strong> 189 tracks (16.0%)</div>
+      <div class="legend-item"><div class="legend-dot dot-trap"></div> <strong>Trap / Jersey Club:</strong> 58 tracks (4.9%)</div>
+    </div>
+  </div>
+
+  <!-- HOW I FIT LEFORCE / DJ ASSISTANT ROLES -->
+  <div class="section-card">
+    <div class="section-title">
+      <span>🎛️</span> Technical Strengths for Event Production & DJ Assisting
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <h4>⚡ Pioneer DDJ & Serato DJ Pro Mastery</h4>
+        <p>Built complete technical fader, loop, and EQ muscle memory on the Pioneer DDJ-SB2. Deep familiarity with Serato crate organization, hot cues, and quick track searches under live pressure.</p>
+      </div>
+      <div class="skill-item">
+        <h4>🔊 Signal Flow & Live Audio Rigging</h4>
+        <p>Thorough understanding of professional live audio routing: XLR runs, balanced master outs, active PA speaker placement, subwoofer gain staging, and wireless mic frequency management.</p>
+      </div>
+      <div class="skill-item">
+        <h4>🤝 The Ultimate Lead DJ Wingman</h4>
+        <p>Focused on supporting the lead talent: managing event timelines, loading emergency backup crates, troubleshooting cables, handling guest requests, and assisting with load-in and load-out.</p>
+      </div>
+      <div class="skill-item">
+        <h4>📈 Viral Crowd Resonance & Energy</h4>
+        <p>Over 300,000 TikTok views on live mix transitions prove an innate understanding of timing, drops, and how to capture an audience's energy in seconds.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUDIO PORTFOLIO LINKS -->
+  <div class="section-card">
+    <div class="section-title">
+      <span>🎧</span> Streaming & Social Handles
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+      <a href="https://soundcloud.com/jaysonquindao" target="_blank" style="display: block; background: #161a29; padding: 14px 18px; border-radius: 8px; border: 1px solid var(--border); color: #fff; text-decoration: none; font-weight: 600;">
+        <span style="color: #f97316;">☁️ SoundCloud</span>: soundcloud.com/jaysonquindao
+      </a>
+      <a href="https://tiktok.com/@jaysonquindao" target="_blank" style="display: block; background: #161a29; padding: 14px 18px; border-radius: 8px; border: 1px solid var(--border); color: #fff; text-decoration: none; font-weight: 600;">
+        <span style="color: #ec4899;">📱 TikTok (300K+ Views)</span>: @jaysonquindao
+      </a>
+    </div>
+  </div>
+
+  <!-- CTA BOX -->
+  <div class="cta-box">
+    <h3>Ready for Event Load-In & Assisting</h3>
+    <p>
+      Available immediately across Dallas, Fort Worth, Arlington, and Plano for weddings, corporate galas, and venue activations.
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="tel:+14693718556">📞 Call / Text: (469) 371-8556</a>
+      <a class="btn btn-secondary" href="mailto:kai@leforcedfw.com?subject=DJ%20Assistant%20Onboarding%20%E2%80%94%20Jayson%20Quindao%20(DJ%20J-Rip)&body=Hi%20Kai,%0D%0A%0D%0AHere%20is%20my%20complete%20technical%20profile%20and%20Serato%20library%20breakdown%20for%20the%20DJ%20Assistant%20role%20at%20LeForce:%0D%0Ahttps://www.ggloop.io/dj.html%0D%0A%0D%0AReady%20to%20assist%20on%20upcoming%20load-ins%20and%20events!%0D%0A%0D%0ABest,%0D%0AJayson%20Quindao%20%7C%20(469)%20371-8556">✉️ Email Kai @ LeForce</a>
+    </div>
+  </div>
+
+</body>
+</html>
