@@ -127,6 +127,20 @@
     }
     nav.nav-links a:hover { color: #fff; }
 
+    .btn-signin {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      transition: all 0.15s;
+    }
+    .btn-signin:hover {
+      color: #fff;
+      border-color: rgba(0, 255, 136, 0.4);
+    }
     .nav-user {
       display: flex;
       align-items: center;
@@ -541,10 +555,8 @@
         <a href="anti-cheat.html">Anti-Cheat SDK</a>
         <a href="founder.html">Founder</a>
         
-        <div class="nav-user">
-          <span class="user-dot"></span>
-          <span>@djjrip</span>
-          <span class="user-pts">2,500 PTS</span>
+        <div id="nav-auth-container">
+          <a href="https://gg-loop-tournament.vercel.app/login" class="btn-signin">Sign In</a>
         </div>
 
         <a href="https://gg-loop-tournament.vercel.app/register" class="btn-cta">Enter Bracket</a>
@@ -742,5 +754,18 @@
     </div>
   </footer>
 
+  <script>
+    (function() {
+      try {
+        var user = JSON.parse(localStorage.getItem('ggloop_user') || 'null');
+        if (user && user.username) {
+          var container = document.getElementById('nav-auth-container');
+          if (container) {
+            container.innerHTML = '<div class="nav-user"><span class="user-dot"></span><span>@' + user.username + '</span><span class="user-pts">' + (user.points || 0) + ' PTS</span></div>';
+          }
+        }
+      } catch (e) {}
+    })();
+  </script>
 </body>
 </html>
