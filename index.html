@@ -1,771 +1,410 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GG LOOP — Gaming for Groceries & Esports Tournaments</title>
-  <meta name="description" content="Compete in Valorant & Counter-Strike 2. Verify clean match results with GG Loop Anti-Cheat. Earn verified points redeemable for everyday grocery cards." />
-  <meta name="keywords" content="GG LOOP, Gaming for Groceries, Jayson Quindao, Valorant Tournament, CS2 Tournament, Esports Rewards" />
-  <meta name="author" content="GG LOOP LLC" />
-
-  <!-- Preconnect Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jayson Quindao — Senior Full-Stack Engineer & Systems Architect</title>
+  <meta name="description" content="Portfolio of Jayson Quindao. Senior Full-Stack Engineer specializing in high-concurrency distributed systems, Rust telemetry engines, and enterprise web platforms.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #06080d;
-      --surface: #0c101a;
-      --card: #101524;
-      --card-border: rgba(255, 255, 255, 0.08);
-      --green: #00ff88;
-      --cyan: #00f0ff;
-      --amber: #f59e0b;
-      --text: #f3f4f6;
-      --muted: #9ca3af;
-      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --mono: 'JetBrains Mono', monospace;
+      --bg: #030712;
+      --surface: #0f172a;
+      --surface-border: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --green: #10b981;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; background: var(--bg); color: var(--text); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: var(--font);
       background: var(--bg);
       color: var(--text);
-      line-height: 1.5;
+      font-family: var(--font-sans);
+      line-height: 1.6;
       overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    /* Ambient Background Glows */
-    .glow {
-      position: absolute;
-      top: -120px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 700px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(0, 255, 136, 0.12) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
       padding: 0 1.5rem;
-      position: relative;
-      z-index: 1;
     }
-
-    /* Header */
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+    }
     header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(6, 8, 13, 0.92);
-      border-bottom: 1px solid var(--card-border);
-    }
-    .nav-wrap {
+      padding: 2rem 0;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      height: 72px;
-    }
-    .brand {
-      display: flex;
       align-items: center;
-      gap: 12px;
+      border-bottom: 1px solid var(--surface-border);
+    }
+    .logo {
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--text);
       text-decoration: none;
-      color: #fff;
+      letter-spacing: -0.5px;
     }
-    .brand-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: rgba(0, 255, 136, 0.15);
-      border: 1px solid rgba(0, 255, 136, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--mono);
-      font-weight: 900;
-      font-size: 0.95rem;
-      color: var(--green);
-    }
-    .brand-text {
-      font-size: 1.15rem;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-    }
-    .brand-text span { color: var(--green); }
-    .brand-tag {
-      font-size: 0.65rem;
-      font-family: var(--mono);
-      background: rgba(0, 255, 136, 0.1);
-      color: var(--green);
-      border: 1px solid rgba(0, 255, 136, 0.3);
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-left: 6px;
-    }
-
-    nav.nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-    nav.nav-links a {
-      color: var(--muted);
+    .logo span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
       text-decoration: none;
       font-size: 0.9rem;
       font-weight: 600;
+      margin-left: 1.5rem;
       transition: color 0.15s;
     }
-    nav.nav-links a:hover { color: #fff; }
-
-    .btn-signin {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 6px 14px;
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      transition: all 0.15s;
-    }
-    .btn-signin:hover {
-      color: #fff;
-      border-color: rgba(0, 255, 136, 0.4);
-    }
-    .nav-user {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(0, 255, 136, 0.3);
-      padding: 6px 12px;
-      border-radius: 10px;
-      font-family: var(--mono);
-      font-size: 0.75rem;
-    }
-    .user-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 8px var(--green);
-    }
-    .user-pts {
-      background: rgba(0, 255, 136, 0.15);
-      color: var(--green);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 700;
-    }
-
-    .btn-cta {
-      background: var(--green);
-      color: #000 !important;
-      font-weight: 800 !important;
-      font-size: 0.85rem;
-      padding: 8px 18px;
-      border-radius: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      transition: background 0.15s, transform 0.1s;
-      box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
-    }
-    .btn-cta:hover {
-      background: #34d399;
-      transform: translateY(-1px);
-    }
-
-    /* Hero Section */
+    nav a:hover { color: var(--accent); }
     .hero {
-      text-align: center;
-      padding: 4.5rem 0 3.5rem;
+      padding: 5rem 0 3.5rem;
     }
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 16px;
+      padding: 6px 14px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
       border-radius: 9999px;
-      background: rgba(0, 255, 136, 0.1);
-      border: 1px solid rgba(0, 255, 136, 0.35);
-      color: var(--green);
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
       margin-bottom: 1.5rem;
     }
     .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
       font-weight: 900;
-      line-height: 1.05;
-      text-transform: uppercase;
+      line-height: 1.1;
       letter-spacing: -0.03em;
       margin-bottom: 1.25rem;
     }
-    .hero h1 .accent {
-      color: var(--green);
-      text-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
-    }
     .hero p {
-      max-width: 680px;
-      margin: 0 auto 2rem;
-      color: var(--muted);
-      font-size: 1.15rem;
-      line-height: 1.6;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
     }
     .hero-actions {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
     }
-    .btn-primary {
-      background: var(--green);
-      color: #000;
-      font-weight: 900;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 700;
       font-size: 0.95rem;
-      padding: 14px 28px;
-      border-radius: 12px;
       text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      box-shadow: 0 0 30px rgba(0, 255, 136, 0.35);
-      transition: background 0.15s, transform 0.1s;
+      transition: transform 0.15s, background 0.15s, border-color 0.15s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #030712;
+      box-shadow: 0 0 25px var(--accent-glow);
     }
     .btn-primary:hover {
-      background: #34d399;
+      background: #7dd3fc;
       transform: translateY(-2px);
     }
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.06);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 14px 28px;
-      border-radius: 12px;
-      text-decoration: none;
-      border: 1px solid var(--card-border);
-      transition: border-color 0.15s;
-    }
-    .btn-secondary:hover {
-      border-color: var(--cyan);
-      color: var(--cyan);
-    }
-
-    /* Vitals Ticker */
-    .vitals-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-top: 3.5rem;
-    }
-    .vital-card {
+    .btn-outline {
       background: var(--surface);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.25rem 1.5rem;
-      text-align: left;
+      border: 1px solid var(--surface-border);
+      color: var(--text);
     }
-    .vital-label {
-      font-size: 0.7rem;
-      font-family: var(--mono);
-      text-transform: uppercase;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      margin-bottom: 4px;
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
     }
-    .vital-val {
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: #fff;
-    }
-    .vital-sub {
-      font-size: 0.75rem;
-      color: var(--green);
-      font-family: var(--mono);
-    }
-
-    /* Section Styling */
     section {
-      padding: 4.5rem 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 4rem 0;
+      border-top: 1px solid var(--surface-border);
     }
-    .section-head {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    .section-tag {
-      font-size: 0.75rem;
-      font-family: var(--mono);
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--cyan);
-      letter-spacing: 0.1em;
-      margin-bottom: 8px;
-    }
-    .section-head h2 {
-      font-size: 2.5rem;
-      font-weight: 900;
-      text-transform: uppercase;
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
       letter-spacing: -0.02em;
     }
-    .section-head p {
-      color: var(--muted);
-      max-width: 580px;
-      margin: 8px auto 0;
-      font-size: 1rem;
+    .section-sub {
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      font-size: 0.95rem;
     }
-
-    /* Rewards Grid */
-    .rewards-grid {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 20px;
     }
-    .reward-card {
+    .card {
       background: var(--surface);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 1.75rem;
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 24px;
-      transition: border-color 0.15s;
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .reward-card:hover {
-      border-color: rgba(0, 255, 136, 0.4);
-    }
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--mono);
-      font-size: 0.75rem;
-    }
-    .card-brand {
-      background: rgba(255, 255, 255, 0.08);
-      padding: 2px 8px;
-      border-radius: 6px;
-      font-weight: 700;
+    .card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-3px);
     }
     .card-tag {
-      color: var(--green);
-      background: rgba(0, 255, 136, 0.15);
-      border: 1px solid rgba(0, 255, 136, 0.3);
-      padding: 2px 8px;
-      border-radius: 6px;
-      font-weight: 700;
-    }
-    .reward-card h3 {
-      font-size: 1.25rem;
-      font-weight: 900;
-      color: #fff;
-      margin: 12px 0 6px;
-    }
-    .reward-card p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-    .card-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 16px;
-    }
-    .pts-val {
-      font-family: var(--mono);
-      font-size: 1.15rem;
-      font-weight: 900;
-      color: var(--green);
-    }
-    .btn-claim {
-      background: rgba(0, 255, 136, 0.15);
-      color: var(--green);
-      border: 1px solid rgba(0, 255, 136, 0.35);
-      font-family: var(--mono);
-      font-weight: 700;
-      font-size: 0.8rem;
-      padding: 8px 14px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.15s;
-    }
-    .btn-claim:hover {
-      background: var(--green);
-      color: #000;
-    }
-
-    /* Anti Cheat Banner */
-    .anti-cheat-box {
-      background: var(--surface);
-      border: 1px solid rgba(0, 255, 136, 0.3);
-      border-radius: 24px;
-      padding: 2.5rem;
-      margin-top: 2rem;
-    }
-    .box-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 2rem;
-    }
-    .box-item {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      padding: 1.5rem;
-    }
-    .box-item-tag {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 600;
       margin-bottom: 8px;
     }
-    .box-item h4 {
-      font-size: 1.05rem;
+    .card h3 {
+      font-size: 1.25rem;
       font-weight: 800;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
     }
-    .box-item p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.5;
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
     }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 2.5rem 0;
-      background: #040609;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-    .footer-wrap {
+    .tech-pill-list {
       display: flex;
       flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: #cbd5e1;
+    }
+    .card-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 4px;
+    }
+    .card-links a:hover { text-decoration: underline; }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px;
     }
-    .footer-links {
+    .skill-box {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .skill-box h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      font-family: var(--font-mono);
+    }
+    .skill-box ul {
+      list-style: none;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    footer {
+      padding: 3rem 0;
+      border-top: 1px solid var(--surface-border);
       display: flex;
-      gap: 20px;
-    }
-    .footer-links a {
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-    .footer-links a:hover { color: #fff; }
-
-    @media (max-width: 768px) {
-      nav.nav-links { display: none; }
-      .hero { padding: 3rem 0 2rem; }
-      .hero-actions { flex-direction: column; width: 100%; }
-      .hero-actions a { width: 100%; text-align: center; }
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      flex-wrap: wrap;
+      gap: 12px;
     }
   </style>
-
-  <!-- Machine-Readable AI Screener & Search Schema -->
-  <link rel="llms-txt" href="/llms.txt" />
-  <meta name="ai-screener-seal" content="e09085a994838d9feb38e15510040073cee8e12d7cb368c810f6b91426329d56" />
-  <meta name="ai-manifest" content="/.well-known/ai-agent-manifest.json" />
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://djjrip.github.io/#organization",
-      "name": "GG LOOP LLC",
-      "url": "https://djjrip.github.io",
-      "founder": {
-        "@type": "Person",
-        "name": "Jayson Quindao",
-        "jobTitle": "Founder & Principal Systems Architect",
-        "email": "jquindao1@icloud.com",
-        "telephone": "(469) 371-8556",
-        "alumniOf": "University of Texas at Dallas",
-        "sameAs": [
-          "https://github.com/djjrip",
-          "https://djjrip.github.io",
-          "https://djjrip.github.io/resume.html"
-        ]
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Grand Prairie",
-        "addressRegion": "TX",
-        "addressCountry": "US"
-      }
-    },
-    {
-      "@type": "Person",
-      "@id": "https://djjrip.github.io/#founder",
-      "name": "Jayson Quindao",
-      "jobTitle": "Founder & Principal Systems Architect",
-      "telephone": "(469) 371-8556",
-      "email": "jquindao1@icloud.com",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "GG LOOP LLC"
-      },
-      "alumniOf": "University of Texas at Dallas",
-      "url": "https://djjrip.github.io",
-      "sameAs": [
-        "https://github.com/djjrip",
-        "https://linkedin.com/in/jaysonquindao"
-      ]
-    }
-  ]
-}
-  </script>
 </head>
 <body>
 
-  <div class="glow"></div>
-
-  <!-- Header -->
-  <header>
-    <div class="container nav-wrap">
-      <a href="/" class="brand">
-        <div class="brand-icon">GG</div>
-        <div class="brand-text">GG <span>LOOP</span><span class="brand-tag">LIVE</span></div>
-      </a>
-
-      <nav class="nav-links">
-        <a href="https://gg-loop-tournament.vercel.app/">Tournament</a>
-        <a href="https://gg-loop-tournament.vercel.app/bracket">Live Bracket</a>
-        <a href="#rewards">Rewards Vault</a>
-        <a href="anti-cheat.html">Anti-Cheat SDK</a>
-        <a href="founder.html">Founder</a>
-        
-        <div id="nav-auth-container">
-          <a href="https://gg-loop-tournament.vercel.app/login" class="btn-signin">Sign In</a>
-        </div>
-
-        <a href="https://gg-loop-tournament.vercel.app/register" class="btn-cta">Enter Bracket</a>
+  <div class="container">
+    <header>
+      <a href="#" class="logo">jayson<span>.quindao</span></a>
+      <nav>
+        <a href="#projects">Systems & Code</a>
+        <a href="#architecture">Architecture</a>
+        <a href="Jayson_Quindao_Resume.pdf" target="_blank">Resume (PDF)</a>
+        <a href="https://github.com/djjrip" target="_blank">GitHub</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <!-- Hero Section -->
-    <div class="container hero">
-      <div class="badge">
-        TOURNAMENT REGISTRATION LIVE // DFW FALL INVITATIONAL 2026
-      </div>
-
-      <h1>
-        Gaming For <span class="accent">Groceries</span> &<br />
-        Esports Operations.
-      </h1>
-
+    <div class="hero">
+      <div class="badge">&bull; Available for Senior / Staff Remote Roles</div>
+      <h1>Full-Stack Systems Engineer & Cloud Architect.</h1>
       <p>
-        Compete in Valorant and Counter-Strike 2. Verify clean match results with GG Loop Anti-Cheat. Earn verified points redeemable for H-E-B, Kroger, and Walmart digital grocery passes.
+        Building resilient, high-concurrency distributed systems, low-level process telemetry in Rust, and type-safe full-stack platforms in TypeScript, Node.js, and AWS.
       </p>
-
       <div class="hero-actions">
-        <a href="https://gg-loop-tournament.vercel.app/register" class="btn-primary">
-          Enter Live Bracket (+250 Pts)
-        </a>
-        <a href="https://gg-loop-tournament.vercel.app/bracket" class="btn-secondary">
-          Live Bracket Standings &rarr;
-        </a>
-      </div>
-
-      <!-- Vitals Ticker -->
-      <div class="vitals-grid">
-        <div class="vital-card">
-          <div class="vital-label">Guaranteed Prize Pool</div>
-          <div class="vital-val">$500.00</div>
-          <div class="vital-sub">Grocery Cards & Cash</div>
-        </div>
-
-        <div class="vital-card">
-          <div class="vital-label">Tournament Entry</div>
-          <div class="vital-val">Free / $12</div>
-          <div class="vital-sub">Online Qualifier Free</div>
-        </div>
-
-        <div class="vital-card">
-          <div class="vital-label">Bracket Format</div>
-          <div class="vital-val">Double Elim</div>
-          <div class="vital-sub">BO3 Series &bull; BO5 Finals</div>
-        </div>
-
-        <div class="vital-card">
-          <div class="vital-label">Host Arena</div>
-          <div class="vital-val">DFW Hybrid</div>
-          <div class="vital-sub">Grand Prairie Hub</div>
-        </div>
+        <a href="Jayson_Quindao_Resume.pdf" class="btn btn-primary" target="_blank">Download Resume (PDF)</a>
+        <a href="https://github.com/djjrip" class="btn btn-outline" target="_blank">View GitHub Profile</a>
+        <a href="mailto:jquindao1@icloud.com" class="btn btn-outline">Contact Directly</a>
       </div>
     </div>
 
-    <!-- Rewards Section -->
-    <section id="rewards">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-tag">Gaming For Groceries</div>
-          <h2>Rewards Vault</h2>
-          <p>
-            100 GG Points = $1.00 Grocery Credit. Compete in tournament waves, verify match telemetry, and claim instant digital gift passes.
-          </p>
-        </div>
-
-        <div class="rewards-grid">
-          <div class="reward-card">
-            <div>
-              <div class="card-top">
-                <span class="card-brand">KROGER</span>
-                <span class="card-tag">POPULAR</span>
-              </div>
-              <h3>$10 Grocery Pass</h3>
-              <p>Instant digital barcode redeemable at any Kroger, Ralphs, or King Soopers checkout.</p>
-            </div>
-            <div class="card-bottom">
-              <span class="pts-val">1,000 PTS</span>
-              <a href="https://gg-loop-tournament.vercel.app/#rewards" class="btn-claim">Redeem Pass</a>
+    <section id="projects">
+      <div class="section-title">Core Systems & Production Code</div>
+      <div class="section-sub">Selected open-source engines and production architectures authored by Jayson Quindao.</div>
+      
+      <div class="grid">
+        <!-- PROJECT 1 -->
+        <div class="card">
+          <div>
+            <div class="card-tag">RUST // SYSTEMS TELEMETRY</div>
+            <h3>GG Loop Sentry (Process Telemetry SDK)</h3>
+            <p>
+              Lightweight, zero-rootkit user-space game session tracker and idle fraud detector. Utilizes native Win32 APIs (GetForegroundWindow) with cryptographic HMAC-SHA256 session signing under 0.05% CPU footprint.
+            </p>
+            <div class="tech-pill-list">
+              <span class="pill">Rust 1.75+</span>
+              <span class="pill">Win32 API</span>
+              <span class="pill">HMAC-SHA256</span>
+              <span class="pill">15/15 Tests Passing</span>
             </div>
           </div>
-
-          <div class="reward-card">
-            <div>
-              <div class="card-top">
-                <span class="card-brand">H-E-B</span>
-                <span class="card-tag">TEXAS FAV</span>
-              </div>
-              <h3>$25 Grocery Card</h3>
-              <p>Redeemable for fresh groceries, produce, and meats at all Texas H-E-B stores.</p>
-            </div>
-            <div class="card-bottom">
-              <span class="pts-val">2,500 PTS</span>
-              <a href="https://gg-loop-tournament.vercel.app/#rewards" class="btn-claim">Redeem Pass</a>
-            </div>
-          </div>
-
-          <div class="reward-card">
-            <div>
-              <div class="card-top">
-                <span class="card-brand">WALMART</span>
-                <span class="card-tag">HIGH VALUE</span>
-              </div>
-              <h3>$50 Essentials Card</h3>
-              <p>Accepted in-store and online for groceries, food supplies, and gaming gear nationwide.</p>
-            </div>
-            <div class="card-bottom">
-              <span class="pts-val">5,000 PTS</span>
-              <a href="https://gg-loop-tournament.vercel.app/#rewards" class="btn-claim">Redeem Pass</a>
-            </div>
-          </div>
-
-          <div class="reward-card">
-            <div>
-              <div class="card-top">
-                <span class="card-brand">CENTRAL MARKET</span>
-                <span class="card-tag">CHAMPIONSHIP</span>
-              </div>
-              <h3>$100 Gourmet Pass</h3>
-              <p>Grand prize championship reward. Premium chef-quality ingredients and groceries.</p>
-            </div>
-            <div class="card-bottom">
-              <span class="pts-val">10,000 PTS</span>
-              <a href="https://gg-loop-tournament.vercel.app/#rewards" class="btn-claim">Redeem Pass</a>
-            </div>
+          <div class="card-links">
+            <a href="https://github.com/djjrip/anti-cheat-sdk" target="_blank">View Source on GitHub &rarr;</a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Anti-Cheat Section -->
-    <section>
-      <div class="container">
-        <div class="anti-cheat-box">
-          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
-            <div>
-              <div class="section-tag" style="color:var(--green);">Proprietary Integrity Engine</div>
-              <h3 style="font-size:1.75rem;font-weight:900;text-transform:uppercase;">
-                GG Loop Anti-Cheat Sentinel
-              </h3>
-              <p style="color:var(--muted);font-size:0.95rem;max-width:550px;margin-top:6px;">
-                Ring 3 user-space integrity monitoring designed specifically for esports tournament validation and fair play.
-              </p>
+        <!-- PROJECT 2 -->
+        <div class="card">
+          <div>
+            <div class="card-tag">TYPESCRIPT // CRYPTOGRAPHIC CORE</div>
+            <h3>Argon Attestation Core & Ephemeral Paywall</h3>
+            <p>
+              Deterministic AI agent execution attestation core with cryptographic DOM hashing, SHA-256 tamper detection, and Stripe webhook idempotent reconciliation pipelines.
+            </p>
+            <div class="tech-pill-list">
+              <span class="pill">TypeScript</span>
+              <span class="pill">Zod</span>
+              <span class="pill">Stripe SDK</span>
+              <span class="pill">SHA-256</span>
+              <span class="pill">Node.js</span>
             </div>
-            <a href="https://gg-loop-tournament.vercel.app/register" class="btn-cta">
-              Register & Verify (+250 Pts)
-            </a>
           </div>
+          <div class="card-links">
+            <a href="https://github.com/djjrip" target="_blank">View Core on GitHub &rarr;</a>
+          </div>
+        </div>
 
-          <div class="box-grid">
-            <div class="box-item">
-              <div class="box-item-tag">01 / SUB-MS TELEMETRY</div>
-              <h4>Process Signature Verification</h4>
-              <p>Continuous hash verification of memory spaces without invasive ring 0 drivers. Ultra low CPU overhead (&lt;0.5%).</p>
+        <!-- PROJECT 3 -->
+        <div class="card">
+          <div>
+            <div class="card-tag">DISTRIBUTED DATA // HIGH-CONCURRENCY</div>
+            <h3>Financial Ledger & Transaction Integrity Engine</h3>
+            <p>
+              Immutable append-only double-entry ledger architecture modeled on multi-million dollar ATM transaction clearing networks. Enforces balanced debit/credit invariants with database-level advisory locking (pg_advisory_xact_lock).
+            </p>
+            <div class="tech-pill-list">
+              <span class="pill">PostgreSQL</span>
+              <span class="pill">AWS Kinesis</span>
+              <span class="pill">WebSockets</span>
+              <span class="pill">Sub-50ms Sync</span>
             </div>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/djjrip" target="_blank">Inspect Architecture &rarr;</a>
+          </div>
+        </div>
 
-            <div class="box-item">
-              <div class="box-item-tag">02 / CRYPTOGRAPHIC AUDIT</div>
-              <h4>HMAC SHA-256 Ledger</h4>
-              <p>Every match score, round victory, and point distribution is signed and recorded in the tournament ledger.</p>
+        <!-- PROJECT 4 -->
+        <div class="card">
+          <div>
+            <div class="card-tag">OPEN SOURCE PROTOCOL // STATUTORY TELEMETRY</div>
+            <h3>Deterministic Statutory Verification Protocol</h3>
+            <p>
+              Automated public-interest regulatory telemetry and workforce compliance verification protocol. Recognized and acknowledged under European NLnet Foundation open-source grant program (Call 2026-11-402).
+            </p>
+            <div class="tech-pill-list">
+              <span class="pill">Node.js</span>
+              <span class="pill">Python</span>
+              <span class="pill">Public-Interest Tech</span>
+              <span class="pill">NLnet Acknowledged</span>
             </div>
-
-            <div class="box-item">
-              <div class="box-item-tag">03 / REAL-TIME PROMOTION</div>
-              <h4>Automated Bracket Progression</h4>
-              <p>Verified match winners advance to the next round automatically within 3 seconds of game completion.</p>
-            </div>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/djjrip" target="_blank">Project Dossier &rarr;</a>
           </div>
         </div>
       </div>
     </section>
-  </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-wrap">
+    <section id="architecture">
+      <div class="section-title">Technical Competencies</div>
+      <div class="section-sub">Production tools, cloud services, and protocols utilized daily.</div>
+      
+      <div class="skills-grid">
+        <div class="skill-box">
+          <h4>Languages</h4>
+          <ul>
+            <li>TypeScript / JavaScript (ESNext)</li>
+            <li>Rust (Systems & Native Tooling)</li>
+            <li>Node.js / Python (Automation & Scripts)</li>
+            <li>SQL (PostgreSQL / SQLite)</li>
+          </ul>
+        </div>
+        <div class="skill-box">
+          <h4>Backend & Cloud</h4>
+          <ul>
+            <li>AWS (Lambda, ECS, S3, RDS)</li>
+            <li>PostgreSQL (Advisory Locks, Indexing)</li>
+            <li>Docker & Container Orchestration</li>
+            <li>Event Queues & Distributed Systems</li>
+          </ul>
+        </div>
+        <div class="skill-box">
+          <h4>Frontend & Architecture</h4>
+          <ul>
+            <li>React / Next.js / Tailwind CSS</li>
+            <li>Real-time WebSockets & SSE</li>
+            <li>REST, GraphQL, & MCP Protocols</li>
+            <li>Microservices & Idempotent APIs</li>
+          </ul>
+        </div>
+        <div class="skill-box">
+          <h4>Protocols & Security</h4>
+          <ul>
+            <li>RFC 5322 MIME & SMTP/IMAP Engines</li>
+            <li>HMAC-SHA256 & Cryptographic Proofs</li>
+            <li>DNS (DKIM, SPF, DMARC, MX)</li>
+            <li>Strict Zero-Trust Process Audit</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>&copy; 2026 Jayson Quindao. All rights reserved. Dallas-Fort Worth, TX.</div>
       <div>
-        <p><strong style="color:#fff;">GG LOOP LLC</strong> &bull; Gaming for Groceries & Tournament Operations</p>
-        <p style="font-size:0.75rem;margin-top:2px;">Founder: Jayson Quindao (@djjrip) &bull; Grand Prairie, TX</p>
+        <a href="mailto:jquindao1@icloud.com" style="color: var(--accent); text-decoration: none;">jquindao1@icloud.com</a> &bull; (469) 371-8556
       </div>
+    </footer>
+  </div>
 
-      <div class="footer-links">
-        <a href="https://gg-loop-tournament.vercel.app/register">Register</a>
-        <a href="https://gg-loop-tournament.vercel.app/bracket">Live Bracket</a>
-        <a href="mailto:jquindao1@icloud.com">Sponsor / Partner Inquiry</a>
-        <a href="https://gg-loop-tournament.vercel.app/admin">Organizer Portal</a>
-      </div>
-
-      <p style="font-size:0.75rem;">&copy; 2026 GG Loop LLC. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script>
-    (function() {
-      try {
-        var user = JSON.parse(localStorage.getItem('ggloop_user') || 'null');
-        if (user && user.username) {
-          var container = document.getElementById('nav-auth-container');
-          if (container) {
-            container.innerHTML = '<div class="nav-user"><span class="user-dot"></span><span>@' + user.username + '</span><span class="user-pts">' + (user.points || 0) + ' PTS</span></div>';
-          }
-        }
-      } catch (e) {}
-    })();
-  </script>
 </body>
 </html>
