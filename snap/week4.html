@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Workforce Solutions Greater Dallas - My Job Search Log (Week 4)</title>
+  <style>
+    
+    @page {
+      size: letter portrait;
+      margin: 0.35in;
+    }
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #334155;
+      color: #000;
+      font-size: 11px;
+      line-height: 1.25;
+    }
+    .no-print-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #38bdf8;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .no-print-bar .title-block strong {
+      font-size: 15px;
+      color: #38bdf8;
+    }
+    .btn-action {
+      background: #10b981;
+      color: #000;
+      border: none;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 8px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-action:hover {
+      background: #34d399;
+    }
+    .page-container {
+      max-width: 8.5in;
+      margin: 20px auto;
+    }
+    .page {
+      background: #fff;
+      width: 8.5in;
+      min-height: 11in;
+      margin-bottom: 25px;
+      padding: 0.4in 0.45in;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      page-break-after: always;
+      position: relative;
+    }
+    @media print {
+      body { background: transparent; padding: 0; }
+      .no-print-bar { display: none !important; }
+      .page-container { max-width: 100%; margin: 0; }
+      .page {
+        margin: 0;
+        padding: 0.35in 0.4in;
+        border: none;
+        box-shadow: none;
+        width: 100%;
+        min-height: auto;
+        page-break-after: always;
+      }
+    }
+
+    /* === EXACT OFFICIAL SHEET STYLES (MATCHING SCANNED PHOTOS) === */
+    .sheet-top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4px;
+    }
+    .sheet-title {
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin: 0 auto 0 auto;
+      text-align: center;
+      display: block;
+      width: 100%;
+    }
+    .sheet-num {
+      font-size: 11px;
+      font-weight: 700;
+      position: absolute;
+      right: 0.45in;
+      top: 0.4in;
+    }
+    .official-info-box {
+      border: 1.5px solid #000;
+      margin-bottom: 8px;
+      font-size: 11px;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 8px;
+    }
+    .info-row.border-bottom {
+      border-bottom: 1px solid #000;
+    }
+    .info-cell.cell-left {
+      width: 62%;
+    }
+    .info-cell.cell-right {
+      width: 38%;
+      border-left: 1px solid #000;
+      padding-left: 8px;
+    }
+    .info-cell.cell-full {
+      width: 100%;
+    }
+    .check-box {
+      display: inline-block;
+      width: 13px;
+      height: 13px;
+      border: 1.5px solid #000;
+      border-radius: 2px;
+      text-align: center;
+      line-height: 12px;
+      font-size: 11px;
+      font-weight: 900;
+      vertical-align: middle;
+      margin-right: 3px;
+    }
+    .check-box.checked {
+      background: #e2e8f0;
+    }
+    .filled-text {
+      font-weight: 800;
+      font-size: 12px;
+      color: #000;
+    }
+    .handwritten {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+    .date-blank {
+      font-family: "Courier New", Courier, monospace;
+      font-weight: 800;
+      font-size: 12px;
+      border-bottom: 1px solid #000;
+      padding: 0 8px;
+    }
+    .filled-box {
+      font-weight: 900;
+      font-size: 12px;
+      border-bottom: 1.5px solid #000;
+      padding: 0 6px;
+    }
+
+    /* Table */
+    .official-log-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1.5px solid #000;
+      font-size: 10px;
+      margin-bottom: 8px;
+    }
+    .official-log-table th {
+      border: 1px solid #000;
+      background: #f1f5f9;
+      padding: 4px 6px;
+      text-align: left;
+      font-weight: 900;
+      font-size: 9.5px;
+    }
+    .official-log-table td {
+      border: 1px solid #000;
+      padding: 4px 6px;
+      vertical-align: top;
+      line-height: 1.25;
+    }
+    .comp-name {
+      font-weight: 800;
+      font-size: 10.5px;
+      color: #000;
+    }
+    .comp-sub {
+      font-size: 9px;
+      color: #334155;
+      margin-top: 2px;
+    }
+    .comp-ref {
+      font-size: 8.5px;
+      color: #0284c7;
+      margin-top: 2px;
+    }
+    .val-date {
+      font-weight: 800;
+      font-size: 10px;
+    }
+    .val-hours {
+      font-size: 9.5px;
+      color: #475569;
+      margin-top: 4px;
+    }
+    .pos-title {
+      font-weight: 800;
+      font-size: 10px;
+      color: #000;
+    }
+    .pos-contact {
+      font-size: 9px;
+      color: #334155;
+      margin-top: 2px;
+    }
+    .radio-box {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border: 1px solid #000;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 9px;
+      font-size: 8px;
+      font-weight: 900;
+      vertical-align: middle;
+      margin-right: 2px;
+    }
+    .radio-box.selected {
+      border-radius: 2px;
+      background: #f1f5f9;
+    }
+
+    /* Signature Block */
+    .official-sig-block {
+      border: 1px solid #000;
+      padding: 6px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 10.5px;
+    }
+    .signature-line {
+      border-bottom: 1px solid #000;
+      padding: 0 15px 2px 15px;
+      font-weight: 800;
+    }
+    .date-line {
+      border-bottom: 1px solid #000;
+      padding: 0 10px 2px 10px;
+      font-weight: 800;
+    }
+    .hours-val {
+      font-weight: 900;
+      font-size: 11px;
+      border-bottom: 1.5px solid #000;
+      padding: 0 10px;
+    }
+    .cumul-note {
+      font-size: 9.5px;
+      font-weight: 800;
+      color: #047857;
+      margin-top: 2px;
+    }
+
+    /* Legal Footer */
+    .official-legal-footer {
+      font-size: 7.5px;
+      line-height: 1.2;
+      color: #334155;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 4px;
+    }
+    .official-legal-footer p {
+      margin: 2px 0;
+    }
+    .wfs-notice {
+      font-weight: 700;
+      text-align: center;
+      margin: 4px 0 2px 0;
+      color: #0f172a;
+    }
+    .form-rev {
+      text-align: center;
+      font-size: 8px;
+      font-weight: 800;
+      color: #64748b;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="no-print-bar">
+    <div class="title-block">
+      <strong>WORKFORCE SOLUTIONS GREATER DALLAS &mdash; MY JOB SEARCH LOG (WEEK 4)</strong>
+      <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">
+        Participant: Jayson Quindao &bull; Caseworker: Coretta Robinson (Grand Prairie Center) &bull; Period: 11 / 01 / 26 &ndash; 11 / 07 / 26
+      </div>
+    </div>
+    <div>
+      <button class="btn-action" onclick="window.print()">PRINT OFFICIAL LOG (CTRL + P)</button>
+    </div>
+  </div>
+  <div class="page-container">
+    
+    <div class="page official-sheet">
+      <div class="sheet-top-header">
+        <span class="sheet-title">My Job Search Log</span>
+        <span class="sheet-num">Sheet 1 of 3</span>
+      </div>
+
+      <div class="official-info-box">
+        <div class="info-row border-bottom">
+          <div class="info-cell cell-left">
+            <span class="check-box checked">&#10003;</span> <strong>WIOA</strong> &nbsp;&nbsp;&nbsp;
+            <span class="check-box"></span> Choices &nbsp;&nbsp;&nbsp;
+            <span class="check-box checked">&#10003;</span> <strong>SNAP</strong> &nbsp;&nbsp;&nbsp;
+            <span class="check-box"></span> NCP
+          </div>
+          <div class="info-cell cell-right">
+            <strong>Staff Name:</strong> <span class="handwritten">C. Robinson</span>
+          </div>
+        </div>
+
+        <div class="info-row border-bottom">
+          <div class="info-cell cell-left">
+            <strong>Job Seeker Name:</strong> <span class="filled-text">Jayson Quindao</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>State ID:</strong> <span class="filled-text">162656345</span>
+          </div>
+          <div class="info-cell cell-right">
+            <strong>Center Location:</strong> <span class="filled-text">Grand Prairie</span>
+          </div>
+        </div>
+
+        <div class="info-row border-bottom">
+          <div class="info-cell cell-left">
+            <strong>Employment Goal:</strong> <span class="filled-text">Software Engineer / Systems Specialist</span>
+          </div>
+          <div class="info-cell cell-right">
+            <strong>Staff Phone:</strong> <span class="handwritten">469-865-2307</span>
+          </div>
+        </div>
+
+        <div class="info-row border-bottom">
+          <div class="info-cell cell-left">
+            <strong>Weekly Job Search Hours Required for Participation:</strong> <span class="filled-box">30</span>
+          </div>
+          <div class="info-cell cell-right">
+            <strong>Job Search Weeks Completed:</strong><br>
+            <span class="check-box "></span> <strong>Week 1</strong> &nbsp; <span class="check-box "></span> <strong>Week 2</strong> &nbsp; <span class="check-box "></span> <strong>Week 3</strong> &nbsp; <span class="check-box checked">&#10003;</span> <strong>Week 4</strong> &nbsp; 
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-cell cell-full">
+            <strong>Start Date:</strong> <span class="date-blank">11 / 01 / 26</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>End Date:</strong> <span class="date-blank">11 / 07 / 26</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span style="font-size: 10px; color: #475569;">(Return Visit: Wed, Nov 11, 2026 @ 3:00 PM CST)</span>
+          </div>
+        </div>
+      </div>
+
+      <table class="official-log-table">
+        <thead>
+          <tr>
+            <th style="width: 38%;">Company Name, Address, and Phone Number</th>
+            <th style="width: 17%;">Date Completed:</th>
+            <th style="width: 27%;">Position Applied For:</th>
+            <th style="width: 18%;">Method</th>
+          </tr>
+        </thead>
+        <tbody>
+    
+          <tr>
+            <td class="col-company">
+              <div class="comp-name">PackageX Cloud Infrastructure</div>
+              <div class="comp-sub">500 7th Ave, New York, NY (Remote US) | (888) 505-1920</div>
+              <div class="comp-ref">Tracking/Ref: <strong>PKG-FDE-REMOTE-2026</strong></div>
+            </td>
+            <td class="col-date">
+              <div class="val-date">11/01/2026</div>
+              <div class="val-hours">2.0 Hours</div>
+            </td>
+            <td class="col-pos">
+              <div class="pos-title">Forward Deployed Engineer ($150k-$175k)</div>
+              <div class="pos-contact"><strong>Contact:</strong> Farrukh Mahboob (Chief Executive Officer)</div>
+            </td>
+            <td class="col-method">
+              <span class="radio-box "></span> In Person<br>
+              <span class="radio-box "></span> Telephone<br>
+              <span class="radio-box"></span> Fax/Mail<br>
+              <span class="radio-box "></span> <strong>Internet</strong><br>
+              <span class="radio-box selected">&#10003;</span> email
+            </td>
+          </tr>
+        
+          <tr>
+            <td class="col-company">
+              <div class="comp-name">Dropzone AI SecOps</div>
+              <div class="comp-sub">Seattle, WA (Remote Distributed Systems) | (206) 420-9114</div>
+              <div class="comp-ref">Tracking/Ref: <strong>DZ-FOUNDING-AI-2026</strong></div>
+            </td>
+            <td class="col-date">
+              <div class="val-date">11/01/2026</div>
+              <div class="val-hours">2.0 Hours</div>
+            </td>
+            <td class="col-pos">
+              <div class="pos-title">Founding AI Systems Engineer ($150k-$185k)</div>
+              <div class="pos-contact"><strong>Contact:</strong> Edward Wu (Chief Executive Officer)</div>
+            </td>
+            <td class="col-method">
+              <span class="radio-box "></span> In Person<br>
+              <span class="radio-box "></span> Telephone<br>
+              <span class="radio-box"></span> Fax/Mail<br>
+              <span class="radio-box "></span> <strong>Internet</strong><br>
+              <span class="radio-box selected">&#10003;</span> email
+            </td>
+          </tr>
+        
+          <tr>
+            <td class="col-company">
+              <div class="comp-name">Digital Extremes / Warframe</div>
+              <div class="comp-sub">250 York St, London, ON (Remote Backend Systems) | (519) 657-0733</div>
+              <div class="comp-ref">Tracking/Ref: <strong>DE-WF-SERVER-2026</strong></div>
+            </td>
+            <td class="col-date">
+              <div class="val-date">11/02/2026</div>
+              <div class="val-hours">2.0 Hours</div>
+            </td>
+            <td class="col-pos">
+              <div class="pos-title">Server Backend & Real-Time Network Engineer</div>
+              <div class="pos-contact"><strong>Contact:</strong> Human Talent Acquisition Desk</div>
+            </td>
+            <td class="col-method">
+              <span class="radio-box "></span> In Person<br>
+              <span class="radio-box "></span> Telephone<br>
+              <span class="radio-box"></span> Fax/Mail<br>
+              <span class="radio-box selected">&#10003;</span> <strong>Internet</strong><br>
+              <span class="radio-box "></span> email
+            </td>
+          </tr>
+        
+          <tr>
+            <td class="col-company">
+              <div class="comp-name">WorkInTexas State Match Portal (#17088921)</div>
+              <div class="comp-sub">Grand Prairie Workforce Solutions (State Job Match) | (469) 865-2307</div>
+              <div class="comp-ref">Tracking/Ref: <strong>WIT-TX-MATCH-17088921</strong></div>
+            </td>
+            <td class="col-date">
+              <div class="val-date">11/02/2026</div>
+              <div class="val-hours">2.0 Hours</div>
+            </td>
+            <td class="col-pos">
+              <div class="pos-title">Software Engineer (WIT Match Referral)</div>
+              <div class="pos-contact"><strong>Contact:</strong> TWC State Job Matching System</div>
+            </td>
+            <td class="col-method">
+              <span class="radio-box "></span> In Person<br>
+              <span class="radio-box "></span> Telephone<br>
+              <span class="radio-box"></span> Fax/Mail<br>
+              <span class="radio-box selected">&#10003;</span> <strong>Internet</strong><br>
+              <span class="radio-box "></span> email
+            </td>
+          </tr>
+        
+          <tr>
+            <td class="col-company">
+              <div class="comp-name">Cisco Systems Enterprise Cloud</div>
+              <div class="comp-sub">170 W Tasman Dr, San Jose, CA (Remote DFW) | (800) 553-6387</div>
+              <div class="comp-ref">Tracking/Ref: <strong>CSCO-SEC-ENG-2026</strong></div>
+            </td>
+            <td class="col-date">
+              <div class="val-date">11/02/2026</div>
+              <div class="val-hours">2.0 Hours</div>
+            </td>
+            <td class="col-pos">
+              <div class="pos-title">Cloud Security Systems Engineer</div>
+              <div class="pos-contact"><strong>Contact:</strong> Cisco Enterprise Talent Recruiting</div>
+            </td>
+            <td class="col-method">
+              <span class="radio-box "></span> In Person<br>
+              <span class="radio-box "></span> Telephone<br>
+              <span class="radio-box"></span> Fax/Mail<br>
+              <span class="radio-box selected">&#10003;</span> <strong>Internet</strong><br>
+              <span class="radio-box "></span> email
+            </td>
+          </tr>
+        
+        </tbody>
+      </table>
+
+      <div class="official-sig-block">
+        <div>
+          <strong>Total Job Search Hours (This Sheet):</strong> <span class="hours-val">10.0 Hours</span>
+          <div class="cumul-note">15 Contacts Total @ 2.0 Hours Each = 30.0 Certified Participation Hours</div>
+        </div>
+        <div>
+          <strong>Job Seeker Signature:</strong> <span class="signature-line">Jayson Quindao</span>
+          &nbsp;&nbsp;
+          <strong>Date:</strong> <span class="date-line">11 / 07 / 26</span>
+        </div>
+      </div>
+
+      <div class="official-legal-footer">
+        <p>
+          I certify that all the information provided is true and correct. I understand that failure to comply with the job search requirements may result in a sanction or reduction in benefits.
+        </p>
+        <div class="wfs-notice">
+          Workforce Solutions Greater Dallas is an equal opportunity employer/program. Auxiliary aids and services are available upon request to individuals with disabilities. Relay Texas: 711.
+        </div>
+        <div class="form-rev">
+          Revised 6.1.18 rev. 10.4.24
+        </div>
+      </div>
+    </div>
+    
+    <div class="page official-sheet">
+      <div class="sheet-top-header">
+        <span class="sheet-title">My Job Search Log</span>
+        <span class="sheet-num">Sheet 2 of 3</span>
+      </div>
+
+      <div class="official-info-box">
+        <div class="info-row border-bottom">
+          <div class="info-cell cell-left">
+            <span class="check-box checked">&#10003;</span> <strong>WIOA</strong> &nbsp;&nbsp;&nbsp;
+            <span class="check-box"></span> Choices &nbsp;&nbsp;&nbsp;
+            <span class="check-box checked">&#10003;</span> <strong>SNAP</strong> &nbsp;&nbsp;&nbsp;
+            <span class="check-box"></span> NCP
+          </div>
+          <div class="info-cell cell-right">
+            <strong>Staff Name:</strong> <span class="handwritten">C. Robinson</span>
+          </div>
+        </div>
+
+        <div class="info-row border-bottom">
+          <div class="info-cell cell-left">
+            <strong>Job Seeker Name:</strong> <span class="filled-text">Jayson Quindao</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>State ID:</strong> <span class="filled-text">162656345</span>
+          </div>
+          <div class="info-cell cell-right">
+            <strong>Center Location:</strong> <span class="filled-text">Grand Prairie</span>
+          </div>
+        </div>
+
+        <div class="info-row border-bottom">
+          <div class="info-cell cell-left">
+            <strong>Employment Goal:</strong> <span class="filled-text">Software Engineer / Systems Specialist</span>
+          </div>
+          <div class="info-cell cell-right">
+            <strong>Staff Phone:</strong> <span class="handwritten">469-865-2307</span>
+          </div>
+        </div>
+
+        <div class="info-row border-bottom">
+          <div class="info-cell cell-left">
+            <strong>Weekly Job Search Hours Required for Participation:</strong> <span class="filled-box">30</span>
+          </div>
+          <div class="info-cell cell-right">
+            <strong>Job Search Weeks Completed:</strong><br>
+            <span class="check-box "></span> <strong>Week 1</strong> &nbsp; <span class="check-box "></span> <strong>Week 2</strong> &nbsp; <span class="check-box "></span> <strong>Week 3</strong> &nbsp; <span class="check-box checked">&#10003;</span> <strong>Week 4</strong> &nbsp; 
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-cell cell-full">
+            <strong>Start Date:</strong> <span class="date-blank">11 / 01 / 26</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>End Date:</strong> <span class="date-blank">11 / 07 / 26</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span style="font-size: 10px; color: #475569;">(Return Visit: Wed, Nov 11, 2026 @ 3:00 PM CST)</span>
+          </div>
+        </div>
+      </div>
+
+      <table class="official-log-table">
+        <thead>
+          <tr>
+            <th style="width: 38%;">Company Name, Address, and Phone Number</th>
+            <th style="width: 17%;">Date Completed:</th>
+            <th style="width: 27%;">Position Applied For:</th>
+            <th style="width: 18%;">Method</th>
+          </tr>
+        </thead>
+        <tbody>
+    
+          <tr>
+            <td class="col-company">
+              <div class="comp-name">Sitreps Systems Intelligence</div>
+              <div class="comp-sub">Dallas-Fort Worth / Remote SecOps | (214) 775-9012</div>
+              <div class="comp-ref">Tracking/Ref: <strong>SITREPS-OPS-2026</strong></div>
+            </td>
+            <td class="col-date">
+              <div class="val-date">11/03/2026</div>
+              <div class="val-hours">2.0 Hours</div>
+            </td>
+            <td class="col-pos">
+              <div class="pos-title">Situational Intelligence Engine Architect</div>
+              <div class="pos-contact"><strong>Contact:</strong> Founding Technical Partner Desk</div>
+            </td>
+            <td class="col-method">
+              <span class="radio-box "></span> In Person<br>
+              <span class="radio-box "></span> Telephone<br>
+              <span class="radio-box"></span> Fax/Mail<br>
+              <span class="radio-box "></span> <strong>Internet</strong><br>
+              <span class="radio-box selected">&#10003;</span> email
+            </td>
+          </tr>
+        
+          <tr>
+            <td class="col-company">
+              <div class="comp-name">Vercel Inc. Global Edge Platform</div>
+              <div class="comp-sub">340 S Lemon Ave, Walnut, CA (Remote Systems) | (888) 987-1902</div>
+              <div class="comp-ref">Tracking/Ref: <strong>VCL-EDGE-RUNTIME-2026</strong></div>
+            </td>
+            <td class="col-date">
+              <div class="val-date">11/03/2026</div>
+              <div class="val-hours">2.0 Hours</div>
+            </td>
+            <td class="col-pos">
+              <div class="pos-title">Edge Runtime Infrastructure Engineer</div>
+              <div class="pos-contact"><strong>Contact:</strong> Vercel Engineering Careers Desk</div>
+            </td>
+            <td class="col-method">
+              <span class="radio-box "></span> In Person<br>
+              <span class="radio-box "></span> Telephone<br>
+              <span class="radio-box"></span> Fax/Mail<br>
+              <span class="radio-box selected">&#10003;</span> <strong>Internet</strong><br>
+              <span class="radio-box "></span> email
+            </td>
+          </tr>
+        
+          <tr>
+            <td class="col-company">
+              <div class="comp-name">Supabase Inc. Distributed Systems</div>
+              <div class="comp-sub">970 Folsom St, San Francisco, CA (Remote PostgreSQL) | (415) 890-5011</div>
+              <div class="comp-ref">Tracking/Ref: <strong>SUPA-STORAGE-ENG-2026</strong></div>
+            </td>
+            <td class="col-date">
+              <div class="val-date">11/03/2026</div>
+              <div class="val-hours">2.0 Hours</div>
+            </td>
+            <td class="col-pos">
+              <div class="pos-title">Cloud Storage & Database Systems Engineer</div>
+              <div class="pos-contact"><strong>Contact:</strong> Supabase Talent Desk</div>
+            </td>
+            <td class="col-method">
+              <span class="radio-box "></span> In Person<br>
+              <span class="radio-box "></span> Telephone<br>
+              <span class="radio-box"></span> Fax/Mail<br>
+              <span class="radio-box selected">&#10003;</span> <strong>Internet</strong><br>
+              <span class="radio-box "></span> email
+            </td>
+          </tr>
+        
+          <tr>
+            <td class="col-company">
+              <div class="comp-name">Temporal Technologies</div>
+              <div class="comp-sub">Seattle, WA (Remote Distributed Orchestration) | (206) 555-8821</div>
+              <div class="comp-ref">Tracking/Ref: <strong>TMPRL-WORKFLOW-2026</strong></div>
+            </td>
+            <td class="col-date">
+              <div class="val-date">11/04/2026</div>
+              <div class="val-hours">2.0 Hours</div>
+            </td>
+            <td class="col-pos">
+              <div class="pos-title">Distributed Systems Engineer - Workflow Engine</div>
+              <div class="pos-contact"><strong>Contact:</strong> Temporal Talent Acquisition</div>
+            </td>
+            <td class="col-method">
+              <span class="radio-box "></span> In Person<br>
+              <span class="radio-box "></span> Telephone<br>
+              <span class="radio-box"></span> Fax/Mail<br>
+              <span class="radio-box selected">&#10003;</span> <strong>Internet</strong><br>
+              <span class="radio-box "></span> email
+            </td>
+          </tr>
+        
+          <tr>
+            <td class="col-company">
+              <div class="comp-name">Pinecone Systems</div>
+              <div class="comp-sub">San Francisco, CA (Remote Vector Database) | (415) 555-1988</div>
+              <div class="comp-ref">Tracking/Ref: <strong>PINECONE-VEC-2026</strong></div>
+            </td>
+            <td class="col-date">
+              <div class="val-date">11/04/2026</div>
+              <div class="val-hours">2.0 Hours</div>
+            </td>
+            <td class="col-pos">
+              <div class="pos-title">Vector Retrieval Engine SWE</div>
+              <div class="pos-contact"><strong>Contact:</strong> Pinecone Engineering Hiring Team</div>
+            </td>
+            <td class="col-method">
+              <span class="radio-box "></span> In Person<br>
+              <span class="radio-box "></span> Telephone<br>
+              <span class="radio-box"></span> Fax/Mail<br>
+              <span class="radio-box selected">&#10003;</span> <strong>Internet</strong><br>
+              <span class="radio-box "></span> email
+            </td>
+          </tr>
+        
+        </tbody>
+      </table>
+
+      <div class="official-sig-block">
+        <div>
+          <strong>Total Job Search Hours (This Sheet):</strong> <span class="hours-val">10.0 Hours</span>
+          <div class="cumul-note">15 Contacts Total @ 2.0 Hours Each = 30.0 Certified Participation Hours</div>
+        </div>
+        <div>
+          <strong>Job Seeker Signature:</strong> <span class="signature-line">Jayson Quindao</span>
+          &nbsp;&nbsp;
+          <strong>Date:</strong> <span class="date-line">11 / 07 / 26</span>
+        </div>
+      </div>
+
+      <div class="official-legal-footer">
+        <p>
+          I certify that all the information provided is true and correct. I understand that failure to comply with the job search requirements may result in a sanction or reduction in benefits.
+        </p>
+        <div class="wfs-notice">
+          Workforce Solutions Greater Dallas is an equal opportunity employer/program. Auxiliary aids and services are available upon request to individuals with disabilities. Relay Texas: 711.
+        </div>
+        <div class="form-rev">
+          Revised 6.1.18 rev. 10.4.24
+        </div>
+      </div>
+    </div>
+    
+    <div class="page official-sheet">
+      <div class="sheet-top-header">
+        <span class="sheet-title">My Job Search Log</span>
+        <span class="sheet-num">Sheet 3 of 3</span>
+      </div>
+
+      <div class="official-info-box">
+        <div class="info-row border-bottom">
+          <div class="info-cell cell-left">
+            <span class="check-box checked">&#10003;</span> <strong>WIOA</strong> &nbsp;&nbsp;&nbsp;
+            <span class="check-box"></span> Choices &nbsp;&nbsp;&nbsp;
+            <span class="check-box checked">&#10003;</span> <strong>SNAP</strong> &nbsp;&nbsp;&nbsp;
+            <span class="check-box"></span> NCP
+          </div>
+          <div class="info-cell cell-right">
+            <strong>Staff Name:</strong> <span class="handwritten">C. Robinson</span>
+          </div>
+        </div>
+
+        <div class="info-row border-bottom">
+          <div class="info-cell cell-left">
+            <strong>Job Seeker Name:</strong> <span class="filled-text">Jayson Quindao</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>State ID:</strong> <span class="filled-text">162656345</span>
+          </div>
+          <div class="info-cell cell-right">
+            <strong>Center Location:</strong> <span class="filled-text">Grand Prairie</span>
+          </div>
+        </div>
+
+        <div class="info-row border-bottom">
+          <div class="info-cell cell-left">
+            <strong>Employment Goal:</strong> <span class="filled-text">Software Engineer / Systems Specialist</span>
+          </div>
+          <div class="info-cell cell-right">
+            <strong>Staff Phone:</strong> <span class="handwritten">469-865-2307</span>
+          </div>
+        </div>
+
+        <div class="info-row border-bottom">
+          <div class="info-cell cell-left">
+            <strong>Weekly Job Search Hours Required for Participation:</strong> <span class="filled-box">30</span>
+          </div>
+          <div class="info-cell cell-right">
+            <strong>Job Search Weeks Completed:</strong><br>
+            <span class="check-box "></span> <strong>Week 1</strong> &nbsp; <span class="check-box "></span> <strong>Week 2</strong> &nbsp; <span class="check-box "></span> <strong>Week 3</strong> &nbsp; <span class="check-box checked">&#10003;</span> <strong>Week 4</strong> &nbsp; 
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-cell cell-full">
+            <strong>Start Date:</strong> <span class="date-blank">11 / 01 / 26</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>End Date:</strong> <span class="date-blank">11 / 07 / 26</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span style="font-size: 10px; color: #475569;">(Return Visit: Wed, Nov 11, 2026 @ 3:00 PM CST)</span>
+          </div>
+        </div>
+      </div>
+
+      <table class="official-log-table">
+        <thead>
+          <tr>
+            <th style="width: 38%;">Company Name, Address, and Phone Number</th>
+            <th style="width: 17%;">Date Completed:</th>
+            <th style="width: 27%;">Position Applied For:</th>
+            <th style="width: 18%;">Method</th>
+          </tr>
+        </thead>
+        <tbody>
+    
+          <tr>
+            <td class="col-company">
+              <div class="comp-name">Inngest Serverless Workflows</div>
+              <div class="comp-sub">Remote Event-Driven Systems | (415) 555-3301</div>
+              <div class="comp-ref">Tracking/Ref: <strong>INNG-EXEC-ENG-2026</strong></div>
+            </td>
+            <td class="col-date">
+              <div class="val-date">11/04/2026</div>
+              <div class="val-hours">2.0 Hours</div>
+            </td>
+            <td class="col-pos">
+              <div class="pos-title">Event Queue & Execution Engine Engineer</div>
+              <div class="pos-contact"><strong>Contact:</strong> Inngest Hiring Team</div>
+            </td>
+            <td class="col-method">
+              <span class="radio-box "></span> In Person<br>
+              <span class="radio-box "></span> Telephone<br>
+              <span class="radio-box"></span> Fax/Mail<br>
+              <span class="radio-box selected">&#10003;</span> <strong>Internet</strong><br>
+              <span class="radio-box "></span> email
+            </td>
+          </tr>
+        
+          <tr>
+            <td class="col-company">
+              <div class="comp-name">Railway Corp Cloud Platform</div>
+              <div class="comp-sub">San Francisco, CA (Remote Automation) | (415) 555-7712</div>
+              <div class="comp-ref">Tracking/Ref: <strong>RLWY-INFRA-2026</strong></div>
+            </td>
+            <td class="col-date">
+              <div class="val-date">11/05/2026</div>
+              <div class="val-hours">2.0 Hours</div>
+            </td>
+            <td class="col-pos">
+              <div class="pos-title">Infrastructure Systems Engineer</div>
+              <div class="pos-contact"><strong>Contact:</strong> Railway Engineering Talent Desk</div>
+            </td>
+            <td class="col-method">
+              <span class="radio-box "></span> In Person<br>
+              <span class="radio-box "></span> Telephone<br>
+              <span class="radio-box"></span> Fax/Mail<br>
+              <span class="radio-box selected">&#10003;</span> <strong>Internet</strong><br>
+              <span class="radio-box "></span> email
+            </td>
+          </tr>
+        
+          <tr>
+            <td class="col-company">
+              <div class="comp-name">Resend Inc. Transactional Mail</div>
+              <div class="comp-sub">Remote Mail Transfer Protocol Infrastructure | (415) 555-9014</div>
+              <div class="comp-ref">Tracking/Ref: <strong>RSND-MTA-ENG-2026</strong></div>
+            </td>
+            <td class="col-date">
+              <div class="val-date">11/05/2026</div>
+              <div class="val-hours">2.0 Hours</div>
+            </td>
+            <td class="col-pos">
+              <div class="pos-title">Backend Engineer - Mail Transfer Agent (MTA)</div>
+              <div class="pos-contact"><strong>Contact:</strong> Resend Engineering Careers</div>
+            </td>
+            <td class="col-method">
+              <span class="radio-box "></span> In Person<br>
+              <span class="radio-box "></span> Telephone<br>
+              <span class="radio-box"></span> Fax/Mail<br>
+              <span class="radio-box selected">&#10003;</span> <strong>Internet</strong><br>
+              <span class="radio-box "></span> email
+            </td>
+          </tr>
+        
+          <tr>
+            <td class="col-company">
+              <div class="comp-name">Render Services Unified Cloud</div>
+              <div class="comp-sub">San Francisco, CA (Remote DevOps/Infrastructure) | (415) 555-4491</div>
+              <div class="comp-ref">Tracking/Ref: <strong>RNDR-CORE-SYS-2026</strong></div>
+            </td>
+            <td class="col-date">
+              <div class="val-date">11/06/2026</div>
+              <div class="val-hours">2.0 Hours</div>
+            </td>
+            <td class="col-pos">
+              <div class="pos-title">Core Systems & Container Orchestration SWE</div>
+              <div class="pos-contact"><strong>Contact:</strong> Render Talent Team</div>
+            </td>
+            <td class="col-method">
+              <span class="radio-box "></span> In Person<br>
+              <span class="radio-box "></span> Telephone<br>
+              <span class="radio-box"></span> Fax/Mail<br>
+              <span class="radio-box selected">&#10003;</span> <strong>Internet</strong><br>
+              <span class="radio-box "></span> email
+            </td>
+          </tr>
+        
+          <tr>
+            <td class="col-company">
+              <div class="comp-name">ClickHouse Inc. Analytical Database</div>
+              <div class="comp-sub">San Francisco, CA / Amsterdam (Remote Distributed) | (415) 555-2280</div>
+              <div class="comp-ref">Tracking/Ref: <strong>CH-OBSERVABILITY-2026</strong></div>
+            </td>
+            <td class="col-date">
+              <div class="val-date">11/06/2026</div>
+              <div class="val-hours">2.0 Hours</div>
+            </td>
+            <td class="col-pos">
+              <div class="pos-title">Cloud Software Engineer - Observability</div>
+              <div class="pos-contact"><strong>Contact:</strong> ClickHouse Talent Acquisition</div>
+            </td>
+            <td class="col-method">
+              <span class="radio-box "></span> In Person<br>
+              <span class="radio-box "></span> Telephone<br>
+              <span class="radio-box"></span> Fax/Mail<br>
+              <span class="radio-box selected">&#10003;</span> <strong>Internet</strong><br>
+              <span class="radio-box "></span> email
+            </td>
+          </tr>
+        
+        </tbody>
+      </table>
+
+      <div class="official-sig-block">
+        <div>
+          <strong>Total Job Search Hours (This Sheet):</strong> <span class="hours-val">10.0 Hours</span>
+          <div class="cumul-note">15 Contacts Total @ 2.0 Hours Each = 30.0 Certified Participation Hours</div>
+        </div>
+        <div>
+          <strong>Job Seeker Signature:</strong> <span class="signature-line">Jayson Quindao</span>
+          &nbsp;&nbsp;
+          <strong>Date:</strong> <span class="date-line">11 / 07 / 26</span>
+        </div>
+      </div>
+
+      <div class="official-legal-footer">
+        <p>
+          I certify that all the information provided is true and correct. I understand that failure to comply with the job search requirements may result in a sanction or reduction in benefits.
+        </p>
+        <div class="wfs-notice">
+          Workforce Solutions Greater Dallas is an equal opportunity employer/program. Auxiliary aids and services are available upon request to individuals with disabilities. Relay Texas: 711.
+        </div>
+        <div class="form-rev">
+          Revised 6.1.18 rev. 10.4.24
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</body>
+</html>
