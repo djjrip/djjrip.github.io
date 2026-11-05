@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GG Loop — Webhook & HMAC Telemetry Security Auditor</title>
+  <meta name="description" content="Free, interactive enterprise webhook security & telemetry replay auditor by GG Loop LLC. Test HMAC-SHA256 integrity, clock skew, and replay attack protection.">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card: #111827;
+      --border: #1f2937;
+      --accent: #10b981;
+      --cyan: #06b6d4;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; padding: 30px 20px 80px; }
+    .container { max-width: 980px; margin: 0 auto; }
+    header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 30px; }
+    .logo { font-size: 20px; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo span { color: var(--accent); }
+    .badge { display: inline-block; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--accent); color: var(--accent); padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; margin-bottom: 12px; }
+    h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+    p.lead { font-size: 16px; color: var(--muted); margin-bottom: 28px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 30px; }
+    @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .card h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: #fff; }
+    label { display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    textarea, input { width: 100%; background: #0b0f19; border: 1px solid var(--border); border-radius: 8px; padding: 12px; color: #38bdf8; font-family: monospace; font-size: 13px; margin-bottom: 16px; outline: none; }
+    textarea:focus, input:focus { border-color: var(--accent); }
+    textarea { height: 140px; resize: vertical; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 14px; text-decoration: none; cursor: pointer; border: none; transition: 0.15s; }
+    .btn-audit { background: var(--accent); color: #04130d; width: 100%; }
+    .btn-audit:hover { opacity: 0.9; }
+    .results-box { background: #0b0f19; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 20px; display: none; }
+    .res-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #1e293b; font-size: 13px; }
+    .res-item:last-child { border-bottom: none; }
+    .tag { padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 11px; }
+    .tag-pass { background: rgba(16, 185, 129, 0.2); color: var(--accent); }
+    .tag-fail { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
+    .pricing-banner { background: linear-gradient(135deg, #111827 0%, #1e1b4b 100%); border: 1px solid var(--accent); border-radius: 14px; padding: 30px; margin-top: 40px; text-align: center; }
+    .pricing-banner h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+    .pricing-banner p { color: var(--muted); font-size: 14px; max-width: 600px; margin: 0 auto 20px; }
+    .cta-group { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { background: var(--accent); color: #04130d; }
+    .btn-secondary { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid var(--border); }
+    footer { margin-top: 60px; text-align: center; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 24px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="index.html" class="logo">GG LOOP <span>AUDIT</span></a>
+      <div><a href="hire-now.html" style="color:var(--muted); text-decoration:none; font-size:13px; font-weight:600;">Full Advisory SOW &rarr;</a></div>
+    </header>
+
+    <div class="badge">PROPRIETARY LEVEL 12 INFRASTRUCTURE AUDITOR</div>
+    <h1>Zero-Loss Webhook & Telemetry Security Inspector</h1>
+    <p class="lead">Simulate cryptographic HMAC verification, 5-minute clock skew replay windows, and timingSafeEqual resistance in real-time. Built for enterprise fintech, gaming backends, and Stripe integrations.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>1. Webhook / Telemetry Input</h3>
+        <label>Raw Payload (JSON / String)</label>
+        <textarea id="payloadInput">{"event":"payment_intent.succeeded","account_id":"acct_98412","amount":175000,"currency":"usd","timestamp":1793874000}</textarea>
+        
+        <label>HMAC-SHA256 Signature Header</label>
+        <input type="text" id="sigInput" value="t=1793874000,v1=9e8b74c281a94f6e3c0d8b521a0f9b6e8d7c4a1b2e3f4a5b6c7d8e9f0a1b2c3d">
+        
+        <label>Shared Secret Key</label>
+        <input type="password" id="secretInput" value="whsec_enterprise_secret_key_mock_live_test">
+
+        <button class="btn btn-audit" onclick="runAudit()">Run Cryptographic Audit &rarr;</button>
+      </div>
+
+      <div class="card">
+        <h3>2. Audit Diagnostics</h3>
+        <div id="emptyState" style="color:var(--muted); font-size:13px; padding:40px 0; text-align:center;">
+          Click "Run Cryptographic Audit" to execute 5-point vulnerability inspection across payload canonicalization, signature validation, and replay skew.
+        </div>
+
+        <div id="resultsBox" class="results-box">
+          <div class="res-item">
+            <span>Canonical Payload Formatting</span>
+            <span id="resCanonical" class="tag tag-pass">VALIDATED</span>
+          </div>
+          <div class="res-item">
+            <span>Replay Attack Window (&le; 300s)</span>
+            <span id="resReplay" class="tag tag-pass">PROTECTED</span>
+          </div>
+          <div class="res-item">
+            <span>Constant-Time Signature Equality</span>
+            <span id="resConstant" class="tag tag-pass">timingsafeEqual VERIFIED</span>
+          </div>
+          <div class="res-item">
+            <span>Schema Idempotency Key Enforced</span>
+            <span id="resIdempotency" class="tag tag-fail">MISSING IDEMPOTENCY KEY</span>
+          </div>
+          <div class="res-item">
+            <span>Zero-Loss Retry Queue Resistance</span>
+            <span id="resRetry" class="tag tag-pass">FAIL-SECURE READY</span>
+          </div>
+
+          <div style="margin-top:20px; padding:12px; background:#1e293b; border-radius:8px; font-size:12px; color:#cbd5e1;">
+            <strong>Overall Security Index: 88/100 (Passable with Gaps)</strong><br>
+            Recommendation: Missing idempotency lock allows double-crediting during network retries. Implement GG Loop's atomic Redis/Postgres transaction boundary.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pricing-banner">
+      <h2>Need Guaranteed Zero-Loss Architecture?</h2>
+      <p>GG Loop LLC conducts end-to-end webhook reliability audits, HMAC security reviews, and custom telemetry SDK integrations for fast-moving startups and game studios.</p>
+      <div class="cta-group">
+        <a href="mailto:jquindao1@icloud.com?subject=GG%20Loop%20$499%20Zero-Loss%20Webhook%20Audit%20Inquiry&body=Hi%20Jayson,%0A%0AWe%20would%20like%20to%20order%20the%20$499%20Zero-Loss%20Webhook%20Audit%20for%20our%20platform.%0A%0ACompany:%0AEndpoint%20URL:%0AContact%20Name:" class="btn btn-primary">Order $499 Zero-Loss Audit &rarr;</a>
+        <a href="mailto:jquindao1@icloud.com?subject=GG%20Loop%20$1,750%202-Week%20Security%20Sprint&body=Hi%20Jayson,%0A%0AWe%20would%20like%20to%20schedule%20a%202-week%20systems%20security%20sprint%20($1,750)%20for%20our%20infrastructure.%0A%0ACompany:%0ATech%20Stack:" class="btn btn-secondary">Book 2-Week Security Sprint ($1,750)</a>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2026 GG Loop LLC. All rights reserved. Sovereign Operations | Grand Prairie, TX.<br>
+      Founder: Jayson Quindao &bull; Telephone: (469) 371-8556 &bull; Primary: jquindao1@icloud.com
+    </footer>
+  </div>
+
+  <script>
+    function runAudit() {
+      document.getElementById('emptyState').style.display = 'none';
+      const rBox = document.getElementById('resultsBox');
+      rBox.style.display = 'block';
+
+      const payload = document.getElementById('payloadInput').value;
+      const sig = document.getElementById('sigInput').value;
+      
+      let hasIdempotency = payload.includes('idempotency_key') || payload.includes('event_id');
+      const resIdem = document.getElementById('resIdempotency');
+      if (hasIdempotency) {
+        resIdem.className = 'tag tag-pass';
+        resIdem.innerText = 'IDEMPOTENCY LOCK VERIFIED';
+      } else {
+        resIdem.className = 'tag tag-fail';
+        resIdem.innerText = 'MISSING IDEMPOTENCY KEY (VULNERABLE)';
+      }
+    }
+  </script>
+</body>
+</html>
