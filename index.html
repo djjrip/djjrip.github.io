@@ -254,13 +254,14 @@
     </header>
 
     <div class="hero">
-      <div class="badge">&bull; Active Open-Source Contributor (Turso / libSQL) & Systems Architect</div>
+      <div class="badge">&bull; Upstream Contributor: Turso (libSQL) &bull; Qdrant Vector Engine &bull; Systems Architect</div>
       <h1>Full-Stack Systems Engineer & Cloud Architect.</h1>
       <p>
         Author of upstream memory safety patches to <strong>Turso's libSQL engine</strong>, high-performance process telemetry in Rust, and type-safe distributed platforms in TypeScript, Node.js, and AWS.
       </p>
       <div class="hero-actions">
-        <a href="https://github.com/tursodatabase/libsql/pull/2309" class="btn btn-primary" target="_blank">Inspect Turso PR #2309 &rarr;</a>
+        <a href="https://github.com/qdrant/qdrant/pull/11428" class="btn btn-primary" target="_blank">Inspect Qdrant PR #11428 &rarr;</a>
+        <a href="https://github.com/tursodatabase/libsql/pull/2309" class="btn btn-outline" target="_blank">Inspect Turso PR #2309 &rarr;</a>
         <a href="audit.html" class="btn btn-outline">Launch HMAC Auditor</a>
         <a href="Jayson_Quindao_Resume.pdf" class="btn btn-outline" target="_blank">Download Resume (PDF)</a>
         <a href="mailto:jquindao1@icloud.com" class="btn btn-outline">Contact Directly</a>
@@ -290,6 +291,27 @@
           </div>
           <div class="card-links">
             <a href="https://github.com/tursodatabase/libsql/pull/2309" target="_blank">View Live Pull Request #2309 on GitHub &rarr;</a>
+          </div>
+        </div>
+
+        <!-- PROJECT: QDRANT VECTOR ENGINE UPSTREAM PR -->
+        <div class="card" style="border-color: rgba(239, 68, 68, 0.4); background: linear-gradient(180deg, rgba(239, 68, 68, 0.05) 0%, var(--surface) 100%);">
+          <div>
+            <div class="card-tag">VECTOR DATABASES // RUST DISTRIBUTED ENGINE</div>
+            <h3>Qdrant Vector Engine — Zero-Count Exact Facet Omission</h3>
+            <p>
+              Resolved an open regression in Qdrant's embedded Edge shard (<a href="https://github.com/qdrant/qdrant/issues/11409" target="_blank" style="color:var(--accent);">#11409</a>) where exact facet counts listed moved or deleted values with <code>count: 0</code>, violating facet parity with approximate queries. Implemented live positive-count filtering in <code>exact_facet</code> and authored regression tests verifying zero-count hits are omitted after points update.
+            </p>
+            <div class="tech-pill-list">
+              <span class="pill">Rust</span>
+              <span class="pill">Qdrant Edge</span>
+              <span class="pill">Vector Search</span>
+              <span class="pill">Upstream PR #11428</span>
+              <span class="pill">Target: dev</span>
+            </div>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/qdrant/qdrant/pull/11428" target="_blank">View Live Pull Request #11428 on GitHub &rarr;</a>
           </div>
         </div>
 
