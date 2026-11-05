@@ -247,21 +247,23 @@
       <a href="#" class="logo">jayson<span>.quindao</span></a>
       <nav>
         <a href="#projects">Systems & Code</a>
-        <a href="#architecture">Architecture</a>
+        <a href="audit.html">HMAC Auditor</a>
+        <a href="dj.html">Live Sound & DJ Rig</a>
         <a href="Jayson_Quindao_Resume.pdf" target="_blank">Resume (PDF)</a>
         <a href="https://github.com/djjrip" target="_blank">GitHub</a>
       </nav>
     </header>
 
     <div class="hero">
-      <div class="badge">&bull; Available for Senior / Staff Remote Roles</div>
+      <div class="badge">&bull; Active Open-Source Contributor (Turso / libSQL) & Systems Architect</div>
       <h1>Full-Stack Systems Engineer & Cloud Architect.</h1>
       <p>
-        Building resilient, high-concurrency distributed systems, low-level process telemetry in Rust, and type-safe full-stack platforms in TypeScript, Node.js, and AWS.
+        Author of upstream memory safety patches to <strong>Turso's libSQL engine</strong>, high-performance process telemetry in Rust, and type-safe distributed platforms in TypeScript, Node.js, and AWS.
       </p>
       <div class="hero-actions">
-        <a href="Jayson_Quindao_Resume.pdf" class="btn btn-primary" target="_blank">Download Resume (PDF)</a>
-        <a href="https://github.com/djjrip" class="btn btn-outline" target="_blank">View GitHub Profile</a>
+        <a href="https://github.com/tursodatabase/libsql/pull/2309" class="btn btn-primary" target="_blank">Inspect Turso PR #2309 &rarr;</a>
+        <a href="audit.html" class="btn btn-outline">Launch HMAC Auditor</a>
+        <a href="Jayson_Quindao_Resume.pdf" class="btn btn-outline" target="_blank">Download Resume (PDF)</a>
         <a href="mailto:jquindao1@icloud.com" class="btn btn-outline">Contact Directly</a>
       </div>
     </div>
@@ -271,6 +273,47 @@
       <div class="section-sub">Selected open-source engines and production architectures authored by Jayson Quindao.</div>
       
       <div class="grid">
+        <!-- PROJECT 1: TURSO / LIBSQL UPSTREAM PR -->
+        <div class="card" style="border-color: rgba(56, 189, 248, 0.4); background: linear-gradient(180deg, rgba(56, 189, 248, 0.05) 0%, var(--surface) 100%);">
+          <div>
+            <div class="card-tag">DISTRIBUTED DATABASES // RUST FFI ENGINE</div>
+            <h3>Turso (libSQL) Engine — Memory Leak Deallocation</h3>
+            <p>
+              Diagnosed and resolved an upstream C FFI memory leak in SQLite update hooks (<a href="https://github.com/tursodatabase/libsql/issues/2295" target="_blank" style="color:var(--accent);">#2295</a>). Implemented context deallocation in Rust via <code>Box::from_raw</code> on connection disconnect, authored an integration regression test verifying captured <code>Arc</code> pointers are dropped on close, and gated Windows build dependencies. Verified clean across 28 integration tests.
+            </p>
+            <div class="tech-pill-list">
+              <span class="pill">Rust 1.85</span>
+              <span class="pill">SQLite C FFI</span>
+              <span class="pill">Memory Safety</span>
+              <span class="pill">Upstream PR #2309</span>
+              <span class="pill">28/28 Tests Passing</span>
+            </div>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/tursodatabase/libsql/pull/2309" target="_blank">View Live Pull Request #2309 on GitHub &rarr;</a>
+          </div>
+        </div>
+
+        <!-- PROJECT 2: LIVE HMAC AUDITOR -->
+        <div class="card">
+          <div>
+            <div class="card-tag">INTERACTIVE TOOL // CRYPTOGRAPHIC INTEGRITY</div>
+            <h3>Enterprise Webhook & HMAC Telemetry Auditor</h3>
+            <p>
+              Live interactive developer security tool for auditing webhook delivery integrity. Real-time validation of canonical HMAC-SHA256 signatures, detection of expired replay attacks within a 5-minute sliding window, and payload tamper isolation.
+            </p>
+            <div class="tech-pill-list">
+              <span class="pill">Web Crypto API</span>
+              <span class="pill">HMAC-SHA256</span>
+              <span class="pill">Replay Detection</span>
+              <span class="pill">Live Interactive Tool</span>
+            </div>
+          </div>
+          <div class="card-links">
+            <a href="audit.html" target="_blank">Launch Live Security Auditor &rarr;</a>
+          </div>
+        </div>
+
         <!-- PROJECT 1 -->
         <div class="card">
           <div>
