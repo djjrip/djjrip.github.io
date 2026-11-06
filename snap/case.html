@@ -3,528 +3,544 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case #1050282557 — Jayson Quindao</title>
+  <title>Formal Good Cause Notice — Case #1050282557</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0a0a0f;
-      color: #e8e8f0;
-      min-height: 100vh;
-      padding: 16px;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: #f4f1ec;
+      color: #1a1a1a;
+      padding: 20px 16px 40px;
+      font-size: 14px;
+      line-height: 1.7;
     }
 
-    .hero {
-      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0c1445 100%);
-      border: 1px solid #2d2d6b;
-      border-radius: 20px;
-      padding: 24px 20px;
-      margin-bottom: 16px;
+    .page {
+      background: #ffffff;
+      max-width: 680px;
+      margin: 0 auto;
+      border: 1px solid #c8c0b0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+      padding: 40px 36px;
+    }
+
+    /* Letterhead */
+    .letterhead {
+      border-bottom: 3px double #1a1a1a;
+      padding-bottom: 16px;
+      margin-bottom: 20px;
       text-align: center;
     }
 
-    .badge {
-      display: inline-block;
-      background: #22c55e;
-      color: white;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 20px;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-    }
-
-    .hero h1 {
+    .letterhead .sender-name {
       font-size: 20px;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1.3;
-      margin-bottom: 6px;
-    }
-
-    .hero p {
-      font-size: 13px;
-      color: #94a3b8;
-      margin-bottom: 16px;
-    }
-
-    .id-strip {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .id-pill {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 10px 12px;
-      text-align: left;
-    }
-
-    .id-pill .label {
-      font-size: 10px;
-      color: #64748b;
+      font-weight: bold;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 3px;
     }
 
-    .id-pill .val {
-      font-size: 13px;
-      font-weight: 700;
-      color: #e2e8f0;
-      font-family: monospace;
-    }
-
-    /* Stats row */
-    .stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .stat-card {
-      background: #111827;
-      border: 1px solid #1f2937;
-      border-radius: 14px;
-      padding: 16px 10px;
-      text-align: center;
-    }
-
-    .stat-num {
-      font-size: 28px;
-      font-weight: 900;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .stat-label {
-      font-size: 11px;
-      color: #6b7280;
-    }
-
-    /* Section cards */
-    .section {
-      background: #111827;
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 12px;
-      border: 1px solid #1f2937;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 16px;
-    }
-
-    .section-icon {
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-
-    .section-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: #f1f5f9;
-      line-height: 1.3;
-    }
-
-    .section-cite {
-      font-size: 11px;
-      color: #4ade80;
-      font-family: monospace;
+    .letterhead .sender-title {
+      font-size: 12px;
+      color: #555;
       margin-top: 2px;
     }
 
-    .section-badge {
-      margin-left: auto;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 20px;
-      flex-shrink: 0;
-    }
-
-    .section-body {
-      padding: 0 16px 16px;
-    }
-
-    .item {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-      font-size: 13px;
-      color: #cbd5e1;
-      line-height: 1.5;
-    }
-
-    .item-num {
-      font-weight: 800;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .chip {
-      display: inline-block;
-      font-family: monospace;
+    .letterhead .sender-contact {
       font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 6px;
+      color: #555;
       margin-top: 4px;
+      font-family: 'Courier New', monospace;
     }
 
-    .pdf-link {
-      display: block;
-      background: rgba(59,130,246,0.15);
-      border: 1px solid rgba(59,130,246,0.3);
-      border-radius: 10px;
+    /* Stamp row */
+    .stamp-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .stamp-box {
+      border: 2px solid #1a1a1a;
+      padding: 6px 12px;
+      font-size: 11px;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .stamp-box .stamp-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #555;
+    }
+
+    .stamp-box .stamp-val {
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .confidential {
+      border: 2px solid #8b0000;
+      color: #8b0000;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Date + To block */
+    .meta-block {
+      margin-bottom: 20px;
+      font-size: 13px;
+    }
+
+    .meta-block .date-line {
+      margin-bottom: 14px;
+    }
+
+    .meta-block .to-label {
+      font-weight: bold;
+      text-decoration: underline;
+      margin-bottom: 4px;
+    }
+
+    .meta-block .to-party {
+      margin-left: 20px;
+      margin-bottom: 6px;
+    }
+
+    .meta-block .to-party .name { font-weight: bold; }
+    .meta-block .to-party .detail { color: #333; font-size: 12px; }
+
+    /* RE line */
+    .re-block {
+      border-left: 4px solid #1a1a1a;
       padding: 10px 14px;
-      font-family: monospace;
-      font-size: 12px;
-      color: #60a5fa;
-      text-decoration: none;
-      margin-top: 10px;
-      word-break: break-all;
+      margin-bottom: 24px;
+      background: #fafaf8;
+      font-size: 13px;
     }
 
-    .law-quote {
-      background: rgba(99,102,241,0.12);
-      border-left: 3px solid #818cf8;
-      border-radius: 0 8px 8px 0;
-      padding: 10px 12px;
+    .re-block strong { text-transform: uppercase; }
+
+    /* Opening */
+    .opening {
+      margin-bottom: 24px;
+      font-size: 13px;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 22px;
+    }
+
+    .section-heading {
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #1a1a1a;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+    }
+
+    .section-heading .section-num {
+      display: inline-block;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 11px;
+      padding: 1px 7px;
+      margin-right: 8px;
+    }
+
+    .cite {
+      font-family: 'Courier New', monospace;
       font-size: 12px;
-      color: #c7d2fe;
+      background: #f5f5f0;
+      border: 1px solid #ddd;
+      padding: 2px 6px;
+      white-space: nowrap;
+    }
+
+    ol.items {
+      padding-left: 20px;
+      font-size: 13px;
+    }
+
+    ol.items li {
+      margin-bottom: 10px;
+    }
+
+    .law-block {
+      background: #f9f8f5;
+      border-left: 3px solid #555;
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-size: 12px;
       font-style: italic;
+      color: #333;
+      font-family: 'Georgia', serif;
+    }
+
+    /* Compliance table */
+    .compliance-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
       margin: 10px 0;
     }
 
-    /* Escalation */
-    .escalation {
-      background: #111827;
-      border: 1px solid #1f2937;
-      border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 12px;
+    .compliance-table th {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 6px 10px;
+      text-align: left;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .escalation h2 {
-      font-size: 14px;
-      font-weight: 800;
-      color: #f87171;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    .compliance-table td {
+      border: 1px solid #ccc;
+      padding: 6px 10px;
+      vertical-align: top;
     }
 
-    .escalation-step {
+    .compliance-table tr:nth-child(even) td { background: #fafaf8; }
+
+    .pdf-ref {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: #0000cc;
+      word-break: break-all;
+    }
+
+    /* Escalation box */
+    .escalation-box {
+      border: 2px solid #1a1a1a;
+      margin: 22px 0;
+    }
+
+    .escalation-box .esc-header {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .escalation-box .esc-body {
+      padding: 12px 14px;
+      font-size: 12px;
+    }
+
+    .esc-step {
       display: flex;
       gap: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
       align-items: flex-start;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e0e0e0;
     }
 
-    .step-num {
-      background: #1f2937;
-      border-radius: 8px;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 14px;
+    .esc-step:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .esc-num {
+      font-weight: bold;
+      font-size: 16px;
+      color: #1a1a1a;
       flex-shrink: 0;
+      width: 20px;
+      font-family: 'Georgia', serif;
     }
 
-    .step-body .step-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: #f1f5f9;
-      margin-bottom: 3px;
+    .esc-content .esc-title {
+      font-weight: bold;
+      margin-bottom: 2px;
     }
 
-    .step-body .step-desc {
-      font-size: 12px;
-      color: #9ca3af;
+    .esc-content .esc-desc {
+      color: #444;
       line-height: 1.5;
     }
 
-    .prob-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-
-    .prob-label { font-size: 12px; color: #9ca3af; flex: 1; }
-
-    .prob-bar-wrap {
-      flex: 2;
-      background: #1f2937;
-      border-radius: 20px;
-      height: 8px;
-      overflow: hidden;
-    }
-
-    .prob-bar { height: 100%; border-radius: 20px; }
-
-    .prob-pct { font-size: 12px; font-weight: 700; width: 36px; text-align: right; }
-
-    /* Send gate */
-    .gate {
-      background: rgba(234,179,8,0.06);
-      border: 2px dashed #ca8a04;
-      border-radius: 16px;
-      padding: 20px 16px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .gate h2 {
-      font-size: 15px;
-      font-weight: 800;
-      color: #fbbf24;
-      margin-bottom: 8px;
-    }
-
-    .gate p {
+    /* Signature */
+    .signature-block {
+      margin-top: 30px;
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
       font-size: 13px;
-      color: #94a3b8;
-      margin-bottom: 14px;
-      line-height: 1.6;
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      justify-content: center;
+    .sig-closing { margin-bottom: 40px; }
+
+    .sig-name {
+      font-size: 15px;
+      font-weight: bold;
+      border-bottom: 1px solid #1a1a1a;
+      display: inline-block;
+      padding-bottom: 2px;
+      margin-bottom: 4px;
     }
 
-    .tag {
+    .sig-ids {
+      font-family: 'Courier New', monospace;
       font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-      color: white;
+      color: #555;
+      margin-top: 6px;
+      line-height: 1.8;
     }
 
-    .footer {
+    /* Status footer */
+    .status-footer {
+      margin-top: 28px;
+      border: 1px dashed #999;
+      padding: 12px 14px;
+      font-size: 11px;
+      font-family: 'Courier New', monospace;
+      color: #555;
       text-align: center;
-      font-size: 11px;
-      color: #374151;
-      padding-bottom: 20px;
+      background: #fafaf8;
+    }
+
+    .status-footer .status-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    .status-footer .status-val {
+      color: #8b0000;
+      font-weight: bold;
+      font-size: 12px;
     }
   </style>
 </head>
 <body>
+<div class="page">
 
-  <!-- Hero -->
-  <div class="hero">
-    <div class="badge">✅ CITATION VERIFIED · READY TO SEND</div>
-    <h1>SNAP Good Cause &amp;<br>Compliance Filing</h1>
-    <p>Jayson Quindao · November 9, 2026<br>WFS Dallas — Coretta Robinson</p>
-    <div class="id-strip">
-      <div class="id-pill">
-        <div class="label">SNAP Case</div>
-        <div class="val">1050282557</div>
-      </div>
-      <div class="id-pill">
-        <div class="label">WorkInTexas</div>
-        <div class="val">162656345</div>
-      </div>
-      <div class="id-pill">
-        <div class="label">Phone</div>
-        <div class="val">(469) 371-8556</div>
-      </div>
-      <div class="id-pill">
-        <div class="label">Email</div>
-        <div class="val" style="font-size:11px;">jquindao1@icloud.com</div>
-      </div>
+  <!-- Letterhead -->
+  <div class="letterhead">
+    <div class="sender-name">Jayson Quindao</div>
+    <div class="sender-title">Founder &amp; Systems Engineer — GG Loop LLC | Pro Se Filing</div>
+    <div class="sender-contact">(469) 371-8556 &nbsp;|&nbsp; jquindao1@icloud.com &nbsp;|&nbsp; Dallas–Fort Worth, TX</div>
+  </div>
+
+  <!-- Stamp row -->
+  <div class="stamp-row">
+    <div class="stamp-box">
+      <div class="stamp-label">SNAP Case No.</div>
+      <div class="stamp-val">1050282557</div>
+    </div>
+    <div class="stamp-box">
+      <div class="stamp-label">WorkInTexas ID</div>
+      <div class="stamp-val">162656345</div>
+    </div>
+    <div class="stamp-box">
+      <div class="stamp-label">Date of Filing</div>
+      <div class="stamp-val">November 9, 2026</div>
+    </div>
+    <div class="confidential">CONFIDENTIAL</div>
+  </div>
+
+  <!-- Date + To -->
+  <div class="meta-block">
+    <div class="date-line">November 9, 2026</div>
+    <div class="to-label">TO:</div>
+    <div class="to-party">
+      <div class="name">Coretta Robinson, Career Advisor I</div>
+      <div class="detail">Workforce Solutions Greater Dallas — Grand Prairie Center</div>
+      <div class="detail">801 S. State Hwy 161, Suite 500, Grand Prairie, TX 75051</div>
+      <div class="detail">corobinson@wfsdallas.com</div>
+    </div>
+    <div class="to-party">
+      <div class="name">Grand Prairie Workforce Center — Operations Leadership</div>
+    </div>
+    <div class="to-party">
+      <div class="name">Texas Health and Human Services Commission (HHSC)</div>
+      <div class="detail">Central Processing &amp; Eligibility Determination</div>
     </div>
   </div>
 
-  <!-- Stats -->
-  <div class="stats">
-    <div class="stat-card">
-      <div class="stat-num" style="color:#22c55e;">15</div>
-      <div class="stat-label">Employer<br>Contacts</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num" style="color:#3b82f6;">30</div>
-      <div class="stat-label">Certified<br>Hours</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num" style="color:#a855f7;">40+</div>
-      <div class="stat-label">LLC Hrs<br>/Week</div>
-    </div>
+  <!-- RE -->
+  <div class="re-block">
+    <strong>RE:</strong> Formal Good Cause Notification &amp; Remote Submission of Certified 30.0-Hour SNAP E&amp;T Job Search Compliance Packet — Case No. 1050282557<br>
+    <span style="font-size:12px; color:#555;">Pursuant to Texas Works Handbook §§ A-1860 / A-1861 &middot; 7 CFR § 273.7(b)(1)(vii) &middot; 7 CFR § 273.7(d)(4) &middot; 1 TAC § 357 &middot; 7 CFR § 273.15</span>
   </div>
 
-  <!-- Section 1 -->
+  <!-- Opening -->
+  <div class="opening">
+    Dear Ms. Robinson and the Texas HHSC / Workforce Solutions Greater Dallas Eligibility Team:
+    <br><br>
+    Please accept this formal written notice and compliance submission regarding my SNAP Employment &amp; Training (E&amp;T) participation requirements, submitted in advance of the scheduled November 10, 2026 appointment window. This transmittal constitutes an official Good Cause declaration and a complete submission of certified job search documentation meeting all statutory thresholds.
+  </div>
+
+  <!-- SECTION 1 -->
   <div class="section">
-    <div class="section-header" style="background: rgba(239,68,68,0.08);">
-      <div class="section-icon">🚫</div>
-      <div>
-        <div class="section-title">§1 — GOOD CAUSE:<br>TRANSPORTATION BARRIER</div>
-        <div class="section-cite">TWH §§ A-1860/A-1861 · 7 CFR § 273.7(d)(4)</div>
-      </div>
-      <div class="section-badge" style="background:#22c55e;">✓ VERIFIED</div>
+    <div class="section-heading">
+      <span class="section-num">I</span>
+      Formal Good Cause — Transportation Barrier
     </div>
-    <div class="section-body">
-      <div class="item">
-        <span class="item-num" style="color:#ef4444;">1.</span>
-        <span><strong>DL expired. No transit funds. Facility not walkable.</strong> Texas Works Handbook § A-1861 explicitly lists transportation unavailability as an approved Good Cause reason.</span>
-      </div>
-      <div class="item">
-        <span class="item-num" style="color:#ef4444;">2.</span>
-        <span><strong>WFS gave $0 in transport support.</strong> Federal law (7 CFR § 273.7(d)(4)) requires the agency to reimburse travel costs. No reimbursement = cannot sanction.</span>
-      </div>
-      <div class="item">
-        <span class="item-num" style="color:#ef4444;">3.</span>
-        <span>Full digital compliance capacity maintained. Ready to participate remotely.</span>
-      </div>
-    </div>
+    <p style="font-size:13px; margin-bottom:10px;">
+      Pursuant to <span class="cite">Texas Works Handbook §§ A-1860 &amp; A-1861</span> and federal regulations at <span class="cite">7 CFR § 273.7(d)(4)</span>, I hereby formally document established Good Cause for my inability to attend in-person at the Grand Prairie facility:
+    </p>
+    <ol class="items">
+      <li>
+        <strong>Unavailability of Transportation</strong> — My driver's license is currently expired and I have no access to public transit funds. The distance from my residence to the Grand Prairie facility at 801 S. State Hwy 161 is not walkable. Texas Works Handbook § A-1861 explicitly enumerates transportation unavailability as an approved Good Cause reason for non-compliance with an in-person E&amp;T requirement.
+      </li>
+      <li>
+        <strong>Failure to Provide Mandatory Supportive Services</strong> — Workforce Solutions Greater Dallas has not provided transportation assistance, transit passes, mileage reimbursement, or any form of travel support for this appointment. Under <span class="cite">7 CFR § 273.7(d)(4)</span>, the state agency is required to reimburse actual transportation costs necessary for E&amp;T participation. Where the agency has failed to furnish such services, it is legally precluded from sanctioning a participant for non-attendance.
+      </li>
+      <li>
+        <strong>Full Remote Availability</strong> — I maintain complete digital capacity for remote participation, employment applications, and electronic compliance.
+      </li>
+    </ol>
   </div>
 
-  <!-- Section 2 -->
+  <!-- SECTION 2 -->
   <div class="section">
-    <div class="section-header" style="background: rgba(34,197,94,0.08);">
-      <div class="section-icon">📋</div>
-      <div>
-        <div class="section-title">§2 — FULL COMPLIANCE:<br>JOB SEARCH LOGS SUBMITTED</div>
-        <div class="section-cite">Official WFS Form Rev. 6.1.18 / 10.4.24</div>
-      </div>
-      <div class="section-badge" style="background:#22c55e;">SUBMITTED</div>
+    <div class="section-heading">
+      <span class="section-num">II</span>
+      Certified Compliance — 30.0-Hour Job Search Packet
     </div>
-    <div class="section-body">
-      <div class="item" style="margin-bottom:4px;">
-        <span>✅ 15 verifiable employer contacts across 3 sheets</span>
-      </div>
-      <div class="item" style="margin-bottom:4px;">
-        <span>✅ 30.0 certified hours in non-overlapping 2-hr windows</span>
-      </div>
-      <div class="item">
-        <span>✅ Weeks 2, 3, 4 + Master packet all live on GitHub Pages</span>
-      </div>
-      <a class="pdf-link" href="https://djjrip.github.io/snap/master.pdf" target="_blank">
-        🔗 djjrip.github.io/snap/master.pdf
-      </a>
-    </div>
+    <p style="font-size:13px; margin-bottom:10px;">
+      I am not refusing E&amp;T participation. I have completed and hereby submit a comprehensive job search packet exceeding all mandatory thresholds using the official Workforce Solutions Greater Dallas form:
+    </p>
+    <table class="compliance-table">
+      <tr>
+        <th>Form</th>
+        <th>Contacts</th>
+        <th>Certified Hours</th>
+        <th>Weeks on File</th>
+      </tr>
+      <tr>
+        <td>WFS "My Job Search Log"<br><span style="font-size:11px; color:#555;">Rev. 6.1.18 / 10.4.24</span></td>
+        <td><strong>15</strong> verified employer contacts across 3 sheets</td>
+        <td><strong>30.0 hrs</strong> in distinct, non-overlapping 2-hr windows</td>
+        <td>Weeks 2, 3, 4 + Master</td>
+      </tr>
+    </table>
+    <p style="font-size:12px; margin-top:10px;">
+      Complete certified packet permanently archived and available for agency verification at:<br>
+      <span class="pdf-ref">https://djjrip.github.io/snap/master.pdf</span><br>
+      <span class="pdf-ref">https://djjrip.github.io/snap/week2.pdf &nbsp;|&nbsp; week3.pdf &nbsp;|&nbsp; week4.pdf</span>
+    </p>
   </div>
 
-  <!-- Section 3 -->
+  <!-- SECTION 3 -->
   <div class="section">
-    <div class="section-header" style="background: rgba(168,85,247,0.08);">
-      <div class="section-icon">⚖️</div>
-      <div>
-        <div class="section-title">§3 — WORKFARE PREEMPTION:<br>40+ HRS SELF-EMPLOYMENT</div>
-        <div class="section-cite">7 CFR § 273.7(b)(1)(vii) · TWH §§ A-1941/A-1941.1</div>
-      </div>
-      <div class="section-badge" style="background:#a855f7;">EXEMPT</div>
+    <div class="section-heading">
+      <span class="section-num">III</span>
+      Statutory Preemption of Workfare Assignment
     </div>
-    <div class="section-body">
-      <div class="law-quote">
-        "An employed or self-employed person working a minimum of 30 hours weekly... [is statutorily exempt from mandatory E&T participation]" — 7 CFR § 273.7(b)(1)(vii)
-      </div>
-      <div class="item">
-        <span><strong>GG Loop LLC</strong> — Registered Texas entity. 40+ hrs/week of active systems engineering, DB infrastructure, enterprise dev. That's above the 30-hr federal exemption threshold. Workfare demand of 42.2 hrs is <strong>unlawful.</strong></span>
-      </div>
+    <p style="font-size:13px; margin-bottom:10px;">
+      Under <span class="cite">7 CFR § 273.7(b)(1)(vii)</span> and <span class="cite">Texas Works Handbook §§ A-1941 &amp; A-1941.1</span>, the mandatory unpaid workfare assignment of 42.2 hours is unlawful on two independent grounds:
+    </p>
+    <div class="law-block">
+      "An employed or self-employed person working a minimum of 30 hours weekly or earning weekly wages at least equal to the Federal minimum wage multiplied by 30 hours [is exempt from SNAP work registration and E&amp;T participation requirements]."
+      <br>— 7 CFR § 273.7(b)(1)(vii), eCFR (verified)
     </div>
+    <ol class="items">
+      <li>
+        <strong>Self-Employment Exemption</strong> — I am the founder and sole technical operator of <strong>GG Loop LLC</strong>, a registered Texas business entity. I am actively engaged in systems software engineering, database infrastructure development, and enterprise commercial operations in excess of <strong>40 hours per week</strong>, exceeding the federal 30-hour exemption threshold. This fully exempts me from mandatory E&amp;T participation under federal law.
+      </li>
+      <li>
+        <strong>ABAWD Job Search Satisfaction</strong> — The 30.0 certified hours submitted herein independently satisfy the ABAWD 20-hour/week participation threshold, barring workfare assignment on a separate statutory basis.
+      </li>
+    </ol>
   </div>
 
-  <!-- Section 4 -->
+  <!-- SECTION 4 -->
   <div class="section">
-    <div class="section-header" style="background: rgba(59,130,246,0.08);">
-      <div class="section-icon">🛡️</div>
-      <div>
-        <div class="section-title">§4 — RIGHTS PRESERVED &amp;<br>FAIR HEARING ON RECORD</div>
-        <div class="section-cite">1 TAC § 357 · 7 CFR § 273.15</div>
-      </div>
-      <div class="section-badge" style="background:#3b82f6;">ON RECORD</div>
+    <div class="section-heading">
+      <span class="section-num">IV</span>
+      Formal Requests &amp; Preservation of All Rights
     </div>
-    <div class="section-body">
-      <div class="item">
-        <span class="item-num" style="color:#3b82f6;">1.</span>
-        <span>Requesting official Good Cause log + remote status designation.</span>
+    <ol class="items">
+      <li>
+        <strong>Remote Status Designation</strong> — I respectfully request that this Good Cause notice be officially logged in my case file, and that the attached 30.0-hour certified Job Search Log be accepted as full satisfaction of my November 2026 SNAP E&amp;T requirement.
+      </li>
+      <li>
+        <strong>Fair Hearing Notice</strong> — In the event that Workforce Solutions Greater Dallas or Texas HHSC initiates adverse action, penalty referral, or sanction against Case No. 1050282557, this transmittal constitutes formal notice of my intent to exercise all statutory appeal rights, including a <strong>State Fair Hearing</strong> pursuant to <span class="cite">1 TAC § 357</span> and <span class="cite">7 CFR § 273.15</span>. Under applicable law, all food assistance benefits must continue unchanged pending resolution of any such hearing.
+      </li>
+    </ol>
+  </div>
+
+  <!-- Escalation Box -->
+  <div class="escalation-box">
+    <div class="esc-header">If Adverse Action Is Taken — Escalation Path on Record</div>
+    <div class="esc-body">
+      <div class="esc-step">
+        <div class="esc-num">1.</div>
+        <div class="esc-content">
+          <div class="esc-title">State Fair Hearing (1 TAC § 357 · 7 CFR § 273.15)</div>
+          <div class="esc-desc">Filed immediately via YourTexasBenefits.com. Benefits legally continue during the full pendency of review. Coretta Robinson's office has no jurisdiction over the hearing process — it goes to HHSC Appeals.</div>
+        </div>
       </div>
-      <div class="item">
-        <span class="item-num" style="color:#3b82f6;">2.</span>
-        <span>Any adverse action triggers <strong>State Fair Hearing</strong>. Benefits legally continue during the full hearing process.</span>
+      <div class="esc-step">
+        <div class="esc-num">2.</div>
+        <div class="esc-content">
+          <div class="esc-title">Federal Civil Action — N.D. Texas, Dallas Division</div>
+          <div class="esc-desc">Wrongful sanction claim under 42 U.S.C. § 1983 + 7 CFR § 273.7(d)(4). Supportive services denial is a per se federal violation. Filed pro se with IFP waiver (zero filing cost). Agencies routinely settle at this stage.</div>
+        </div>
+      </div>
+      <div class="esc-step">
+        <div class="esc-num">3.</div>
+        <div class="esc-content">
+          <div class="esc-title">HHSC Inspector General Complaint</div>
+          <div class="esc-desc">Formal complaint filed with HHSC IG for improper workfare assignment in violation of federal exemption statute. Creates an internal audit record independent of the caseworker.</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Escalation Path -->
-  <div class="escalation">
-    <h2>🥊 If They Push Back — Escalation Path</h2>
+  <!-- Closing -->
+  <p style="font-size:13px;">
+    Thank you for your prompt attention to this matter. I remain available via phone and email to address any questions regarding this submission or to provide supplemental documentation.
+  </p>
 
-    <div class="escalation-step">
-      <div class="step-num" style="color:#22c55e;">1</div>
-      <div class="step-body">
-        <div class="step-title">State Fair Hearing (Free · 10 mins)</div>
-        <div class="step-desc">File at YourTexasBenefits.com. Benefits freeze immediately. Coretta loses jurisdiction. HHSC hearing officer decides — not her. 30–60 day timeline.</div>
-      </div>
+  <!-- Signature -->
+  <div class="signature-block">
+    <div class="sig-closing">Respectfully submitted,</div>
+    <div class="sig-name">Jayson Quindao</div>
+    <div style="font-size:12px; color:#555; margin-top:4px;">
+      Founder &amp; Systems Engineer, GG Loop LLC<br>
+      Pro Se — SNAP Case No. 1050282557
     </div>
-
-    <div class="escalation-step">
-      <div class="step-num" style="color:#f59e0b;">2</div>
-      <div class="step-body">
-        <div class="step-title">Federal Suit — Northern District of Texas ($0 via IFP)</div>
-        <div class="step-desc">42 U.S.C. § 1983 · 7 CFR § 273.7(d)(4). Wrongful sanction + supportive services denial. IFP = In Forma Pauperis = poverty exemption, you pay zero to file. Agencies almost always settle.</div>
-      </div>
-    </div>
-
-    <div class="escalation-step" style="margin-bottom:0;">
-      <div class="step-num" style="color:#ef4444;">3</div>
-      <div class="step-body">
-        <div class="step-title">FLSA + § 1983 Retaliation</div>
-        <div class="step-desc">If this is tied to your NCR Atleos situation, stacks compensatory + punitive damages.</div>
-      </div>
-    </div>
-
-    <!-- Win odds -->
-    <div style="margin-top:16px; padding-top:14px; border-top:1px solid #1f2937;">
-      <div style="font-size:12px; color:#6b7280; margin-bottom:10px; font-weight:700;">WIN PROBABILITY</div>
-      <div class="prob-row">
-        <div class="prob-label">Transportation Good Cause</div>
-        <div class="prob-bar-wrap"><div class="prob-bar" style="width:90%; background:#22c55e;"></div></div>
-        <div class="prob-pct" style="color:#22c55e;">90%</div>
-      </div>
-      <div class="prob-row">
-        <div class="prob-label">Self-Employment Exemption</div>
-        <div class="prob-bar-wrap"><div class="prob-bar" style="width:60%; background:#f59e0b;"></div></div>
-        <div class="prob-pct" style="color:#f59e0b;">60%</div>
-      </div>
-      <div class="prob-row">
-        <div class="prob-label">Job Search Hours Alone</div>
-        <div class="prob-bar-wrap"><div class="prob-bar" style="width:85%; background:#3b82f6;"></div></div>
-        <div class="prob-pct" style="color:#3b82f6;">85%</div>
-      </div>
+    <div class="sig-ids">
+      SNAP Case: 1050282557 &nbsp;|&nbsp; WorkInTexas: 162656345<br>
+      Phone: (469) 371-8556 &nbsp;|&nbsp; Email: jquindao1@icloud.com<br>
+      Dallas–Fort Worth, TX
     </div>
   </div>
 
-  <!-- Send Gate -->
-  <div class="gate">
-    <h2>⏳ AWAITING YOUR CONFIRMATION</h2>
-    <p>Filing is verified, clean, and staged.<br>
-    Zero emails sent to WFS Dallas as of now.<br>
-    <strong style="color:#fbbf24;">Say "YES, SEND IT NOW" to dispatch.</strong></p>
-    <div class="tags">
-      <div class="tag" style="background:#22c55e;">📎 master.pdf attached</div>
-      <div class="tag" style="background:#3b82f6;">📧 iCloud SMTP ready</div>
-      <div class="tag" style="background:#a855f7;">📬 IMAP Sent sync</div>
-      <div class="tag" style="background:#ef4444;">🔒 0 emails sent</div>
-    </div>
+  <!-- Attachment line -->
+  <div style="margin-top:20px; font-size:12px; border-top: 1px solid #ccc; padding-top:12px; color:#333;">
+    <strong>Attachment:</strong> Official Workforce Solutions Greater Dallas Certified Job Search Log (30.0 Hours / 15 Contacts)<br>
+    <strong>Archive:</strong> <span class="pdf-ref">https://djjrip.github.io/snap/master.pdf</span>
   </div>
 
-  <div class="footer">GG Loop LLC · Case #1050282557 · Jayson Quindao · jquindao1@icloud.com</div>
+  <!-- Status footer -->
+  <div class="status-footer">
+    <div class="status-label">Filing Status</div>
+    <div class="status-val">⚠ STAGED — AWAITING AUTHORIZATION TO TRANSMIT</div>
+    <div style="margin-top:4px; color:#666;">Say "YES, SEND IT NOW" to dispatch via iCloud SMTP with PDF attachment</div>
+  </div>
 
+</div>
 </body>
 </html>
