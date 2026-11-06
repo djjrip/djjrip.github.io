@@ -351,13 +351,14 @@
     </header>
 
     <div class="hero">
-      <div class="badge">&bull; Upstream Contributor: Turso (libSQL) &bull; Qdrant Vector Engine &bull; Systems Architect</div>
+      <div class="badge">&bull; Upstream Contributor: Turso (libSQL PR #2309) &bull; Qdrant Engine (PRs #11428, #11432) &bull; Systems Architect</div>
       <h1>Full-Stack Systems Engineer & Cloud Architect.</h1>
       <p>
         Author of upstream memory safety patches to <strong>Turso's libSQL engine</strong>, high-performance process telemetry in Rust, and type-safe distributed platforms in TypeScript, Node.js, and AWS.
       </p>
       <div class="hero-actions">
-        <a href="https://github.com/qdrant/qdrant/pull/11428" class="btn btn-primary" target="_blank">Inspect Qdrant PR #11428 &rarr;</a>
+        <a href="https://github.com/qdrant/qdrant/pull/11432" class="btn btn-primary" target="_blank">Inspect Qdrant PR #11432 &rarr;</a>
+        <a href="https://github.com/qdrant/qdrant/pull/11428" class="btn btn-outline" target="_blank">Inspect Qdrant PR #11428 &rarr;</a>
         <a href="https://github.com/tursodatabase/libsql/pull/2309" class="btn btn-outline" target="_blank">Inspect Turso PR #2309 &rarr;</a>
         <a href="audit.html" class="btn btn-outline">Launch HMAC Auditor</a>
         <a href="Jayson_Quindao_Resume.pdf" class="btn btn-outline" target="_blank">Download Resume (PDF)</a>
@@ -571,6 +572,27 @@ Zero-count points excluded.</pre>
           </div>
           <div class="card-links">
             <a href="https://github.com/qdrant/qdrant/pull/11428" target="_blank">View Live Pull Request #11428 on GitHub &rarr;</a>
+          </div>
+        </div>
+
+        <!-- PROJECT: QDRANT NUMERIC INDEX PR #11432 -->
+        <div class="card" style="border-color: rgba(16, 185, 129, 0.4); background: linear-gradient(180deg, rgba(16, 185, 129, 0.05) 0%, var(--surface) 100%);">
+          <div>
+            <div class="card-tag">VECTOR DATABASES // NUMERIC STORAGE ENGINE</div>
+            <h3>Qdrant Vector Engine &mdash; Integer Range Overflow Bounds</h3>
+            <p>
+              Resolved an upstream integer index correctness bug (<a href="https://github.com/qdrant/qdrant/issues/11379" target="_blank" style="color:var(--accent);">#11379</a>) where floating-point bounds outside the <code>i64</code> range caused saturating cast overflows (<code>ceil() as i64</code>), corrupting filter predicates. Implemented out-of-range bound normalization and authored unit regression tests asserting exact query parity across <code>i64::MIN</code>, <code>1</code>, and <code>i64::MAX</code>.
+            </p>
+            <div class="tech-pill-list">
+              <span class="pill">Rust</span>
+              <span class="pill">Numeric Index</span>
+              <span class="pill">IEEE 754 Float Safety</span>
+              <span class="pill">Upstream PR #11432</span>
+              <span class="pill">Target: dev</span>
+            </div>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/qdrant/qdrant/pull/11432" target="_blank">View Live Pull Request #11432 on GitHub &rarr;</a>
           </div>
         </div>
 
