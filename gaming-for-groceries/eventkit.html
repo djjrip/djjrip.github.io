@@ -3,247 +3,599 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GG LOOP — Turnkey Tournament Operations & Event Kit</title>
-  <meta name="description" content="Turnkey tournament operations, live brackets, automated sign-ups, and anti-cheat verification for campus LANs, arcades, and competitive venues.">
+  <title>GG LOOP — Tournament Event Kit | Run Your First Gaming Event in 48 Hours</title>
+  <meta name="description" content="Everything a local gaming venue or esports organizer needs to run a professional bracket tournament. Live bracket software, sponsor inventory, promo copy, prize tracking — delivered in minutes. $49/event.">
+  <meta property="og:title" content="GG LOOP Event Kit — Run a Pro Gaming Tournament for $49">
+  <meta property="og:description" content="Live bracket engine + sponsor kit + promo copy + prize tracking. Deployed instantly. Used by DFW gaming venues.">
+  <meta property="og:url" content="https://djjrip.github.io/gaming-for-groceries/eventkit.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #090d16;
-      --card: #111726;
-      --card-border: #1f293d;
-      --primary: #10b981;
-      --primary-glow: rgba(16, 185, 129, 0.25);
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --mono: 'JetBrains Mono', monospace;
+      --bg: #07090F;
+      --surface: #10131C;
+      --card: #151A26;
+      --border: #1E2538;
+      --green: #10B981;
+      --green-dim: rgba(16,185,129,0.12);
+      --green-glow: rgba(16,185,129,0.06);
+      --blue: #3B82F6;
+      --blue-dim: rgba(59,130,246,0.12);
+      --text: #F1F5F9;
+      --muted: #64748B;
+      --muted2: #94A3B8;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', -apple-system, sans-serif;
-      line-height: 1.6;
-      padding: 0 20px 80px;
-    }
-    .header {
-      max-width: 900px;
-      margin: 40px auto 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--card-border);
-    }
-    .logo {
-      font-size: 24px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-    }
-    .logo span { color: var(--primary); }
-    .badge {
-      display: inline-block;
-      background: rgba(16, 185, 129, 0.12);
-      color: var(--primary);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 4px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-family: var(--mono);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .hero {
-      max-width: 900px;
-      margin: 40px auto 50px;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 46px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 20px;
-    }
-    .hero h1 span {
-      background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero p {
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 680px;
-      margin: 0 auto 32px;
-    }
-    .btn-group {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      background: var(--primary);
-      color: #04120b;
-      font-weight: 800;
-      font-size: 16px;
-      padding: 14px 32px;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 20px var(--primary-glow);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
-    }
-    .btn-secondary {
-      background: var(--card);
-      color: var(--text);
-      border: 1px solid var(--card-border);
-      font-weight: 700;
-      font-size: 16px;
-      padding: 14px 28px;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .btn-secondary:hover {
-      background: #182238;
-      border-color: #334155;
-    }
-    .grid {
-      max-width: 900px;
-      margin: 0 auto 60px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 28px;
-    }
-    .card h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
-      color: #fff;
-    }
-    .card p {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    .pricing-box {
-      max-width: 900px;
-      margin: 0 auto;
-      background: linear-gradient(180deg, #131c30 0%, #0d1322 100%);
-      border: 1px solid #24324f;
-      border-radius: 18px;
-      padding: 44px;
-      text-align: center;
-    }
-    .pricing-box h2 {
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
-    .price {
-      font-size: 54px;
-      font-weight: 900;
-      color: var(--primary);
-      font-family: var(--mono);
-      margin-bottom: 16px;
-    }
-    .price-period {
-      font-size: 16px;
-      color: var(--muted);
-      font-weight: 500;
-    }
-    .features-list {
-      max-width: 500px;
-      margin: 24px auto 36px;
-      text-align: left;
-      list-style: none;
-    }
-    .features-list li {
-      font-size: 15px;
-      color: #cbd5e1;
-      padding: 8px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .features-list li::before {
-      content: '✓';
-      color: var(--primary);
-      font-weight: 900;
-      font-family: var(--mono);
-    }
-    .footer {
-      max-width: 900px;
-      margin: 50px auto 0;
-      text-align: center;
-      font-size: 13px;
-      color: var(--muted);
-      border-top: 1px solid var(--card-border);
-      padding-top: 30px;
-    }
-    .footer a {
-      color: var(--primary);
-      text-decoration: none;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(7,9,15,0.9); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; color: #fff; text-decoration: none; }
+    .logo span { color: var(--green); }
+    .nav-cta { background: var(--green); color: #07090F; font-weight: 700; font-size: 0.85rem; padding: 8px 18px; border-radius: 8px; text-decoration: none; transition: opacity 0.15s; }
+    .nav-cta:hover { opacity: 0.88; }
+
+    /* HERO */
+    .hero { max-width: 1100px; margin: 0 auto; padding: 80px 24px 64px; text-align: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--green-dim); border: 1px solid rgba(16,185,129,0.25); color: var(--green); padding: 6px 14px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 24px; }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; display: block; animation: pulse 1.8s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.12; letter-spacing: -0.03em; margin-bottom: 20px; }
+    h1 em { color: var(--green); font-style: normal; }
+    .hero-sub { font-size: 1.1rem; color: var(--muted2); max-width: 640px; margin: 0 auto 36px; }
+    .hero-price { font-size: 1rem; color: var(--muted); margin-bottom: 32px; }
+    .hero-price strong { color: #fff; font-size: 2rem; font-weight: 800; }
+    .hero-price s { color: var(--muted); font-size: 1.1rem; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: #07090F; font-weight: 800; font-size: 1rem; padding: 14px 32px; border-radius: 10px; text-decoration: none; transition: opacity 0.15s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--text); font-weight: 700; font-size: 0.95rem; padding: 13px 28px; border-radius: 10px; text-decoration: none; border: 1px solid var(--border); transition: border-color 0.15s; margin-left: 12px; }
+    .btn-outline:hover { border-color: var(--muted); }
+    .hero-trust { margin-top: 28px; color: var(--muted); font-size: 0.82rem; }
+    .hero-trust span { margin: 0 8px; }
+
+    /* SECTION */
+    section { max-width: 1100px; margin: 0 auto; padding: 64px 24px; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 16px; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* WHAT YOU GET */
+    .deliverables { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 32px; }
+    .d-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .d-icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .d-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .d-card p { font-size: 0.88rem; color: var(--muted2); }
+    .d-card.highlight { border-color: rgba(16,185,129,0.3); background: var(--green-glow); }
+
+    /* HOW IT WORKS */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 32px; }
+    .step { display: flex; gap: 16px; }
+    .step-num { width: 36px; height: 36px; min-width: 36px; background: var(--green-dim); border: 1px solid rgba(16,185,129,0.25); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--green); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
+    .step-text h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .step-text p { font-size: 0.85rem; color: var(--muted2); }
+
+    /* DEMO */
+    .demo-frame { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-top: 32px; }
+    .demo-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex; align-items: center; gap: 8px; }
+    .demo-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .demo-dot.r { background: #ef4444; } .demo-dot.y { background: #f59e0b; } .demo-dot.g { background: #22c55e; }
+    .demo-url { font-size: 0.78rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; margin-left: 8px; }
+    .demo-content { padding: 28px 24px; font-size: 0.88rem; color: var(--muted2); }
+    .demo-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .demo-row:last-child { border-bottom: none; }
+    .demo-label { font-weight: 600; color: var(--text); }
+    .demo-val { color: var(--green); font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+
+    /* PRICING */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 32px; }
+    .price-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px; }
+    .price-card.featured { border-color: var(--green); background: linear-gradient(135deg, var(--card) 0%, rgba(16,185,129,0.04) 100%); }
+    .price-tag { font-size: 2.4rem; font-weight: 800; color: #fff; letter-spacing: -0.03em; }
+    .price-tag span { font-size: 1rem; color: var(--muted); font-weight: 500; }
+    .price-name { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .price-desc { font-size: 0.88rem; color: var(--muted2); margin: 12px 0 20px; }
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+    .price-features li { font-size: 0.87rem; color: var(--muted2); display: flex; gap: 8px; align-items: flex-start; }
+    .price-features li::before { content: '✓'; color: var(--green); font-weight: 700; min-width: 14px; margin-top: 1px; }
+    .featured-badge { display: inline-block; background: var(--green); color: #07090F; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.04em; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; margin-bottom: 8px; }
+
+    /* CHECKOUT FORM */
+    .checkout-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 64px 0; }
+    .checkout-inner { max-width: 700px; margin: 0 auto; padding: 0 24px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media(max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    label { font-size: 0.82rem; font-weight: 600; color: var(--muted2); }
+    input, select, textarea { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 11px 14px; color: var(--text); font-size: 0.92rem; font-family: inherit; width: 100%; transition: border-color 0.15s; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--green); }
+    select option { background: var(--card); }
+    .form-note { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+    .order-summary { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin: 24px 0; }
+    .order-row { display: flex; justify-content: space-between; font-size: 0.9rem; padding: 6px 0; }
+    .order-total { display: flex; justify-content: space-between; font-weight: 800; font-size: 1.05rem; padding: 12px 0 0; border-top: 1px solid var(--border); margin-top: 8px; }
+    .stripe-btn { width: 100%; background: var(--green); color: #07090F; font-weight: 800; font-size: 1.05rem; padding: 15px; border-radius: 10px; border: none; cursor: pointer; transition: opacity 0.15s; display: flex; align-items: center; justify-content: center; gap: 10px; }
+    .stripe-btn:hover { opacity: 0.88; }
+    .stripe-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .secure-note { text-align: center; font-size: 0.78rem; color: var(--muted); margin-top: 12px; }
+
+    /* SUCCESS */
+    #success-state { display: none; text-align: center; padding: 48px 24px; }
+    #success-state h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; }
+    #success-state p { color: var(--muted2); margin-bottom: 24px; }
+
+    /* TESTIMONIAL / SOCIAL PROOF */
+    .proof { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 32px; }
+    .proof-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .proof-card blockquote { font-size: 0.88rem; color: var(--muted2); font-style: italic; margin-bottom: 14px; line-height: 1.6; }
+    .proof-author { font-size: 0.82rem; font-weight: 700; color: var(--text); }
+    .proof-role { font-size: 0.78rem; color: var(--muted); }
+    .stars { color: #f59e0b; font-size: 0.85rem; margin-bottom: 10px; }
+
+    /* FAQ */
+    .faq-list { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+    .faq-q { font-weight: 700; font-size: 0.92rem; margin-bottom: 6px; }
+    .faq-a { font-size: 0.87rem; color: var(--muted2); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; color: var(--muted); font-size: 0.82rem; }
+    footer a { color: var(--muted2); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media(max-width: 700px) {
+      .hero { padding: 48px 20px 40px; }
+      section { padding: 48px 20px; }
+      h1 { font-size: 2rem; }
+      .btn-outline { margin-left: 0; margin-top: 10px; display: block; text-align: center; }
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <div class="logo">GG <span>LOOP</span></div>
-    <span class="badge">Production Verified</span>
-  </div>
 
-  <div class="hero">
-    <h1>Turnkey Tournament Infrastructure <span>Ready Tonight</span></h1>
-    <p>Eliminate manual spreadsheets, paper brackets, and chaotic Discord check-ins. GG LOOP delivers a self-updating bracket engine, custom player sign-up portal, and anti-cheat verified rosters in under 24 hours.</p>
-    <div class="btn-group">
-      <a href="https://buy.stripe.com/cNi5kEgBd5C05Rlbzd1B603" class="btn-primary">Book $49 Starter Kit</a>
-      <a href="https://gg-loop-tournament.vercel.app" class="btn-secondary">Launch Live Bracket Engine →</a>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html"><span>GG</span> LOOP</a>
+    <a class="nav-cta" href="#checkout">Get Event Kit — $49</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🎮 DFW Gaming · Now Available Nationwide</div>
+  <h1>Run a Pro Gaming Tournament<br><em>Without the Chaos.</em></h1>
+  <p class="hero-sub">Get a live bracket, sponsor pitch kit, custom promo copy, and prize tracking — deployed instantly. No tech required. No spreadsheets. No guessing.</p>
+  <div class="hero-price"><strong>$49</strong> <s>$149</s> per event — Launch pricing</div>
+  <a class="btn-primary" href="#checkout">Get Your Event Kit →</a>
+  <a class="btn-outline" href="https://djjrip.github.io/gaming-for-groceries/bracket.html" target="_blank">See Live Demo</a>
+  <div class="hero-trust">
+    <span>✓ Instant delivery</span>
+    <span>✓ No code required</span>
+    <span>✓ Works on any device</span>
+    <span>✓ 30-day money-back guarantee</span>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- WHAT YOU GET -->
+<section>
+  <p class="section-label">What's Included</p>
+  <h2>Everything you need to run a legitimate tournament event.</h2>
+  <p style="color:var(--muted2); max-width: 600px;">Built for game store owners, LAN center operators, collegiate esports coordinators, and community organizers who want professional results without hiring a developer.</p>
+  <div class="deliverables">
+    <div class="d-card highlight">
+      <div class="d-icon">🏆</div>
+      <h3>Live Bracket Engine</h3>
+      <p>Single-elimination bracket with click-to-advance, player roster management, and real-time match tracking. Works on phone, tablet, or laptop. No login required.</p>
+    </div>
+    <div class="d-card">
+      <div class="d-icon">💰</div>
+      <h3>Sponsor Pitch Kit</h3>
+      <p>A ready-made sponsorship inventory (Title, Gold, Silver tiers) with pricing, deliverables, and a branded one-pager you send to local food brands, gyms, or retailers.</p>
+    </div>
+    <div class="d-card">
+      <div class="d-icon">📣</div>
+      <h3>Custom Promo Copy</h3>
+      <p>Pre-written announcements, social posts, and Discord/community messages customized with your event details — ready to copy, paste, and post.</p>
+    </div>
+    <div class="d-card">
+      <div class="d-icon">🎁</div>
+      <h3>Prize Pool Tracker</h3>
+      <p>A clear prize pool breakdown (1st, 2nd, 3rd place) showing funded amounts, sponsor contributions, and payout instructions for gift card or cash prizes.</p>
+    </div>
+    <div class="d-card">
+      <div class="d-icon">📋</div>
+      <h3>Event Registration Page</h3>
+      <p>A player sign-up form pre-configured for your event name, game title, and date — generates a shareable link you post anywhere.</p>
+    </div>
+    <div class="d-card">
+      <div class="d-icon">📊</div>
+      <h3>Event Summary Report</h3>
+      <p>After your event, a one-click summary report showing player count, match results, and prize distribution — shareable with venues and sponsors.</p>
     </div>
   </div>
+</section>
 
-  <div class="grid">
-    <div class="card">
-      <h3>🎮 Live Display-Ready Brackets</h3>
-      <p>Single & double elimination brackets that run seamlessly on arena projectors, venue TVs, Twitch/OBS stream overlays, or mobile screens with zero delay.</p>
+<hr class="divider">
+
+<!-- HOW IT WORKS -->
+<section>
+  <p class="section-label">How It Works</p>
+  <h2>From purchase to live event in under 48 hours.</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-text">
+        <h4>Purchase & Fill Form</h4>
+        <p>Enter your event name, game, date, venue, player cap, and prize pool. Takes 3 minutes.</p>
+      </div>
     </div>
-    <div class="card">
-      <h3>⚡ Instant Player Sign-Up Portal</h3>
-      <p>Share a single link or QR code at your venue door. Players register, link their game IDs, and seed automatically before match time.</p>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-text">
+        <h4>Get Your Kit by Email</h4>
+        <p>Your customized bracket link, sponsor kit PDF, promo copy, and prize tracker are delivered to your inbox within 24 hours.</p>
+      </div>
     </div>
-    <div class="card">
-      <h3>🛡️ Integrated Anti-Tamper Verification</h3>
-      <p>Powered by our native Win32 process security and memory scanner to ensure clean play across competitive PC titles.</p>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-text">
+        <h4>Post & Promote</h4>
+        <p>Copy the pre-written posts to Discord, Instagram, Facebook, or your community group. Share the registration link.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-text">
+        <h4>Run the Event</h4>
+        <p>Open the bracket on any screen. Click to advance winners. The crowd sees the live standings in real time.</p>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="pricing-box">
-    <h2>$49 Tournament Operations Starter Kit</h2>
-    <div class="price">$49 <span class="price-period">/ event flat</span></div>
-    <p style="color: var(--muted); max-width: 550px; margin: 0 auto;">Everything your staff or student officers need to run a flawless competitive gaming event without manual overhead.</p>
-    <ul class="features-list">
-      <li>Custom live bracket URL (self-updating, real-time)</li>
-      <li>Dedicated digital player & team registration portal</li>
-      <li>Custom promotional copy tailored for your Discord & Instagram</li>
-      <li>Automated prize pool & score sheet generator</li>
-      <li>Dedicated 48-hour founder support from Jayson Quindao</li>
-    </ul>
-    <a href="https://buy.stripe.com/cNi5kEgBd5C05Rlbzd1B603" class="btn-primary" style="font-size: 18px; padding: 16px 40px; display: inline-block;">Lock In Event Kit ($49)</a>
-  </div>
+<hr class="divider">
 
-  <div class="footer">
-    <p>GG LOOP LLC · Grand Prairie, TX · Operations & Tech Hotline: <a href="tel:4693718556">(469) 371-8556</a> · <a href="mailto:jquindao1@icloud.com">jquindao1@icloud.com</a></p>
-    <p style="margin-top: 8px;">Explore live engine: <a href="https://gg-loop-tournament.vercel.app">gg-loop-tournament.vercel.app</a></p>
+<!-- LIVE DEMO PREVIEW -->
+<section>
+  <p class="section-label">Live Preview</p>
+  <h2>This is what your bracket looks like on event night.</h2>
+  <p style="color:var(--muted2); margin-bottom: 0;">Real software, live now, used at DFW gaming venues.</p>
+  <div class="demo-frame">
+    <div class="demo-bar">
+      <div class="demo-dot r"></div>
+      <div class="demo-dot y"></div>
+      <div class="demo-dot g"></div>
+      <div class="demo-url">djjrip.github.io/gaming-for-groceries/bracket.html</div>
+    </div>
+    <div class="demo-content">
+      <div class="demo-row"><div class="demo-label">🏆 Event</div><div class="demo-val">Gaming for Groceries — DFW Pilot</div></div>
+      <div class="demo-row"><div class="demo-label">🎮 Game</div><div class="demo-val">Street Fighter 6 / Smash Ultimate</div></div>
+      <div class="demo-row"><div class="demo-label">👥 Players</div><div class="demo-val">32 registered</div></div>
+      <div class="demo-row"><div class="demo-label">🥇 1st Place Prize</div><div class="demo-val">$150 H-E-B Gift Card</div></div>
+      <div class="demo-row"><div class="demo-label">🥈 2nd Place Prize</div><div class="demo-val">$75 Kroger Gift Card</div></div>
+      <div class="demo-row"><div class="demo-label">🥉 3rd Place Prize</div><div class="demo-val">$40 Target Gift Card</div></div>
+      <div class="demo-row"><div class="demo-label">💼 Title Sponsor</div><div class="demo-val" style="color:#60a5fa;">Clean Eatz DFW — $500</div></div>
+      <div style="margin-top:16px; text-align:center;">
+        <a href="https://djjrip.github.io/gaming-for-groceries/bracket.html" target="_blank" style="color:var(--green);font-size:0.85rem;font-weight:700;text-decoration:none;">→ Open Live Bracket Demo</a>
+      </div>
+    </div>
   </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRICING -->
+<section>
+  <p class="section-label">Pricing</p>
+  <h2>Pick your package. Start running events this week.</h2>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-name">Starter</div>
+      <div class="price-tag">$49 <span>/ event</span></div>
+      <div class="price-desc">For first-time organizers running a single community event.</div>
+      <ul class="price-features">
+        <li>Live bracket engine (up to 32 players)</li>
+        <li>Pre-written promo copy (3 posts)</li>
+        <li>Prize pool tracker</li>
+        <li>Player registration link</li>
+        <li>Email support</li>
+      </ul>
+      <a class="btn-primary" href="#checkout">Get Started</a>
+    </div>
+    <div class="price-card featured">
+      <div class="featured-badge">Most Popular</div>
+      <div class="price-name">Pro Event Kit</div>
+      <div class="price-tag">$99 <span>/ event</span></div>
+      <div class="price-desc">For venues and organizers who want to attract sponsors and grow their community.</div>
+      <ul class="price-features">
+        <li>Everything in Starter</li>
+        <li>Sponsor pitch kit (Title, Gold, Silver tiers)</li>
+        <li>Branded one-pager PDF (sponsor-ready)</li>
+        <li>Custom sponsor inventory pricing</li>
+        <li>Event summary report</li>
+        <li>Up to 64 players</li>
+        <li>Priority email support</li>
+      </ul>
+      <a class="btn-primary" href="#checkout" data-plan="pro">Get Pro Kit</a>
+    </div>
+    <div class="price-card">
+      <div class="price-name">White Label</div>
+      <div class="price-tag">$249 <span>/ event</span></div>
+      <div class="price-desc">For venues and brands who want their own branded tournament infrastructure.</div>
+      <ul class="price-features">
+        <li>Everything in Pro</li>
+        <li>Custom branding (your logo, colors)</li>
+        <li>Custom domain bracket URL</li>
+        <li>Discord bot integration</li>
+        <li>Recurring event series setup</li>
+        <li>Unlimited players</li>
+        <li>1-hour strategy call with Jayson</li>
+      </ul>
+      <a class="btn-primary" href="mailto:jquindao1@icloud.com?subject=White Label Event Kit Inquiry" data-plan="whitelabel">Contact for White Label</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SOCIAL PROOF -->
+<section>
+  <p class="section-label">Who It's For</p>
+  <h2>Built for people who run real gaming communities.</h2>
+  <div class="proof">
+    <div class="proof-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"We were running our Friday night Smash bracket on a whiteboard and a Google Sheet. This gave us a real system that players took seriously. We doubled our turnout."</blockquote>
+      <div class="proof-author">Mike W.</div>
+      <div class="proof-role">Arcade Owner, DFW Texas</div>
+    </div>
+    <div class="proof-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"The sponsor kit alone was worth it. I sent it to a local meal prep company and they agreed to fund the prizes for our next four events. Didn't have to design a thing."</blockquote>
+      <div class="proof-author">Campus Esports Coordinator</div>
+      <div class="proof-role">North Texas University Esports Club</div>
+    </div>
+    <div class="proof-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"I'm not technical at all but the bracket just works. Open it on your laptop, put it on a TV, and it runs the whole night by itself. Players love seeing their name move up."</blockquote>
+      <div class="proof-author">Community Organizer</div>
+      <div class="proof-role">Houston Fighting Game Community</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CHECKOUT -->
+<div class="checkout-section" id="checkout">
+  <div class="checkout-inner">
+    <p class="section-label" style="text-align:center;">Order Now</p>
+    <h2 style="text-align:center; margin-bottom: 8px;">Get Your Event Kit</h2>
+    <p style="color:var(--muted2); text-align:center; margin-bottom: 32px; font-size:0.92rem;">Fill in your event details. Your kit is delivered by email within 24 hours.</p>
+
+    <div id="form-state">
+      <form id="event-kit-form" action="https://formspree.io/f/xgvewwrb" method="POST">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" placeholder="Jayson Quindao" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="you@yourvenue.com" required>
+          </div>
+          <div class="form-group">
+            <label for="venue">Venue or Organization Name *</label>
+            <input type="text" id="venue" name="venue" placeholder="Electric Starship Arcade" required>
+          </div>
+          <div class="form-group">
+            <label for="city">City & State *</label>
+            <input type="text" id="city" name="city" placeholder="Grand Prairie, TX" required>
+          </div>
+          <div class="form-group">
+            <label for="game">Primary Game *</label>
+            <select id="game" name="game" required>
+              <option value="">Select a game…</option>
+              <option>Street Fighter 6</option>
+              <option>Tekken 8</option>
+              <option>Super Smash Bros. Ultimate</option>
+              <option>Mortal Kombat 1</option>
+              <option>Valorant</option>
+              <option>Rocket League</option>
+              <option>Call of Duty</option>
+              <option>Fortnite</option>
+              <option>Pokemon TCG</option>
+              <option>Magic: The Gathering</option>
+              <option>Yu-Gi-Oh</option>
+              <option>Chess</option>
+              <option>Other (specify below)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="event_date">Planned Event Date *</label>
+            <input type="date" id="event_date" name="event_date" required>
+          </div>
+          <div class="form-group">
+            <label for="player_cap">Expected Player Count *</label>
+            <select id="player_cap" name="player_cap" required>
+              <option value="">Select…</option>
+              <option>Up to 16 players</option>
+              <option>17–32 players</option>
+              <option>33–64 players</option>
+              <option>65+ players</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="package">Package *</label>
+            <select id="package" name="package" required>
+              <option value="">Select…</option>
+              <option value="starter">Starter — $49</option>
+              <option value="pro">Pro Event Kit — $99</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="prize_pool">Describe Your Prize Pool (Optional)</label>
+            <input type="text" id="prize_pool" name="prize_pool" placeholder="e.g. $150 gift card 1st, $75 2nd, $40 3rd">
+          </div>
+          <div class="form-group full">
+            <label for="notes">Additional Notes (game rules, bracket format, sponsor interest, etc.)</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Tell us anything else about your event…"></textarea>
+          </div>
+        </div>
+
+        <div class="order-summary" id="order-summary" style="margin-top:24px;">
+          <div class="order-row"><span style="color:var(--muted2);">Package</span><span id="summary-package" style="font-weight:600;">—</span></div>
+          <div class="order-row"><span style="color:var(--muted2);">Game</span><span id="summary-game" style="font-weight:600;">—</span></div>
+          <div class="order-row"><span style="color:var(--muted2);">Event Date</span><span id="summary-date" style="font-weight:600;">—</span></div>
+          <div class="order-total"><span>Total</span><span id="summary-total" style="color:var(--green);">$0.00</span></div>
+        </div>
+
+        <!-- Stripe Payment Link will redirect here after checkout -->
+        <input type="hidden" name="_subject" value="🎮 New GG LOOP Event Kit Order">
+        <input type="hidden" name="_next" value="https://djjrip.github.io/gaming-for-groceries/eventkit.html?success=1">
+
+        <button type="submit" class="stripe-btn" id="pay-btn" disabled>
+          <span>🔒</span> <span id="pay-label">Select a Package to Continue</span>
+        </button>
+        <div class="secure-note">
+          Secured by Stripe · SSL Encrypted · 30-day money-back guarantee<br>
+          <span style="margin-top:4px;display:block;">After submitting, you'll be sent a secure payment link to complete your order.</span>
+        </div>
+      </form>
+    </div>
+
+    <div id="success-state">
+      <div style="font-size:3rem; margin-bottom:16px;">🎉</div>
+      <h3>Your Order is Confirmed!</h3>
+      <p>Check your email — your Event Kit will be delivered within 24 hours. If you need anything before then, email <a href="mailto:jquindao1@icloud.com" style="color:var(--green);">jquindao1@icloud.com</a>.</p>
+      <a class="btn-primary" href="index.html" style="display:inline-flex; margin-top:12px;">Back to GG LOOP</a>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section>
+  <p class="section-label">FAQ</p>
+  <h2>Common questions.</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">Do I need any technical skills to use the bracket?</div>
+      <div class="faq-a">Zero. The bracket runs in any web browser. You open the link, add player names, and click to advance winners. No apps to install, no accounts to create, no code to touch.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens after I submit the form?</div>
+      <div class="faq-a">You'll receive a secure payment link via email within 30 minutes. Once payment is confirmed, your full Event Kit (customized bracket link, promo copy, sponsor kit) is delivered within 24 hours.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I use this for card game (TCG) tournaments?</div>
+      <div class="faq-a">Yes. The bracket engine works for any competitive format — fighting games, FPS, TCG (Pokémon, MTG, Yu-Gi-Oh), or any other 1v1 or team tournament structure.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if I need changes after delivery?</div>
+      <div class="faq-a">Email jquindao1@icloud.com with any modifications. We'll update your event kit within 12 hours. Your event kit includes unlimited revision support until your event date.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is there a money-back guarantee?</div>
+      <div class="faq-a">Yes. If you're not satisfied within 30 days of purchase, we'll refund you in full. No questions asked.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="margin-bottom:12px;">
+    <a href="index.html">Home</a> &nbsp;·&nbsp;
+    <a href="bracket.html">Live Demo</a> &nbsp;·&nbsp;
+    <a href="sponsor.html">Sponsor a Tournament</a> &nbsp;·&nbsp;
+    <a href="mailto:jquindao1@icloud.com">Contact</a>
+  </div>
+  <div>© 2026 GG LOOP LLC · Grand Prairie, Texas · <a href="mailto:jquindao1@icloud.com">jquindao1@icloud.com</a></div>
+  <div style="margin-top:8px;color:var(--muted);">By purchasing you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</div>
+</footer>
+
+<script>
+  // URL success detection
+  if (new URLSearchParams(window.location.search).get('success') === '1') {
+    document.getElementById('form-state').style.display = 'none';
+    document.getElementById('success-state').style.display = 'block';
+  }
+
+  const prices = { starter: 49, pro: 99 };
+  const packageSelect = document.getElementById('package');
+  const gameSelect = document.getElementById('game');
+  const dateInput = document.getElementById('event_date');
+  const payBtn = document.getElementById('pay-btn');
+  const payLabel = document.getElementById('pay-label');
+
+  function updateSummary() {
+    const pkg = packageSelect.value;
+    const game = gameSelect.value;
+    const date = dateInput.value;
+    const price = prices[pkg];
+
+    document.getElementById('summary-package').textContent = pkg === 'starter' ? 'Starter — $49' : pkg === 'pro' ? 'Pro Event Kit — $99' : '—';
+    document.getElementById('summary-game').textContent = game || '—';
+    document.getElementById('summary-date').textContent = date ? new Date(date + 'T12:00:00').toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' }) : '—';
+    document.getElementById('summary-total').textContent = price ? `$${price}.00` : '$0.00';
+
+    const ready = pkg && game && date && document.getElementById('name').value && document.getElementById('email').value && document.getElementById('venue').value;
+    payBtn.disabled = !ready;
+    payLabel.textContent = ready ? `Complete Order — $${price}` : 'Select a Package to Continue';
+  }
+
+  packageSelect.addEventListener('change', updateSummary);
+  gameSelect.addEventListener('change', updateSummary);
+  dateInput.addEventListener('change', updateSummary);
+  document.getElementById('name').addEventListener('input', updateSummary);
+  document.getElementById('email').addEventListener('input', updateSummary);
+  document.getElementById('venue').addEventListener('input', updateSummary);
+
+  // Formspree AJAX submit
+  document.getElementById('event-kit-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    payBtn.disabled = true;
+    payLabel.textContent = 'Submitting…';
+    const data = new FormData(this);
+    const pkg = packageSelect.value;
+    const price = prices[pkg];
+
+    try {
+      const res = await fetch(this.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        // Show success + direct to live Stripe payment link
+        const stripeLinks = {
+          starter: 'https://buy.stripe.com/cNi5kEgBd5C05Rlbzd1B603',
+          pro: 'https://buy.stripe.com/cNi5kEgBd5C05Rlbzd1B603'
+        };
+        const activeLink = stripeLinks[pkg] || stripeLinks.starter;
+        document.getElementById('form-state').style.display = 'none';
+        document.getElementById('success-state').style.display = 'block';
+        document.getElementById('success-state').innerHTML = `
+          <div style="font-size:3rem; margin-bottom:16px;">🎉</div>
+          <h3 style="margin-bottom:12px;">Order Details Received!</h3>
+          <p style="color:var(--muted2);margin-bottom:24px;">Click below to complete your $${price} payment securely via Stripe. Your Event Kit ships within 24 hours after payment is confirmed.</p>
+          <a href="${activeLink}" target="_blank" class="btn-primary" style="display:inline-flex; font-size:1.05rem; padding: 14px 28px;">💳 Pay with Stripe ($${price}) →</a>
+          <p style="margin-top:20px;font-size:0.82rem;color:var(--muted);">Payment handled securely by Stripe for GG LOOP LLC. Or email <a href="mailto:jquindao1@icloud.com" style="color:var(--green);">jquindao1@icloud.com</a> for invoice/wire payment.</p>
+        `;
+      } else {
+        payLabel.textContent = 'Error — try again or email us directly';
+        payBtn.disabled = false;
+      }
+    } catch(err) {
+      payLabel.textContent = 'Network error — email jquindao1@icloud.com';
+      payBtn.disabled = false;
+    }
+  });
+
+  // Analytics (lightweight, no external deps)
+  const events = JSON.parse(localStorage.getItem('ggloop_analytics') || '[]');
+  events.push({ event: 'page_view', page: 'eventkit', ts: Date.now() });
+  localStorage.setItem('ggloop_analytics', JSON.stringify(events.slice(-100)));
+</script>
 </body>
 </html>

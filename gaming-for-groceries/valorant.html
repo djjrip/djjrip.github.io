@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valorant Community Cup — GG LOOP | Gaming for Groceries</title>
+  <meta name="description" content="Compete in DFW Valorant community tournaments for real grocery gift cards and VP prizes. Powered by GG LOOP TournamentOS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0e14;
+      --card: #111722;
+      --border: #1e293b;
+      --red: #ff4655;
+      --red-dim: rgba(255, 70, 85, 0.12);
+      --green: #10b981;
+      --green-dim: rgba(16, 185, 129, 0.12);
+      --text: #f8fafc;
+      --muted: #64748b;
+      --muted2: #94a3b8;
+      --mono: 'JetBrains Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; min-height: 100vh; }
+    
+    nav { background: rgba(11, 14, 20, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1000px; margin: 0 auto; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--mono); font-weight: 800; font-size: 1.05rem; color: var(--red); text-decoration: none; letter-spacing: 0.04em; }
+    .logo span { color: var(--muted2); font-weight: 400; }
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-links a { color: var(--muted2); text-decoration: none; font-size: 0.86rem; font-weight: 600; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { background: var(--red); color: #fff; padding: 7px 16px; border-radius: 6px; font-weight: 800; font-size: 0.82rem; text-decoration: none; }
+
+    .hero { max-width: 1000px; margin: 0 auto; padding: 64px 24px 40px; text-align: center; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; background: var(--red-dim); border: 1px solid rgba(255, 70, 85, 0.3); color: var(--red); padding: 5px 14px; border-radius: 9999px; font-size: 0.76rem; font-weight: 700; text-transform: uppercase; font-family: var(--mono); margin-bottom: 20px; }
+    h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 16px; }
+    h1 em { color: var(--red); font-style: normal; }
+    .hero-sub { color: var(--muted2); font-size: 1.05rem; max-width: 620px; margin: 0 auto 32px; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto 60px; padding: 0 24px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .card-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
+    .card p { font-size: 0.85rem; color: var(--muted2); line-height: 1.6; }
+
+    .banner-box { background: linear-gradient(135deg, rgba(255,70,85,0.08), rgba(16,185,129,0.08)); border: 1px solid rgba(255,70,85,0.25); border-radius: 14px; padding: 32px; max-width: 1000px; margin: 0 auto 60px; text-align: center; }
+    .btn-red { background: var(--red); color: #fff; font-weight: 800; font-size: 0.95rem; padding: 14px 32px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: opacity 0.15s; margin-top: 16px; }
+    .btn-red:hover { opacity: 0.9; }
+
+    .disclaimer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; font-size: 0.78rem; color: var(--muted); max-width: 800px; margin: 0 auto; line-height: 1.7; }
+    .disclaimer strong { color: var(--muted2); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html"><span>//</span> GG LOOP <span>VALORANT</span></a>
+    <div class="nav-links">
+      <a href="bracket.html">Live Bracket</a>
+      <a href="eventkit.html">Organizer Kit</a>
+      <a class="nav-cta" href="https://buy.stripe.com/cNi5kEgBd5C05Rlbzd1B603" target="_blank">Register Team ($49)</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">● DFW VALORANT SHOWCASE SERIES</div>
+  <h1>Compete in Valorant.<br><em>Win Real Grocery Rewards.</em></h1>
+  <p class="hero-sub">The North Texas community tournament series where competitive FPS players compete for real grocery subsidies and Riot VP gift cards with automated digital brackets.</p>
+</div>
+
+<div class="grid-3">
+  <div class="card">
+    <div class="card-icon">🎯</div>
+    <h3>Custom Tournament Mode</h3>
+    <p>Matches run in standard Valorant in-game Custom Lobbies with competitive map pools, overtime rules, and live spectator casting.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">🛒</div>
+    <h3>Verified Grocery & VP Prizes</h3>
+    <p>Top teams win sponsored supermarket gift cards (HEB, Central Market, Kroger) and Riot Points codes delivered directly to team captains.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">⚡</div>
+    <h3>Self-Serve Digital Brackets</h3>
+    <p>Zero whiteboard chaos. Live score reporting, automatic seeding, and real-time mobile leaderboard updates powered by TournamentOS.</p>
+  </div>
+</div>
+
+<div class="banner-box">
+  <h2>Ready to enter your 5v5 squad or duo?</h2>
+  <p style="color:var(--muted2); margin-top:8px;">Next DFW Online Community Showcase: Single Elimination 16-Team Bracket.</p>
+  <a class="btn-red" href="https://buy.stripe.com/cNi5kEgBd5C05Rlbzd1B603" target="_blank">💳 Register Team Entry via Stripe ($49) →</a>
+  <div style="margin-top:16px;">
+    <a href="bracket.html" style="color:var(--muted2); font-size:0.85rem; text-decoration:none;">Or view the live bracket engine →</a>
+  </div>
+</div>
+
+<div class="disclaimer">
+  <p><strong>OFFICIAL RIOT GAMES COMMUNITY COMPETITION NOTICE:</strong></p>
+  <p>This tournament is not affiliated with or endorsed by Riot Games, Inc. or VALORANT Esports. VALORANT is a trademark of Riot Games, Inc.</p>
+  <p style="margin-top:8px;">© 2026 GG LOOP LLC · Grand Prairie, TX · All prizes underwritten by verified sponsor partners.</p>
+</div>
+
+</body>
+</html>

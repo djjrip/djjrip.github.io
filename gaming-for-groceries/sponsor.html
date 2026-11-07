@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title Sponsorship & Brand Activation | GG LOOP LLC (DFW)</title>
+  <meta name="description" content="Sponsor Dallas-Fort Worth's premier community gaming tournament series. Reach 18-34 local gamers, tech workers, and young professionals with verified real-world food and grocery rewards.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090B10;
+      --surface: #11141D;
+      --surface-elevated: #181D2A;
+      --border: #22293A;
+      --primary: #10B981;
+      --primary-hover: #059669;
+      --primary-glow: rgba(16, 185, 129, 0.15);
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --accent: #3B82F6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* NAV */
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(9, 11, 16, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .badge {
+      background: var(--primary-glow);
+      color: var(--primary);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #000;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: var(--surface-elevated);
+      border-color: var(--text-muted);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 64px 0 48px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 32px;
+    }
+
+    /* METRICS */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 4px;
+    }
+
+    .metric-label {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* PRICING */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+
+    .pricing-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--primary);
+      background: var(--surface-elevated);
+      box-shadow: 0 0 30px var(--primary-glow);
+    }
+
+    .popular-tag {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: var(--primary);
+      color: #000;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .package-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .package-price {
+      font-size: 2.4rem;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .package-price span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+    }
+
+    .package-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+      min-height: 48px;
+    }
+
+    .features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #CBD5E1;
+    }
+
+    .features-list li svg {
+      color: var(--primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* DIRECT BOOKING FORM SECTION */
+    .booking-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 48px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    input, select, textarea {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+    }
+
+    .contact-cta {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .contact-email {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--primary);
+      font-weight: 700;
+      margin-top: 8px;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <span>🛒 GAMING FOR GROCERIES</span>
+        <span class="badge">SPONSORSHIPS</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Player Lobby</a>
+        <a href="bracket.html" class="nav-link">Live Brackets</a>
+        <a href="community.html" class="nav-link">Community</a>
+        <a href="#book" class="btn btn-primary">Book Sponsorship</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <div style="margin-bottom: 16px;">
+        <span class="badge">DFW Brand & Food Partner Media Kit</span>
+      </div>
+      <h1>Fund Groceries for Local Gamers.<br>Acquire High-LTV DFW Customers.</h1>
+      <p class="hero-subtitle">
+        "Gaming for Groceries" connects local food brands, meal prep services, and businesses directly with competitive gamers and tech workers across Dallas-Fort Worth.
+      </p>
+      <div>
+        <a href="#book" class="btn btn-primary" onclick="selectPackage('$500 Title Event Sponsor')">Book Title Sponsor ($500)</a>
+        <a href="bracket.html" class="btn btn-outline" style="margin-left: 12px;">View Live Bracket Engine</a>
+      </div>
+    </section>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-value">18–34</div>
+        <div class="metric-label">Core Demographic (Gamers & Tech Workers in DFW)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">100%</div>
+        <div class="metric-label">Food & Meal Focused (High-Utility Prize Pools)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">30–50+</div>
+        <div class="metric-label">Direct Walk-In Players Per Pilot Event</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">$0</div>
+        <div class="metric-label">Cost to Host Venue (100% Door Rev Retained)</div>
+      </div>
+    </div>
+
+    <!-- PRICING TIERS -->
+    <section>
+      <h2 class="section-title">Sponsorship Packages</h2>
+      <p class="section-desc">Transparent pricing engineered for real local brand ROI and verified customer acquisition.</p>
+
+      <div class="pricing-grid">
+
+        <!-- PACKAGE 1 -->
+        <div class="pricing-card">
+          <div class="package-name">Community Supporter</div>
+          <div class="package-price">$265 <span>/ event</span></div>
+          <div class="package-desc">Ideal for local specialty foods, snacks, and beverage brands.</div>
+          <ul class="features-list">
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+              <span>Funds the $265 Grocery Prize Pool for 3 winners</span>
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+              <span>"Powered by [Your Brand]" on live bracket page</span>
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+              <span>Discord community announcement feature</span>
+            </li>
+          </ul>
+          <a href="#book" class="btn btn-outline" onclick="selectPackage('$265 Community Supporter')">Select Supporter</a>
+        </div>
+
+        <!-- PACKAGE 2 -->
+        <div class="pricing-card featured">
+          <div class="popular-tag">Most Popular</div>
+          <div class="package-name">Title Event Sponsor</div>
+          <div class="package-price">$500 <span>/ event</span></div>
+          <div class="package-desc">Category exclusivity, custom promo code distribution, and physical sampling.</div>
+          <ul class="features-list">
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+              <span><strong>Title Naming:</strong> "The [Brand] Gaming for Groceries Challenge"</span>
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+              <span>Direct meal/voucher prize delivery ($265 pool to top 3)</span>
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+              <span>Custom promo discount code (e.g. GGLOOP20) for all players</span>
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+              <span>Sticky top-of-bracket banner placement</span>
+            </li>
+          </ul>
+          <a href="#book" class="btn btn-primary" onclick="selectPackage('$500 Title Event Sponsor')">Lock Title Sponsor ($500)</a>
+        </div>
+
+        <!-- PACKAGE 3 -->
+        <div class="pricing-card">
+          <div class="package-name">Series Partner (4 Events)</div>
+          <div class="package-price">$1,800 <span>/ month</span></div>
+          <div class="package-desc">Complete multi-venue brand dominance across North Texas.</div>
+          <ul class="features-list">
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+              <span>Title sponsor across 4 consecutive tournament nights</span>
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+              <span>Multi-venue presence across Dallas, Arlington, Fort Worth</span>
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+              <span>Dedicated email blast to DFW player database</span>
+            </li>
+          </ul>
+          <a href="#book" class="btn btn-outline" onclick="selectPackage('$1,800 Series Partner')">Inquire for Series</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DIRECT INTERACTIVE BOOKING FORM (DATABASE & INBOX SYNCED) -->
+    <section class="booking-section" id="book">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <span class="badge" style="margin-bottom: 8px; display: inline-block;">Instant Booking & Inquiry</span>
+        <h2 style="font-size: 1.8rem; font-weight: 800;">Reserve Your Brand Sponsorship</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Submissions are stored securely and routed directly to executive leadership.</p>
+      </div>
+
+      <form id="sponsor-form" action="https://formsubmit.co/jquindao1@icloud.com" method="POST">
+        <!-- Hidden Config for FormSubmit -->
+        <input type="hidden" name="_subject" value="🚀 New DFW Brand Sponsorship Inquiry!">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="company_name">Company / Brand Name *</label>
+            <input type="text" id="company_name" name="Company Name" placeholder="e.g. FitMeals DFW" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contact_name">Contact Person *</label>
+            <input type="text" id="contact_name" name="Contact Name" placeholder="Your Name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Work Email *</label>
+            <input type="email" id="email" name="Email" placeholder="partner@brand.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="Phone" placeholder="(469) 000-0000">
+          </div>
+
+          <div class="form-group">
+            <label for="tier_select">Sponsorship Tier *</label>
+            <select id="tier_select" name="Selected Package" required>
+              <option value="$500 Title Event Sponsor">$500 Title Event Sponsor (Recommended)</option>
+              <option value="$265 Community Supporter">$265 Community Supporter</option>
+              <option value="$1,800 Series Partner">$1,800 Series Partner (4 Events)</option>
+              <option value="Custom Venue Co-Host">Custom Venue Co-Host / Partner</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="target_city">Preferred DFW City / Area</label>
+            <select id="target_city" name="Target Area">
+              <option value="Dallas">Dallas</option>
+              <option value="Fort Worth">Fort Worth</option>
+              <option value="Arlington">Arlington</option>
+              <option value="Frisco / Plano">Frisco / Plano</option>
+              <option value="All DFW">Entire DFW Metroplex</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label for="notes">Additional Goals / Promo Code Requests</label>
+            <textarea id="notes" name="Notes" rows="3" placeholder="Tell us about your brand and any promo discounts you want to provide to players..."></textarea>
+          </div>
+
+          <div class="form-group full" style="margin-top: 12px;">
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem;">
+              Submit Sponsorship Reservation
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div id="form-success" style="display: none; text-align: center; padding: 32px 0;">
+        <div style="font-size: 3rem; margin-bottom: 12px;">✅</div>
+        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 8px;">Reservation Received!</h3>
+        <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto 20px;">
+          Your inquiry has been stored and delivered directly to Jayson Quindao. We will contact you within 24 hours to finalize activation dates.
+        </p>
+      </div>
+    </section>
+
+    <!-- EXECUTIVE CONTACT -->
+    <div class="contact-cta">
+      <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px;">Direct Executive Contact</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">Speak directly with the founder to discuss custom packages or pilot dates:</p>
+      <div class="contact-email">Jayson Quindao • jquindao1@icloud.com • (469) 676-8251</div>
+    </div>
+
+  </main>
+
+  <script>
+    function selectPackage(tier) {
+      const select = document.getElementById('tier_select');
+      if (select) {
+        select.value = tier;
+      }
+      document.getElementById('book').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Client-side LocalStorage Persistence + AJAX FormSubmit
+    const form = document.getElementById('sponsor-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const data = {
+          company: document.getElementById('company_name').value,
+          contact: document.getElementById('contact_name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          tier: document.getElementById('tier_select').value,
+          city: document.getElementById('target_city').value,
+          notes: document.getElementById('notes').value,
+          timestamp: new Date().toISOString()
+        };
+
+        // 1. Store in Client-side LocalStorage DB
+        let leads = JSON.parse(localStorage.getItem('ggloop_sponsor_leads') || '[]');
+        leads.push(data);
+        localStorage.setItem('ggloop_sponsor_leads', JSON.stringify(leads));
+
+        // 2. Dispatch to FormSubmit
+        const formData = new FormData(form);
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        }).then(function(res) {
+          form.style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+        }).catch(function(err) {
+          form.style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>

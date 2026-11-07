@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TournamentOS for Venues & Organizers | GG LOOP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #030712;
+            --bg-card: #0b0f19;
+            --bg-card-hover: #111827;
+            --border: #1f2937;
+            --border-glow: #10b981;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --brand-green: #10b981;
+            --brand-green-hover: #059669;
+            --brand-cyan: #06b6d4;
+            --brand-purple: #8b5cf6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-logo span { color: var(--brand-green); }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .hero {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 9999px;
+            color: var(--brand-green);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.25rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.03em;
+        }
+
+        h1 .glow {
+            background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1.25rem;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: rgba(16, 185, 129, 0.5);
+            transform: translateY(-4px);
+            background: var(--bg-card-hover);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--brand-green);
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.05) 0%, var(--bg-card) 100%);
+        }
+
+        .card-tag {
+            position: absolute;
+            top: -12px;
+            right: 24px;
+            background: var(--brand-green);
+            color: #030712;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+        }
+
+        .tier-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            min-height: 48px;
+        }
+
+        .price-box {
+            display: flex;
+            align-items: baseline;
+            gap: 0.35rem;
+            margin-bottom: 2rem;
+        }
+
+        .price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .period {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            flex-grow: 1;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            color: #e5e7eb;
+        }
+
+        .check-icon {
+            color: var(--brand-green);
+            font-weight: bold;
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        .cta-btn {
+            display: block;
+            text-align: center;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .cta-btn-primary {
+            background: var(--brand-green);
+            color: #030712;
+        }
+
+        .cta-btn-primary:hover {
+            background: var(--brand-green-hover);
+        }
+
+        .cta-btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .cta-btn-outline:hover {
+            border-color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .features-breakdown {
+            margin-top: 5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 3rem;
+        }
+
+        .features-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--brand-cyan);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.25rem; }
+            .features-breakdown { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-nav">
+        <a href="index.html" class="brand-logo">GG<span>LOOP</span></a>
+        <div>
+            <a href="bracket.html" style="color: var(--text-muted); text-decoration: none; margin-right: 1.5rem; font-size: 0.95rem;">Live Bracket Engine</a>
+            <a href="https://buy.stripe.com/cNi5kEgBd5C05Rlbzd1B603" class="cta-btn cta-btn-primary" style="display: inline-block; padding: 0.5rem 1.25rem; font-size: 0.9rem;">Book Event Kit ($49)</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <div class="badge">Commercial Tournament Infrastructure</div>
+            <h1>Turn Local Gaming Events Into <span class="glow">High-Retention Revenue</span></h1>
+            <p>From one-off grassroots cups to automated monthly venue leagues. Zero spreadsheet headaches, TV-ready bracket displays, and instant mobile registration.</p>
+        </section>
+
+        <section class="pricing-grid">
+            <!-- Tier 1: Single Event Starter -->
+            <div class="pricing-card">
+                <div>
+                    <h2 class="tier-name">Single Event Kit</h2>
+                    <p class="tier-desc">Perfect for one-off community cups, weekend LANs, and club qualifiers.</p>
+                    <div class="price-box">
+                        <span class="price">$49</span>
+                        <span class="period">/ event</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li class="feature-item"><span class="check-icon">✓</span> Custom live bracket engine URL</li>
+                        <li class="feature-item"><span class="check-icon">✓</span> Digital player & team registration portal</li>
+                        <li class="feature-item"><span class="check-icon">✓</span> 3 promotional posts (Discord & Social)</li>
+                        <li class="feature-item"><span class="check-icon">✓</span> Prize tracker & roster template</li>
+                        <li class="feature-item"><span class="check-icon">✓</span> Delivered within 24 hours</li>
+                        <li class="feature-item"><span class="check-icon">✓</span> 48-hour organizer setup support</li>
+                    </ul>
+                </div>
+                <a href="https://buy.stripe.com/cNi5kEgBd5C05Rlbzd1B603" class="cta-btn cta-btn-outline">Get Starter Kit ($49)</a>
+            </div>
+
+            <!-- Tier 2: Venue Partner Pro (MRR) -->
+            <div class="pricing-card featured">
+                <div class="card-tag">Most Popular for Venues</div>
+                <div>
+                    <h2 class="tier-name">Venue Pro Monthly</h2>
+                    <p class="tier-desc">Designed for game stores, LAN centers, and arcades running recurring weekly tournaments.</p>
+                    <div class="price-box">
+                        <span class="price">$149</span>
+                        <span class="period">/ month</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li class="feature-item"><span class="check-icon">✓</span> <strong>Unlimited tournaments</strong> every month</li>
+                        <li class="feature-item"><span class="check-icon">✓</span> <strong>Custom branded store portal</strong> (e.g. yourstore.ggloop.io)</li>
+                        <li class="feature-item"><span class="check-icon">✓</span> <strong>TV Display Mode</strong> with live automated bracket rotation</li>
+                        <li class="feature-item"><span class="check-icon">✓</span> <strong>Monthly Store Leaderboard</strong> & player points ledger</li>
+                        <li class="feature-item"><span class="check-icon">✓</span> <strong>Automated SMS & Discord tournament blasts</strong> to players</li>
+                        <li class="feature-item"><span class="check-icon">✓</span> Priority 24/7 dedicated organizer hotline</li>
+                    </ul>
+                </div>
+                <a href="https://buy.stripe.com/cNi5kEgBd5C05Rlbzd1B603" class="cta-btn cta-btn-primary">Start Venue Pro ($149/mo)</a>
+            </div>
+
+            <!-- Tier 3: Turnkey Production -->
+            <div class="pricing-card">
+                <div>
+                    <h2 class="tier-name">Turnkey Production</h2>
+                    <p class="tier-desc">Full-service managed tournament production with title sponsor placement.</p>
+                    <div class="price-box">
+                        <span class="price">$499</span>
+                        <span class="period">/ event</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li class="feature-item"><span class="check-icon">✓</span> Dedicated live tournament director (remote/on-site)</li>
+                        <li class="feature-item"><span class="check-icon">✓</span> Custom broadcast overlays & stream production kit</li>
+                        <li class="feature-item"><span class="check-icon">✓</span> Brand & sponsor integration into live stream/displays</li>
+                        <li class="feature-item"><span class="check-icon">✓</span> Official player attestation certificates & awards</li>
+                        <li class="feature-item"><span class="check-icon">✓</span> Complete post-event analytics & highlight package</li>
+                    </ul>
+                </div>
+                <a href="mailto:jquindao1@icloud.com?subject=Turnkey%20Tournament%20Production%20Inquiry" class="cta-btn cta-btn-outline">Contact for Production</a>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="features-breakdown">
+            <div class="features-header">
+                <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 2.25rem; margin-bottom: 0.75rem;">Why Organizers Choose GG LOOP</h2>
+                <p style="color: var(--text-muted);">Built specifically for competitive fighting games, card games, tactical shooters, and grassroots LAN centers.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>⚡ Zero Setup Overhead</h3>
+                    <p>No software downloads, no server hosting. Send one link to players for instant mobile registration and open the live bracket on any venue TV.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📺 Real-Time TV Displays</h3>
+                    <p>Designed to look crisp on 4K arena TVs, projector displays, and dual-monitor streaming setups with automatic match progression.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🏆 Verified Player Ecosystem</h3>
+                    <p>Track match history, top-8 placements, and community points turning weekly attendance into real-world rewards and recognition.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 GG LOOP LLC. All rights reserved. • Grand Prairie, Texas • <a href="mailto:jquindao1@icloud.com" style="color: var(--brand-green);">jquindao1@icloud.com</a></p>
+    </footer>
+
+</body>
+</html>

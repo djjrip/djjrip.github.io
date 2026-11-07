@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GG LOOP Community & Human Mentorship Guild | Play. Win. Eat.</title>
+  <meta name="description" content="Join Dallas-Fort Worth's premier community of competitive gamers, verified human mentors, and tournament players competing for real grocery prize pools.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090B10;
+      --surface: #11141D;
+      --surface-elevated: #181D2A;
+      --border: #22293A;
+      --primary: #10B981;
+      --primary-hover: #059669;
+      --primary-glow: rgba(16, 185, 129, 0.15);
+      --discord: #5865F2;
+      --discord-hover: #4752C4;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; padding-bottom: 80px; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(9, 11, 16, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 1.15rem;
+    }
+
+    .badge {
+      background: var(--primary-glow);
+      color: var(--primary);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .nav-links { display: flex; gap: 16px; align-items: center; }
+    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-link:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary { background: var(--primary); color: #000; }
+    .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+    .btn-discord { background: var(--discord); color: #fff; }
+    .btn-discord:hover { background: var(--discord-hover); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { background: var(--surface-elevated); border-color: var(--text-muted); }
+
+    .hero { padding: 56px 0 40px; text-align: center; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+    h1 span { color: var(--primary); }
+    .hero-subtitle { font-size: 1.1rem; color: var(--text-muted); max-width: 680px; margin: 0 auto 32px; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .card-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+    .card-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; }
+
+    /* MENTORS LIST */
+    .mentor-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .mentor-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      border: 2px solid var(--primary);
+    }
+
+    .mentor-info { flex: 1; }
+    .mentor-name { font-weight: 700; font-size: 0.95rem; }
+    .mentor-rank { font-size: 0.8rem; color: var(--primary); font-weight: 600; }
+    .mentor-game { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* FORM STYLES */
+    label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; }
+    input, select, textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      margin-bottom: 14px;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--primary); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <span>🎮 GG LOOP</span>
+        <span class="badge">HUMAN GUILD</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Lobby</a>
+        <a href="bracket.html" class="nav-link">Brackets</a>
+        <a href="curves.html" class="nav-link">Aim Labs</a>
+        <a href="sponsor.html" class="nav-link">Sponsors</a>
+        <a href="https://discord.gg/invite" class="btn btn-discord" target="_blank">Join Discord</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <span class="badge" style="margin-bottom: 12px; display: inline-block;">Real Gamers Teaching Gamers</span>
+      <h1>Human Mentorship & <span>Competitive Guild</span></h1>
+      <p class="hero-subtitle">
+        No automated bots. No fake AI coaching. Connect with verified Radiant, Immortal, and tournament veterans for real 1-on-1 VOD reviews and weekly 10-man custom lobbies.
+      </p>
+      <div>
+        <a href="#coaching" class="btn btn-primary">Book 1-on-1 Human Coach</a>
+        <a href="#apply" class="btn btn-outline" style="margin-left: 10px;">Apply as Mentor</a>
+      </div>
+    </section>
+
+    <div class="grid-2">
+
+      <!-- ACTIVE VERIFIED MENTORS -->
+      <div class="card" id="coaching">
+        <div class="card-title">👑 Verified Community Mentors</div>
+        <p class="card-desc">Real tournament veterans available for live Discord screen-share coaching and mechanical breakdowns ($15–$25/hr or food credits).</p>
+
+        <div class="mentor-item">
+          <div class="mentor-avatar">🎯</div>
+          <div class="mentor-info">
+            <div class="mentor-name">VandalPro_DFW</div>
+            <div class="mentor-rank">Immortal 3 // Top 500 NA</div>
+            <div class="mentor-game">Valorant • Crosshair Placement & Positioning</div>
+          </div>
+          <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="selectCoach('VandalPro_DFW (Valorant Immortal 3)')">Book ($20/hr)</button>
+        </div>
+
+        <div class="mentor-item">
+          <div class="mentor-avatar">♟️</div>
+          <div class="mentor-info">
+            <div class="mentor-name">TacticsGrandmaster</div>
+            <div class="mentor-rank">2150 USCF / FIDE Master</div>
+            <div class="mentor-game">Chess • Speed Chess & Opening Theory</div>
+          </div>
+          <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="selectCoach('TacticsGrandmaster (2150 USCF)')">Book ($25/hr)</button>
+        </div>
+
+        <div class="mentor-item">
+          <div class="mentor-avatar">🕹️</div>
+          <div class="mentor-info">
+            <div class="mentor-name">TexasFGC_King</div>
+            <div class="mentor-rank">Master Rank // Evo Top 64</div>
+            <div class="mentor-game">Street Fighter 6 & Tekken 8 • Frame Data & Neutral</div>
+          </div>
+          <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="selectCoach('TexasFGC_King (SF6/Tekken Master)')">Book ($15/hr)</button>
+        </div>
+
+        <div style="margin-top: 20px; text-align: center;">
+          <a href="https://discord.gg/invite" target="_blank" class="btn btn-discord" style="width: 100%;">
+            Join Free Weekly Discord VOD Stages
+          </a>
+        </div>
+      </div>
+
+      <!-- BOOKING & MENTOR APPLICATION FORM -->
+      <div class="card" id="apply">
+        <div class="card-title">📝 Book a Session or Apply to Coach</div>
+        <p class="card-desc">Submissions route directly to GG LOOP coordinators.</p>
+
+        <form action="https://formsubmit.co/jquindao1@icloud.com" method="POST">
+          <input type="hidden" name="_subject" value="🎮 New GG Mentor Guild Request!">
+          <input type="hidden" name="_captcha" value="false">
+
+          <label for="name">Your Name / Gamertag *</label>
+          <input type="text" id="name" name="Name / Gamertag" placeholder="e.g. Jayson#DFW" required>
+
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="Email" placeholder="yourname@gmail.com" required>
+
+          <label for="discord">Discord Username *</label>
+          <input type="text" id="discord" name="Discord Username" placeholder="username#0000" required>
+
+          <label for="type">Request Type *</label>
+          <select id="type" name="Request Type" required>
+            <option value="Book 1-on-1 Coaching">Book 1-on-1 Human Coaching ($15-$25/hr)</option>
+            <option value="Apply to be a Verified Coach">Apply to be a Verified GG Coach (Get Paid)</option>
+            <option value="Join Weekly 10-Man Scrims">Join Weekly 10-Man Custom Scrims</option>
+          </select>
+
+          <label for="notes">Game & Current Rank / Goals</label>
+          <textarea id="notes" name="Game & Goals" rows="3" placeholder="Tell us your main game (Valorant, Chess, Fighting Games) and what you want to improve..."></textarea>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; margin-top: 6px;">
+            Submit Guild Application
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    function selectCoach(coachName) {
+      const typeSelect = document.getElementById('type');
+      const notesField = document.getElementById('notes');
+      if (typeSelect) typeSelect.value = 'Book 1-on-1 Coaching';
+      if (notesField) notesField.value = `Requesting 1-on-1 session with coach: ${coachName}`;
+      document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>

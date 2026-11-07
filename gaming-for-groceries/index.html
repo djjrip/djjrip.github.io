@@ -140,11 +140,11 @@
     <a href="#" class="logo"><span>Gaming for Groceries</span></a>
     <ul class="nav-links">
       <li><a href="#how-it-works">How It Works</a></li>
-      <li><a href="#prizes">Prizes</a></li>
       <li><a href="bracket.html">Live Brackets</a></li>
-      <li><a href="#sponsors">💼 Sponsors</a></li>
-      <li><a href="../index.html">GG LOOP Hub</a></li>
-      <li><a href="kit.html" style="background:rgba(16,185,129,0.15);color:#10B981;border:1px solid rgba(16,185,129,0.3);padding:.35rem 0.9rem;border-radius:8px;font-weight:700;">🎮 Run an Event — $49</a></li>
+      <li><a href="curves.html">⚡ Aim Labs</a></li>
+      <li><a href="community.html">👑 Mentors</a></li>
+      <li><a href="sponsor.html">💼 Sponsors</a></li>
+      <li><a href="eventkit.html" style="background:rgba(16,185,129,0.15);color:#10B981;border:1px solid rgba(16,185,129,0.3);padding:.35rem 0.9rem;border-radius:8px;font-weight:700;">🎮 Run an Event — $49</a></li>
       <li><a href="#register" class="nav-cta" onclick="openModal()">Register Free</a></li>
     </ul>
   </nav>
@@ -314,16 +314,16 @@
         var n = document.getElementById('modal-name') ? document.getElementById('modal-name').value.trim() : '';
         var em = document.getElementById('modal-email') ? document.getElementById('modal-email').value.trim() : '';
         var gm = document.getElementById('modal-game') ? document.getElementById('modal-game').value : '';
-
+        
         // Save to browser storage immediately
         var signups = JSON.parse(localStorage.getItem('gfg_player_signups') || '[]');
         signups.push({ gamertag: n, email: em, game: gm, timestamp: new Date().toISOString() });
         localStorage.setItem('gfg_player_signups', JSON.stringify(signups));
-
+        
         // Instant visual feedback for player
         document.getElementById('modal-form-state').style.display='none';
         document.getElementById('modal-success').style.display='block';
-
+        
         // Async background sync
         var data=new FormData(form);
         fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}}).catch(function(){});

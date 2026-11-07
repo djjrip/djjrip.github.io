@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed — Tournament Kit Ready | GG LOOP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #030712;
+            --bg-card: #0b0f19;
+            --border: #1f2937;
+            --brand-green: #10b981;
+            --brand-green-hover: #059669;
+            --brand-cyan: #06b6d4;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .check-badge {
+            width: 72px;
+            height: 72px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 2px solid var(--brand-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--brand-green);
+            margin: 0 auto 1.5rem auto;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1.25rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--brand-green);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .kit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .kit-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.2s ease;
+        }
+
+        .kit-item:hover {
+            border-color: var(--brand-green);
+            background: rgba(16, 185, 129, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .kit-item h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+            color: var(--text-main);
+        }
+
+        .kit-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .badge-pill {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--brand-green);
+            padding: 0.15rem 0.5rem;
+            border-radius: 9999px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .setup-form {
+            margin-top: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #d1d5db;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: #030712;
+            border: 1px solid var(--border);
+            border-radius: 0.6rem;
+            color: #fff;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--brand-green);
+        }
+
+        .submit-btn {
+            background: var(--brand-green);
+            color: #030712;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 0.9rem 1.5rem;
+            border: none;
+            border-radius: 0.6rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--brand-green-hover);
+        }
+
+        .contact-box {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        .contact-box a {
+            color: var(--brand-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="check-badge">✓</div>
+            <h1>Payment Confirmed!</h1>
+            <p class="subtitle">Your GG LOOP Tournament Operations Kit is ready.</p>
+        </div>
+
+        <!-- Direct Access Grid -->
+        <div class="card">
+            <h2 class="card-title">📦 Your Instant Tournament Deliverables</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">You have full instant access to your operations tools below while we customize your branding:</p>
+            
+            <div class="kit-grid">
+                <a href="bracket.html" class="kit-item">
+                    <span class="badge-pill">Interactive Engine</span>
+                    <h3>Live Bracket Engine</h3>
+                    <p>Open this on store arena TVs, projectors, or stream overlays.</p>
+                </a>
+
+                <a href="community.html" class="kit-item">
+                    <span class="badge-pill">Registration Portal</span>
+                    <h3>Player Sign-Up Hub</h3>
+                    <p>Send this link to players for instant mobile check-ins.</p>
+                </a>
+
+                <div class="kit-item" style="cursor: default;">
+                    <span class="badge-pill">Templates</span>
+                    <h3>Promo & Social Kit</h3>
+                    <p>3 pre-written Discord & Instagram posts ready to publish.</p>
+                </div>
+
+                <div class="kit-item" style="cursor: default;">
+                    <span class="badge-pill">VIP Support</span>
+                    <h3>Direct Setup Hotline</h3>
+                    <p>Direct assistance from Jayson Quindao: (469) 676-8251</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customization Setup Form -->
+        <div class="card">
+            <h2 class="card-title">⚙️ Step 2: Customize Your Tournament Setup</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Fill out your event details below so we can generate your branded bracket URL and custom player portal:</p>
+            
+            <form class="setup-form" onsubmit="event.preventDefault(); alert('Tournament details received! We are configuring your custom bracket URL and will email you the direct link within 2 hours.');">
+                <div class="form-group">
+                    <label for="org-name">Venue / Organization Name</label>
+                    <input type="text" id="org-name" placeholder="e.g. Electric Starship Arcade, MRT Games, Sector 7" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-title">Tournament Name & Game Title</label>
+                    <input type="text" id="event-title" placeholder="e.g. Saturday Night SF6 Showdown / Pokémon Weekly" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-date">Target Event Date</label>
+                    <input type="date" id="event-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="bracket-type">Format</label>
+                    <select id="bracket-type">
+                        <option value="double-elim">Double Elimination (Recommended)</option>
+                        <option value="single-elim">Single Elimination</option>
+                        <option value="round-robin">Round Robin / Swiss</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-email">Delivery Email Address</label>
+                    <input type="email" id="contact-email" placeholder="Where should we send your customized links?" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Generate My Custom Tournament URL</button>
+            </form>
+        </div>
+
+        <div class="contact-box">
+            <p>Need immediate assistance or emergency setup help before your event?</p>
+            <p>Text/Call: <strong>(469) 676-8251</strong> • Email: <a href="mailto:jquindao1@icloud.com">jquindao1@icloud.com</a></p>
+            <p style="margin-top: 1rem;"><a href="index.html">← Return to GG LOOP Home</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

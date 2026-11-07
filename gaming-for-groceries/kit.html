@@ -2,248 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>GG LOOP — Tournament Starter Kit | What You Get</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GG LOOP — Turnkey Tournament Operations & Event Kit</title>
-  <meta name="description" content="Turnkey tournament operations, live brackets, automated sign-ups, and anti-cheat verification for campus LANs, arcades, and competitive venues.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #090d16;
-      --card: #111726;
-      --card-border: #1f293d;
-      --primary: #10b981;
-      --primary-glow: rgba(16, 185, 129, 0.25);
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --mono: 'JetBrains Mono', monospace;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', -apple-system, sans-serif;
-      line-height: 1.6;
-      padding: 0 20px 80px;
-    }
-    .header {
-      max-width: 900px;
-      margin: 40px auto 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--card-border);
-    }
-    .logo {
-      font-size: 24px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-    }
-    .logo span { color: var(--primary); }
-    .badge {
-      display: inline-block;
-      background: rgba(16, 185, 129, 0.12);
-      color: var(--primary);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 4px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-family: var(--mono);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .hero {
-      max-width: 900px;
-      margin: 40px auto 50px;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 46px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 20px;
-    }
-    .hero h1 span {
-      background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero p {
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 680px;
-      margin: 0 auto 32px;
-    }
-    .btn-group {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      background: var(--primary);
-      color: #04120b;
-      font-weight: 800;
-      font-size: 16px;
-      padding: 14px 32px;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 20px var(--primary-glow);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
-    }
-    .btn-secondary {
-      background: var(--card);
-      color: var(--text);
-      border: 1px solid var(--card-border);
-      font-weight: 700;
-      font-size: 16px;
-      padding: 14px 28px;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .btn-secondary:hover {
-      background: #182238;
-      border-color: #334155;
-    }
-    .grid {
-      max-width: 900px;
-      margin: 0 auto 60px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 28px;
-    }
-    .card h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
-      color: #fff;
-    }
-    .card p {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    .pricing-box {
-      max-width: 900px;
-      margin: 0 auto;
-      background: linear-gradient(180deg, #131c30 0%, #0d1322 100%);
-      border: 1px solid #24324f;
-      border-radius: 18px;
-      padding: 44px;
-      text-align: center;
-    }
-    .pricing-box h2 {
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
-    .price {
-      font-size: 54px;
-      font-weight: 900;
-      color: var(--primary);
-      font-family: var(--mono);
-      margin-bottom: 16px;
-    }
-    .price-period {
-      font-size: 16px;
-      color: var(--muted);
-      font-weight: 500;
-    }
-    .features-list {
-      max-width: 500px;
-      margin: 24px auto 36px;
-      text-align: left;
-      list-style: none;
-    }
-    .features-list li {
-      font-size: 15px;
-      color: #cbd5e1;
-      padding: 8px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .features-list li::before {
-      content: '✓';
-      color: var(--primary);
-      font-weight: 900;
-      font-family: var(--mono);
-    }
-    .footer {
-      max-width: 900px;
-      margin: 50px auto 0;
-      text-align: center;
-      font-size: 13px;
-      color: var(--muted);
-      border-top: 1px solid var(--card-border);
-      padding-top: 30px;
-    }
-    .footer a {
-      color: var(--primary);
-      text-decoration: none;
-    }
+    :root { --bg:#0b0e14; --card:#111722; --border:#1e293b; --green:#10b981; --text:#f8fafc; --muted:#64748b; --muted2:#94a3b8; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; line-height:1.6; padding:40px 20px; }
+    .container { max-width:680px; margin:0 auto; }
+    .logo { font-family:monospace; font-weight:800; color:var(--green); font-size:1.1rem; margin-bottom:32px; display:block; }
+    h1 { font-size:1.9rem; font-weight:800; margin-bottom:8px; }
+    .sub { color:var(--muted2); margin-bottom:40px; }
+    .kit-section { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:28px; margin-bottom:20px; }
+    .kit-section h2 { font-size:1rem; font-weight:700; color:var(--green); margin-bottom:16px; text-transform:uppercase; letter-spacing:.05em; font-family:monospace; }
+    .item { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+    .item-icon { font-size:1.3rem; flex-shrink:0; margin-top:2px; }
+    .item-text strong { display:block; font-size:.95rem; }
+    .item-text span { font-size:.84rem; color:var(--muted2); }
+    .cta { background:var(--green); color:#000; font-weight:800; padding:16px 32px; border-radius:8px; display:block; text-align:center; text-decoration:none; font-size:1rem; margin-top:32px; }
+    .price-tag { font-size:2.2rem; font-weight:800; color:var(--green); margin:16px 0 4px; }
+    .price-sub { color:var(--muted2); font-size:.85rem; margin-bottom:24px; }
+    .divider { border:none; border-top:1px solid var(--border); margin:24px 0; }
+    .steps { counter-reset: step; }
+    .step { display:flex; gap:14px; align-items:flex-start; margin-bottom:16px; }
+    .step-num { background:var(--green); color:#000; font-weight:800; font-size:.8rem; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+    .step-text strong { display:block; font-size:.95rem; }
+    .step-text span { font-size:.84rem; color:var(--muted2); }
   </style>
 </head>
 <body>
-  <div class="header">
-    <div class="logo">GG <span>LOOP</span></div>
-    <span class="badge">Event Operations Kit</span>
+<div class="container">
+  <span class="logo">// GG LOOP LLC</span>
+  <h1>Tournament Starter Kit</h1>
+  <p class="sub">Everything you need to run a professional competitive gaming event — delivered within 24 hours of payment.</p>
+
+  <div class="kit-section">
+    <h2>📦 What's Included</h2>
+    <div class="item"><div class="item-icon">🏆</div><div class="item-text"><strong>Live Tournament Bracket Engine</strong><span>Your custom bracket URL — single or double elimination, up to 64 players. Runs on any TV, laptop, or mobile device. Self-updating as scores are reported.</span></div></div>
+    <div class="item"><div class="item-icon">📋</div><div class="item-text"><strong>Player Registration Portal</strong><span>A clean digital sign-up page for your event. Players register from their phone. You see every entry in real time.</span></div></div>
+    <div class="item"><div class="item-icon">📢</div><div class="item-text"><strong>3 Pre-Written Promo Posts</strong><span>Copy-paste social media posts for Twitter/X, Instagram, and Discord — customized for your game and date. Post once, fill your bracket.</span></div></div>
+    <div class="item"><div class="item-icon">💰</div><div class="item-text"><strong>Prize Pool Tracker (Google Sheet)</strong><span>Pre-built spreadsheet to track player entry fees, prize splits (60/30/10), and payouts. No math required.</span></div></div>
+    <div class="item"><div class="item-icon">📧</div><div class="item-text"><strong>Email Support (48h)</strong><span>Direct email access to GG LOOP for setup questions, bracket configuration, and day-of troubleshooting.</span></div></div>
   </div>
 
-  <div class="hero">
-    <h1>A Practical Tournament Operations Kit</h1>
-    <p>Give event organizers a repeatable starting point for check-in, brackets, match timing, and dispute handling. Confirm the included files and any live-app dependencies before scheduling an event; no anti-cheat verification or 24-hour implementation guarantee is implied.</p>
-    <div class="btn-group">
-      <a href="mailto:jquindao1@icloud.com?subject=GG%20LOOP%20Tournament%20Kit%20Inquiry" class="btn-primary">Request Starter Kit &amp; Inquiry</a>
-      <a href="https://gg-loop-tournament.vercel.app" class="btn-secondary">Launch Live Bracket Engine →</a>
+  <div class="kit-section">
+    <h2>🎮 Works For</h2>
+    <div class="item"><div class="item-icon">🕹️</div><div class="item-text"><strong>Street Fighter 6, Tekken 8, Mortal Kombat 1</strong><span>Fighting game community tournaments with standard FGC double-elim rules.</span></div></div>
+    <div class="item"><div class="item-icon">🎯</div><div class="item-text"><strong>Valorant, Rocket League, CS2</strong><span>5v5 and team brackets. Each team registers as one entry.</span></div></div>
+    <div class="item"><div class="item-icon">🃏</div><div class="item-text"><strong>Pokemon TCG, Yu-Gi-Oh!, Magic</strong><span>Swiss-format or single elimination — your choice.</span></div></div>
+    <div class="item"><div class="item-icon">🕹️</div><div class="item-text"><strong>Retro / Arcade Games</strong><span>High-score format with tracked leaderboard display.</span></div></div>
+  </div>
+
+  <div class="kit-section">
+    <h2>⚡ How It Works</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Pay $49 via Stripe</strong><span>Instant, secure checkout. Credit card or Apple Pay.</span></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Email your event details</strong><span>Game title, date, location, and expected player count to jquindao1@icloud.com.</span></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Receive your kit within 24 hours</strong><span>Bracket link, registration URL, promo posts, and prize tracker — ready to share.</span></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Run your event</strong><span>Open the bracket on any screen. Players report scores. You manage the room.</span></div></div>
     </div>
   </div>
 
-  <div class="grid">
-    <div class="card">
-      <h3>🎮 Live Display-Ready Brackets</h3>
-      <p>Use a bracket workflow for single- or double-elimination events. Display compatibility and update latency depend on the chosen app and venue setup; test the full flow before the event.</p>
-    </div>
-    <div class="card">
-      <h3>⚡ Instant Player Sign-Up Portal</h3>
-      <p>Prepare a registration link or QR code if the selected event setup supports it. Confirm registration, player-ID handling, and seeding behavior before publishing the link.</p>
-    </div>
-    <div class="card">
-      <h3>🛡️ Integrated Anti-Tamper Verification</h3>
-      <p>The separate Sentry project is experimental and is not validated as an anti-cheat system. This kit does not guarantee cheat detection or verified player integrity.</p>
-    </div>
-  </div>
+  <div class="price-tag">$49</div>
+  <div class="price-sub">One-time payment · No subscription · No hidden fees · 24-hour delivery</div>
 
-  <div class="pricing-box">
-    <h2>$49 Tournament Operations Starter Kit</h2>
-    <div class="price">$49 <span class="price-period">/ event flat</span></div>
-    <p style="color: var(--muted); max-width: 550px; margin: 0 auto;">A practical set of event-planning materials for organizers. Review the exact contents and dependencies before purchase; it does not guarantee a flawless event or eliminate all manual work.</p>
-    <ul class="features-list">
-      <li>Tournament planning and staff checklist materials</li>
-      <li>Bracket and match-timing workflow guidance</li>
-      <li>Editable event announcement copy</li>
-      <li>Score and dispute-tracking templates, where included in the delivered kit</li>
-      <li>Support and customization only if separately agreed in writing</li>
-    </ul>
-    <a href="mailto:jquindao1@icloud.com?subject=GG%20LOOP%20Tournament%20Kit%20Inquiry" class="btn-primary" style="font-size: 18px; padding: 16px 40px; display: inline-block;">Request Event Kit Access</a>
-  </div>
+  <a href="https://buy.stripe.com/aFadRb2Rm2rT66L20M0Fi05" class="cta" target="_blank">
+    💳 Get Your Tournament Starter Kit — $49 →
+  </a>
 
-  <div class="footer">
-    <p>GG LOOP LLC · Grand Prairie, TX · Operations & Tech Hotline: <a href="tel:4693718556">(469) 371-8556</a> · <a href="mailto:jquindao1@icloud.com">jquindao1@icloud.com</a></p>
-    <p style="margin-top: 8px;">Explore live engine: <a href="https://gg-loop-tournament.vercel.app">gg-loop-tournament.vercel.app</a></p>
-  </div>
+  <hr class="divider">
+  <p style="font-size:.8rem; color:var(--muted); text-align:center;">
+    GG LOOP LLC · Grand Prairie, TX · <a href="mailto:jquindao1@icloud.com" style="color:var(--green);">jquindao1@icloud.com</a>
+  </p>
+</div>
 </body>
 </html>
