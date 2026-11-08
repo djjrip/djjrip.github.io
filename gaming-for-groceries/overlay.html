@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
+  <title>Gaming for Groceries — 1080p Broadcast HUD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: transparent;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #fff;
+    }
+
+    /* TOP BAR HUD */
+    .top-hud {
+      position: absolute;
+      top: 24px;
+      left: 32px;
+      right: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 15, 29, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 230, 118, 0.35);
+      border-radius: 14px;
+      padding: 12px 24px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-icon {
+      font-size: 1.6rem;
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #00E676, #3B82F6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid rgba(239, 68, 68, 0.5);
+      color: #ef4444;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      letter-spacing: 0.05em;
+    }
+
+    .live-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ef4444;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* METRIC PILLS */
+    .metric-pills {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .pill {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .pill-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .pill-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #00E676;
+    }
+
+    /* TICKER STRIP */
+    .ticker-bar {
+      position: absolute;
+      top: 92px;
+      left: 32px;
+      right: 32px;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 0.85rem;
+      color: #CBD5E1;
+      font-weight: 600;
+    }
+
+    .ticker-content {
+      display: inline-block;
+      animation: ticker 25s linear infinite;
+    }
+
+    @keyframes ticker {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* BOTTOM RIGHT QR CASH RAIL */
+    .qr-rail {
+      position: absolute;
+      bottom: 32px;
+      right: 32px;
+      background: rgba(10, 15, 29, 0.88);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 230, 118, 0.4);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .qr-code-box {
+      width: 104px;
+      height: 104px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-code-box img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .qr-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      max-width: 180px;
+    }
+
+    .qr-badge {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #00E676;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .qr-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .qr-sub {
+      font-size: 0.72rem;
+      color: #94A3B8;
+      line-height: 1.3;
+      margin-top: 2px;
+    }
+
+    /* BOTTOM LEFT SPONSOR BANNER */
+    .sponsor-hud {
+      position: absolute;
+      bottom: 32px;
+      left: 32px;
+      background: rgba(10, 15, 29, 0.88);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .sponsor-logo-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #10B981, #059669);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .sponsor-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sponsor-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .sponsor-name {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #F8FAFC;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-hud">
+    <div class="brand-group">
+      <div class="brand-icon">🛒</div>
+      <div>
+        <div class="brand-title">Gaming for Groceries</div>
+      </div>
+      <div class="live-badge">
+        <div class="live-pulse"></div>
+        <span>LIVE BROADCAST</span>
+      </div>
+    </div>
+
+    <div class="metric-pills">
+      <div class="pill">
+        <span class="pill-label">Grocery Card Pool</span>
+        <span class="pill-value">$250.00</span>
+      </div>
+      <div class="pill">
+        <span class="pill-label">Total Match Purse</span>
+        <span class="pill-value" style="color: #60A5FA;">$500.00</span>
+      </div>
+      <div class="pill">
+        <span class="pill-label">Target Stores</span>
+        <span class="pill-value" style="font-size: 1.05rem; color: #F8FAFC;">H-E-B &bull; Kroger</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker-bar">
+    <div class="ticker-content">
+      🏆 100% OF TOURNAMENT PRIZES FUND GROCERY GIFT CARDS FOR COMPETING DFW PLAYERS & STUDENTS &bull; TITLE SPONSOR: ELECTRIC STARSHIP ARCADE &bull; SCAN QR CODE TO CONTRIBUTE $5 TO THE PRIZE POOL VIA APPLE PAY &bull; POWERED BY GG LOOP LLC (djjrip.github.io/gaming-for-groceries)
+    </div>
+  </div>
+
+  <!-- BOTTOM LEFT: SPONSOR BADGE -->
+  <div class="sponsor-hud">
+    <div class="sponsor-logo-box">🎮</div>
+    <div class="sponsor-details">
+      <span class="sponsor-tag">Community Partner Venue</span>
+      <span class="sponsor-name">Electric Starship &bull; Free Play DFW</span>
+    </div>
+  </div>
+
+  <!-- BOTTOM RIGHT: LIVE QR PAYMENT RAIL -->
+  <div class="qr-rail">
+    <div class="qr-code-box">
+      <!-- QR points directly to live $5 Stripe booster -->
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://buy.stripe.com/14A14o84H3tSa7B5aP1B604" alt="Scan to Donate $5">
+    </div>
+    <div class="qr-info">
+      <span class="qr-badge">Direct Community Rail</span>
+      <span class="qr-title">Boost Prize Pool ($5)</span>
+      <span class="qr-sub">Scan with phone camera &bull; Instant Apple Pay &bull; Funds H-E-B cards</span>
+    </div>
+  </div>
+
+</body>
+</html>
