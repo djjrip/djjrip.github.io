@@ -3328,6 +3328,10 @@
       const urls = getPlaylistUrls();
       const vibeNames = Array.from(selectedVibes).map(k => catalogData?.vibes[k]?.name || k);
       const depStr = selectedPackage.deposit === 'Custom' ? 'Custom Quote' : `$${selectedPackage.deposit}.00`;
+      const totalStr = selectedPackage.total > 0 ? `$${selectedPackage.total}.00` : 'Custom Quote';
+      const balNum = (selectedPackage.total > 0 && typeof selectedPackage.deposit === 'number') ? Math.max(0, selectedPackage.total - selectedPackage.deposit) : null;
+      const balDueStr = balNum !== null ? `$${balNum}.00` : 'Per Quote';
+      const termsAcceptedAt = new Date().toISOString();
 
       const text = [
         `DJ J-RIP \u2014 BOOKING & SPOTIFY ARCHIVE MANIFEST`,
@@ -3337,14 +3341,16 @@
         `Event Date: ${date} | Type: ${type}`,
         `Venue & Times: ${venue}`,
         `Booth Chat Room: #${activeRoom}`,
-        `Package: ${selectedPackage.label}`,
-        `Retainer Due: ${depStr} via [${selectedPaymentMethod.toUpperCase()}]`,
+        `Package: ${selectedPackage.label} (Total: ${totalStr})`,
+        `Date-Lock Retainer Due: ${depStr} via [${selectedPaymentMethod.toUpperCase()}]`,
+        `Balance Due Before Soundcheck: ${balDueStr}`,
+        `Terms Agreed: YES @ ${termsAcceptedAt} (https://djjrip.github.io/dj-terms.html)`,
         ``,
         `CUES & MC:`,
         `  MC Role: ${mc}`,
         `  Clean Edits: ${clean}`,
         `  Grand Entrance: ${entrance}`,
-        `  18 Roses / Slow: ${slow}`,
+        `  Spotlight / Slow Dance: ${slow}`,
         `  Notes: ${notes}`,
         ``,
         `SPOTIFY / PLAYLIST LINKS (${urls.length}):`,
@@ -3360,7 +3366,7 @@
         doNotPlay.length ? doNotPlay.map((t, i) => `  ${i + 1}. ${t.label}`).join('\n') : '  (None)'
       ].join('\n');
 
-      return { name, email, phone, date, type, venue, depStr, urls, text };
+      return { name, email, phone, date, type, venue, depStr, totalStr, balDueStr, termsAcceptedAt, urls, text };
     }
 
     function updateFallbackLinks() {
@@ -3623,17 +3629,36 @@
       btn.textContent = 'Sending & Triggering Phone Alarm...';
 
       const payload = buildPayload();
+      try {
+        localStorage.setItem('djjrip_last_booking_v4', JSON.stringify({
+          name: payload.name,
+          date: payload.date,
+          type: payload.type,
+          venue: payload.venue,
+          pkg: selectedPackage.label,
+          retainer: payload.depStr,
+          total: payload.totalStr,
+          balanceDue: payload.balDueStr,
+          payMethod: selectedPaymentMethod.toUpperCase(),
+          termsAcceptedAt: payload.termsAcceptedAt
+        }));
+      } catch (e) {}
+
       const bodyObj = {
         _subject: `[DJ J-RIP BOOKING] ${payload.name} (${payload.date}) \u2014 ${payload.depStr} via ${selectedPaymentMethod.toUpperCase()}`,
         _template: 'box',
-        _autoresponse: `Thank you ${payload.name}! DJ J-Rip (Jayson Quindao / GG LOOP LLC) received your event booking & playlists for ${payload.date}. Selected retainer: ${payload.depStr}. Call or text (469) 371-8556 anytime!`,
+        _autoresponse: `Thank you ${payload.name}! DJ J-Rip (Jayson Quindao / GG LOOP LLC) received your event booking & playlists for ${payload.date} (${selectedPackage.label} | Retainer: ${payload.depStr} | Remaining balance before soundcheck: ${payload.balDueStr}). Your agreement timestamp (${payload.termsAcceptedAt}) under djjrip.github.io/dj-terms.html is recorded. Text or call (469) 371-8556 anytime!`,
         Client_Name: payload.name,
         Client_Phone: payload.phone,
         Client_Email: payload.email,
         Event_Date: payload.date,
         Package: selectedPackage.label,
+        Total_Rate: payload.totalStr,
         Deposit_Amount: payload.depStr,
+        Balance_Due_At_Show: payload.balDueStr,
         Payment_Option: selectedPaymentMethod.toUpperCase(),
+        Terms_Accepted: `YES @ ${payload.termsAcceptedAt}`,
+        Terms_URL: 'https://djjrip.github.io/dj-terms.html',
         Playlist_Links: payload.urls.map(u => `${u.phase}: ${u.url}`).join(' | ') || 'None',
         Full_Manifest: payload.text
       };
