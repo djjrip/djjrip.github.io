@@ -132,7 +132,7 @@
 
     function addPlayer() {
       const tag = document.getElementById('tagInput').value.trim();
-      const email = document.getElementById('emailInput').value.trim() || 'unspecified@ggloop.io';
+      const email = document.getElementById('emailInput').value.trim() || 'unspecified@djjrip.github.io';
       if (!tag) return;
       players.push({ tag, email, id: Date.now() + Math.random() });
       document.getElementById('tagInput').value = '';
