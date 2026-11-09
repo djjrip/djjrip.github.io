@@ -1,15 +1,22 @@
 const nodemailer = require('nodemailer');
 const fs = require('fs');
 
-const queue = JSON.parse(fs.readFileSync('C:/Users/Jayson Quindao/Desktop/Projects & Code/gaming-for-groceries/sponsor_outreach_queue.json', 'utf8'));
+const icloudEmail = process.env.ICLOUD_EMAIL || 'jquindao1@icloud.com';
+const icloudAppPass = process.env.ICLOUD_APP_PASSWORD;
+if (!icloudAppPass) {
+    console.error('[ERROR] ICLOUD_APP_PASSWORD environment variable is required.');
+    process.exit(1);
+}
+
+const queue = JSON.parse(fs.readFileSync(require('path').join(__dirname, 'sponsor_outreach_queue.json'), 'utf8'));
 
 const transporter = nodemailer.createTransport({
     host: 'smtp.mail.me.com',
     port: 587,
     secure: false,
     auth: {
-        user: 'jquindao1@icloud.com',
-        pass: 'ziiv-nofz-vfvs-ehht'
+        user: icloudEmail,
+        pass: icloudAppPass
     }
 });
 

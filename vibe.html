@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>DJ JRIP // Event Vibe Selector & Custom Playlist Builder</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23050a08'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%2338bdf8' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23f59e0b'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -438,9 +439,9 @@
       <a class="nav-link" href="dj.html" style="background:rgba(16,185,129,0.16);border-color:#10b981;color:#6ee7b7;">Artist Showcase</a>
       <a class="nav-link" href="dj.html#chat" style="background:rgba(245,158,11,0.14);border-color:#f59e0b;color:#fcd34d;">Playlist Guide &amp; Booth Chat</a>
       <a class="nav-link" href="dj.html#book" style="border-color:#be5270;color:#eab8c6;">Book &amp; Rates</a>
-      <a class="nav-link" href="https://www.tiktok.com/@jaysonbq" target="_blank" rel="noopener">@jaysonbq</a>
-      <a class="nav-link" href="https://soundcloud.com/jayson-quindao" target="_blank" rel="noopener">SoundCloud</a>
-      <a class="nav-link" href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener">Live Set</a>
+      <a class="nav-link" href="https://www.tiktok.com/@jaysonbq" target="_blank" rel="noopener noreferrer">@jaysonbq</a>
+      <a class="nav-link" href="https://soundcloud.com/jayson-quindao" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+      <a class="nav-link" href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener noreferrer">Live Set</a>
       <a class="nav-link" href="tel:+14693718556">(469) 371-8556</a>
     </div>
   </div>
@@ -675,20 +676,21 @@
         card.innerHTML = `
           <div>
             <div class="vibe-top">
-              <div class="vibe-name">${VIBE_ICONS[key] || '🎵'} ${info.name}</div>
+              <div class="vibe-name">${VIBE_ICONS[key] || '🎵'} ${escapeHtml(info.name)}</div>
               <span class="vibe-count">${info.count.toLocaleString()} tracks</span>
             </div>
-            <div class="vibe-desc">${info.desc}</div>
+            <div class="vibe-desc">${escapeHtml(info.desc)}</div>
           </div>
           <div class="vibe-actions">
             <span class="vibe-badge">${selectedVibes.has(key) ? '✓ Selected for Event' : 'Click to Pick Vibe'}</span>
-            <button type="button" class="vibe-filter-btn" data-browse="${key}">Browse Tracks &darr;</button>
+            <button type="button" class="vibe-filter-btn" data-browse="${escapeHtml(key)}">Browse Tracks &darr;</button>
           </div>
         `;
         card.addEventListener('click', (e) => {
-          if (e.target.dataset.browse) {
+          const browseBtn = e.target.closest('[data-browse]');
+          if (browseBtn) {
             e.stopPropagation();
-            setFilterVibe(e.target.dataset.browse);
+            setFilterVibe(browseBtn.dataset.browse);
             document.getElementById('catalogSection').scrollIntoView({ behavior: 'smooth' });
             return;
           }
@@ -739,8 +741,8 @@
               <div class="track-title" title="${escapeHtml(t.t)}">${escapeHtml(t.t)}</div>
               <div class="track-meta">
                 <span>${escapeHtml(t.a)}</span>
-                ${t.d ? `<span>&bull; ${t.d}</span>` : ''}
-                <span class="track-vibe-tag">${t.v}</span>
+                ${t.d ? `<span>&bull; ${escapeHtml(t.d)}</span>` : ''}
+                <span class="track-vibe-tag">${escapeHtml(t.v)}</span>
               </div>
             </div>
             <div class="track-btns">

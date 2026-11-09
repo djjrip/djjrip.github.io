@@ -63,7 +63,7 @@ Would you be open to a brief 5-minute call this week to review the single-event 
 Best regards,
 Jayson Quindao
 Founder & CEO, GG Loop LLC
-Email: jquindao1@icloud.com | Cell: (469) 676-8251
+Email: jquindao1@icloud.com | Cell: (469) 371-8556
 Live Platform: https://djjrip.github.io/gaming-for-groceries/
 """
         }

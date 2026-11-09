@@ -170,7 +170,7 @@
   <p class="hero-sub">Get a live bracket, sponsor pitch kit, custom promo copy, and prize tracking — deployed instantly. No tech required. No spreadsheets. No guessing.</p>
   <div class="hero-price"><strong>$49</strong> <s>$149</s> per event — Launch pricing</div>
   <a class="btn-primary" href="#checkout">Get Your Event Kit →</a>
-  <a class="btn-outline" href="https://djjrip.github.io/gaming-for-groceries/bracket.html" target="_blank">See Live Demo</a>
+  <a class="btn-outline" href="https://djjrip.github.io/gaming-for-groceries/bracket.html" target="_blank" rel="noopener noreferrer">See Live Demo</a>
   <div class="hero-trust">
     <span>✓ Instant delivery</span>
     <span>✓ No code required</span>
@@ -281,7 +281,7 @@
       <div class="demo-row"><div class="demo-label">🥉 3rd Place Prize</div><div class="demo-val">$40 Target Gift Card</div></div>
       <div class="demo-row"><div class="demo-label">💼 Title Sponsor</div><div class="demo-val" style="color:#60a5fa;">Clean Eatz DFW — $500</div></div>
       <div style="margin-top:16px; text-align:center;">
-        <a href="https://djjrip.github.io/gaming-for-groceries/bracket.html" target="_blank" style="color:var(--green);font-size:0.85rem;font-weight:700;text-decoration:none;">→ Open Live Bracket Demo</a>
+        <a href="https://djjrip.github.io/gaming-for-groceries/bracket.html" target="_blank" style="color:var(--green);font-size:0.85rem;font-weight:700;text-decoration:none;" rel="noopener noreferrer">→ Open Live Bracket Demo</a>
       </div>
     </div>
   </div>
@@ -573,15 +573,42 @@
           pro: 'https://buy.stripe.com/cNi5kEgBd5C05Rlbzd1B603'
         };
         const activeLink = stripeLinks[pkg] || stripeLinks.starter;
-        document.getElementById('form-state').style.display = 'none';
-        document.getElementById('success-state').style.display = 'block';
-        document.getElementById('success-state').innerHTML = `
-          <div style="font-size:3rem; margin-bottom:16px;">🎉</div>
-          <h3 style="margin-bottom:12px;">Order Details Received!</h3>
-          <p style="color:var(--muted2);margin-bottom:24px;">Click below to complete your $${price} payment securely via Stripe. Your Event Kit ships within 24 hours after payment is confirmed.</p>
-          <a href="${activeLink}" target="_blank" class="btn-primary" style="display:inline-flex; font-size:1.05rem; padding: 14px 28px;">💳 Pay with Stripe ($${price}) →</a>
-          <p style="margin-top:20px;font-size:0.82rem;color:var(--muted);">Payment handled securely by Stripe for GG LOOP LLC. Or email <a href="mailto:jquindao1@icloud.com" style="color:var(--green);">jquindao1@icloud.com</a> for invoice/wire payment.</p>
-        `;
+        const formState = document.getElementById('form-state');
+        const successState = document.getElementById('success-state');
+        formState.style.display = 'none';
+        successState.style.display = 'block';
+        successState.textContent = '';
+
+        const iconDiv = document.createElement('div');
+        iconDiv.style.cssText = 'font-size:3rem; margin-bottom:16px;';
+        iconDiv.textContent = '🎉';
+
+        const heading = document.createElement('h3');
+        heading.style.marginBottom = '12px';
+        heading.textContent = 'Order Details Received!';
+
+        const desc = document.createElement('p');
+        desc.style.cssText = 'color:var(--muted2);margin-bottom:24px;';
+        desc.textContent = `Click below to complete your $${price} payment securely via Stripe. Your Event Kit ships within 24 hours after payment is confirmed.`;
+
+        const payAnchor = document.createElement('a');
+        payAnchor.href = activeLink;
+        payAnchor.target = '_blank';
+        payAnchor.rel = 'noopener noreferrer';
+        payAnchor.className = 'btn-primary';
+        payAnchor.style.cssText = 'display:inline-flex; font-size:1.05rem; padding: 14px 28px;';
+        payAnchor.textContent = `💳 Pay with Stripe ($${price}) →`;
+
+        const footerNote = document.createElement('p');
+        footerNote.style.cssText = 'margin-top:20px;font-size:0.82rem;color:var(--muted);';
+        footerNote.append('Payment handled securely by Stripe for GG LOOP LLC. Or email ');
+        const mailLink = document.createElement('a');
+        mailLink.href = 'mailto:jquindao1@icloud.com';
+        mailLink.style.color = 'var(--green)';
+        mailLink.textContent = 'jquindao1@icloud.com';
+        footerNote.append(mailLink, ' for invoice/wire payment.');
+
+        successState.append(iconDiv, heading, desc, payAnchor, footerNote);
       } else {
         payLabel.textContent = 'Error — try again or email us directly';
         payBtn.disabled = false;

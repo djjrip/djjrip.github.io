@@ -498,7 +498,7 @@
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
       <li><a href="#defense">Tech Defense</a></li>
-      <li><a href="k2-ground-telemetry.html" target="_blank" style="color:var(--cyan);font-weight:700;">🛰️ C2 Sandbox ↗</a></li>
+      <li><a href="k2-ground-telemetry.html" target="_blank" style="color:var(--cyan);font-weight:700;" rel="noopener noreferrer">🛰️ C2 Sandbox ↗</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#open">Open To</a></li>
@@ -522,11 +522,11 @@
     </p>
 
     <div class="cta-row">
-      <a href="k2-ground-telemetry.html" target="_blank" class="cta-primary" style="background:linear-gradient(135deg,#06b6d4,#2563eb);box-shadow:0 0 30px rgba(6,182,212,0.35);">🛰️ Launch Orbital C2 Sandbox ↗</a>
+      <a href="k2-ground-telemetry.html" target="_blank" class="cta-primary" style="background:linear-gradient(135deg,#06b6d4,#2563eb);box-shadow:0 0 30px rgba(6,182,212,0.35);" rel="noopener noreferrer">🛰️ Launch Orbital C2 Sandbox ↗</a>
       <a href="#defense" class="cta-ghost" style="border-color:rgba(6,182,212,0.4);color:var(--cyan);">Architecture Defense ↓</a>
-      <a href="resume.pdf" target="_blank" class="cta-ghost">1-Page Resume (PDF) ↗</a>
-      <a href="https://github.com/djjrip/anti-cheat-sdk" target="_blank" class="cta-ghost">Rust Anti-Cheat SDK ↗</a>
-      <a href="https://github.com/djjrip" target="_blank" class="cta-ghost">GitHub ↗</a>
+      <a href="resume.pdf" target="_blank" class="cta-ghost" rel="noopener noreferrer">1-Page Resume (PDF) ↗</a>
+      <a href="https://github.com/djjrip/anti-cheat-sdk" target="_blank" class="cta-ghost" rel="noopener noreferrer">Rust Anti-Cheat SDK ↗</a>
+      <a href="https://github.com/djjrip" target="_blank" class="cta-ghost" rel="noopener noreferrer">GitHub ↗</a>
     </div>
 
     <div class="hero-proof">
@@ -563,7 +563,7 @@
           <span class="proj-icon">🛰️</span>
           <div class="proj-title">Gravitas Ground C2 &amp; Orbital Telemetry Ingest Console</div>
           <p class="proj-desc">
-            Production interactive command &amp; control (C2) demonstration simulating a 20Hz spacecraft downlink stream (<a href="k2-ground-telemetry.html" target="_blank" style="color:var(--cyan); font-weight:700;">Launch Live Sandbox ↗</a>).
+            Production interactive command &amp; control (C2) demonstration simulating a 20Hz spacecraft downlink stream (<a href="k2-ground-telemetry.html" target="_blank" style="color:var(--cyan); font-weight:700;" rel="noopener noreferrer">Launch Live Sandbox ↗</a>).
             Demonstrates real-time telemetry decoding, sub-50ms browser Web Crypto <strong>HMAC-SHA256 frame verification</strong>, automated anomaly triage (HV bus voltage drops &lt;82V, reaction wheel RPM jitter &gt;5,800 RPM, payload thermal runaway &gt;65°C), and batch compaction into single-roundtrip <strong>PostgreSQL <code>unnest()</code></strong> columnar arrays.
             <br><br>
             Direct architectural alignment with <strong>K2 Space</strong> (Ground Software), <strong>Astranis</strong> (Flight / Network), and <strong>Mach Industries</strong> (Deployment &amp; Flight Systems).
@@ -577,7 +577,7 @@
             <span class="ptag">Deterministic C2 Uplink</span>
           </div>
           <div style="margin-top:22px; display:flex; gap:12px; flex-wrap:wrap;">
-            <a href="k2-ground-telemetry.html" target="_blank" class="cta-primary" style="padding:10px 24px; font-size:13px; text-decoration:none; background:linear-gradient(135deg,#06b6d4,#2563eb); box-shadow:0 0 25px rgba(6,182,212,0.3);">
+            <a href="k2-ground-telemetry.html" target="_blank" class="cta-primary" style="padding:10px 24px; font-size:13px; text-decoration:none; background:linear-gradient(135deg,#06b6d4,#2563eb); box-shadow:0 0 25px rgba(6,182,212,0.3);" rel="noopener noreferrer">
               Launch Live C2 Telemetry Sandbox →
             </a>
             <a href="#defense" class="cta-ghost" style="padding:10px 20px; font-size:13px; text-decoration:none;">
@@ -591,7 +591,7 @@
           <span class="proj-icon">🏗️</span>
           <div class="proj-title">GG Loop LLC — Competitive Esports &amp; FinTech Tournament OS</div>
           <p class="proj-desc">
-            Architected and deployed from zero to production (<a href="https://gg-loop-tournament.vercel.app" target="_blank" style="color:var(--blue);">gg-loop-tournament.vercel.app</a>).
+            Architected and deployed from zero to production (<a href="https://gg-loop-tournament.vercel.app" target="_blank" style="color:var(--blue);" rel="noopener noreferrer">gg-loop-tournament.vercel.app</a>).
             Features a multi-tenant <strong>B2B Studio Telemetry Ingest Engine</strong> (<code>/api/v1/ingest</code>, <code>/api/v1/flags</code>) powered by single-roundtrip PostgreSQL <code>unnest()</code> bulk inserts, sub-50ms WebSocket state streams, and automated anti-cheat anomaly rules (flagging impossible input rates &gt;25 CPS and metronomic macro variance &lt;2ms).
             <br><br>
             Backed by an ACID-compliant <strong>double-entry PostgreSQL financial ledger</strong>, <strong>Stripe Connect</strong> multi-party payouts, and idempotent cryptographic webhook replay protection.
@@ -610,7 +610,7 @@
           <span class="proj-icon">🛡️</span>
           <div class="proj-title">Open-Source Rust Anti-Cheat &amp; Telemetry SDK</div>
           <p class="proj-desc">
-            Engineered a lightweight Ring-3 userspace behavioral telemetry and anti-cheat crate in <strong>Rust</strong> (<a href="https://github.com/djjrip/anti-cheat-sdk" target="_blank" style="color:var(--blue);">github.com/djjrip/anti-cheat-sdk</a>).
+            Engineered a lightweight Ring-3 userspace behavioral telemetry and anti-cheat crate in <strong>Rust</strong> (<a href="https://github.com/djjrip/anti-cheat-sdk" target="_blank" style="color:var(--blue);" rel="noopener noreferrer">github.com/djjrip/anti-cheat-sdk</a>).
             Implements Win32 process memory enumeration (<code>K32GetModuleFileNameExW</code>), <strong>SHA-256 binary integrity hashing</strong>, sub-millisecond click/input timing entropy analysis, and <strong>HMAC-SHA256</strong> cryptographic event signatures.
           </p>
           <div class="tag-row">
@@ -983,12 +983,12 @@
             <div class="contact-label">Phone</div>
             <div class="contact-value">(469) 371-8556</div>
           </a>
-          <a href="https://linkedin.com/in/jaysonquindao" target="_blank" class="contact-item">
+          <a href="https://linkedin.com/in/jaysonquindao" target="_blank" class="contact-item" rel="noopener noreferrer">
             <span class="contact-icon">💼</span>
             <div class="contact-label">LinkedIn</div>
             <div class="contact-value">linkedin.com/in/jaysonquindao</div>
           </a>
-          <a href="https://github.com/djjrip" target="_blank" class="contact-item">
+          <a href="https://github.com/djjrip" target="_blank" class="contact-item" rel="noopener noreferrer">
             <span class="contact-icon">💻</span>
             <div class="contact-label">GitHub</div>
             <div class="contact-value">github.com/djjrip</div>

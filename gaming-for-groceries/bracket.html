@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>GG Loop — Tournament Bracket & Match Verifier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -130,6 +131,16 @@
     let players = [];
     let matches = [];
 
+    function escapeHtml(str) {
+      return String(str == null ? '' : str).replace(/[&<>"']/g, (m) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[m]));
+    }
+
     function addPlayer() {
       const tag = document.getElementById('tagInput').value.trim();
       const email = document.getElementById('emailInput').value.trim() || 'unspecified@djjrip.github.io';
@@ -159,12 +170,18 @@
       const list = document.getElementById('playerList');
       list.innerHTML = '';
       players.forEach((p, idx) => {
-        list.innerHTML += `
-          <li class="player-item">
-            <span><strong>#${idx + 1}</strong> ${p.tag} <small style="color:var(--muted)">(${p.email})</small></span>
-            <button onclick="removePlayer(${idx})">×</button>
-          </li>
-        `;
+        const li = document.createElement('li');
+        li.className = 'player-item';
+        const info = document.createElement('span');
+        info.innerHTML = `<strong>#${idx + 1}</strong> ${escapeHtml(p.tag)} <small style="color:var(--muted)">(${escapeHtml(p.email)})</small>`;
+        const rmBtn = document.createElement('button');
+        rmBtn.type = 'button';
+        rmBtn.textContent = '×';
+        rmBtn.setAttribute('aria-label', 'Remove player');
+        rmBtn.addEventListener('click', () => removePlayer(idx));
+        li.appendChild(info);
+        li.appendChild(rmBtn);
+        list.appendChild(li);
       });
     }
 
@@ -203,16 +220,19 @@
       renderBracket();
     }
 
-    function selectWinner(matchIdx, player) {
-      if (player.tag === 'BYE') return;
-      matches[matchIdx].winner = player;
+    function selectWinner(matchIdx, slotOrPlayer) {
+      const m = matches[matchIdx];
+      if (!m) return;
+      const player = (slotOrPlayer === 'p1' || slotOrPlayer === 'p2') ? m[slotOrPlayer] : slotOrPlayer;
+      if (!player || player.tag === 'BYE') return;
+      m.winner = player;
       renderBracket();
 
       // Check if round 1 complete
-      const allR1Decided = matches.filter(m => m.round === 1).every(m => m.winner !== null);
-      if (allR1Decided && matches.filter(m => m.round === 2).length === 0) {
+      const allR1Decided = matches.filter(x => x.round === 1).every(x => x.winner !== null);
+      if (allR1Decided && matches.filter(x => x.round === 2).length === 0) {
         // Create Round 2 (Finals or Semis)
-        const r1Winners = matches.filter(m => m.round === 1).map(m => m.winner);
+        const r1Winners = matches.filter(x => x.round === 1).map(x => x.winner);
         for (let i = 0; i < r1Winners.length; i += 2) {
           const p1 = r1Winners[i];
           const p2 = r1Winners[i + 1] || { tag: 'BYE', email: '' };
@@ -228,12 +248,12 @@
       }
 
       // Check for Champion
-      const finals = matches.filter(m => m.round === 2);
+      const finals = matches.filter(x => x.round === 2);
       if (finals.length === 1 && finals[0].winner) {
         const champ = finals[0].winner;
         const runnerUp = finals[0].winner.tag === finals[0].p1.tag ? finals[0].p2 : finals[0].p1;
         document.getElementById('payoutSection').style.display = 'block';
-        document.getElementById('winnerAnnouncement').innerHTML = `🥇 <strong>Champion:</strong> ${champ.tag} (${champ.email}) | 🥈 <strong>Runner-Up:</strong> ${runnerUp.tag}`;
+        document.getElementById('winnerAnnouncement').innerHTML = `🥇 <strong>Champion:</strong> ${escapeHtml(champ.tag)} (${escapeHtml(champ.email)}) | 🥈 <strong>Runner-Up:</strong> ${escapeHtml(runnerUp.tag)}`;
       }
     }
 
@@ -246,15 +266,16 @@
 
       let html = `<div class="bracket-stage"><h3>Round 1 (Quarter / Semi-Finals)</h3>`;
       r1.forEach((m, idx) => {
+        const mIdx = matches.indexOf(m);
         html += `
           <div class="match-card">
             <div class="match-header"><span>Match #${idx + 1}</span><span>Click to select winner</span></div>
-            <div class="match-competitor ${m.winner && m.winner.tag === m.p1.tag ? 'winner' : ''}" onclick="selectWinner(${matches.indexOf(m)}, m.p1)">
-              <span>${m.p1.tag}</span>
+            <div class="match-competitor ${m.winner && m.winner.tag === m.p1.tag ? 'winner' : ''}" data-match-idx="${mIdx}" data-slot="p1">
+              <span>${escapeHtml(m.p1.tag)}</span>
               ${m.winner && m.winner.tag === m.p1.tag ? '<span>✓ WINNER</span>' : ''}
             </div>
-            <div class="match-competitor ${m.winner && m.winner.tag === m.p2.tag ? 'winner' : ''}" onclick="selectWinner(${matches.indexOf(m)}, m.p2)">
-              <span>${m.p2.tag}</span>
+            <div class="match-competitor ${m.winner && m.winner.tag === m.p2.tag ? 'winner' : ''}" data-match-idx="${mIdx}" data-slot="p2">
+              <span>${escapeHtml(m.p2.tag)}</span>
               ${m.winner && m.winner.tag === m.p2.tag ? '<span>✓ WINNER</span>' : ''}
             </div>
           </div>
@@ -264,16 +285,17 @@
 
       if (r2.length > 0) {
         html += `<div class="bracket-stage"><h3>Championship Finals</h3>`;
-        r2.forEach((m, idx) => {
+        r2.forEach((m) => {
+          const mIdx = matches.indexOf(m);
           html += `
             <div class="match-card" style="border-color:var(--primary)">
               <div class="match-header"><span style="color:var(--primary)">Grand Finals</span><span>Click winner to crown champion</span></div>
-              <div class="match-competitor ${m.winner && m.winner.tag === m.p1.tag ? 'winner' : ''}" onclick="selectWinner(${matches.indexOf(m)}, m.p1)">
-                <span>${m.p1.tag}</span>
+              <div class="match-competitor ${m.winner && m.winner.tag === m.p1.tag ? 'winner' : ''}" data-match-idx="${mIdx}" data-slot="p1">
+                <span>${escapeHtml(m.p1.tag)}</span>
                 ${m.winner && m.winner.tag === m.p1.tag ? '<span>🏆 CHAMPION</span>' : ''}
               </div>
-              <div class="match-competitor ${m.winner && m.winner.tag === m.p2.tag ? 'winner' : ''}" onclick="selectWinner(${matches.indexOf(m)}, m.p2)">
-                <span>${m.p2.tag}</span>
+              <div class="match-competitor ${m.winner && m.winner.tag === m.p2.tag ? 'winner' : ''}" data-match-idx="${mIdx}" data-slot="p2">
+                <span>${escapeHtml(m.p2.tag)}</span>
                 ${m.winner && m.winner.tag === m.p2.tag ? '<span>🏆 CHAMPION</span>' : ''}
               </div>
             </div>
@@ -283,11 +305,28 @@
       }
 
       container.innerHTML = html;
+      container.querySelectorAll('.match-competitor[data-match-idx]').forEach((el) => {
+        el.addEventListener('click', () => {
+          selectWinner(Number(el.dataset.matchIdx), el.dataset.slot);
+        });
+      });
     }
 
     async function broadcastToDiscord() {
-      const webhookUrl = prompt('Enter your Discord Webhook URL:');
-      if (!webhookUrl || !webhookUrl.startsWith('http')) return;
+      const webhookUrl = (prompt('Enter your Discord Webhook URL (https://discord.com/api/webhooks/...):') || '').trim();
+      if (!webhookUrl) return;
+      let parsedWebhook;
+      try {
+        parsedWebhook = new URL(webhookUrl);
+      } catch (e) {
+        alert('Invalid Discord Webhook URL.');
+        return;
+      }
+      const allowedHosts = ['discord.com', 'discordapp.com', 'ptb.discord.com', 'canary.discord.com'];
+      if (parsedWebhook.protocol !== 'https:' || !allowedHosts.includes(parsedWebhook.hostname) || !parsedWebhook.pathname.startsWith('/api/webhooks/')) {
+        alert('Blocked: only official https://discord.com/api/webhooks/... URLs are permitted.');
+        return;
+      }
 
       const finals = matches.filter(m => m.round === 2);
       const champ = (finals.length > 0 && finals[0].winner) ? finals[0].winner.tag : 'Champion Decided';
