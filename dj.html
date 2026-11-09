@@ -3,26 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>DJ J-Rip // DFW Live Sets, Music Crate &amp; Event Booking</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23070b14'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%2338bdf8' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23ec4899'/%3E%3C/svg%3E">
+  <title>DJ J-Rip // Artist Showcase, Live Mixes, Booth Chat &amp; DFW Booking</title>
+  <meta name="description" content="DJ J-Rip (Jayson Quindao) — Dallas-Fort Worth Open-Format DJ, Remixer & Producer. Listen to live Serato sessions, SoundCloud mixes, custom edits, create event playlists, drop requests in Live Booth Chat, and book dates.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23050a08'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%2338bdf8' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23f59e0b'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Playfair+Display:ital,wght@1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #070a12;
-      --surface: #0c1220;
-      --surface-2: #111a2e;
-      --surface-glass: rgba(12, 18, 32, 0.86);
-      --border: rgba(148, 163, 184, 0.14);
-      --border-strong: rgba(56, 189, 248, 0.34);
+      /* Unified Artist-First Palette: Deep Forest Obsidian + Warm Amber/Gold + Crisp White + Arcane Blue & Balanced Hot Pink */
+      --bg: #050a08;
+      --surface: #0a1410;
+      --surface-2: #0f1f18;
+      --surface-glass: rgba(9, 19, 15, 0.88);
+      --border: rgba(148, 163, 184, 0.15);
+      --border-emerald: rgba(52, 211, 153, 0.25);
+      --border-strong: rgba(56, 189, 248, 0.36);
+
+      --emerald: #10b981;
+      --mint: #34d399;
+      --amber: #f59e0b;
+      --orange: #fb923c;
+      --amber-soft: rgba(245, 158, 11, 0.12);
       --blue: #38bdf8;
       --blue-soft: rgba(56, 189, 248, 0.12);
-      --indigo: #818cf8;
       --pink: #ec4899;
       --pink-hover: #f43f8e;
-      --pink-soft: rgba(236, 72, 153, 0.12);
-      --mint: #34d399;
+      --pink-soft: rgba(236, 72, 153, 0.11);
+
       --white: #f8fafc;
       --text: #e2e8f0;
       --muted: #94a3b8;
@@ -33,11 +41,24 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 92px; background: var(--bg); }
+    html { scroll-behavior: smooth; scroll-padding-top: 98px; background: var(--bg); }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background: rgba(16, 185, 129, 0.10);
+      border: 1px solid rgba(52, 211, 153, 0.22);
+      color: var(--mint);
+      padding: 1px 6px;
+      border-radius: 6px;
+      word-break: break-all;
+    }
+    .card-box, .chat-box, .guide-tab, .sec-head { scroll-margin-top: 98px; }
     body {
       background:
-        radial-gradient(ellipse 900px 540px at 14% 0%, rgba(56, 189, 248, 0.08), transparent 65%),
-        radial-gradient(ellipse 760px 460px at 88% 8%, rgba(236, 72, 153, 0.055), transparent 65%),
+        radial-gradient(ellipse 920px 560px at 12% 0%, rgba(16, 185, 129, 0.10), transparent 64%),
+        radial-gradient(ellipse 760px 460px at 88% 4%, rgba(245, 158, 11, 0.065), transparent 62%),
+        radial-gradient(ellipse 680px 420px at 64% 48%, rgba(56, 189, 248, 0.055), transparent 66%),
+        radial-gradient(ellipse 520px 380px at 18% 72%, rgba(236, 72, 153, 0.045), transparent 65%),
         var(--bg);
       background-attachment: fixed;
       color: var(--text);
@@ -71,9 +92,9 @@
       bottom: 88px;
       left: 50%;
       transform: translateX(-50%) translateY(10px) scale(0.96);
-      background: rgba(15, 23, 42, 0.96);
+      background: rgba(10, 20, 16, 0.96);
       backdrop-filter: blur(12px);
-      border: 1px solid var(--blue);
+      border: 1px solid var(--amber);
       color: var(--white);
       padding: 8px 16px;
       border-radius: 999px;
@@ -83,7 +104,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.22s var(--ease-expo), transform 0.22s var(--ease-expo);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
       white-space: nowrap;
     }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
@@ -95,7 +116,7 @@
       z-index: 90;
       max-width: 1120px;
       margin: 12px auto 22px auto;
-      background: rgba(9, 14, 26, 0.86);
+      background: rgba(8, 17, 13, 0.88);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border: 1px solid var(--border);
@@ -116,15 +137,15 @@
       gap: 6px;
       padding: 7px 12px;
       border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-emerald);
+      background: rgba(16, 185, 129, 0.08);
       color: var(--white);
       font-size: 12.5px;
       font-weight: 600;
       cursor: pointer;
       transition: border-color 0.15s ease, color 0.15s ease;
     }
-    .home-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .home-btn:hover { border-color: var(--amber); color: var(--amber); }
     .brand-btn {
       background: none;
       border: 0;
@@ -136,13 +157,13 @@
       color: var(--white);
       letter-spacing: -0.02em;
     }
-    .brand-btn span { color: var(--blue); }
+    .brand-btn span { color: var(--amber); }
 
-    /* 3 GENERALIZED SEGMENT TABS */
+    /* 3 STRICTLY SEPARATED CATEGORIES */
     .seg-nav {
       display: flex;
       gap: 4px;
-      background: rgba(7, 10, 18, 0.72);
+      background: rgba(5, 10, 8, 0.82);
       border: 1px solid var(--border);
       padding: 4px;
       border-radius: 999px;
@@ -167,7 +188,7 @@
     .seg-btn.active {
       background: var(--surface-2);
       color: var(--white);
-      box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.35);
+      box-shadow: inset 0 0 0 1px rgba(52, 211, 153, 0.35);
     }
     .seg-dot {
       width: 6px;
@@ -175,7 +196,15 @@
       border-radius: 50%;
       background: var(--muted);
     }
-    .seg-btn.active .seg-dot {
+    .seg-btn[data-tab="overview"].active .seg-dot {
+      background: var(--mint);
+      box-shadow: 0 0 8px rgba(52, 211, 153, 0.8);
+    }
+    .seg-btn[data-tab="vibe"].active .seg-dot {
+      background: var(--blue);
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+    }
+    .seg-btn[data-tab="book"].active .seg-dot {
       background: var(--pink);
       box-shadow: 0 0 8px rgba(236, 72, 153, 0.8);
     }
@@ -184,14 +213,14 @@
       text-decoration: none;
       font-size: 12.5px;
       font-weight: 600;
-      color: var(--blue);
+      color: var(--amber);
       padding: 7px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      background: rgba(56, 189, 248, 0.06);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      background: rgba(245, 158, 11, 0.08);
       white-space: nowrap;
     }
-    .top-call:hover { border-color: var(--blue); background: rgba(56, 189, 248, 0.12); }
+    .top-call:hover { border-color: var(--amber); background: rgba(245, 158, 11, 0.15); }
 
     /* SHELL SECTIONS */
     .main-shell { max-width: 1120px; margin: 0 auto; }
@@ -202,10 +231,10 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* HERO WITH INTERACTIVE VINYL TURNTABLE */
+    /* ARTIST-FIRST HERO + VINYL DECK */
     .hero-card {
-      background: linear-gradient(160deg, rgba(17, 26, 46, 0.72), rgba(10, 15, 28, 0.94));
-      border: 1px solid var(--border);
+      background: linear-gradient(158deg, rgba(14, 30, 24, 0.82), rgba(7, 13, 10, 0.96));
+      border: 1px solid var(--border-emerald);
       border-radius: 24px;
       padding: 32px;
       margin-bottom: 24px;
@@ -223,16 +252,17 @@
       margin-bottom: 16px;
     }
     .hero-avatar {
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1.5px solid rgba(56, 189, 248, 0.55);
+      border: 1.5px solid rgba(245, 158, 11, 0.65);
+      box-shadow: 0 0 16px rgba(16, 185, 129, 0.2);
     }
     .hero-kicker {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: var(--blue);
+      color: var(--mint);
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -248,50 +278,42 @@
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
       font-weight: 700;
-      color: var(--blue);
+      color: var(--amber);
     }
     .hero-sub {
       color: var(--muted);
       font-size: 15px;
-      max-width: 54ch;
-      margin-bottom: 20px;
+      max-width: 55ch;
+      margin-bottom: 18px;
     }
 
-    /* QUICK EVENT TYPE PILLS */
-    .preset-label {
-      font-size: 11.5px;
-      color: var(--muted);
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .preset-row {
+    /* SONIC CREDITS PILL ROW */
+    .sonic-stats {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-bottom: 22px;
     }
-    .preset-pill {
-      background: rgba(255, 255, 255, 0.03);
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.035);
       border: 1px solid var(--border);
-      color: var(--text);
-      padding: 8px 14px;
+      padding: 6px 12px;
       border-radius: 999px;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      transition: all 0.16s ease;
-    }
-    .preset-pill:hover { border-color: rgba(56, 189, 248, 0.45); color: var(--white); }
-    .preset-pill.active {
-      background: var(--blue-soft);
-      border-color: var(--blue);
       color: var(--white);
     }
+    .stat-pill span { color: var(--amber); font-family: 'JetBrains Mono', monospace; font-size: 11.5px; }
+    .stat-pill.blue span { color: var(--blue); }
+    .stat-pill.pink span { color: var(--pink); }
+    .stat-pill.mint span { color: var(--mint); }
 
     .cta-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
     .btn-primary {
-      background: var(--pink);
+      background: linear-gradient(135deg, var(--pink), #db2777);
       color: #fff;
       border: 0;
       padding: 12px 22px;
@@ -304,10 +326,28 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      box-shadow: 0 8px 24px rgba(236, 72, 153, 0.25);
-      transition: background 0.15s ease, transform 0.15s ease;
+      box-shadow: 0 8px 24px rgba(236, 72, 153, 0.24);
+      transition: transform 0.15s ease, filter 0.15s ease;
     }
-    .btn-primary:hover { background: var(--pink-hover); transform: translateY(-1px); }
+    .btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .btn-artist {
+      background: linear-gradient(135deg, var(--amber), var(--orange));
+      color: #07110d;
+      border: 0;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.22);
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+    .btn-artist:hover { filter: brightness(1.07); transform: translateY(-1px); }
     .btn-secondary {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border);
@@ -325,13 +365,27 @@
       transition: border-color 0.15s ease, background 0.15s ease;
     }
     .btn-secondary:hover { border-color: var(--blue); background: rgba(56, 189, 248, 0.08); }
+    .btn-quiet {
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 6px 4px;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: rgba(148, 163, 184, 0.35);
+      transition: color 0.15s ease;
+    }
+    .btn-quiet:hover { color: var(--amber); }
 
-    /* MOVING VINYL TURNTABLE SHOWCASE (Inspired by crisp dark vinyl UI) */
+    /* MOVING VINYL TURNTABLE SHOWCASE */
     .deck-stage {
-      background: rgba(7, 10, 18, 0.72);
-      border: 1px solid var(--border);
+      background: rgba(5, 11, 9, 0.78);
+      border: 1px solid var(--border-emerald);
       border-radius: 20px;
-      padding: 20px 18px 16px;
+      padding: 18px 16px 14px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -360,7 +414,7 @@
       display: inline-block;
       transition: background 0.2s, box-shadow 0.2s;
     }
-    .deck-stage.playing .deck-live-dot { color: var(--blue); }
+    .deck-stage.playing .deck-live-dot { color: var(--mint); }
     .deck-stage.playing .deck-live-dot i {
       background: var(--pink);
       box-shadow: 0 0 10px var(--pink);
@@ -377,20 +431,18 @@
       user-select: none;
       -webkit-tap-highlight-color: transparent;
     }
-    /* Soft Arcane glow under platter */
     .turntable-wrap::before {
       content: '';
       position: absolute;
       inset: calc(var(--tt) * 0.04);
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.20), rgba(236, 72, 153, 0.14), transparent 72%);
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.24), rgba(245, 158, 11, 0.14), rgba(56, 189, 248, 0.14), transparent 72%);
       filter: blur(18px);
-      opacity: 0.6;
+      opacity: 0.65;
       transition: opacity 0.45s var(--ease-expo);
     }
     .deck-stage.playing .turntable-wrap::before { opacity: 1; }
 
-    /* Concentric strobe ring ticks derived strictly from --tt */
     .platter-rim {
       position: absolute;
       top: 50%;
@@ -399,29 +451,27 @@
       width: calc(var(--tt) * 0.96);
       height: calc(var(--tt) * 0.96);
       border-radius: 50%;
-      background: repeating-conic-gradient(from 0deg, rgba(148, 163, 184, 0.30) 0deg 1.2deg, transparent 1.2deg 6deg);
+      background: repeating-conic-gradient(from 0deg, rgba(245, 158, 11, 0.34) 0deg 1.2deg, transparent 1.2deg 6deg);
       -webkit-mask: radial-gradient(circle, transparent calc(var(--tt) * 0.445), #000 calc(var(--tt) * 0.448), #000 calc(var(--tt) * 0.48), transparent calc(var(--tt) * 0.48));
       mask: radial-gradient(circle, transparent calc(var(--tt) * 0.445), #000 calc(var(--tt) * 0.448), #000 calc(var(--tt) * 0.48), transparent calc(var(--tt) * 0.48));
       pointer-events: none;
     }
 
-    /* Spinning Marbled Vinyl Disc (inertial rotation controlled via rAF on GPU transform) */
     .vinyl-disc {
       width: calc(var(--tt) * 0.86);
       height: calc(var(--tt) * 0.86);
       border-radius: 50%;
       position: relative;
       background:
-        radial-gradient(circle at 30% 28%, rgba(236, 72, 153, 0.72), transparent 44%),
-        radial-gradient(circle at 72% 70%, rgba(56, 189, 248, 0.76), transparent 50%),
-        radial-gradient(circle at 50% 50%, #1e1b4b 0%, #0f172a 58%, #070b14 100%);
+        radial-gradient(circle at 28% 28%, rgba(236, 72, 153, 0.56), transparent 44%),
+        radial-gradient(circle at 74% 68%, rgba(56, 189, 248, 0.58), transparent 48%),
+        radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.42), transparent 52%),
+        radial-gradient(circle at 50% 50%, #10241d 0%, #0a1410 58%, #050a08 100%);
       box-shadow:
         inset 0 0 0 1px rgba(255, 255, 255, 0.16),
         0 14px 36px rgba(0, 0, 0, 0.65);
       will-change: transform;
     }
-
-    /* Concentric vinyl micro-grooves */
     .vinyl-disc::before {
       content: '';
       position: absolute;
@@ -437,7 +487,6 @@
       pointer-events: none;
     }
 
-    /* Fixed studio overhead reflection (non-rotating) */
     .vinyl-glare {
       position: absolute;
       top: 50%;
@@ -449,10 +498,10 @@
       background: conic-gradient(
         from 215deg,
         transparent 0deg,
-        rgba(255, 255, 255, 0.14) 24deg,
+        rgba(255, 255, 255, 0.13) 24deg,
         transparent 54deg,
         transparent 180deg,
-        rgba(56, 189, 248, 0.11) 206deg,
+        rgba(245, 158, 11, 0.11) 206deg,
         transparent 240deg
       );
       pointer-events: none;
@@ -466,8 +515,8 @@
       width: calc(var(--tt) * 0.31);
       height: calc(var(--tt) * 0.31);
       border-radius: 50%;
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.95));
-      border: 2px solid rgba(56, 189, 248, 0.45);
+      background: linear-gradient(145deg, rgba(11, 24, 19, 0.98), rgba(19, 38, 30, 0.96));
+      border: 2px solid rgba(245, 158, 11, 0.55);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -485,7 +534,7 @@
     .vinyl-label-rpm {
       font-family: 'JetBrains Mono', monospace;
       font-size: calc(var(--tt) * 0.032);
-      color: var(--blue);
+      color: var(--amber);
       margin-top: 2px;
     }
     .vinyl-spindle {
@@ -493,13 +542,12 @@
       height: calc(var(--tt) * 0.036);
       border-radius: 50%;
       background: #e2e8f0;
-      border: 2px solid #070a12;
+      border: 2px solid #050a08;
       margin-top: calc(var(--tt) * 0.015);
     }
 
     /* Precision Tonearm: Pivot P=(0.875W, 0.125W), Shaft L=0.53W
-       At resting theta=-10deg -> stylus at 0.49W (off vinyl);
-       At active theta=+13.4deg -> stylus lands at groove r=0.29W (equidistant between label 0.155W and rim 0.43W). */
+       At resting theta=-10deg -> stylus clears rim; at active theta=+13.4deg -> lands at r=0.29W in groove band. */
     .tonearm-pivot {
       position: absolute;
       top: calc(var(--tt) * 0.0625);
@@ -536,7 +584,7 @@
       width: calc(var(--tt) * 0.052);
       height: calc(var(--tt) * 0.088);
       border-radius: 3px;
-      background: #0f172a;
+      background: #0a1410;
       border: 1px solid rgba(255, 255, 255, 0.25);
     }
     .tonearm-head::after {
@@ -548,8 +596,8 @@
       width: calc(var(--tt) * 0.02);
       height: calc(var(--tt) * 0.02);
       border-radius: 50%;
-      background: var(--pink);
-      box-shadow: 0 0 8px var(--pink);
+      background: var(--amber);
+      box-shadow: 0 0 8px var(--amber);
     }
 
     .deck-track-title {
@@ -563,11 +611,13 @@
       font-size: 11.5px;
       color: var(--muted);
       margin-bottom: 10px;
+      text-align: center;
     }
     .deck-controls {
       display: flex;
       align-items: center;
       gap: 10px;
+      margin-bottom: 10px;
     }
     .deck-btn {
       width: 34px;
@@ -583,12 +633,12 @@
       font-size: 13px;
       transition: all 0.15s ease;
     }
-    .deck-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .deck-btn:hover { border-color: var(--amber); color: var(--amber); }
     .deck-btn.play-toggle {
       width: 42px;
       height: 42px;
       background: var(--white);
-      color: #070a12;
+      color: #050a08;
       border: 0;
       font-weight: 800;
     }
@@ -596,6 +646,30 @@
       background: var(--pink);
       color: #fff;
       box-shadow: 0 0 18px rgba(236, 72, 153, 0.45);
+    }
+    .deck-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+      width: 100%;
+    }
+    .deck-chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .deck-chip:hover { color: var(--white); border-color: var(--amber); }
+    .deck-chip.active {
+      background: rgba(245, 158, 11, 0.14);
+      border-color: var(--amber);
+      color: var(--white);
     }
 
     /* SECTION HEADINGS */
@@ -615,10 +689,10 @@
     }
     .sec-sub { font-size: 13px; color: var(--muted); }
 
-    /* VIDEO SHOWCASE GRID (GUARANTEED LOCAL THUMBNAILS + SWIPE ON PHONE) */
-    .media-grid {
+    /* ARTIST WORK SHOWCASE GRIDS */
+    .media-grid-2x2 {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 14px;
       margin-bottom: 26px;
     }
@@ -633,8 +707,8 @@
     .media-frame {
       position: relative;
       width: 100%;
-      aspect-ratio: 16 / 10;
-      background: #050811;
+      aspect-ratio: 16 / 9;
+      background: #040806;
       overflow: hidden;
     }
     .media-poster-btn {
@@ -643,7 +717,7 @@
       height: 100%;
       border: 0;
       padding: 0;
-      background: #050811;
+      background: #040806;
       cursor: pointer;
       display: block;
     }
@@ -658,7 +732,7 @@
     .play-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(7, 10, 18, 0.08) 0%, rgba(7, 10, 18, 0.58) 100%);
+      background: linear-gradient(180deg, rgba(5, 10, 8, 0.08) 0%, rgba(5, 10, 8, 0.62) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -667,8 +741,8 @@
       width: 52px;
       height: 52px;
       border-radius: 50%;
-      background: rgba(12, 18, 32, 0.85);
-      border: 1.5px solid rgba(56, 189, 248, 0.7);
+      background: rgba(10, 20, 16, 0.88);
+      border: 1.5px solid rgba(245, 158, 11, 0.78);
       color: var(--white);
       display: flex;
       align-items: center;
@@ -681,6 +755,21 @@
       transform: scale(1.08);
       border-color: var(--pink);
     }
+    .media-tag-float {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(5, 10, 8, 0.84);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--white);
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
     .media-frame video,
     .media-frame iframe {
       width: 100%;
@@ -690,18 +779,131 @@
       display: block;
     }
     .media-cap {
-      padding: 11px 14px;
+      padding: 12px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 8px;
       border-top: 1px solid var(--border);
-      font-size: 12.5px;
+      font-size: 13px;
     }
-    .media-cap strong { color: var(--white); font-weight: 600; }
-    .media-cap a { color: var(--blue); text-decoration: none; font-weight: 600; white-space: nowrap; }
+    .media-cap strong { color: var(--white); font-weight: 700; display: block; }
+    .media-cap small { color: var(--muted); font-size: 12px; display: block; margin-top: 2px; }
+    .media-cap a, .cap-spin-btn {
+      color: var(--amber);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 12px;
+      white-space: nowrap;
+      background: none;
+      border: 1px solid rgba(245, 158, 11, 0.28);
+      padding: 4px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .cap-spin-btn:hover, .media-cap a:hover { border-color: var(--amber); background: rgba(245, 158, 11, 0.12); }
 
-    /* CLEAN CARDS & PACKAGES */
+    /* SOUNDCLOUD & LIVE VENUES GRID */
+    .sc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .sc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sc-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .sc-art {
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      flex-shrink: 0;
+    }
+    .sc-embed-slot iframe {
+      width: 100%;
+      height: 116px;
+      border: 0;
+      border-radius: 12px;
+    }
+    .crate-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 10px;
+    }
+    .sc-crate-link {
+      text-decoration: none;
+      background: rgba(16, 185, 129, 0.07);
+      border: 1px solid var(--border-emerald);
+      color: var(--text);
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+    .sc-crate-link:hover { border-color: var(--amber); color: var(--white); }
+
+    /* CUSTOM EDITS & STUDIO PRODUCTION GRID */
+    .showcase-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .studio-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-top: 10px;
+    }
+    .studio-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      background: rgba(5, 10, 8, 0.72);
+      border: 1px solid var(--border);
+      padding: 9px 12px;
+      border-radius: 11px;
+      font-size: 13px;
+    }
+    .studio-item strong { color: var(--white); font-weight: 600; }
+    .studio-item span.tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: var(--mint);
+      white-space: nowrap;
+    }
+
+    /* BUSINESS BRIDGE CARD (END OF ARTIST TAB) */
+    .bridge-card {
+      background: linear-gradient(145deg, rgba(16, 185, 129, 0.08), rgba(245, 158, 11, 0.06), rgba(10, 20, 16, 0.96));
+      border: 1px solid var(--border-emerald);
+      border-radius: 22px;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    /* CLEAN CARDS */
     .card-box {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -710,81 +912,177 @@
       margin-bottom: 20px;
     }
 
-    .pkg-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    .pkg-card {
-      background: rgba(7, 10, 18, 0.62);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px 16px;
-      cursor: pointer;
-      transition: transform 0.22s var(--ease-expo), border-color 0.22s var(--ease-expo), box-shadow 0.22s var(--ease-expo);
-      position: relative;
+    /* TAB 2: PLAYLIST GUIDE & LIVE BOOTH CHAT ROOM */
+    .guide-tabs {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
     }
-    .pkg-card:hover { border-color: rgba(56, 189, 248, 0.45); transform: translateY(-2px); }
-    .pkg-card.active {
-      border-color: var(--blue);
-      background: linear-gradient(170deg, rgba(56, 189, 248, 0.08), rgba(12, 18, 32, 0.96));
-      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.25);
-    }
-    .pkg-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      color: var(--pink);
-      margin-bottom: 5px;
-      display: block;
-    }
-    .pkg-name { font-size: 15.5px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-    .pkg-price { font-size: 26px; font-weight: 800; color: var(--blue); letter-spacing: -0.02em; }
-    .pkg-retainer {
-      font-size: 12px;
-      font-weight: 600;
+    .guide-tab {
+      background: rgba(5, 10, 8, 0.75);
+      border: 1px solid var(--border);
       color: var(--muted);
-      margin: 4px 0 12px;
-      display: block;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
     }
-    .pkg-card ul { list-style: none; font-size: 12.5px; color: var(--muted); }
-    .pkg-card li { padding-left: 14px; position: relative; margin-bottom: 5px; }
-    .pkg-card li::before { content: "•"; position: absolute; left: 0; color: var(--blue); }
-
-    /* COLLAPSIBLE INCLUDED GEAR STRIP (NO BLOAT) */
-    details.gear-accordion {
+    .guide-tab:hover { color: var(--white); border-color: rgba(255, 255, 255, 0.3); }
+    .guide-tab.active {
+      background: var(--amber);
+      border-color: var(--amber);
+      color: #050a08;
+    }
+    .guide-panel { display: none; }
+    .guide-panel.active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .guide-step {
+      background: rgba(5, 10, 8, 0.75);
       border: 1px solid var(--border);
       border-radius: 14px;
-      background: rgba(7, 10, 18, 0.55);
-      padding: 12px 16px;
-      margin-top: 14px;
+      padding: 14px;
+      font-size: 13px;
+      color: var(--muted);
     }
-    details.gear-accordion summary {
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 13.5px;
-      color: var(--white);
-      list-style: none;
+    .guide-step strong { color: var(--white); display: block; margin-bottom: 4px; font-size: 13.5px; }
+    .guide-step .step-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: var(--mint);
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    /* LIVE BOOTH CHAT ROOM */
+    .chat-box {
+      background: linear-gradient(160deg, rgba(16, 185, 129, 0.06), rgba(10, 20, 16, 0.96));
+      border: 1px solid var(--border-emerald);
+      border-radius: 22px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .chat-header-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-    details.gear-accordion summary::-webkit-details-marker { display: none; }
-    details.gear-accordion summary span.hint { font-size: 12px; color: var(--blue); }
-    .gear-mini-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 10px;
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid var(--border);
-      font-size: 12.5px;
-      color: var(--muted);
+      flex-wrap: wrap;
+      margin-bottom: 14px;
     }
-    .gear-mini-grid strong { color: var(--white); display: block; margin-bottom: 2px; }
+    .room-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(52, 211, 153, 0.1);
+      border: 1px solid rgba(52, 211, 153, 0.32);
+      color: var(--mint);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .room-status-pill i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 8px var(--mint);
+      display: inline-block;
+    }
+    .room-controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .room-preset-chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .room-preset-chip.active {
+      border-color: var(--blue);
+      color: var(--white);
+      background: var(--blue-soft);
+    }
+    .chat-feed {
+      background: #040806;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      min-height: 220px;
+      max-height: 360px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .chat-empty {
+      margin: auto;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 44ch;
+    }
+    .chat-msg {
+      background: rgba(15, 31, 24, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 13px;
+      align-self: flex-start;
+      max-width: 92%;
+    }
+    .chat-msg.self {
+      border-color: rgba(245, 158, 11, 0.35);
+      background: rgba(245, 158, 11, 0.07);
+      align-self: flex-end;
+    }
+    .chat-msg-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      margin-bottom: 4px;
+    }
+    .chat-msg-author { font-weight: 700; color: var(--amber); }
+    .chat-msg.self .chat-msg-author { color: var(--mint); }
+    .chat-msg-time { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); }
+    .chat-msg-body { font-size: 13.5px; color: var(--white); word-break: break-word; line-height: 1.45; }
+    .chat-link-card {
+      margin-top: 7px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      background: rgba(5, 10, 8, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.32);
+      border-radius: 10px;
+      padding: 7px 10px;
+      font-size: 12px;
+    }
+    .chat-link-card a { color: var(--blue); text-decoration: none; font-weight: 600; word-break: break-all; }
+    .chat-compose {
+      display: grid;
+      grid-template-columns: 180px 1fr auto;
+      gap: 8px;
+      align-items: center;
+    }
+    .chat-privacy-note {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
 
     /* INPUTS */
     .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
@@ -799,7 +1097,7 @@
     }
     input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="url"], select, textarea {
       width: 100%;
-      background: #070b14;
+      background: #050a08;
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 11px 13px;
@@ -810,19 +1108,19 @@
     }
     input:focus, select:focus, textarea:focus {
       outline: none;
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.14);
+      border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
     }
     .field-pulse { animation: fieldPulse 1.4s ease; }
     @keyframes fieldPulse {
       0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.65); border-color: var(--pink); }
-      70% { box-shadow: 0 0 0 10px rgba(236, 72, 153, 0); border-color: var(--blue); }
+      70% { box-shadow: 0 0 0 10px rgba(236, 72, 153, 0); border-color: var(--amber); }
       100% { box-shadow: none; }
     }
 
-    /* VIEW 2: CATEGORIZED MUSIC STUDIO */
+    /* VIEW 2: PLAYLIST URLS + CATEGORIZED VAULT */
     .spotify-box {
-      background: linear-gradient(155deg, rgba(56, 189, 248, 0.06), rgba(12, 18, 32, 0.94));
+      background: linear-gradient(155deg, rgba(56, 189, 248, 0.06), rgba(10, 20, 16, 0.94));
       border: 1px solid rgba(56, 189, 248, 0.25);
       border-radius: 18px;
       padding: 20px;
@@ -849,7 +1147,7 @@
       margin-top: 12px;
     }
     .oembed-card {
-      background: rgba(7, 10, 18, 0.85);
+      background: rgba(5, 10, 8, 0.88);
       border: 1px solid rgba(56, 189, 248, 0.3);
       border-radius: 12px;
       padding: 10px;
@@ -859,7 +1157,6 @@
     }
     .oembed-card img { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
 
-    /* SUB-TABS FOR CATEGORIZED BROWSING */
     .cat-tabs {
       display: flex;
       gap: 6px;
@@ -896,7 +1193,7 @@
       gap: 12px;
     }
     .vibe-card {
-      background: rgba(7, 10, 18, 0.65);
+      background: rgba(5, 10, 8, 0.68);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 15px;
@@ -925,7 +1222,7 @@
     .link-btn {
       background: none;
       border: 0;
-      color: var(--blue);
+      color: var(--amber);
       font-size: 12px;
       font-weight: 600;
       cursor: pointer;
@@ -938,7 +1235,7 @@
       gap: 11px;
     }
     .starter-btn {
-      background: rgba(7, 10, 18, 0.65);
+      background: rgba(5, 10, 8, 0.68);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 14px;
@@ -946,7 +1243,7 @@
       cursor: pointer;
       transition: all 0.16s ease;
     }
-    .starter-btn:hover { border-color: var(--blue); }
+    .starter-btn:hover { border-color: var(--amber); }
     .starter-btn.flash-added { border-color: var(--mint); background: rgba(52, 211, 153, 0.08); }
     .starter-btn strong {
       display: flex;
@@ -958,10 +1255,9 @@
     }
     .starter-btn span.artists { font-size: 12px; color: var(--muted); display: block; }
 
-    /* SEARCH & PASTE */
     .filter-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
     .filter-pill {
-      background: rgba(7, 10, 18, 0.7);
+      background: rgba(5, 10, 8, 0.72);
       border: 1px solid var(--border);
       color: var(--muted);
       padding: 5px 11px;
@@ -970,14 +1266,14 @@
       font-weight: 600;
       cursor: pointer;
     }
-    .filter-pill.active { background: var(--white); color: #070a12; border-color: var(--white); }
+    .filter-pill.active { background: var(--white); color: #050a08; border-color: var(--white); }
 
     .track-list {
       max-height: 280px;
       overflow-y: auto;
       border: 1px solid var(--border);
       border-radius: 12px;
-      background: #060911;
+      background: #040806;
       margin-top: 10px;
     }
     .track-row {
@@ -1002,7 +1298,7 @@
       cursor: pointer;
       white-space: nowrap;
     }
-    .btn-add.added { background: var(--blue); border-color: var(--blue); color: #070a12; }
+    .btn-add.added { background: var(--mint); border-color: var(--mint); color: #050a08; }
     .btn-ban.banned { background: var(--pink); border-color: var(--pink); color: #fff; }
 
     .crate-boxes {
@@ -1014,7 +1310,7 @@
       border-top: 1px solid var(--border);
     }
     .crate-panel {
-      background: rgba(7, 10, 18, 0.65);
+      background: rgba(5, 10, 8, 0.68);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 13px;
@@ -1042,9 +1338,118 @@
     .pill-rm { background: none; border: 0; color: var(--muted); cursor: pointer; font-weight: 700; }
     .pill-rm:hover { color: var(--pink); }
 
-    /* VIEW 3: BOOK & LOCK */
+    /* TAB 3: BUSINESS, PACKAGES & DATE LOCK */
+    .preset-label {
+      font-size: 11.5px;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .preset-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .preset-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.16s ease;
+    }
+    .preset-pill:hover { border-color: rgba(245, 158, 11, 0.55); color: var(--white); }
+    .preset-pill.active {
+      background: var(--amber-soft);
+      border-color: var(--amber);
+      color: var(--white);
+    }
+
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .pkg-card {
+      background: rgba(5, 10, 8, 0.65);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 16px;
+      cursor: pointer;
+      transition: transform 0.22s var(--ease-expo), border-color 0.22s var(--ease-expo), box-shadow 0.22s var(--ease-expo);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .pkg-card:hover { border-color: rgba(245, 158, 11, 0.55); transform: translateY(-2px); }
+    .pkg-card.active {
+      border-color: var(--amber);
+      background: linear-gradient(170deg, rgba(245, 158, 11, 0.10), rgba(10, 20, 16, 0.96));
+      box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.25);
+    }
+    .pkg-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--pink);
+      margin-bottom: 5px;
+      display: block;
+    }
+    .pkg-name { font-size: 15.5px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .pkg-price { font-size: 26px; font-weight: 800; color: var(--amber); letter-spacing: -0.02em; }
+    .pkg-retainer {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      margin: 4px 0 12px;
+      display: block;
+    }
+    .pkg-card ul { list-style: none; font-size: 12.5px; color: var(--muted); }
+    .pkg-card li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+    .pkg-card li::before { content: "•"; position: absolute; left: 0; color: var(--mint); }
+
+    details.gear-accordion {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(5, 10, 8, 0.58);
+      padding: 12px 16px;
+      margin-top: 14px;
+    }
+    details.gear-accordion summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13.5px;
+      color: var(--white);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    details.gear-accordion summary::-webkit-details-marker { display: none; }
+    details.gear-accordion summary span.hint { font-size: 12px; color: var(--mint); }
+    .gear-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .gear-mini-grid strong { color: var(--white); display: block; margin-bottom: 2px; }
+
     .readiness-bar {
-      background: rgba(236, 72, 153, 0.07);
+      background: rgba(236, 72, 153, 0.08);
       border: 1px solid rgba(236, 72, 153, 0.3);
       border-radius: 12px;
       padding: 11px 14px;
@@ -1072,8 +1477,8 @@
     }
 
     .ledger-card {
-      background: rgba(7, 10, 18, 0.72);
-      border: 1px solid var(--border);
+      background: rgba(5, 10, 8, 0.72);
+      border: 1px solid var(--border-emerald);
       border-radius: 16px;
       padding: 16px 18px;
       display: flex;
@@ -1090,7 +1495,7 @@
       margin-bottom: 16px;
     }
     .pay-card {
-      background: rgba(7, 10, 18, 0.65);
+      background: rgba(5, 10, 8, 0.65);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 14px;
@@ -1098,8 +1503,8 @@
       transition: all 0.16s ease;
     }
     .pay-card.active {
-      border-color: var(--blue);
-      background: var(--blue-soft);
+      border-color: var(--amber);
+      background: var(--amber-soft);
     }
     .pay-card h4 { font-size: 14px; color: var(--white); margin-bottom: 4px; }
     .pay-card p { font-size: 12px; color: var(--muted); }
@@ -1120,8 +1525,8 @@
       margin-top: 18px;
       padding: 20px;
       border-radius: 16px;
-      background: rgba(56, 189, 248, 0.07);
-      border: 1px solid rgba(56, 189, 248, 0.35);
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(52, 211, 153, 0.35);
     }
     .checkout-panel.show { display: block; }
     .btn-pay-stripe {
@@ -1138,18 +1543,7 @@
       box-shadow: 0 8px 24px rgba(236, 72, 153, 0.3);
     }
 
-    .step-nav-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 20px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    /* SLIM STICKY BOTTOM DOCK (MOBILE FRIENDLY) */
+    /* SLIM CONTEXT-AWARE BOTTOM DOCK */
     .bottom-dock {
       position: fixed;
       bottom: 12px;
@@ -1160,7 +1554,7 @@
     .bottom-dock-inner {
       max-width: 1120px;
       margin: 0 auto;
-      background: rgba(9, 14, 26, 0.94);
+      background: rgba(8, 17, 13, 0.94);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border: 1px solid var(--border);
@@ -1180,7 +1574,7 @@
       left: 0;
       height: 2.5px;
       width: 33.3%;
-      background: linear-gradient(90deg, var(--blue), var(--pink));
+      background: linear-gradient(90deg, var(--mint), var(--amber), var(--pink));
       transition: width 0.35s var(--ease-expo);
     }
     .dock-summary {
@@ -1193,11 +1587,13 @@
     }
     .dock-summary strong { color: var(--white); }
 
-    /* RESPONSIVE MOBILE CLEANUP */
+    /* RESPONSIVE BREAKPOINTS */
     @media (max-width: 960px) {
       .hero-card { grid-template-columns: 1fr; padding: 20px 16px; gap: 18px; }
       .deck-stage { order: -1; }
       .pkg-grid { grid-template-columns: 1fr 1fr; }
+      .showcase-split, .sc-grid { grid-template-columns: 1fr; }
+      .guide-panel.active { grid-template-columns: 1fr; }
     }
     @media (max-width: 680px) {
       :root { --tt: 168px; }
@@ -1208,7 +1604,6 @@
       .seg-nav { order: 3; width: 100%; justify-content: space-between; }
       .seg-btn { flex: 1; justify-content: center; padding: 7px 6px; font-size: 11.5px; gap: 5px; }
 
-      /* Compact crisp mobile vinyl turntable so vinyl + headline fit in first fold! */
       .hero-card { padding: 16px 14px; gap: 14px; border-radius: 18px; margin-bottom: 18px; }
       .deck-stage { padding: 12px; border-radius: 16px; }
       .deck-top-meta { margin-bottom: 6px; font-size: 11px; }
@@ -1218,17 +1613,16 @@
       .deck-btn.play-toggle { width: 36px; height: 36px; }
 
       .hero-profile { margin-bottom: 10px; }
-      .hero-avatar { width: 40px; height: 40px; }
+      .hero-avatar { width: 42px; height: 42px; }
       h1 { font-size: 26px; margin-bottom: 10px; }
       .hero-sub { font-size: 13.5px; margin-bottom: 14px; }
-      .preset-row { gap: 6px; margin-bottom: 16px; }
-      .preset-pill { padding: 7px 11px; font-size: 12px; }
-      .card-box { padding: 16px 13px; border-radius: 18px; }
+      .card-box, .chat-box { padding: 16px 13px; border-radius: 18px; }
       .pkg-grid { grid-template-columns: 1fr; gap: 10px; }
       .crate-boxes { grid-template-columns: 1fr; }
+      .chat-compose { grid-template-columns: 1fr; }
 
-      /* Clean native horizontal swipe strip for live video cards on phone! */
-      .media-grid {
+      /* Crisp horizontal swipe deck for live videos on mobile */
+      .media-grid-2x2 {
         display: flex;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
@@ -1236,9 +1630,9 @@
         padding-bottom: 6px;
         -webkit-overflow-scrolling: touch;
       }
-      .media-grid::-webkit-scrollbar { display: none; }
+      .media-grid-2x2::-webkit-scrollbar { display: none; }
       .media-card {
-        flex: 0 0 85%;
+        flex: 0 0 86%;
         scroll-snap-align: start;
       }
       .bottom-dock { bottom: 8px; left: 8px; right: 8px; }
@@ -1250,7 +1644,7 @@
 
   <div class="toast" id="toastMsg">Saved</div>
 
-  <!-- CLEAN TOP HEADER WITH EXPLICIT HOME + 3 GENERALIZED CATEGORIES -->
+  <!-- TOP NAVIGATION: HOME + 3 CLEARLY SEPARATED CATEGORIES -->
   <header class="topbar">
     <div class="brand-group">
       <button type="button" class="home-btn" id="topHomeBtn" title="DJ J-Rip Home">
@@ -1260,10 +1654,10 @@
       <button type="button" class="brand-btn" id="brandBtn">DJ <span>J-Rip</span></button>
     </div>
 
-    <nav class="seg-nav" aria-label="Portal Navigation">
-      <button type="button" class="seg-btn active" data-tab="overview"><span class="seg-dot"></span>1. Sets &amp; Rates</button>
-      <button type="button" class="seg-btn" data-tab="vibe"><span class="seg-dot"></span>2. Music &amp; Vibe</button>
-      <button type="button" class="seg-btn" data-tab="book"><span class="seg-dot"></span>3. Lock Date</button>
+    <nav class="seg-nav" aria-label="Site Categories">
+      <button type="button" class="seg-btn active" data-tab="overview"><span class="seg-dot"></span>1. Artist &amp; Sets</button>
+      <button type="button" class="seg-btn" data-tab="vibe"><span class="seg-dot"></span>2. Playlists &amp; Chat</button>
+      <button type="button" class="seg-btn" data-tab="book"><span class="seg-dot"></span>3. Book &amp; Rates</button>
     </nav>
 
     <a class="top-call" href="tel:+14693718556">(469) 371-8556</a>
@@ -1271,44 +1665,44 @@
 
   <main class="main-shell">
 
-    <!-- ==================== TAB 1: HOME / OVERVIEW, VINYL & RATES ==================== -->
+    <!-- ==================== TAB 1: ARTIST SHOWCASE FIRST (ZERO BUSINESS CLUTTER) ==================== -->
     <section class="view-panel active" id="view-overview">
 
-      <!-- HERO + INTERACTIVE MOVING DJ VINYL TURNTABLE -->
+      <!-- ARTIST HERO + INTERACTIVE VINYL TURNTABLE -->
       <div class="hero-card">
         <div>
           <div class="hero-profile">
             <img class="hero-avatar" src="assets/dj-jrip-headshot.jpg" alt="DJ J-Rip (Jayson Quindao)">
             <div>
-              <div style="font-weight:700; color:var(--white); font-size:15px;">Jayson Quindao &bull; GG Loop LLC</div>
-              <div class="hero-kicker">Dallas&ndash;Fort Worth DJ, MC &amp; Bose F1 Sound</div>
+              <div style="font-weight:700; color:var(--white); font-size:15.5px;">DJ J-Rip &bull; Jayson Quindao</div>
+              <div class="hero-kicker">Open-Format DJ, Remixer &amp; Producer &bull; Dallas&ndash;Fort Worth</div>
             </div>
           </div>
 
-          <h1>Live Sets, 18th Debuts &amp; <em>Clean Transitions.</em></h1>
+          <h1>Rhythm, <em>Harmonic Blends</em> &amp; Live Crowd Control.</h1>
           <p class="hero-sub">
-            Preview my real booth sets, drop your Spotify playlist straight into my offline studio archiver, and lock your event date online with zero venue Wi-Fi guesswork.
+            From 71-minute continuous SoundCloud sets and recorded Serato booth sessions to custom FL Studio blends built track by track around every crowd. Spin the deck, preview the edits, then build your night.
           </p>
 
-          <div class="preset-label">Quick setup &mdash; pick your event type:</div>
-          <div class="preset-row">
-            <button type="button" class="preset-pill active" data-preset="debut">18th Debut ($750)</button>
-            <button type="button" class="preset-pill" data-preset="wedding">Wedding ($1,200)</button>
-            <button type="button" class="preset-pill" data-preset="club">Bar / Party ($400)</button>
-            <button type="button" class="preset-pill" data-preset="custom">Custom Event</button>
+          <div class="sonic-stats">
+            <div class="stat-pill"><span>335.7K+</span> TikTok Transition</div>
+            <div class="stat-pill mint"><span>71m &amp; 37m</span> SoundCloud Mixes</div>
+            <div class="stat-pill blue"><span>84</span> Custom Edits</div>
+            <div class="stat-pill pink"><span>134</span> .FLP Studio Projects</div>
           </div>
 
           <div class="cta-row">
-            <button type="button" class="btn-primary" id="heroVibeBtn">Build Music &amp; Playlist &rarr;</button>
-            <a class="btn-secondary" href="#ratesSection">See Rates &amp; Date</a>
+            <a class="btn-artist" href="#liveWorkSection">Listen &amp; Watch Sets &darr;</a>
+            <button type="button" class="btn-secondary" id="heroVibeBtn">Playlists &amp; Booth Chat</button>
+            <button type="button" class="btn-quiet" id="heroBookLink">Private Booking &amp; Rates &rarr;</button>
           </div>
         </div>
 
-        <!-- INTERACTIVE SPINNING VINYL DECK (TACTILE PLAYBACK + TONEARM) -->
+        <!-- INTERACTIVE SPINNING VINYL DECK (TACTILE PLAYBACK + MULTI-TRACK REAL SERATO & REMIX ARCHIVE) -->
         <div class="deck-stage" id="deckStage">
           <div class="deck-top-meta">
             <span class="deck-live-dot"><i></i><span id="deckStatusText">TAP VINYL TO LISTEN</span></span>
-            <span class="mono" style="color:var(--muted);" id="deckBpmText">125 BPM</span>
+            <span class="mono" style="color:var(--amber);" id="deckBpmText">125 BPM</span>
           </div>
 
           <div class="turntable-wrap" id="turntableClick" title="Tap turntable to spin & listen">
@@ -1328,53 +1722,87 @@
             </div>
           </div>
 
-          <div class="deck-track-title" id="deckTrackTitle">The 1975 &mdash; Live Booth Flip</div>
-          <div class="deck-track-sub" id="deckTrackSub">TikTok @jaysonbq &bull; 335.7K+ Views</div>
+          <div class="deck-track-title" id="deckTrackTitle">Sweet Spot &times; Superhuman (JRIP Remix)</div>
+          <div class="deck-track-sub" id="deckTrackSub">Custom Blend &bull; Bieber &amp; Chris Brown &times; Keri Hilson</div>
 
           <div class="deck-controls">
-            <button type="button" class="deck-btn" id="deckPrevBtn" aria-label="Previous clip">&lsaquo;</button>
+            <button type="button" class="deck-btn" id="deckPrevBtn" aria-label="Previous mix">&lsaquo;</button>
             <button type="button" class="deck-btn play-toggle" id="deckPlayBtn" aria-label="Play or pause preview">&#9654;</button>
-            <button type="button" class="deck-btn" id="deckNextBtn" aria-label="Next clip">&rsaquo;</button>
+            <button type="button" class="deck-btn" id="deckNextBtn" aria-label="Next mix">&rsaquo;</button>
           </div>
+
+          <div class="deck-chip-row" id="deckChipRow">
+            <button type="button" class="deck-chip active" data-track-idx="0">JRIP Remix</button>
+            <button type="button" class="deck-chip" data-track-idx="1">Serato IV</button>
+            <button type="button" class="deck-chip" data-track-idx="2">Serato I</button>
+            <button type="button" class="deck-chip" data-track-idx="3">1975 Flip</button>
+            <button type="button" class="deck-chip" data-track-idx="4">DDJ Reel</button>
+          </div>
+
           <video id="deckAudioPlayer" playsinline preload="metadata" style="display:none;"></video>
         </div>
       </div>
 
-      <!-- LIVE VIDEO REELS WITH GUARANTEED LOCAL POSTER THUMBNAILS -->
-      <div class="sec-head">
+      <!-- VIDEO PERFORMANCES & LIVE VENUE SETS (GUARANTEED LOCAL THUMBNAILS) -->
+      <div class="sec-head" id="liveWorkSection">
         <div>
-          <div class="sec-title">Real Live Sets &amp; Crowd Control</div>
-          <div class="sec-sub">Tap any thumbnail to play right here &bull; Swipe on mobile</div>
+          <div class="sec-title">Live Performances, Remixes &amp; Booth Footage</div>
+          <div class="sec-sub">Every performance &amp; visualizers captured live &mdash; swipe on mobile or tap to play in-page</div>
         </div>
         <div style="display:flex; gap:10px; font-size:12.5px;">
-          <a href="https://soundcloud.com/jayson-quindao" target="_blank" rel="noopener" style="color:var(--blue); text-decoration:none; font-weight:600;">SoundCloud &nearr;</a>
+          <a href="https://www.youtube.com/@KUYAJRIP" target="_blank" rel="noopener" style="color:var(--amber); text-decoration:none; font-weight:600;">YouTube @KUYAJRIP &nearr;</a>
           <a href="https://www.tiktok.com/@jaysonbq" target="_blank" rel="noopener" style="color:var(--pink); text-decoration:none; font-weight:600;">TikTok @jaysonbq &nearr;</a>
         </div>
       </div>
 
-      <div class="media-grid">
+      <div class="media-grid-2x2">
         <div class="media-card">
           <div class="media-frame" id="ytFrameBox">
             <button type="button" class="media-poster-btn" id="playYtCardBtn" aria-label="Play 4K Lake House Set">
               <img src="assets/yt-lakehouse-thumb.jpg" alt="DJ J-Rip 4K Lake House Live Set">
+              <span class="media-tag-float">YouTube &bull; 12:01 Live Set</span>
               <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
             </button>
           </div>
           <div class="media-cap">
-            <strong>4K Lake House Live Mix (12:01)</strong>
-            <a href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener">YouTube &nearr;</a>
+            <div>
+              <strong>4K Lake House Live Set</strong>
+              <small>Continuous outdoor sunset transitions &bull; @KUYAJRIP</small>
+            </div>
+            <a href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener">Watch YT &nearr;</a>
+          </div>
+        </div>
+
+        <div class="media-card">
+          <div class="media-frame" id="sweetFrameBox">
+            <button type="button" class="media-poster-btn" id="playSweetCardBtn" aria-label="Play Sweet Spot x Superhuman Remix">
+              <img src="assets/yt-sweetspot-thumb.jpg" alt="Sweet Spot x Superhuman JRIP Remix Visualizer">
+              <span class="media-tag-float" style="border-color:rgba(236,72,153,0.45);">JRIP Remix &bull; 3:09</span>
+              <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
+            </button>
+          </div>
+          <div class="media-cap">
+            <div>
+              <strong>Sweet Spot &times; Superhuman</strong>
+              <small>Original JRIP vocal-chop &amp; chord progression mashup</small>
+            </div>
+            <button type="button" class="cap-spin-btn" data-spin-idx="0">Spin Deck</button>
           </div>
         </div>
 
         <div class="media-card">
           <div class="media-frame" id="ttFrameBox">
-            <button type="button" class="media-poster-btn" id="playTtCardBtn" aria-label="Play @jaysonbq TikTok Flip">
-              <img src="assets/tiktok-clip.jpg" style="object-position:center 30%;" alt="DJ J-Rip @jaysonbq Viral Clip">
+            <button type="button" class="media-poster-btn" id="playTtCardBtn" aria-label="Play @jaysonbq Live Booth Flip">
+              <img src="assets/tiktok-clip.jpg" style="object-position:center 30%;" alt="DJ J-Rip Live Booth Flip Clip">
+              <span class="media-tag-float">TikTok @jaysonbq &bull; 335.7K+ Context</span>
               <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
             </button>
           </div>
           <div class="media-cap">
-            <strong>@jaysonbq Clip (335.7K+ Views)</strong>
+            <div>
+              <strong>The 1975 &mdash; Live Booth Flip</strong>
+              <small>Real-time deck phrasing &amp; high-energy drop</small>
+            </div>
             <a href="https://www.tiktok.com/@jaysonbq/video/7660248370291707149" target="_blank" rel="noopener">TikTok &nearr;</a>
           </div>
         </div>
@@ -1382,30 +1810,416 @@
         <div class="media-card">
           <div class="media-frame" id="reelFrameBox">
             <button type="button" class="media-poster-btn" id="playReelCardBtn" aria-label="Play Pioneer DDJ Console Reel">
-              <img src="assets/reel-thumb.jpg" style="object-position:center 35%;" alt="DJ J-Rip Pioneer DDJ-SB2 Reel">
+              <img src="assets/reel-thumb.jpg" style="object-position:center 35%;" alt="DJ J-Rip Pioneer DDJ-SB2 Console Reel">
+              <span class="media-tag-float">Console Reel &bull; DDJ-SB2</span>
               <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
             </button>
           </div>
           <div class="media-cap">
-            <strong>Pioneer DDJ Console Reel</strong>
-            <span style="color:var(--muted);">Live Cues</span>
+            <div>
+              <strong>Pioneer DDJ Console Reel</strong>
+              <small>Live cueing, filter fade &amp; Serato waveform lock</small>
+            </div>
+            <button type="button" class="cap-spin-btn" data-spin-idx="4">Spin Deck</button>
           </div>
         </div>
       </div>
 
-      <!-- CLEAR PACKAGE TIERS + TARGET DATE -->
-      <div class="card-box" id="ratesSection">
-        <div class="sec-head" style="margin-bottom:16px;">
-          <div>
-            <div class="sec-title">1. Pick Your Package &amp; Target Date</div>
-            <div class="sec-sub">Flat-rate transparent pricing &bull; 50% retainer locks your calendar date</div>
+      <!-- FULL SOUNDCLOUD MIXES & 23 PUBLIC CRATES -->
+      <div class="sec-head">
+        <div>
+          <div class="sec-title">SoundCloud Mixes &amp; Curated Crates</div>
+          <div class="sec-sub">Long-form unedited blends &amp; 23 genre crates (<a href="https://soundcloud.com/jayson-quindao" target="_blank" rel="noopener" style="color:var(--mint);">soundcloud.com/jayson-quindao</a> &bull; 134 Followers)</div>
+        </div>
+      </div>
+
+      <div class="sc-grid">
+        <div class="sc-card">
+          <div class="sc-row">
+            <img class="sc-art" src="assets/sc-wanna-nasty.jpg" alt="Wanna get nasty mix artwork">
+            <div style="flex:1; min-width:0;">
+              <div class="mono" style="color:var(--amber); font-size:10px;">SOUNDCLOUD MIX &bull; 71 MIN 12 SEC</div>
+              <strong style="color:var(--white); font-size:16px; display:block;">Wanna get nasty?</strong>
+              <span style="color:var(--muted); font-size:12.5px;">Full continuous peak-hour &amp; hip-hop/club session</span>
+            </div>
+            <button type="button" class="btn-secondary" id="loadScWannaBtn" style="padding:7px 12px; font-size:12px;">Player &#9654;</button>
           </div>
+          <div class="sc-embed-slot" id="scSlotWanna"></div>
+        </div>
+
+        <div class="sc-card">
+          <div class="sc-row">
+            <img class="sc-art" src="assets/sc-solace.jpg" alt="Solace mix artwork">
+            <div style="flex:1; min-width:0;">
+              <div class="mono" style="color:var(--blue); font-size:10px;">SOUNDCLOUD MIX &bull; 37 MIN 48 SEC</div>
+              <strong style="color:var(--white); font-size:16px; display:block;">Solace</strong>
+              <span style="color:var(--muted); font-size:12.5px;">Melodic house, moody R&amp;B &amp; late-night drive textures</span>
+            </div>
+            <button type="button" class="btn-secondary" id="loadScSolaceBtn" style="padding:7px 12px; font-size:12px;">Player &#9654;</button>
+          </div>
+          <div class="sc-embed-slot" id="scSlotSolace"></div>
+        </div>
+      </div>
+
+      <div class="card-box" style="padding:18px 20px; margin-bottom:26px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <strong style="color:var(--white); font-size:14px;">23 Public SoundCloud Crates &amp; Vocal Cover Work</strong>
+          <a href="https://soundcloud.com/jayson-quindao/boy-pablo-everytime-cover-by" target="_blank" rel="noopener" style="color:var(--pink); font-size:12.5px; text-decoration:none; font-weight:600;">Listen: Boy Pablo &ndash; Everytime (Cover by Jayson Q) &nearr;</a>
+        </div>
+        <div class="crate-pill-row">
+          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/tech-house" target="_blank" rel="noopener">tech house &nearr;</a>
+          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/not-porter-000" target="_blank" rel="noopener">Not Porter ;000 &nearr;</a>
+          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/deep-house-dance-edm" target="_blank" rel="noopener">deep house / dance edm &nearr;</a>
+          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/homegrown-final" target="_blank" rel="noopener">homegrown final &nearr;</a>
+          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/boots-and-cats-august" target="_blank" rel="noopener">boots and cats august &nearr;</a>
+          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/dirty-pop" target="_blank" rel="noopener">Dirty pop &nearr;</a>
+          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/hip-to-the-mf-hop" target="_blank" rel="noopener">hip to the mf hop &nearr;</a>
+          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/unforgettable" target="_blank" rel="noopener">Unforgettable &nearr;</a>
+          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/throwback" target="_blank" rel="noopener">Throwback &nearr;</a>
+          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/vibe-that" target="_blank" rel="noopener">vibe that &nearr;</a>
+        </div>
+      </div>
+
+      <!-- LIVE EVENTS, STUDIO PRODUCTIONS (.FLP), CUSTOM EDITS & RECORDED SERATO ARCHIVE -->
+      <div class="showcase-split">
+        <div class="card-box" style="margin-bottom:0;">
+          <div class="mono" style="color:var(--mint); margin-bottom:6px;">LIVE BILLINGS &amp; SERATO ARCHIVE</div>
+          <div class="sec-title" style="font-size:18px; margin-bottom:10px;">Rooms, Events &amp; Deck Sessions</div>
+
+          <div style="display:flex; gap:12px; align-items:center; background:rgba(5,10,8,0.75); border:1px solid var(--border); padding:10px; border-radius:14px; margin-bottom:10px;">
+            <img src="assets/tt-rhythm-dtx.jpg" alt="Rhythm Dance Studio Dallas Home Grown Flyer" style="width:66px; height:84px; object-fit:cover; border-radius:9px; flex-shrink:0;">
+            <div>
+              <strong style="color:var(--white); font-size:14px; display:block;">Rhythm Dance Studio DTX &mdash; Home Grown</strong>
+              <span style="color:var(--muted); font-size:12px; display:block; margin:2px 0 6px;">House &amp; R&amp;B Live Bill w/ Luv.Hex &amp; SuckaPunch (Dallas, TX) &bull; 7.5K+ TikTok Views</span>
+              <a href="https://www.tiktok.com/@jaysonbq/video/7506250078944775467" target="_blank" rel="noopener" style="color:var(--amber); font-size:12px; font-weight:600; text-decoration:none;">View Flyer &amp; Event Clip &nearr;</a>
+            </div>
+          </div>
+
+          <div class="studio-list">
+            <div class="studio-item">
+              <div><strong>BLEACH &times; EARFQUAKE Transition</strong><div style="font-size:11.5px; color:var(--muted);">Viral fan-favorite TikTok booth blend</div></div>
+              <span class="tag">335.7K+ Views</span>
+            </div>
+            <div class="studio-item">
+              <div><strong>Club Nights, Festivals &amp; Private Events</strong><div style="font-size:11.5px; color:var(--muted);">Open-format club flow, high-energy dancefloors &amp; bespoke timelines</div></div>
+              <span class="tag">DFW Live</span>
+            </div>
+            <div class="studio-item">
+              <div><strong>Serato Live Recordings I &amp; IV</strong><div style="font-size:11.5px; color:var(--muted);">Unedited 24-bit console sessions playable above</div></div>
+              <button type="button" class="btn-sm" data-spin-idx="1" style="border-color:var(--mint); color:var(--mint);">Play Session</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-box" style="margin-bottom:0;">
+          <div class="mono" style="color:var(--pink); margin-bottom:6px;">84 CUSTOM CLUB EDITS &bull; 134 .FLP PROJECTS</div>
+          <div class="sec-title" style="font-size:18px; margin-bottom:10px;">Original Remixes &amp; FL Studio Vault</div>
+          <p style="font-size:13px; color:var(--muted); margin-bottom:10px;">
+            Beyond standard tracks, Jayson builds bespoke tempo switches, Afro-House flips, and clean transition stems right inside FL Studio &amp; Serato.
+          </p>
+          <div class="studio-list" id="featuredEditsList">
+            <div class="studio-item"><div><strong>Sweet Spot &times; Superhuman (JRIP Remix)</strong><div style="font-size:11.5px; color:var(--muted);">Chris Brown / Justin Bieber / Keri Hilson blend</div></div><span class="tag">Mastered MP3</span></div>
+            <div class="studio-item"><div><strong>Frank Ocean &mdash; Lost (Afro House Edit)</strong><div style="font-size:11.5px; color:var(--muted);">Rooftop groove flip in Custom Edits crate</div></div><span class="tag">320kbps Edit</span></div>
+            <div class="studio-item"><div><strong>Blond:ish &times; Jake Shore DV Hook Mashup</strong><div style="font-size:11.5px; color:var(--muted);">Peak-hour tech-house tension builder</div></div><span class="tag">Booth Exclusive</span></div>
+            <div class="studio-item"><div><strong>Porter Robinson &bull; Djo &bull; Clairo (.flp Stems)</strong><div style="font-size:11.5px; color:var(--muted);">everything goes on / end of beginning / closer to you</div></div><span class="tag">FL Studio</span></div>
+          </div>
+          <div style="margin-top:12px;">
+            <button type="button" class="btn-secondary" id="browseEditsBtn" style="font-size:12.5px; padding:8px 14px;">Browse All 84 Custom Edits &amp; 3,023 Tracks &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SONIC CRAFT COLLAPSIBLE (NO PRICES) -->
+      <details class="gear-accordion">
+        <summary>
+          <span>Sound Architecture &amp; Live Booth Philosophy</span>
+          <span class="hint">Bose F1 Array + Pioneer Console + Offline Vault &darr;</span>
+        </summary>
+        <div class="gear-mini-grid">
+          <div><strong>Dual Bose F1 812 + Subs</strong>2,000W flexible array acoustics tuned to throw crystal-clear vocals without muddying dinner tables.</div>
+          <div><strong>Pioneer DDJ-SB2 + Serato</strong>Four-deck cue layering, harmonic key locks, and tight transitions without pre-recorded autopilot.</div>
+          <div><strong>3,023-Track Lossless &amp; 320kbps Vault</strong>Every client Spotify/Apple/YouTube link is synced offline before soundcheck so dead venue Wi-Fi never stops the set.</div>
+          <div><strong>Dual UHF Wireless Mics</strong>Clean vocal projection for guest vocalists, MCs, toasts, and show cues.</div>
+        </div>
+      </details>
+
+      <!-- NON-PUSHY BUSINESS BRIDGE AT BOTTOM OF ARTIST PAGE -->
+      <div class="bridge-card">
+        <div>
+          <div class="mono" style="color:var(--amber); margin-bottom:4px;">CLUBS &bull; FESTIVALS &bull; PRIVATE EVENTS &bull; WEDDINGS</div>
+          <strong style="color:var(--white); font-size:17px; display:block;">Ready to bring DJ J-Rip &amp; full sound to your event?</strong>
+          <span style="color:var(--muted); font-size:13px;">Packages, transparent flat-rate pricing, and date locking live in their own category &mdash; or jump into Playlists &amp; Booth Chat to plan your music first.</span>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <button type="button" class="btn-primary" id="bridgeToBookBtn">Open Book &amp; Rates Category &rarr;</button>
+          <a class="btn-secondary" href="index.html">Engineering Portfolio &nearr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: PLAYLIST CREATION GUIDE + LIVE BOOTH CHAT + CRATE ==================== -->
+    <section class="view-panel" id="view-vibe">
+
+      <!-- SECTION A: STEP-BY-STEP GUIDE FOR CREATING & SHARING PLAYLISTS -->
+      <div class="card-box" id="playlistGuideSection">
+        <div class="sec-head">
+          <div>
+            <div class="sec-title">How to Create &amp; Send a Playlist (Any App)</div>
+            <div class="sec-sub">Make sure your playlist visibility is Public or Unlisted so guests can contribute and our offline archiver loads every song</div>
+          </div>
+        </div>
+
+        <div class="guide-tabs" role="tablist">
+          <button type="button" class="guide-tab active" data-guide="spotify">Spotify</button>
+          <button type="button" class="guide-tab" data-guide="apple">Apple Music</button>
+          <button type="button" class="guide-tab" data-guide="youtube">YouTube / YT Music</button>
+          <button type="button" class="guide-tab" data-guide="soundcloud">SoundCloud</button>
+        </div>
+
+        <div class="guide-panel active" id="guide-spotify">
+          <div class="guide-step">
+            <span class="step-kicker">Step 1 &bull; Create</span>
+            <strong>Build 10&ndash;35 Must-Play Songs</strong>
+            Open Spotify &rarr; Tap <b>Your Library &rarr; + Playlist</b>. Optional pro move: make separate lists for <i>Warm-Up / Dinner</i>, <i>Spotlight Moments</i>, and <i>Main Dancefloor</i>.
+          </div>
+          <div class="guide-step">
+            <span class="step-kicker">Step 2 &bull; Avoid Lockout</span>
+            <strong>Set Playlist to Public</strong>
+            Tap <b>&bull;&bull;&bull; Menu &rarr; Make public</b> (if it says <i>Make private</i>, you are already good!). Private playlists cannot be read by the booth syncer.
+          </div>
+          <div class="guide-step">
+            <span class="step-kicker">Step 3 &bull; Share</span>
+            <strong>Copy Link &amp; Drop Below</strong>
+            Tap <b>Share &rarr; Copy link</b> (<code>open.spotify.com/playlist/...</code>). Paste it into the <b>Live Booth Chat</b> room below or the Crate Sync box.
+          </div>
+        </div>
+
+        <div class="guide-panel" id="guide-apple">
+          <div class="guide-step">
+            <span class="step-kicker">Step 1 &bull; Create</span>
+            <strong>New Apple Music Playlist</strong>
+            Open Apple Music &rarr; <b>Library &rarr; Playlists &rarr; New Playlist</b> and add the songs &amp; exact remixes you want heard live.
+          </div>
+          <div class="guide-step">
+            <span class="step-kicker">Step 2 &bull; Avoid Lockout</span>
+            <strong>Enable Public Visibility</strong>
+            Tap <b>Edit</b> or <b>&bull;&bull;&bull;</b> &rarr; toggle ON <b>&ldquo;Show on My Profile and in Search&rdquo;</b> so anyone with the URL can open the tracklist.
+          </div>
+          <div class="guide-step">
+            <span class="step-kicker">Step 3 &bull; Share</span>
+            <strong>Copy &amp; Drop Link</strong>
+            Tap <b>&bull;&bull;&bull; &rarr; Share Playlist &rarr; Copy Link</b> (<code>music.apple.com/...</code>), then post in Booth Chat or the Playlist Box.
+          </div>
+        </div>
+
+        <div class="guide-panel" id="guide-youtube">
+          <div class="guide-step">
+            <span class="step-kicker">Step 1 &bull; Create</span>
+            <strong>Great for Rare Remixes &amp; Edits</strong>
+            Tap <b>Save to playlist &rarr; + New playlist</b> on YouTube or YT Music (ideal for rare SoundCloud-style flips, TikTok edits, or OPM classics).
+          </div>
+          <div class="guide-step">
+            <span class="step-kicker">Step 2 &bull; Privacy Rule</span>
+            <strong>Choose Unlisted or Public</strong>
+            Set privacy to <b>Unlisted</b> (only people with your link can view) or <b>Public</b> &mdash; never <i>Private</i>.
+          </div>
+          <div class="guide-step">
+            <span class="step-kicker">Step 3 &bull; Share</span>
+            <strong>Copy Share URL</strong>
+            Tap <b>Share &rarr; Copy link</b> (<code>youtube.com/playlist?list=...</code>) and drop it straight into the Booth Chat room or Phase Sync box.
+          </div>
+        </div>
+
+        <div class="guide-panel" id="guide-soundcloud">
+          <div class="guide-step">
+            <span class="step-kicker">Step 1 &bull; Create</span>
+            <strong>Group Bootlegs &amp; House Flips</strong>
+            Use SoundCloud for underground UKG, tech-house flips, and mashups not on Spotify. Add tracks via <b>&bull;&bull;&bull; &rarr; Add to playlist</b>.
+          </div>
+          <div class="guide-step">
+            <span class="step-kicker">Step 2 &bull; Visibility</span>
+            <strong>Keep Set Public</strong>
+            Edit playlist details and select <b>Public</b> so DJ J-Rip can cue matching transitions before showtime.
+          </div>
+          <div class="guide-step">
+            <span class="step-kicker">Step 3 &bull; Share</span>
+            <strong>Copy URL &amp; Drop In Chat</strong>
+            Hit <b>Share &rarr; Copy Link</b> (<code>soundcloud.com/.../sets/...</code>) and drop it in the Booth Chat or Playlist Sync box.
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION B: REAL-TIME WEBSITE BOOTH CHAT & PLAYLIST REQUEST ROOM -->
+      <div class="chat-box" id="boothChatSection">
+        <div class="chat-header-bar">
+          <div>
+            <div class="sec-title">Live Booth Chat &amp; Playlist Request Room</div>
+            <div class="sec-sub">Real-time room where hosts &amp; guests drop Spotify/YouTube/Apple playlists, song requests &amp; shoutouts &mdash; no login needed</div>
+          </div>
+          <div class="room-status-pill"><i id="chatStatusDot"></i><span id="chatStatusLabel">CONNECTING...</span></div>
+        </div>
+
+        <div class="room-controls">
+          <span class="mono" style="color:var(--muted);">Active Room:</span>
+          <button type="button" class="room-preset-chip active" data-room="lobby">#lobby</button>
+          <button type="button" class="room-preset-chip" data-room="requests">#requests</button>
+          <button type="button" class="room-preset-chip" data-room="afterparty">#afterparty</button>
+          <div style="display:flex; gap:6px; flex:1; min-width:210px; max-width:340px;">
+            <input type="text" id="customRoomInput" placeholder="Custom room (e.g. friday-set)" style="padding:7px 11px; font-size:12.5px;">
+            <button type="button" class="btn-sm" id="joinRoomBtn" style="border-color:var(--amber); color:var(--amber);">Join</button>
+          </div>
+          <button type="button" class="btn-secondary" id="copyRoomInviteBtn" style="padding:7px 13px; font-size:12px;">Copy Guest Invite Link</button>
+        </div>
+
+        <div class="chat-feed" id="chatFeed" aria-live="polite">
+          <div class="chat-empty">Connecting to live booth channel...</div>
+        </div>
+
+        <form class="chat-compose" id="chatForm">
+          <input type="text" id="chatNameInput" maxlength="28" placeholder="Your name (e.g. Maria)" required>
+          <input type="text" id="chatMsgInput" maxlength="420" placeholder="Drop a Spotify/YT/Apple playlist URL or song request..." required>
+          <button type="submit" class="btn-artist" id="chatSendBtn" style="padding:11px 20px;">Send to Booth &rarr;</button>
+        </form>
+        <div class="chat-privacy-note">
+          Public music room &mdash; phone numbers are automatically masked for your safety. Use <b>Tab 3 (Book &amp; Rates)</b> for private contact info &amp; contracts.
+        </div>
+      </div>
+
+      <!-- SECTION C: PLAYLIST SYNC & 3,023-TRACK CRATE BUILDER -->
+      <div class="card-box">
+        <div class="sec-head">
+          <div>
+            <div class="sec-title">Playlist Sync &amp; 3,023-Track Vault Crate</div>
+            <div class="sec-sub">Attach your official event playlists directly &amp; lock in Must-Play / Do-Not-Play tracks before showtime</div>
+          </div>
+        </div>
+
+        <div class="spotify-box">
+          <label class="field-label" for="plMain" style="color:var(--blue);">Official Event Playlist Link (Spotify / Apple Music / YouTube / SoundCloud)</label>
+          <input type="url" id="plMain" class="pl-url-input" placeholder="https://open.spotify.com/playlist/...">
+          <button type="button" class="phase-toggle-btn" id="togglePhaseLinksBtn">+ Split playlists by phase (Warm-Up / Spotlight / Main Dancefloor)</button>
+
+          <div class="form-grid phase-links-extra" id="phaseLinksExtra">
+            <div>
+              <label class="field-label" for="plDinner">Warm-Up / Dinner Playlist URL</label>
+              <input type="url" id="plDinner" class="pl-url-input" placeholder="https://open.spotify.com/playlist/...">
+            </div>
+            <div>
+              <label class="field-label" for="plFormal">Spotlight / Slow Dance URL</label>
+              <input type="url" id="plFormal" class="pl-url-input" placeholder="https://open.spotify.com/playlist/...">
+            </div>
+            <div>
+              <label class="field-label" for="plParty">Main Dancefloor URL</label>
+              <input type="url" id="plParty" class="pl-url-input" placeholder="https://open.spotify.com/playlist/...">
+            </div>
+          </div>
+          <div class="oembed-grid" id="playlistPreviews"></div>
+        </div>
+
+        <div class="cat-tabs" role="tablist">
+          <button type="button" class="cat-tab active" data-cat="vibes">Crowd Moods (<span id="catVibeCount">0</span>)</button>
+          <button type="button" class="cat-tab" data-cat="packs">1-Tap Starter Crates</button>
+          <button type="button" class="cat-tab" data-cat="search">Search <span id="totalVaultCount">3,023</span> Songs &amp; 84 Edits</button>
+        </div>
+
+        <div class="cat-pane active" id="pane-vibes">
+          <div class="vibe-grid" id="vibeGrid">
+            <div style="color:var(--muted); font-size:13.5px;">Loading genres...</div>
+          </div>
+        </div>
+
+        <div class="cat-pane" id="pane-packs">
+          <div class="starter-grid" id="starterPacksGrid">
+            <button type="button" class="starter-btn" data-pack="debut_formal">
+              <strong><span>18th Debut &amp; Formal</span><span class="pack-status" style="color:var(--amber); font-size:12px;">+5</span></strong>
+              <span class="artists">Bruno Major, Benson Boone, Billie Eilish, John Legend, Stevie Wonder</span>
+            </button>
+            <button type="button" class="starter-btn" data-pack="cocktail_rnb">
+              <strong><span>Cocktail &amp; Smooth R&amp;B</span><span class="pack-status" style="color:var(--amber); font-size:12px;">+5</span></strong>
+              <span class="artists">Silk Sonic, Frank Ocean, Daniel Caesar, Doja Cat/SZA, Bill Withers</span>
+            </button>
+            <button type="button" class="starter-btn" data-pack="throwbacks">
+              <strong><span>Multi-Gen Throwbacks</span><span class="pack-status" style="color:var(--amber); font-size:12px;">+5</span></strong>
+              <span class="artists">Earth Wind &amp; Fire, Whitney Houston, Michael Jackson, Backstreet Boys, Bruno Mars</span>
+            </button>
+            <button type="button" class="starter-btn" data-pack="peak_party">
+              <strong><span>Peak Hip-Hop &amp; Club</span><span class="pack-status" style="color:var(--amber); font-size:12px;">+5</span></strong>
+              <span class="artists">Drake, Kendrick/Baby Keem, 50 Cent, Daft Punk, Avicii</span>
+            </button>
+            <button type="button" class="starter-btn" data-pack="latin_fiesta">
+              <strong><span>Latin &amp; Fiesta Hits</span><span class="pack-status" style="color:var(--amber); font-size:12px;">+5</span></strong>
+              <span class="artists">Bad Bunny, Elvis Crespo, Caballo Dorado, Cardi B/J Balvin</span>
+            </button>
+            <button type="button" class="starter-btn" data-pack="pop_anthems">
+              <strong><span>Pop &amp; Dance Sing-Alongs</span><span class="pack-status" style="color:var(--amber); font-size:12px;">+5</span></strong>
+              <span class="artists">Rihanna, Dua Lipa, Chappell Roan, Black Eyed Peas, Coldplay</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="cat-pane" id="pane-search">
+          <div class="filter-pills" id="vibeTabs">
+            <button type="button" class="filter-pill active" data-vibe="all">All</button>
+            <button type="button" class="filter-pill" data-vibe="debut">Debut</button>
+            <button type="button" class="filter-pill" data-vibe="rnb">R&amp;B</button>
+            <button type="button" class="filter-pill" data-vibe="hiphop">Hip-Hop</button>
+            <button type="button" class="filter-pill" data-vibe="latin">Latin</button>
+            <button type="button" class="filter-pill" data-vibe="house">House &amp; Pop</button>
+            <button type="button" class="filter-pill" data-vibe="edits">Custom Edits (84)</button>
+          </div>
+          <input type="text" id="trackSearch" placeholder="Search artist, song, or remix (e.g. SZA, Frank Ocean, Afro House, Bad Bunny)...">
+          <div class="track-list" id="trackList"></div>
+          <div style="margin:8px 0 18px; display:flex; justify-content:space-between; align-items:center;">
+            <span id="showingCount" style="font-size:12px; color:var(--muted);">Loading...</span>
+            <button type="button" class="btn-sm" id="loadMoreBtn" style="display:none;">Load More</button>
+          </div>
+
+          <label class="field-label" for="bulkSongsInput">Or Paste Custom Titles (One Per Line)</label>
+          <textarea id="bulkSongsInput" rows="3" placeholder="SZA - Kill Bill&#10;Bruno Mars - Finesse&#10;NewJeans - Super Shy"></textarea>
+          <div style="display:flex; gap:8px; margin-top:8px;">
+            <button type="button" class="btn-sm btn-add" id="bulkAddMustBtn" style="padding:8px 14px;">+ Add to Must-Play</button>
+            <button type="button" class="btn-sm" id="bulkAddBanBtn" style="padding:8px 14px;">Blacklist</button>
+          </div>
+        </div>
+
+        <div class="crate-boxes">
+          <div class="crate-panel">
+            <h4><span style="color:var(--mint);">Must-Play Queue</span><span id="mustCountBadge" style="color:var(--muted);">0 songs</span></h4>
+            <div id="mustListDisplay"><span style="color:var(--muted); font-size:12.5px;">No tracks queued yet.</span></div>
+          </div>
+          <div class="crate-panel">
+            <h4><span style="color:var(--pink);">Do-Not-Play List</span><span id="banCountBadge" style="color:var(--muted);">0 songs</span></h4>
+            <div id="banListDisplay"><span style="color:var(--muted); font-size:12.5px;">None added.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: BUSINESS, RATES, LOGISTICS & BOOKING (SEPARATE CATEGORY) ==================== -->
+    <section class="view-panel" id="view-book">
+
+      <!-- PACKAGES & RATES (DEDICATED BUSINESS SECTION) -->
+      <div class="card-box" id="ratesSection">
+        <div class="sec-head" style="margin-bottom:14px;">
+          <div>
+            <div class="mono" style="color:var(--amber); margin-bottom:4px;">GG LOOP LLC // COMMERCIAL &amp; PRIVATE EVENT CONTRACTING</div>
+            <div class="sec-title">1. Event Packages, Rates &amp; Target Date</div>
+            <div class="sec-sub">Flat-rate transparent pricing across Dallas&ndash;Fort Worth &bull; 50% retainer locks your date</div>
+          </div>
+        </div>
+
+        <div class="preset-label">Quick Format Presets:</div>
+        <div class="preset-row">
+          <button type="button" class="preset-pill" data-preset="club">Bar / Lounge / Club ($400)</button>
+          <button type="button" class="preset-pill active" data-preset="debut">Private VIP &amp; Milestone ($750)</button>
+          <button type="button" class="preset-pill" data-preset="wedding">Wedding &amp; Gala ($1,200)</button>
+          <button type="button" class="preset-pill" data-preset="custom">Custom Quote</button>
         </div>
 
         <div class="pkg-grid" id="pkgGrid">
           <div class="pkg-card" data-pkg="bar_lounge" data-label="Bar / Lounge / Club Set (2–4 hrs)" data-total="400" data-deposit="200" data-stripe="https://buy.stripe.com/aFa8wR1Ni9Ul0Mr48U0Fi08">
             <div>
-              <span class="pkg-tag">2&ndash;4 Hours</span>
+              <span class="pkg-tag">Open-Format &bull; 2&ndash;4 Hours</span>
               <div class="pkg-name">Bar, Lounge &amp; Club</div>
               <div class="pkg-price">$400</div>
               <span class="pkg-retainer">50% Retainer: $200</span>
@@ -1416,16 +2230,16 @@
             </div>
           </div>
 
-          <div class="pkg-card active" data-pkg="debut_vip" data-label="18th Debut, Milestone & VIP Event (4–5 hrs)" data-total="750" data-deposit="375" data-stripe="https://buy.stripe.com/bJedRb1Ni1nPfHl20M0Fi09">
+          <div class="pkg-card active" data-pkg="debut_vip" data-label="Private VIP, Milestone &amp; Debut (4–5 hrs)" data-total="750" data-deposit="375" data-stripe="https://buy.stripe.com/bJedRb1Ni1nPfHl20M0Fi09">
             <div>
-              <span class="pkg-tag">Most Booked &bull; 4&ndash;5 Hours</span>
-              <div class="pkg-name">18th Debut &amp; VIP</div>
+              <span class="pkg-tag">Full Sound &bull; 4&ndash;5 Hours</span>
+              <div class="pkg-name">Private VIP &amp; Milestone</div>
               <div class="pkg-price">$750</div>
               <span class="pkg-retainer">50% Retainer: $375</span>
               <ul>
                 <li>Dual Bose F1 PA + Subwoofers</li>
                 <li>Dual UHF wireless mics + MC cues</li>
-                <li>18 Roses &amp; Candles formal timing</li>
+                <li>VIP Birthdays, Galas &amp; 18th Debuts</li>
               </ul>
             </div>
           </div>
@@ -1465,159 +2279,35 @@
           <div>
             <label class="field-label" for="eventType">Event Format</label>
             <select id="eventType">
-              <option value="18th Birthday Debut">18th Birthday Debut / Milestone</option>
+              <option value="Private VIP / Birthday Party">Private VIP / Milestone Party</option>
+              <option value="Bar / Lounge / Rooftop">Bar / Lounge / Club Set</option>
               <option value="Wedding Ceremony & Reception">Wedding Ceremony &amp; Reception</option>
-              <option value="Private VIP / Birthday Party">Private VIP / Birthday Party</option>
-              <option value="Bar / Lounge / Rooftop">Bar / Lounge / Rooftop</option>
-              <option value="Corporate / Campus Event">Corporate / Campus Event</option>
+              <option value="18th Birthday Debut">18th Birthday Debut</option>
+              <option value="Corporate / Campus Event">Corporate / Festival / Campus</option>
             </select>
           </div>
         </div>
 
         <details class="gear-accordion">
           <summary>
-            <span>Included Production Gear &amp; Offline Guarantee</span>
-            <span class="hint">Bose F1 + UHF Mics + 320kbps Vault &darr;</span>
+            <span>Commercial Rider, Load-In &amp; Insurance</span>
+            <span class="hint" id="overviewPkgSummary">Private VIP &amp; Milestone ($375 retainer) &darr;</span>
           </summary>
           <div class="gear-mini-grid">
-            <div><strong>Dual Bose F1 812 + Subs</strong>Clean room-filling sound for 300&ndash;500 guests without distortion.</div>
-            <div><strong>Pioneer DDJ-SB2 Console</strong>Tight harmonic mixing, stem mashups &amp; zero dead air.</div>
-            <div><strong>Dual UHF Wireless Mics</strong>Crystal-clear wireless handhelds for toasts, blessings &amp; 18 Roses.</div>
-            <div><strong>3,023-Track Offline Vault</strong>Every track &amp; your Spotify links download offline before showtime.</div>
+            <div><strong>Turnkey Sound Load-In</strong>Arrival 60&ndash;90 minutes prior to doors; full soundcheck before first guest enters.</div>
+            <div><strong>300&ndash;500 Capacity Rating</strong>Dual Bose F1 Model 812 arrays + F1 subwoofers included cleanly in VIP/Wedding tiers.</div>
+            <div><strong>Formal Paperwork Ready</strong>Written performance agreement &amp; venue COI details handled via GG Loop LLC upon request.</div>
+            <div><strong>Offline Backup Guarantee</strong>Every playlist &amp; request synced locally; zero dependence on banquet hall Wi-Fi.</div>
           </div>
         </details>
-
-        <div class="step-nav-bar">
-          <span style="font-size:13px; color:var(--muted);">Selected: <strong id="overviewPkgSummary" style="color:var(--white);">18th Debut &amp; VIP ($375 retainer)</strong></span>
-          <button type="button" class="btn-primary" id="overviewToVibeBtn">Next: Music &amp; Playlists &rarr;</button>
-        </div>
       </div>
-    </section>
 
-    <!-- ==================== TAB 2: CATEGORIZED MUSIC & SPOTIFY STUDIO ==================== -->
-    <section class="view-panel" id="view-vibe">
+      <!-- HOST CONTACT, CUES & SETTLEMENT -->
       <div class="card-box">
         <div class="sec-head">
           <div>
-            <div class="sec-title">2. Sync Your Music &amp; Event Vibe</div>
-            <div class="sec-sub">Paste your Spotify link or browse categorized genres &mdash; synced offline before showtime</div>
-          </div>
-        </div>
-
-        <!-- GENERALIZED SPOTIFY DROPZONE -->
-        <div class="spotify-box">
-          <label class="field-label" for="plMain" style="color:var(--blue);">Paste Your Spotify, Apple Music, or YouTube Playlist Link</label>
-          <input type="url" id="plMain" class="pl-url-input" placeholder="https://open.spotify.com/playlist/...">
-          <button type="button" class="phase-toggle-btn" id="togglePhaseLinksBtn">+ Split playlists by phase (Dinner / Formal 18 Roses / After-Party)</button>
-
-          <div class="form-grid phase-links-extra" id="phaseLinksExtra">
-            <div>
-              <label class="field-label" for="plDinner">Arrival / Dinner Playlist URL</label>
-              <input type="url" id="plDinner" class="pl-url-input" placeholder="https://open.spotify.com/playlist/...">
-            </div>
-            <div>
-              <label class="field-label" for="plFormal">Formal / 18 Roses Playlist URL</label>
-              <input type="url" id="plFormal" class="pl-url-input" placeholder="https://open.spotify.com/playlist/...">
-            </div>
-            <div>
-              <label class="field-label" for="plParty">Main Dancefloor URL</label>
-              <input type="url" id="plParty" class="pl-url-input" placeholder="https://open.spotify.com/playlist/...">
-            </div>
-          </div>
-          <div class="oembed-grid" id="playlistPreviews"></div>
-        </div>
-
-        <!-- CLEAN CATEGORY SWITCHER SO MOBILE IS NEVER OVERWHELMED -->
-        <div class="cat-tabs" role="tablist">
-          <button type="button" class="cat-tab active" data-cat="vibes">Crowd Moods (<span id="catVibeCount">0</span>)</button>
-          <button type="button" class="cat-tab" data-cat="packs">1-Tap Starter Crates</button>
-          <button type="button" class="cat-tab" data-cat="search">Search <span id="totalVaultCount">3,023</span> Songs &amp; Paste</button>
-        </div>
-
-        <!-- PANE 1: VIBES -->
-        <div class="cat-pane active" id="pane-vibes">
-          <div class="vibe-grid" id="vibeGrid">
-            <div style="color:var(--muted); font-size:13.5px;">Loading genres...</div>
-          </div>
-        </div>
-
-        <!-- PANE 2: STARTER CRATES -->
-        <div class="cat-pane" id="pane-packs">
-          <div class="starter-grid" id="starterPacksGrid">
-            <button type="button" class="starter-btn" data-pack="debut_formal">
-              <strong><span>18th Debut &amp; Formal</span><span class="pack-status" style="color:var(--blue); font-size:12px;">+5</span></strong>
-              <span class="artists">Bruno Major, Benson Boone, Billie Eilish, John Legend, Stevie Wonder</span>
-            </button>
-            <button type="button" class="starter-btn" data-pack="cocktail_rnb">
-              <strong><span>Cocktail &amp; Smooth R&amp;B</span><span class="pack-status" style="color:var(--blue); font-size:12px;">+5</span></strong>
-              <span class="artists">Silk Sonic, Frank Ocean, Daniel Caesar, Doja Cat/SZA, Bill Withers</span>
-            </button>
-            <button type="button" class="starter-btn" data-pack="throwbacks">
-              <strong><span>Multi-Gen Throwbacks</span><span class="pack-status" style="color:var(--blue); font-size:12px;">+5</span></strong>
-              <span class="artists">Earth Wind &amp; Fire, Whitney Houston, Michael Jackson, Backstreet Boys, Bruno Mars</span>
-            </button>
-            <button type="button" class="starter-btn" data-pack="peak_party">
-              <strong><span>Peak Hip-Hop &amp; Club</span><span class="pack-status" style="color:var(--blue); font-size:12px;">+5</span></strong>
-              <span class="artists">Drake, Kendrick/Baby Keem, 50 Cent, Daft Punk, Avicii</span>
-            </button>
-            <button type="button" class="starter-btn" data-pack="latin_fiesta">
-              <strong><span>Latin &amp; Fiesta Hits</span><span class="pack-status" style="color:var(--blue); font-size:12px;">+5</span></strong>
-              <span class="artists">Bad Bunny, Elvis Crespo, Caballo Dorado, Cardi B/J Balvin</span>
-            </button>
-            <button type="button" class="starter-btn" data-pack="pop_anthems">
-              <strong><span>Pop &amp; Dance Sing-Alongs</span><span class="pack-status" style="color:var(--blue); font-size:12px;">+5</span></strong>
-              <span class="artists">Rihanna, Dua Lipa, Chappell Roan, Black Eyed Peas, Coldplay</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- PANE 3: SEARCH VAULT + BULK PASTE -->
-        <div class="cat-pane" id="pane-search">
-          <div class="filter-pills" id="vibeTabs">
-            <button type="button" class="filter-pill active" data-vibe="all">All</button>
-            <button type="button" class="filter-pill" data-vibe="debut">Debut</button>
-            <button type="button" class="filter-pill" data-vibe="rnb">R&amp;B</button>
-            <button type="button" class="filter-pill" data-vibe="hiphop">Hip-Hop</button>
-            <button type="button" class="filter-pill" data-vibe="latin">Latin</button>
-            <button type="button" class="filter-pill" data-vibe="house">House &amp; Pop</button>
-            <button type="button" class="filter-pill" data-vibe="edits">Edits</button>
-          </div>
-          <input type="text" id="trackSearch" placeholder="Search artist or track (e.g. SZA, Drake, Bad Bunny, Coldplay)...">
-          <div class="track-list" id="trackList"></div>
-          <div style="margin:8px 0 18px; display:flex; justify-content:space-between; align-items:center;">
-            <span id="showingCount" style="font-size:12px; color:var(--muted);">Loading...</span>
-            <button type="button" class="btn-sm" id="loadMoreBtn" style="display:none;">Load More</button>
-          </div>
-
-          <label class="field-label" for="bulkSongsInput">Or Paste Song Titles (One Per Line)</label>
-          <textarea id="bulkSongsInput" rows="3" placeholder="SZA - Kill Bill&#10;Bruno Mars - Finesse&#10;NewJeans - Super Shy"></textarea>
-          <div style="display:flex; gap:8px; margin-top:8px;">
-            <button type="button" class="btn-sm btn-add" id="bulkAddMustBtn" style="padding:8px 14px;">+ Add to Must-Play</button>
-            <button type="button" class="btn-sm" id="bulkAddBanBtn" style="padding:8px 14px;">Blacklist</button>
-          </div>
-        </div>
-
-        <!-- MUST-PLAY & DO-NOT-PLAY CRATE SUMMARY -->
-        <div class="crate-boxes">
-          <div class="crate-panel">
-            <h4><span style="color:var(--blue);">Must-Play Queue</span><span id="mustCountBadge" style="color:var(--muted);">0 songs</span></h4>
-            <div id="mustListDisplay"><span style="color:var(--muted); font-size:12.5px;">No tracks queued yet.</span></div>
-          </div>
-          <div class="crate-panel">
-            <h4><span style="color:var(--pink);">Do-Not-Play List</span><span id="banCountBadge" style="color:var(--muted);">0 songs</span></h4>
-            <div id="banListDisplay"><span style="color:var(--muted); font-size:12.5px;">None added.</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== TAB 3: HOST DETAILS, CUES & LOCK DATE ==================== -->
-    <section class="view-panel" id="view-book">
-      <div class="card-box">
-        <div class="sec-head">
-          <div>
-            <div class="sec-title">3. Event Details, Cues &amp; Lock Date</div>
-            <div class="sec-sub">Submits directly to DJ J-Rip&rsquo;s live phone alarm &amp; studio calendar</div>
+            <div class="sec-title">2. Host Details, Cues &amp; Lock Date</div>
+            <div class="sec-sub">Submits directly to DJ J-Rip&rsquo;s live phone alarm, email (<code>jquindao1@icloud.com</code>), and studio calendar</div>
           </div>
         </div>
 
@@ -1629,7 +2319,7 @@
         <div class="form-grid" style="margin-bottom:14px;">
           <div>
             <label class="field-label" for="clientName">Your Name / Honoree Name *</label>
-            <input type="text" id="clientName" placeholder="e.g. Maria &bull; 18th Debut">
+            <input type="text" id="clientName" placeholder="e.g. Alex &bull; Private VIP / Lounge">
           </div>
           <div>
             <label class="field-label" for="clientPhone">Mobile Number *</label>
@@ -1680,15 +2370,14 @@
           </div>
         </div>
 
-        <!-- LEDGER & PAYMENT -->
         <div class="ledger-card">
           <div>
-            <div class="mono" style="color:var(--blue);" id="ledgerPkgName">18th Debut, Milestone &amp; VIP Event (4&ndash;5 hrs)</div>
+            <div class="mono" style="color:var(--mint);" id="ledgerPkgName">Private VIP, Milestone &amp; Debut (4&ndash;5 hrs)</div>
             <div style="font-size:13px; color:var(--muted); margin-top:3px;" id="ledgerMeta"></div>
           </div>
           <div style="text-align:right;">
             <div class="mono" style="color:var(--muted);">50% Retainer to Lock Date</div>
-            <div id="ledgerDeposit" style="font-size:24px; font-weight:800; color:var(--white);">$375.00</div>
+            <div id="ledgerDeposit" style="font-size:24px; font-weight:800; color:var(--amber);">$375.00</div>
           </div>
         </div>
 
@@ -1725,9 +2414,8 @@
 
         <div id="errorBanner" style="display:none; margin-top:12px; padding:11px 14px; border-radius:10px; background:rgba(236,72,153,0.12); border:1px solid var(--pink); color:#fbcfe8; font-size:13px;"></div>
 
-        <!-- POST-SUBMIT PAYMENT BOX -->
         <div class="checkout-panel" id="checkoutPanel">
-          <h3 style="color:var(--blue); font-size:18px; margin-bottom:6px;">Sent &mdash; DJ J-Rip&rsquo;s Phone Alarm Was Alerted.</h3>
+          <h3 style="color:var(--mint); font-size:18px; margin-bottom:6px;">Sent &mdash; DJ J-Rip&rsquo;s Phone Alarm Was Alerted.</h3>
           <p style="font-size:13.5px; color:var(--text); margin-bottom:14px;" id="postSubmitNote">
             Your playlists &amp; booking details are queued in Jayson&rsquo;s studio console. Complete your retainer below to lock the date:
           </p>
@@ -1736,7 +2424,7 @@
               Complete $375 Retainer on Stripe &rarr;
             </a>
           </div>
-          <div id="zellePayAction" style="display:none; background:#070b14; border:1px solid var(--border); padding:14px; border-radius:12px;">
+          <div id="zellePayAction" style="display:none; background:#050a08; border:1px solid var(--border); padding:14px; border-radius:12px;">
             <p style="font-size:13.5px; color:var(--white); margin-bottom:10px;" id="manualPayInstructions"></p>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
               <button type="button" class="btn-secondary" id="copyPhoneBtn">Copy (469) 371-8556</button>
@@ -1749,27 +2437,31 @@
 
   </main>
 
-  <!-- CLEAN MOBILE-FRIENDLY BOTTOM BAR -->
+  <!-- CONTEXT-AWARE MOBILE-FRIENDLY BOTTOM BAR -->
   <div class="bottom-dock">
     <div class="bottom-dock-inner">
       <div class="dock-progress" id="dockProgress"></div>
       <div class="dock-summary" id="dockSummary">
-        <strong>$375 Dep</strong> &bull; <span id="dockCrateCount">0 songs</span> &bull; <span id="dockLinkCount">0 playlists</span>
+        <strong>DJ J-Rip</strong> &bull; 3,023 Tracks &bull; 84 Custom Edits
       </div>
       <div style="display:flex; gap:6px; flex-shrink:0;">
         <button type="button" class="btn-secondary" id="dockBackBtn" style="padding:7px 12px; font-size:12px; display:none;">&larr; Back</button>
-        <button type="button" class="btn-primary" id="dockNextBtn" style="padding:8px 15px; font-size:12.5px; box-shadow:none;">Music &amp; Vibe &rarr;</button>
+        <button type="button" class="btn-artist" id="dockNextBtn" style="padding:8px 15px; font-size:12.5px; box-shadow:none;">Playlists &amp; Chat &rarr;</button>
       </div>
     </div>
   </div>
 
   <script>
-    const STORAGE_KEY = 'djjrip_client_portal_v3';
+    const STORAGE_KEY = 'djjrip_client_portal_v4';
     const NTFY_TOPIC = 'djjrip-ops-4a65fac665ec';
+    const BOOTH_ROOM_PREFIX = 'djjrip-booth-v1-';
 
     const DECK_TRACKS = [
-      { title: 'The 1975 \u2014 Live Booth Flip', sub: 'TikTok @jaysonbq \u2022 335.7K+ Views', bpm: '125 BPM', src: 'assets/tiktok-clip.mp4' },
-      { title: 'Pioneer DDJ-SB2 Cue Showcase', sub: 'Live Harmonic Transitions', bpm: '128 BPM', src: 'assets/dj-jrip-reel.mp4' }
+      { title: 'Sweet Spot \u00d7 Superhuman (JRIP Remix)', sub: 'Custom Vocal Chop & Blend \u2022 Bieber/CB \u00d7 Keri Hilson', bpm: '124 BPM', src: 'assets/mix-sweetspot-superhuman.mp3' },
+      { title: 'Serato Live Session IV', sub: 'Unedited 24-Bit Console Recording \u2022 Sep 15', bpm: '126 BPM', src: 'assets/mix-serato-session-4.mp3' },
+      { title: 'Serato Live Session I', sub: 'Open-Format Harmonic Blend \u2022 Sep 13', bpm: '122 BPM', src: 'assets/mix-serato-session-1.mp3' },
+      { title: 'The 1975 \u2014 Live Booth Flip', sub: 'TikTok @jaysonbq \u2022 Live Transition Clip', bpm: '125 BPM', src: 'assets/tiktok-clip.mp4' },
+      { title: 'Pioneer DDJ-SB2 Cue Showcase', sub: 'Live Filter Fade & Serato Deck Control', bpm: '128 BPM', src: 'assets/dj-jrip-reel.mp4' }
     ];
 
     const STARTER_PACKS = {
@@ -1782,9 +2474,9 @@
     };
 
     const PRESETS = {
-      debut: { pkgId: 'debut_vip', eventType: '18th Birthday Debut', mcNeed: 'Need DJ J-Rip to MC & call names', cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late', vibes: ['debut', 'rnb', 'house'], label: '18th Debut preset selected' },
+      debut: { pkgId: 'debut_vip', eventType: 'Private VIP / Birthday Party', mcNeed: 'Need DJ J-Rip to MC & call names', cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late', vibes: ['debut', 'rnb', 'house'], label: 'Private VIP & Milestone preset selected' },
       wedding: { pkgId: 'wedding_gala', eventType: 'Wedding Ceremony & Reception', mcNeed: 'Need DJ J-Rip to MC & call names', cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late', vibes: ['debut', 'rnb', 'house'], label: 'Wedding preset selected' },
-      club: { pkgId: 'bar_lounge', eventType: 'Bar / Lounge / Rooftop', mcNeed: 'Music Only (No MC announcements needed)', cleanPolicy: 'Uncensored Original Versions OK All Night', vibes: ['hiphop', 'house', 'edits'], label: 'Bar / Club preset selected' },
+      club: { pkgId: 'bar_lounge', eventType: 'Bar / Lounge / Rooftop', mcNeed: 'Music Only (No MC announcements needed)', cleanPolicy: 'Uncensored Original Versions OK All Night', vibes: ['hiphop', 'house', 'edits'], label: 'Bar / Lounge / Club preset selected' },
       custom: { pkgId: 'custom_quote', eventType: 'Corporate / Campus Event', mcNeed: 'External MC/Host - DJ runs mics & cues only', cleanPolicy: '100% Clean Radio Edits All Night', vibes: ['rnb', 'house'], label: 'Custom Event preset selected' }
     };
 
@@ -1805,9 +2497,15 @@
     let oembedCache = {};
     let toastTimer = null;
 
+    // Live Booth Chat state
+    let activeRoom = 'lobby';
+    let chatEventSource = null;
+    const chatMessages = [];
+    const seenMsgKeys = new Set();
+
     let selectedPackage = {
       id: 'debut_vip',
-      label: '18th Debut, Milestone & VIP Event (4\u20135 hrs)',
+      label: 'Private VIP, Milestone & Debut (4\u20135 hrs)',
       total: 750,
       deposit: 375,
       stripeUrl: 'https://buy.stripe.com/bJedRb1Ni1nPfHl20M0Fi09'
@@ -1823,7 +2521,7 @@
       t.textContent = msg;
       t.classList.add('show');
       clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => t.classList.remove('show'), 1600);
+      toastTimer = setTimeout(() => t.classList.remove('show'), 1700);
     }
 
     function hideToast() {
@@ -1841,7 +2539,7 @@
     let vinylRafId = null;
     let vinylLastTs = 0;
     let audioFadeRafId = null;
-    const TARGET_OMEGA = 135; // deg/s: mathematically smooth rotation without optical strobing
+    const TARGET_OMEGA = 135; // deg/s smooth studio platter velocity
 
     function stepVinylPhysics(ts) {
       if (!vinylLastTs) vinylLastTs = ts;
@@ -1874,7 +2572,7 @@
       const t0 = performance.now();
       function tick(now) {
         const p = Math.min((now - t0) / durationMs, 1);
-        const eased = 1 - Math.pow(1 - p, 3); // cubic ease-out
+        const eased = 1 - Math.pow(1 - p, 3);
         try { deckAudio.volume = Math.max(0, Math.min(1, startVol + (targetVol - startVol) * eased)); } catch (e) {}
         if (p < 1) {
           audioFadeRafId = requestAnimationFrame(tick);
@@ -1892,11 +2590,13 @@
       document.getElementById('deckTrackTitle').textContent = tr.title;
       document.getElementById('deckTrackSub').textContent = tr.sub;
       document.getElementById('deckBpmText').textContent = tr.bpm;
+      document.querySelectorAll('.deck-chip').forEach((c, i) => c.classList.toggle('active', i === deckIdx));
       if (deckAudio.getAttribute('src') !== tr.src) {
         deckAudio.setAttribute('src', tr.src);
       }
       if (autoPlay) playDeck();
     }
+
     function playDeck() {
       if (!deckAudio.getAttribute('src')) loadDeckTrack(deckIdx, false);
       deckStage.classList.add('playing');
@@ -1907,6 +2607,7 @@
       try { deckAudio.volume = 0.02; } catch (e) {}
       deckAudio.play().then(() => rampAudioVolume(0.85, 260)).catch(() => {});
     }
+
     function pauseDeck() {
       deckStage.classList.remove('playing');
       isDeckPlaying = false;
@@ -1917,20 +2618,35 @@
         rampAudioVolume(0, 180, () => deckAudio.pause());
       }
     }
+
     function toggleDeck() {
       if (isDeckPlaying) pauseDeck();
       else playDeck();
     }
+
     document.getElementById('turntableClick').addEventListener('click', toggleDeck);
     document.getElementById('deckPlayBtn').addEventListener('click', toggleDeck);
     document.getElementById('deckPrevBtn').addEventListener('click', () => loadDeckTrack(deckIdx - 1, true));
     document.getElementById('deckNextBtn').addEventListener('click', () => loadDeckTrack(deckIdx + 1, true));
+    document.querySelectorAll('[data-track-idx]').forEach(btn => {
+      btn.addEventListener('click', () => loadDeckTrack(Number(btn.dataset.trackIdx), true));
+    });
+    document.querySelectorAll('[data-spin-idx]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        loadDeckTrack(Number(btn.dataset.spinIdx), true);
+        document.getElementById('deckStage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
     deckAudio.addEventListener('ended', () => loadDeckTrack(deckIdx + 1, true));
 
-    // CLICK-TO-PLAY GUARANTEED THUMBNAILS (ZERO BROKEN EMBEDS, INSTANT PAINT)
+    // CLICK-TO-PLAY GUARANTEED THUMBNAILS (ZERO BROKEN THIRD-PARTY EMBEDS)
     document.getElementById('playYtCardBtn').addEventListener('click', () => {
       pauseDeck();
       document.getElementById('ytFrameBox').innerHTML = `<iframe src="https://www.youtube.com/embed/TB8gT3tWWlo?autoplay=1&rel=0" title="DJ J-Rip Lake House 4K Set" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    });
+    document.getElementById('playSweetCardBtn').addEventListener('click', () => {
+      pauseDeck();
+      document.getElementById('sweetFrameBox').innerHTML = `<iframe src="https://www.youtube.com/embed/oAxQBNKZgSE?autoplay=1&rel=0" title="Sweet Spot x Superhuman JRIP Remix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
     });
     document.getElementById('playTtCardBtn').addEventListener('click', () => {
       pauseDeck();
@@ -1941,7 +2657,36 @@
       document.getElementById('reelFrameBox').innerHTML = `<video controls autoplay playsinline poster="assets/reel-thumb.jpg"><source src="assets/dj-jrip-reel.mp4" type="video/mp4"></video>`;
     });
 
-    // TAB NAVIGATION (3 GENERALIZED VIEWS + EXPLICIT HOME)
+    // CLICK-TO-LOAD OFFICIAL SOUNDCLOUD EMBED PLAYERS (NO HEAVY PAGE LOAD BLOAT)
+    document.getElementById('loadScWannaBtn').addEventListener('click', () => {
+      pauseDeck();
+      const slot = document.getElementById('scSlotWanna');
+      slot.innerHTML = `<iframe allow="autoplay" title="SoundCloud Player: Wanna get nasty?" src="https://w.soundcloud.com/player/?url=${encodeURIComponent('https://soundcloud.com/jayson-quindao/wanna-get-nasty')}&color=%23f59e0b&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>`;
+    });
+    document.getElementById('loadScSolaceBtn').addEventListener('click', () => {
+      pauseDeck();
+      const slot = document.getElementById('scSlotSolace');
+      slot.innerHTML = `<iframe allow="autoplay" title="SoundCloud Player: Solace" src="https://w.soundcloud.com/player/?url=${encodeURIComponent('https://soundcloud.com/jayson-quindao/solace')}&color=%2338bdf8&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>`;
+    });
+
+    // CONTEXT-AWARE BOTTOM DOCK TEXT (ARTIST-FIRST ON TAB 1, NO $375 DEP LEAK!)
+    function refreshDockCopy() {
+      const urls = getPlaylistUrls();
+      const dock = document.getElementById('dockSummary');
+      const totalTracksText = catalogData?.total ? catalogData.total.toLocaleString() : '3,023';
+      const editsCountText = catalogData?.vibes?.edits?.count || 84;
+      if (currentTab === 'overview') {
+        dock.innerHTML = `<strong>DJ J-Rip</strong> \u2022 ${totalTracksText} Tracks \u2022 ${editsCountText} Custom Edits`;
+      } else if (currentTab === 'vibe') {
+        dock.innerHTML = `<strong>#${escapeHtml(activeRoom)}</strong> \u2022 ${mustPlay.length} queued \u2022 ${urls.length} playlists`;
+      } else {
+        const depTxt = selectedPackage.deposit === 'Custom' ? 'Custom Dep' : `$${selectedPackage.deposit} Dep`;
+        const dateVal = document.getElementById('eventDate').value || 'Date TBD';
+        dock.innerHTML = `<strong>${depTxt}</strong> \u2022 ${escapeHtml(dateVal)} \u2022 ${mustPlay.length} songs`;
+      }
+    }
+
+    // TAB NAVIGATION (3 STRICTLY SEPARATED CATEGORIES + EXPLICIT HOME)
     function switchTab(tab, focusSel = null) {
       if (!['overview', 'vibe', 'book'].includes(tab)) tab = 'overview';
       hideToast();
@@ -1956,12 +2701,12 @@
       if (tab === 'overview') {
         backBtn.style.display = 'none';
         nextBtn.style.display = 'inline-flex';
-        nextBtn.textContent = 'Music & Vibe \u2192';
+        nextBtn.textContent = 'Playlists & Chat \u2192';
         if (prog) prog.style.width = '33.3%';
       } else if (tab === 'vibe') {
         backBtn.style.display = 'inline-flex';
         nextBtn.style.display = 'inline-flex';
-        nextBtn.textContent = 'Lock Date \u2192';
+        nextBtn.textContent = 'Book & Rates \u2192';
         if (prog) prog.style.width = '66.6%';
       } else {
         backBtn.style.display = 'inline-flex';
@@ -1969,16 +2714,20 @@
         if (prog) prog.style.width = '100%';
         updateBookSummary();
       }
+      refreshDockCopy();
       saveState();
+
       if (focusSel) {
         setTimeout(() => {
           const el = document.querySelector(focusSel);
           if (el) {
             el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            el.focus();
-            el.classList.remove('field-pulse');
-            void el.offsetWidth;
-            el.classList.add('field-pulse');
+            if (typeof el.focus === 'function' && ['INPUT', 'SELECT', 'TEXTAREA'].includes(el.tagName)) {
+              el.focus();
+              el.classList.remove('field-pulse');
+              void el.offsetWidth;
+              el.classList.add('field-pulse');
+            }
           }
         }, 120);
       } else {
@@ -1993,6 +2742,261 @@
       if (target) target.classList.add('active');
     }
 
+    function switchGuidePlatform(plat) {
+      document.querySelectorAll('.guide-tab').forEach(b => b.classList.toggle('active', b.dataset.guide === plat));
+      document.querySelectorAll('.guide-panel').forEach(p => p.classList.remove('active'));
+      const target = document.getElementById(`guide-${plat}`);
+      if (target) target.classList.add('active');
+    }
+
+    // ==================== LIVE WEBSITE BOOTH CHAT ROOM (REAL NTFY.SH PUB/SUB + SSE) ====================
+    function sanitizeRoomSlug(raw) {
+      const cleaned = String(raw || '').toLowerCase().replace(/[^a-z0-9-_]/g, '').replace(/^[-_]+|[-_]+$/g, '').slice(0, 32);
+      return cleaned || 'lobby';
+    }
+
+    function extractSafeHttpsUrls(text) {
+      const matches = String(text || '').match(/https:\/\/[^\s<>"']+/gi) || [];
+      return matches.map(u => u.replace(/[),.;!?]+$/, '')).filter(u => {
+        try {
+          const parsed = new URL(u);
+          return parsed.protocol === 'https:';
+        } catch (e) {
+          return false;
+        }
+      });
+    }
+
+    function maskSensitivePhoneNumbers(text) {
+      return String(text || '').replace(/(?:\+?1[-.\s]?)?(?:\(\d{3}\)|\d{3})[-.\s]?\d{3}[-.\s]?\d{4}/g, '[phone hidden \u2014 use Book tab]');
+    }
+
+    function formatMsgClock(ms) {
+      try {
+        return new Date(ms).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+      } catch (e) {
+        return '';
+      }
+    }
+
+    function setChatStatus(label, ok = true) {
+      document.getElementById('chatStatusLabel').textContent = label;
+      const dot = document.getElementById('chatStatusDot');
+      dot.style.background = ok ? 'var(--mint)' : 'var(--amber)';
+      dot.style.boxShadow = ok ? '0 0 8px var(--mint)' : '0 0 8px var(--amber)';
+    }
+
+    function renderChatFeed() {
+      const feed = document.getElementById('chatFeed');
+      if (!chatMessages.length) {
+        feed.innerHTML = `<div class="chat-empty">Room <strong>#${escapeHtml(activeRoom)}</strong> is live &amp; listening.<br>Share a Spotify, Apple Music, or YouTube playlist URL or request a song below!</div>`;
+        return;
+      }
+      const myName = (document.getElementById('chatNameInput').value || '').trim().toLowerCase();
+      feed.innerHTML = '';
+      for (const msg of chatMessages) {
+        const bubble = document.createElement('div');
+        const isSelf = msg.isSelf || (myName && msg.name.toLowerCase() === myName);
+        bubble.className = 'chat-msg' + (isSelf ? ' self' : '');
+        const urlsArr = msg.urls || [];
+        bubble.innerHTML = `
+          <div class="chat-msg-meta">
+            <span class="chat-msg-author">${escapeHtml(msg.name)}</span>
+            <span class="chat-msg-time">${escapeHtml(formatMsgClock(msg.ts))}</span>
+          </div>
+          <div class="chat-msg-body">${escapeHtml(msg.text)}</div>
+        `;
+        urlsArr.forEach(u => {
+          const label = u.includes('spotify') ? 'Spotify Playlist/Track' : u.includes('music.apple') ? 'Apple Music Link' : (u.includes('youtube') || u.includes('youtu.be')) ? 'YouTube Link' : u.includes('soundcloud') ? 'SoundCloud Link' : 'Shared Link';
+          const lc = document.createElement('div');
+          lc.className = 'chat-link-card';
+          const left = document.createElement('div');
+          left.style.cssText = 'min-width:0; flex:1;';
+          const tagSpan = document.createElement('span');
+          tagSpan.className = 'mono';
+          tagSpan.style.cssText = 'color:var(--mint); font-size:9.5px; display:block;';
+          tagSpan.textContent = label;
+          const anchor = document.createElement('a');
+          anchor.href = u;
+          anchor.target = '_blank';
+          anchor.rel = 'noopener';
+          anchor.textContent = u;
+          left.appendChild(tagSpan);
+          left.appendChild(anchor);
+          const syncBtn = document.createElement('button');
+          syncBtn.type = 'button';
+          syncBtn.className = 'btn-sm chat-sync-link';
+          syncBtn.style.cssText = 'border-color:var(--amber); color:var(--amber);';
+          syncBtn.textContent = '+ Sync to Crate';
+          syncBtn.addEventListener('click', () => {
+            const mainEl = document.getElementById('plMain');
+            if (!mainEl.value.trim()) mainEl.value = u;
+            else {
+              const pEl = document.getElementById('plParty');
+              if (!pEl.value.trim()) {
+                pEl.value = u;
+                document.getElementById('phaseLinksExtra').classList.add('open');
+              } else {
+                toggleMust(`link_${Date.now()}`, `[Playlist URL] ${u}`, true);
+              }
+            }
+            refreshPlaylistPreviews();
+            saveState();
+            showToast('Playlist link synced to your Crate!');
+          });
+          lc.appendChild(left);
+          lc.appendChild(syncBtn);
+          bubble.appendChild(lc);
+        });
+        feed.appendChild(bubble);
+      }
+      feed.scrollTop = feed.scrollHeight;
+    }
+
+    function ingestNtfyFrame(frame) {
+      if (!frame || frame.event !== 'message') return;
+      let author = frame.title || 'Guest';
+      let text = frame.message || '';
+      let ts = (frame.time ? frame.time * 1000 : Date.now());
+      let clientMsgId = '';
+      let parsedUrls = null;
+      try {
+        const inner = JSON.parse(frame.message);
+        if (inner && typeof inner === 'object' && inner.text) {
+          author = inner.name || author;
+          text = inner.text;
+          ts = inner.ts || ts;
+          clientMsgId = inner.clientMsgId || '';
+          if (Array.isArray(inner.urls)) parsedUrls = inner.urls;
+        }
+      } catch (e) {}
+
+      const key = clientMsgId || frame.id;
+      if (key && seenMsgKeys.has(key)) return;
+      if (key) seenMsgKeys.add(key);
+
+      const safeText = maskSensitivePhoneNumbers(text);
+      const urls = (parsedUrls || extractSafeHttpsUrls(safeText)).filter(u => u.startsWith('https://'));
+      chatMessages.push({
+        key: key || String(ts),
+        name: String(author).slice(0, 32),
+        text: safeText.slice(0, 460),
+        urls,
+        ts,
+        isSelf: false
+      });
+      if (chatMessages.length > 80) chatMessages.splice(0, chatMessages.length - 80);
+      renderChatFeed();
+    }
+
+    async function connectBoothRoom(slug) {
+      activeRoom = sanitizeRoomSlug(slug);
+      document.querySelectorAll('.room-preset-chip').forEach(c => c.classList.toggle('active', c.dataset.room === activeRoom));
+      document.getElementById('customRoomInput').value = ['lobby', 'requests', 'afterparty'].includes(activeRoom) ? '' : activeRoom;
+      refreshDockCopy();
+
+      if (chatEventSource) {
+        try { chatEventSource.close(); } catch (e) {}
+        chatEventSource = null;
+      }
+      chatMessages.length = 0;
+      seenMsgKeys.clear();
+      setChatStatus(`SYNCING #${activeRoom.toUpperCase()}...`, false);
+      renderChatFeed();
+
+      const topic = `${BOOTH_ROOM_PREFIX}${activeRoom}`;
+      try {
+        const res = await fetch(`https://ntfy.sh/${topic}/json?poll=1&since=12h`);
+        if (res.ok) {
+          const ndjson = await res.text();
+          ndjson.split('\n').filter(Boolean).forEach(line => {
+            try { ingestNtfyFrame(JSON.parse(line)); } catch (e) {}
+          });
+        }
+      } catch (e) {}
+
+      if (typeof EventSource !== 'undefined') {
+        chatEventSource = new EventSource(`https://ntfy.sh/${topic}/sse?since=12h`);
+        chatEventSource.onopen = () => setChatStatus(`LIVE IN #${activeRoom.toUpperCase()}`, true);
+        chatEventSource.onmessage = evt => {
+          try { ingestNtfyFrame(JSON.parse(evt.data)); } catch (e) {}
+        };
+        chatEventSource.onerror = () => setChatStatus(`RECONNECTING #${activeRoom.toUpperCase()}...`, false);
+      } else {
+        setChatStatus(`READY IN #${activeRoom.toUpperCase()}`, true);
+      }
+    }
+
+    document.getElementById('chatForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const nameEl = document.getElementById('chatNameInput');
+      const msgEl = document.getElementById('chatMsgInput');
+      const sendBtn = document.getElementById('chatSendBtn');
+      const rawName = (nameEl.value || '').trim().slice(0, 28) || 'Guest';
+      const rawText = maskSensitivePhoneNumbers((msgEl.value || '').trim().slice(0, 420));
+      if (!rawText) return;
+
+      const urls = extractSafeHttpsUrls(rawText);
+      const clientMsgId = `m_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+      const ts = Date.now();
+
+      seenMsgKeys.add(clientMsgId);
+      chatMessages.push({ key: clientMsgId, name: rawName, text: rawText, urls, ts, isSelf: true });
+      renderChatFeed();
+      msgEl.value = '';
+      sendBtn.disabled = true;
+
+      const roomTopic = `${BOOTH_ROOM_PREFIX}${activeRoom}`;
+      try {
+        const res = await fetch('https://ntfy.sh', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            topic: roomTopic,
+            title: rawName,
+            message: JSON.stringify({ clientMsgId, name: rawName, text: rawText, urls, ts }),
+            tags: urls.length ? ['musical_note', 'link'] : ['speech_balloon']
+          })
+        });
+        if (res.ok) {
+          showToast(`Sent to #${activeRoom}`);
+          if (urls.length || /playlist|song|request|play/i.test(rawText)) {
+            // Silent ops notify with ZERO private PII (room + display alias + song/link)
+            fetch('https://ntfy.sh', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                topic: NTFY_TOPIC,
+                title: `BOOTH CHAT [${activeRoom}] - ${rawName}`,
+                message: rawText,
+                priority: 4,
+                tags: ['headphones', 'musical_note']
+              })
+            }).catch(() => {});
+          }
+        }
+      } catch (err) {
+        showToast('Network issue — message shown locally');
+      } finally {
+        sendBtn.disabled = false;
+        saveState();
+      }
+    });
+
+    document.querySelectorAll('.room-preset-chip').forEach(btn => {
+      btn.addEventListener('click', () => connectBoothRoom(btn.dataset.room));
+    });
+    document.getElementById('joinRoomBtn').addEventListener('click', () => {
+      const slug = document.getElementById('customRoomInput').value;
+      connectBoothRoom(slug || 'lobby');
+      showToast(`Joined #${activeRoom}`);
+    });
+    document.getElementById('copyRoomInviteBtn').addEventListener('click', () => {
+      const url = `${window.location.origin}${window.location.pathname}?room=${encodeURIComponent(activeRoom)}#chat`;
+      navigator.clipboard.writeText(url).then(() => showToast(`Copied #${activeRoom} guest link \u2713`)).catch(() => showToast(url));
+    });
+
+    // ==================== PACKAGES, PRESETS & PLAYLISTS ====================
     function buildPrefilledStripeUrl() {
       const base = selectedPackage.stripeUrl;
       const email = document.getElementById('clientEmail').value.trim();
@@ -2016,7 +3020,7 @@
         stripeUrl: card.dataset.stripe
       };
       const depText = dep === 'Custom' ? 'Custom Quote' : `$${dep}.00`;
-      document.getElementById('overviewPkgSummary').textContent = dep === 'Custom' ? `${selectedPackage.label}` : `${selectedPackage.label} ($${dep} retainer)`;
+      document.getElementById('overviewPkgSummary').textContent = dep === 'Custom' ? `${selectedPackage.label} \u2193` : `${selectedPackage.label} ($${dep} retainer) \u2193`;
       document.getElementById('ledgerPkgName').textContent = selectedPackage.label;
       document.getElementById('ledgerDeposit').textContent = depText;
       updateCounters();
@@ -2027,25 +3031,25 @@
       const pr = PRESETS[key];
       if (!pr) return;
       document.querySelectorAll('.preset-pill').forEach(b => b.classList.toggle('active', b.dataset.preset === key));
-      const card = document.querySelector(`.pkg-card[data-pkg="${pr.pkgId}"]`);
-      if (card) selectPkgCard(card);
       document.getElementById('eventType').value = pr.eventType;
       document.getElementById('mcNeed').value = pr.mcNeed;
       document.getElementById('cleanPolicy').value = pr.cleanPolicy;
-      pr.vibes.forEach(v => { if (catalogData?.vibes?.[v]) selectedVibes.add(v); });
-      renderVibes();
+      const pc = document.querySelector(`.pkg-card[data-pkg="${pr.pkgId}"]`);
+      if (pc) selectPkgCard(pc);
+      pr.vibes.forEach(v => selectedVibes.add(v));
+      if (catalogData) renderVibes();
       updateCounters();
       saveState();
-      if (showMsg) showToast(`${pr.label} \u2713`);
+      if (showMsg) showToast(pr.label);
     }
 
     function getPlaylistUrls() {
       return [
         { phase: 'Main Playlist', url: document.getElementById('plMain').value.trim() },
-        { phase: 'Arrival / Dinner', url: document.getElementById('plDinner').value.trim() },
+        { phase: 'Dinner / Arrival', url: document.getElementById('plDinner').value.trim() },
         { phase: 'Formal / 18 Roses', url: document.getElementById('plFormal').value.trim() },
-        { phase: 'Dancefloor', url: document.getElementById('plParty').value.trim() }
-      ].filter(x => x.url.length > 0);
+        { phase: 'Dancefloor / Party', url: document.getElementById('plParty').value.trim() }
+      ].filter(x => x.url.length > 4);
     }
 
     async function refreshPlaylistPreviews() {
@@ -2065,20 +3069,26 @@
           }
           const meta = oembedCache[item.url];
           if (meta) {
-            card.innerHTML = `
-              ${meta.thumbnail_url ? `<img src="${escapeHtml(meta.thumbnail_url)}" alt="Spotify Cover">` : ''}
-              <div style="min-width:0;">
-                <div class="mono" style="color:var(--blue); font-size:10px;">SPOTIFY \u2022 ${escapeHtml(item.phase)}</div>
-                <div style="font-size:13px; font-weight:700; color:var(--white); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(meta.title || 'Spotify Playlist')}</div>
-              </div>
+            if (meta.thumbnail_url) {
+              const thumb = document.createElement('img');
+              thumb.src = meta.thumbnail_url;
+              thumb.alt = 'Spotify Cover';
+              card.appendChild(thumb);
+            }
+            const infoDiv = document.createElement('div');
+            infoDiv.style.minWidth = '0';
+            infoDiv.innerHTML = `
+              <div class="mono" style="color:var(--mint); font-size:10px;">SPOTIFY \u2022 ${escapeHtml(item.phase)}</div>
+              <div style="font-size:13px; font-weight:700; color:var(--white); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(meta.title || 'Spotify Playlist')}</div>
             `;
+            card.appendChild(infoDiv);
             container.appendChild(card);
             continue;
           }
         }
         card.innerHTML = `
           <div style="min-width:0;">
-            <div class="mono" style="color:var(--pink); font-size:10px;">LINKED \u2022 ${escapeHtml(item.phase)}</div>
+            <div class="mono" style="color:var(--amber); font-size:10px;">LINKED \u2022 ${escapeHtml(item.phase)}</div>
             <div style="font-size:12px; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(item.url)}</div>
           </div>
         `;
@@ -2286,19 +3296,17 @@
     }
 
     function updateCounters() {
-      const urls = getPlaylistUrls();
       document.getElementById('catVibeCount').textContent = selectedVibes.size;
       document.getElementById('mustCountBadge').textContent = `${mustPlay.length} songs`;
       document.getElementById('banCountBadge').textContent = `${doNotPlay.length} songs`;
-      const depTxt = selectedPackage.deposit === 'Custom' ? 'Custom Dep' : `$${selectedPackage.deposit} Dep`;
-      document.getElementById('dockSummary').innerHTML = `<strong>${depTxt}</strong> \u2022 ${mustPlay.length} songs \u2022 ${urls.length} playlists`;
+      refreshDockCopy();
       document.querySelectorAll('.starter-btn').forEach(btn => {
         const ids = STARTER_PACKS[btn.dataset.pack] || [];
         const allQ = ids.length && ids.every(id => mustPlay.some(x => x.id === id));
         const st = btn.querySelector('.pack-status');
         if (st) {
           st.textContent = allQ ? '\u2713 Added' : '+5';
-          st.style.color = allQ ? 'var(--mint)' : 'var(--blue)';
+          st.style.color = allQ ? 'var(--mint)' : 'var(--amber)';
         }
       });
       updateFallbackLinks();
@@ -2328,6 +3336,7 @@
         `Email: ${email} | Phone: ${phone}`,
         `Event Date: ${date} | Type: ${type}`,
         `Venue & Times: ${venue}`,
+        `Booth Chat Room: #${activeRoom}`,
         `Package: ${selectedPackage.label}`,
         `Retainer Due: ${depStr} via [${selectedPaymentMethod.toUpperCase()}]`,
         ``,
@@ -2363,6 +3372,8 @@
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify({
           currentTab,
+          activeRoom,
+          chatName: document.getElementById('chatNameInput').value,
           clientName: document.getElementById('clientName').value,
           clientEmail: document.getElementById('clientEmail').value,
           clientPhone: document.getElementById('clientPhone').value,
@@ -2395,6 +3406,8 @@
         ['clientName','clientEmail','clientPhone','eventDate','eventType','venueInfo','mcNeed','cleanPolicy','entranceSong','slowSongs','specialNotes','plMain','plDinner','plFormal','plParty'].forEach(id => {
           if (st[id]) document.getElementById(id).value = st[id];
         });
+        if (st.chatName) document.getElementById('chatNameInput').value = st.chatName;
+        if (st.activeRoom) activeRoom = sanitizeRoomSlug(st.activeRoom);
         if (st.eventDate) document.getElementById('bookDateMirror').value = st.eventDate;
         if (Array.isArray(st.selectedVibes)) st.selectedVibes.forEach(v => selectedVibes.add(v));
         if (Array.isArray(st.mustPlay)) mustPlay = st.mustPlay;
@@ -2411,7 +3424,7 @@
             selectedPaymentMethod = st.payMethod;
           }
         }
-        if (st.currentTab) currentTab = st.currentTab;
+        // Always start Artist-First on bare dj.html unless explicit URL params/hash override
       } catch (e) {}
     }
 
@@ -2420,20 +3433,41 @@
       const qEvent = (params.get('event') || '').toLowerCase();
       const qDate = params.get('date') || '';
       const qClient = params.get('client') || '';
+      const qTab = (params.get('tab') || '').toLowerCase();
       const qStep = params.get('step');
+      const qRoom = params.get('room') || '';
+
       if (qClient) document.getElementById('clientName').value = qClient;
       if (/^\d{4}-\d{2}-\d{2}$/.test(qDate)) {
         document.getElementById('eventDate').value = qDate;
         document.getElementById('bookDateMirror').value = qDate;
       }
-      if (qEvent === 'debut') applyPreset('debut', false);
-      else if (qEvent === 'wedding') applyPreset('wedding', false);
-      else if (qEvent === 'bar' || qEvent === 'lounge') applyPreset('club', false);
+      if (qRoom) {
+        activeRoom = sanitizeRoomSlug(qRoom);
+        currentTab = 'vibe';
+      }
+
+      if (qEvent === 'debut') { applyPreset('debut', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
+      else if (qEvent === 'wedding') { applyPreset('wedding', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
+      else if (qEvent === 'bar' || qEvent === 'lounge') { applyPreset('club', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
+      else if (qEvent === 'custom') { applyPreset('custom', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
 
       const h = (window.location.hash || '').toLowerCase();
-      if (h === '#vibe' || h === '#step4' || qStep === '4') currentTab = 'vibe';
-      else if (h === '#book' || h === '#step5' || qStep === '5') currentTab = 'book';
-      else if (h === '#home' || h === '#overview' || qStep === '1') currentTab = 'overview';
+      let deepFocus = null;
+      if (qTab === 'vibe' || h === '#vibe' || h === '#playlists' || h === '#step4' || qStep === '4') {
+        currentTab = 'vibe';
+      } else if (h === '#chat') {
+        currentTab = 'vibe';
+        deepFocus = '#boothChatSection';
+      } else if (h === '#guide') {
+        currentTab = 'vibe';
+        deepFocus = '#playlistGuideSection';
+      } else if (qTab === 'book' || h === '#book' || h === '#rates' || h === '#pay' || h === '#step5' || qStep === '5') {
+        currentTab = 'book';
+      } else if (qTab === 'overview' || h === '#home' || h === '#overview' || qStep === '1') {
+        currentTab = 'overview';
+      }
+      return deepFocus;
     }
 
     async function init() {
@@ -2445,28 +3479,37 @@
         sortedDefaultTracks = buildCuratedDefaultList(catalogData.tracks);
         document.getElementById('totalVaultCount').textContent = catalogData.total.toLocaleString();
       } catch (e) {
-        document.getElementById('trackList').innerHTML = '<div style="padding:14px; color:#fca5a5;">Catalog unavailable &mdash; paste Spotify link or track titles above.</div>';
+        document.getElementById('trackList').innerHTML = '<div style="padding:14px; color:#fca5a5;">Catalog unavailable &mdash; paste playlist link or track titles above.</div>';
       }
       restoreState();
-      applyUrlParamsAndHash();
+      const deepFocus = applyUrlParamsAndHash();
       renderVibes();
       setFilterVibe(activeFilterVibe);
       renderSelectedLists();
       refreshPlaylistPreviews();
-      switchTab(currentTab);
+      switchTab(currentTab, deepFocus);
+      connectBoothRoom(activeRoom);
     }
 
     // EVENT WIRING
     document.getElementById('topHomeBtn').addEventListener('click', () => switchTab('overview'));
     document.getElementById('brandBtn').addEventListener('click', () => switchTab('overview'));
-    document.getElementById('heroVibeBtn').addEventListener('click', () => switchTab('vibe', '#plMain'));
-    document.getElementById('overviewToVibeBtn').addEventListener('click', () => switchTab('vibe'));
+    document.getElementById('heroVibeBtn').addEventListener('click', () => switchTab('vibe', '#playlistGuideSection'));
+    document.getElementById('heroBookLink').addEventListener('click', () => switchTab('book'));
+    document.getElementById('bridgeToBookBtn').addEventListener('click', () => switchTab('book'));
+    document.getElementById('browseEditsBtn').addEventListener('click', () => {
+      switchTab('vibe', '#trackSearch');
+      switchMusicCategory('search');
+      setFilterVibe('edits');
+    });
+
     document.getElementById('dockBackBtn').addEventListener('click', () => switchTab(currentTab === 'book' ? 'vibe' : 'overview'));
     document.getElementById('dockNextBtn').addEventListener('click', () => switchTab(currentTab === 'overview' ? 'vibe' : 'book'));
 
     document.querySelectorAll('.seg-btn').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
     document.querySelectorAll('.preset-pill').forEach(b => b.addEventListener('click', () => applyPreset(b.dataset.preset, true)));
     document.querySelectorAll('.cat-tab').forEach(b => b.addEventListener('click', () => switchMusicCategory(b.dataset.cat)));
+    document.querySelectorAll('.guide-tab').forEach(b => b.addEventListener('click', () => switchGuidePlatform(b.dataset.guide)));
     document.querySelectorAll('.pkg-card').forEach(c => c.addEventListener('click', () => selectPkgCard(c)));
     document.querySelectorAll('.pay-card').forEach(c => c.addEventListener('click', () => {
       document.querySelectorAll('.pay-card').forEach(p => p.classList.remove('active'));
@@ -2480,10 +3523,10 @@
       el.classList.toggle('open');
       document.getElementById('togglePhaseLinksBtn').textContent = el.classList.contains('open')
         ? '\u2212 Hide phase playlist fields'
-        : '+ Split playlists by phase (Dinner / Formal 18 Roses / After-Party)';
+        : '+ Split playlists by phase (Warm-Up / Spotlight / Main Dancefloor)';
     });
 
-    // Two-way date sync between Overview & Book
+    // Two-way date sync
     document.getElementById('eventDate').addEventListener('change', e => {
       document.getElementById('bookDateMirror').value = e.target.value;
       updateCounters(); saveState();
@@ -2528,7 +3571,7 @@
       showToast(`${lines.length} blacklisted`);
     });
 
-    ['clientName','clientEmail','clientPhone','eventType','venueInfo','mcNeed','cleanPolicy','entranceSong','slowSongs','specialNotes'].forEach(id => {
+    ['clientName','clientEmail','clientPhone','eventType','venueInfo','mcNeed','cleanPolicy','entranceSong','slowSongs','specialNotes','chatNameInput'].forEach(id => {
       document.getElementById(id).addEventListener('input', () => { updateCounters(); saveState(); });
     });
 
@@ -2644,7 +3687,16 @@
         btn.textContent = 'Sent \u2713 \u2014 Complete Transfer Below';
       } else {
         manualBox.style.display = 'block';
-        document.getElementById('manualPayInstructions').innerHTML = `Inquiry queued &mdash; Jayson will text <strong>(469) 371-8556</strong> with your quote/agreement before payment. Want instant date lock? Use <a href="${escapeHtml(buildPrefilledStripeUrl())}" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700;">Stripe</a> or Zelle.`;
+        const mEl = document.getElementById('manualPayInstructions');
+        mEl.innerHTML = `Inquiry queued &mdash; Jayson will text <strong>(469) 371-8556</strong> with your quote/agreement before payment. Want instant date lock? Use `;
+        const sLink = document.createElement('a');
+        sLink.href = buildPrefilledStripeUrl();
+        sLink.target = '_blank';
+        sLink.rel = 'noopener';
+        sLink.style.cssText = 'color:var(--mint);font-weight:700;';
+        sLink.textContent = 'Stripe';
+        mEl.appendChild(sLink);
+        mEl.append(' or Zelle.');
         btn.textContent = 'Inquiry Queued \u2713';
       }
 

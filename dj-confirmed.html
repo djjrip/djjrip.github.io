@@ -4,17 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DJ J-Rip // Booking &amp; Retainer Confirmed</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23070b14'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%2338bdf8' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23ec4899'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23050a08'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%2338bdf8' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23f59e0b'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Playfair+Display:ital,wght@1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #070a12;
-      --surface: #0c1220;
+      --bg: #050a08;
+      --surface: #0a1410;
       --border: rgba(148, 163, 184, 0.16);
-      --blue: #38bdf8;
+      --mint: #34d399;
+      --amber: #f59e0b;
       --pink: #ec4899;
+      --blue: #38bdf8;
       --white: #f8fafc;
       --muted: #94a3b8;
     }
@@ -22,8 +24,8 @@
     html { background: var(--bg); min-height: 100%; }
     body {
       background:
-        radial-gradient(circle at 20% 15%, rgba(56, 189, 248, 0.08), transparent 45%),
-        radial-gradient(circle at 80% 85%, rgba(236, 72, 153, 0.06), transparent 45%),
+        radial-gradient(circle at 18% 12%, rgba(16, 185, 129, 0.10), transparent 48%),
+        radial-gradient(circle at 82% 88%, rgba(245, 158, 11, 0.08), transparent 46%),
         var(--bg);
       background-attachment: fixed;
       color: var(--white);
@@ -39,11 +41,11 @@
       max-width: 580px;
       width: 100%;
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(52, 211, 153, 0.25);
       border-radius: 22px;
       padding: 36px 28px;
       text-align: center;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
     }
     .pill {
       display: inline-flex;
@@ -55,22 +57,22 @@
       text-transform: uppercase;
       padding: 6px 14px;
       border-radius: 999px;
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.28);
-      color: var(--blue);
+      background: rgba(52, 211, 153, 0.1);
+      border: 1px solid rgba(52, 211, 153, 0.32);
+      color: var(--mint);
       margin-bottom: 18px;
     }
-    .pill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--pink); }
+    .pill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--amber); }
     h1 { font-size: clamp(26px, 4.5vw, 34px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px; line-height: 1.15; }
     h1 em {
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
       font-weight: 700;
-      color: var(--blue);
+      color: var(--amber);
     }
     p.sub { color: var(--muted); font-size: 14.5px; margin-bottom: 24px; }
     .box {
-      background: rgba(7, 10, 18, 0.72);
+      background: rgba(5, 10, 8, 0.78);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 20px;
@@ -96,14 +98,14 @@
       justify-content: center;
       padding: 12px 20px;
       border-radius: 999px;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 13.5px;
       text-decoration: none;
-      transition: transform 0.15s ease, border-color 0.15s ease;
+      transition: transform 0.15s ease;
     }
     .btn:hover { transform: translateY(-1px); }
     .btn-primary { background: var(--pink); color: #fff; box-shadow: 0 8px 24px rgba(236, 72, 153, 0.25); }
-    .btn-blue { background: rgba(56, 189, 248, 0.14); border: 1px solid rgba(56, 189, 248, 0.35); color: var(--blue); }
+    .btn-blue { background: rgba(245, 158, 11, 0.14); border: 1px solid rgba(245, 158, 11, 0.35); color: var(--amber); }
     .btn-ghost { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border); color: var(--white); }
   </style>
 </head>
@@ -118,13 +120,13 @@
       <div class="box-head">Next Steps</div>
       <ul>
         <li><strong>Timeline &amp; Confirmation:</strong> Expect a confirmation text/email from Jayson (<strong>(469) 371-8556</strong>) within 24 hours.</li>
-        <li><strong>Playlist Sync Anytime:</strong> Return to your saved portal whenever you want to drop Spotify links or Must-Play tracks before event week.</li>
+        <li><strong>Playlists &amp; Guest Booth Chat:</strong> Jump back into your Playlists &amp; Booth Chat room anytime to create Spotify/Apple/YouTube lists or invite guests to drop song requests.</li>
         <li><strong>Event Week Walkthrough:</strong> Quick final check of Grand Entrance, 18 Roses cues &amp; remaining 50% balance prior to soundcheck.</li>
       </ul>
     </div>
     <div class="btn-row">
-      <a class="btn btn-blue" href="dj.html">&larr; DJ J-Rip Home</a>
-      <a class="btn btn-primary" href="dj.html#vibe">Edit Playlist &rarr;</a>
+      <a class="btn btn-blue" href="dj.html">&larr; Artist Showcase</a>
+      <a class="btn btn-primary" href="dj.html#chat">Playlists &amp; Booth Chat &rarr;</a>
       <a class="btn btn-ghost" href="sms:+14693718556">Text (469) 371-8556</a>
     </div>
   </div>

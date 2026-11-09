@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DJ J-Rip // Event Vibe Selector & Custom Playlist Builder</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23050a08'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%2338bdf8' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23f59e0b'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -425,11 +426,13 @@
   <div class="topbar">
     <div class="brand-tag">● DJ J-RIP // CLIENT VIBE &amp; PLAYLIST STUDIO</div>
     <div class="nav-links">
-      <a class="nav-link" href="dj.html" style="background:rgba(16,185,129,0.16);border-color:#10b981;color:#6ee7b7;">🚀 5-Step All-in-One Booking Portal</a>
-      <a class="nav-link" href="https://www.tiktok.com/@jaysonbq" target="_blank" rel="noopener">📱 @jaysonbq</a>
-      <a class="nav-link" href="https://soundcloud.com/jayson-quindao" target="_blank" rel="noopener">☁️ SoundCloud</a>
-      <a class="nav-link" href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener">▶ Live Set</a>
-      <a class="nav-link" href="tel:+14693718556">📞 (469) 371-8556</a>
+      <a class="nav-link" href="dj.html" style="background:rgba(16,185,129,0.16);border-color:#10b981;color:#6ee7b7;">Artist Showcase</a>
+      <a class="nav-link" href="dj.html#chat" style="background:rgba(245,158,11,0.14);border-color:#f59e0b;color:#fcd34d;">Playlist Guide &amp; Booth Chat</a>
+      <a class="nav-link" href="dj.html#book" style="border-color:#ec4899;color:#f9a8d4;">Book &amp; Rates</a>
+      <a class="nav-link" href="https://www.tiktok.com/@jaysonbq" target="_blank" rel="noopener">@jaysonbq</a>
+      <a class="nav-link" href="https://soundcloud.com/jayson-quindao" target="_blank" rel="noopener">SoundCloud</a>
+      <a class="nav-link" href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener">Live Set</a>
+      <a class="nav-link" href="tel:+14693718556">(469) 371-8556</a>
     </div>
   </div>
 
@@ -962,7 +965,7 @@
         const resJson = await response.json();
         if (response.ok && (resJson.success === 'true' || resJson.success === true)) {
           banner.className = 'status-banner status-ok';
-          banner.innerHTML = `<strong>✓ Playlist Submitted!</strong> DJ J-Rip has received your vibe selection and ${mustPlay.length}-track playlist for ${escapeHtml(payload.date)}. Expect confirmation at ${escapeHtml(payload.contact)}.<br><br>Ready to lock your date? <a href="dj.html#pay" style="color:#6ee7b7;font-weight:700;text-decoration:underline;">Choose Payment Option (Stripe Card / Apple Pay / Zelle 469-371-8556) &rarr;</a>`;
+          banner.innerHTML = `<strong>✓ Playlist Submitted!</strong> DJ J-Rip has received your vibe selection and ${mustPlay.length}-track playlist for ${escapeHtml(payload.date)}. Expect confirmation at ${escapeHtml(payload.contact)}.<br><br>Ready to lock your date? <a href="dj.html#book" style="color:#6ee7b7;font-weight:700;text-decoration:underline;">Open Book &amp; Rates (Stripe Card / Apple Pay / Zelle 469-371-8556) &rarr;</a>`;
           btn.textContent = '✓ Sent Successfully';
         } else {
           throw new Error(resJson.message || 'Endpoint requires backup email click');
