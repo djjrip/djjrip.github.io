@@ -609,13 +609,44 @@
     let mustPlay = []; // { id, label }
     let doNotPlay = []; // { id, label }
 
+    function applyUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      const qEvent = (params.get('event') || '').toLowerCase();
+      const qDate = params.get('date') || '';
+      const qClient = params.get('client') || '';
+      const qVibe = (params.get('vibe') || '').toLowerCase();
+
+      if (qClient) document.getElementById('clientName').value = qClient;
+      if (/^\d{4}-\d{2}-\d{2}$/.test(qDate)) document.getElementById('eventDate').value = qDate;
+
+      if (qEvent === 'debut') document.getElementById('eventType').value = '18th Birthday Debut';
+      else if (qEvent === 'wedding') document.getElementById('eventType').value = 'Wedding Ceremony & Reception';
+      else if (qEvent === 'vip' || qEvent === 'party') document.getElementById('eventType').value = 'Private VIP / Birthday Party';
+      else if (qEvent === 'corporate') document.getElementById('eventType').value = 'Corporate / Campus Event';
+      else if (qEvent === 'bar' || qEvent === 'lounge') document.getElementById('eventType').value = 'Bar / Lounge / Rooftop';
+
+      if (qVibe && catalogData?.vibes) {
+        qVibe.split(',').map(s => s.trim()).forEach(v => {
+          if (catalogData.vibes[v]) {
+            selectedVibes.add(v);
+            activeFilterVibe = v;
+          }
+        });
+      } else if (qEvent === 'debut' && catalogData?.vibes?.debut) {
+        selectedVibes.add('debut');
+        activeFilterVibe = 'debut';
+      }
+    }
+
     async function init() {
       try {
         const res = await fetch('dj-catalog.json');
         catalogData = await res.json();
         document.getElementById('totalVaultCount').textContent = catalogData.total.toLocaleString();
+        applyUrlParams();
         renderVibes();
-        renderTracks();
+        setFilterVibe(activeFilterVibe);
+        updateCounters();
       } catch (e) {
         document.getElementById('trackList').innerHTML = '<div style="padding:16px;color:#fca5a5;">Unable to load catalog JSON. Please refresh.</div>';
       }
