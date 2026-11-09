@@ -150,6 +150,7 @@
       color: var(--white);
       font-size: 12.5px;
       font-weight: 600;
+      text-decoration: none;
       cursor: pointer;
       transition: border-color 0.15s ease, color 0.15s ease;
     }
@@ -2405,10 +2406,10 @@
   <!-- TOP NAVIGATION: HOME + 3 CLEARLY SEPARATED CATEGORIES -->
   <header class="topbar">
     <div class="brand-group">
-      <button type="button" class="home-btn" id="topHomeBtn" title="DJ JRIP Home">
+      <a class="home-btn" id="topHomeBtn" href="dj.html" title="DJ JRIP Home">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
         Home
-      </button>
+      </a>
       <button type="button" class="brand-btn" id="brandBtn">DJ <span>JRIP</span></button>
     </div>
 
@@ -3840,14 +3841,52 @@
       }
     }
 
+    function buildCanonicalTabUrl(tab, focusSel = null) {
+      const basePath = window.location.pathname || 'dj.html';
+      if (tab === 'overview') {
+        return basePath;
+      }
+      const params = new URLSearchParams(window.location.search);
+      ['tab', 'step', 'studio', 'edit'].forEach(k => params.delete(k));
+      if (tab === 'vibe') {
+        params.delete('event');
+        const qs = params.toString();
+        const hash = focusSel === '#boothChatSection'
+          ? '#chat'
+          : (focusSel === '#playlistGuideSection' ? '#guide' : '#vibe');
+        return `${basePath}${qs ? '?' + qs : ''}${hash}`;
+      }
+      params.delete('room');
+      const qs = params.toString();
+      return `${basePath}${qs ? '?' + qs : ''}#book`;
+    }
+
+    function updateBrowserUrlForTab(tab, focusSel = null, mode = 'push') {
+      if (!mode || mode === 'none') return;
+      const targetUrl = buildCanonicalTabUrl(tab, focusSel);
+      const currentRel = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+      if (targetUrl === currentRel) return;
+      try {
+        if (mode === 'replace') window.history.replaceState({ tab, focusSel }, '', targetUrl);
+        else window.history.pushState({ tab, focusSel }, '', targetUrl);
+      } catch (e) {
+        if (tab === 'vibe') window.location.hash = (focusSel === '#boothChatSection' ? '#chat' : '#vibe');
+        else if (tab === 'book') window.location.hash = '#book';
+        else window.location.hash = '#home';
+      }
+    }
+
     // TAB NAVIGATION (3 STRICTLY SEPARATED CATEGORIES + EXPLICIT HOME)
-    function switchTab(tab, focusSel = null) {
+    function switchTab(tab, focusSel = null, opts = {}) {
       if (!['overview', 'vibe', 'book'].includes(tab)) tab = 'overview';
+      const urlMode = opts.updateUrl === undefined ? 'push' : opts.updateUrl;
       hideToast();
       currentTab = tab;
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
       document.getElementById(`view-${tab}`).classList.add('active');
       document.querySelectorAll('.seg-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+
+      updateBrowserUrlForTab(tab, focusSel, urlMode);
 
       if (tab === 'book') {
         updateBookSummary();
@@ -3868,7 +3907,7 @@
             }
           }
         }, 120);
-      } else {
+      } else if (!opts.skipScroll) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
@@ -4754,6 +4793,7 @@
     }
 
     function applyUrlParamsAndHash() {
+      currentTab = 'overview';
       const params = new URLSearchParams(window.location.search);
       const qEvent = (params.get('event') || '').toLowerCase();
       const qDate = params.get('date') || '';
@@ -4818,13 +4858,29 @@
       setFilterVibe(activeFilterVibe);
       renderSelectedLists();
       refreshPlaylistPreviews();
-      switchTab(currentTab, deepFocus);
+      const initUrlMode = (currentTab !== 'overview' && !window.location.hash) ? 'replace' : 'none';
+      switchTab(currentTab, deepFocus, { updateUrl: initUrlMode, skipScroll: !deepFocus });
       connectBoothRoom(activeRoom);
     }
 
+    function syncNavigationFromUrl() {
+      const deepFocus = applyUrlParamsAndHash();
+      switchTab(currentTab, deepFocus, { updateUrl: 'none', skipScroll: !deepFocus });
+    }
+    window.addEventListener('popstate', syncNavigationFromUrl);
+    window.addEventListener('hashchange', syncNavigationFromUrl);
+
     // EVENT WIRING
-    document.getElementById('topHomeBtn').addEventListener('click', () => switchTab('overview'));
-    document.getElementById('brandBtn').addEventListener('click', () => switchTab('overview'));
+    document.getElementById('topHomeBtn').addEventListener('click', e => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      if (document.getElementById('studioDrawer').classList.contains('open')) toggleStudioMode(false);
+      switchTab('overview', null, { updateUrl: 'push' });
+    });
+    document.getElementById('brandBtn').addEventListener('click', () => {
+      if (document.getElementById('studioDrawer').classList.contains('open')) toggleStudioMode(false);
+      switchTab('overview', null, { updateUrl: 'push' });
+    });
     document.getElementById('topBookBtn').addEventListener('click', () => switchTab('book'));
     document.getElementById('heroVibeBtn').addEventListener('click', () => switchTab('vibe', '#playlistGuideSection'));
     document.getElementById('heroBookLink').addEventListener('click', () => switchTab('book'));
@@ -5329,6 +5385,18 @@
       drawer.classList.toggle('open', nextOpen);
       document.body.classList.toggle('studio-active', nextOpen);
       if (nextOpen && currentTab !== 'overview') switchTab('overview');
+      if (!nextOpen) {
+        const params = new URLSearchParams(window.location.search);
+        const h = (window.location.hash || '').toLowerCase();
+        if (params.has('studio') || params.has('edit') || ['#customize', '#studio', '#edit'].includes(h)) {
+          params.delete('studio');
+          params.delete('edit');
+          const qs = params.toString();
+          const cleanHash = ['#customize', '#studio', '#edit'].includes(h) ? '' : window.location.hash;
+          const cleanUrl = `${window.location.pathname || 'dj.html'}${qs ? '?' + qs : ''}${cleanHash}`;
+          try { window.history.replaceState(null, '', cleanUrl); } catch (e) {}
+        }
+      }
     }
 
     async function loadLayoutSystem() {
