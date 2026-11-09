@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DJ J-Rip // Event Vibe Selector & Custom Playlist Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08090f;
+      --surface: #111420;
+      --surface-2: #171b2b;
+      --border: #232942;
+      --accent: #a855f7;
+      --cyan: #06b6d4;
+      --pink: #ec4899;
+      --green: #10b981;
+      --gold: #f59e0b;
+      --red: #ef4444;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.55;
+      padding: 28px 18px 120px 18px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(168, 85, 247, 0.14);
+      border: 1px solid var(--accent);
+      color: #e9d5ff;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .nav-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: all 0.15s;
+    }
+    .nav-link:hover { color: #fff; border-color: var(--cyan); }
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 780px;
+      margin-bottom: 28px;
+    }
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .step-num {
+      background: linear-gradient(135deg, var(--accent), var(--pink));
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }
+    input, select, textarea {
+      width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--cyan); }
+    .vibe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    .vibe-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.15s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .vibe-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .vibe-card.selected {
+      border-color: var(--cyan);
+      background: rgba(6, 182, 212, 0.08);
+      box-shadow: 0 0 0 1px var(--cyan);
+    }
+    .vibe-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .vibe-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .vibe-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background: rgba(255,255,255,0.06);
+      padding: 3px 8px;
+      border-radius: 999px;
+      color: var(--cyan);
+      white-space: nowrap;
+    }
+    .vibe-desc { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+    .vibe-actions { display: flex; justify-content: space-between; align-items: center; }
+    .vibe-badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .vibe-card.selected .vibe-badge { color: var(--cyan); }
+    .vibe-filter-btn {
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      background: rgba(168, 85, 247, 0.2);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .vibe-filter-btn:hover { background: var(--accent); }
+    .catalog-controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .search-wrap { flex: 1; min-width: 240px; }
+    .tab-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+    .tab-btn {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .track-list {
+      max-height: 440px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #0b0d16;
+    }
+    .track-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .track-row:last-child { border-bottom: none; }
+    .track-row:hover { background: rgba(255,255,255,0.03); }
+    .track-info { min-width: 0; flex: 1; }
+    .track-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .track-meta {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .track-vibe-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(168,85,247,0.16);
+      color: #d8b4fe;
+      text-transform: uppercase;
+    }
+    .track-btns { display: flex; gap: 6px; flex-shrink: 0; }
+    .btn-sm {
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text);
+      cursor: pointer;
+    }
+    .btn-add:hover, .btn-add.added {
+      background: var(--green);
+      border-color: var(--green);
+      color: #042f2e;
+    }
+    .btn-ban:hover, .btn-ban.banned {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+    .custom-add-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .playlist-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 720px) {
+      .playlist-columns { grid-template-columns: 1fr; }
+      h1 { font-size: 28px; }
+    }
+    .list-box {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      min-height: 130px;
+    }
+    .list-box h4 {
+      font-size: 14px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .pill-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.04);
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .pill-rm {
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 700;
+      padding: 0 4px;
+    }
+    .pill-rm:hover { color: var(--red); }
+    .submit-bar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      align-items: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--pink));
+      color: #fff;
+      border: none;
+      padding: 13px 24px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-secondary {
+      background: var(--surface-2);
+      color: #fff;
+      border: 1px solid var(--border);
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-secondary:hover { border-color: var(--cyan); }
+    .status-banner {
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      display: none;
+    }
+    .status-ok {
+      display: block;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid var(--green);
+      color: #6ee7b7;
+    }
+    .status-err {
+      display: block;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid var(--red);
+      color: #fca5a5;
+    }
+    .sticky-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(11, 13, 22, 0.94);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: center;
+      z-index: 50;
+    }
+    .sticky-inner {
+      max-width: 1120px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .sticky-stats { font-size: 13px; color: var(--muted); }
+    .sticky-stats strong { color: #fff; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand-tag">● DJ J-RIP // CLIENT VIBE & PLAYLIST STUDIO</div>
+    <div class="nav-links">
+      <a class="nav-link" href="dj.html">🎧 Artist & Rig EPK</a>
+      <a class="nav-link" href="booking.html">📅 Rates & Booking</a>
+      <a class="nav-link" href="tel:+14693718556">📞 (469) 371-8556</a>
+    </div>
+  </div>
+
+  <h1>Pick Your Event Vibe & Build Your Custom Playlist</h1>
+  <p class="subtitle">
+    Browse my curated 3,023-track live library, select the vibes for each phase of your event (Debut, Wedding, or Private Party), add your Must-Play & Do-Not-Play songs, and submit your playlist straight to my booth.
+  </p>
+
+  <!-- STEP 1: EVENT PROFILE -->
+  <div class="step-card">
+    <div class="step-header">
+      <span class="step-num">1</span>
+      <h2 class="step-title">Event & Client Details</h2>
+    </div>
+    <div class="form-grid">
+      <div>
+        <label for="clientName">Your Name / Honoree Name *</label>
+        <input type="text" id="clientName" placeholder="e.g. Maria / Debutante Name">
+      </div>
+      <div>
+        <label for="clientContact">Email or Phone Number *</label>
+        <input type="text" id="clientContact" placeholder="e.g. (214) 555-0199 or email@domain.com">
+      </div>
+      <div>
+        <label for="eventDate">Event Date</label>
+        <input type="date" id="eventDate" value="2027-02-20">
+      </div>
+      <div>
+        <label for="eventType">Event Type</label>
+        <select id="eventType">
+          <option value="18th Birthday Debut">18th Birthday Debut / Milestone</option>
+          <option value="Wedding Ceremony & Reception">Wedding Ceremony & Reception</option>
+          <option value="Private VIP / Birthday Party">Private VIP / House Party</option>
+          <option value="Corporate / Campus Event">Corporate Gala / Campus Event</option>
+          <option value="Bar / Lounge / Rooftop">Bar / Lounge / Rooftop</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: VIBE PICKER -->
+  <div class="step-card">
+    <div class="step-header">
+      <span class="step-num">2</span>
+      <h2 class="step-title">Pick Your Event Vibes (Tap to Select Multiple)</h2>
+    </div>
+    <div class="vibe-grid" id="vibeGrid">
+      <div style="color: var(--muted); font-size: 14px;">Loading music catalog...</div>
+    </div>
+  </div>
+
+  <!-- STEP 3: MUSIC VAULT BROWSER & PLAYLIST BUILDER -->
+  <div class="step-card" id="catalogSection">
+    <div class="step-header">
+      <span class="step-num">3</span>
+      <h2 class="step-title">Explore DJ J-Rip's Music Vault (<span id="totalVaultCount">3,023</span> Tracks)</h2>
+    </div>
+
+    <div class="tab-row" id="vibeTabs">
+      <button class="tab-btn active" data-vibe="all">All Vibes</button>
+      <button class="tab-btn" data-vibe="debut">✨ Debut & Formal</button>
+      <button class="tab-btn" data-vibe="rnb">🍸 R&B & Neo-Soul</button>
+      <button class="tab-btn" data-vibe="hiphop">🔥 Hip-Hop & Party</button>
+      <button class="tab-btn" data-vibe="latin">💃 Latin & Throwbacks</button>
+      <button class="tab-btn" data-vibe="house">⚡ House, Pop & Dance</button>
+      <button class="tab-btn" data-vibe="edits">🎛️ Custom Edits</button>
+    </div>
+
+    <div class="catalog-controls">
+      <div class="search-wrap">
+        <input type="text" id="trackSearch" placeholder="Search by artist or song title (e.g. SZA, Drake, Bad Bunny, Coldplay, Ed Sheeran)...">
+      </div>
+    </div>
+
+    <div class="track-list" id="trackList"></div>
+    <div style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
+      <span id="showingCount" style="font-size: 12px; color: var(--muted);">Loading tracks...</span>
+      <button class="btn-sm" id="loadMoreBtn" style="display:none;">Show More Tracks</button>
+    </div>
+
+    <div class="custom-add-row">
+      <div style="flex: 2; min-width: 220px;">
+        <input type="text" id="customSongInput" placeholder="Song not listed above? Type Song & Artist (e.g. 'Tyla - Water')...">
+      </div>
+      <button class="btn-sm btn-add" id="addCustomMustBtn" style="padding: 10px 16px;">+ Add Custom Must-Play</button>
+      <button class="btn-sm btn-ban" id="addCustomBanBtn" style="padding: 10px 16px;">🚫 Add Custom Do-Not-Play</button>
+    </div>
+  </div>
+
+  <!-- STEP 4: FORMAL CUES & EXTERNAL PLAYLIST -->
+  <div class="step-card">
+    <div class="step-header">
+      <span class="step-num">4</span>
+      <h2 class="step-title">Special Moments, Ceremonial Cues & Your Playlist Links</h2>
+    </div>
+    <div class="form-grid" style="margin-bottom: 14px;">
+      <div>
+        <label for="entranceSong">Grand Entrance / Walkout Song</label>
+        <input type="text" id="entranceSong" placeholder="Song + Artist for Grand Entrance">
+      </div>
+      <div>
+        <label for="slowSongs">18 Roses / Waltz / Father-Daughter Song(s)</label>
+        <input type="text" id="slowSongs" placeholder="Song(s) for formal dances or 18 Roses">
+      </div>
+      <div>
+        <label for="playlistLink">External Spotify / Apple Music / YouTube Link</label>
+        <input type="url" id="playlistLink" placeholder="Paste your personal playlist link (optional)">
+      </div>
+    </div>
+    <div>
+      <label for="specialNotes">Timeline Notes, 18 Candles / Treasures Cues, or Clean-Edit Preferences</label>
+      <textarea id="specialNotes" rows="3" placeholder="Example: Keep dinner music clean/acoustic until 8:30 PM, clean radio edits only while grandparents are present, drop hip-hop/club energy after 9:30 PM..."></textarea>
+    </div>
+  </div>
+
+  <!-- STEP 5: MY CURATED PLAYLIST & SUBMIT -->
+  <div class="step-card" id="submitSection">
+    <div class="step-header">
+      <span class="step-num">5</span>
+      <h2 class="step-title">Review & Submit Your Custom Playlist to DJ J-Rip</h2>
+    </div>
+
+    <div class="playlist-columns">
+      <div class="list-box">
+        <h4>
+          <span style="color: var(--green);">✅ Must-Play Playlist</span>
+          <span id="mustCountBadge">0 songs</span>
+        </h4>
+        <div id="mustListDisplay"><span style="color: var(--muted); font-size: 13px;">No tracks added yet. Search Step 3 or type custom songs above.</span></div>
+      </div>
+
+      <div class="list-box">
+        <h4>
+          <span style="color: var(--red);">🚫 Do-Not-Play Blacklist</span>
+          <span id="banCountBadge">0 songs</span>
+        </h4>
+        <div id="banListDisplay"><span style="color: var(--muted); font-size: 13px;">No blacklisted songs yet.</span></div>
+      </div>
+    </div>
+
+    <div class="submit-bar">
+      <button class="btn-primary" id="submitCloudBtn">🚀 Submit Playlist Directly to DJ J-Rip</button>
+      <button class="btn-secondary" id="copyBtn">📋 Copy Playlist Text</button>
+      <a class="btn-secondary" id="emailFallbackLink" href="#">✉️ Open in Email App</a>
+      <a class="btn-secondary" id="smsFallbackLink" href="#">💬 Text Summary to (469) 371-8556</a>
+    </div>
+
+    <div class="status-banner" id="statusBanner"></div>
+  </div>
+
+  <div class="sticky-footer">
+    <div class="sticky-inner">
+      <div class="sticky-stats">
+        Vibes: <strong id="footerVibes">0</strong> &bull;
+        Must-Play: <strong id="footerMust">0</strong> &bull;
+        Do-Not-Play: <strong id="footerBan">0</strong>
+      </div>
+      <button class="btn-primary" style="padding: 9px 18px; font-size: 13px;" onclick="document.getElementById('submitSection').scrollIntoView({behavior:'smooth'})">
+        Review & Submit &darr;
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const VIBE_ICONS = {
+      rnb: '🍸',
+      debut: '✨',
+      hiphop: '🔥',
+      latin: '💃',
+      house: '⚡',
+      edits: '🎛️'
+    };
+
+    let catalogData = null;
+    let selectedVibes = new Set();
+    let activeFilterVibe = 'all';
+    let searchQuery = '';
+    let visibleLimit = 60;
+    let mustPlay = []; // { id, label }
+    let doNotPlay = []; // { id, label }
+
+    async function init() {
+      try {
+        const res = await fetch('dj-catalog.json');
+        catalogData = await res.json();
+        document.getElementById('totalVaultCount').textContent = catalogData.total.toLocaleString();
+        renderVibes();
+        renderTracks();
+      } catch (e) {
+        document.getElementById('trackList').innerHTML = '<div style="padding:16px;color:#fca5a5;">Unable to load catalog JSON. Please refresh.</div>';
+      }
+    }
+
+    function renderVibes() {
+      const grid = document.getElementById('vibeGrid');
+      grid.innerHTML = '';
+      for (const [key, info] of Object.entries(catalogData.vibes)) {
+        const card = document.createElement('div');
+        card.className = 'vibe-card' + (selectedVibes.has(key) ? ' selected' : '');
+        card.innerHTML = `
+          <div>
+            <div class="vibe-top">
+              <div class="vibe-name">${VIBE_ICONS[key] || '🎵'} ${info.name}</div>
+              <span class="vibe-count">${info.count.toLocaleString()} tracks</span>
+            </div>
+            <div class="vibe-desc">${info.desc}</div>
+          </div>
+          <div class="vibe-actions">
+            <span class="vibe-badge">${selectedVibes.has(key) ? '✓ Selected for Event' : 'Click to Pick Vibe'}</span>
+            <button type="button" class="vibe-filter-btn" data-browse="${key}">Browse Tracks &darr;</button>
+          </div>
+        `;
+        card.addEventListener('click', (e) => {
+          if (e.target.dataset.browse) {
+            e.stopPropagation();
+            setFilterVibe(e.target.dataset.browse);
+            document.getElementById('catalogSection').scrollIntoView({ behavior: 'smooth' });
+            return;
+          }
+          if (selectedVibes.has(key)) selectedVibes.delete(key);
+          else selectedVibes.add(key);
+          renderVibes();
+          updateCounters();
+        });
+        grid.appendChild(card);
+      }
+    }
+
+    function setFilterVibe(v) {
+      activeFilterVibe = v;
+      visibleLimit = 60;
+      document.querySelectorAll('#vibeTabs .tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.vibe === v);
+      });
+      renderTracks();
+    }
+
+    function renderTracks() {
+      if (!catalogData) return;
+      const q = searchQuery.toLowerCase().trim();
+      const filtered = catalogData.tracks.filter(t => {
+        if (activeFilterVibe !== 'all' && t.v !== activeFilterVibe) return false;
+        if (!q) return true;
+        return t.t.toLowerCase().includes(q) || t.a.toLowerCase().includes(q);
+      });
+
+      const listEl = document.getElementById('trackList');
+      listEl.innerHTML = '';
+
+      const slice = filtered.slice(0, visibleLimit);
+      if (slice.length === 0) {
+        listEl.innerHTML = '<div style="padding:20px;color:var(--muted);text-align:center;">No matching tracks found in vault — add it below as a Custom Request!</div>';
+      } else {
+        const frag = document.createDocumentFragment();
+        for (const t of slice) {
+          const label = `${t.a} — ${t.t}`;
+          const isMust = mustPlay.some(x => x.id === t.id);
+          const isBan = doNotPlay.some(x => x.id === t.id);
+
+          const row = document.createElement('div');
+          row.className = 'track-row';
+          row.innerHTML = `
+            <div class="track-info">
+              <div class="track-title" title="${escapeHtml(t.t)}">${escapeHtml(t.t)}</div>
+              <div class="track-meta">
+                <span>${escapeHtml(t.a)}</span>
+                ${t.d ? `<span>&bull; ${t.d}</span>` : ''}
+                <span class="track-vibe-tag">${t.v}</span>
+              </div>
+            </div>
+            <div class="track-btns">
+              <button type="button" class="btn-sm btn-add ${isMust ? 'added' : ''}">${isMust ? '✓ Added' : '+ Must-Play'}</button>
+              <button type="button" class="btn-sm btn-ban ${isBan ? 'banned' : ''}">${isBan ? 'Banned' : '🚫'}</button>
+            </div>
+          `;
+          row.querySelector('.btn-add').addEventListener('click', () => toggleMust(t.id, label));
+          row.querySelector('.btn-ban').addEventListener('click', () => toggleBan(t.id, label));
+          frag.appendChild(row);
+        }
+        listEl.appendChild(frag);
+      }
+
+      document.getElementById('showingCount').textContent = `Showing ${slice.length} of ${filtered.length.toLocaleString()} tracks`;
+      const loadMoreBtn = document.getElementById('loadMoreBtn');
+      if (filtered.length > visibleLimit) {
+        loadMoreBtn.style.display = 'inline-block';
+      } else {
+        loadMoreBtn.style.display = 'none';
+      }
+    }
+
+    function toggleMust(id, label) {
+      const idx = mustPlay.findIndex(x => x.id === id);
+      if (idx >= 0) mustPlay.splice(idx, 1);
+      else {
+        mustPlay.push({ id, label });
+        doNotPlay = doNotPlay.filter(x => x.id !== id);
+      }
+      renderTracks();
+      renderSelectedLists();
+    }
+
+    function toggleBan(id, label) {
+      const idx = doNotPlay.findIndex(x => x.id === id);
+      if (idx >= 0) doNotPlay.splice(idx, 1);
+      else {
+        doNotPlay.push({ id, label });
+        mustPlay = mustPlay.filter(x => x.id !== id);
+      }
+      renderTracks();
+      renderSelectedLists();
+    }
+
+    function renderSelectedLists() {
+      const mustDiv = document.getElementById('mustListDisplay');
+      const banDiv = document.getElementById('banListDisplay');
+
+      if (mustPlay.length === 0) {
+        mustDiv.innerHTML = '<span style="color: var(--muted); font-size: 13px;">No tracks added yet. Search Step 3 or type custom songs above.</span>';
+      } else {
+        mustDiv.innerHTML = '';
+        mustPlay.forEach(item => {
+          const el = document.createElement('div');
+          el.className = 'pill-item';
+          el.innerHTML = `<span>${escapeHtml(item.label)}</span><button class="pill-rm">&times;</button>`;
+          el.querySelector('.pill-rm').addEventListener('click', () => toggleMust(item.id, item.label));
+          mustDiv.appendChild(el);
+        });
+      }
+
+      if (doNotPlay.length === 0) {
+        banDiv.innerHTML = '<span style="color: var(--muted); font-size: 13px;">No blacklisted songs yet.</span>';
+      } else {
+        banDiv.innerHTML = '';
+        doNotPlay.forEach(item => {
+          const el = document.createElement('div');
+          el.className = 'pill-item';
+          el.innerHTML = `<span>${escapeHtml(item.label)}</span><button class="pill-rm">&times;</button>`;
+          el.querySelector('.pill-rm').addEventListener('click', () => toggleBan(item.id, item.label));
+          banDiv.appendChild(el);
+        });
+      }
+
+      updateCounters();
+    }
+
+    function updateCounters() {
+      document.getElementById('mustCountBadge').textContent = `${mustPlay.length} songs`;
+      document.getElementById('banCountBadge').textContent = `${doNotPlay.length} songs`;
+      document.getElementById('footerVibes').textContent = selectedVibes.size;
+      document.getElementById('footerMust').textContent = mustPlay.length;
+      document.getElementById('footerBan').textContent = doNotPlay.length;
+      updateFallbackLinks();
+    }
+
+    function buildSummaryPayload() {
+      const name = document.getElementById('clientName').value.trim() || 'Unspecified Client';
+      const contact = document.getElementById('clientContact').value.trim() || 'Not provided';
+      const date = document.getElementById('eventDate').value || 'TBD';
+      const type = document.getElementById('eventType').value;
+      const entrance = document.getElementById('entranceSong').value.trim() || 'None specified';
+      const slow = document.getElementById('slowSongs').value.trim() || 'None specified';
+      const extUrl = document.getElementById('playlistLink').value.trim() || 'None';
+      const notes = document.getElementById('specialNotes').value.trim() || 'None';
+
+      const vibeNames = Array.from(selectedVibes).map(k => catalogData?.vibes[k]?.name || k);
+
+      const text = [
+        `DJ J-RIP — CLIENT EVENT VIBE & PLAYLIST SUBMISSION`,
+        `==================================================`,
+        `Client / Honoree: ${name}`,
+        `Contact: ${contact}`,
+        `Event Date: ${date}`,
+        `Event Type: ${type}`,
+        ``,
+        `SELECTED VIBES (${vibeNames.length}):`,
+        vibeNames.length ? vibeNames.map(v => `  - ${v}`).join('\n') : '  - Open Format / DJ Choice',
+        ``,
+        `SPECIAL CEREMONIAL / FORMAL MOMENTS:`,
+        `  Grand Entrance: ${entrance}`,
+        `  18 Roses / Slow Dances / Waltz: ${slow}`,
+        `  External Playlist Link: ${extUrl}`,
+        `  Notes & Cues: ${notes}`,
+        ``,
+        `MUST-PLAY PLAYLIST (${mustPlay.length} tracks):`,
+        mustPlay.length ? mustPlay.map((t, i) => `  ${i + 1}. ${t.label}`).join('\n') : '  (None specified)',
+        ``,
+        `DO-NOT-PLAY BLACKLIST (${doNotPlay.length} tracks):`,
+        doNotPlay.length ? doNotPlay.map((t, i) => `  ${i + 1}. ${t.label}`).join('\n') : '  (None)'
+      ].join('\n');
+
+      return { name, contact, date, type, text };
+    }
+
+    function updateFallbackLinks() {
+      const p = buildSummaryPayload();
+      const subject = encodeURIComponent(`DJ J-Rip Event Playlist — ${p.name} (${p.date})`);
+      const body = encodeURIComponent(p.text);
+      document.getElementById('emailFallbackLink').href = `mailto:jquindao1@icloud.com?subject=${subject}&body=${body}`;
+
+      const smsSummary = `Hi DJ J-Rip! Playlist submitted for ${p.name} (${p.type} on ${p.date}). Must-Play: ${mustPlay.length} tracks. Check email for full breakdown!`;
+      document.getElementById('smsFallbackLink').href = `sms:+14693718556?body=${encodeURIComponent(smsSummary)}`;
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[m]));
+    }
+
+    // Event Listeners
+    document.querySelectorAll('#vibeTabs .tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => setFilterVibe(btn.dataset.vibe));
+    });
+
+    document.getElementById('trackSearch').addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      visibleLimit = 60;
+      renderTracks();
+    });
+
+    document.getElementById('loadMoreBtn').addEventListener('click', () => {
+      visibleLimit += 80;
+      renderTracks();
+    });
+
+    document.getElementById('addCustomMustBtn').addEventListener('click', () => {
+      const inp = document.getElementById('customSongInput');
+      const val = inp.value.trim();
+      if (!val) return;
+      toggleMust('custom_' + Date.now(), `[Custom Request] ${val}`);
+      inp.value = '';
+    });
+
+    document.getElementById('addCustomBanBtn').addEventListener('click', () => {
+      const inp = document.getElementById('customSongInput');
+      const val = inp.value.trim();
+      if (!val) return;
+      toggleBan('customban_' + Date.now(), `[Custom] ${val}`);
+      inp.value = '';
+    });
+
+    ['clientName', 'clientContact', 'eventDate', 'eventType', 'entranceSong', 'slowSongs', 'playlistLink', 'specialNotes'].forEach(id => {
+      document.getElementById(id).addEventListener('input', updateFallbackLinks);
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', () => {
+      const p = buildSummaryPayload();
+      navigator.clipboard.writeText(p.text).then(() => {
+        const b = document.getElementById('copyBtn');
+        b.textContent = '✓ Copied to Clipboard!';
+        setTimeout(() => { b.textContent = '📋 Copy Playlist Text'; }, 2000);
+      });
+    });
+
+    document.getElementById('submitCloudBtn').addEventListener('click', async () => {
+      const name = document.getElementById('clientName').value.trim();
+      const contact = document.getElementById('clientContact').value.trim();
+      const banner = document.getElementById('statusBanner');
+
+      if (!name || !contact) {
+        banner.className = 'status-banner status-err';
+        banner.textContent = 'Please enter your Name and Email/Phone in Step 1 before submitting.';
+        document.getElementById('clientName').focus();
+        return;
+      }
+
+      const btn = document.getElementById('submitCloudBtn');
+      btn.disabled = true;
+      btn.textContent = '⏳ Sending to DJ J-Rip...';
+
+      const payload = buildSummaryPayload();
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/jquindao1@icloud.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            _subject: `DJ J-Rip Playlist & Vibe Submission: ${payload.name} (${payload.date})`,
+            _template: 'box',
+            Client_Name: payload.name,
+            Contact: payload.contact,
+            Event_Date: payload.date,
+            Event_Type: payload.type,
+            Full_Playlist_Manifest: payload.text
+          })
+        });
+
+        const resJson = await response.json();
+        if (response.ok && (resJson.success === 'true' || resJson.success === true)) {
+          banner.className = 'status-banner status-ok';
+          banner.innerHTML = `<strong>✓ Playlist Submitted!</strong> DJ J-Rip has received your vibe selection and ${mustPlay.length}-track playlist for ${escapeHtml(payload.date)}. Expect confirmation at ${escapeHtml(payload.contact)}.`;
+          btn.textContent = '✓ Sent Successfully';
+        } else {
+          throw new Error(resJson.message || 'Endpoint requires backup email click');
+        }
+      } catch (err) {
+        banner.className = 'status-banner status-err';
+        banner.innerHTML = `Direct relay returned an alert (${escapeHtml(err.message)}). Click <strong>"✉️ Open in Email App"</strong> or <strong>"💬 Text Summary"</strong> right next to this button to lock it in instantly!`;
+        btn.disabled = false;
+        btn.textContent = '🚀 Retry Direct Submit';
+      }
+    });
+
+    init();
+  </script>
+</body>
+</html>
