@@ -3,112 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DJ J-Rip // Date Lock &amp; Retainer Confirmed</title>
+  <title>DJ J-Rip // Booking &amp; Retainer Confirmed</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23070b14'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%2338bdf8' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23ec4899'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Playfair+Display:ital,wght@1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #070a12;
+      --surface: #0c1220;
+      --border: rgba(148, 163, 184, 0.16);
+      --blue: #38bdf8;
+      --pink: #ec4899;
+      --white: #f8fafc;
+      --muted: #94a3b8;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); min-height: 100%; }
     body {
-      background-color: #05110b;
-      background-image:
-        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(22, 101, 52, 0.45), transparent 70%),
-        radial-gradient(ellipse 60% 40% at 85% 20%, rgba(249, 115, 22, 0.16), transparent 65%);
-      color: #ffffff;
-      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-      padding: 48px 20px;
-      max-width: 720px;
-      margin: 0 auto;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(56, 189, 248, 0.08), transparent 45%),
+        radial-gradient(circle at 80% 85%, rgba(236, 72, 153, 0.06), transparent 45%),
+        var(--bg);
+      background-attachment: fixed;
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
       line-height: 1.6;
-      text-align: center;
     }
     .card {
-      background: rgba(10, 28, 19, 0.90);
-      border: 1px solid #facc15;
+      max-width: 580px;
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 22px;
-      padding: 40px 28px;
+      padding: 36px 28px;
+      text-align: center;
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
     }
-    .badge {
-      display: inline-block;
-      background: #22c55e;
-      color: #04150c;
-      padding: 5px 14px;
-      border-radius: 999px;
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      letter-spacing: 0.07em;
-      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      color: var(--blue);
       margin-bottom: 18px;
     }
-    h1 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(29px, 4.2vw, 40px);
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 12px;
-      line-height: 1.15;
-    }
-    h1 em { font-style: italic; color: #facc15; }
-    p { color: #e5efe9; margin-bottom: 20px; font-size: 15px; }
-    .next-steps {
-      text-align: left;
-      background: #06150e;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 14px;
-      padding: 20px 24px;
-      margin-bottom: 26px;
-    }
-    .next-steps h3 {
+    .pill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--pink); }
+    h1 { font-size: clamp(26px, 4.5vw, 34px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px; line-height: 1.15; }
+    h1 em {
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
-      font-size: 20px;
-      color: #f97316;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    p.sub { color: var(--muted); font-size: 14.5px; margin-bottom: 24px; }
+    .box {
+      background: rgba(7, 10, 18, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: left;
+      margin-bottom: 24px;
+      font-size: 13.5px;
+      color: #cbd5e1;
+    }
+    .box-head {
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--pink);
       margin-bottom: 10px;
     }
-    .next-steps li { margin-bottom: 8px; margin-left: 18px; font-size: 14px; color: #d5e2db; }
+    .box ul { padding-left: 18px; }
+    .box li { margin-bottom: 8px; }
+    .btn-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
     .btn {
-      display: inline-block;
-      background: linear-gradient(135deg, #f97316, #ea580c);
-      color: #ffffff;
-      border: 1px solid rgba(250, 204, 21, 0.45);
-      text-decoration: none;
-      font-weight: 800;
-      padding: 13px 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
       border-radius: 999px;
-      font-size: 14px;
-      margin: 6px;
+      font-weight: 600;
+      font-size: 13.5px;
+      text-decoration: none;
+      transition: transform 0.15s ease, border-color 0.15s ease;
     }
-    .btn.alt {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      color: #ffffff;
-    }
-    .btn.yellow {
-      background: #facc15;
-      color: #05110b;
-      border: none;
-    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--pink); color: #fff; box-shadow: 0 8px 24px rgba(236, 72, 153, 0.25); }
+    .btn-blue { background: rgba(56, 189, 248, 0.14); border: 1px solid rgba(56, 189, 248, 0.35); color: var(--blue); }
+    .btn-ghost { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border); color: var(--white); }
   </style>
 </head>
 <body>
   <div class="card">
-    <div class="badge">PAYMENT RECEIVED // DJ J-RIP DATE LOCKED</div>
-    <h1>You&rsquo;re Officially <em>Booked</em> With DJ J-Rip!</h1>
-    <p>
-      Thank you. Your retainer deposit has been recorded by <strong>GG LOOP LLC / DJ J-Rip</strong> and Jayson&rsquo;s phone alarm &amp; booth console have been notified immediately.
+    <div class="pill"><span class="pill-dot"></span>Date Lock &amp; Retainer Confirmed</div>
+    <h1>You&rsquo;re Booked With <span style="white-space:nowrap;"><em>DJ J-Rip</em>.</span></h1>
+    <p class="sub">
+      Thank you. Your retainer deposit has been logged by <strong>GG LOOP LLC</strong> and Jayson&rsquo;s phone alarm was notified instantly.
     </p>
-    <div class="next-steps">
-      <h3>What Happens Next</h3>
+    <div class="box">
+      <div class="box-head">Next Steps</div>
       <ul>
-        <li><strong>Agreement &amp; Timeline Confirmation:</strong> Expect confirmation via SMS/email from Jayson (<code>(469) 371-8556</code>) within 24 hours.</li>
-        <li><strong>Playlist Sync Anytime:</strong> Return to your saved Vibe Studio whenever you want to add Spotify playlists, Must-Play tracks, or 18 Roses cues.</li>
-        <li><strong>7 Days Before Event:</strong> Final timeline walkthrough and pronunciation check (remaining 50% due prior to soundcheck).</li>
+        <li><strong>Timeline &amp; Confirmation:</strong> Expect a confirmation text/email from Jayson (<strong>(469) 371-8556</strong>) within 24 hours.</li>
+        <li><strong>Playlist Sync Anytime:</strong> Return to your saved portal whenever you want to drop Spotify links or Must-Play tracks before event week.</li>
+        <li><strong>Event Week Walkthrough:</strong> Quick final check of Grand Entrance, 18 Roses cues &amp; remaining 50% balance prior to soundcheck.</li>
       </ul>
     </div>
-    <a class="btn yellow" href="dj.html#home">&larr; DJ J-Rip Home</a>
-    <a class="btn" href="dj.html#step4">Update My Playlist &rarr;</a>
-    <a class="btn alt" href="sms:+14693718556">Text (469) 371-8556</a>
+    <div class="btn-row">
+      <a class="btn btn-blue" href="dj.html">&larr; DJ J-Rip Home</a>
+      <a class="btn btn-primary" href="dj.html#vibe">Edit Playlist &rarr;</a>
+      <a class="btn btn-ghost" href="sms:+14693718556">Text (469) 371-8556</a>
+    </div>
   </div>
 </body>
 </html>
