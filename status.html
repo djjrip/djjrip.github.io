@@ -682,12 +682,12 @@
             <div>
               <div class="subitem-title">
                 <span>Dealership Underwriting Anchor</span>
-                <span style="color: var(--yellow);">Sewell INEOS Plano</span>
+                <span style="color: var(--yellow);">Commercial Fleet Lender</span>
               </div>
               <div class="subitem-meter"><div class="subitem-meter-fill" style="width: 60%; background: var(--yellow);"></div></div>
             </div>
             <div class="subitem-desc">
-              Commercial lease underwriting requires 3 months of bank statements demonstrating $10,000+/mo in recurring corporate deposits.
+              Commercial lease underwriting requires 3 months of business bank statements demonstrating recurring corporate deposits.
             </div>
           </div>
           <div class="track-subitem">
@@ -726,7 +726,7 @@
               <div class="subitem-meter"><div class="subitem-meter-fill" style="width: 100%; background: var(--green);"></div></div>
             </div>
             <div class="subitem-desc">
-              Officially dispatched to Coretta Robinson (<code>corobinson@wfsdallas.com</code>) via authenticated TLS SMTP with 530 KB certified master packet attached. Message-ID: <code>&lt;179399302164.1328...&gt;</code> and Apple Mail Sent verified.
+              Dispatched to assigned Workforce Solutions Greater Dallas caseworker via authenticated TLS SMTP with certified master packet attached and dual-synced to Sent Records.
             </div>
           </div>
           <div class="track-subitem">
@@ -738,7 +738,7 @@
               <div class="subitem-meter"><div class="subitem-meter-fill" style="width: 100%; background: var(--green);"></div></div>
             </div>
             <div class="subitem-desc">
-              Documented 40+ hrs/wk full-time technical operations for GG Loop LLC completely exceeds the 30-hr statutory threshold, establishing complete exemption from mandatory E&T and workfare.
+              Documented 40+ hrs/wk full-time technical operations for GG Loop LLC exceeds the 30-hr statutory threshold, establishing exemption under 7 CFR § 273.24(a)(2).
             </div>
           </div>
           <div class="track-subitem">
@@ -750,7 +750,7 @@
               <div class="subitem-meter"><div class="subitem-meter-fill" style="width: 100%; background: var(--green);"></div></div>
             </div>
             <div class="subitem-desc">
-              SNAP Case ID: 1050282557 | WorkInTexas ID: 162656345 | Jayson Quindao | Dallas-Fort Worth, TX.
+              Programmatically anchored via private local SSOT (VERIFIED_PROFILE.json) | Private case/tax identifiers redacted from public endpoints | Dallas-Fort Worth, TX.
             </div>
           </div>
         </div>
@@ -777,7 +777,7 @@
               <div class="subitem-meter"><div class="subitem-meter-fill" style="width: 100%; background: var(--green);"></div></div>
             </div>
             <div class="subitem-desc">
-              Admissions Counselor II Abigail Wynn confirmed receipt of academic transmittal packet; documents routed to processing for Spring 2027 entry.
+              UT Arlington Admissions confirmed receipt of official academic transmittal packet; documents routed to processing for Spring 2027 entry.
             </div>
           </div>
           <div class="track-subitem">
@@ -789,7 +789,7 @@
               <div class="subitem-meter"><div class="subitem-meter-fill" style="width: 80%;"></div></div>
             </div>
             <div class="subitem-desc">
-              Application anchored ahead of deadline to secure institutional merit funding under MyMav ID <code>1001092358</code>.
+              Transfer application and scholarship documentation anchored ahead of priority deadline for Spring 2027 review.
             </div>
           </div>
           <div class="track-subitem">
@@ -872,11 +872,11 @@
 
       <!-- Filter Controls -->
       <div class="timeline-controls">
-        <button class="filter-btn active" onclick="filterTimeline('all')">All Events (12)</button>
-        <button class="filter-btn" onclick="filterTimeline('pr')">Pull Requests (4)</button>
-        <button class="filter-btn" onclick="filterTimeline('dispatch')">Outbound Dispatches (4)</button>
-        <button class="filter-btn" onclick="filterTimeline('inbound')">Inbound & Institutional (2)</button>
-        <button class="filter-btn" onclick="filterTimeline('infra')">Infrastructure & Compliance (2)</button>
+        <button class="filter-btn active" onclick="filterTimeline('all', this)">All Events (12)</button>
+        <button class="filter-btn" onclick="filterTimeline('pr', this)">Pull Requests (4)</button>
+        <button class="filter-btn" onclick="filterTimeline('dispatch', this)">Outbound Dispatches (4)</button>
+        <button class="filter-btn" onclick="filterTimeline('inbound', this)">Inbound & Institutional (2)</button>
+        <button class="filter-btn" onclick="filterTimeline('infra', this)">Infrastructure & Compliance (2)</button>
       </div>
 
       <div class="timeline-flow" id="timeline-flow">
@@ -889,7 +889,7 @@
             <span class="timeline-tag">INBOUND</span>
           </div>
           <div class="timeline-detail">
-            Admissions Counselor II Abigail Wynn (<code>utaadmissions@uta.edu</code>) confirmed receipt and processing of official academic transmittal packet for Spring 2027 entry (BS in AI for Business) under MyMav ID <code>1001092358</code>.
+            UT Arlington Admissions Office confirmed receipt and processing of official academic transmittal packet for Spring 2027 entry (BS in AI for Business).
           </div>
         </div>
 
@@ -1097,7 +1097,7 @@
       <div class="law-card">
         <div class="law-id">RULE 11 &bull; CASEWORKER PERMISSION GATE</div>
         <h4>The Workfare Shield</h4>
-        <p>Zero communication to Coretta Robinson or WFS Dallas without affirmative in-turn confirmation. Absolute legal defense via 7 CFR § 273.24(a)(2).</p>
+        <p>Zero external compliance communications to agency caseworker or WFS Dallas without affirmative in-turn confirmation. Statutory defense via 7 CFR § 273.24(a)(2).</p>
       </div>
 
       <div class="law-card">
@@ -1163,9 +1163,9 @@
     updateClock();
 
     // Timeline Filter
-    function filterTimeline(cat) {
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+    function filterTimeline(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
 
       const nodes = document.querySelectorAll('.timeline-node');
       nodes.forEach(node => {

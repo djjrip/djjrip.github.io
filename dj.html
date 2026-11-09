@@ -4418,7 +4418,7 @@
       document.body.setAttribute('data-pattern', studioLayout.pattern);
       document.body.setAttribute('data-font', studioLayout.fontMode);
 
-      const safeCss = String(studioLayout.customCss || '').replace(/<\/?style|<\/?script|@import\b|url\s*\(/gi, '/*blocked*/');
+      const safeCss = String(studioLayout.customCss || '').replace(/\\|<\/?style|<\/?script|@import\b|url\s*\(|expression\s*\(|-moz-binding/gi, '/*blocked*/');
       document.getElementById('customMySpaceCss').textContent = safeCss;
 
       // Reorder & show/hide Tab 1 modular blocks without losing listeners
