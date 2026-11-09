@@ -5137,6 +5137,35 @@
       copyTextSummaryToast(buildShortTextSummary());
     });
 
+    function saveBookingReceiptSnapshot(payload) {
+      const p = payload || buildPayload();
+      try {
+        localStorage.setItem('djjrip_last_booking_v4', JSON.stringify({
+          name: p.name,
+          email: p.email,
+          date: p.date,
+          type: p.type,
+          venue: p.venue,
+          pkg: selectedPackage.label,
+          retainer: p.depStr,
+          total: p.totalStr,
+          balanceDue: p.balDueStr,
+          payMethod: selectedPaymentMethod.toUpperCase(),
+          termsAcceptedAt: p.termsAcceptedAt
+        }));
+      } catch (e) {}
+      return p;
+    }
+
+    document.getElementById('quickStripeDirectLink').addEventListener('click', () => {
+      saveState();
+      saveBookingReceiptSnapshot();
+    });
+    document.getElementById('stripeDirectBtn').addEventListener('click', () => {
+      saveState();
+      saveBookingReceiptSnapshot();
+    });
+
     document.getElementById('submitMasterBtn').addEventListener('click', async () => {
       const errEl = document.getElementById('errorBanner');
       errEl.style.display = 'none';
@@ -5162,27 +5191,11 @@
       btn.disabled = true;
       btn.textContent = 'Sending Serious Inquiry...';
 
-      const payload = buildPayload();
-      const directPhone = getDirectPhone();
-      try {
-        localStorage.setItem('djjrip_last_booking_v4', JSON.stringify({
-          name: payload.name,
-          date: payload.date,
-          type: payload.type,
-          venue: payload.venue,
-          pkg: selectedPackage.label,
-          retainer: payload.depStr,
-          total: payload.totalStr,
-          balanceDue: payload.balDueStr,
-          payMethod: selectedPaymentMethod.toUpperCase(),
-          termsAcceptedAt: payload.termsAcceptedAt
-        }));
-      } catch (e) {}
+      const payload = saveBookingReceiptSnapshot(buildPayload());
 
       const bodyObj = {
         _subject: `[DJ JRIP BOOKING] ${payload.name} (${payload.date}) \u2014 ${payload.depStr} via ${selectedPaymentMethod.toUpperCase()}`,
         _template: 'box',
-        _autoresponse: `Thank you ${payload.name}! DJ JRIP (Jayson Quindao / GG LOOP LLC) received your serious inquiry & playlists for ${payload.date} (${selectedPackage.label} | Deposit: ${payload.depStr} | Remaining balance before soundcheck: ${payload.balDueStr}). Your agreement timestamp (${payload.termsAcceptedAt}) under djjrip.github.io/dj-terms.html is recorded. Direct booking line: ${directPhone.display}.`,
         Client_Name: payload.name,
         Client_Phone: payload.phone,
         Client_Email: payload.email,

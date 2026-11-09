@@ -152,6 +152,7 @@
     <div class="box">
       <div class="box-head">Next Steps</div>
       <ul>
+        <li><strong>Stripe Payment Receipt:</strong> Your card payment confirmation is sent by Stripe to the email entered during checkout &mdash; use <strong>Save / Print Receipt</strong> below anytime for an itemized PDF copy.</li>
         <li><strong>Calendar Lock Verification:</strong> Expect a confirmation text/email from Jayson (<span id="confirmDirectNote">direct number in your booking email</span>) confirming exclusive availability within 24 hours.</li>
         <li><strong>Playlists &amp; Guest Booth Chat:</strong> Jump back into Playlists &amp; Booth Chat anytime to link Spotify/Apple/YouTube lists or invite guests to drop song requests.</li>
         <li><strong>Event Week Walkthrough:</strong> Quick final check of timeline cues, load-in power access &amp; remaining balance prior to soundcheck under our <a href="dj-terms.html" style="color:var(--blue); text-decoration:underline;">GG Loop LLC Performance Terms</a>.</li>
@@ -160,6 +161,7 @@
     <div class="btn-row">
       <a class="btn btn-blue" href="dj.html">&larr; Artist Showcase</a>
       <a class="btn btn-primary" href="dj.html#chat">Playlists &amp; Booth Chat &rarr;</a>
+      <button type="button" class="btn btn-ghost" id="downloadIcsBtn" style="display:none;">Add to Calendar (.ics)</button>
       <button type="button" class="btn btn-ghost" id="printReceiptBtn">Save / Print Receipt</button>
       <a class="btn btn-ghost" id="confirmDirectSms" href="mailto:jquindao1@icloud.com?subject=DJ%20JRIP%20Booking%20Confirmation">Email Jayson</a>
     </div>
@@ -167,6 +169,12 @@
 
   <script>
     (function () {
+      const PKG_MAP = {
+        bar_lounge: { pkg: 'Bar / Lounge / Club', retainer: '$100.00', total: '$400.00', balanceDue: '$300.00' },
+        debut_vip: { pkg: 'Private VIP / Debut', retainer: '$150.00', total: '$750.00', balanceDue: '$600.00' },
+        wedding_gala: { pkg: 'Wedding / Gala', retainer: '$250.00', total: '$1,200.00', balanceDue: '$950.00' },
+        custom_quote: { pkg: 'Custom Quoted Event', retainer: '$100 Preset ($25 Min Agreed)', total: 'Custom Quote', balanceDue: 'Per Quote' }
+      };
       const params = new URLSearchParams(window.location.search);
       const paid = params.get('paid') === '1';
       const sessionId = (params.get('session_id') || '').slice(0, 72);
@@ -178,6 +186,29 @@
         const raw = localStorage.getItem('djjrip_last_booking_v4');
         if (raw) saved = JSON.parse(raw);
       } catch (e) {}
+
+      if (!saved) {
+        try {
+          const portalRaw = localStorage.getItem('djjrip_client_portal_v4');
+          if (portalRaw) {
+            const st = JSON.parse(portalRaw);
+            const meta = PKG_MAP[st.pkgId] || PKG_MAP.debut_vip;
+            if (st.clientName || st.eventDate || st.pkgId) {
+              saved = {
+                name: st.clientName || 'Client',
+                email: st.clientEmail || '',
+                date: st.eventDate || 'TBD',
+                type: st.eventType || 'Live DJ Event',
+                venue: st.venueInfo || '',
+                pkg: meta.pkg,
+                retainer: meta.retainer,
+                total: meta.total,
+                balanceDue: meta.balanceDue
+              };
+            }
+          }
+        } catch (e) {}
+      }
 
       function addRow(label, val) {
         if (!val) return;
@@ -209,16 +240,56 @@
       }
 
       if (saved || sessionId) {
+        addRow('Merchant of Record', 'GG LOOP LLC (DJ JRIP)');
         if (saved) {
           addRow('Client / Honoree', saved.name);
           addRow('Event Date', saved.date);
+          if (saved.venue && saved.venue !== 'Not specified') addRow('Venue / Times', saved.venue);
           addRow('Package', saved.pkg);
+          addRow('Total Rate', saved.total);
           addRow('Retainer Paid / Due', saved.retainer);
-          addRow('Balance Due Before Show', saved.balanceDue);
+          addRow('Balance Due Before Soundcheck', saved.balanceDue);
           addRow('Terms Recorded (UTC)', saved.termsAcceptedAt);
         }
         if (sessionId) addRow('Stripe Session Ref', sessionId);
         receiptBox.classList.add('show');
+      }
+
+      const icsBtn = document.getElementById('downloadIcsBtn');
+      if (icsBtn && saved && /^\d{4}-\d{2}-\d{2}$/.test(String(saved.date || ''))) {
+        icsBtn.style.display = 'inline-flex';
+        icsBtn.addEventListener('click', () => {
+          const ymd = saved.date.replace(/-/g, '');
+          const dt = new Date(saved.date + 'T00:00:00Z');
+          dt.setUTCDate(dt.getUTCDate() + 1);
+          const ymdEnd = dt.toISOString().slice(0, 10).replace(/-/g, '');
+          const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
+          const safe = (v) => String(v || '').replace(/[\\,;]/g, ' ').replace(/\r?\n/g, ' ');
+          const ics = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'PRODID:-//GG Loop LLC//DJ JRIP Booking//EN',
+            'BEGIN:VEVENT',
+            `UID:djjrip-${ymd}-${sessionId || Date.now()}@djjrip.github.io`,
+            `DTSTAMP:${stamp}`,
+            `DTSTART;VALUE=DATE:${ymd}`,
+            `DTEND;VALUE=DATE:${ymdEnd}`,
+            `SUMMARY:DJ JRIP - ${safe(saved.pkg)} (${safe(saved.name)})`,
+            `LOCATION:${safe(saved.venue || 'DFW Venue TBD')}`,
+            `DESCRIPTION:GG LOOP LLC / DJ JRIP Date Lock | Package: ${safe(saved.pkg)} | Retainer: ${safe(saved.retainer)} | Balance: ${safe(saved.balanceDue)} | Ref: ${safe(sessionId || 'Pending')}`,
+            'END:VEVENT',
+            'END:VCALENDAR'
+          ].join('\r\n');
+          const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `DJ_JRIP_${ymd}.ics`;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(() => URL.revokeObjectURL(url), 1000);
+        });
       }
 
       if (paid) {
