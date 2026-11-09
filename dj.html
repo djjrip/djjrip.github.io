@@ -3,300 +3,516 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DJ J-Rip (Jayson Quindao) // Official DFW Booking, Vibe Studio & Deposit Portal</title>
-  <meta name="description" content="Book DJ J-Rip for 18th Debuts, Weddings, Private Events & Clubs in DFW. Watch live 4K DJ footage, sync your Spotify playlists, customize Must-Play tracks, and lock your date online.">
+  <title>DJ J-Rip // Official DFW Booking, Vibe Studio &amp; Deposit Portal</title>
+  <meta name="description" content="Book DJ J-Rip (Jayson Quindao) for 18th Debuts, Weddings & Private VIP Events in DFW. Watch live 4K booth mixes, launch event blueprints, sync Spotify playlists, and lock your date online.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700;1,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #070910;
-      --surface: #111524;
-      --surface-2: #171d31;
-      --surface-3: #0b0f1b;
-      --border: #262e49;
-      --accent: #a855f7;
-      --cyan: #06b6d4;
-      --pink: #ec4899;
-      --green: #10b981;
-      --gold: #f59e0b;
+      --bg: #05110b;
+      --bg-elevated: #0a1d14;
+      --surface: rgba(10, 28, 19, 0.88);
+      --surface-2: rgba(15, 39, 27, 0.85);
+      --surface-3: #06150e;
+      --border: rgba(255, 255, 255, 0.11);
+      --border-green: rgba(52, 211, 153, 0.35);
+      --white: #ffffff;
+      --soft-white: #e5efe9;
+      --muted: #9eb7aa;
+      --orange: #f97316;
+      --orange-bright: #ff7b29;
+      --yellow: #facc15;
+      --green: #22c55e;
+      --mint: #34d399;
       --red: #ef4444;
-      --text: #f8fafc;
-      --muted: #94a3b8;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.55;
-      padding: 18px 14px 115px 14px;
-      max-width: 1100px;
-      margin: 0 auto;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    /* TOP BAR */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse 85% 50% at 15% -10%, rgba(22, 101, 52, 0.42), transparent 68%),
+        radial-gradient(ellipse 70% 45% at 88% 8%, rgba(249, 115, 22, 0.16), transparent 64%),
+        radial-gradient(ellipse 60% 40% at 50% 95%, rgba(250, 204, 21, 0.08), transparent 65%);
+      background-attachment: fixed;
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.58;
+      padding: 18px 16px 124px 16px;
+      max-width: 1140px;
+      margin: 0 auto;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: rgba(249, 115, 22, 0.35); color: #fff; }
+
+    .serif-italic {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+    }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-track { background: #040d08; }
+    ::-webkit-scrollbar-thumb { background: rgba(250, 204, 21, 0.25); border-radius: 99px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+
+    /* ANIMATED EQ BARS */
+    .eq-bars {
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 2.5px;
+      height: 14px;
+    }
+    .eq-bars span {
+      width: 2.5px;
+      border-radius: 99px;
+      background: var(--yellow);
+      transform-origin: bottom;
+      animation: eqDance 1.05s ease-in-out infinite alternate;
+    }
+    .eq-bars span:nth-child(2) { background: var(--orange); animation-delay: 0.22s; height: 100%; }
+    .eq-bars span:nth-child(3) { background: var(--white); animation-delay: 0.45s; height: 65%; }
+    .eq-bars span:nth-child(4) { background: var(--orange); animation-delay: 0.12s; height: 85%; }
+    .eq-bars span:nth-child(1) { height: 55%; }
+    @keyframes eqDance {
+      0% { transform: scaleY(0.32); }
+      100% { transform: scaleY(1); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .eq-bars span { animation: none; transform: scaleY(0.7); }
+    }
+
+    /* TOP NAVIGATION BAR */
     .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
-      padding-bottom: 14px;
+      gap: 12px;
+      padding: 6px 0 16px 0;
       margin-bottom: 18px;
       border-bottom: 1px solid var(--border);
     }
-    .brand-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(168, 85, 247, 0.14);
-      border: 1px solid var(--accent);
-      color: #e9d5ff;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      font-weight: 600;
-    }
-    .top-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-    .nav-link {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 12px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-    }
-    .nav-link:hover { color: #fff; border-color: var(--cyan); }
-
-    /* WIZARD PROGRESS BAR */
-    .wizard-stepper {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
-      margin-bottom: 22px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 10px;
-    }
-    @media (max-width: 780px) {
-      .wizard-stepper {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 4px;
-        padding: 6px;
-      }
-    }
-    .step-tab {
-      background: var(--surface-3);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 10px 8px;
-      cursor: pointer;
-      text-align: left;
-      color: var(--muted);
-      transition: all 0.15s;
+    .brand-left {
       display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: inherit;
-    }
-    .step-tab:hover { border-color: var(--accent); color: #fff; }
-    .step-tab.active {
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(6, 182, 212, 0.18));
-      border-color: var(--cyan);
-      color: #fff;
-      box-shadow: 0 0 0 1px var(--cyan);
-    }
-    .step-tab.completed {
-      border-color: rgba(16, 185, 129, 0.5);
-      color: #cbd5e1;
-    }
-    .step-dot {
-      width: 24px;
-      height: 24px;
-      border-radius: 7px;
-      background: rgba(255, 255, 255, 0.08);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 800;
-      font-size: 12px;
-      flex-shrink: 0;
-    }
-    .step-tab.active .step-dot { background: var(--cyan); color: #051319; }
-    .step-tab.completed .step-dot { background: var(--green); color: #032016; }
-    .step-tab-label { font-size: 12px; font-weight: 700; line-height: 1.2; }
-    .step-tab-sub { font-size: 10.5px; color: var(--muted); display: block; margin-top: 2px; }
-    @media (max-width: 780px) {
-      .step-tab { flex-direction: column; text-align: center; padding: 7px 4px; gap: 4px; }
-      .step-tab-sub { display: none; }
-      .step-tab-label { font-size: 10.5px; }
-    }
-
-    /* WIZARD PAGES */
-    .wizard-step { display: none; animation: fadeIn 0.2s ease-out; }
-    .wizard-step.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-
-    .step-nav-bar {
-      display: flex;
-      justify-content: space-between;
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
-      margin-top: 22px;
-      padding-top: 18px;
-      border-top: 1px solid var(--border);
+    }
+    .home-btn {
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.18), rgba(250, 204, 21, 0.14));
+      border: 1px solid rgba(250, 204, 21, 0.45);
+      color: var(--white);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s var(--ease);
+      font-family: inherit;
+    }
+    .home-btn:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(249, 115, 22, 0.35);
+    }
+    .home-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    .brand-wordmark {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 29px;
+      line-height: 1;
+      color: var(--white);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+    .brand-wordmark span { color: var(--yellow); }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.32);
+      color: var(--soft-white);
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-pill {
+      color: var(--soft-white);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.18s var(--ease);
+    }
+    .nav-pill:hover {
+      color: var(--white);
+      border-color: var(--yellow);
+      background: rgba(250, 204, 21, 0.12);
+      transform: translateY(-1px);
+    }
+    .nav-pill svg { width: 13px; height: 13px; flex-shrink: 0; }
+    @media (max-width: 640px) {
+      .brand-wordmark { font-size: 24px; }
+      .nav-pill { padding: 6px 10px; font-size: 11.5px; }
+    }
+
+    /* PROGRESS RAIL */
+    .stepper-shell {
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 10px;
+      margin-bottom: 22px;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .progress-track {
+      height: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 99px;
+      overflow: hidden;
+      margin: 0 4px 10px 4px;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 20%;
+      background: linear-gradient(90deg, var(--green), var(--yellow), var(--orange));
+      border-radius: 99px;
+      transition: width 0.4s var(--ease);
+    }
+    .wizard-stepper {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+    }
+    @media (max-width: 780px) { .wizard-stepper { gap: 4px; } }
+    .step-tab {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      padding: 9px 10px;
+      cursor: pointer;
+      text-align: left;
+      color: var(--muted);
+      transition: all 0.2s var(--ease);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-family: inherit;
+    }
+    .step-tab:hover { background: rgba(255, 255, 255, 0.04); color: var(--white); }
+    .step-tab.active {
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.20), rgba(250, 204, 21, 0.12));
+      border-color: var(--orange);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(249, 115, 22, 0.14);
+    }
+    .step-tab.completed { color: var(--soft-white); }
+    .step-dot {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.05);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .step-tab.active .step-dot {
+      background: var(--yellow);
+      border-color: var(--yellow);
+      color: #05110b;
+    }
+    .step-tab.completed .step-dot {
+      background: var(--green);
+      border-color: var(--green);
+      color: #04150c;
+    }
+    .step-tab-label { font-size: 12.5px; font-weight: 700; line-height: 1.25; }
+    .step-tab-sub { font-size: 10.5px; color: var(--muted); display: block; margin-top: 1px; }
+    @media (max-width: 780px) {
+      .step-tab { flex-direction: column; text-align: center; padding: 7px 3px; gap: 4px; }
+      .step-tab-sub { display: none; }
+      .step-tab-label { font-size: 10.5px; }
+      .step-dot { width: 22px; height: 22px; font-size: 11.5px; }
+    }
+
+    /* STEP ANIMATION */
+    .wizard-step { display: none; }
+    .wizard-step.active { display: block; animation: smoothEnter 0.34s var(--ease); }
+    @keyframes smoothEnter {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* CARDS */
     .step-card {
       background: var(--surface);
+      backdrop-filter: blur(18px);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 20px;
+      border-radius: 22px;
+      padding: 28px;
+      margin-bottom: 22px;
+      box-shadow: 0 22px 54px rgba(0, 0, 0, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.06);
     }
-    @media (max-width: 600px) { .step-card { padding: 18px 15px; } }
+    @media (max-width: 640px) { .step-card { padding: 20px 15px; border-radius: 18px; } }
+
     .step-header {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
     }
     .step-num {
-      background: linear-gradient(135deg, var(--accent), var(--pink));
-      color: #fff;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 800;
-      font-size: 14px;
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
+      background: var(--orange);
+      color: var(--white);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 17px;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
     }
-    .step-title { font-family: 'Space Grotesk', sans-serif; font-size: 21px; font-weight: 700; }
+    .step-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(22px, 2.9vw, 29px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.18;
+    }
+    .step-title em { font-style: italic; color: var(--yellow); }
 
-    /* STEP 1 HERO & DUAL MEDIA */
+    /* HERO BANNER */
     .hero-banner {
-      background: linear-gradient(145deg, rgba(168, 85, 247, 0.14), rgba(6, 182, 212, 0.08));
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 26px;
-      margin-bottom: 20px;
+      background:
+        linear-gradient(145deg, rgba(16, 56, 36, 0.92) 0%, rgba(8, 25, 16, 0.94) 55%, rgba(249, 115, 22, 0.12) 100%);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 24px;
+      padding: 30px;
+      margin-bottom: 22px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.52), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     }
+    @media (max-width: 640px) { .hero-banner { padding: 22px 16px; border-radius: 20px; } }
+
     .hero-profile {
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
     .hero-avatar {
       width: 66px;
       height: 66px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--cyan);
+      border: 2px solid var(--yellow);
+      padding: 2px;
+      background: #06150e;
       flex-shrink: 0;
     }
     .hero-banner h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(26px, 3.8vw, 39px);
-      font-weight: 800;
-      line-height: 1.12;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(32px, 4.6vw, 50px);
+      font-weight: 700;
+      line-height: 1.07;
       letter-spacing: -0.02em;
-      margin-bottom: 10px;
+      color: var(--white);
+      margin-bottom: 14px;
     }
-    .hero-sub { color: #cbd5e1; font-size: 15px; margin-bottom: 18px; max-width: 820px; }
+    .hero-banner h1 em {
+      font-style: italic;
+      color: var(--yellow);
+    }
+    .hero-sub {
+      color: var(--soft-white);
+      font-size: 15.5px;
+      line-height: 1.65;
+      margin-bottom: 22px;
+      max-width: 790px;
+    }
+
+    /* INNOVATIVE 1-TAP EVENT BLUEPRINTS */
+    .blueprints-wrap {
+      margin-bottom: 22px;
+    }
+    .blueprints-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 9px;
+    }
+    @media (max-width: 820px) { .blueprints-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .blueprints-grid { grid-template-columns: 1fr; } }
+
+    .blueprint-btn {
+      background: rgba(6, 21, 14, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 13px 14px;
+      text-align: left;
+      cursor: pointer;
+      color: var(--white);
+      font-family: inherit;
+      transition: all 0.2s var(--ease);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .blueprint-btn:hover {
+      border-color: var(--orange);
+      background: rgba(249, 115, 22, 0.14);
+      transform: translateY(-2px);
+    }
+    .bp-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .bp-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .bp-sub {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
 
     .stats-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-bottom: 18px;
+      gap: 11px;
+      margin-bottom: 22px;
     }
-    @media (max-width: 640px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 680px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
     .stat-pill {
-      background: rgba(11, 14, 24, 0.85);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 10px 8px;
-      text-align: center;
+      background: rgba(5, 17, 11, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 14px;
+      padding: 13px 14px;
+      transition: border-color 0.2s;
     }
+    .stat-pill:hover { border-color: var(--yellow); }
     .stat-pill strong {
       display: block;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 19px;
-      color: var(--cyan);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1.15;
+      margin-bottom: 2px;
     }
-    .stat-pill span { font-size: 11px; color: var(--muted); text-transform: uppercase; font-weight: 600; }
+    .stat-pill span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
 
+    /* MEDIA GRID */
     .media-grid {
       display: grid;
-      grid-template-columns: 1.45fr 0.9fr 0.9fr;
+      grid-template-columns: 1.48fr 0.9fr 0.9fr;
       gap: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       align-items: stretch;
     }
     .bulk-search-wrap {
       display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 14px;
-      margin-bottom: 14px;
+      grid-template-columns: 1fr 1.48fr;
+      gap: 16px;
+      margin-bottom: 18px;
     }
-    @media (max-width: 860px) {
+    @media (max-width: 880px) {
       .media-grid { grid-template-columns: 1fr; }
       .bulk-search-wrap { grid-template-columns: 1fr; }
     }
     .media-card {
-      background: #06080f;
+      background: #040d08;
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: 18px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: transform 0.22s var(--ease), border-color 0.22s var(--ease);
     }
-    .yt-wrap {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%;
-      background: #000;
-    }
-    .yt-wrap iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-    .reel-wrap {
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex: 1;
-    }
-    .reel-wrap video {
-      width: 100%;
-      max-height: 360px;
-      display: block;
-      background: #000;
-    }
+    .media-card:hover { border-color: var(--orange); transform: translateY(-2px); }
+    .yt-wrap { position: relative; width: 100%; flex: 1; min-height: 295px; background: #000; }
+    .yt-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .reel-wrap { background: #000; display: flex; align-items: center; justify-content: center; flex: 1; min-height: 360px; }
+    .reel-wrap video { width: 100%; max-height: 360px; display: block; background: #000; }
     .media-cap {
-      padding: 10px 14px;
+      padding: 11px 14px;
       border-top: 1px solid var(--border);
-      font-size: 12px;
-      color: var(--muted);
+      background: #07160f;
+      font-size: 11.5px;
+      color: var(--soft-white);
       font-family: 'JetBrains Mono', monospace;
       display: flex;
       justify-content: space-between;
@@ -307,56 +523,96 @@
 
     .gear-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
       gap: 12px;
     }
     .gear-item {
-      background: var(--surface-2);
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px;
+      border-radius: 14px;
+      padding: 16px;
+      transition: border-color 0.2s var(--ease);
     }
-    .gear-item h4 { font-size: 14px; color: #d8b4fe; margin-bottom: 4px; }
-    .gear-item p { font-size: 12.5px; color: var(--muted); }
+    .gear-item:hover { border-color: var(--yellow); }
+    .gear-item h4 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .gear-item h4 svg { width: 16px; height: 16px; color: var(--orange); flex-shrink: 0; }
+    .gear-item p { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
     /* STEP 2 PACKAGES */
     .pkg-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 14px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
     .pkg-card {
-      background: var(--surface-2);
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
+      position: relative;
+      background: rgba(5, 17, 11, 0.72);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 19px;
       cursor: pointer;
-      transition: all 0.15s;
+      transition: all 0.2s var(--ease);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    .pkg-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .pkg-card:hover { border-color: var(--yellow); transform: translateY(-2px); }
     .pkg-card.active {
-      border-color: var(--cyan);
-      background: rgba(6, 182, 212, 0.1);
-      box-shadow: 0 0 0 1px var(--cyan);
+      border-color: var(--orange);
+      background: linear-gradient(160deg, rgba(249, 115, 22, 0.16), rgba(16, 185, 129, 0.08));
+      box-shadow: 0 10px 30px rgba(249, 115, 22, 0.15);
     }
-    .pkg-name { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-    .pkg-price { font-size: 22px; font-weight: 800; color: var(--pink); margin-bottom: 6px; }
+    .pkg-badge-top {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #05110b;
+      background: var(--yellow);
+      padding: 3px 9px;
+      border-radius: 999px;
+      display: inline-block;
+      font-weight: 700;
+      margin-bottom: 9px;
+    }
+    .pkg-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .pkg-price {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--yellow);
+      margin-bottom: 8px;
+    }
     .pkg-retainer {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11.5px;
-      color: var(--green);
-      background: rgba(16, 185, 129, 0.12);
+      font-size: 11px;
+      color: var(--mint);
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.3);
       display: inline-block;
-      padding: 2px 8px;
+      padding: 3px 10px;
       border-radius: 999px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
-    .pkg-card ul { margin-left: 16px; font-size: 12.5px; color: var(--muted); }
-    .pkg-card li { margin-bottom: 4px; }
+    .pkg-card ul { margin-left: 16px; font-size: 13px; color: var(--soft-white); opacity: 0.85; }
+    .pkg-card li { margin-bottom: 5px; }
 
     /* FORMS */
     .form-grid {
@@ -364,193 +620,311 @@
       grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
       gap: 14px;
     }
-    label {
+    label.field-label {
       display: block;
-      font-size: 11.5px;
-      font-weight: 700;
-      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--yellow);
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 6px;
+      letter-spacing: 0.06em;
+      margin-bottom: 7px;
     }
     input, select, textarea {
       width: 100%;
-      background: #0c101d;
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 8px;
+      background: #05120c;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--white);
+      padding: 12px 14px;
+      border-radius: 11px;
       font-size: 14px;
       font-family: inherit;
       outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    input:focus, select:focus, textarea:focus { border-color: var(--cyan); }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.22);
+    }
+    .field-pulse {
+      animation: fieldPulse 1.5s var(--ease);
+      border-color: var(--yellow) !important;
+      box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.35) !important;
+    }
+    @keyframes fieldPulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.18); }
+      50% { box-shadow: 0 0 0 6px rgba(250, 204, 21, 0.42); }
+    }
 
-    /* STEP 4 INTUITIVE SPOTIFY + PLAYLIST STUDIO */
-    .spotify-sync-box {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.08));
-      border: 1px solid rgba(16, 185, 129, 0.45);
+    /* INTERACTIVE 3-ACT NIGHT ENERGY TIMELINE */
+    .night-flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    @media (max-width: 720px) { .night-flow { grid-template-columns: 1fr; } }
+    .phase-card {
+      background: rgba(5, 17, 11, 0.78);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--green);
       border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 20px;
+      padding: 13px 14px;
+      cursor: pointer;
+      transition: all 0.2s var(--ease);
+    }
+    .phase-card.phase-2 { border-top-color: var(--yellow); }
+    .phase-card.phase-3 { border-top-color: var(--orange); }
+    .phase-card:hover { transform: translateY(-2px); border-color: var(--white); }
+    .phase-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .phase-head strong { font-size: 13.5px; color: var(--white); }
+    .phase-head span { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--yellow); }
+    .phase-card p { font-size: 12px; color: var(--muted); }
+
+    /* STEP 4 SPOTIFY + VIBE STUDIO */
+    .spotify-sync-box {
+      background: linear-gradient(145deg, rgba(22, 101, 52, 0.35), rgba(249, 115, 22, 0.11));
+      border: 1px solid rgba(52, 211, 153, 0.42);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 22px;
     }
     .spotify-badge {
-      display: inline-block;
-      background: #10b981;
-      color: #032016;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--green);
+      color: #03190c;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 800;
-      padding: 3px 9px;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 4px 11px;
       border-radius: 999px;
-      margin-bottom: 8px;
+      margin-bottom: 9px;
     }
     .playlist-preview-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 10px;
-      margin-top: 12px;
+      margin-top: 14px;
     }
     .oembed-card {
-      background: #0a0e18;
+      background: #05120c;
       border: 1px solid var(--green);
-      border-radius: 10px;
-      padding: 10px;
+      border-radius: 12px;
+      padding: 10px 12px;
       display: flex;
-      gap: 10px;
+      gap: 11px;
       align-items: center;
     }
-    .oembed-card img {
-      width: 48px;
-      height: 48px;
-      border-radius: 6px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
+    .oembed-card img { width: 46px; height: 46px; border-radius: 7px; object-fit: cover; flex-shrink: 0; }
+
     .starter-packs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 10px;
-      margin-bottom: 18px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 11px;
+      margin-bottom: 22px;
     }
+    @media (max-width: 860px) { .starter-packs-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .starter-packs-grid { grid-template-columns: 1fr; } }
+
     .starter-btn {
-      background: var(--surface-2);
+      background: rgba(5, 17, 11, 0.78);
       border: 1px solid var(--border);
-      color: #fff;
-      padding: 11px 12px;
-      border-radius: 10px;
+      color: var(--white);
+      padding: 13px 14px;
+      border-radius: 13px;
       cursor: pointer;
       text-align: left;
-      transition: all 0.15s;
+      transition: all 0.2s var(--ease);
       font-family: inherit;
     }
-    .starter-btn:hover { border-color: var(--cyan); background: rgba(6, 182, 212, 0.1); }
-    .starter-btn strong { display: block; font-size: 13px; margin-bottom: 3px; }
-    .starter-btn span { display: block; font-size: 11.5px; color: var(--muted); }
+    .starter-btn:hover {
+      border-color: var(--orange);
+      background: rgba(249, 115, 22, 0.14);
+      transform: translateY(-1px);
+    }
+    .starter-btn.flash-added {
+      border-color: var(--yellow);
+      background: rgba(250, 204, 21, 0.14);
+    }
+    .starter-btn strong { display: flex; justify-content: space-between; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; margin-bottom: 4px; color: var(--white); }
+    .starter-btn span { display: block; font-size: 11.5px; color: var(--muted); line-height: 1.45; }
 
     .vibe-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
     }
+    @media (max-width: 860px) { .vibe-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .vibe-grid { grid-template-columns: 1fr; } }
+
     .vibe-card {
-      background: var(--surface-2);
+      background: rgba(5, 17, 11, 0.78);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
+      border-radius: 14px;
+      padding: 15px;
       cursor: pointer;
-      transition: all 0.15s;
+      transition: all 0.2s var(--ease);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .vibe-card:hover { border-color: var(--accent); }
+    .vibe-card:hover { border-color: var(--yellow); transform: translateY(-1px); }
     .vibe-card.selected {
-      border-color: var(--cyan);
-      background: rgba(6, 182, 212, 0.1);
-      box-shadow: 0 0 0 1px var(--cyan);
+      border-color: var(--orange);
+      background: rgba(249, 115, 22, 0.14);
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.35);
     }
-    .vibe-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-    .vibe-name { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; }
-    .vibe-count { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); }
-    .vibe-desc { font-size: 12.5px; color: var(--muted); margin-bottom: 10px; }
+    .vibe-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 7px;
+    }
+    .vibe-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+    }
+    .vibe-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: var(--yellow);
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid rgba(250, 204, 21, 0.3);
+      padding: 2px 7px;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .vibe-desc { font-size: 12.5px; color: var(--muted); margin-bottom: 12px; line-height: 1.45; }
     .vibe-actions { display: flex; justify-content: space-between; align-items: center; font-size: 11.5px; font-weight: 700; }
-    .vibe-card.selected .vibe-badge { color: var(--cyan); }
+    .vibe-badge { color: var(--muted); }
+    .vibe-card.selected .vibe-badge { color: var(--yellow); }
     .vibe-filter-btn {
-      background: rgba(168, 85, 247, 0.22);
-      border: 1px solid rgba(168, 85, 247, 0.45);
-      color: #fff;
-      padding: 3px 9px;
-      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--white);
+      padding: 4px 10px;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 11.5px;
     }
+    .vibe-filter-btn:hover { border-color: var(--orange); color: var(--yellow); }
 
-    .tab-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .tab-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
     .tab-btn {
-      background: var(--surface-2);
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 6px 11px;
-      border-radius: 8px;
-      font-size: 12.5px;
+      color: var(--soft-white);
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 12px;
       font-weight: 600;
       cursor: pointer;
+      transition: all 0.16s;
     }
-    .tab-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .tab-btn.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: var(--white);
+    }
     .track-list {
-      max-height: 330px;
+      max-height: 290px;
       overflow-y: auto;
       border: 1px solid var(--border);
-      border-radius: 10px;
-      background: #0a0d16;
+      border-radius: 12px;
+      background: #040f0a;
     }
     .track-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 10px;
-      padding: 9px 13px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
+    .track-row:hover { background: rgba(255, 255, 255, 0.03); }
     .track-row:last-child { border-bottom: none; }
     .track-info { min-width: 0; flex: 1; }
-    .track-title { font-size: 13.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .track-title { font-size: 13.5px; font-weight: 600; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .track-meta { font-size: 11.5px; color: var(--muted); display: flex; gap: 8px; }
     .btn-sm {
-      padding: 5px 9px;
-      border-radius: 6px;
+      padding: 5px 10px;
+      border-radius: 8px;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       border: 1px solid var(--border);
-      background: var(--surface-2);
-      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--white);
       cursor: pointer;
     }
-    .btn-add.added, .btn-add:hover { background: var(--green); border-color: var(--green); color: #042f2e; }
-    .btn-ban.banned, .btn-ban:hover { background: var(--red); border-color: var(--red); color: #fff; }
+    .btn-add:hover, .btn-add.added { background: var(--green); border-color: var(--green); color: #031a0d; }
+    .btn-ban:hover, .btn-ban.banned { background: var(--red); border-color: var(--red); color: #fff; }
 
     .playlist-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
     @media (max-width: 720px) { .playlist-columns { grid-template-columns: 1fr; } }
     .list-box {
-      background: var(--surface-2);
+      background: rgba(5, 17, 11, 0.72);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 13px;
-      min-height: 110px;
+      border-radius: 14px;
+      padding: 14px;
+      min-height: 105px;
     }
-    .list-box h4 { font-size: 13.5px; margin-bottom: 8px; display: flex; justify-content: space-between; }
+    .list-box h4 { font-size: 13.5px; font-weight: 700; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
     .pill-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(255,255,255,0.04);
-      padding: 5px 9px;
-      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 6px 10px;
+      border-radius: 8px;
       font-size: 12.5px;
       margin-bottom: 5px;
     }
-    .pill-rm { background: none; border: none; color: var(--muted); cursor: pointer; font-weight: 700; }
+    .pill-rm { background: none; border: none; color: var(--muted); cursor: pointer; font-weight: 700; font-size: 15px; line-height: 1; padding: 0 4px; }
+    .pill-rm:hover { color: var(--orange); }
 
-    /* STEP 5 PAYMENT */
+    /* STEP 5 CHECKOUT */
+    .readiness-bar {
+      background: rgba(249, 115, 22, 0.12);
+      border: 1px solid rgba(249, 115, 22, 0.45);
+      border-radius: 14px;
+      padding: 13px 16px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .readiness-bar.ready {
+      background: rgba(34, 197, 94, 0.12);
+      border-color: rgba(34, 197, 94, 0.45);
+    }
+    .jump-chip {
+      background: var(--yellow);
+      border: none;
+      color: #05110b;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .jump-chip:hover { background: var(--orange); color: #fff; }
+
     .pay-options-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -558,87 +932,105 @@
       margin-bottom: 18px;
     }
     .pay-card {
-      background: var(--surface-2);
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      padding: 15px;
+      background: rgba(5, 17, 11, 0.78);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
       cursor: pointer;
-      transition: all 0.15s;
+      transition: all 0.2s var(--ease);
     }
-    .pay-card:hover { border-color: var(--green); }
+    .pay-card:hover { border-color: var(--yellow); transform: translateY(-1px); }
     .pay-card.active {
-      border-color: var(--green);
-      background: rgba(16, 185, 129, 0.1);
+      border-color: var(--orange);
+      background: rgba(249, 115, 22, 0.14);
+      box-shadow: 0 8px 26px rgba(249, 115, 22, 0.15);
     }
-    .pay-card h4 { font-size: 15px; margin-bottom: 4px; color: #fff; }
-    .pay-card p { font-size: 12.5px; color: var(--muted); }
+    .pay-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 5px; color: var(--white); }
+    .pay-card p { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
     .pay-fee-tag {
       display: inline-block;
-      margin-top: 8px;
+      margin-top: 9px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      padding: 2px 7px;
-      border-radius: 6px;
-      background: rgba(255,255,255,0.06);
-      color: #e2e8f0;
+      font-size: 10.5px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--yellow);
     }
 
     .summary-ledger {
-      background: var(--surface-3);
+      background: #04100a;
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 16px;
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin-bottom: 18px;
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 14px;
       align-items: center;
     }
-    @media (max-width: 640px) { .summary-ledger { grid-template-columns: 1fr; } }
-    .review-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    @media (max-width: 640px) {
+      .summary-ledger { grid-template-columns: 1fr; }
+      .summary-ledger > div:last-child { text-align: left !important; }
+    }
+    .review-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
     .review-chip {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11.5px;
-      background: rgba(255,255,255,0.06);
-      padding: 4px 9px;
-      border-radius: 7px;
-      color: #e2e8f0;
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: var(--white);
     }
 
     .agreement-check {
       display: flex;
-      gap: 10px;
+      gap: 11px;
       align-items: flex-start;
-      font-size: 13px;
-      color: #cbd5e1;
-      margin-bottom: 16px;
+      font-size: 13.5px;
+      font-weight: 400;
+      color: var(--soft-white);
+      text-transform: none;
+      letter-spacing: normal;
+      line-height: 1.5;
+      margin-bottom: 18px;
       cursor: pointer;
     }
-    .agreement-check input { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; }
+    .agreement-check input { width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0; accent-color: var(--orange); }
 
     /* BUTTONS */
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--pink));
-      color: #fff;
-      border: none;
-      padding: 13px 22px;
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: 700;
+      background: linear-gradient(135deg, var(--orange), #ea580c);
+      color: var(--white);
+      border: 1px solid rgba(250, 204, 21, 0.4);
+      padding: 13px 23px;
+      border-radius: 999px;
+      font-size: 14.5px;
+      font-weight: 800;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       text-decoration: none;
+      transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.28);
+    }
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-1px);
+      background: linear-gradient(135deg, var(--orange-bright), var(--orange));
+      box-shadow: 0 12px 30px rgba(249, 115, 22, 0.40);
     }
     .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; }
+
     .btn-pay-green {
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: #031d15;
+      background: linear-gradient(135deg, var(--yellow), #eab308);
+      color: #05110b;
       border: none;
-      padding: 14px 24px;
-      border-radius: 10px;
-      font-size: 15.5px;
+      padding: 14px 25px;
+      border-radius: 999px;
+      font-size: 15px;
       font-weight: 800;
       text-decoration: none;
       display: inline-flex;
@@ -646,154 +1038,288 @@
       gap: 8px;
       cursor: pointer;
     }
+    .btn-pay-green:hover { filter: brightness(1.06); }
+
     .btn-secondary {
-      background: var(--surface-2);
-      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--white);
       border: 1px solid var(--border);
-      padding: 11px 16px;
-      border-radius: 10px;
+      padding: 11px 18px;
+      border-radius: 999px;
       font-size: 13.5px;
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
+      transition: all 0.2s var(--ease);
     }
-    .btn-secondary:hover { border-color: var(--cyan); }
+    .btn-secondary:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    .step-nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
 
     .checkout-panel {
-      margin-top: 18px;
-      padding: 20px;
-      border-radius: 12px;
+      margin-top: 20px;
+      padding: 22px;
+      border-radius: 16px;
       border: 1px solid var(--green);
-      background: rgba(16, 185, 129, 0.08);
+      background: rgba(34, 197, 94, 0.10);
       display: none;
     }
-    .checkout-panel.show { display: block; }
+    .checkout-panel.show { display: block; animation: smoothEnter 0.3s var(--ease); }
     .status-err {
       margin-top: 14px;
-      padding: 12px;
-      border-radius: 10px;
-      background: rgba(239, 68, 68, 0.12);
+      padding: 13px 15px;
+      border-radius: 12px;
+      background: rgba(239, 68, 68, 0.14);
       border: 1px solid var(--red);
-      color: #fca5a5;
+      color: #fecaca;
       font-size: 13.5px;
       display: none;
     }
     .status-err.show { display: block; }
 
-    /* STICKY FOOTER */
+    /* FLOATING CRATE PEEK DRAWER */
+    .crate-drawer {
+      position: fixed;
+      bottom: 76px;
+      left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      width: min(760px, calc(100vw - 24px));
+      max-height: 62vh;
+      overflow-y: auto;
+      background: rgba(7, 22, 15, 0.96);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--yellow);
+      border-radius: 20px;
+      padding: 18px 20px;
+      z-index: 60;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.72);
+      display: none;
+    }
+    .crate-drawer.open { display: block; animation: smoothEnter 0.25s var(--ease); }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 78px;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      z-index: 90;
+      background: #081c13;
+      border: 1px solid var(--yellow);
+      color: var(--white);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.72);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s var(--ease);
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* STICKY FROSTED BOTTOM COMMAND BAR WITH HOME BUTTON & CRATE PEEK */
     .sticky-footer {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(10, 13, 23, 0.96);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid var(--border);
-      padding: 10px 16px;
+      bottom: 12px;
+      left: 14px;
+      right: 14px;
+      z-index: 50;
       display: flex;
       justify-content: center;
-      z-index: 50;
+      pointer-events: none;
     }
     .sticky-inner {
-      max-width: 1100px;
+      pointer-events: auto;
+      max-width: 1140px;
       width: 100%;
+      background: rgba(6, 20, 13, 0.92);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      padding: 7px 9px 7px 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
+      gap: 8px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+    }
+    .dock-left { display: flex; align-items: center; gap: 8px; min-width: 0; }
+    .dock-home {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: var(--white);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .dock-home:hover { border-color: var(--yellow); color: var(--yellow); }
+    .dock-crate-btn {
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid rgba(250, 204, 21, 0.35);
+      color: var(--yellow);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .dock-crate-btn:hover { background: rgba(250, 204, 21, 0.22); }
+    @media (max-width: 640px) {
+      .sticky-footer { bottom: 8px; left: 8px; right: 8px; }
+      .sticky-inner { border-radius: 16px; padding: 8px 10px; }
+      .sticky-meta-extra { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <div class="topbar">
-    <div class="brand-tag">● DJ J-RIP // 5-STEP EVENT BOOKING &amp; PLAYLIST STUDIO</div>
-    <div class="top-actions">
-      <a class="nav-link" href="https://www.tiktok.com/@jaysonbq" target="_blank" rel="noopener">📱 TikTok @jaysonbq</a>
-      <a class="nav-link" href="https://soundcloud.com/jayson-quindao" target="_blank" rel="noopener">☁️ SoundCloud</a>
-      <a class="nav-link" href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener">▶ YouTube Set</a>
-      <a class="nav-link" href="tel:+14693718556">📞 (469) 371-8556</a>
+  <div class="toast" id="toastMsg">Saved</div>
+
+  <header class="topbar">
+    <div class="brand-left">
+      <button type="button" class="home-btn" id="topHomeBtn" title="Return to DJ J-Rip Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+        Home
+      </button>
+      <button type="button" class="brand-wordmark" id="brandWordmarkBtn" title="DJ J-Rip Home">
+        DJ <span>J-Rip</span>
+      </button>
+      <span class="live-badge">
+        <span class="eq-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        DFW Studio Online
+      </span>
     </div>
+    <nav class="top-actions" aria-label="DJ Links">
+      <a class="nav-pill" href="https://www.tiktok.com/@jaysonbq" target="_blank" rel="noopener">TikTok @jaysonbq</a>
+      <a class="nav-pill" href="https://soundcloud.com/jayson-quindao" target="_blank" rel="noopener">SoundCloud</a>
+      <a class="nav-pill" href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener">4K Set</a>
+      <a class="nav-pill" href="tel:+14693718556" style="border-color: var(--orange); color: var(--yellow);">(469) 371-8556</a>
+    </nav>
+  </header>
+
+  <!-- 5-STEP PROGRESS STEPPER -->
+  <div class="stepper-shell">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <nav class="wizard-stepper" aria-label="Booking Steps">
+      <button type="button" class="step-tab active" data-step="1">
+        <span class="step-dot">1</span>
+        <div>
+          <div class="step-tab-label">Home &amp; Sets</div>
+          <span class="step-tab-sub">Videos &amp; Launch</span>
+        </div>
+      </button>
+      <button type="button" class="step-tab" data-step="2">
+        <span class="step-dot">2</span>
+        <div>
+          <div class="step-tab-label">Package &amp; Date</div>
+          <span class="step-tab-sub">Flat rates</span>
+        </div>
+      </button>
+      <button type="button" class="step-tab" data-step="3">
+        <span class="step-dot">3</span>
+        <div>
+          <div class="step-tab-label">Night &amp; Cues</div>
+          <span class="step-tab-sub">Timeline &amp; Mics</span>
+        </div>
+      </button>
+      <button type="button" class="step-tab" data-step="4">
+        <span class="step-dot">4</span>
+        <div>
+          <div class="step-tab-label">Spotify &amp; Crate</div>
+          <span class="step-tab-sub">Sync playlists</span>
+        </div>
+      </button>
+      <button type="button" class="step-tab" data-step="5">
+        <span class="step-dot">5</span>
+        <div>
+          <div class="step-tab-label">Pay &amp; Lock</div>
+          <span class="step-tab-sub">Instant alert</span>
+        </div>
+      </button>
+    </nav>
   </div>
 
-  <!-- STEP-BY-STEP WIZARD PROGRESS BAR -->
-  <nav class="wizard-stepper" aria-label="Booking Steps">
-    <button type="button" class="step-tab active" data-step="1">
-      <span class="step-dot">1</span>
-      <div>
-        <div class="step-tab-label">Intro &amp; Video</div>
-        <span class="step-tab-sub">Live sets &amp; rig</span>
-      </div>
-    </button>
-    <button type="button" class="step-tab" data-step="2">
-      <span class="step-dot">2</span>
-      <div>
-        <div class="step-tab-label">Package &amp; Date</div>
-        <span class="step-tab-sub">Rates &amp; retainer</span>
-      </div>
-    </button>
-    <button type="button" class="step-tab" data-step="3">
-      <span class="step-dot">3</span>
-      <div>
-        <div class="step-tab-label">Event &amp; Mics</div>
-        <span class="step-tab-sub">18 Roses / Cues</span>
-      </div>
-    </button>
-    <button type="button" class="step-tab" data-step="4">
-      <span class="step-dot">4</span>
-      <div>
-        <div class="step-tab-label">Vibe &amp; Spotify</div>
-        <span class="step-tab-sub">Sync playlists</span>
-      </div>
-    </button>
-    <button type="button" class="step-tab" data-step="5">
-      <span class="step-dot">5</span>
-      <div>
-        <div class="step-tab-label">Pay &amp; Lock</div>
-        <span class="step-tab-sub">Instant alert</span>
-      </div>
-    </button>
-  </nav>
-
-  <!-- ==================== STEP 1: INTRO, LIVE SETS & GEAR ==================== -->
+  <!-- ==================== STEP 1: HOME LANDING & BLUEPRINTS ==================== -->
   <section class="wizard-step active" id="step1">
     <div class="hero-banner">
       <div class="hero-profile">
         <img class="hero-avatar" src="assets/dj-jrip-headshot.jpg" alt="DJ J-Rip (Jayson Quindao)">
         <div>
-          <div style="font-weight:700; font-size:15.5px; color:#fff;">Jayson Quindao (DJ J-Rip) &bull; Dallas-Fort Worth, TX</div>
-          <div style="font-size:12.5px; color:var(--cyan); font-family:'JetBrains Mono',monospace;">GG LOOP LLC &bull; Open-Format DJ, MC &amp; Turnkey Event Audio</div>
+          <div style="font-weight:700; font-size:15.5px; color:var(--white);">Jayson Quindao &mdash; <span class="serif-italic" style="color:var(--yellow); font-size:19px;">DJ J-Rip</span></div>
+          <div class="mono" style="color:var(--mint); margin-top:2px;">GG LOOP LLC &bull; Open-Format DJ, MC &amp; Bose F1 Sound &bull; DFW</div>
         </div>
       </div>
 
-      <h1>Watch Live Booth Sets, Preview Gear, Sync Spotify &amp; Lock Your Date in 5 Simple Steps.</h1>
+      <h1>Private Events, <em>18th Debuts &amp; Nightlife</em> &mdash; Tuned to Your Crowd.</h1>
       <p class="hero-sub">
-        Whether you're planning an <strong>18th Birthday Debut</strong>, wedding reception, or private VIP party, this guided portal lets you check my real mixes first, pick a flat package, drop your own Spotify/YouTube playlists straight into my studio downloader, and lock your date online.
+        Watch my real live sets below, tap your event blueprint to auto-build your timing and vibe preset, drop your Spotify playlists straight into my 320kbps offline studio archiver, and lock your date online with instant confirmation.
       </p>
+
+      <!-- INNOVATIVE 1-TAP EVENT BLUEPRINTS -->
+      <div class="blueprints-wrap">
+        <div class="mono" style="color:var(--yellow);">1-Tap Event Launchers &mdash; Pick Your Event Type to Auto-Configure Everything</div>
+        <div class="blueprints-grid">
+          <button type="button" class="blueprint-btn" data-blueprint="debut">
+            <span class="bp-tag">Most Booked &bull; $750</span>
+            <span class="bp-title">18th Debut Blueprint</span>
+            <span class="bp-sub">Auto-arms Bose F1 rig, dual UHF mics, 18 Roses cues &amp; Debut Vibe pack.</span>
+          </button>
+          <button type="button" class="blueprint-btn" data-blueprint="wedding">
+            <span class="bp-tag">Turnkey &bull; $1,200</span>
+            <span class="bp-title">Wedding Reception</span>
+            <span class="bp-sub">Ceremony + Cocktail + Dancefloor timeline, clean dinner edits &amp; formal MC cues.</span>
+          </button>
+          <button type="button" class="blueprint-btn" data-blueprint="club">
+            <span class="bp-tag">High Energy &bull; $400</span>
+            <span class="bp-title">Bar, Lounge &amp; Club</span>
+            <span class="bp-sub">2&ndash;4 hr seamless BPM open-format, Hip-Hop, House &amp; Latin edits.</span>
+          </button>
+          <button type="button" class="blueprint-btn" data-blueprint="custom">
+            <span class="bp-tag">Flexible Retainer</span>
+            <span class="bp-title">Custom / VIP Gala</span>
+            <span class="bp-sub">Extended hours, multi-space audio, or custom quoted corporate event.</span>
+          </button>
+        </div>
+      </div>
 
       <div class="stats-row">
         <div class="stat-pill"><strong>335.7K+</strong><span>TikTok @jaysonbq</span></div>
         <div class="stat-pill"><strong>4K Set</strong><span>Lake House Live Mix</span></div>
-        <div class="stat-pill"><strong>3,023</strong><span>Offline Audited Tracks</span></div>
-        <div class="stat-pill"><strong>Dual F1</strong><span>Bose Array + Subs</span></div>
+        <div class="stat-pill"><strong>3,023</strong><span>Audited Offline Vault</span></div>
+        <div class="stat-pill"><strong>Bose F1</strong><span>Dual Arrays + Subs</span></div>
       </div>
 
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <button type="button" class="btn-primary next-step-btn" data-next="2">Start Step 2: Choose Package &amp; Date &rarr;</button>
-        <a class="btn-secondary" href="https://www.tiktok.com/@jaysonbq" target="_blank" rel="noopener">📱 TikTok @jaysonbq (335.7K Video)</a>
-        <a class="btn-secondary" href="https://soundcloud.com/jayson-quindao" target="_blank" rel="noopener">☁️ SoundCloud Mixes</a>
-        <a class="btn-secondary" href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <button type="button" class="btn-primary next-step-btn" data-next="2">Customize Package &amp; Check Date &rarr;</button>
+        <button type="button" class="btn-secondary" id="jumpSpotifyHeroBtn">Jump Straight to Spotify Sync &rarr;</button>
+        <a class="btn-secondary" href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener">Watch 4K Set</a>
       </div>
     </div>
 
     <!-- 3-VIDEO LIVE SHOWCASE -->
     <div class="media-grid">
       <div class="media-card">
-        <div class="yt-wrap" style="min-height: 290px;">
+        <div class="yt-wrap">
           <iframe
             src="https://www.youtube.com/embed/TB8gT3tWWlo?rel=0"
             title="DJ J-Rip — Lake house set :D (4K Live Set)"
@@ -802,8 +1328,8 @@
             allowfullscreen></iframe>
         </div>
         <div class="media-cap">
-          <span>▶ LIVE 4K SET: "Lake house set :D" (12:01)</span>
-          <a href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener" style="color:var(--cyan); text-decoration:none; font-weight:700;">YouTube &nearr;</a>
+          <span>LIVE 4K SET &bull; LAKE HOUSE MIX (12:01)</span>
+          <a href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener" style="color:var(--yellow); text-decoration:none; font-weight:700;">YouTube &nearr;</a>
         </div>
       </div>
 
@@ -817,8 +1343,8 @@
             allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="media-cap">
-          <span>📱 @JAYSONBQ TIKTOK</span>
-          <a href="https://www.tiktok.com/@jaysonbq/video/7660248370291707149" target="_blank" rel="noopener" style="color:var(--pink); text-decoration:none; font-weight:700;">TikTok Clip &nearr;</a>
+          <span>@JAYSONBQ CLIP</span>
+          <a href="https://www.tiktok.com/@jaysonbq/video/7660248370291707149" target="_blank" rel="noopener" style="color:var(--orange); text-decoration:none; font-weight:700;">TikTok &nearr;</a>
         </div>
       </div>
 
@@ -829,40 +1355,52 @@
           </video>
         </div>
         <div class="media-cap">
-          <span>🎛️ PIONEER DDJ REEL</span>
+          <span>PIONEER DDJ REEL</span>
           <span>Live Cue Control</span>
         </div>
       </div>
     </div>
 
-    <!-- WHAT'S INCLUDED GEAR -->
+    <!-- EQUIPMENT INCLUDED -->
     <div class="step-card">
       <div class="step-header">
-        <span class="step-num">✓</span>
-        <h2 class="step-title">Production Equipment Included With Your Booking</h2>
+        <span class="step-num">&check;</span>
+        <h2 class="step-title">Turnkey Production Rig &amp; <em>Offline Vault</em></h2>
       </div>
       <div class="gear-grid">
         <div class="gear-item">
-          <h4>🔊 Dual Bose F1 812 + Subwoofers</h4>
-          <p>2 full powered 1,000W flexible-array PA stacks + dedicated subs covering 300–500 guest DFW halls cleanly.</p>
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="4"/><line x1="12" y1="6" x2="12.01" y2="6"/></svg>
+            Dual Bose F1 812 + Subs
+          </h4>
+          <p>Two 1,000W flexible-array PA stacks with subwoofers tuned cleanly for 300&ndash;500 guest venues.</p>
         </div>
         <div class="gear-item">
-          <h4>🎛️ Pioneer DDJ-SB2 Console</h4>
-          <p>Tactile live mixing, harmonic key transitions, quick-cuts &amp; stem mashups with zero dead air.</p>
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="2.5"/><circle cx="16" cy="12" r="2.5"/></svg>
+            Pioneer DDJ-SB2 Console
+          </h4>
+          <p>Harmonic key mixing, live mashups, and tight phrasing across R&amp;B, Hip-Hop, House &amp; Latin.</p>
         </div>
         <div class="gear-item">
-          <h4>🎤 Dual Wireless UHF Mics</h4>
-          <p>Feedback-resistant wireless handheld mics for Grand Entrances, 18 Roses/Candles, toasts &amp; vows.</p>
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+            Dual Wireless UHF Mics
+          </h4>
+          <p>Feedback-resistant wireless handheld mics for Grand Entrances, 18 Roses/Candles &amp; toasts.</p>
         </div>
         <div class="gear-item">
-          <h4>🛡️ 3,023-Track Offline Vault</h4>
-          <p>Every song + your submitted Spotify playlist downloads offline at 320kbps prior to showtime—zero Wi-Fi risk.</p>
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            320kbps Offline Studio Sync
+          </h4>
+          <p>All 3,023 vault tracks plus your submitted Spotify links download offline before showtime.</p>
         </div>
       </div>
 
       <div class="step-nav-bar">
-        <span style="font-size:13px; color:var(--muted);">Ready to see pricing? Everything is flat-rate with 50% retainer deposit.</span>
-        <button type="button" class="btn-primary next-step-btn" data-next="2">Next Step 2: Choose Package &amp; Date &rarr;</button>
+        <span style="font-size:13px; color:var(--muted);">Transparent flat rates with 50% retainer deposit to lock your date.</span>
+        <button type="button" class="btn-primary next-step-btn" data-next="2">Next Step 2: Package &amp; Date &rarr;</button>
       </div>
     </div>
   </section>
@@ -872,28 +1410,29 @@
     <div class="step-card">
       <div class="step-header">
         <span class="step-num">2</span>
-        <h2 class="step-title">Choose Your Package, Event Type &amp; Date</h2>
+        <h2 class="step-title">Choose Your <em>Package &amp; Date</em></h2>
       </div>
 
       <div class="pkg-grid" id="pkgGrid">
         <div class="pkg-card" data-pkg="bar_lounge" data-label="Bar / Lounge / Club Set (2–4 hrs)" data-total="400" data-deposit="200" data-stripe="https://buy.stripe.com/aFa8wR1Ni9Ul0Mr48U0Fi08">
           <div>
-            <div class="pkg-name">Bar, Lounge &amp; Club Set</div>
-            <div class="pkg-price">$400 <span style="font-size:13px;font-weight:500;color:var(--muted);">/ 2–4 hrs</span></div>
-            <span class="pkg-retainer">50% Deposit: $200 to Lock</span>
+            <div class="pkg-name">Bar, Lounge &amp; Club</div>
+            <div class="pkg-price">$400 <span style="font-size:13px;font-weight:500;font-style:normal;color:var(--muted);">/ 2&ndash;4 hrs</span></div>
+            <span class="pkg-retainer">50% Retainer: $200</span>
             <ul>
-              <li>High-energy open-format set</li>
-              <li>House sound tie-in or portable rig</li>
-              <li>Seamless BPM &amp; vibe control</li>
+              <li>High-energy open-format curation</li>
+              <li>House sound tie-in or compact rig</li>
+              <li>Live BPM &amp; crowd control</li>
             </ul>
           </div>
         </div>
 
         <div class="pkg-card active" data-pkg="debut_vip" data-label="18th Debut, Milestone & VIP Event (4–5 hrs)" data-total="750" data-deposit="375" data-stripe="https://buy.stripe.com/bJedRb1Ni1nPfHl20M0Fi09">
           <div>
-            <div class="pkg-name">18th Debut &amp; Private VIP</div>
-            <div class="pkg-price">$750 <span style="font-size:13px;font-weight:500;color:var(--muted);">/ 4–5 hrs</span></div>
-            <span class="pkg-retainer">50% Deposit: $375 to Lock</span>
+            <span class="pkg-badge-top">Signature Debut Tier</span>
+            <div class="pkg-name">18th Debut &amp; VIP</div>
+            <div class="pkg-price">$750 <span style="font-size:13px;font-weight:500;font-style:normal;color:var(--muted);">/ 4&ndash;5 hrs</span></div>
+            <span class="pkg-retainer">50% Retainer: $375</span>
             <ul>
               <li>Dual Bose F1 PA arrays + Subwoofers</li>
               <li>Dual UHF Wireless Mics &amp; MC cueing</li>
@@ -905,38 +1444,38 @@
 
         <div class="pkg-card" data-pkg="wedding_gala" data-label="Wedding Ceremony, Reception & Gala (5–6 hrs)" data-total="1200" data-deposit="600" data-stripe="https://buy.stripe.com/5kQ5kF8bG5E5an134Q0Fi0a">
           <div>
-            <div class="pkg-name">Full Wedding &amp; Gala</div>
-            <div class="pkg-price">$1,200 <span style="font-size:13px;font-weight:500;color:var(--muted);">/ 5–6 hrs</span></div>
-            <span class="pkg-retainer">50% Deposit: $600 to Lock</span>
+            <div class="pkg-name">Wedding &amp; Gala</div>
+            <div class="pkg-price">$1,200 <span style="font-size:13px;font-weight:500;font-style:normal;color:var(--muted);">/ 5&ndash;6 hrs</span></div>
+            <span class="pkg-retainer">50% Retainer: $600</span>
             <ul>
               <li>Ceremony + Cocktail + Reception audio</li>
-              <li>Full PA, Wireless Mics &amp; Backup systems</li>
-              <li>Timeline coordination &amp; agreement</li>
+              <li>Full Bose PA, wireless mics &amp; backups</li>
+              <li>Formal timeline &amp; MC coordination</li>
             </ul>
           </div>
         </div>
 
         <div class="pkg-card" data-pkg="custom_quote" data-label="Custom Quoted Event / Retainer" data-total="0" data-deposit="Custom" data-stripe="https://buy.stripe.com/cNicN72Rm1nPdzd5cY0Fi0b">
           <div>
-            <div class="pkg-name">Custom Quote / Extended Set</div>
+            <div class="pkg-name">Custom Quote</div>
             <div class="pkg-price">Flexible</div>
-            <span class="pkg-retainer">Pay Quoted Retainer Online</span>
+            <span class="pkg-retainer">Agreed Retainer Online</span>
             <ul>
-              <li>Multi-stage or custom hour blocks</li>
-              <li>Special travel outside DFW</li>
-              <li>Enter any agreed amount at checkout</li>
+              <li>Extended hours or multi-room setups</li>
+              <li>Travel coverage outside DFW metro</li>
+              <li>Enter your quoted amount at checkout</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="form-grid" style="margin-bottom: 16px;">
+      <div class="form-grid" style="margin-bottom: 18px;">
         <div>
-          <label for="eventDate">Target Event Date *</label>
+          <label class="field-label" for="eventDate">Target Event Date *</label>
           <input type="date" id="eventDate">
         </div>
         <div>
-          <label for="eventType">Event Type</label>
+          <label class="field-label" for="eventType">Event Format</label>
           <select id="eventType">
             <option value="18th Birthday Debut">18th Birthday Debut / Milestone</option>
             <option value="Wedding Ceremony & Reception">Wedding Ceremony &amp; Reception</option>
@@ -949,318 +1488,362 @@
 
       <div class="summary-ledger">
         <div>
-          <div style="font-size:11.5px; color:var(--muted); text-transform:uppercase; font-weight:700;">Selected Tier</div>
-          <div id="step2PkgLabel" style="font-size:16px; font-weight:700;">18th Debut, Milestone &amp; VIP Event (4–5 hrs)</div>
+          <div class="mono" style="color:var(--muted);">Selected Tier</div>
+          <div id="step2PkgLabel" style="font-size:16.5px; font-weight:700; color:var(--white); margin-top:2px;">18th Debut, Milestone &amp; VIP Event (4&ndash;5 hrs)</div>
         </div>
         <div style="text-align:right;">
-          <div style="font-size:11.5px; color:var(--muted); text-transform:uppercase; font-weight:700;">50% Retainer to Lock Calendar</div>
-          <div id="step2DepositLabel" style="font-size:22px; font-weight:800; color:var(--green);">$375.00</div>
+          <div class="mono" style="color:var(--muted);">50% Retainer to Lock Date</div>
+          <div id="step2DepositLabel" class="serif-italic" style="font-size:28px; color:var(--yellow);">$375.00</div>
         </div>
       </div>
 
       <div class="step-nav-bar">
-        <button type="button" class="btn-secondary prev-step-btn" data-prev="1">&larr; Back: Live Videos &amp; Gear</button>
-        <button type="button" class="btn-primary next-step-btn" data-next="3">Next Step 3: Event Info &amp; Mics &rarr;</button>
+        <button type="button" class="btn-secondary prev-step-btn" data-prev="1">&larr; Back: Home &amp; Sets</button>
+        <button type="button" class="btn-primary next-step-btn" data-next="3">Next Step 3: Night Timeline &amp; Cues &rarr;</button>
       </div>
     </div>
   </section>
 
-  <!-- ==================== STEP 3: EVENT DETAILS & CEREMONIAL CUES ==================== -->
+  <!-- ==================== STEP 3: EVENT DETAILS & NIGHT FLOW ==================== -->
   <section class="wizard-step" id="step3">
     <div class="step-card">
       <div class="step-header">
         <span class="step-num">3</span>
-        <h2 class="step-title">Contact Info, Venue &amp; Ceremonial Cues</h2>
+        <h2 class="step-title">Run-of-Show &amp; <em>Ceremonial Cues</em></h2>
+      </div>
+
+      <!-- INTERACTIVE 3-ACT NIGHT ENERGY GUIDE -->
+      <div class="mono" style="color:var(--yellow); margin-bottom:8px;">Visual Night Arc &mdash; Tap Any Phase to Jump to Matching Song Cues</div>
+      <div class="night-flow">
+        <div class="phase-card phase-1" data-jump-step="4" data-jump-focus="#plDinner">
+          <div class="phase-head"><strong>Act I: Arrival &amp; Dinner</strong><span>CHILL &bull; CLEAN</span></div>
+          <p>Smooth R&amp;B, Acoustic &amp; Neo-Soul while guests mingle. Tap to link Dinner playlist.</p>
+        </div>
+        <div class="phase-card phase-2" data-focus="#entranceSong">
+          <div class="phase-head"><strong>Act II: Formal Cues</strong><span>SPOTLIGHT</span></div>
+          <p>Grand Entrance, 18 Roses/Candles, toasts &amp; wireless mics. Tap to set walkout song.</p>
+        </div>
+        <div class="phase-card phase-3" data-jump-step="4" data-jump-focus="#plParty">
+          <div class="phase-head"><strong>Act III: Open Dancefloor</strong><span>PEAK ENERGY</span></div>
+          <p>Hip-Hop, Throwbacks, Latin &amp; House edits seamlessly beatmatched. Tap to link Party playlist.</p>
+        </div>
       </div>
 
       <div class="form-grid" style="margin-bottom: 14px;">
         <div>
-          <label for="clientName">Your Name / Honoree Name *</label>
-          <input type="text" id="clientName" placeholder="e.g. Maria / Debutante Name">
+          <label class="field-label" for="clientName">Your Name / Honoree Name *</label>
+          <input type="text" id="clientName" placeholder="e.g. Maria &bull; 18th Debut">
         </div>
         <div>
-          <label for="clientPhone">Mobile Phone Number *</label>
+          <label class="field-label" for="clientPhone">Mobile Phone Number *</label>
           <input type="tel" id="clientPhone" placeholder="(214) 555-0199">
         </div>
         <div>
-          <label for="clientEmail">Your Email (For Automated Receipt)</label>
+          <label class="field-label" for="clientEmail">Email (Automated Confirmation)</label>
           <input type="email" id="clientEmail" placeholder="you@email.com">
         </div>
         <div>
-          <label for="venueInfo">Venue Name / City &amp; Hours</label>
-          <input type="text" id="venueInfo" placeholder="e.g. Arlington Hall, 6:00 PM - 11:00 PM">
+          <label class="field-label" for="venueInfo">Venue &amp; Hours</label>
+          <input type="text" id="venueInfo" placeholder="e.g. Arlington Hall &bull; 6 PM - 11 PM">
         </div>
       </div>
 
       <div class="form-grid" style="margin-bottom: 14px;">
         <div>
-          <label for="mcNeed">MC / Microphone Hosting Duty</label>
+          <label class="field-label" for="mcNeed">MC / Microphone Hosting</label>
           <select id="mcNeed">
-            <option value="Need DJ J-Rip to MC & call names">Need DJ J-Rip to announce cues / names</option>
-            <option value="External MC/Host - DJ runs mics & cues only">We have our own MC (DJ runs sound &amp; cues)</option>
+            <option value="Need DJ J-Rip to MC & call names">Need DJ J-Rip to announce cues &amp; names</option>
+            <option value="External MC/Host - DJ runs mics & cues only">External MC/Host (DJ runs mics &amp; audio cues)</option>
             <option value="Music Only (No MC announcements needed)">Music Only (Club / Lounge format)</option>
           </select>
         </div>
         <div>
-          <label for="cleanPolicy">Clean-Edit Music Policy</label>
+          <label class="field-label" for="cleanPolicy">Clean-Edit Music Standard</label>
           <select id="cleanPolicy">
-            <option value="Clean Radio Edits During Dinner/Formal, Club Edits Late">Clean Edits Early / Uncensored Dancefloor Late</option>
-            <option value="100% Clean Radio Edits All Night">100% Clean Radio Edits All Night (Family Safe)</option>
-            <option value="Uncensored Original Versions OK All Night">Uncensored Original Tracks OK All Night</option>
+            <option value="Clean Radio Edits During Dinner/Formal, Club Edits Late">Clean edits during dinner &bull; Club edits late</option>
+            <option value="100% Clean Radio Edits All Night">100% clean radio edits all night</option>
+            <option value="Uncensored Original Versions OK All Night">Original uncensored tracks OK all night</option>
           </select>
         </div>
       </div>
 
       <div class="form-grid" style="margin-bottom: 14px;">
         <div>
-          <label for="entranceSong">Grand Entrance / Walkout Song</label>
+          <label class="field-label" for="entranceSong">Grand Entrance / Walkout Track</label>
           <input type="text" id="entranceSong" placeholder="Song + Artist for Grand Entrance">
         </div>
         <div>
-          <label for="slowSongs">18 Roses / Waltz / Father-Daughter Song(s)</label>
-          <input type="text" id="slowSongs" placeholder="Song(s) for formal dances or 18 Roses">
+          <label class="field-label" for="slowSongs">18 Roses / Waltz / Slow Dance Track(s)</label>
+          <input type="text" id="slowSongs" placeholder="Tracks for formal dances or 18 Roses">
         </div>
       </div>
 
       <div>
-        <label for="specialNotes">Timeline Notes, 18 Candles / Treasures Cues, or Special Requests</label>
-        <textarea id="specialNotes" rows="3" placeholder="Example: Keep dinner acoustic/R&B until 8:15 PM, then 18 Roses, then hip-hop/throwback party at 9:30 PM..."></textarea>
+        <label class="field-label" for="specialNotes">Timeline Notes, 18 Candles / Treasures, or Special Requests</label>
+        <textarea id="specialNotes" rows="3" placeholder="Example: Keep dinner R&amp;B until 8:15 PM, then 18 Roses, then throwbacks &amp; hip-hop at 9:30 PM..."></textarea>
       </div>
 
       <div class="step-nav-bar">
         <button type="button" class="btn-secondary prev-step-btn" data-prev="2">&larr; Back: Package &amp; Date</button>
-        <button type="button" class="btn-primary next-step-btn" data-next="4">Next Step 4: Spotify Playlists &amp; Vibe &rarr;</button>
+        <button type="button" class="btn-primary next-step-btn" data-next="4">Next Step 4: Spotify Archive &amp; Crate &rarr;</button>
       </div>
     </div>
   </section>
 
-  <!-- ==================== STEP 4: INTUITIVE SPOTIFY & VIBE PLAYLIST STUDIO ==================== -->
+  <!-- ==================== STEP 4: INTUITIVE SPOTIFY & CRATE STUDIO ==================== -->
   <section class="wizard-step" id="step4">
     <div class="step-card">
       <div class="step-header">
         <span class="step-num">4</span>
-        <h2 class="step-title">Setup Your Event Playlists &amp; Musical Vibe</h2>
+        <h2 class="step-title">Sync <em>Spotify Playlists</em> &amp; Build Your Crate</h2>
       </div>
 
-      <!-- A: SPOTIFY ARCHIVE PLAYLIST LINK SYNC -->
+      <!-- SPOTIFY ARCHIVE SYNC -->
       <div class="spotify-sync-box">
-        <span class="spotify-badge">⚡ DIRECT SPOTIFY ARCHIVE DOWNLOAD SYNC</span>
-        <h3 style="font-family:'Space Grotesk',sans-serif; font-size:18px; margin-bottom:6px;">
-          Already have a Spotify, Apple Music, or YouTube playlist? Paste links below.
+        <span class="spotify-badge">320KBPS OFFLINE SPOTIFY ARCHIVE ENGINE</span>
+        <h3 class="serif-italic" style="font-size:22px; color:var(--white); margin-bottom:5px;">
+          Drop your Spotify, Apple Music, or YouTube playlist links below.
         </h3>
-        <p style="font-size:13.5px; color:#d1fae5; margin-bottom:14px;">
-          No need to add songs one by one! Paste your playlist links by event phase—my studio Spotify Archiver automatically pulls every song in high-res 320kbps MP3 offline into your private event crate before showtime.
+        <p style="font-size:13.5px; color:var(--soft-white); margin-bottom:14px;">
+          Our local studio archiver automatically fetches every song offline prior to showtime&mdash;zero venue Wi-Fi dependency.
         </p>
 
         <div class="form-grid">
           <div>
-            <label for="plDinner">🍸 Arrival / Cocktail / Dinner Link</label>
+            <label class="field-label" for="plDinner">Act I: Arrival / Cocktail / Dinner Link</label>
             <input type="url" id="plDinner" class="pl-url-input" placeholder="https://open.spotify.com/playlist/...">
           </div>
           <div>
-            <label for="plFormal">✨ 18 Roses / Formal / Slow Dances Link</label>
+            <label class="field-label" for="plFormal">Act II: 18 Roses / Formal Link</label>
             <input type="url" id="plFormal" class="pl-url-input" placeholder="https://open.spotify.com/playlist/...">
           </div>
           <div>
-            <label for="plParty">🔥 Main Dancefloor / After-Party Link</label>
+            <label class="field-label" for="plParty">Act III: Dancefloor / Peak Party Link</label>
             <input type="url" id="plParty" class="pl-url-input" placeholder="https://open.spotify.com/playlist/...">
           </div>
         </div>
         <div class="playlist-preview-grid" id="playlistPreviews"></div>
       </div>
 
-      <!-- B: OVERALL EVENT VIBES -->
-      <label style="margin-bottom:8px;">1. Tap the Overall Vibes You Want Throughout the Night:</label>
+      <!-- VIBE CARDS -->
+      <label class="field-label" style="margin-bottom:9px;">1. Select Overall Vibes for the Night (Tap to Combine)</label>
       <div class="vibe-grid" id="vibeGrid">
         <div style="color:var(--muted); font-size:14px;">Loading vibe catalog...</div>
       </div>
 
-      <!-- C: 1-TAP CURATED STARTER PACKS -->
-      <label style="margin-bottom:8px;">2. 1-Tap Essential Starter Packs (Adds 5 Crowd-Tested Classics Instantly):</label>
+      <!-- 6 SYMMETRICAL STARTER PACKS -->
+      <label class="field-label" style="margin-bottom:9px;">2. One-Tap Starter Packs (Adds 5 Crowd-Tested Classics Each)</label>
       <div class="starter-packs-grid" id="starterPacksGrid">
         <button type="button" class="starter-btn" data-pack="debut_formal">
-          <strong>✨ 18th Debut &amp; Formal Pack</strong>
+          <strong><span>18th Debut &amp; Formal</span><span class="pack-status" style="color:var(--yellow); font-size:11px;">+5</span></strong>
           <span>Bruno Major, Benson Boone, Billie Eilish, John Legend, Stevie Wonder</span>
         </button>
         <button type="button" class="starter-btn" data-pack="cocktail_rnb">
-          <strong>🍸 Cocktail Hour R&amp;B Pack</strong>
+          <strong><span>Cocktail &amp; Smooth R&amp;B</span><span class="pack-status" style="color:var(--yellow); font-size:11px;">+5</span></strong>
           <span>Silk Sonic, Frank Ocean, Daniel Caesar, Doja Cat/SZA, Bill Withers</span>
         </button>
         <button type="button" class="starter-btn" data-pack="throwbacks">
-          <strong>🎉 Multi-Gen Family Classics</strong>
+          <strong><span>Multi-Gen Throwbacks</span><span class="pack-status" style="color:var(--yellow); font-size:11px;">+5</span></strong>
           <span>Earth Wind &amp; Fire, Whitney Houston, Michael Jackson, Backstreet Boys, Bruno Mars</span>
         </button>
         <button type="button" class="starter-btn" data-pack="peak_party">
-          <strong>🔥 Peak Hip-Hop &amp; Club Energy</strong>
+          <strong><span>Peak Hip-Hop &amp; Club</span><span class="pack-status" style="color:var(--yellow); font-size:11px;">+5</span></strong>
           <span>Drake, Kendrick/Baby Keem, 50 Cent, Daft Punk, Avicii</span>
         </button>
         <button type="button" class="starter-btn" data-pack="latin_fiesta">
-          <strong>💃 Latin &amp; Fiesta Favorites</strong>
+          <strong><span>Latin &amp; Fiesta Hits</span><span class="pack-status" style="color:var(--yellow); font-size:11px;">+5</span></strong>
           <span>Bad Bunny, Elvis Crespo, Caballo Dorado, Cardi B/J Balvin</span>
+        </button>
+        <button type="button" class="starter-btn" data-pack="pop_anthems">
+          <strong><span>Pop &amp; Dance Sing-Alongs</span><span class="pack-status" style="color:var(--yellow); font-size:11px;">+5</span></strong>
+          <span>Rihanna, Dua Lipa, Chappell Roan, Black Eyed Peas, Coldplay</span>
         </button>
       </div>
 
-      <!-- D: BULK PASTE OR SEARCH VAULT -->
+      <!-- BULK PASTE OR SEARCH VAULT -->
       <div class="bulk-search-wrap">
-        <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:14px;">
-          <label for="bulkSongsInput">3. Paste Multiple Songs at Once (One Per Line)</label>
-          <textarea id="bulkSongsInput" rows="4" placeholder="SZA - Kill Bill&#10;Bruno Mars - Finesse&#10;NewJeans - Super Shy"></textarea>
-          <div style="display:flex; gap:8px; margin-top:8px;">
-            <button type="button" class="btn-sm btn-add" id="bulkAddMustBtn" style="flex:1; padding:8px;">+ Add All to Must-Play</button>
-            <button type="button" class="btn-sm btn-ban" id="bulkAddBanBtn" style="padding:8px;">🚫 Blacklist</button>
+        <div style="background:rgba(5,17,11,0.75); border:1px solid var(--border); border-radius:15px; padding:16px;">
+          <label class="field-label" for="bulkSongsInput">3. Paste Multiple Songs (One Per Line)</label>
+          <textarea id="bulkSongsInput" rows="5" placeholder="SZA - Kill Bill&#10;Bruno Mars - Finesse&#10;NewJeans - Super Shy"></textarea>
+          <div style="display:flex; gap:8px; margin-top:10px;">
+            <button type="button" class="btn-sm btn-add" id="bulkAddMustBtn" style="flex:1; padding:9px;">+ Queue All Songs</button>
+            <button type="button" class="btn-sm btn-ban" id="bulkAddBanBtn" style="padding:9px 13px;">Blacklist</button>
           </div>
         </div>
 
-        <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:14px;">
-          <label for="trackSearch">4. Browse &amp; Search My <span id="totalVaultCount">3,023</span> Offline Tracks</label>
-          <div class="tab-row" id="vibeTabs" style="margin-bottom:8px;">
+        <div style="background:rgba(5,17,11,0.75); border:1px solid var(--border); border-radius:15px; padding:16px;">
+          <label class="field-label" for="trackSearch">4. Search DJ J-Rip&rsquo;s <span id="totalVaultCount">3,023</span> Offline Vault</label>
+          <div class="tab-row" id="vibeTabs">
             <button type="button" class="tab-btn active" data-vibe="all">All</button>
-            <button type="button" class="tab-btn" data-vibe="debut">✨ Debut</button>
-            <button type="button" class="tab-btn" data-vibe="rnb">🍸 R&amp;B</button>
-            <button type="button" class="tab-btn" data-vibe="hiphop">🔥 Hip-Hop</button>
-            <button type="button" class="tab-btn" data-vibe="latin">💃 Latin</button>
-            <button type="button" class="tab-btn" data-vibe="house">⚡ House/Pop</button>
-            <button type="button" class="tab-btn" data-vibe="edits">🎛️ Edits</button>
+            <button type="button" class="tab-btn" data-vibe="debut">Debut</button>
+            <button type="button" class="tab-btn" data-vibe="rnb">R&amp;B</button>
+            <button type="button" class="tab-btn" data-vibe="hiphop">Hip-Hop</button>
+            <button type="button" class="tab-btn" data-vibe="latin">Latin</button>
+            <button type="button" class="tab-btn" data-vibe="house">House &amp; Pop</button>
+            <button type="button" class="tab-btn" data-vibe="edits">Edits</button>
           </div>
-          <input type="text" id="trackSearch" placeholder="Search artist or song (e.g. SZA, Drake, Bad Bunny, Coldplay)...">
-          <div class="track-list" id="trackList" style="margin-top:8px; max-height:230px;"></div>
-          <div style="margin-top:6px; display:flex; justify-content:space-between; align-items:center;">
+          <input type="text" id="trackSearch" placeholder="Search artist or title (e.g. SZA, Drake, Bad Bunny, Coldplay)...">
+          <div class="track-list" id="trackList" style="margin-top:9px; max-height:245px;"></div>
+          <div style="margin-top:8px; display:flex; justify-content:space-between; align-items:center;">
             <span id="showingCount" style="font-size:11.5px; color:var(--muted);">Loading tracks...</span>
             <button type="button" class="btn-sm" id="loadMoreBtn" style="display:none;">Show More</button>
           </div>
         </div>
       </div>
 
-      <!-- MUST PLAY / BAN DISPLAY -->
+      <!-- QUEUES -->
       <div class="playlist-columns">
         <div class="list-box">
-          <h4><span style="color:var(--green);">✅ Must-Play Queue</span><span id="mustCountBadge">0 songs</span></h4>
+          <h4><span style="color:var(--mint);">Must-Play Queue</span><span id="mustCountBadge" class="mono" style="color:var(--yellow);">0 songs</span></h4>
           <div id="mustListDisplay"><span style="color:var(--muted); font-size:12.5px;">Tap Starter Packs, search tracks, or paste Spotify links above.</span></div>
         </div>
         <div class="list-box">
-          <h4><span style="color:var(--red);">🚫 Do-Not-Play Blacklist</span><span id="banCountBadge">0 songs</span></h4>
+          <h4><span style="color:var(--orange);">Do-Not-Play Blacklist</span><span id="banCountBadge" class="mono" style="color:var(--muted);">0 songs</span></h4>
           <div id="banListDisplay"><span style="color:var(--muted); font-size:12.5px;">No blacklisted songs yet.</span></div>
         </div>
       </div>
 
       <div class="step-nav-bar">
-        <button type="button" class="btn-secondary prev-step-btn" data-prev="3">&larr; Back: Event &amp; Cues</button>
-        <button type="button" class="btn-primary next-step-btn" data-next="5">Next Step 5: Payment &amp; Lock Date &rarr;</button>
+        <button type="button" class="btn-secondary prev-step-btn" data-prev="3">&larr; Back: Night &amp; Cues</button>
+        <button type="button" class="btn-primary next-step-btn" data-next="5">Next Step 5: Pay &amp; Lock Date &rarr;</button>
       </div>
     </div>
   </section>
 
-  <!-- ==================== STEP 5: PAYMENT & INSTANT BOOKING LOCK ==================== -->
+  <!-- ==================== STEP 5: REVIEW, PAY & INSTANT PHONE ALARM ==================== -->
   <section class="wizard-step" id="step5">
     <div class="step-card">
       <div class="step-header">
         <span class="step-num">5</span>
-        <h2 class="step-title">Review Booking, Choose Payment &amp; Lock Your Date</h2>
+        <h2 class="step-title">Review Manifest &amp; <em>Lock Your Date</em></h2>
+      </div>
+
+      <!-- 1-TAP MISSING FIELD GUARD -->
+      <div class="readiness-bar" id="readinessBar">
+        <span id="readinessText" style="font-size:13.5px; color:var(--white);">Checking required fields...</span>
+        <div id="readinessActions" style="display:flex; gap:7px; flex-wrap:wrap;"></div>
       </div>
 
       <div class="summary-ledger">
         <div>
-          <div style="font-size:11.5px; color:var(--muted); text-transform:uppercase; font-weight:700;">Booking Summary</div>
-          <div id="ledgerPkgName" style="font-size:17px; font-weight:700; color:#fff;">18th Debut, Milestone &amp; VIP Event (4–5 hrs)</div>
+          <div class="mono" style="color:var(--muted);">Booking Manifest</div>
+          <div id="ledgerPkgName" style="font-size:17px; font-weight:700; color:var(--white); margin-top:2px;">18th Debut, Milestone &amp; VIP Event (4&ndash;5 hrs)</div>
           <div class="review-chips" id="reviewChips"></div>
         </div>
         <div style="text-align:right;">
-          <div style="font-size:11.5px; color:var(--muted); text-transform:uppercase; font-weight:700;">50% Retainer Due to Lock</div>
-          <div id="ledgerDeposit" style="font-size:23px; font-weight:800; color:var(--green);">$375.00 <span style="font-size:12px; color:var(--muted); font-weight:500;">(Balance due day of event)</span></div>
+          <div class="mono" style="color:var(--muted);">50% Retainer Due to Lock</div>
+          <div id="ledgerDeposit" class="serif-italic" style="font-size:28px; color:var(--yellow);">$375.00 <span style="font-family:'Plus Jakarta Sans',sans-serif; font-style:normal; font-size:12px; color:var(--muted); font-weight:500;">(Balance day of event)</span></div>
         </div>
       </div>
 
-      <label style="margin-bottom:10px;">Select Payment Option:</label>
+      <label class="field-label" style="margin-bottom:10px;">Select Payment Method</label>
       <div class="pay-options-grid" id="payOptionsGrid">
         <div class="pay-card active" data-pay="stripe">
-          <h4>💳 Card / Apple Pay / Google Pay</h4>
-          <p>Secured Stripe checkout (GG LOOP LLC). Works with all phones &amp; credit cards with instant email receipt.</p>
-          <span class="pay-fee-tag">Instant Online Checkout</span>
+          <h4>Card / Apple Pay / Google Pay</h4>
+          <p>Encrypted Stripe checkout (GG LOOP LLC). Instant digital confirmation and receipt.</p>
+          <span class="pay-fee-tag">Instant Checkout</span>
         </div>
         <div class="pay-card" data-pay="zelle">
-          <h4>⚡ Zelle Bank Transfer</h4>
-          <p>Zero-fee direct bank transfer to mobile <strong>(469) 371-8556</strong> (Jayson Quindao).</p>
-          <span class="pay-fee-tag" style="color:var(--green);">0% Fee • Most Popular</span>
+          <h4>Zelle Bank Transfer</h4>
+          <p>Zero-fee direct transfer to <strong>(469) 371-8556</strong> (Jayson Quindao).</p>
+          <span class="pay-fee-tag" style="color:var(--mint);">0% Fee &bull; Popular</span>
         </div>
         <div class="pay-card" data-pay="venmo_cashapp">
-          <h4>📲 Venmo / Cash App / Direct</h4>
-          <p>Submit now and coordinate instant transfer directly via text to <strong>(469) 371-8556</strong>.</p>
-          <span class="pay-fee-tag" style="color:var(--green);">0% Fee • Quick Confirm</span>
+          <h4>Venmo / Cash App</h4>
+          <p>Submit playlist &amp; date now and confirm handle via text to <strong>(469) 371-8556</strong>.</p>
+          <span class="pay-fee-tag" style="color:var(--mint);">0% Fee &bull; Fast</span>
         </div>
         <div class="pay-card" data-pay="invoice">
-          <h4>📄 Contract / Quote First</h4>
-          <p>Send your details &amp; Spotify playlists now, review official performance agreement PDF, then send retainer.</p>
-          <span class="pay-fee-tag">Hold Inquiry / Quote First</span>
+          <h4>Agreement / Quote First</h4>
+          <p>Send your manifest and playlists first to review a formal performance agreement before sending retainer.</p>
+          <span class="pay-fee-tag">Hold Inquiry First</span>
         </div>
       </div>
 
       <label class="agreement-check">
         <input type="checkbox" id="agreeTerms" checked>
-        <span>I understand that submitting holds an inquiry, and completing the <strong>50% non-refundable retainer</strong> officially locks my event date on DJ J-Rip's calendar (remaining 50% settled prior to soundcheck).</span>
+        <span>I understand that submitting holds an inquiry, and completing the <strong>50% non-refundable retainer</strong> officially locks my event date on DJ J-Rip&rsquo;s calendar (remaining 50% settled prior to soundcheck).</span>
       </label>
 
-      <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
-        <button type="button" class="btn-primary" id="submitMasterBtn">🚀 Submit Booking &amp; Trigger Live Payment Step</button>
-        <button type="button" class="btn-secondary" id="copyBtn">📋 Copy Full Summary</button>
-        <a class="btn-secondary" id="smsFallbackLink" href="#">💬 Text (469) 371-8556</a>
-        <a class="btn-secondary" id="emailFallbackLink" href="#">✉️ Email App</a>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <button type="button" class="btn-primary" id="submitMasterBtn">Submit Booking &amp; Alert DJ J-Rip Now &rarr;</button>
+        <button type="button" class="btn-secondary" id="copyBtn">Copy Summary</button>
+        <a class="btn-secondary" id="smsFallbackLink" href="#">Text (469) 371-8556</a>
+        <a class="btn-secondary" id="emailFallbackLink" href="#">Email App</a>
       </div>
 
       <div class="status-err" id="errorBanner"></div>
 
       <!-- POST-SUBMIT PAYMENT BOX -->
       <div class="checkout-panel" id="checkoutPanel">
-        <h3 style="color:var(--green); font-family:'Space Grotesk',sans-serif; font-size:20px; margin-bottom:8px;">
-          ✅ Submitted! DJ J-Rip's Phone Alarm &amp; Booth Inbox Were Alerted Immediately.
+        <h3 class="serif-italic" style="color:var(--yellow); font-size:24px; margin-bottom:8px;">
+          Sent &mdash; DJ J-Rip&rsquo;s Phone Alarm &amp; Studio Inbox Were Alerted Immediately.
         </h3>
-        <p style="font-size:14px; color:#e2e8f0; margin-bottom:14px;" id="postSubmitNote">
-          Your event profile, vibes, and Spotify playlists are in Jayson's queue. Complete your retainer below to lock your calendar date:
+        <p style="font-size:14px; color:var(--soft-white); margin-bottom:15px;" id="postSubmitNote">
+          Your event manifest, vibes, and Spotify playlists are synced into Jayson&rsquo;s queue. Complete your retainer below to lock your date:
         </p>
 
         <div id="stripePayAction" style="display:none; margin-bottom:12px;">
           <a id="stripeDirectBtn" class="btn-pay-green" href="https://buy.stripe.com/bJedRb1Ni1nPfHl20M0Fi09" target="_blank" rel="noopener">
-            💳 Complete Retainer Deposit on Stripe ($375) &rarr;
+            Complete $375 Retainer on Stripe &rarr;
           </a>
-          <div style="font-size:12px; color:var(--muted); margin-top:6px;">
-            Accepts Visa, Mastercard, Amex, Apple Pay &amp; Google Pay &bull; Please enter matching Name &amp; Event Date at checkout.
+          <div style="font-size:12px; color:var(--muted); margin-top:7px;">
+            Accepts Visa, Mastercard, Amex, Apple Pay &amp; Google Pay &bull; Event Date &amp; Email pre-tagged automatically.
           </div>
         </div>
 
-        <div id="zellePayAction" style="display:none; background:#0b111e; border:1px solid var(--border); padding:14px; border-radius:10px; margin-bottom:12px;">
-          <strong style="color:#fff;">Instant Transfer Instructions:</strong>
-          <p style="font-size:13.5px; color:#cbd5e1; margin:6px 0 10px 0;" id="manualPayInstructions"></p>
+        <div id="zellePayAction" style="display:none; background:#05120c; border:1px solid var(--border); padding:15px; border-radius:12px; margin-bottom:12px;">
+          <strong style="color:var(--white);">Direct Transfer Instructions</strong>
+          <p style="font-size:13.5px; color:var(--soft-white); margin:6px 0 11px 0;" id="manualPayInstructions"></p>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <button type="button" class="btn-secondary" id="copyPhoneBtn">📋 Copy (469) 371-8556</button>
-            <a class="btn-pay-green" id="textReceiptBtn" href="sms:+14693718556">💬 Text Screenshot When Sent</a>
+            <button type="button" class="btn-secondary" id="copyPhoneBtn">Copy (469) 371-8556</button>
+            <a class="btn-pay-green" id="textReceiptBtn" href="sms:+14693718556">Text Screenshot When Sent &rarr;</a>
           </div>
         </div>
       </div>
 
       <div class="step-nav-bar">
         <button type="button" class="btn-secondary prev-step-btn" data-prev="4">&larr; Back: Edit Playlists</button>
-        <span style="font-size:12.5px; color:var(--muted);">Questions? Text/Call Jayson directly: <a href="tel:+14693718556" style="color:var(--cyan);">(469) 371-8556</a></span>
+        <span style="font-size:12.5px; color:var(--muted);">Questions? Text or call <a href="tel:+14693718556" style="color:var(--yellow); text-decoration:none; font-weight:700;">(469) 371-8556</a></span>
       </div>
     </div>
   </section>
 
-  <!-- STICKY BOTTOM STATUS FOOTER -->
+  <!-- INTERACTIVE CRATE PEEK DRAWER -->
+  <div class="crate-drawer" id="crateDrawer" aria-hidden="true">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+      <div>
+        <span class="serif-italic" style="font-size:21px; color:var(--yellow);">Your Live Event Crate</span>
+        <span class="mono" style="color:var(--muted); margin-left:8px;" id="drawerMeta"></span>
+      </div>
+      <button type="button" class="btn-sm" id="closeDrawerBtn">Close &times;</button>
+    </div>
+    <div id="drawerContent" style="font-size:13px; color:var(--soft-white);"></div>
+  </div>
+
+  <!-- STICKY FROSTED DOCK WITH HOME BUTTON + LIVE CRATE PEEK -->
   <div class="sticky-footer">
     <div class="sticky-inner">
-      <div style="font-size:12.5px; color:var(--muted);">
-        <strong id="footerStepBadge" style="color:var(--cyan);">Step 1/5</strong> &bull;
-        <strong id="footerPkg" style="color:#fff;">$375 Dep</strong> &bull;
-        Links: <strong id="footerLinks" style="color:var(--green);">0</strong> &bull;
-        Songs: <strong id="footerMust" style="color:var(--green);">0</strong>
+      <div class="dock-left">
+        <button type="button" class="dock-home" id="dockHomeBtn" title="Back to Step 1 Home">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+          Home
+        </button>
+        <button type="button" class="dock-crate-btn" id="dockCrateBtn">Crate (<span id="footerMust">0</span>)</button>
+        <span class="sticky-meta-extra" style="font-size:12px; color:var(--soft-white); white-space:nowrap;">
+          <strong id="footerStepBadge" style="color:var(--yellow);">Step 1/5</strong> &bull;
+          <strong id="footerPkg">$375 Dep</strong> &bull;
+          Links: <strong id="footerLinks" style="color:var(--mint);">0</strong>
+        </span>
       </div>
-      <div style="display:flex; gap:8px;">
-        <button type="button" class="btn-secondary" id="footerPrevBtn" style="padding:7px 12px; font-size:12.5px; display:none;">&larr; Back</button>
-        <button type="button" class="btn-primary" id="footerNextBtn" style="padding:7px 14px; font-size:12.5px;">Next Step &rarr;</button>
+      <div style="display:flex; gap:7px; flex-shrink:0;">
+        <button type="button" class="btn-secondary" id="footerPrevBtn" style="padding:7px 12px; font-size:12px; display:none;">&larr; Back</button>
+        <button type="button" class="btn-primary" id="footerNextBtn" style="padding:7px 14px; font-size:12px; box-shadow:none;">Step 2 &rarr;</button>
       </div>
     </div>
   </div>
 
   <script>
-    const VIBE_ICONS = { rnb:'🍸', debut:'✨', hiphop:'🔥', latin:'💃', house:'⚡', edits:'🎛️' };
     const STORAGE_KEY = 'djjrip_client_portal_v2';
     const NTFY_TOPIC = 'djjrip-ops-4a65fac665ec';
 
@@ -1299,11 +1882,56 @@
         'payasoderodeo::caballodo',
         'ilikeit::cardibbadbunnyj',
         'callaita::badbunnytainy'
+      ],
+      pop_anthems: [
+        'dontstopthemusic::rihann',
+        'levitatingfeatdababy::du',
+        'igottafeeling::blackeyed',
+        'pinkponyclub::chappellro',
+        'askyfullofstars::coldpla'
       ]
     };
 
+    const BLUEPRINTS = {
+      debut: {
+        pkgId: 'debut_vip',
+        eventType: '18th Birthday Debut',
+        mcNeed: 'Need DJ J-Rip to MC & call names',
+        cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late',
+        vibes: ['debut', 'rnb', 'house'],
+        label: '18th Debut Blueprint loaded'
+      },
+      wedding: {
+        pkgId: 'wedding_gala',
+        eventType: 'Wedding Ceremony & Reception',
+        mcNeed: 'Need DJ J-Rip to MC & call names',
+        cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late',
+        vibes: ['debut', 'rnb', 'house'],
+        label: 'Wedding Blueprint loaded'
+      },
+      club: {
+        pkgId: 'bar_lounge',
+        eventType: 'Bar / Lounge / Rooftop',
+        mcNeed: 'Music Only (No MC announcements needed)',
+        cleanPolicy: 'Uncensored Original Versions OK All Night',
+        vibes: ['hiphop', 'house', 'edits'],
+        label: 'Club / Lounge Blueprint loaded'
+      },
+      custom: {
+        pkgId: 'custom_quote',
+        eventType: 'Corporate / Campus Event',
+        mcNeed: 'External MC/Host - DJ runs mics & cues only',
+        cleanPolicy: '100% Clean Radio Edits All Night',
+        vibes: ['rnb', 'house'],
+        label: 'Custom VIP Blueprint loaded'
+      }
+    };
+
+    const SPOTLIGHT_ARTISTS = ['sza', 'bruno mars', 'frank ocean', 'silk sonic', 'drake', 'rihanna', 'dua lipa', 'bad bunny', 'kendrick', 'daniel caesar', 'the weeknd', 'benson boone', 'billie eilish', 'earth wind', 'whitney', 'michael jackson', 'alicia keys', 'coldplay', 'usher', 'black eyed peas'];
+
     let currentStep = 1;
     let catalogData = null;
+    let sortedDefaultTracks = [];
     let trackById = new Map();
     let selectedVibes = new Set();
     let activeFilterVibe = 'all';
@@ -1312,6 +1940,7 @@
     let mustPlay = [];
     let doNotPlay = [];
     let oembedCache = {};
+    let toastTimer = null;
 
     let selectedPackage = {
       id: 'debut_vip',
@@ -1326,9 +1955,18 @@
       return String(str).replace(/[&<>"']/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[m]));
     }
 
-    function goToStep(stepNum) {
+    function showToast(msg) {
+      const t = document.getElementById('toastMsg');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+    }
+
+    function goToStep(stepNum, focusSelector = null) {
       const target = Math.max(1, Math.min(5, Number(stepNum)));
       currentStep = target;
+      document.getElementById('crateDrawer').classList.remove('open');
       document.querySelectorAll('.wizard-step').forEach((sec, idx) => {
         sec.classList.toggle('active', idx + 1 === target);
       });
@@ -1337,19 +1975,45 @@
         btn.classList.toggle('active', s === target);
         btn.classList.toggle('completed', s < target);
       });
+      document.getElementById('progressFill').style.width = `${target * 20}%`;
       document.getElementById('footerStepBadge').textContent = `Step ${target}/5`;
       const prevBtn = document.getElementById('footerPrevBtn');
       const nextBtn = document.getElementById('footerNextBtn');
       prevBtn.style.display = target > 1 ? 'inline-flex' : 'none';
       if (target < 5) {
         nextBtn.style.display = 'inline-flex';
-        nextBtn.textContent = `Next Step ${target + 1} →`;
+        nextBtn.textContent = `Step ${target + 1} →`;
       } else {
         nextBtn.style.display = 'none';
+        renderReviewChips();
+        updateReadinessBar();
       }
-      if (target === 5) renderReviewChips();
       saveState();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (focusSelector) {
+        setTimeout(() => {
+          const el = document.querySelector(focusSelector);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            el.focus();
+            el.classList.remove('field-pulse');
+            void el.offsetWidth;
+            el.classList.add('field-pulse');
+          }
+        }, 140);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function buildPrefilledStripeUrl() {
+      const base = selectedPackage.stripeUrl;
+      const email = document.getElementById('clientEmail').value.trim();
+      const name = (document.getElementById('clientName').value.trim() || 'Client').replace(/[^A-Za-z0-9]/g, '').slice(0, 24) || 'Client';
+      const date = document.getElementById('eventDate').value || 'TBD';
+      const qs = new URLSearchParams();
+      if (email.includes('@')) qs.set('prefilled_email', email);
+      qs.set('client_reference_id', `${date}_${name}`.slice(0, 64));
+      return `${base}?${qs.toString()}`;
     }
 
     function selectPkgCard(card) {
@@ -1364,10 +2028,10 @@
         stripeUrl: card.dataset.stripe
       };
       const depHtml = dep === 'Custom'
-        ? 'Custom Quote <span style="font-size:12.5px;color:var(--muted);font-weight:500;">(Agreed amount)</span>'
-        : `$${dep}.00 <span style="font-size:12.5px;color:var(--muted);font-weight:500;">($${selectedPackage.total} total)</span>`;
+        ? 'Custom Quote <span style="font-family:\'Plus Jakarta Sans\',sans-serif;font-style:normal;font-size:12.5px;color:var(--muted);font-weight:500;">(Agreed amount)</span>'
+        : `$${dep}.00 <span style="font-family:\'Plus Jakarta Sans\',sans-serif;font-style:normal;font-size:12.5px;color:var(--muted);font-weight:500;">($${selectedPackage.total} total)</span>`;
       document.getElementById('step2PkgLabel').textContent = selectedPackage.label;
-      document.getElementById('step2DepositLabel').innerHTML = dep === 'Custom' ? 'Custom Quote' : `$${dep}.00`;
+      document.getElementById('step2DepositLabel').textContent = dep === 'Custom' ? 'Custom Quote' : `$${dep}.00`;
       document.getElementById('ledgerPkgName').textContent = selectedPackage.label;
       document.getElementById('ledgerDeposit').innerHTML = depHtml;
       document.getElementById('footerPkg').textContent = dep === 'Custom' ? 'Custom Dep' : `$${dep} Dep`;
@@ -1385,10 +2049,60 @@
 
     function updateCheckoutActionBoxes() {
       const btn = document.getElementById('stripeDirectBtn');
-      btn.href = selectedPackage.stripeUrl;
+      btn.href = buildPrefilledStripeUrl();
       btn.textContent = selectedPackage.deposit === 'Custom'
-        ? '💳 Pay Custom Quoted Deposit on Stripe →'
-        : `💳 Complete $${selectedPackage.deposit} Retainer Deposit on Stripe →`;
+        ? 'Complete Custom Quoted Deposit on Stripe →'
+        : `Complete $${selectedPackage.deposit} Retainer on Stripe →`;
+    }
+
+    function updateReadinessBar() {
+      const name = document.getElementById('clientName').value.trim();
+      const phone = document.getElementById('clientPhone').value.trim();
+      const date = document.getElementById('eventDate').value;
+      const bar = document.getElementById('readinessBar');
+      const txt = document.getElementById('readinessText');
+      const acts = document.getElementById('readinessActions');
+      acts.innerHTML = '';
+
+      const missing = [];
+      if (!date) missing.push({ label: '+ Pick Date (Step 2)', step: 2, sel: '#eventDate' });
+      if (!name) missing.push({ label: '+ Enter Name (Step 3)', step: 3, sel: '#clientName' });
+      if (!phone) missing.push({ label: '+ Enter Phone (Step 3)', step: 3, sel: '#clientPhone' });
+
+      if (missing.length === 0) {
+        bar.classList.add('ready');
+        txt.innerHTML = '<strong style="color:var(--mint);">All required info complete</strong> &mdash; ready for live submission.';
+      } else {
+        bar.classList.remove('ready');
+        txt.innerHTML = '<strong style="color:var(--yellow);">Missing details before locking:</strong> tap a yellow pill to fill it:';
+        missing.forEach(m => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'jump-chip';
+          b.textContent = m.label;
+          b.addEventListener('click', () => goToStep(m.step, m.sel));
+          acts.appendChild(b);
+        });
+      }
+    }
+
+    function renderCrateDrawer() {
+      const urls = getPlaylistUrls();
+      document.getElementById('drawerMeta').textContent = `${urls.length} link(s) • ${mustPlay.length} queued • ${doNotPlay.length} banned`;
+      let html = '';
+      if (urls.length) {
+        html += `<div style="margin-bottom:10px;"><strong style="color:var(--mint);">Linked Playlists:</strong><br>` +
+          urls.map(u => `<div style="font-size:12px;margin-top:3px;word-break:break-all;">&bull; [${escapeHtml(u.phase)}] ${escapeHtml(u.url)}</div>`).join('') + `</div>`;
+      }
+      if (mustPlay.length) {
+        html += `<div><strong style="color:var(--yellow);">Must-Play Queue (${mustPlay.length}):</strong><div style="margin-top:6px;">` +
+          mustPlay.slice(0, 15).map(t => `<span class="review-chip" style="margin:2px;">${escapeHtml(t.label)}</span>`).join('') +
+          (mustPlay.length > 15 ? ` <span style="color:var(--muted);">+${mustPlay.length - 15} more</span>` : '') + `</div></div>`;
+      }
+      if (!urls.length && !mustPlay.length) {
+        html = `<span style="color:var(--muted);">Your crate is empty &mdash; jump to <button type="button" class="btn-sm" onclick="goToStep(4)">Step 4: Spotify &amp; Crate</button> to add playlists or 1-tap Starter Packs!</span>`;
+      }
+      document.getElementById('drawerContent').innerHTML = html;
     }
 
     function getPlaylistUrls() {
@@ -1424,8 +2138,8 @@
             card.innerHTML = `
               ${meta.thumbnail_url ? `<img src="${escapeHtml(meta.thumbnail_url)}" alt="Spotify Cover">` : ''}
               <div style="min-width:0;">
-                <div style="font-size:11px; color:var(--green); font-weight:700;">✓ SPOTIFY ARCHIVE LINKED (${escapeHtml(item.phase)})</div>
-                <div style="font-size:13px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(meta.title || 'Spotify Playlist')}</div>
+                <div class="mono" style="color:var(--mint); font-size:10px;">SPOTIFY LINKED &bull; ${escapeHtml(item.phase)}</div>
+                <div style="font-size:13px; font-weight:700; color:var(--white); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(meta.title || 'Spotify Playlist')}</div>
               </div>
             `;
             container.appendChild(card);
@@ -1434,12 +2148,30 @@
         }
         card.innerHTML = `
           <div style="min-width:0;">
-            <div style="font-size:11px; color:var(--cyan); font-weight:700;">✓ QUEUED FOR DOWNLOAD (${escapeHtml(item.phase)})</div>
-            <div style="font-size:12px; color:#cbd5e1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(item.url)}</div>
+            <div class="mono" style="color:var(--yellow); font-size:10px;">QUEUED &bull; ${escapeHtml(item.phase)}</div>
+            <div style="font-size:12px; color:var(--soft-white); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(item.url)}</div>
           </div>
         `;
         container.appendChild(card);
       }
+    }
+
+    function applyBlueprint(key) {
+      const bp = BLUEPRINTS[key];
+      if (!bp) return;
+      const pc = document.querySelector(`.pkg-card[data-pkg="${bp.pkgId}"]`);
+      if (pc) selectPkgCard(pc);
+      document.getElementById('eventType').value = bp.eventType;
+      document.getElementById('mcNeed').value = bp.mcNeed;
+      document.getElementById('cleanPolicy').value = bp.cleanPolicy;
+      bp.vibes.forEach(v => {
+        if (catalogData?.vibes?.[v]) selectedVibes.add(v);
+      });
+      renderVibes();
+      updateCounters();
+      saveState();
+      showToast(`${bp.label} ✓`);
+      goToStep(2, '#eventDate');
     }
 
     function applyUrlParamsAndHash() {
@@ -1486,6 +2218,7 @@
       else if (h === '#step5' || h === '#pay') currentStep = 5;
       else if (h === '#step3' || h === '#event') currentStep = 3;
       else if (h === '#step2' || h === '#packages') currentStep = 2;
+      else if (h === '#home' || h === '#step1') currentStep = 1;
     }
 
     function saveState() {
@@ -1539,14 +2272,28 @@
       } catch (e) {}
     }
 
+    function buildCuratedDefaultList(tracks) {
+      function scoreTrack(t) {
+        const a = t.a.toLowerCase();
+        const title = t.t.toLowerCase();
+        if (title.includes('christmas') || title.includes('holiday') || a.includes('uicideboy') || a.includes('suicideboy')) return -10;
+        const idx = SPOTLIGHT_ARTISTS.findIndex(k => a.includes(k));
+        if (idx >= 0) return 100 - idx;
+        if (/^[a-z]/i.test(t.a)) return 10;
+        return 0;
+      }
+      return [...tracks].sort((a, b) => scoreTrack(b) - scoreTrack(a));
+    }
+
     async function init() {
       try {
         const res = await fetch('dj-catalog.json');
         catalogData = await res.json();
         catalogData.tracks.forEach(t => trackById.set(t.id, t));
+        sortedDefaultTracks = buildCuratedDefaultList(catalogData.tracks);
         document.getElementById('totalVaultCount').textContent = catalogData.total.toLocaleString();
       } catch (e) {
-        document.getElementById('trackList').innerHTML = '<div style="padding:14px;color:#fca5a5;">Catalog busy loading — paste your Spotify URLs or custom songs above!</div>';
+        document.getElementById('trackList').innerHTML = '<div style="padding:14px;color:#fca5a5;">Catalog loading — paste Spotify links or custom tracks above.</div>';
       }
       restoreState();
       applyUrlParamsAndHash();
@@ -1554,6 +2301,7 @@
       setFilterVibe(activeFilterVibe);
       renderSelectedLists();
       refreshPlaylistPreviews();
+      updateCheckoutActionBoxes();
       goToStep(currentStep);
     }
 
@@ -1565,13 +2313,15 @@
         const card = document.createElement('div');
         card.className = 'vibe-card' + (selectedVibes.has(key) ? ' selected' : '');
         card.innerHTML = `
-          <div class="vibe-top">
-            <div class="vibe-name">${VIBE_ICONS[key] || '🎵'} ${info.name}</div>
-            <span class="vibe-count">${info.count.toLocaleString()}</span>
+          <div>
+            <div class="vibe-top">
+              <div class="vibe-name">${escapeHtml(info.name)}</div>
+              <span class="vibe-count">${info.count.toLocaleString()}</span>
+            </div>
+            <div class="vibe-desc">${escapeHtml(info.desc)}</div>
           </div>
-          <div class="vibe-desc">${info.desc}</div>
           <div class="vibe-actions">
-            <span class="vibe-badge">${selectedVibes.has(key) ? '✓ Selected Vibe' : 'Tap to Select Vibe'}</span>
+            <span class="vibe-badge">${selectedVibes.has(key) ? '&#10003; Selected' : 'Tap to Select'}</span>
             <button type="button" class="vibe-filter-btn" data-browse="${key}">Filter Tracks &darr;</button>
           </div>
         `;
@@ -1602,7 +2352,8 @@
     function renderTracks() {
       if (!catalogData) return;
       const q = searchQuery.toLowerCase().trim();
-      const filtered = catalogData.tracks.filter(t => {
+      const source = q ? catalogData.tracks : sortedDefaultTracks;
+      const filtered = source.filter(t => {
         if (activeFilterVibe !== 'all' && t.v !== activeFilterVibe) return false;
         if (!q) return true;
         return t.t.toLowerCase().includes(q) || t.a.toLowerCase().includes(q);
@@ -1613,7 +2364,25 @@
       const slice = filtered.slice(0, visibleLimit);
 
       if (slice.length === 0) {
-        listEl.innerHTML = '<div style="padding:16px;color:var(--muted);text-align:center;">No exact vault match — paste it in Box 3 ("Paste Multiple Songs") and our Spotify engine will grab it!</div>';
+        const cleanQ = escapeHtml(searchQuery.trim());
+        listEl.innerHTML = `
+          <div style="padding:18px; color:var(--muted); text-align:center;">
+            <div style="margin-bottom:10px;">Not in local showcase crate &mdash; our Spotify Archiver downloads it automatically.</div>
+            <button type="button" class="btn-sm btn-add" id="quickAddMissingBtn">+ Add &ldquo;${cleanQ}&rdquo; to Must-Play</button>
+          </div>
+        `;
+        const qBtn = document.getElementById('quickAddMissingBtn');
+        if (qBtn) {
+          qBtn.addEventListener('click', () => {
+            const rawQ = searchQuery.trim();
+            if (!rawQ) return;
+            toggleMust(`custom_${Date.now()}`, `[Custom] ${rawQ}`, true);
+            document.getElementById('trackSearch').value = '';
+            searchQuery = '';
+            renderTracks();
+            showToast(`Added "${rawQ}" to Must-Play`);
+          });
+        }
       } else {
         const frag = document.createDocumentFragment();
         for (const t of slice) {
@@ -1628,11 +2397,14 @@
               <div class="track-meta"><span>${escapeHtml(t.a)}</span>${t.d ? `<span>&bull; ${t.d}</span>` : ''}</div>
             </div>
             <div style="display:flex;gap:6px;flex-shrink:0;">
-              <button type="button" class="btn-sm btn-add ${isMust ? 'added' : ''}">${isMust ? '✓ Must-Play' : '+ Add'}</button>
-              <button type="button" class="btn-sm btn-ban ${isBan ? 'banned' : ''}">${isBan ? 'Banned' : '🚫'}</button>
+              <button type="button" class="btn-sm btn-add ${isMust ? 'added' : ''}">${isMust ? '&#10003; Queued' : '+ Add'}</button>
+              <button type="button" class="btn-sm btn-ban ${isBan ? 'banned' : ''}">${isBan ? 'Banned' : 'Ban'}</button>
             </div>
           `;
-          row.querySelector('.btn-add').addEventListener('click', () => toggleMust(t.id, label));
+          row.querySelector('.btn-add').addEventListener('click', () => {
+            toggleMust(t.id, label);
+            if (mustPlay.some(x => x.id === t.id)) showToast(`Queued: ${t.t}`);
+          });
           row.querySelector('.btn-ban').addEventListener('click', () => toggleBan(t.id, label));
           frag.appendChild(row);
         }
@@ -1669,6 +2441,18 @@
       saveState();
     }
 
+    function updatePackBadges() {
+      document.querySelectorAll('.starter-btn').forEach(btn => {
+        const ids = STARTER_PACKS[btn.dataset.pack] || [];
+        const allQueued = ids.length > 0 && ids.every(id => mustPlay.some(x => x.id === id));
+        const st = btn.querySelector('.pack-status');
+        if (st) {
+          st.textContent = allQueued ? '✓ Added' : '+5';
+          st.style.color = allQueued ? 'var(--mint)' : 'var(--yellow)';
+        }
+      });
+    }
+
     function renderSelectedLists() {
       const mustDiv = document.getElementById('mustListDisplay');
       const banDiv = document.getElementById('banListDisplay');
@@ -1690,6 +2474,7 @@
         banDiv.appendChild(el);
       });
       updateCounters();
+      updatePackBadges();
     }
 
     function updateCounters() {
@@ -1698,6 +2483,9 @@
       document.getElementById('footerMust').textContent = mustPlay.length;
       document.getElementById('footerLinks').textContent = getPlaylistUrls().length;
       updateFallbackLinks();
+      updateCheckoutActionBoxes();
+      if (currentStep === 5) updateReadinessBar();
+      if (document.getElementById('crateDrawer').classList.contains('open')) renderCrateDrawer();
     }
 
     function renderReviewChips() {
@@ -1705,12 +2493,12 @@
       const p = buildPayload();
       const urls = getPlaylistUrls();
       chipsEl.innerHTML = `
-        <span class="review-chip">👤 ${escapeHtml(p.name)}</span>
-        <span class="review-chip">📅 ${escapeHtml(p.date)}</span>
-        <span class="review-chip">✨ ${selectedVibes.size} Vibes</span>
-        <span class="review-chip">🔗 ${urls.length} Playlist Links</span>
-        <span class="review-chip">🎵 ${mustPlay.length} Must-Play</span>
-        <span class="review-chip">🚫 ${doNotPlay.length} Banned</span>
+        <span class="review-chip">Client: ${escapeHtml(p.name)}</span>
+        <span class="review-chip">Date: ${escapeHtml(p.date)}</span>
+        <span class="review-chip">${selectedVibes.size} Vibes</span>
+        <span class="review-chip">${urls.length} Playlist Links</span>
+        <span class="review-chip">${mustPlay.length} Must-Play</span>
+        <span class="review-chip">${doNotPlay.length} Banned</span>
       `;
     }
 
@@ -1769,6 +2557,32 @@
       document.getElementById('smsFallbackLink').href = `sms:+14693718556?body=${encodeURIComponent(`Hi DJ J-Rip! Booking submitted for ${p.name} (${p.type} on ${p.date}) - ${p.depStr} via ${selectedPaymentMethod.toUpperCase()}. Playlists linked: ${p.urls.length}, Songs: ${mustPlay.length}.`)}`;
     }
 
+    // Home buttons & Blueprints
+    document.getElementById('topHomeBtn').addEventListener('click', () => goToStep(1));
+    document.getElementById('brandWordmarkBtn').addEventListener('click', () => goToStep(1));
+    document.getElementById('dockHomeBtn').addEventListener('click', () => goToStep(1));
+    document.getElementById('jumpSpotifyHeroBtn').addEventListener('click', () => goToStep(4, '#plDinner'));
+    document.querySelectorAll('.blueprint-btn').forEach(b => b.addEventListener('click', () => applyBlueprint(b.dataset.blueprint)));
+
+    // Night Flow cards
+    document.querySelectorAll('.phase-card').forEach(p => {
+      p.addEventListener('click', () => {
+        if (p.dataset.jumpStep) goToStep(p.dataset.jumpStep, p.dataset.jumpFocus);
+        else if (p.dataset.focus) {
+          const el = document.querySelector(p.dataset.focus);
+          if (el) { el.focus(); el.classList.add('field-pulse'); }
+        }
+      });
+    });
+
+    // Crate Peek Drawer
+    document.getElementById('dockCrateBtn').addEventListener('click', () => {
+      const dr = document.getElementById('crateDrawer');
+      if (dr.classList.contains('open')) dr.classList.remove('open');
+      else { renderCrateDrawer(); dr.classList.add('open'); }
+    });
+    document.getElementById('closeDrawerBtn').addEventListener('click', () => document.getElementById('crateDrawer').classList.remove('open'));
+
     // Navigation listeners
     document.querySelectorAll('.step-tab').forEach(btn => btn.addEventListener('click', () => goToStep(btn.dataset.step)));
     document.querySelectorAll('.next-step-btn').forEach(btn => btn.addEventListener('click', () => goToStep(btn.dataset.next)));
@@ -1796,9 +2610,9 @@
             addedCount++;
           }
         });
-        const orig = btn.innerHTML;
-        btn.style.borderColor = 'var(--green)';
-        if (addedCount > 0) setTimeout(() => { btn.style.borderColor = ''; }, 1400);
+        btn.classList.add('flash-added');
+        setTimeout(() => btn.classList.remove('flash-added'), 1400);
+        if (addedCount > 0) showToast(`+${addedCount} classics queued in crate`);
       });
     });
 
@@ -1809,6 +2623,7 @@
       if (!lines.length) return;
       lines.forEach((line, i) => toggleMust(`cm_${Date.now()}_${i}`, `[Custom] ${line}`, true));
       box.value = '';
+      showToast(`+${lines.length} track(s) queued`);
     });
     document.getElementById('bulkAddBanBtn').addEventListener('click', () => {
       const box = document.getElementById('bulkSongsInput');
@@ -1816,27 +2631,34 @@
       if (!lines.length) return;
       lines.forEach((line, i) => toggleBan(`cb_${Date.now()}_${i}`, `[Custom] ${line}`, true));
       box.value = '';
+      showToast(`${lines.length} blacklisted`);
     });
 
     // Inputs & Spotify Preview
     ['clientName','clientEmail','clientPhone','eventDate','eventType','venueInfo','mcNeed','cleanPolicy','entranceSong','slowSongs','specialNotes'].forEach(id => {
-      document.getElementById(id).addEventListener('input', () => { updateFallbackLinks(); saveState(); });
+      document.getElementById(id).addEventListener('input', () => { updateCounters(); saveState(); });
     });
+    let previewTimer = null;
     document.querySelectorAll('.pl-url-input').forEach(inp => {
-      inp.addEventListener('input', () => { refreshPlaylistPreviews(); updateFallbackLinks(); saveState(); });
+      inp.addEventListener('input', () => {
+        clearTimeout(previewTimer);
+        previewTimer = setTimeout(() => { refreshPlaylistPreviews(); updateCounters(); saveState(); }, 250);
+      });
     });
 
     document.getElementById('copyBtn').addEventListener('click', () => {
       navigator.clipboard.writeText(buildPayload().text).then(() => {
         const b = document.getElementById('copyBtn');
-        b.textContent = '✓ Copied!';
-        setTimeout(() => b.textContent = '📋 Copy Full Summary', 2000);
+        b.textContent = 'Copied ✓';
+        showToast('Summary copied to clipboard');
+        setTimeout(() => b.textContent = 'Copy Summary', 2000);
       });
     });
 
     document.getElementById('copyPhoneBtn').addEventListener('click', () => {
       navigator.clipboard.writeText('4693718556').then(() => {
-        document.getElementById('copyPhoneBtn').textContent = '✓ Copied 4693718556';
+        document.getElementById('copyPhoneBtn').textContent = 'Copied (469) 371-8556 ✓';
+        showToast('Copied (469) 371-8556');
       });
     });
 
@@ -1850,25 +2672,26 @@
       const agreed = document.getElementById('agreeTerms').checked;
 
       if (!name || !phone || !date) {
-        errEl.textContent = 'Missing required details! Please enter Client Name, Mobile Phone (Step 3), and Event Date (Step 2) before locking.';
+        updateReadinessBar();
+        errEl.textContent = 'Missing required details! Tap the yellow pills above to enter Event Date, Name, and Phone.';
         errEl.classList.add('show');
         return;
       }
       if (!agreed) {
-        errEl.textContent = 'Please confirm the 50% retainer policy checkbox above.';
+        errEl.textContent = 'Please check the 50% retainer policy checkbox above.';
         errEl.classList.add('show');
         return;
       }
 
       const btn = document.getElementById('submitMasterBtn');
       btn.disabled = true;
-      btn.textContent = '⏳ Dispatching to DJ J-Rip & Ringing Booth Alarm...';
+      btn.textContent = 'Dispatching Booking & Triggering DJ Phone Alarm...';
 
       const payload = buildPayload();
       const bodyObj = {
         _subject: `[DJ J-RIP BOOKING + VIBE] ${payload.name} (${payload.date}) — ${payload.depStr} via ${selectedPaymentMethod.toUpperCase()}`,
         _template: 'box',
-        _autoresponse: `Thank you ${payload.name}! DJ J-Rip (Jayson Quindao / GG LOOP LLC) received your booking details, vibes, and playlists for ${payload.date}. Selected retainer: ${payload.depStr} (${selectedPaymentMethod.toUpperCase()}). Call/text (469) 371-8556 anytime!`,
+        _autoresponse: `Thank you ${payload.name}! DJ J-Rip (Jayson Quindao / GG LOOP LLC) received your booking details, vibes, and playlists for ${payload.date}. Selected retainer: ${payload.depStr} (${selectedPaymentMethod.toUpperCase()}). Call or text (469) 371-8556 anytime!`,
         Client_Name: payload.name,
         Client_Phone: payload.phone,
         Client_Email: payload.email,
@@ -1881,7 +2704,6 @@
       };
       if (payload.email.includes('@')) bodyObj.email = payload.email;
 
-      // Dispatch FormSubmit email relay + instant <1s Priority-5 ntfy alarm in parallel
       let sentOk = false;
       const formPromise = fetch('https://formsubmit.co/ajax/jquindao1@icloud.com', {
         method: 'POST',
@@ -1889,17 +2711,17 @@
         body: JSON.stringify(bodyObj)
       }).then(r => r.json().then(j => ({ ok: r.ok, j }))).catch(() => ({ ok: false }));
 
-      // Zero-PII instant Priority-5 alarm so Android + Desktop ring immediately
+      // Zero-PII instant <1s Priority-5 phone alarm
       const alarmPromise = fetch('https://ntfy.sh', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           topic: NTFY_TOPIC,
           title: `DJ J-RIP LEAD SUBMITTED (${payload.date})`,
-          message: `Package: ${selectedPackage.label} | Retainer: ${payload.depStr} (${selectedPaymentMethod.toUpperCase()}) | Playlist Links: ${payload.urls.length} | Tracks: ${mustPlay.length}. Open iCloud Email & sync_client_playlist.py now!`,
+          message: `Package: ${selectedPackage.label} | Retainer: ${payload.depStr} (${selectedPaymentMethod.toUpperCase()}) | Playlist Links: ${payload.urls.length} | Tracks: ${mustPlay.length}. Open iCloud Mail & run sync_client_playlist.py.`,
           priority: 5,
           tags: ['rotating_light', 'headphones', 'dollar'],
-          click: 'https://github.com/djjrip/agentic-career-engine/blob/master/DJ_DELEGATION_BOARD.md'
+          click: 'https://djjrip.github.io/dj-confirmed.html'
         })
       }).catch(() => {});
 
@@ -1911,7 +2733,7 @@
 
       if (!sentOk) {
         document.getElementById('postSubmitNote').innerHTML =
-          `Note: Form relay hit a network blocker, so please tap <strong>💬 Text (469) 371-8556</strong> or <strong>✉️ Email App</strong> above after paying your retainer so Jayson receives your song manifest.`;
+          `Your booking alarm fired to Jayson&rsquo;s phone! Tap <strong>Text (469) 371-8556</strong> above if you also want an instant SMS copy sent directly.`;
       }
 
       const stripeBox = document.getElementById('stripePayAction');
@@ -1920,25 +2742,27 @@
       manualBox.style.display = 'none';
 
       if (selectedPaymentMethod === 'stripe') {
+        updateCheckoutActionBoxes();
         stripeBox.style.display = 'block';
-        btn.textContent = '✓ Sent! Tap Green Stripe Checkout Below';
+        btn.textContent = 'Sent ✓ — Complete Stripe Checkout Below';
       } else if (selectedPaymentMethod === 'zelle' || selectedPaymentMethod === 'venmo_cashapp') {
         manualBox.style.display = 'block';
         const appLabel = selectedPaymentMethod === 'zelle' ? 'Zelle' : 'Venmo / Cash App';
         document.getElementById('manualPayInstructions').innerHTML = selectedPaymentMethod === 'zelle'
           ? `Open <strong>Zelle</strong> and send <strong>${payload.depStr}</strong> to mobile <strong>(469) 371-8556</strong> (Jayson Quindao / GG LOOP LLC). Memo: <code>${escapeHtml(payload.name)} - ${escapeHtml(payload.date)}</code>.`
-          : `Text <strong>(469) 371-8556</strong> for your instant Venmo/Cash App handle and send <strong>${payload.depStr}</strong> with memo <code>${escapeHtml(payload.name)} - ${escapeHtml(payload.date)}</code>.`;
+          : `Text <strong>(469) 371-8556</strong> for your instant Venmo or Cash App handle and send <strong>${payload.depStr}</strong> with memo <code>${escapeHtml(payload.name)} - ${escapeHtml(payload.date)}</code>.`;
         document.getElementById('textReceiptBtn').href = `sms:+14693718556?body=${encodeURIComponent(`Hi DJ J-Rip! Submitted my playlist and ready to send ${payload.depStr} via ${appLabel} for ${payload.name} (${payload.date}).`)}`;
-        btn.textContent = '✓ Sent! Follow Transfer Box Below';
+        btn.textContent = 'Sent ✓ — Follow Transfer Box Below';
       } else {
         manualBox.style.display = 'block';
         document.getElementById('manualPayInstructions').innerHTML =
-          `Your inquiry & Spotify playlists have been queued! Expect a text/call from <strong>(469) 371-8556</strong> with your PDF performance agreement before paying <strong>${payload.depStr}</strong>. Need fast hold? Pay now via <a href="${selectedPackage.stripeUrl}" target="_blank" style="color:var(--green);font-weight:700;">Stripe Checkout</a> or Zelle <strong>(469) 371-8556</strong>.`;
-        btn.textContent = '✓ Inquiry Queued — We Will Follow Up Soon';
+          `Your inquiry &amp; Spotify playlists are queued. Expect a text or call from <strong>(469) 371-8556</strong> with your PDF agreement before paying <strong>${payload.depStr}</strong>. Want instant hold? Pay via <a href="${escapeHtml(buildPrefilledStripeUrl())}" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700;">Stripe Checkout</a> or Zelle <strong>(469) 371-8556</strong>.`;
+        btn.textContent = 'Inquiry Queued ✓ — Expect Text Confirmation';
       }
 
       btn.disabled = false;
-      panel.scrollIntoView({ behavior: 'smooth' });
+      showToast('DJ J-Rip alerted immediately ✓');
+      panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
 
     init();
