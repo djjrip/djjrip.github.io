@@ -425,7 +425,7 @@
   <div class="topbar">
     <div class="brand-tag">● DJ J-RIP // CLIENT VIBE & PLAYLIST STUDIO</div>
     <div class="nav-links">
-      <a class="nav-link" href="dj.html">🎧 Artist & Rig EPK</a>
+      <a class="nav-link" href="dj.html" style="background:rgba(16,185,129,0.16);border-color:#10b981;color:#6ee7b7;">🚀 Full All-in-One Booking &amp; Payment Hub</a>
       <a class="nav-link" href="booking.html">📅 Rates & Booking</a>
       <a class="nav-link" href="tel:+14693718556">📞 (469) 371-8556</a>
     </div>
@@ -947,7 +947,7 @@
         const resJson = await response.json();
         if (response.ok && (resJson.success === 'true' || resJson.success === true)) {
           banner.className = 'status-banner status-ok';
-          banner.innerHTML = `<strong>✓ Playlist Submitted!</strong> DJ J-Rip has received your vibe selection and ${mustPlay.length}-track playlist for ${escapeHtml(payload.date)}. Expect confirmation at ${escapeHtml(payload.contact)}.`;
+          banner.innerHTML = `<strong>✓ Playlist Submitted!</strong> DJ J-Rip has received your vibe selection and ${mustPlay.length}-track playlist for ${escapeHtml(payload.date)}. Expect confirmation at ${escapeHtml(payload.contact)}.<br><br>Ready to lock your date? <a href="dj.html#pay" style="color:#6ee7b7;font-weight:700;text-decoration:underline;">Choose Payment Option (Stripe Card / Apple Pay / Zelle 469-371-8556) &rarr;</a>`;
           btn.textContent = '✓ Sent Successfully';
         } else {
           throw new Error(resJson.message || 'Endpoint requires backup email click');
