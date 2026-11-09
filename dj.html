@@ -707,8 +707,43 @@
     .deck-track-sub {
       font-size: 11.5px;
       color: var(--muted);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       text-align: center;
+    }
+    .deck-progress-wrap {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .deck-seek-range {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 5px;
+      padding: 0;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--amber) 0%, var(--amber) var(--seek-pct, 0%), rgba(148, 163, 184, 0.22) var(--seek-pct, 0%), rgba(148, 163, 184, 0.22) 100%);
+      border: 0;
+      cursor: pointer;
+      display: block;
+    }
+    .deck-seek-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--amber);
+      box-shadow: 0 0 8px rgba(245, 158, 11, 0.55);
+      cursor: pointer;
+    }
+    .deck-time-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 4px;
     }
     .deck-controls {
       display: flex;
@@ -1903,7 +1938,7 @@
     }
     .pay-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 10px;
       margin-bottom: 16px;
     }
@@ -2510,7 +2545,7 @@
                   <span id="deckStatusText">TAP VINYL TO LISTEN</span>
                   <span class="eq-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
                 </span>
-                <span class="mono" style="color:var(--amber);" id="deckBpmText">148 BPM</span>
+                <span class="mono" style="color:var(--amber);" id="deckBpmText">148 BPM &bull; REMIX</span>
               </div>
 
               <div class="turntable-wrap" id="turntableClick" title="Tap turntable to spin & listen">
@@ -2531,7 +2566,15 @@
               </div>
 
               <div class="deck-track-title" id="deckTrackTitle">Sweet Spot &times; Superhuman (JRIP Remix)</div>
-              <div class="deck-track-sub" id="deckTrackSub">Custom Vocal Chop &amp; Blend &bull; Bieber/CB &times; Keri Hilson</div>
+              <div class="deck-track-sub" id="deckTrackSub">Justin Bieber / Chris Brown &times; Keri Hilson Blend</div>
+
+              <div class="deck-progress-wrap">
+                <input type="range" class="deck-seek-range" id="deckSeekRange" min="0" max="100" step="0.1" value="0" aria-label="Seek mix position">
+                <div class="deck-time-row">
+                  <span id="deckTimeCurr">0:00</span>
+                  <span id="deckTimeTotal">3:08</span>
+                </div>
+              </div>
 
               <div class="deck-controls">
                 <button type="button" class="deck-btn" id="deckPrevBtn" aria-label="Previous mix">&lsaquo;</button>
@@ -2540,11 +2583,12 @@
               </div>
 
               <div class="deck-chip-row" id="deckChipRow">
-                <button type="button" class="deck-chip active" data-track-idx="0">JRIP Remix</button>
-                <button type="button" class="deck-chip" data-track-idx="1">Serato IV</button>
-                <button type="button" class="deck-chip" data-track-idx="2">Don 3-Track</button>
-                <button type="button" class="deck-chip" data-track-idx="3">Serato I</button>
-                <button type="button" class="deck-chip" data-track-idx="4">Porter .FLP</button>
+                <button type="button" class="deck-chip active" data-track-idx="0">Sweet Spot Remix</button>
+                <button type="button" class="deck-chip" data-track-idx="1">One &amp; Only &rarr; Don</button>
+                <button type="button" class="deck-chip" data-track-idx="2">Lost (Afro)</button>
+                <button type="button" class="deck-chip" data-track-idx="3">Modern Jam Flip</button>
+                <button type="button" class="deck-chip" data-track-idx="4">Clairo .FLP</button>
+                <button type="button" class="deck-chip" data-track-idx="5">Porter .FLP</button>
               </div>
 
               <audio id="deckAudioPlayer" playsinline preload="metadata" style="display:none;"></audio>
@@ -2844,8 +2888,8 @@
                   <span class="tag">DFW Live</span>
                 </div>
                 <div class="studio-item">
-                  <div><strong>Serato Live Sessions I &ndash; IV &amp; Don Blend</strong><div style="font-size:11.5px; color:var(--muted);">Unedited 24-bit console sessions playable on platter above</div></div>
-                  <button type="button" class="btn-sm" data-spin-idx="1" style="border-color:var(--mint); color:var(--mint);">Play Session</button>
+                  <div><strong>One &amp; Only &rarr; Don Toliver (Serato Live IV)</strong><div style="font-size:11.5px; color:var(--muted);">Unedited 24-bit console transition playable on deck above</div></div>
+                  <button type="button" class="btn-sm" data-spin-idx="1" style="border-color:var(--mint); color:var(--mint);">Spin Blend #2</button>
                 </div>
               </div>
             </div>
@@ -2857,10 +2901,10 @@
                 Beyond standard tracks, Jayson builds bespoke tempo switches, Afro-House flips, and clean transition stems right inside FL Studio &amp; Serato.
               </p>
               <div class="studio-list" id="featuredEditsList">
-                <div class="studio-item"><div><strong>Sweet Spot &times; Superhuman (JRIP Remix)</strong><div style="font-size:11.5px; color:var(--muted);">Chris Brown / Justin Bieber / Keri Hilson blend</div></div><span class="tag">Mastered MP3</span></div>
-                <div class="studio-item"><div><strong>Frank Ocean &mdash; Lost (Afro House Edit)</strong><div style="font-size:11.5px; color:var(--muted);">Rooftop groove flip in Custom Edits crate</div></div><span class="tag">320kbps Edit</span></div>
-                <div class="studio-item"><div><strong>Blond:ish &times; Jake Shore DV Hook Mashup</strong><div style="font-size:11.5px; color:var(--muted);">Peak-hour tech-house tension builder</div></div><span class="tag">Booth Exclusive</span></div>
-                <div class="studio-item"><div><strong>Porter Robinson &bull; Djo &bull; Clairo (.flp Stems)</strong><div style="font-size:11.5px; color:var(--muted);">everything goes on / end of beginning / closer to you</div></div><span class="tag">Play on Deck #5</span></div>
+                <div class="studio-item"><div><strong>Sweet Spot &times; Superhuman (JRIP Remix)</strong><div style="font-size:11.5px; color:var(--muted);">Justin Bieber / Chris Brown &times; Keri Hilson blend</div></div><button type="button" class="btn-sm" data-spin-idx="0" style="border-color:var(--amber); color:var(--amber);">Spin #1</button></div>
+                <div class="studio-item"><div><strong>Frank Ocean &mdash; Lost (Afro House Edit)</strong><div style="font-size:11.5px; color:var(--muted);">Rooftop percussion flip in Custom Edits crate</div></div><button type="button" class="btn-sm" data-spin-idx="2" style="border-color:var(--mint); color:var(--mint);">Spin #3</button></div>
+                <div class="studio-item"><div><strong>Travis Scott &times; JT &mdash; MODERN JAM vs. SexyBack</strong><div style="font-size:11.5px; color:var(--muted);">Peak-hour bass-house mashup flip</div></div><button type="button" class="btn-sm" data-spin-idx="3" style="border-color:var(--blue); color:var(--blue);">Spin #4</button></div>
+                <div class="studio-item"><div><strong>Clairo &bull; Porter Robinson (Slowed .FLP Stems)</strong><div style="font-size:11.5px; color:var(--muted);">closer to you / everything goes on custom stem edits</div></div><div style="display:flex; gap:5px; flex-shrink:0;"><button type="button" class="btn-sm" data-spin-idx="4" style="border-color:var(--pink); color:#eab8c6;">Clairo #5</button><button type="button" class="btn-sm" data-spin-idx="5" style="border-color:var(--pink); color:#eab8c6;">Porter #6</button></div></div>
               </div>
               <div style="margin-top:12px;">
                 <button type="button" class="btn-secondary" id="browseEditsBtn" style="font-size:12.5px; padding:8px 14px;">Browse All 84 Custom Edits &amp; 3,023 Tracks &rarr;</button>
@@ -2947,6 +2991,7 @@
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
               <button type="button" class="btn-primary" id="bridgeToBookBtn">Open Book &amp; Rates Category &rarr;</button>
+              <a class="btn-secondary" href="gaming-for-groceries/index.html">Gaming Division &nearr;</a>
               <a class="btn-secondary" href="index.html">Engineering Portfolio &nearr;</a>
             </div>
           </div>
@@ -3408,19 +3453,15 @@
           </div>
         </div>
 
-        <label class="field-label" style="margin-bottom:8px;">Payment Preference</label>
+        <label class="field-label" style="margin-bottom:8px;">Payment Method (Strictly Stripe Checkout)</label>
         <div class="pay-grid" id="payOptionsGrid">
           <div class="pay-card active" role="button" tabindex="0" data-pay="stripe">
-            <h4>Card / Apple Pay / Google Pay</h4>
-            <p>Instant encrypted Stripe checkout after submitting details.</p>
-          </div>
-          <div class="pay-card" role="button" tabindex="0" data-pay="ach">
-            <h4>Bank Transfer / ACH (0% Fee)</h4>
-            <p>GG Loop LLC Mercury bank invoice emailed once date is verified.</p>
+            <h4>Pay Retainer via Stripe Checkout</h4>
+            <p>Instant encrypted payment &mdash; Card, Apple Pay, Google Pay, Cash App Pay &amp; Link.</p>
           </div>
           <div class="pay-card" role="button" tabindex="0" data-pay="quote">
-            <h4>Hold Date &amp; Review Quote First</h4>
-            <p>No payment today &mdash; confirm availability &amp; contract first.</p>
+            <h4>Hold Date &amp; Review Quote First ($0 Today)</h4>
+            <p>No payment today &mdash; confirm calendar availability first, then pay the retainer strictly via Stripe.</p>
           </div>
         </div>
 
@@ -3629,13 +3670,14 @@
     const NTFY_TOPIC = 'djjrip-ops-4a65fac665ec';
     const BOOTH_ROOM_PREFIX = 'djjrip-booth-v1-';
 
-    // PURE AUDIO MUSIC CRATE ONLY (ZERO VIDEO / HARDWARE REELS ON VINYL PLATTER)
+    // PURE AUDIO MUSIC CRATE ONLY (6 VERIFIED DISTINCT TRACKS — ZERO DUPLICATES)
     const DECK_TRACKS = [
-      { title: 'Sweet Spot \u00d7 Superhuman (JRIP Remix)', sub: 'Custom Vocal Chop & Blend \u2022 Bieber/CB \u00d7 Keri Hilson', bpm: '148 BPM', src: 'assets/mix-sweetspot-superhuman.mp3' },
-      { title: 'Serato Live Session IV', sub: 'Unedited 24-Bit Console Recording \u2022 Sep 15', bpm: '126 BPM', src: 'assets/mix-serato-session-4.mp3' },
-      { title: 'Don 3-Track Harmonic Blend', sub: 'Serato Live Deck Transition \u2022 Key Cm \u2022 Sep 13', bpm: '94 BPM', src: 'assets/mix-don-3track-blend.mp3' },
-      { title: 'Sweet Spot Clean Cut (Serato I)', sub: 'Radio-Safe Blend \u2022 Key Ab \u2022 Serato Archive', bpm: '148 BPM', src: 'assets/mix-serato-session-1.mp3' },
-      { title: 'Porter \u00d7 Djo \u2014 Everything Goes On (Slowed)', sub: 'Custom FL Studio Pitch & Stem Edit', bpm: 'SLOWED .FLP', src: 'assets/mix-porter-everything-slowed.mp3' }
+      { title: 'Sweet Spot \u00d7 Superhuman (JRIP Remix)', sub: 'Justin Bieber / Chris Brown \u00d7 Keri Hilson Blend', bpm: '148 BPM \u2022 REMIX', dur: '3:08', src: 'assets/mix-sweetspot-superhuman.mp3' },
+      { title: 'One & Only \u2192 Don Toliver (Serato Transition)', sub: 'Unedited 24-Bit Live Console Blend \u2022 Pop \u2192 R&B', bpm: 'LIVE DECK', dur: '3:38', src: 'assets/mix-serato-session-4.mp3' },
+      { title: 'Frank Ocean \u2014 Lost (Afro House Edit)', sub: 'Rooftop Percussion Flip \u2022 Custom Club Edit', bpm: 'AFRO HOUSE', dur: '3:25', src: 'assets/mix-frank-ocean-lost-afro.mp3' },
+      { title: 'MODERN JAM \u00d7 SexyBack (Club Mashup)', sub: 'Peak-Hour Flip \u2022 Travis Scott \u00d7 Justin Timberlake', bpm: '124 BPM \u2022 FLIP', dur: '3:49', src: 'assets/mix-modern-jam-sexyback.mp3' },
+      { title: 'Clairo \u2014 Closer To You (Slowed .FLP)', sub: 'Custom FL Studio Stem & Pitch Edit', bpm: 'SLOWED .FLP', dur: '3:27', src: 'assets/mix-clairo-closer-slowed.mp3' },
+      { title: 'Porter Robinson \u2014 Everything Goes On (.FLP)', sub: 'Custom FL Studio Pitch & Reverb Edit', bpm: 'SLOWED .FLP', dur: '3:48', src: 'assets/mix-porter-everything-slowed.mp3' }
     ];
 
     const STARTER_PACKS = {
@@ -3761,12 +3803,53 @@
       audioFadeRafId = requestAnimationFrame(tick);
     }
 
+    const deckSeekEl = document.getElementById('deckSeekRange');
+    const deckTimeCurrEl = document.getElementById('deckTimeCurr');
+    const deckTimeTotalEl = document.getElementById('deckTimeTotal');
+
+    function fmtDeckSec(sec) {
+      if (!Number.isFinite(sec) || sec < 0) return '0:00';
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${m}:${String(s).padStart(2, '0')}`;
+    }
+
+    function updateDeckProgressUi() {
+      const dur = Number.isFinite(deckAudio.duration) && deckAudio.duration > 0 ? deckAudio.duration : 0;
+      const cur = Number.isFinite(deckAudio.currentTime) ? deckAudio.currentTime : 0;
+      const pct = dur > 0 ? Math.min(100, (cur / dur) * 100) : 0;
+      if (deckSeekEl) {
+        deckSeekEl.value = pct.toFixed(1);
+        deckSeekEl.style.setProperty('--seek-pct', `${pct.toFixed(1)}%`);
+      }
+      if (deckTimeCurrEl) deckTimeCurrEl.textContent = fmtDeckSec(cur);
+      if (deckTimeTotalEl && dur > 0) deckTimeTotalEl.textContent = fmtDeckSec(dur);
+    }
+
+    if (deckSeekEl) {
+      deckSeekEl.addEventListener('input', () => {
+        const dur = Number.isFinite(deckAudio.duration) && deckAudio.duration > 0 ? deckAudio.duration : 0;
+        if (dur > 0) {
+          deckAudio.currentTime = (Number(deckSeekEl.value) / 100) * dur;
+        }
+        updateDeckProgressUi();
+      });
+    }
+    deckAudio.addEventListener('loadedmetadata', updateDeckProgressUi);
+    deckAudio.addEventListener('timeupdate', updateDeckProgressUi);
+
     function loadDeckTrack(idx, autoPlay = false) {
       deckIdx = (idx + DECK_TRACKS.length) % DECK_TRACKS.length;
       const tr = DECK_TRACKS[deckIdx];
       document.getElementById('deckTrackTitle').textContent = tr.title;
       document.getElementById('deckTrackSub').textContent = tr.sub;
       document.getElementById('deckBpmText').textContent = tr.bpm;
+      if (deckTimeCurrEl) deckTimeCurrEl.textContent = '0:00';
+      if (deckTimeTotalEl) deckTimeTotalEl.textContent = tr.dur || '0:00';
+      if (deckSeekEl) {
+        deckSeekEl.value = 0;
+        deckSeekEl.style.setProperty('--seek-pct', '0%');
+      }
       document.querySelectorAll('.deck-chip').forEach((c, i) => c.classList.toggle('active', i === deckIdx));
       if (deckAudio.getAttribute('src') !== tr.src) {
         deckAudio.setAttribute('src', tr.src);
@@ -4287,13 +4370,9 @@
       if (selectedPaymentMethod === 'stripe') {
         btn.textContent = isCustom
           ? 'Send Details & Go to Stripe ($100 Suggested) \u2192'
-          : `Send Details & Pay $${dep} Deposit \u2192`;
-      } else if (selectedPaymentMethod === 'ach') {
-        btn.textContent = isCustom
-          ? 'Request Custom ACH Bank Invoice \u2192'
-          : `Request $${dep} ACH Bank Invoice \u2192`;
+          : `Send Details & Pay $${dep} on Stripe \u2192`;
       } else {
-        btn.textContent = 'Request Date Hold & Quote (No Deposit Yet) \u2192';
+        btn.textContent = 'Request Date Hold & Quote ($0 Today) \u2192';
       }
     }
 
@@ -4824,11 +4903,12 @@
           if (pc) selectPkgCard(pc, { skipSave: true, skipCounters: true });
         }
         if (st.payMethod) {
-          const pm = document.querySelector(`.pay-card[data-pay="${st.payMethod}"]`);
+          const normPay = st.payMethod === 'quote' ? 'quote' : 'stripe';
+          const pm = document.querySelector(`.pay-card[data-pay="${normPay}"]`);
           if (pm) {
             document.querySelectorAll('.pay-card').forEach(c => c.classList.remove('active'));
             pm.classList.add('active');
-            selectedPaymentMethod = st.payMethod;
+            selectedPaymentMethod = normPay;
           }
         }
         updateSubmitButtonLabel();
@@ -5160,15 +5240,10 @@
         stripeBox.style.display = 'block';
         unlockDirectLine(buildShortTextSummary());
         btn.textContent = 'Sent \u2713 \u2014 Complete Stripe Checkout Below';
-      } else if (selectedPaymentMethod === 'ach') {
-        manualBox.style.display = 'block';
-        document.getElementById('manualPayInstructions').innerHTML = `ACH / Mercury Invoice queued &mdash; GG Loop LLC will email &amp; text you a 0%-fee bank invoice for <strong>${escapeHtml(payload.depStr)}</strong> once ${escapeHtml(payload.date)} calendar availability is verified.`;
-        unlockDirectLine(`Hi DJ JRIP! Requesting GG Loop LLC ACH invoice for ${payload.depStr} (${payload.name} - ${payload.date}).`);
-        btn.textContent = 'Sent \u2713 \u2014 ACH Invoice Queued';
       } else {
         manualBox.style.display = 'block';
         const mEl = document.getElementById('manualPayInstructions');
-        mEl.innerHTML = `Quote request queued &mdash; Jayson will text or call you from his booking line below with availability &amp; your written agreement before any payment. Ready to lock now? Use `;
+        mEl.innerHTML = `Quote request queued &mdash; Jayson will text or call you from his booking line below with availability &amp; your written agreement before any payment. Ready to lock now? All payments run exclusively through `;
         const sLink = document.createElement('a');
         sLink.href = buildPrefilledStripeUrl();
         sLink.target = '_blank';

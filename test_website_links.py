@@ -20,6 +20,12 @@ DJ_FUNNEL_FILES = (
     "vibe.html",
 )
 
+STRIPE_ONLY_CHECK_FILES = DJ_FUNNEL_FILES + (
+    "hire-now.html",
+    "index.html",
+    "gaming-for-groceries/index.html",
+)
+
 EXPECTED_STRIPE_LINKS = (
     "https://buy.stripe.com/cNi4gB2Rm7Md7aP0WI0Fi0c",
     "https://buy.stripe.com/9B6fZjgIcc2t1QvcFq0Fi0d",
@@ -40,6 +46,14 @@ DEPRECATED_TERMS = (
     "tt-rhythm-dtx",
     "dj-jrip-headshot",
     "serif-accent",
+    "ach invoice",
+    "ach bank invoice",
+    "mercury bank",
+    "mercury business invoice",
+    "bank transfer",
+    "data-pay=\"ach\"",
+    "zelle",
+    "venmo",
 )
 
 
@@ -171,23 +185,24 @@ def check_dj_funnel_consistency_and_privacy():
     errors = []
     phone_cand_re = re.compile(r'(?:\+?1[-.\s]?)?(?:\(\d{3}\)|\d{3})[-.\s]?\d{3}[-.\s]?\d{4}|\b\d{10}\b')
 
-    for fname in DJ_FUNNEL_FILES:
+    for fname in STRIPE_ONLY_CHECK_FILES:
         fpath = os.path.join(SITE_DIR, fname)
         if not os.path.exists(fpath):
-            errors.append(f"Missing expected DJ funnel file: {fname}")
+            errors.append(f"Missing expected site file: {fname}")
             continue
         with open(fpath, "r", encoding="utf-8", errors="ignore") as f:
             txt = f.read()
 
-        # Check phone privacy: never expose raw digits in public DJ HTML
-        for match in phone_cand_re.findall(txt):
-            digits = re.sub(r"\D", "", match)
-            if len(digits) == 11 and digits.startswith("1"):
-                digits = digits[1:]
-            if len(digits) == 10 and hashlib.sha256(digits.encode("utf-8")).hexdigest() == PRIVATE_PHONE_SHA256:
-                errors.append(f"Phone privacy breach in {fname}: raw booking number exposed ({match})")
+        # Check phone privacy only on gated DJ funnel pages (never expose raw digits in public DJ HTML)
+        if fname in DJ_FUNNEL_FILES:
+            for match in phone_cand_re.findall(txt):
+                digits = re.sub(r"\D", "", match)
+                if len(digits) == 11 and digits.startswith("1"):
+                    digits = digits[1:]
+                if len(digits) == 10 and hashlib.sha256(digits.encode("utf-8")).hexdigest() == PRIVATE_PHONE_SHA256:
+                    errors.append(f"Phone privacy breach in {fname}: raw booking number exposed ({match})")
 
-        # Check deprecated/removed UI copy or elements
+        # Check deprecated/removed UI copy or off-Stripe payment tokens
         for term in DEPRECATED_TERMS:
             if re.search(re.escape(term), txt, re.IGNORECASE):
                 errors.append(f"Deprecated token '{term}' found in {fname}")
@@ -208,9 +223,45 @@ def check_dj_funnel_consistency_and_privacy():
         if 'id="directLineBox"' not in dj_txt:
             errors.append("dj.html missing #directLineBox gate")
 
-    for dead_asset in ("dj-jrip-headshot.jpg", "tt-rhythm-dtx.jpg"):
+    for dead_asset in ("dj-jrip-headshot.jpg", "tt-rhythm-dtx.jpg", "mix-serato-session-1.mp3", "mix-don-3track-blend.mp3"):
         if os.path.exists(os.path.join(SITE_DIR, "assets", dead_asset)):
             errors.append(f"Redundant/dead asset still present on disk: assets/{dead_asset}")
+
+    return errors
+
+
+def check_vinyl_platter_tracks():
+    errors = []
+    dj_path = os.path.join(SITE_DIR, "dj.html")
+    with open(dj_path, "r", encoding="utf-8", errors="ignore") as f:
+        dj_txt = f.read()
+
+    m_arr = re.search(r"const\s+DECK_TRACKS\s*=\s*\[(.*?)\];", dj_txt, re.S)
+    if not m_arr:
+        return ["Could not locate DECK_TRACKS array in dj.html"]
+
+    srcs = re.findall(r"src:\s*['\"]([^'\"]+)['\"]", m_arr.group(1))
+    if len(srcs) < 5:
+        errors.append(f"Expected >= 5 tracks in DECK_TRACKS, found {len(srcs)}")
+    if len(set(srcs)) != len(srcs):
+        errors.append(f"Duplicate track src in DECK_TRACKS: {srcs}")
+
+    chip_idxs = re.findall(r'class="deck-chip[^"]*"\s+data-track-idx="(\d+)"', dj_txt)
+    if len(chip_idxs) != len(srcs):
+        errors.append(f"Mismatch between #deckChipRow buttons ({len(chip_idxs)}) and DECK_TRACKS ({len(srcs)})")
+
+    seen_hashes = {}
+    for rel_src in srcs:
+        full = os.path.normpath(os.path.join(SITE_DIR, rel_src))
+        if not os.path.exists(full):
+            errors.append(f"Missing DECK_TRACKS audio asset on disk: {rel_src}")
+            continue
+        if os.path.getsize(full) < 200_000:
+            errors.append(f"Audio asset unexpectedly tiny (<200KB, likely preview stub): {rel_src}")
+        digest = hashlib.sha256(open(full, "rb").read()).hexdigest()
+        if digest in seen_hashes:
+            errors.append(f"Duplicate audio bytes in DECK_TRACKS: {rel_src} matches {seen_hashes[digest]}")
+        seen_hashes[digest] = rel_src
 
     return errors
 
@@ -221,6 +272,7 @@ def main():
     errors.extend(check_json_manifests())
     errors.extend(check_profile_portrait())
     errors.extend(check_dj_funnel_consistency_and_privacy())
+    errors.extend(check_vinyl_platter_tracks())
 
     if errors:
         print(f"FAILED: Found {len(errors)} issue(s):")
@@ -228,7 +280,7 @@ def main():
             print(f"  - {err}")
         return False
 
-    print("ALL STATIC SITE LINKS, MANIFESTS, MEDIA & DJ PRIVACY CHECKS PASSED!")
+    print("ALL STATIC SITE LINKS, MANIFESTS, MEDIA, VINYL DECK & DJ PRIVACY CHECKS PASSED!")
     return True
 
 
