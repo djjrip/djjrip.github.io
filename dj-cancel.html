@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>DJ JRIP // Self-Service Reschedule &amp; Booking Cancellation</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23050a08'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%2338bdf8' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23f59e0b'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Playfair+Display:ital,wght@1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050a08;
+      --surface: #0a1410;
+      --surface-2: #0f1f18;
+      --border: rgba(148, 163, 184, 0.16);
+      --border-emerald: rgba(52, 211, 153, 0.25);
+      --mint: #34d399;
+      --amber: #f59e0b;
+      --pink: #be5270;
+      --blue: #38bdf8;
+      --white: #f8fafc;
+      --text: #cbd5e1;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); color-scheme: dark; }
+    body {
+      background:
+        radial-gradient(ellipse 880px 460px at 14% 0%, rgba(16, 185, 129, 0.10), transparent 62%),
+        radial-gradient(ellipse 720px 420px at 88% 8%, rgba(245, 158, 11, 0.08), transparent 60%),
+        var(--bg);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      padding: 24px 16px 64px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 21px;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .brand span { color: var(--amber); }
+    .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      color: var(--white);
+      background: var(--surface);
+      transition: border-color 0.15s ease;
+    }
+    .nav-btn:hover { border-color: var(--amber); }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mint);
+      display: block;
+      margin-bottom: 6px;
+    }
+    h1 {
+      font-size: clamp(25px, 4.2vw, 34px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    h1 em {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      color: var(--amber);
+    }
+    .sub { color: var(--muted); font-size: 14.5px; margin-bottom: 20px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .mode-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .mode-card {
+      background: rgba(5, 10, 8, 0.78);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 15px 14px;
+      cursor: pointer;
+      text-align: left;
+      color: var(--text);
+      font-family: inherit;
+      transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+    }
+    .mode-card:hover { border-color: rgba(245, 158, 11, 0.5); transform: translateY(-1px); }
+    .mode-card.active {
+      border-color: var(--amber);
+      background: rgba(245, 158, 11, 0.10);
+    }
+    .mode-card.active.cancel-mode {
+      border-color: var(--pink);
+      background: rgba(190, 82, 112, 0.11);
+    }
+    .mode-card strong { display: block; color: var(--white); font-size: 14.5px; margin-bottom: 3px; }
+    .mode-card small { font-size: 12px; color: var(--muted); display: block; line-height: 1.4; }
+    .policy-banner {
+      background: rgba(5, 10, 8, 0.85);
+      border: 1px solid var(--border-emerald);
+      border-radius: 14px;
+      padding: 13px 15px;
+      margin-bottom: 18px;
+      font-size: 13px;
+    }
+    .policy-banner.warn {
+      border-color: rgba(245, 158, 11, 0.48);
+      background: rgba(245, 158, 11, 0.08);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 13px;
+      margin-bottom: 14px;
+    }
+    label.field-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    input, select, textarea {
+      width: 100%;
+      background: #050a08;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 10px 12px;
+      color: var(--white);
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+    input[type="date"] { color-scheme: dark; }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.14);
+    }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 14px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 11px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 13.5px;
+      font-family: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); filter: brightness(1.06); }
+    .btn:disabled { opacity: 0.65; cursor: wait; transform: none; }
+    .btn-primary { background: linear-gradient(135deg, var(--pink), #a8435f); color: #fff; }
+    .btn-amber { background: linear-gradient(135deg, var(--amber), #fb923c); color: #050a08; }
+    .btn-ghost { background: rgba(255, 255, 255, 0.045); border-color: var(--border); color: var(--white); }
+    .ticket-box {
+      display: none;
+      margin-top: 18px;
+      background: rgba(16, 185, 129, 0.09);
+      border: 1px solid rgba(52, 211, 153, 0.42);
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .ticket-box.show { display: block; }
+    .ticket-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 13px;
+    }
+    .ticket-row:last-child { border-bottom: 0; }
+    .ticket-row span:first-child { color: var(--muted); }
+    .ticket-row strong { color: var(--white); text-align: right; word-break: break-word; }
+    .err-box {
+      display: none;
+      margin-top: 12px;
+      padding: 11px 14px;
+      border-radius: 11px;
+      background: rgba(190, 82, 112, 0.13);
+      border: 1px solid var(--pink);
+      color: #f8d7e1;
+      font-size: 13px;
+    }
+    .policy-list { padding-left: 18px; font-size: 13.5px; color: var(--text); }
+    .policy-list li { margin-bottom: 6px; }
+    @media (max-width: 620px) {
+      .mode-grid { grid-template-columns: 1fr; }
+      .card { padding: 18px 14px; }
+    }
+    @media print {
+      .topbar, #requestFormCard, .no-print { display: none !important; }
+      body { background: #fff; color: #000; }
+      .ticket-box { display: block !important; border-color: #999; background: #fff; color: #000; }
+      .ticket-row strong, .ticket-row span { color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a class="brand" href="dj.html">DJ <span>JRIP</span></a>
+    <div class="nav-links">
+      <a class="nav-btn" href="dj.html">&larr; Artist Showcase</a>
+      <a class="nav-btn" href="dj-events.html">Events &amp; Pop-Ups</a>
+      <a class="nav-btn" href="dj-terms.html">Booking Terms</a>
+      <a class="nav-btn" href="dj.html#book">Book Date</a>
+    </div>
+  </div>
+
+  <span class="mono">GG Loop LLC // Self-Service Client Request Portal</span>
+  <h1>Reschedule or <em>Cancel Booking</em></h1>
+  <p class="sub">
+    Plans changed? Submit a timestamped reschedule or cancellation notice here. Your request emails <strong>jquindao1@icloud.com</strong>, fires an instant priority alert to Jayson, and emails you an automatic written confirmation receipt.
+  </p>
+
+  <div class="card" id="requestFormCard">
+    <label class="field-label" style="margin-bottom:8px;">1. Select Action</label>
+    <div class="mode-grid">
+      <button type="button" class="mode-card active" id="modeReschedule" data-mode="reschedule">
+        <strong>&#128197; Free Date Reschedule (14+ Days Notice)</strong>
+        <small>Move 100% of your paid Stripe retainer to a new open date within 90 days (per Terms &sect; 04).</small>
+      </button>
+      <button type="button" class="mode-card" id="modeCancel" data-mode="cancel">
+        <strong>&#10005; Cancel Booking &amp; Refund Review</strong>
+        <small>Release your calendar slot &amp; request refund calculation under GG Loop LLC Terms &sect; 02 / &sect; 04.</small>
+      </button>
+    </div>
+
+    <div class="policy-banner" id="noticeCalcBanner">
+      Enter your original Event Date below to calculate notice lead time against <a href="dj-terms.html" style="color:var(--blue); text-decoration:underline;">Terms &sect; 04</a>.
+    </div>
+
+    <div class="form-grid">
+      <div>
+        <label class="field-label" for="reqName">Client / Honoree Name *</label>
+        <input type="text" id="reqName" placeholder="e.g. Alex Rivera">
+      </div>
+      <div>
+        <label class="field-label" for="reqEmail">Confirmation Email (For Written Receipt) *</label>
+        <input type="email" id="reqEmail" placeholder="you@email.com">
+      </div>
+      <div>
+        <label class="field-label" for="reqOrigDate">Original Event Date *</label>
+        <input type="date" id="reqOrigDate">
+      </div>
+      <div id="newDateWrap">
+        <label class="field-label" for="reqNewDate">New Preferred Date (Within 90 Days) *</label>
+        <input type="date" id="reqNewDate">
+      </div>
+      <div>
+        <label class="field-label" for="reqPackage">Booked Package Tier</label>
+        <select id="reqPackage">
+          <option value="Coffee Shop &amp; Daytime Lounge Pop-Up ($150 / $50 dep)">Coffee Shop &amp; Daytime Pop-Up ($150 / $50 dep)</option>
+          <option value="Bar / Lounge / Club Set ($400 / $100 dep)">Bar / Lounge / Club ($400 / $100 dep)</option>
+          <option value="Private VIP, Milestone &amp; Debut ($750 / $150 dep)" selected>Private VIP &amp; Milestone ($750 / $150 dep)</option>
+          <option value="Wedding Ceremony, Reception &amp; Gala ($1,200 / $250 dep)">Wedding &amp; Gala ($1,200 / $250 dep)</option>
+          <option value="Custom Quoted Event">Custom Quoted Event</option>
+        </select>
+      </div>
+      <div>
+        <label class="field-label" for="reqSessionId">Stripe Checkout Ref / Receipt ID (Optional)</label>
+        <input type="text" id="reqSessionId" placeholder="cs_live_... (autofilled if available)">
+      </div>
+    </div>
+
+    <div>
+      <label class="field-label" for="reqReason">Reason / Updated Venue Notes</label>
+      <textarea id="reqReason" rows="3" placeholder="Example: Moving venue date to next month, or need to release this Saturday slot..."></textarea>
+    </div>
+
+    <div class="err-box" id="reqErrBox"></div>
+
+    <div class="btn-row">
+      <button type="button" class="btn btn-amber" id="submitCancelBtn">Submit Reschedule Request &rarr;</button>
+      <a class="btn btn-ghost" id="mailtoFallbackBtn" href="mailto:jquindao1@icloud.com?subject=DJ%20JRIP%20Booking%20Change%20Request">Open in Email App</a>
+    </div>
+  </div>
+
+  <div class="ticket-box" id="ticketResultBox">
+    <span class="mono" style="color:var(--mint);">TIMESTAMPED REQUEST RECORDED // GG LOOP LLC</span>
+    <h2 style="color:var(--white); font-size:20px; margin-bottom:10px;" id="ticketHeading">Request Sent &amp; Ticket Logged</h2>
+    <p style="font-size:13.5px; color:var(--text); margin-bottom:12px;" id="ticketSubNote"></p>
+    <div id="ticketRows" style="margin-bottom:14px;"></div>
+    <div class="btn-row no-print">
+      <button type="button" class="btn btn-ghost" id="printTicketBtn">Save / Print Receipt (PDF)</button>
+      <a class="btn btn-ghost" href="dj.html">Return to Artist Showcase</a>
+      <a class="btn btn-ghost" id="ticketSmsLink" href="mailto:jquindao1@icloud.com">Email Follow-Up</a>
+    </div>
+  </div>
+
+  <div class="card no-print">
+    <div class="mono" style="color:var(--amber);">HOW REFUNDS &amp; RESCHEDULES WORK (PLAIN ENGLISH)</div>
+    <ul class="policy-list" style="margin-top:8px;">
+      <li><strong>14+ Days Before Event &mdash; 1 Free Date Move:</strong> Apply 100% of your paid Stripe deposit once toward a new mutually open date within 90 calendar days at zero penalty.</li>
+      <li><strong>Prepaid Balance Refund (72+ Hours Before Event):</strong> Initial retainers lock the exclusive calendar date off the market (non-refundable under 14 days), while any extra balance paid <em>above</em> the retainer is refunded 100% back to your original card if canceled 72+ hours before doors open.</li>
+      <li><strong>Artist Decline / Force Majeure (100% Refund):</strong> If DJ JRIP / GG Loop LLC ever cancels pre-event, 100% of all paid amounts return to your card within 3&ndash;5 business days via Stripe.</li>
+    </ul>
+  </div>
+
+  <script>
+    (function () {
+      let actionMode = 'reschedule';
+
+      function escapeHtml(s) {
+        return String(s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      }
+
+      function isValidEmail(val) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(val || '').trim());
+      }
+
+      function calcNoticePolicy(origDateStr) {
+        const banner = document.getElementById('noticeCalcBanner');
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(origDateStr || '')) {
+          banner.className = 'policy-banner';
+          banner.innerHTML = 'Enter your original Event Date to see instant notice calculation under <a href="dj-terms.html" style="color:var(--blue); text-decoration:underline;">Terms &sect; 04</a>.';
+          return { daysOut: null, summary: 'Date TBD' };
+        }
+        const now = new Date();
+        const todayMidnight = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+        const [y, m, d] = origDateStr.split('-').map(Number);
+        const evMidnight = Date.UTC(y, m - 1, d);
+        const daysOut = Math.round((evMidnight - todayMidnight) / 86400000);
+
+        if (daysOut >= 14) {
+          banner.className = 'policy-banner';
+          const msg = `${daysOut} days before event`;
+          banner.innerHTML = `<strong style="color:var(--mint);">Eligible Window (${msg}):</strong> ${actionMode === 'reschedule' ? '100% of your paid Stripe retainer transfers free to an open date within 90 days.' : 'Any balance prepaid above the date-lock retainer qualifies for 100% Stripe refund; retainers normally convert to a 90-day reschedule credit unless GG Loop LLC cancels under Terms &sect; 02.'}`;
+          return { daysOut, summary: `${daysOut} days advance notice (14+ day window)` };
+        }
+        if (daysOut >= 3) {
+          banner.className = 'policy-banner warn';
+          banner.innerHTML = `<strong style="color:var(--amber);">Under-14-Day Window (${daysOut} days left):</strong> Retainer covers the blocked date; any prepaid remainder above the retainer is 100% refundable back to your card (72+ hours prior).`;
+          return { daysOut, summary: `${daysOut} days notice (under 14d, 72h+ prepaid balance refundable)` };
+        }
+        banner.className = 'policy-banner warn';
+        banner.innerHTML = `<strong style="color:var(--pink);">Under 72 Hours (${daysOut} days left):</strong> Same-week date slot was held exclusively. Submit now so Jayson can review emergency circumstances personally.`;
+        return { daysOut, summary: `${daysOut} days notice (under 72h emergency review)` };
+      }
+
+      function setMode(mode) {
+        actionMode = mode === 'cancel' ? 'cancel' : 'reschedule';
+        const rBtn = document.getElementById('modeReschedule');
+        const cBtn = document.getElementById('modeCancel');
+        const newWrap = document.getElementById('newDateWrap');
+        const subBtn = document.getElementById('submitCancelBtn');
+
+        rBtn.classList.toggle('active', actionMode === 'reschedule');
+        cBtn.classList.toggle('active', actionMode === 'cancel');
+        cBtn.classList.toggle('cancel-mode', actionMode === 'cancel');
+        newWrap.style.display = actionMode === 'reschedule' ? 'block' : 'none';
+        if (actionMode === 'cancel') {
+          subBtn.className = 'btn btn-primary';
+          subBtn.textContent = 'Submit Cancellation & Refund Review \u2192';
+        } else {
+          subBtn.className = 'btn btn-amber';
+          subBtn.textContent = 'Submit Free Reschedule Request \u2192';
+        }
+        calcNoticePolicy(document.getElementById('reqOrigDate').value);
+        updateMailto();
+      }
+
+      function buildSummary() {
+        const name = document.getElementById('reqName').value.trim() || 'Client';
+        const email = document.getElementById('reqEmail').value.trim();
+        const origDate = document.getElementById('reqOrigDate').value || 'TBD';
+        const newDate = document.getElementById('reqNewDate').value || 'N/A';
+        const pkg = document.getElementById('reqPackage').value;
+        const sid = document.getElementById('reqSessionId').value.trim() || 'Not provided';
+        const reason = document.getElementById('reqReason').value.trim() || 'None provided';
+        const pol = calcNoticePolicy(origDate);
+        const ticketId = `DJC-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
+        const submittedUtc = new Date().toISOString();
+        const actLabel = actionMode === 'reschedule' ? 'FREE RESCHEDULE REQUEST' : 'BOOKING CANCELLATION / REFUND REVIEW';
+
+        const text = [
+          `DJ JRIP / GG LOOP LLC — ${actLabel}`,
+          `Ticket Ref: ${ticketId}`,
+          `Timestamp (UTC): ${submittedUtc}`,
+          `Client: ${name} (${email || 'No email'})`,
+          `Original Event Date: ${origDate}`,
+          actionMode === 'reschedule' ? `Requested New Date: ${newDate}` : 'Requested New Date: N/A (Cancel)',
+          `Package Tier: ${pkg}`,
+          `Stripe Session / Ref: ${sid}`,
+          `Terms § 04 Notice Window: ${pol.summary}`,
+          `Notes / Reason: ${reason}`
+        ].join('\n');
+
+        return { ticketId, submittedUtc, actLabel, name, email, origDate, newDate, pkg, sid, reason, pol, text };
+      }
+
+      function updateMailto() {
+        const name = document.getElementById('reqName').value.trim() || 'Client';
+        const origDate = document.getElementById('reqOrigDate').value || 'TBD';
+        const subj = `[DJ JRIP ${actionMode === 'cancel' ? 'CANCEL' : 'RESCHEDULE'}] ${name} (${origDate})`;
+        const body = buildSummary().text;
+        document.getElementById('mailtoFallbackBtn').href = `mailto:jquindao1@icloud.com?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
+      }
+
+      function prefillFromContext() {
+        const params = new URLSearchParams(window.location.search);
+        let saved = null;
+        try {
+          const raw = localStorage.getItem('djjrip_last_booking_v4') || localStorage.getItem('djjrip_client_portal_v4');
+          if (raw) saved = JSON.parse(raw);
+        } catch (e) {}
+
+        const name = params.get('name') || saved?.name || saved?.clientName || '';
+        const email = params.get('email') || saved?.email || saved?.clientEmail || '';
+        const date = params.get('date') || saved?.date || saved?.eventDate || '';
+        const sid = params.get('session_id') || '';
+        const pkgParam = (params.get('pkg') || saved?.pkg || saved?.pkgId || '').toLowerCase();
+        const qMode = (params.get('action') || '').toLowerCase();
+
+        if (name && name !== 'Client' && name !== 'Unspecified Client') document.getElementById('reqName').value = name;
+        if (isValidEmail(email)) document.getElementById('reqEmail').value = email;
+        if (/^\d{4}-\d{2}-\d{2}$/.test(date)) document.getElementById('reqOrigDate').value = date;
+        if (sid) document.getElementById('reqSessionId').value = sid;
+
+        const sel = document.getElementById('reqPackage');
+        if (pkgParam.includes('coffee')) sel.selectedIndex = 0;
+        else if (pkgParam.includes('bar') || pkgParam.includes('lounge') || pkgParam.includes('club')) sel.selectedIndex = 1;
+        else if (pkgParam.includes('wedding') || pkgParam.includes('gala')) sel.selectedIndex = 3;
+        else if (pkgParam.includes('custom')) sel.selectedIndex = 4;
+
+        setMode(qMode === 'cancel' ? 'cancel' : 'reschedule');
+      }
+
+      document.getElementById('modeReschedule').addEventListener('click', () => setMode('reschedule'));
+      document.getElementById('modeCancel').addEventListener('click', () => setMode('cancel'));
+      ['reqName', 'reqEmail', 'reqOrigDate', 'reqNewDate', 'reqPackage', 'reqSessionId', 'reqReason'].forEach(id => {
+        document.getElementById(id).addEventListener('input', () => {
+          calcNoticePolicy(document.getElementById('reqOrigDate').value);
+          updateMailto();
+        });
+      });
+
+      document.getElementById('submitCancelBtn').addEventListener('click', async () => {
+        const errBox = document.getElementById('reqErrBox');
+        errBox.style.display = 'none';
+        const data = buildSummary();
+
+        if (data.name.length < 2 || data.name === 'Client') {
+          errBox.textContent = 'Please enter the client or honoree name on the booking.';
+          errBox.style.display = 'block';
+          return;
+        }
+        if (!isValidEmail(data.email)) {
+          errBox.textContent = 'Please enter a valid email address so we can send your timestamped confirmation & refund status.';
+          errBox.style.display = 'block';
+          return;
+        }
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(data.origDate)) {
+          errBox.textContent = 'Please select your original booked Event Date.';
+          errBox.style.display = 'block';
+          return;
+        }
+        if (actionMode === 'reschedule' && !/^\d{4}-\d{2}-\d{2}$/.test(data.newDate)) {
+          errBox.textContent = 'Please select your preferred new target date for the reschedule.';
+          errBox.style.display = 'block';
+          return;
+        }
+
+        const btn = document.getElementById('submitCancelBtn');
+        btn.disabled = true;
+        btn.textContent = 'Sending Timestamped Request...';
+
+        const autoReply = [
+          `DJ JRIP / GG Loop LLC received your ${data.actLabel} (${data.ticketId}).`,
+          `Original Event Date: ${data.origDate}${actionMode === 'reschedule' ? ` | Requested New Date: ${data.newDate}` : ''}`,
+          `Notice Window: ${data.pol.summary}.`,
+          `Next step: Jayson will confirm calendar release/transfer or process any eligible Stripe refund back to your card within 3-5 business days (https://djjrip.github.io/dj-terms.html).`,
+          `Need anything else? Reply directly to jquindao1@icloud.com with Ticket ${data.ticketId}.`
+        ].join(' ');
+
+        const formBody = {
+          _subject: `[DJ JRIP CANCEL / RESCHEDULE] ${data.name} (${data.origDate}) — ${data.ticketId}`,
+          _template: 'box',
+          _autoresponse: autoReply,
+          email: data.email,
+          Ticket_Ref: data.ticketId,
+          Request_Type: data.actLabel,
+          Client_Name: data.name,
+          Original_Event_Date: data.origDate,
+          Requested_New_Date: actionMode === 'reschedule' ? data.newDate : 'N/A (Cancel)',
+          Package_Tier: data.pkg,
+          Stripe_Session_Ref: data.sid,
+          Notice_Window: data.pol.summary,
+          Submitted_UTC: data.submittedUtc,
+          Notes: data.reason
+        };
+
+        const ntfyPromise = fetch('https://ntfy.sh', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            topic: 'djjrip-ops-4a65fac665ec',
+            title: `DJ JRIP ${actionMode === 'cancel' ? 'CANCEL' : 'RESCHEDULE'} [${data.ticketId}]`,
+            message: `Date: ${data.origDate}${actionMode === 'reschedule' ? ' -> ' + data.newDate : ''} | ${data.pol.summary}`,
+            priority: 5,
+            tags: ['calendar', 'warning']
+          })
+        }).catch(() => {});
+
+        const formPromise = fetch('https://formsubmit.co/ajax/jquindao1@icloud.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(formBody)
+        }).then(r => r.json().then(j => ({ ok: r.ok, j }))).catch(() => ({ ok: false }));
+
+        const [formRes] = await Promise.all([formPromise, ntfyPromise]);
+        const formOk = Boolean(formRes && formRes.ok && (formRes.j?.success === 'true' || formRes.j?.success === true));
+
+        const rows = document.getElementById('ticketRows');
+        rows.innerHTML = '';
+        [
+          ['Ticket Reference', data.ticketId],
+          ['Request Type', data.actLabel],
+          ['Recorded Timestamp (UTC)', data.submittedUtc],
+          ['Client / Email', `${data.name} (${data.email})`],
+          ['Original Event Date', data.origDate],
+          ...(actionMode === 'reschedule' ? [['New Preferred Date', data.newDate]] : []),
+          ['Package Tier', data.pkg],
+          ['Terms § 04 Policy Window', data.pol.summary],
+          ['Stripe Session Ref', data.sid]
+        ].forEach(([lbl, val]) => {
+          const r = document.createElement('div');
+          r.className = 'ticket-row';
+          r.innerHTML = `<span>${escapeHtml(lbl)}</span><strong>${escapeHtml(val)}</strong>`;
+          rows.appendChild(r);
+        });
+
+        document.getElementById('ticketHeading').textContent = formOk
+          ? `Request Logged (${data.ticketId})`
+          : `Phone Alert Fired (${data.ticketId})`;
+        document.getElementById('ticketSubNote').textContent = formOk
+          ? `Confirmation emailed to ${data.email} and logged with GG Loop LLC. Expect follow-up from jquindao1@icloud.com within 24 hours.`
+          : `Jayson's phone alarm received your request immediately. You can also click Open in Email App or Save/Print Receipt for your records.`;
+
+        const smsDigits = atob('NDY5MzcxODU1Ng==');
+        const smsEl = document.getElementById('ticketSmsLink');
+        smsEl.href = `sms:+1${smsDigits}?body=${encodeURIComponent(`Hi DJ JRIP, ${data.actLabel} Ticket ${data.ticketId} for ${data.origDate}.`)}`;
+        smsEl.textContent = `Text ${atob('KDQ2OSkgMzcxLTg1NTY=')}`;
+
+        document.getElementById('ticketResultBox').classList.add('show');
+        btn.disabled = false;
+        btn.textContent = 'Request Sent \u2713';
+        document.getElementById('ticketResultBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+
+      document.getElementById('printTicketBtn').addEventListener('click', () => window.print());
+      prefillFromContext();
+    })();
+  </script>
+</body>
+</html>

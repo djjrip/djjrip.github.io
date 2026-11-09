@@ -14,6 +14,8 @@ SITE_DIR = os.path.abspath(os.path.dirname(os.path.abspath(__file__)))
 
 DJ_FUNNEL_FILES = (
     "dj.html",
+    "dj-events.html",
+    "dj-cancel.html",
     "booking.html",
     "dj-terms.html",
     "dj-confirmed.html",
@@ -27,6 +29,7 @@ STRIPE_ONLY_CHECK_FILES = DJ_FUNNEL_FILES + (
 )
 
 EXPECTED_STRIPE_LINKS = (
+    "https://buy.stripe.com/14A5kFfE8feF52H48U0Fi0o",
     "https://buy.stripe.com/cNi4gB2Rm7Md7aP0WI0Fi0c",
     "https://buy.stripe.com/9B6fZjgIcc2t1QvcFq0Fi0d",
     "https://buy.stripe.com/00w6oJdw02rTcv9bBm0Fi0e",
@@ -38,6 +41,8 @@ PRIVATE_PHONE_SHA256 = "7066ef0d6158b8af8213a2f02485fc52a1810697bd74afad6419f1f8
 
 DEPRECATED_TERMS = (
     "due at show",
+    "335.7k",
+    "don toliver",
     "bookDateMirror",
     "preset-pill",
     "smsFallbackLink",
@@ -223,9 +228,21 @@ def check_dj_funnel_consistency_and_privacy():
         if 'id="directLineBox"' not in dj_txt:
             errors.append("dj.html missing #directLineBox gate")
 
-    for dead_asset in ("dj-jrip-headshot.jpg", "tt-rhythm-dtx.jpg", "mix-serato-session-1.mp3", "mix-don-3track-blend.mp3"):
+    for dead_asset in (
+        "dj-jrip-headshot.jpg",
+        "tt-rhythm-dtx.jpg",
+        "mix-serato-session-1.mp3",
+        "mix-don-3track-blend.mp3",
+        "mix-serato-session-4.mp3",
+        "mix-frank-ocean-lost-afro.mp3",
+        "mix-modern-jam-sexyback.mp3",
+    ):
         if os.path.exists(os.path.join(SITE_DIR, "assets", dead_asset)):
             errors.append(f"Redundant/dead asset still present on disk: assets/{dead_asset}")
+
+    origin_photo = os.path.join(SITE_DIR, "assets", "dj-jrip-trunk-or-treat-2019.jpg")
+    if not os.path.exists(origin_photo):
+        errors.append("Missing 2019 origin event photo: assets/dj-jrip-trunk-or-treat-2019.jpg")
 
     return errors
 
@@ -241,8 +258,8 @@ def check_vinyl_platter_tracks():
         return ["Could not locate DECK_TRACKS array in dj.html"]
 
     srcs = re.findall(r"src:\s*['\"]([^'\"]+)['\"]", m_arr.group(1))
-    if len(srcs) < 5:
-        errors.append(f"Expected >= 5 tracks in DECK_TRACKS, found {len(srcs)}")
+    if len(srcs) < 7:
+        errors.append(f"Expected >= 7 organic tracks in DECK_TRACKS, found {len(srcs)}")
     if len(set(srcs)) != len(srcs):
         errors.append(f"Duplicate track src in DECK_TRACKS: {srcs}")
 

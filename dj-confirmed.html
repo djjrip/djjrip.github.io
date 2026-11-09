@@ -152,17 +152,19 @@
     <div class="box">
       <div class="box-head">Next Steps</div>
       <ul>
-        <li><strong>Stripe Payment Receipt:</strong> Your card payment confirmation is sent by Stripe to the email entered during checkout &mdash; use <strong>Save / Print Receipt</strong> below anytime for an itemized PDF copy.</li>
+        <li><strong>Stripe Payment Receipt:</strong> Your card payment confirmation is sent by Stripe to the email entered during checkout &mdash; use <strong>Save / Print Receipt</strong> below anytime for an itemized PDF copy (email <a href="mailto:jquindao1@icloud.com?subject=DJ%20JRIP%20Itemized%20Invoice%20/%20W-9%20Request" style="color:var(--blue); text-decoration:underline;">jquindao1@icloud.com</a> if you need a venue W-9 or company invoice).</li>
         <li><strong>Calendar Lock Verification:</strong> Expect a confirmation text/email from Jayson (<span id="confirmDirectNote">direct number in your booking email</span>) confirming exclusive availability within 24 hours.</li>
         <li><strong>Playlists &amp; Guest Booth Chat:</strong> Jump back into Playlists &amp; Booth Chat anytime to link Spotify/Apple/YouTube lists or invite guests to drop song requests.</li>
-        <li><strong>Event Week Walkthrough:</strong> Quick final check of timeline cues, load-in power access &amp; remaining balance prior to soundcheck under our <a href="dj-terms.html" style="color:var(--blue); text-decoration:underline;">GG Loop LLC Performance Terms</a>.</li>
+        <li><strong>Need to Reschedule or Cancel?</strong> Manage date changes or refund reviews anytime via our self-service <a href="dj-cancel.html" id="cancelInlineLink" style="color:var(--amber); text-decoration:underline;">Reschedule / Cancel Portal</a> (1 free reschedule with 14+ days&rsquo; notice per <a href="dj-terms.html" style="color:var(--blue); text-decoration:underline;">GG Loop LLC Terms</a>).</li>
       </ul>
     </div>
     <div class="btn-row">
       <a class="btn btn-blue" href="dj.html">&larr; Artist Showcase</a>
       <a class="btn btn-primary" href="dj.html#chat">Playlists &amp; Booth Chat &rarr;</a>
+      <a class="btn btn-ghost" href="dj-events.html">Upcoming Pop-Ups</a>
       <button type="button" class="btn btn-ghost" id="downloadIcsBtn" style="display:none;">Add to Calendar (.ics)</button>
       <button type="button" class="btn btn-ghost" id="printReceiptBtn">Save / Print Receipt</button>
+      <a class="btn btn-ghost" id="cancelPortalBtn" href="dj-cancel.html">Reschedule / Cancel</a>
       <a class="btn btn-ghost" id="confirmDirectSms" href="mailto:jquindao1@icloud.com?subject=DJ%20JRIP%20Booking%20Confirmation">Email Jayson</a>
     </div>
   </div>
@@ -170,6 +172,7 @@
   <script>
     (function () {
       const PKG_MAP = {
+        coffee_popup: { pkg: 'Coffee Shop / Daytime Pop-Up', retainer: '$50.00', total: '$150.00', balanceDue: '$100.00' },
         bar_lounge: { pkg: 'Bar / Lounge / Club', retainer: '$100.00', total: '$400.00', balanceDue: '$300.00' },
         debut_vip: { pkg: 'Private VIP / Debut', retainer: '$150.00', total: '$750.00', balanceDue: '$600.00' },
         wedding_gala: { pkg: 'Wedding / Gala', retainer: '$250.00', total: '$1,200.00', balanceDue: '$950.00' },
@@ -255,6 +258,18 @@
         receiptBox.classList.add('show');
       }
 
+      const cq = new URLSearchParams();
+      if (sessionId) cq.set('session_id', sessionId);
+      if (saved?.name && saved.name !== 'Client') cq.set('name', saved.name);
+      if (saved?.email) cq.set('email', saved.email);
+      if (/^\d{4}-\d{2}-\d{2}$/.test(String(saved?.date || ''))) cq.set('date', saved.date);
+      if (saved?.pkg) cq.set('pkg', saved.pkg);
+      const cancelHref = 'dj-cancel.html' + (cq.toString() ? `?${cq.toString()}` : '');
+      const cBtn = document.getElementById('cancelPortalBtn');
+      const cInline = document.getElementById('cancelInlineLink');
+      if (cBtn) cBtn.href = cancelHref;
+      if (cInline) cInline.href = cancelHref;
+
       const icsBtn = document.getElementById('downloadIcsBtn');
       if (icsBtn && saved && /^\d{4}-\d{2}-\d{2}$/.test(String(saved.date || ''))) {
         icsBtn.style.display = 'inline-flex';
@@ -276,7 +291,7 @@
             `DTEND;VALUE=DATE:${ymdEnd}`,
             `SUMMARY:DJ JRIP - ${safe(saved.pkg)} (${safe(saved.name)})`,
             `LOCATION:${safe(saved.venue || 'DFW Venue TBD')}`,
-            `DESCRIPTION:GG LOOP LLC / DJ JRIP Date Lock | Package: ${safe(saved.pkg)} | Retainer: ${safe(saved.retainer)} | Balance: ${safe(saved.balanceDue)} | Ref: ${safe(sessionId || 'Pending')}`,
+            `DESCRIPTION:GG LOOP LLC / DJ JRIP Date Lock | Package: ${safe(saved.pkg)} | Retainer: ${safe(saved.retainer)} | Balance: ${safe(saved.balanceDue)} | Ref: ${safe(sessionId || 'Pending')} | Reschedule/Cancel: https://djjrip.github.io/dj-cancel.html`,
             'END:VEVENT',
             'END:VCALENDAR'
           ].join('\r\n');

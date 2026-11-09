@@ -944,7 +944,7 @@
     /* LIVE EVENT PHOTOGRAPHY & FLYER SHOWCASE */
     .gallery-row-landscape {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 14px;
       margin-bottom: 14px;
     }
@@ -1754,15 +1754,15 @@
 
     .pkg-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
       margin-bottom: 14px;
     }
     .pkg-card {
       background: rgba(5, 10, 8, 0.68);
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 20px 16px 18px;
+      padding: 18px 14px 16px;
       cursor: pointer;
       transition: transform 0.24s var(--ease-expo), border-color 0.24s var(--ease-expo), box-shadow 0.24s var(--ease-expo), background 0.24s ease;
       position: relative;
@@ -2082,12 +2082,16 @@
     .tab-footer-meta strong { color: var(--white); }
 
     /* RESPONSIVE BREAKPOINTS */
+    @media (max-width: 1060px) {
+      .pkg-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 960px) {
       .hero-card { grid-template-columns: 1fr; padding: 20px 16px; gap: 18px; }
       .deck-stage { order: -1; }
-      .pkg-grid { grid-template-columns: 1fr 1fr; }
       .showcase-split, .sc-grid { grid-template-columns: 1fr; }
       .guide-panel.active { grid-template-columns: 1fr; }
+      .gallery-row-landscape { grid-template-columns: repeat(2, 1fr); }
+      .gallery-row-landscape .gallery-card:nth-child(3) { grid-column: 1 / -1; }
       .gallery-row-portrait { grid-template-columns: repeat(2, 1fr); }
       .gallery-spotlight-card { grid-column: 1 / -1; }
     }
@@ -2117,6 +2121,7 @@
       .crate-boxes { grid-template-columns: 1fr; }
       .chat-compose { grid-template-columns: 1fr; }
       .gallery-row-landscape { grid-template-columns: 1fr; }
+      .gallery-row-landscape .gallery-card:nth-child(3) { grid-column: auto; }
       .gallery-row-portrait { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .gallery-row-portrait .media-cap { flex-direction: column; align-items: flex-start; padding: 10px 11px; gap: 7px; }
       .gallery-zoom-pill { display: none; }
@@ -2478,6 +2483,9 @@
     </nav>
 
     <div class="top-right-actions">
+      <a class="studio-toggle-btn" href="dj-events.html" title="Upcoming Pop-Ups, Coffee Shop Events & Since 2019 Proof" style="text-decoration:none; border-color:rgba(245,158,11,0.36); color:var(--amber);">
+        <span>&#9733;</span><span>Events</span>
+      </a>
       <button type="button" class="studio-toggle-btn" id="openStudioTopBtn" title="Customize layout, colors & bio like MySpace (Shift+E)">
         <span>&#10022;</span><span class="studio-btn-label"> Customize</span>
       </button>
@@ -2520,19 +2528,20 @@
 
               <h1 id="heroMainHeadline">Rhythm, <em>Harmonic Blends</em> &amp; Live Crowd Control.</h1>
               <p class="hero-sub" id="heroBioText">
-                From 71-minute continuous SoundCloud sets and recorded Serato booth sessions to custom FL Studio blends built track by track around every crowd. Spin the deck, preview the edits, then build your night.
+                Live DFW sets since 2019, 71m &amp; 37m continuous SoundCloud mixes, recorded Serato booth sessions, and custom FL Studio blends. Spin the deck, preview the edits, then build your event.
               </p>
 
               <div class="sonic-stats">
-                <div class="stat-pill"><span>335.7K+</span> TikTok Transition</div>
+                <div class="stat-pill"><span>79.2K+</span> TikTok Likes (@jaysonbq)</div>
                 <div class="stat-pill mint"><span>71m &amp; 37m</span> SoundCloud Mixes</div>
-                <div class="stat-pill blue"><span>84</span> Custom Edits</div>
-                <div class="stat-pill pink"><span>134</span> .FLP Studio Projects</div>
+                <div class="stat-pill blue"><span>84</span> Edits &bull; <span>134</span> .FLP</div>
+                <div class="stat-pill pink"><span>Since 2019</span> Live DFW Events</div>
               </div>
 
               <div class="cta-row">
                 <a class="btn-artist" href="#liveWorkSection">Listen &amp; Watch Sets &darr;</a>
                 <button type="button" class="btn-secondary" id="heroVibeBtn">Playlists &amp; Booth Chat</button>
+                <a class="btn-secondary" href="dj-events.html">Events &amp; Pop-Ups</a>
                 <button type="button" class="btn-quiet" id="heroBookLink">Private Booking &amp; Rates &rarr;</button>
               </div>
             </div>
@@ -2584,11 +2593,12 @@
 
               <div class="deck-chip-row" id="deckChipRow">
                 <button type="button" class="deck-chip active" data-track-idx="0">Sweet Spot Remix</button>
-                <button type="button" class="deck-chip" data-track-idx="1">One &amp; Only &rarr; Don</button>
-                <button type="button" class="deck-chip" data-track-idx="2">Lost (Afro)</button>
-                <button type="button" class="deck-chip" data-track-idx="3">Modern Jam Flip</button>
-                <button type="button" class="deck-chip" data-track-idx="4">Clairo .FLP</button>
-                <button type="button" class="deck-chip" data-track-idx="5">Porter .FLP</button>
+                <button type="button" class="deck-chip" data-track-idx="1">You &amp; I &rarr; Mirrors</button>
+                <button type="button" class="deck-chip" data-track-idx="2">Solace (Melodic)</button>
+                <button type="button" class="deck-chip" data-track-idx="3">Lake House Live</button>
+                <button type="button" class="deck-chip" data-track-idx="4">Lounge Sax Cut</button>
+                <button type="button" class="deck-chip" data-track-idx="5">Clairo .FLP</button>
+                <button type="button" class="deck-chip" data-track-idx="6">Porter .FLP</button>
               </div>
 
               <audio id="deckAudioPlayer" playsinline preload="metadata" style="display:none;"></audio>
@@ -2657,7 +2667,7 @@
               <div class="media-frame" id="ttFrameBox">
                 <button type="button" class="media-poster-btn" id="playTtCardBtn" aria-label="Play @jaysonbq Live Booth Flip">
                   <img src="assets/tiktok-clip.jpg" style="object-position:center 30%;" alt="DJ JRIP Live Booth Flip Clip">
-                  <span class="media-tag-float">TikTok @jaysonbq &bull; 335.7K+ Context</span>
+                  <span class="media-tag-float">TikTok @jaysonbq &bull; 2K+ Followers</span>
                   <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
                 </button>
               </div>
@@ -2703,7 +2713,7 @@
           <div class="sec-head" id="liveGallerySection">
             <div>
               <div class="sec-title">In The Booth: Live Event Gallery &amp; Flyers</div>
-              <div class="sec-sub">Captured on stage at Rhythm Dance Studio (Home Grown) &mdash; click any photo or flyer to expand full-screen</div>
+              <div class="sec-sub">From outdoor lakefront pop-ups (Since 2019) to Rhythm Dance Studio in Dallas &mdash; click any photo or flyer to expand full-screen</div>
             </div>
             <button type="button" class="btn-secondary" data-lightbox-open="0" style="padding:7px 13px; font-size:12px;">Open Gallery Viewer &nearr;</button>
           </div>
@@ -2738,11 +2748,26 @@
                 <button type="button" class="cap-spin-btn" data-lightbox-open="1">View</button>
               </div>
             </div>
+
+            <div class="gallery-card">
+              <button type="button" class="gallery-photo-btn" data-lightbox-open="2" aria-label="Expand photo: DJ JRIP spinning outdoor generator-powered Halloween Trunk-or-Treat booth on Nov 2, 2019">
+                <img src="assets/dj-jrip-trunk-or-treat-2019.jpg" width="960" height="640" loading="lazy" alt="DJ JRIP running an outdoor Halloween Trunk-or-Treat Pioneer DJ booth off generator power on November 2, 2019">
+                <span class="media-tag-float" style="border-color:rgba(52,211,153,0.45);">Nov 2019 &bull; Outdoor Pop-Up</span>
+                <span class="gallery-zoom-pill">Expand &#10530;</span>
+              </button>
+              <div class="media-cap">
+                <div>
+                  <strong>2019 Outdoor Trunk-or-Treat Booth</strong>
+                  <small>Pioneer decks + generator power by the lake &bull; Live DFW since 2019</small>
+                </div>
+                <button type="button" class="cap-spin-btn" data-lightbox-open="2">View</button>
+              </div>
+            </div>
           </div>
 
           <div class="gallery-row-portrait">
             <div class="gallery-card">
-              <button type="button" class="gallery-photo-btn" data-lightbox-open="2" aria-label="Expand photo: DJ JRIP and guest by the Pioneer DDJ booth">
+              <button type="button" class="gallery-photo-btn" data-lightbox-open="3" aria-label="Expand photo: DJ JRIP and guest by the Pioneer DDJ booth">
                 <img src="assets/dj-jrip-rhythm-crowd.jpg" width="768" height="1024" loading="lazy" style="object-position:center 15%;" alt="DJ JRIP with guest beside the Pioneer DDJ booth during Home Grown at Rhythm Dance Studio">
                 <span class="gallery-zoom-pill">Expand &#10530;</span>
               </button>
@@ -2752,12 +2777,12 @@
                   <strong>Crowd &amp; Booth Energy</strong>
                   <small>Open dancefloor vibes next to the Serato &amp; DDJ setup</small>
                 </div>
-                <button type="button" class="cap-spin-btn" data-lightbox-open="2">Expand</button>
+                <button type="button" class="cap-spin-btn" data-lightbox-open="3">Expand</button>
               </div>
             </div>
 
             <div class="gallery-card">
-              <button type="button" class="gallery-photo-btn" data-lightbox-open="3" aria-label="Expand flyer: Rhythm Dance Studio presents Home Grown Summer Vol.">
+              <button type="button" class="gallery-photo-btn" data-lightbox-open="4" aria-label="Expand flyer: Rhythm Dance Studio presents Home Grown Summer Vol.">
                 <img src="assets/flyer-home-grown-rhythm.jpg" width="396" height="497" loading="lazy" alt="Rhythm Dance Studio Presents Home Grown Summer Vol. flyer featuring DJ JRIP, LUV.HEX, and SUCKAPUNCH">
                 <span class="gallery-zoom-pill">Expand &#10530;</span>
               </button>
@@ -2767,7 +2792,7 @@
                   <strong>Home Grown: Summer Vol.</strong>
                   <small>House &amp; R&amp;B &bull; Sounds by DJ JRIP, Luv.Hex &amp; SuckaPunch</small>
                 </div>
-                <button type="button" class="cap-spin-btn" data-lightbox-open="3">Expand</button>
+                <button type="button" class="cap-spin-btn" data-lightbox-open="4">Expand</button>
               </div>
             </div>
 
@@ -2776,17 +2801,18 @@
                 <div class="mono" style="color:var(--mint); margin-bottom:6px;">LIVE ROOM SPOTLIGHT // DALLAS, TX</div>
                 <div class="sec-title" style="font-size:19px; margin-bottom:8px;">Rhythm Dance Studio &mdash; Home Grown</div>
                 <p style="font-size:13px; color:var(--muted); margin-bottom:12px;">
-                  Full House &amp; R&amp;B community showcase on an open studio dancefloor &mdash; billed alongside <strong>LUV.HEX</strong> and <strong>SUCKAPUNCH</strong> with dual booth decks, custom transition cues, and live 360 camera capture.
+                  Full House &amp; R&amp;B community showcase on an open studio dancefloor &mdash; billed alongside <strong>LUV.HEX</strong> and <strong>SUCKAPUNCH</strong> with dual booth decks, custom transition cues, and live camera capture. Also launching daytime <strong>Coffee Shop Pop-Ups ($150 pilot)</strong> across DFW.
                 </p>
                 <div class="gallery-meta-pills">
                   <span class="gallery-meta-pill" style="color:var(--amber); border-color:rgba(245,158,11,0.35);">House &amp; R&amp;B</span>
-                  <span class="gallery-meta-pill">Dual Booth Decks</span>
-                  <span class="gallery-meta-pill">18+ Open Floor</span>
-                  <span class="gallery-meta-pill">Dallas Local Bill</span>
+                  <span class="gallery-meta-pill">Since 2019</span>
+                  <span class="gallery-meta-pill">Outdoor &amp; Studio</span>
+                  <span class="gallery-meta-pill">Coffee Pop-Ups</span>
                 </div>
               </div>
               <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;">
-                <button type="button" class="btn-artist" data-lightbox-open="0" style="padding:9px 16px; font-size:13px;">Browse Photos (4) &#10530;</button>
+                <button type="button" class="btn-artist" data-lightbox-open="0" style="padding:9px 16px; font-size:13px;">Browse Photos (5) &#10530;</button>
+                <a class="btn-secondary" href="dj-events.html" style="padding:9px 15px; font-size:13px;">Upcoming Events &amp; Pop-Ups &rarr;</a>
                 <button type="button" class="btn-secondary" id="galleryBookBtn" style="padding:9px 15px; font-size:13px;">Book This Vibe &rarr;</button>
               </div>
             </div>
@@ -2880,31 +2906,35 @@
 
               <div class="studio-list">
                 <div class="studio-item">
-                  <div><strong>Rhythm Dance Studio &mdash; Home Grown Bill</strong><div style="font-size:11.5px; color:var(--muted);">House &amp; R&amp;B collective w/ Luv.Hex &amp; SuckaPunch (7.5K+ TikTok reel)</div></div>
+                  <div><strong>Rhythm Dance Studio &mdash; Home Grown Bill</strong><div style="font-size:11.5px; color:var(--muted);">House &amp; R&amp;B collective w/ Luv.Hex &amp; SuckaPunch (7.5K+ TikTok views)</div></div>
                   <a class="btn-sm" href="https://www.tiktok.com/@jaysonbq/video/7506250078944775467" target="_blank" rel="noopener noreferrer" style="border-color:var(--amber); color:var(--amber); text-decoration:none;">Clip &nearr;</a>
                 </div>
                 <div class="studio-item">
-                  <div><strong>Clubs, Rooftops, Private VIP &amp; Galas</strong><div style="font-size:11.5px; color:var(--muted);">Open-format beatmatching, MC hosting &amp; bespoke timelines</div></div>
-                  <span class="tag">DFW Live</span>
+                  <div><strong>Coffee Shops, Day Lounges &amp; Pop-Ups ($150 Pilot)</strong><div style="font-size:11.5px; color:var(--muted);">Conversation-safe 68&ndash;75 dB curation + 3ft footprint &amp; QR requests</div></div>
+                  <a class="btn-sm" href="dj-events.html" style="border-color:var(--mint); color:var(--mint); text-decoration:none;">Pop-Ups &nearr;</a>
                 </div>
                 <div class="studio-item">
-                  <div><strong>One &amp; Only &rarr; Don Toliver (Serato Live IV)</strong><div style="font-size:11.5px; color:var(--muted);">Unedited 24-bit console transition playable on deck above</div></div>
-                  <button type="button" class="btn-sm" data-spin-idx="1" style="border-color:var(--mint); color:var(--mint);">Spin Blend #2</button>
+                  <div><strong>You &amp; I &rarr; Mirrors &rarr; Go Crazy (Serato Live)</strong><div style="font-size:11.5px; color:var(--muted);">John Legend &rarr; JT &rarr; Chris Brown 94 BPM console transition</div></div>
+                  <button type="button" class="btn-sm" data-spin-idx="1" style="border-color:var(--amber); color:var(--amber);">Spin #2</button>
+                </div>
+                <div class="studio-item">
+                  <div><strong>4K Lake House Set &rarr; September (Live Crowd)</strong><div style="font-size:11.5px; color:var(--muted);">Recorded outdoor set from @KUYAJRIP YouTube channel</div></div>
+                  <button type="button" class="btn-sm" data-spin-idx="3" style="border-color:var(--mint); color:var(--mint);">Spin #4</button>
                 </div>
               </div>
             </div>
 
             <div class="card-box" style="margin-bottom:0;">
-              <div class="mono" style="color:var(--pink); margin-bottom:6px;">84 CUSTOM CLUB EDITS &bull; 134 .FLP PROJECTS</div>
-              <div class="sec-title" style="font-size:18px; margin-bottom:10px;">Original Remixes &amp; FL Studio Vault</div>
+              <div class="mono" style="color:var(--pink); margin-bottom:6px;">84 CUSTOM EDITS &bull; 134 .FLP PROJECTS &bull; SOUNDCLOUD</div>
+              <div class="sec-title" style="font-size:18px; margin-bottom:10px;">Original Remixes, Sets &amp; FL Studio Vault</div>
               <p style="font-size:13px; color:var(--muted); margin-bottom:10px;">
-                Beyond standard tracks, Jayson builds bespoke tempo switches, Afro-House flips, and clean transition stems right inside FL Studio &amp; Serato.
+                100% organic DJ JRIP sets, Serato booth transitions, and FL Studio stems ready to audition on the deck above.
               </p>
               <div class="studio-list" id="featuredEditsList">
                 <div class="studio-item"><div><strong>Sweet Spot &times; Superhuman (JRIP Remix)</strong><div style="font-size:11.5px; color:var(--muted);">Justin Bieber / Chris Brown &times; Keri Hilson blend</div></div><button type="button" class="btn-sm" data-spin-idx="0" style="border-color:var(--amber); color:var(--amber);">Spin #1</button></div>
-                <div class="studio-item"><div><strong>Frank Ocean &mdash; Lost (Afro House Edit)</strong><div style="font-size:11.5px; color:var(--muted);">Rooftop percussion flip in Custom Edits crate</div></div><button type="button" class="btn-sm" data-spin-idx="2" style="border-color:var(--mint); color:var(--mint);">Spin #3</button></div>
-                <div class="studio-item"><div><strong>Travis Scott &times; JT &mdash; MODERN JAM vs. SexyBack</strong><div style="font-size:11.5px; color:var(--muted);">Peak-hour bass-house mashup flip</div></div><button type="button" class="btn-sm" data-spin-idx="3" style="border-color:var(--blue); color:var(--blue);">Spin #4</button></div>
-                <div class="studio-item"><div><strong>Clairo &bull; Porter Robinson (Slowed .FLP Stems)</strong><div style="font-size:11.5px; color:var(--muted);">closer to you / everything goes on custom stem edits</div></div><div style="display:flex; gap:5px; flex-shrink:0;"><button type="button" class="btn-sm" data-spin-idx="4" style="border-color:var(--pink); color:#eab8c6;">Clairo #5</button><button type="button" class="btn-sm" data-spin-idx="5" style="border-color:var(--pink); color:#eab8c6;">Porter #6</button></div></div>
+                <div class="studio-item"><div><strong>Solace (37m Melodic Lounge Mix Extract)</strong><div style="font-size:11.5px; color:var(--muted);">Porter Robinson &rarr; Sasha Sloan &rarr; Lauv continuous journey</div></div><button type="button" class="btn-sm" data-spin-idx="2" style="border-color:var(--mint); color:var(--mint);">Spin #3</button></div>
+                <div class="studio-item"><div><strong>Wanna Get Nasty? (Coffee &amp; Lounge Sax Cut)</strong><div style="font-size:11.5px; color:var(--muted);">Warm clean daytime grooves for cafes, patios &amp; cocktail hour</div></div><button type="button" class="btn-sm" data-spin-idx="4" style="border-color:var(--blue); color:var(--blue);">Spin #5</button></div>
+                <div class="studio-item"><div><strong>Clairo &bull; Porter Robinson (Slowed .FLP Stems)</strong><div style="font-size:11.5px; color:var(--muted);">closer to you / everything goes on custom stem edits</div></div><div style="display:flex; gap:5px; flex-shrink:0;"><button type="button" class="btn-sm" data-spin-idx="5" style="border-color:var(--pink); color:#eab8c6;">Clairo #6</button><button type="button" class="btn-sm" data-spin-idx="6" style="border-color:var(--pink); color:#eab8c6;">Porter #7</button></div></div>
               </div>
               <div style="margin-top:12px;">
                 <button type="button" class="btn-secondary" id="browseEditsBtn" style="font-size:12.5px; padding:8px 14px;">Browse All 84 Custom Edits &amp; 3,023 Tracks &rarr;</button>
@@ -2991,6 +3021,8 @@
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
               <button type="button" class="btn-primary" id="bridgeToBookBtn">Open Book &amp; Rates Category &rarr;</button>
+              <a class="btn-secondary" href="dj-events.html">Events &amp; Coffee Pop-Ups &nearr;</a>
+              <a class="btn-secondary" href="dj-cancel.html">Reschedule / Cancel Portal &nearr;</a>
               <a class="btn-secondary" href="gaming-for-groceries/index.html">Gaming Division &nearr;</a>
               <a class="btn-secondary" href="index.html">Engineering Portfolio &nearr;</a>
             </div>
@@ -3277,6 +3309,19 @@
         </div>
 
         <div class="pkg-grid" id="pkgGrid">
+          <div class="pkg-card" role="button" tabindex="0" data-pkg="coffee_popup" data-label="Coffee Shop &amp; Daytime Lounge Pop-Up (2–3 hrs)" data-total="150" data-deposit="50" data-stripe="https://buy.stripe.com/14A5kFfE8feF52H48U0Fi0o">
+            <div>
+              <span class="pkg-tag" style="color:var(--mint);">Daytime &bull; 2&ndash;3 Hours</span>
+              <div class="pkg-name">Coffee Shop Pop-Up</div>
+              <div class="pkg-price">$150</div>
+              <span class="pkg-retainer">$50 deposit today (33%)<small>$100 due before soundcheck</small></span>
+              <ul>
+                <li>68&ndash;75 dB conversation-safe curation</li>
+                <li>Tiny 3ft rig + @jaysonbq recap reel</li>
+              </ul>
+            </div>
+          </div>
+
           <div class="pkg-card" role="button" tabindex="0" data-pkg="bar_lounge" data-label="Bar / Lounge / Club Set (2–4 hrs)" data-total="400" data-deposit="100" data-stripe="https://buy.stripe.com/cNi4gB2Rm7Md7aP0WI0Fi0c">
             <div>
               <span class="pkg-tag">Open-Format &bull; 2&ndash;4 Hours</span>
@@ -3368,7 +3413,8 @@
           <div>
             <label class="field-label" for="eventType">Event Format</label>
             <select id="eventType">
-              <option value="Private VIP / Birthday Party">Private VIP / Milestone Party</option>
+              <option value="Coffee Shop / Daytime Lounge Pop-Up">Coffee Shop / Daytime Lounge Pop-Up</option>
+              <option value="Private VIP / Birthday Party" selected>Private VIP / Milestone Party</option>
               <option value="Bar / Lounge / Rooftop">Bar / Lounge / Club Set</option>
               <option value="Wedding Ceremony & Reception">Wedding Ceremony &amp; Reception</option>
               <option value="18th Birthday Debut">18th Birthday Debut</option>
@@ -3467,7 +3513,7 @@
 
         <label class="agreement-check">
           <input type="checkbox" id="agreeTerms" checked>
-          <span>I agree to the <a href="dj-terms.html" target="_blank" rel="noopener noreferrer" style="color:var(--blue); text-decoration:underline;">GG Loop LLC Performance Terms</a>: small deposit locks the date (balance due before soundcheck), includes 1 free reschedule with <strong>14+ days&rsquo; notice</strong>, and guarantees a <strong>100% deposit refund</strong> if DJ JRIP must decline with advance notice.</span>
+          <span>I agree to the <a href="dj-terms.html" target="_blank" rel="noopener noreferrer" style="color:var(--blue); text-decoration:underline;">GG Loop LLC Performance Terms</a>: small deposit locks the date (balance due before soundcheck), includes 1 free reschedule with <strong>14+ days&rsquo; notice</strong> via our <a href="dj-cancel.html" target="_blank" rel="noopener noreferrer" style="color:var(--amber); text-decoration:underline;">Reschedule / Cancel Portal</a>, and guarantees a <strong>100% deposit refund</strong> if DJ JRIP must decline with advance notice.</span>
         </label>
 
         <div class="book-cta-row">
@@ -3506,6 +3552,7 @@
               <button type="button" class="btn-secondary" id="copyPhoneBtn">Copy Direct Number</button>
               <a class="btn-secondary" id="textReceiptBtn" href="#">Copy &amp; Text Jayson &rarr;</a>
               <a class="btn-secondary" id="callDirectBtn" href="#">Call Direct</a>
+              <a class="btn-secondary" href="dj-cancel.html" target="_blank" rel="noopener noreferrer">Reschedule / Cancel &rarr;</a>
             </div>
           </div>
         </div>
@@ -3517,6 +3564,8 @@
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
           <button type="button" class="btn-secondary" id="bookBackBtn">&larr; Playlists &amp; Chat</button>
+          <a class="btn-secondary" href="dj-events.html">Upcoming Pop-Ups &nearr;</a>
+          <a class="btn-secondary" href="dj-cancel.html" target="_blank" rel="noopener noreferrer">Reschedule / Cancel &nearr;</a>
           <a class="btn-secondary" href="dj-terms.html" target="_blank" rel="noopener noreferrer">Performance Terms &nearr;</a>
         </div>
       </div>
@@ -3670,12 +3719,13 @@
     const NTFY_TOPIC = 'djjrip-ops-4a65fac665ec';
     const BOOTH_ROOM_PREFIX = 'djjrip-booth-v1-';
 
-    // PURE AUDIO MUSIC CRATE ONLY (6 VERIFIED DISTINCT TRACKS — ZERO DUPLICATES)
+    // PURE AUDIO MUSIC CRATE ONLY (7 100% ORGANIC DJ JRIP SETS, SERATO BLENDS & .FLP STEMS)
     const DECK_TRACKS = [
       { title: 'Sweet Spot \u00d7 Superhuman (JRIP Remix)', sub: 'Justin Bieber / Chris Brown \u00d7 Keri Hilson Blend', bpm: '148 BPM \u2022 REMIX', dur: '3:08', src: 'assets/mix-sweetspot-superhuman.mp3' },
-      { title: 'One & Only \u2192 Don Toliver (Serato Transition)', sub: 'Unedited 24-Bit Live Console Blend \u2022 Pop \u2192 R&B', bpm: 'LIVE DECK', dur: '3:38', src: 'assets/mix-serato-session-4.mp3' },
-      { title: 'Frank Ocean \u2014 Lost (Afro House Edit)', sub: 'Rooftop Percussion Flip \u2022 Custom Club Edit', bpm: 'AFRO HOUSE', dur: '3:25', src: 'assets/mix-frank-ocean-lost-afro.mp3' },
-      { title: 'MODERN JAM \u00d7 SexyBack (Club Mashup)', sub: 'Peak-Hour Flip \u2022 Travis Scott \u00d7 Justin Timberlake', bpm: '124 BPM \u2022 FLIP', dur: '3:49', src: 'assets/mix-modern-jam-sexyback.mp3' },
+      { title: 'You & I \u2192 Mirrors \u2192 Go Crazy (Serato Blend)', sub: 'John Legend \u2192 Justin Timberlake \u2192 Chris Brown Live Console', bpm: '94 BPM \u2022 SERATO', dur: '3:20', src: 'assets/mix-youandi-mirrors-gocrazy.mp3' },
+      { title: 'Solace (Melodic Lounge Set)', sub: 'Porter Robinson \u2192 Sasha Sloan \u2192 Lauv \u2022 37m SoundCloud Extract', bpm: 'MELODIC \u2022 37M MIX', dur: '3:05', src: 'assets/mix-solace-melodic.mp3' },
+      { title: '4K Lake House Set \u2192 September (Live Crowd)', sub: 'Recorded Live Outdoor Set \u2022 @KUYAJRIP YouTube Showcase', bpm: 'LIVE OUTDOOR', dur: '3:20', src: 'assets/mix-lakehouse-live.mp3' },
+      { title: 'Wanna Get Nasty? (Coffee & Lounge Sax Cut)', sub: 'Warm Grooves & Clean Lounge Sax \u2022 Daytime / Patio Set Cut', bpm: 'LOUNGE SAX', dur: '3:10', src: 'assets/mix-wanna-nasty-lounge-sax.mp3' },
       { title: 'Clairo \u2014 Closer To You (Slowed .FLP)', sub: 'Custom FL Studio Stem & Pitch Edit', bpm: 'SLOWED .FLP', dur: '3:27', src: 'assets/mix-clairo-closer-slowed.mp3' },
       { title: 'Porter Robinson \u2014 Everything Goes On (.FLP)', sub: 'Custom FL Studio Pitch & Reverb Edit', bpm: 'SLOWED .FLP', dur: '3:48', src: 'assets/mix-porter-everything-slowed.mp3' }
     ];
@@ -3690,6 +3740,7 @@
     };
 
     const PRESETS = {
+      coffee: { pkgId: 'coffee_popup', eventType: 'Coffee Shop / Daytime Lounge Pop-Up', mcNeed: 'Music Only (No MC announcements needed)', cleanPolicy: '100% Clean Radio Edits All Night', vibes: ['house', 'rnb', 'debut'], label: 'Coffee Shop Pop-Up tier ($150 / $50 dep) selected' },
       vip: { pkgId: 'debut_vip', eventType: 'Private VIP / Birthday Party', mcNeed: 'Need DJ JRIP to MC & call names', cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late', vibes: ['debut', 'rnb', 'house'], label: 'Private VIP & Milestone tier selected' },
       debut: { pkgId: 'debut_vip', eventType: '18th Birthday Debut', mcNeed: 'Need DJ JRIP to MC & call names', cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late', vibes: ['debut', 'rnb', 'house'], label: '18th Debut & VIP tier selected' },
       wedding: { pkgId: 'wedding_gala', eventType: 'Wedding Ceremony & Reception', mcNeed: 'Need DJ JRIP to MC & call names', cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late', vibes: ['debut', 'rnb', 'house'], label: 'Wedding & Gala tier selected' },
@@ -4377,6 +4428,7 @@
     }
 
     const PKG_INCLUSION_SUMMARY = {
+      coffee_popup: 'Low-Footprint Cafe/Lounge Audio \u2022 Conversation-Safe 68\u201375 dB',
       bar_lounge: 'House Sound or Portable Rig \u2022 60m Load-In',
       debut_vip: '4,000W Bose F1 Array \u2022 60\u201390m Load-In & COI',
       wedding_gala: 'Ceremony + Reception Rig \u2022 Backup Audio & COI',
@@ -4400,6 +4452,7 @@
       };
       if (fromUser && !userPickedEventType) {
         const formatByPkg = {
+          coffee_popup: 'Coffee Shop / Daytime Lounge Pop-Up',
           bar_lounge: 'Bar / Lounge / Rooftop',
           debut_vip: 'Private VIP / Birthday Party',
           wedding_gala: 'Wedding Ceremony & Reception',
@@ -4936,7 +4989,14 @@
         currentTab = 'vibe';
       }
 
-      if (qEvent === 'vip' || qEvent === 'party' || qEvent === 'milestone') { applyPreset('vip', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
+      const qTrack = params.get('track');
+      if (qTrack !== null && /^\d+$/.test(qTrack)) {
+        const tidx = Number(qTrack);
+        if (tidx >= 0 && tidx < DECK_TRACKS.length) loadDeckTrack(tidx, false);
+      }
+
+      if (qEvent === 'coffee' || qEvent === 'cafe' || qEvent === 'popup') { applyPreset('coffee', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
+      else if (qEvent === 'vip' || qEvent === 'party' || qEvent === 'milestone') { applyPreset('vip', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
       else if (qEvent === 'debut') { applyPreset('debut', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
       else if (qEvent === 'wedding' || qEvent === 'gala') { applyPreset('wedding', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
       else if (qEvent === 'bar' || qEvent === 'lounge' || qEvent === 'club') { applyPreset('club', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
@@ -5196,6 +5256,7 @@
       const bodyObj = {
         _subject: `[DJ JRIP BOOKING] ${payload.name} (${payload.date}) \u2014 ${payload.depStr} via ${selectedPaymentMethod.toUpperCase()}`,
         _template: 'box',
+        _autoresponse: `DJ JRIP / GG Loop LLC received your booking inquiry for ${payload.date} (${selectedPackage.label}, Deposit: ${payload.depStr}). Terms: https://djjrip.github.io/dj-terms.html | Need to reschedule or cancel anytime? Visit https://djjrip.github.io/dj-cancel.html (1 free reschedule with 14+ days notice). Expect follow-up from jquindao1@icloud.com within 24 hours.`,
         Client_Name: payload.name,
         Client_Phone: payload.phone,
         Client_Email: payload.email,
@@ -5203,10 +5264,11 @@
         Package: selectedPackage.label,
         Total_Rate: payload.totalStr,
         Deposit_Amount: payload.depStr,
-        Balance_Due_At_Show: payload.balDueStr,
+        Balance_Before_Soundcheck: payload.balDueStr,
         Payment_Option: selectedPaymentMethod.toUpperCase(),
         Terms_Accepted: `YES @ ${payload.termsAcceptedAt}`,
         Terms_URL: 'https://djjrip.github.io/dj-terms.html',
+        Reschedule_Cancel_Portal: 'https://djjrip.github.io/dj-cancel.html',
         Playlist_Links: payload.urls.map(u => `${u.phase}: ${u.url}`).join(' | ') || 'None',
         Full_Manifest: payload.text
       };
@@ -5292,10 +5354,10 @@
         displayName: 'DJ JRIP \u2022 Jayson Quindao',
         kicker: 'Open-Format DJ, Remixer & Producer',
         headline: 'Rhythm, *Harmonic Blends* & Live Crowd Control.',
-        bio: 'From 71-minute continuous SoundCloud sets and recorded Serato booth sessions to custom FL Studio blends built track by track around every crowd. Spin the deck, preview the edits, then build your night.',
+        bio: 'Live DFW sets since 2019, 71m & 37m continuous SoundCloud mixes, recorded Serato booth sessions, and custom FL Studio blends. Spin the deck, preview the edits, then build your event.',
         mood: 'Crate Digging / Dialed In',
-        statusMarquee: 'Vinyl deck is 100% live mixes & FL Studio blends \u2022 Drop playlist links anytime in Tab 2 Booth Chat.',
-        bulletin: 'Taking DFW club, rooftop, private VIP, debut & wedding bookings. Watch booth/DDJ hardware clips in Videos or spin pure audio mixes on the platter above.',
+        statusMarquee: 'Vinyl deck features 7 verified live sets, Serato blends & FL Studio edits \u2022 Drop playlists anytime in Tab 2 Booth Chat.',
+        bulletin: 'Booking DFW coffee shop & patio pop-ups ($150 pilot), clubs, private VIPs, debuts & weddings. See upcoming windows at dj-events.html.',
         topArtists: ['Frank Ocean', 'Silk Sonic', 'Porter Robinson', 'SZA', 'Kaytranada', 'Fred again..', 'Bad Bunny', 'Daft Punk']
       },
       customCss: ''
@@ -5706,6 +5768,12 @@
         alt: 'DJ JRIP and fellow Home Grown DJs behind dual Pioneer booth setups under pink studio lighting',
         title: 'Dual-Deck Collective Session',
         sub: 'DJ JRIP alongside the Home Grown studio lineup in magenta booth lighting'
+      },
+      {
+        src: 'assets/dj-jrip-trunk-or-treat-2019.jpg',
+        alt: 'DJ JRIP running an outdoor Halloween Trunk-or-Treat Pioneer DJ booth off generator power on November 2, 2019',
+        title: '2019 Outdoor Trunk-or-Treat Booth',
+        sub: 'Nov 2, 2019 \u2022 Pioneer DDJ + generator power by the lake \u2014 live DFW events since 2019'
       },
       {
         src: 'assets/dj-jrip-rhythm-crowd.jpg',
