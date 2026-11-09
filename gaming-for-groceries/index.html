@@ -9,7 +9,7 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{--green:#00e676;--green-glow:rgba(0,230,118,0.25);--bg:#050810;--bg2:#0a0f1e;--bg3:#0f1629;--card:rgba(255,255,255,0.03);--border:rgba(255,255,255,0.07);--text:#f0f4ff;--muted:rgba(240,244,255,0.45);--gold:#fbbf24;--silver:#94a3b8;--bronze:#cd7c2e}
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth;overflow-x:hidden}
     body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
     body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,230,118,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,230,118,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
     nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;background:rgba(5,8,16,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
@@ -19,7 +19,7 @@
     .nav-links a{color:var(--muted);text-decoration:none;font-size:.95rem;font-weight:500;transition:color .2s}
     .nav-links a:hover{color:var(--text)}
     .nav-cta{background:var(--green);color:#000!important;padding:.5rem 1.3rem;border-radius:8px;font-weight:700!important}
-    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;z-index:1}
+    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;z-index:1;overflow:hidden}
     .hero-orb{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,230,118,0.12) 0%,transparent 70%);pointer-events:none;top:50%;left:50%;transform:translate(-50%,-60%);animation:pulse-orb 4s ease-in-out infinite}
     @keyframes pulse-orb{0%,100%{transform:translate(-50%,-60%) scale(1);opacity:.8}50%{transform:translate(-50%,-60%) scale(1.1);opacity:1}}
     .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,230,118,0.1);border:1px solid rgba(0,230,118,0.3);border-radius:50px;padding:.4rem 1rem;font-size:.85rem;font-weight:600;color:var(--green);margin-bottom:1.5rem;letter-spacing:.05em}
