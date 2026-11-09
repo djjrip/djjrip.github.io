@@ -219,29 +219,32 @@
 
     .top-call {
       text-decoration: none;
+      font-family: inherit;
       font-size: 12.5px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--amber);
-      padding: 7px 12px;
+      padding: 7px 13px;
       border-radius: 999px;
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.34);
+      background: rgba(245, 158, 11, 0.10);
       white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.18s var(--ease-expo);
     }
-    .top-call:hover { border-color: var(--amber); background: rgba(245, 158, 11, 0.15); }
+    .top-call:hover { border-color: var(--amber); background: rgba(245, 158, 11, 0.18); transform: translateY(-1px); }
 
     /* SHELL SECTIONS */
     .main-shell { max-width: 1120px; margin: 0 auto; }
-    .view-panel { display: none; animation: viewIn 0.28s var(--ease-expo); }
-    .view-panel.active { display: block; }
+    .view-panel { display: none; }
+    .view-panel.active { display: block; animation: viewIn 0.34s var(--ease-expo); }
     @keyframes viewIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(10px) scale(0.994); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     /* ARTIST-FIRST HERO + VINYL DECK */
     .hero-card {
-      background: linear-gradient(158deg, rgba(14, 30, 24, 0.82), rgba(7, 13, 10, 0.96));
+      background: linear-gradient(158deg, rgba(14, 30, 24, 0.86), rgba(7, 13, 10, 0.97));
       border: 1px solid var(--border-emerald);
       border-radius: 24px;
       padding: 32px;
@@ -252,26 +255,78 @@
       align-items: center;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 22px 54px rgba(0, 0, 0, 0.45);
+      transition: border-color 0.3s var(--ease-expo);
     }
     .hero-profile {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 18px;
+      margin-bottom: 18px;
     }
+    .hero-avatar-btn {
+      position: relative;
+      flex-shrink: 0;
+      width: 108px;
+      height: 108px;
+      padding: 3px;
+      border: 0;
+      border-radius: 50%;
+      background: conic-gradient(from 210deg, var(--amber), var(--mint), var(--blue), var(--pink), var(--amber));
+      cursor: zoom-in;
+      box-shadow: 0 12px 32px rgba(16, 185, 129, 0.24), 0 0 0 4px rgba(245, 158, 11, 0.12);
+      transition: transform 0.28s var(--ease-expo), box-shadow 0.28s var(--ease-expo);
+    }
+    .hero-avatar-btn:hover {
+      transform: scale(1.045) translateY(-1px);
+      box-shadow: 0 16px 38px rgba(245, 158, 11, 0.28), 0 0 0 6px rgba(52, 211, 153, 0.16);
+    }
+    .hero-avatar-btn:active { transform: scale(0.98); }
     .hero-avatar {
-      width: 50px;
-      height: 50px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 1.5px solid rgba(245, 158, 11, 0.65);
-      box-shadow: 0 0 16px rgba(16, 185, 129, 0.2);
+      object-position: center 24%;
+      display: block;
+      border: 2.5px solid #060e0a;
+      background: #060e0a;
+    }
+    .hero-avatar-status {
+      position: absolute;
+      right: 4px;
+      bottom: 4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--mint);
+      border: 3px solid #060e0a;
+      box-shadow: 0 0 12px rgba(52, 211, 153, 0.85);
     }
     .hero-kicker {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
       color: var(--mint);
       letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .hero-verified-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+    .hero-mini-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--amber);
+      background: rgba(245, 158, 11, 0.10);
+      border: 1px solid rgba(245, 158, 11, 0.28);
+      padding: 2px 8px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
     }
     h1 {
@@ -338,6 +393,8 @@
       transition: transform 0.15s ease, filter 0.15s ease;
     }
     .btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .btn-primary:active, .btn-artist:active, .btn-secondary:active { transform: translateY(0) scale(0.98); }
+    .btn-primary:disabled { opacity: 0.68; cursor: wait; transform: none; }
     .btn-artist {
       background: linear-gradient(135deg, var(--amber), var(--orange));
       color: #07110d;
@@ -353,11 +410,11 @@
       align-items: center;
       gap: 7px;
       box-shadow: 0 8px 24px rgba(245, 158, 11, 0.22);
-      transition: transform 0.15s ease, filter 0.15s ease;
+      transition: transform 0.18s var(--ease-expo), filter 0.18s ease, box-shadow 0.2s ease;
     }
-    .btn-artist:hover { filter: brightness(1.07); transform: translateY(-1px); }
+    .btn-artist:hover { filter: brightness(1.07); transform: translateY(-1px); box-shadow: 0 12px 28px rgba(245, 158, 11, 0.28); }
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.045);
       border: 1px solid var(--border);
       color: var(--white);
       padding: 11px 18px;
@@ -370,9 +427,9 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      transition: border-color 0.15s ease, background 0.15s ease;
+      transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s var(--ease-expo);
     }
-    .btn-secondary:hover { border-color: var(--blue); background: rgba(56, 189, 248, 0.08); }
+    .btn-secondary:hover { border-color: var(--blue); background: rgba(56, 189, 248, 0.09); transform: translateY(-1px); }
     .btn-quiet {
       background: transparent;
       border: 0;
@@ -398,6 +455,11 @@
       flex-direction: column;
       align-items: center;
       position: relative;
+      transition: border-color 0.35s var(--ease-expo), box-shadow 0.35s var(--ease-expo);
+    }
+    .deck-stage.playing {
+      border-color: rgba(245, 158, 11, 0.45);
+      box-shadow: 0 0 36px rgba(16, 185, 129, 0.16), inset 0 0 24px rgba(245, 158, 11, 0.05);
     }
     .deck-top-meta {
       width: 100%;
@@ -421,6 +483,31 @@
       background: var(--muted);
       display: inline-block;
       transition: background 0.2s, box-shadow 0.2s;
+    }
+    .eq-bars {
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 12px;
+      margin-left: 2px;
+      opacity: 0.35;
+      transition: opacity 0.25s ease;
+    }
+    .eq-bars span {
+      width: 2.5px;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--mint);
+      transform-origin: bottom center;
+    }
+    .deck-stage.playing .eq-bars { opacity: 1; }
+    .deck-stage.playing .eq-bars span:nth-child(1) { animation: eqPulse 0.72s ease-in-out infinite alternate; }
+    .deck-stage.playing .eq-bars span:nth-child(2) { animation: eqPulse 0.54s 0.14s ease-in-out infinite alternate; height: 10px; background: var(--amber); }
+    .deck-stage.playing .eq-bars span:nth-child(3) { animation: eqPulse 0.66s 0.28s ease-in-out infinite alternate; height: 8px; }
+    .deck-stage.playing .eq-bars span:nth-child(4) { animation: eqPulse 0.48s 0.08s ease-in-out infinite alternate; height: 11px; background: var(--blue); }
+    @keyframes eqPulse {
+      0% { transform: scaleY(0.32); }
+      100% { transform: scaleY(1); }
     }
     .deck-stage.playing .deck-live-dot { color: var(--mint); }
     .deck-stage.playing .deck-live-dot i {
@@ -711,6 +798,12 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      transition: transform 0.24s var(--ease-expo), border-color 0.24s var(--ease-expo), box-shadow 0.24s var(--ease-expo);
+    }
+    .media-card:hover {
+      border-color: rgba(245, 158, 11, 0.42);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
     }
     .media-frame {
       position: relative;
@@ -915,12 +1008,20 @@
       background: rgba(3, 7, 5, 0.92);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
       padding: 18px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.26s var(--ease-expo), visibility 0.26s ease;
     }
-    .gallery-lightbox.open { display: flex; }
+    .gallery-lightbox.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
     .lightbox-dialog {
       position: relative;
       max-width: 960px;
@@ -930,6 +1031,11 @@
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 28px 80px rgba(0, 0, 0, 0.8);
+      transform: scale(0.94) translateY(10px);
+      transition: transform 0.32s var(--ease-expo);
+    }
+    .gallery-lightbox.open .lightbox-dialog {
+      transform: scale(1) translateY(0);
     }
     .lightbox-stage {
       position: relative;
@@ -1553,62 +1659,124 @@
     .pill-rm:hover { color: var(--pink); }
 
     /* TAB 3: BUSINESS, PACKAGES & DATE LOCK */
-    .preset-label {
-      font-size: 11.5px;
-      color: var(--muted);
-      font-weight: 600;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .preset-row {
-      display: flex;
-      flex-wrap: wrap;
+    .book-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 8px;
       margin-bottom: 18px;
     }
-    .preset-pill {
-      background: rgba(255, 255, 255, 0.03);
+    .book-step {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(5, 10, 8, 0.72);
       border: 1px solid var(--border);
-      color: var(--text);
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 13px;
+      border-radius: 14px;
+      padding: 10px 13px;
+      font-size: 12.5px;
       font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      transition: all 0.16s ease;
+      color: var(--muted);
+      transition: border-color 0.25s var(--ease-expo), background 0.25s var(--ease-expo), color 0.25s ease;
     }
-    .preset-pill:hover { border-color: rgba(245, 158, 11, 0.55); color: var(--white); }
-    .preset-pill.active {
-      background: var(--amber-soft);
-      border-color: var(--amber);
+    .book-step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.25s var(--ease-expo);
+    }
+    .book-step.active {
+      border-color: rgba(245, 158, 11, 0.45);
+      background: rgba(245, 158, 11, 0.06);
       color: var(--white);
+    }
+    .book-step.active .book-step-num {
+      border-color: var(--amber);
+      color: var(--amber);
+      background: rgba(245, 158, 11, 0.14);
+    }
+    .book-step.done {
+      border-color: rgba(52, 211, 153, 0.36);
+      background: rgba(16, 185, 129, 0.07);
+      color: var(--white);
+    }
+    .book-step.done .book-step-num {
+      background: var(--mint);
+      border-color: var(--mint);
+      color: #050a08;
     }
 
     .pkg-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
     .pkg-card {
-      background: rgba(5, 10, 8, 0.65);
+      background: rgba(5, 10, 8, 0.68);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px 16px;
+      border-radius: 18px;
+      padding: 20px 16px 18px;
       cursor: pointer;
-      transition: transform 0.22s var(--ease-expo), border-color 0.22s var(--ease-expo), box-shadow 0.22s var(--ease-expo);
+      transition: transform 0.24s var(--ease-expo), border-color 0.24s var(--ease-expo), box-shadow 0.24s var(--ease-expo), background 0.24s ease;
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    .pkg-card:hover { border-color: rgba(245, 158, 11, 0.55); transform: translateY(-2px); }
+    .pkg-card::after {
+      content: '\2713';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--amber);
+      color: #050a08;
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.22s var(--ease-expo), transform 0.26s var(--ease-expo);
+    }
+    .pkg-card.active::after { opacity: 1; transform: scale(1); }
+    .pkg-card:hover {
+      border-color: rgba(245, 158, 11, 0.55);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.4);
+    }
+    .pkg-card:active { transform: translateY(-1px) scale(0.99); }
     .pkg-card.active {
       border-color: var(--amber);
-      background: linear-gradient(170deg, rgba(245, 158, 11, 0.10), rgba(10, 20, 16, 0.96));
-      box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.25);
+      background: linear-gradient(170deg, rgba(245, 158, 11, 0.12), rgba(10, 20, 16, 0.96));
+      box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.3), 0 14px 32px rgba(245, 158, 11, 0.10);
+    }
+    .pkg-popular-badge {
+      display: inline-block;
+      margin-bottom: 6px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: rgba(52, 211, 153, 0.14);
+      border: 1px solid rgba(52, 211, 153, 0.36);
+      color: var(--mint);
     }
     .pkg-tag {
       font-family: 'JetBrains Mono', monospace;
@@ -1616,15 +1784,24 @@
       color: var(--pink);
       margin-bottom: 5px;
       display: block;
+      padding-right: 26px;
     }
-    .pkg-name { font-size: 15.5px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-    .pkg-price { font-size: 26px; font-weight: 800; color: var(--amber); letter-spacing: -0.02em; }
+    .pkg-name { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .pkg-price { font-size: 27px; font-weight: 800; color: var(--amber); letter-spacing: -0.025em; }
     .pkg-retainer {
       font-size: 12px;
       font-weight: 600;
-      color: var(--muted);
+      color: var(--text);
       margin: 4px 0 12px;
       display: block;
+      line-height: 1.4;
+    }
+    .pkg-retainer small {
+      display: block;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 11.5px;
+      margin-top: 2px;
     }
     .pkg-card ul { list-style: none; font-size: 12.5px; color: var(--muted); }
     .pkg-card li { padding-left: 14px; position: relative; margin-bottom: 5px; }
@@ -1635,8 +1812,10 @@
       border-radius: 14px;
       background: rgba(5, 10, 8, 0.58);
       padding: 12px 16px;
-      margin-top: 14px;
+      margin-top: 12px;
+      transition: border-color 0.2s ease;
     }
+    details.gear-accordion[open] { border-color: rgba(52, 211, 153, 0.32); }
     details.gear-accordion summary {
       cursor: pointer;
       font-weight: 600;
@@ -1649,7 +1828,18 @@
       gap: 8px;
     }
     details.gear-accordion summary::-webkit-details-marker { display: none; }
-    details.gear-accordion summary span.hint { font-size: 12px; color: var(--mint); }
+    details.gear-accordion summary span.hint {
+      font-size: 12px;
+      color: var(--mint);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    details.gear-accordion summary .chev {
+      display: inline-block;
+      transition: transform 0.24s var(--ease-expo);
+    }
+    details.gear-accordion[open] summary .chev { transform: rotate(180deg); }
     .gear-mini-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -1674,10 +1864,11 @@
       gap: 10px;
       flex-wrap: wrap;
       font-size: 13px;
+      transition: background 0.25s ease, border-color 0.25s ease;
     }
     .readiness-bar.ready {
-      background: rgba(52, 211, 153, 0.08);
-      border-color: rgba(52, 211, 153, 0.3);
+      background: rgba(52, 211, 153, 0.09);
+      border-color: rgba(52, 211, 153, 0.36);
     }
     .jump-chip {
       background: var(--pink);
@@ -1691,7 +1882,7 @@
     }
 
     .ledger-card {
-      background: rgba(5, 10, 8, 0.72);
+      background: linear-gradient(135deg, rgba(10, 22, 17, 0.92), rgba(5, 10, 8, 0.85));
       border: 1px solid var(--border-emerald);
       border-radius: 16px;
       padding: 16px 18px;
@@ -1700,22 +1891,50 @@
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 16px;
+      margin: 18px 0 16px;
+      transition: border-color 0.24s ease;
+    }
+    .ledger-pop { animation: ledgerPop 0.32s var(--ease-expo); }
+    @keyframes ledgerPop {
+      0% { transform: scale(0.94); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
     }
     .pay-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
       gap: 10px;
       margin-bottom: 16px;
     }
     .pay-card {
+      position: relative;
       background: rgba(5, 10, 8, 0.65);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 14px;
+      padding: 15px 38px 14px 15px;
       cursor: pointer;
-      transition: all 0.16s ease;
+      transition: transform 0.2s var(--ease-expo), border-color 0.2s var(--ease-expo), background 0.2s ease;
     }
+    .pay-card::after {
+      content: '\2713';
+      position: absolute;
+      top: 13px;
+      right: 12px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--amber);
+      color: #050a08;
+      font-size: 11px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.2s var(--ease-expo), transform 0.24s var(--ease-expo);
+    }
+    .pay-card.active::after { opacity: 1; transform: scale(1); }
+    .pay-card:hover { border-color: rgba(245, 158, 11, 0.45); transform: translateY(-2px); }
     .pay-card.active {
       border-color: var(--amber);
       background: var(--amber-soft);
@@ -1732,30 +1951,58 @@
       margin-bottom: 16px;
       cursor: pointer;
     }
-    .agreement-check input { width: 17px; height: 17px; margin-top: 2px; accent-color: var(--pink); }
+    .agreement-check input { width: 17px; height: 17px; margin-top: 2px; accent-color: var(--pink); flex-shrink: 0; }
+
+    .book-cta-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .text-helper-line {
+      margin-top: 10px;
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .quick-direct-link {
+      color: var(--mint);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      white-space: nowrap;
+    }
+    .quick-direct-link:hover { color: var(--amber); }
 
     .checkout-panel {
       display: none;
       margin-top: 18px;
       padding: 20px;
       border-radius: 16px;
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(52, 211, 153, 0.35);
+      background: rgba(16, 185, 129, 0.09);
+      border: 1px solid rgba(52, 211, 153, 0.42);
+      box-shadow: 0 12px 32px rgba(16, 185, 129, 0.10);
     }
-    .checkout-panel.show { display: block; }
+    .checkout-panel.show { display: block; animation: viewIn 0.34s var(--ease-expo); }
     .btn-pay-stripe {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: var(--pink);
+      background: linear-gradient(135deg, var(--pink), var(--pink-hover));
       color: #fff;
       font-weight: 700;
       font-size: 14.5px;
-      padding: 13px 22px;
+      padding: 13px 24px;
       border-radius: 999px;
       text-decoration: none;
-      box-shadow: 0 6px 18px rgba(190, 82, 112, 0.22);
+      box-shadow: 0 8px 22px rgba(190, 82, 112, 0.28);
+      transition: transform 0.18s var(--ease-expo), filter 0.18s ease;
     }
+    .btn-pay-stripe:hover { filter: brightness(1.08); transform: translateY(-1px); }
 
     /* CLEAN IN-FLOW TAB FOOTER BAR (REPLACES FLOATING EMPTY DOCK) */
     .tab-footer-bar {
@@ -1803,8 +2050,9 @@
       .deck-btn { width: 30px; height: 30px; }
       .deck-btn.play-toggle { width: 36px; height: 36px; }
 
-      .hero-profile { margin-bottom: 10px; }
-      .hero-avatar { width: 42px; height: 42px; }
+      .hero-profile { margin-bottom: 14px; gap: 14px; }
+      .hero-avatar-btn { width: 82px; height: 82px; }
+      .book-steps { grid-template-columns: 1fr; gap: 6px; }
       h1 { font-size: 26px; margin-bottom: 10px; }
       .hero-sub { font-size: 13.5px; margin-bottom: 14px; }
       .card-box, .chat-box { padding: 16px 13px; border-radius: 18px; }
@@ -2174,7 +2422,7 @@
       <button type="button" class="studio-toggle-btn" id="openStudioTopBtn" title="Customize layout, colors & bio like MySpace (Shift+E)">
         <span>&#10022;</span><span class="studio-btn-label"> Customize</span>
       </button>
-      <a class="top-call" href="tel:+14693718556">(469) 371-8556</a>
+      <button type="button" class="top-call" id="topBookBtn">Book Date &rarr;</button>
     </div>
   </header>
 
@@ -2198,10 +2446,17 @@
           <div class="hero-card">
             <div>
               <div class="hero-profile">
-                <img class="hero-avatar" src="assets/dj-jrip-headshot.jpg" alt="DJ JRIP (Jayson Quindao)">
+                <button type="button" class="hero-avatar-btn" data-lightbox-open="0" aria-label="View full DJ JRIP live booth photo" title="Tap to view full live booth photo">
+                  <img class="hero-avatar" src="assets/dj-jrip-profile.jpg" width="640" height="640" alt="DJ JRIP (Jayson Quindao) mixing live at booth">
+                  <span class="hero-avatar-status" title="Booking DFW Dates"></span>
+                </button>
                 <div>
-                  <div id="heroDisplayName" style="font-weight:700; color:var(--white); font-size:15.5px;">DJ JRIP &bull; Jayson Quindao</div>
+                  <div id="heroDisplayName" style="font-weight:700; color:var(--white); font-size:17px; letter-spacing:-0.01em;">DJ JRIP &bull; Jayson Quindao</div>
                   <div id="heroKickerText" class="hero-kicker">Open-Format DJ, Remixer &amp; Producer &bull; Dallas&ndash;Fort Worth</div>
+                  <div class="hero-verified-row">
+                    <span class="hero-mini-chip">DFW Live Bookings</span>
+                    <span class="hero-mini-chip" style="color:var(--mint); border-color:rgba(52,211,153,0.32); background:rgba(16,185,129,0.09);">GG Loop LLC</span>
+                  </div>
                 </div>
               </div>
 
@@ -2227,7 +2482,11 @@
             <!-- INTERACTIVE SPINNING VINYL DECK (100% PURE AUDIO MUSIC — ZERO HARDWARE/VIDEO REELS) -->
             <div class="deck-stage" id="deckStage">
               <div class="deck-top-meta">
-                <span class="deck-live-dot"><i></i><span id="deckStatusText">TAP VINYL TO LISTEN</span></span>
+                <span class="deck-live-dot">
+                  <i></i>
+                  <span id="deckStatusText">TAP VINYL TO LISTEN</span>
+                  <span class="eq-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+                </span>
                 <span class="mono" style="color:var(--amber);" id="deckBpmText">148 BPM</span>
               </div>
 
@@ -2641,7 +2900,7 @@
           <details class="gear-accordion">
             <summary>
               <span>Sound Architecture &amp; Live Booth Philosophy</span>
-              <span class="hint">Bose F1 Array (4,000W) + Pioneer Console + Offline Vault &darr;</span>
+              <span class="hint">Bose F1 Array (4,000W) + Pioneer Console + Offline Vault <span class="chev">&#9662;</span></span>
             </summary>
             <div class="gear-mini-grid">
               <div><strong>Dual Bose F1 812 + Subs (4,000W)</strong>Dual 1,000W F1 812 tops + dual 1,000W F1 subwoofers = 4,000W flexible array acoustics tuned for 300&ndash;500 guests without muddying dinner tables.</div>
@@ -2930,58 +3189,66 @@
     <!-- ==================== TAB 3: BUSINESS, RATES, LOGISTICS & BOOKING (SEPARATE CATEGORY) ==================== -->
     <section class="view-panel" id="view-book">
 
-      <!-- PACKAGES & RATES (DEDICATED BUSINESS SECTION) -->
+      <div class="book-steps" aria-label="Booking Progress">
+        <button type="button" class="book-step done" id="bookStep1" style="font-family:inherit; cursor:pointer; text-align:left;">
+          <span class="book-step-num" id="bookStep1Num">&#10003;</span>
+          <span>1. Pick Package</span>
+        </button>
+        <button type="button" class="book-step active" id="bookStep2" style="font-family:inherit; cursor:pointer; text-align:left;">
+          <span class="book-step-num" id="bookStep2Num">2</span>
+          <span>2. Date &amp; Contact</span>
+        </button>
+        <button type="button" class="book-step" id="bookStep3" style="font-family:inherit; cursor:pointer; text-align:left;">
+          <span class="book-step-num" id="bookStep3Num">3</span>
+          <span>3. Lock Date</span>
+        </button>
+      </div>
+
+      <!-- STEP 1: PACKAGES & TRANSPARENT RATES -->
       <div class="card-box" id="ratesSection">
         <div class="sec-head" style="margin-bottom:14px;">
           <div>
-            <div class="mono" style="color:var(--amber); margin-bottom:4px;">GG LOOP LLC // COMMERCIAL &amp; PRIVATE EVENT CONTRACTING</div>
-            <div class="sec-title">1. Event Packages, Rates &amp; Target Date</div>
-            <div class="sec-sub">Flat-rate transparent pricing across Dallas&ndash;Fort Worth &bull; Small flat retainer ($100&ndash;$250) locks your date</div>
+            <div class="mono" style="color:var(--amber); margin-bottom:4px;">GG LOOP LLC // DFW FLAT-RATE PACKAGES</div>
+            <div class="sec-title">1. Pick Your Event Package</div>
+            <div class="sec-sub">Clear upfront pricing &bull; Tap a package below &mdash; pay only the small deposit today to hold your date, and pay the rest before soundcheck</div>
           </div>
         </div>
 
-        <div class="preset-label">Quick Format Presets:</div>
-        <div class="preset-row">
-          <button type="button" class="preset-pill" data-preset="club">Bar / Lounge / Club ($100 Dep)</button>
-          <button type="button" class="preset-pill active" data-preset="debut">Private VIP &amp; Milestone ($150 Dep)</button>
-          <button type="button" class="preset-pill" data-preset="wedding">Wedding &amp; Gala ($250 Dep)</button>
-          <button type="button" class="preset-pill" data-preset="custom">Custom Quote ($100 Preset / $25+)</button>
-        </div>
-
         <div class="pkg-grid" id="pkgGrid">
-          <div class="pkg-card" data-pkg="bar_lounge" data-label="Bar / Lounge / Club Set (2–4 hrs)" data-total="400" data-deposit="100" data-stripe="https://buy.stripe.com/cNi4gB2Rm7Md7aP0WI0Fi0c">
+          <div class="pkg-card" role="button" tabindex="0" data-pkg="bar_lounge" data-label="Bar / Lounge / Club Set (2–4 hrs)" data-total="400" data-deposit="100" data-stripe="https://buy.stripe.com/cNi4gB2Rm7Md7aP0WI0Fi0c">
             <div>
               <span class="pkg-tag">Open-Format &bull; 2&ndash;4 Hours</span>
               <div class="pkg-name">Bar, Lounge &amp; Club</div>
               <div class="pkg-price">$400</div>
-              <span class="pkg-retainer">Lock Retainer: $100 (25%) &bull; $300 due before soundcheck</span>
+              <span class="pkg-retainer">$100 deposit today (25%)<small>$300 due before soundcheck</small></span>
               <ul>
                 <li>Open-format BPM &amp; crowd control</li>
-                <li>House system or portable tie-in</li>
+                <li>Plugs into house sound or portable rig</li>
               </ul>
             </div>
           </div>
 
-          <div class="pkg-card active" data-pkg="debut_vip" data-label="Private VIP, Milestone &amp; Debut (4–5 hrs)" data-total="750" data-deposit="150" data-stripe="https://buy.stripe.com/9B6fZjgIcc2t1QvcFq0Fi0d">
+          <div class="pkg-card active" role="button" tabindex="0" data-pkg="debut_vip" data-label="Private VIP, Milestone & Debut (4–5 hrs)" data-total="750" data-deposit="150" data-stripe="https://buy.stripe.com/9B6fZjgIcc2t1QvcFq0Fi0d">
             <div>
+              <span class="pkg-popular-badge">Most Popular</span>
               <span class="pkg-tag">Full Sound &bull; 4&ndash;5 Hours</span>
               <div class="pkg-name">Private VIP &amp; Milestone</div>
               <div class="pkg-price">$750</div>
-              <span class="pkg-retainer">Lock Retainer: $150 (20%) &bull; $600 due before soundcheck</span>
+              <span class="pkg-retainer">$150 deposit today (20%)<small>$600 due before soundcheck</small></span>
               <ul>
                 <li>Dual Bose F1 PA + Subs (4,000W)</li>
-                <li>Dual UHF wireless mics + MC cues</li>
+                <li>Dual wireless mics + MC cues</li>
                 <li>VIP Birthdays, Galas &amp; 18th Debuts</li>
               </ul>
             </div>
           </div>
 
-          <div class="pkg-card" data-pkg="wedding_gala" data-label="Wedding Ceremony, Reception & Gala (5–6 hrs)" data-total="1200" data-deposit="250" data-stripe="https://buy.stripe.com/00w6oJdw02rTcv9bBm0Fi0e">
+          <div class="pkg-card" role="button" tabindex="0" data-pkg="wedding_gala" data-label="Wedding Ceremony, Reception & Gala (5–6 hrs)" data-total="1200" data-deposit="250" data-stripe="https://buy.stripe.com/00w6oJdw02rTcv9bBm0Fi0e">
             <div>
               <span class="pkg-tag">Full Turnkey &bull; 5&ndash;6 Hours</span>
               <div class="pkg-name">Wedding &amp; Gala</div>
               <div class="pkg-price">$1,200</div>
-              <span class="pkg-retainer">Lock Retainer: $250 (~21%) &bull; $950 due before soundcheck</span>
+              <span class="pkg-retainer">$250 deposit today (~21%)<small>$950 due before soundcheck</small></span>
               <ul>
                 <li>Ceremony + Cocktail + Reception</li>
                 <li>Full 4,000W Bose PA &amp; backup sound</li>
@@ -2989,23 +3256,51 @@
             </div>
           </div>
 
-          <div class="pkg-card" data-pkg="custom_quote" data-label="Custom Quoted Event / Retainer" data-total="0" data-deposit="Custom" data-stripe="https://buy.stripe.com/aFa3cxgIceaBbr520M0Fi0f">
+          <div class="pkg-card" role="button" tabindex="0" data-pkg="custom_quote" data-label="Custom Quoted Event" data-total="0" data-deposit="Custom" data-stripe="https://buy.stripe.com/aFa3cxgIceaBbr520M0Fi0f">
             <div>
-              <span class="pkg-tag">Tailored Hours</span>
-              <div class="pkg-name">Custom Quote</div>
+              <span class="pkg-tag">Tailored Hours &amp; Travel</span>
+              <div class="pkg-name">Custom Quoted Event</div>
               <div class="pkg-price">Flexible</div>
-              <span class="pkg-retainer">Stripe preset $100 ($25 minimum hold)</span>
+              <span class="pkg-retainer">$100 suggested Stripe deposit<small>$25 minimum hold &bull; balance per quote</small></span>
               <ul>
-                <li>Multi-room audio &amp; extended hrs</li>
-                <li>Custom travel outside DFW</li>
+                <li>Multi-room audio &amp; extended hours</li>
+                <li>Corporate, campus &amp; out-of-area travel</li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div class="form-grid">
+        <details class="gear-accordion">
+          <summary>
+            <span>What&rsquo;s Included (Load-In, Sound Capacity &amp; Venue COI)</span>
+            <span class="hint"><span id="overviewPkgSummary">Private VIP ($150 deposit / $600 due before soundcheck)</span> <span class="chev">&#9662;</span></span>
+          </summary>
+          <div class="gear-mini-grid">
+            <div><strong>Turnkey Sound Load-In</strong>Arrival 60&ndash;90 minutes prior to doors; full soundcheck before first guest enters.</div>
+            <div><strong>300&ndash;500 Capacity Rating</strong>Dual Bose F1 Model 812 arrays + F1 subwoofers (4,000W total) included cleanly in VIP &amp; Wedding tiers.</div>
+            <div><strong>Formal Paperwork Ready</strong>Written performance agreement &amp; venue COI details handled via GG Loop LLC upon request.</div>
+            <div><strong>Offline Backup Guarantee</strong>Every playlist &amp; request synced locally; zero dependence on banquet hall Wi-Fi.</div>
+          </div>
+        </details>
+      </div>
+
+      <!-- STEP 2 & 3: DATE, CONTACT, PAYMENT & LOCK -->
+      <div class="card-box" id="contactLockSection">
+        <div class="sec-head">
           <div>
-            <label class="field-label" for="eventDate">Target Event Date *</label>
+            <div class="sec-title">2. Event Date, Your Contact Info &amp; Lock Date</div>
+            <div class="sec-sub">Takes 30 seconds &mdash; sends straight to Jayson&rsquo;s phone alarm &amp; email (<code>jquindao1@icloud.com</code>), then opens payment if selected</div>
+          </div>
+        </div>
+
+        <div class="readiness-bar" id="readinessBar">
+          <span id="readinessText">Fill the 3 required fields below to enable booking:</span>
+          <div id="readinessActions" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
+        </div>
+
+        <div class="form-grid" style="margin-bottom:14px;">
+          <div>
+            <label class="field-label" for="eventDate">Event Date *</label>
             <input type="date" id="eventDate">
           </div>
           <div>
@@ -3018,147 +3313,129 @@
               <option value="Corporate / Campus Event">Corporate / Festival / Campus</option>
             </select>
           </div>
-        </div>
-
-        <details class="gear-accordion">
-          <summary>
-            <span>Commercial Rider, Load-In &amp; Insurance</span>
-            <span class="hint" id="overviewPkgSummary">Private VIP &amp; Milestone ($150 retainer) &darr;</span>
-          </summary>
-          <div class="gear-mini-grid">
-            <div><strong>Turnkey Sound Load-In</strong>Arrival 60&ndash;90 minutes prior to doors; full soundcheck before first guest enters.</div>
-            <div><strong>300&ndash;500 Capacity Rating</strong>Dual Bose F1 Model 812 arrays + F1 subwoofers (4,000W total) included cleanly in VIP/Wedding tiers.</div>
-            <div><strong>Formal Paperwork Ready</strong>Written performance agreement &amp; venue COI details handled via GG Loop LLC upon request.</div>
-            <div><strong>Offline Backup Guarantee</strong>Every playlist &amp; request synced locally; zero dependence on banquet hall Wi-Fi.</div>
-          </div>
-        </details>
-      </div>
-
-      <!-- HOST CONTACT, CUES & SETTLEMENT -->
-      <div class="card-box">
-        <div class="sec-head">
-          <div>
-            <div class="sec-title">2. Host Details, Cues &amp; Lock Date</div>
-            <div class="sec-sub">Submits directly to DJ JRIP&rsquo;s live phone alarm, email (<code>jquindao1@icloud.com</code>), and studio calendar</div>
-          </div>
-        </div>
-
-        <div class="readiness-bar" id="readinessBar">
-          <span id="readinessText">Checking required fields...</span>
-          <div id="readinessActions" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
-        </div>
-
-        <div class="form-grid" style="margin-bottom:14px;">
           <div>
             <label class="field-label" for="clientName">Your Name / Honoree Name *</label>
-            <input type="text" id="clientName" placeholder="e.g. Alex &bull; Private VIP / Lounge">
+            <input type="text" id="clientName" placeholder="e.g. Alex Rivera">
           </div>
           <div>
-            <label class="field-label" for="clientPhone">Mobile Number *</label>
+            <label class="field-label" for="clientPhone">Your Mobile Number *</label>
             <input type="tel" id="clientPhone" placeholder="(214) 555-0199">
           </div>
           <div>
-            <label class="field-label" for="clientEmail">Email (Confirmation Receipt)</label>
+            <label class="field-label" for="clientEmail">Email (for Confirmation Receipt)</label>
             <input type="email" id="clientEmail" placeholder="you@email.com">
           </div>
           <div>
-            <label class="field-label" for="bookDateMirror">Target Event Date *</label>
-            <input type="date" id="bookDateMirror">
-          </div>
-          <div>
-            <label class="field-label" for="venueInfo">Venue Name &amp; Hours</label>
+            <label class="field-label" for="venueInfo">Venue &amp; Time Window (Optional)</label>
             <input type="text" id="venueInfo" placeholder="e.g. Arlington Hall &bull; 6 PM - 11 PM">
           </div>
-          <div>
-            <label class="field-label" for="mcNeed">MC / Microphone Hosting</label>
-            <select id="mcNeed">
-              <option value="Need DJ JRIP to MC & call names">DJ JRIP MCs &amp; cues</option>
-              <option value="External MC/Host - DJ runs mics & cues only">External MC (DJ mics only)</option>
-              <option value="Music Only (No MC announcements needed)">Music Only (No MC)</option>
-            </select>
-          </div>
-          <div>
-            <label class="field-label" for="cleanPolicy">Clean-Edit Policy</label>
-            <select id="cleanPolicy">
-              <option value="Clean Radio Edits During Dinner/Formal, Club Edits Late">Clean dinner &bull; Club late</option>
-              <option value="100% Clean Radio Edits All Night">100% clean all night</option>
-              <option value="Uncensored Original Versions OK All Night">Original uncensored OK</option>
-            </select>
-          </div>
-          <div>
-            <label class="field-label" for="entranceSong">Grand Entrance / Walkout Song</label>
-            <input type="text" id="entranceSong" placeholder="Song + Artist for Grand Entrance">
-          </div>
         </div>
 
-        <div class="form-grid" style="margin-bottom:18px;">
-          <div>
-            <label class="field-label" for="slowSongs">18 Roses / Waltz / Slow Dance Track(s)</label>
-            <input type="text" id="slowSongs" placeholder="Formal dance songs or special cues">
+        <details class="gear-accordion" id="cuesAccordion" style="margin-top:0; margin-bottom:16px;">
+          <summary>
+            <span>Optional: MC Hosting, Clean-Edit Policy &amp; Special Song Cues</span>
+            <span class="hint"><span id="cuesSummaryHint">DJ JRIP MCs &bull; Clean dinner / Club late</span> <span class="chev">&#9662;</span></span>
+          </summary>
+          <div class="form-grid" style="margin-top:14px; padding-top:12px; border-top:1px solid var(--border);">
+            <div>
+              <label class="field-label" for="mcNeed">MC / Microphone Hosting</label>
+              <select id="mcNeed">
+                <option value="Need DJ JRIP to MC & call names">DJ JRIP MCs &amp; cues</option>
+                <option value="External MC/Host - DJ runs mics & cues only">External MC (DJ mics only)</option>
+                <option value="Music Only (No MC announcements needed)">Music Only (No MC)</option>
+              </select>
+            </div>
+            <div>
+              <label class="field-label" for="cleanPolicy">Clean-Edit Policy</label>
+              <select id="cleanPolicy">
+                <option value="Clean Radio Edits During Dinner/Formal, Club Edits Late">Clean dinner &bull; Club late</option>
+                <option value="100% Clean Radio Edits All Night">100% clean all night</option>
+                <option value="Uncensored Original Versions OK All Night">Original uncensored OK</option>
+              </select>
+            </div>
+            <div>
+              <label class="field-label" for="entranceSong">Grand Entrance / Walkout Song</label>
+              <input type="text" id="entranceSong" placeholder="Song + Artist for Grand Entrance">
+            </div>
+            <div>
+              <label class="field-label" for="slowSongs">18 Roses / Waltz / Slow Dance Track(s)</label>
+              <input type="text" id="slowSongs" placeholder="Formal dance songs or special cues">
+            </div>
+            <div>
+              <label class="field-label" for="specialNotes">Timeline Notes / Special Requests</label>
+              <input type="text" id="specialNotes" placeholder="Key timings, 18 Candles, pronunciation notes...">
+            </div>
           </div>
-          <div>
-            <label class="field-label" for="specialNotes">Timeline Notes / Special Requests</label>
-            <input type="text" id="specialNotes" placeholder="Key timings, 18 Candles, pronunciation notes...">
-          </div>
-        </div>
+        </details>
 
-        <div class="ledger-card">
+        <div class="ledger-card" id="ledgerCard">
           <div>
             <div class="mono" style="color:var(--mint);" id="ledgerPkgName">Private VIP, Milestone &amp; Debut (4&ndash;5 hrs)</div>
-            <div style="font-size:13px; color:var(--white); font-weight:600; margin-top:4px;" id="ledgerMathLine">Total: $750.00 &bull; Retainer Today: $150.00 (20%) &bull; Balance Before Soundcheck: $600.00</div>
+            <div style="font-size:13px; color:var(--white); font-weight:600; margin-top:4px;" id="ledgerMathLine">Total: $750.00 &bull; Deposit Today: $150.00 (20%) &bull; Due Before Soundcheck: $600.00</div>
             <div style="font-size:12.5px; color:var(--muted); margin-top:3px;" id="ledgerMeta"></div>
           </div>
           <div style="text-align:right;">
-            <div class="mono" style="color:var(--muted);">Date-Lock Retainer Due</div>
-            <div id="ledgerDeposit" style="font-size:24px; font-weight:800; color:var(--amber);">$150.00</div>
+            <div class="mono" style="color:var(--muted);">Deposit Due Today</div>
+            <div id="ledgerDeposit" style="font-size:26px; font-weight:800; color:var(--amber);">$150.00</div>
             <div id="ledgerRemainingSmall" style="font-size:11.5px; color:var(--mint); margin-top:2px;">$600.00 due before soundcheck</div>
           </div>
         </div>
 
-        <label class="field-label" style="margin-bottom:8px;">Payment Method (Verified GG Loop LLC Rails)</label>
+        <label class="field-label" style="margin-bottom:8px;">3. How Would You Like to Lock Your Date?</label>
         <div class="pay-grid" id="payOptionsGrid">
-          <div class="pay-card active" data-pay="stripe">
+          <div class="pay-card active" role="button" tabindex="0" data-pay="stripe">
             <h4>Card / Apple Pay / Google Pay</h4>
-            <p>Encrypted Stripe checkout (GG Loop LLC).</p>
+            <p>Instant encrypted Stripe checkout after submitting details.</p>
           </div>
-          <div class="pay-card" data-pay="ach">
-            <h4>ACH / Bank Invoice (0% Fee)</h4>
-            <p>GG Loop LLC Mercury Checking invoice sent on confirm.</p>
+          <div class="pay-card" role="button" tabindex="0" data-pay="ach">
+            <h4>Bank Transfer / ACH (0% Fee)</h4>
+            <p>GG Loop LLC Mercury bank invoice emailed once date is verified.</p>
           </div>
-          <div class="pay-card" data-pay="quote">
-            <h4>Hold &amp; Review Quote First</h4>
-            <p>Receive written agreement before deposit.</p>
+          <div class="pay-card" role="button" tabindex="0" data-pay="quote">
+            <h4>Hold Date &amp; Review Quote First</h4>
+            <p>No payment today &mdash; confirm availability &amp; contract first.</p>
           </div>
         </div>
 
         <label class="agreement-check">
           <input type="checkbox" id="agreeTerms" checked>
-          <span>I agree to the <a href="dj-terms.html" target="_blank" rel="noopener noreferrer" style="color:var(--blue); text-decoration:underline;">GG Loop LLC Performance Terms &amp; Right to Refuse</a>: the low flat retainer locks the date (balance due before soundcheck), includes 1 free reschedule with <strong>14+ days&rsquo; notice</strong>, covers venue safety/weather equipment protection, and guarantees a <strong>100% retainer refund</strong> if DJ JRIP declines prior to the event with advance notice.</span>
+          <span>I agree to the <a href="dj-terms.html" target="_blank" rel="noopener noreferrer" style="color:var(--blue); text-decoration:underline;">GG Loop LLC Performance Terms</a>: small deposit locks the date (balance due before soundcheck), includes 1 free reschedule with <strong>14+ days&rsquo; notice</strong>, and guarantees a <strong>100% deposit refund</strong> if DJ JRIP must decline with advance notice.</span>
         </label>
 
-        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-          <button type="button" class="btn-primary" id="submitMasterBtn">Lock Date &amp; Alert DJ JRIP &rarr;</button>
-          <button type="button" class="btn-secondary" id="copyBtn">Copy Summary</button>
-          <a class="btn-secondary" id="smsFallbackLink" href="#">Text (469) 371-8556</a>
+        <div class="book-cta-row">
+          <button type="button" class="btn-primary" id="submitMasterBtn">Send Details &amp; Pay $150 Deposit &rarr;</button>
+          <button type="button" class="btn-secondary" id="copyBtn">Copy Event Brief</button>
+          <a class="btn-secondary" id="emailInquiryLink" href="mailto:jquindao1@icloud.com?subject=DJ%20JRIP%20Booking%20Inquiry">Email Inquiry</a>
+        </div>
+        <div class="text-helper-line">
+          <span><strong>Serious inquiries only:</strong> Submitting above alerts Jayson directly &amp; unlocks his personal text/call line.</span>
+          <a class="quick-direct-link" id="quickStripeDirectLink" href="https://buy.stripe.com/9B6fZjgIcc2t1QvcFq0Fi0d" target="_blank" rel="noopener noreferrer">Already confirmed details? Skip to Stripe ($150) &rarr;</a>
         </div>
 
         <div id="errorBanner" style="display:none; margin-top:12px; padding:11px 14px; border-radius:10px; background:rgba(190,82,112,0.12); border:1px solid var(--pink); color:#f3cdd8; font-size:13px;"></div>
 
         <div class="checkout-panel" id="checkoutPanel">
-          <h3 style="color:var(--mint); font-size:18px; margin-bottom:6px;">Sent &mdash; DJ JRIP&rsquo;s Phone Alarm Was Alerted.</h3>
+          <h3 style="color:var(--mint); font-size:18px; margin-bottom:6px;">Inquiry Logged &mdash; Direct Line Unlocked.</h3>
           <p style="font-size:13.5px; color:var(--text); margin-bottom:14px;" id="postSubmitNote">
-            Your playlists &amp; booking details are queued in Jayson&rsquo;s studio console. Complete your low date-lock retainer below:
+            Your playlists &amp; event brief are queued in Jayson&rsquo;s studio console. Complete your next step below:
           </p>
-          <div id="stripePayAction" style="display:none; margin-bottom:10px;">
+          <div id="stripePayAction" style="display:none; margin-bottom:12px;">
             <a id="stripeDirectBtn" class="btn-pay-stripe" href="https://buy.stripe.com/9B6fZjgIcc2t1QvcFq0Fi0d" target="_blank" rel="noopener noreferrer">
-              Complete $150 Retainer on Stripe &rarr;
+              Complete $150 Deposit on Stripe &rarr;
             </a>
           </div>
-          <div id="manualPayAction" style="display:none; background:#050a08; border:1px solid var(--border); padding:14px; border-radius:12px;">
-            <p style="font-size:13.5px; color:var(--white); margin-bottom:10px;" id="manualPayInstructions"></p>
+          <div id="manualPayAction" style="display:none; background:#050a08; border:1px solid var(--border); padding:14px; border-radius:12px; margin-bottom:12px;">
+            <p style="font-size:13.5px; color:var(--white); margin-bottom:0;" id="manualPayInstructions"></p>
+          </div>
+          <div id="directLineBox" style="display:none; background:rgba(5,10,8,0.88); border:1px solid var(--border-emerald); padding:14px; border-radius:12px;">
+            <div class="mono" style="color:var(--amber); margin-bottom:4px;">DIRECT BOOKING LINE (SERIOUS INQUIRIES ONLY)</div>
+            <p style="font-size:13px; color:var(--text); margin-bottom:10px;">
+              Direct mobile for venue coordination &amp; confirmed inquiries: <strong id="directLineDisplay" style="color:var(--white); font-size:14px;"></strong>
+            </p>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
-              <button type="button" class="btn-secondary" id="copyPhoneBtn">Copy (469) 371-8556</button>
-              <a class="btn-pay-stripe" id="textReceiptBtn" href="sms:+14693718556">Text Confirmation &rarr;</a>
+              <button type="button" class="btn-secondary" id="copyPhoneBtn">Copy Direct Number</button>
+              <a class="btn-secondary" id="textReceiptBtn" href="#">Copy &amp; Text Jayson &rarr;</a>
+              <a class="btn-secondary" id="callDirectBtn" href="#">Call Direct</a>
             </div>
           </div>
         </div>
@@ -3166,7 +3443,7 @@
 
       <div class="tab-footer-bar">
         <div class="tab-footer-meta" id="bookFooterSummary">
-          <strong>$150 Retainer ($750 Total)</strong> &bull; $600 due before soundcheck &bull; Date TBD
+          <strong>$150 Deposit ($750 Total)</strong> &bull; $600 due before soundcheck &bull; Date TBD
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
           <button type="button" class="btn-secondary" id="bookBackBtn">&larr; Playlists &amp; Chat</button>
@@ -3342,10 +3619,11 @@
     };
 
     const PRESETS = {
-      debut: { pkgId: 'debut_vip', eventType: 'Private VIP / Birthday Party', mcNeed: 'Need DJ JRIP to MC & call names', cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late', vibes: ['debut', 'rnb', 'house'], label: 'Private VIP & Milestone preset selected' },
-      wedding: { pkgId: 'wedding_gala', eventType: 'Wedding Ceremony & Reception', mcNeed: 'Need DJ JRIP to MC & call names', cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late', vibes: ['debut', 'rnb', 'house'], label: 'Wedding preset selected' },
-      club: { pkgId: 'bar_lounge', eventType: 'Bar / Lounge / Rooftop', mcNeed: 'Music Only (No MC announcements needed)', cleanPolicy: 'Uncensored Original Versions OK All Night', vibes: ['hiphop', 'house', 'edits'], label: 'Bar / Lounge / Club preset selected' },
-      custom: { pkgId: 'custom_quote', eventType: 'Corporate / Campus Event', mcNeed: 'External MC/Host - DJ runs mics & cues only', cleanPolicy: '100% Clean Radio Edits All Night', vibes: ['rnb', 'house'], label: 'Custom Event preset selected' }
+      vip: { pkgId: 'debut_vip', eventType: 'Private VIP / Birthday Party', mcNeed: 'Need DJ JRIP to MC & call names', cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late', vibes: ['debut', 'rnb', 'house'], label: 'Private VIP & Milestone tier selected' },
+      debut: { pkgId: 'debut_vip', eventType: '18th Birthday Debut', mcNeed: 'Need DJ JRIP to MC & call names', cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late', vibes: ['debut', 'rnb', 'house'], label: '18th Debut & VIP tier selected' },
+      wedding: { pkgId: 'wedding_gala', eventType: 'Wedding Ceremony & Reception', mcNeed: 'Need DJ JRIP to MC & call names', cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late', vibes: ['debut', 'rnb', 'house'], label: 'Wedding & Gala tier selected' },
+      club: { pkgId: 'bar_lounge', eventType: 'Bar / Lounge / Rooftop', mcNeed: 'Music Only (No MC announcements needed)', cleanPolicy: 'Uncensored Original Versions OK All Night', vibes: ['hiphop', 'house', 'edits'], label: 'Bar / Lounge / Club tier selected' },
+      custom: { pkgId: 'custom_quote', eventType: 'Corporate / Campus Event', mcNeed: 'External MC/Host - DJ runs mics & cues only', cleanPolicy: '100% Clean Radio Edits All Night', vibes: ['rnb', 'house'], label: 'Custom Quoted tier selected' }
     };
 
     const SPOTLIGHT_ARTISTS = ['sza', 'bruno mars', 'frank ocean', 'silk sonic', 'drake', 'rihanna', 'dua lipa', 'bad bunny', 'kendrick', 'daniel caesar', 'the weeknd', 'benson boone', 'billie eilish', 'earth wind', 'whitney', 'michael jackson', 'alicia keys', 'coldplay', 'usher', 'black eyed peas'];
@@ -3364,6 +3642,8 @@
     let doNotPlay = [];
     let oembedCache = {};
     let toastTimer = null;
+    let userPickedEventType = false;
+    let hasSubmittedBooking = false;
 
     // Live Booth Chat state
     let activeRoom = 'lobby';
@@ -3552,10 +3832,10 @@
       if (bookFoot) {
         const dateVal = document.getElementById('eventDate').value || 'Date TBD';
         if (selectedPackage.deposit === 'Custom') {
-          bookFoot.innerHTML = `<strong>Custom Quote ($100 Stripe preset / $25 min)</strong> \u2022 ${escapeHtml(dateVal)} \u2022 ${mustPlay.length} songs`;
+          bookFoot.innerHTML = `<strong>Custom Quote ($100 suggested deposit / $25 min)</strong> \u2022 ${escapeHtml(dateVal)} \u2022 ${mustPlay.length} songs`;
         } else {
           const bal = Math.max(0, selectedPackage.total - Number(selectedPackage.deposit));
-          bookFoot.innerHTML = `<strong>$${selectedPackage.deposit} Retainer ($${selectedPackage.total.toLocaleString()} Total)</strong> \u2022 $${bal.toLocaleString()} due before soundcheck \u2022 ${escapeHtml(dateVal)}`;
+          bookFoot.innerHTML = `<strong>$${selectedPackage.deposit} Deposit ($${selectedPackage.total.toLocaleString()} Total)</strong> \u2022 $${bal.toLocaleString()} due before soundcheck \u2022 ${escapeHtml(dateVal)}`;
         }
       }
     }
@@ -3878,14 +4158,73 @@
       return `${base}?${qs.toString()}`;
     }
 
-    function selectPkgCard(card) {
+    function getDirectPhone() {
+      const display = atob('KDQ2OSkgMzcxLTg1NTY=');
+      const digits = atob('NDY5MzcxODU1Ng==');
+      return { display, digits, e164: '+1' + digits };
+    }
+
+    function buildShortTextSummary() {
+      const rawName = document.getElementById('clientName').value.trim();
+      const rawDate = document.getElementById('eventDate').value;
+      const type = document.getElementById('eventType').value;
+      const depShort = selectedPackage.deposit === 'Custom' ? 'custom deposit' : `$${selectedPackage.deposit} deposit`;
+      const extra = [];
+      const urls = getPlaylistUrls();
+      if (urls.length) extra.push(`${urls.length} playlist${urls.length > 1 ? 's' : ''}`);
+      if (mustPlay.length) extra.push(`${mustPlay.length} song${mustPlay.length > 1 ? 's' : ''}`);
+      const extraStr = extra.length ? ` (plus ${extra.join(' & ')})` : '';
+      if (rawName || rawDate) {
+        const who = rawName ? ` for ${rawName}` : '';
+        const when = rawDate ? ` on ${rawDate}` : '';
+        return `Hi DJ JRIP! Booking inquiry${who}${when} \u2014 ${selectedPackage.label} (${type}, ${depShort})${extraStr}.`;
+      }
+      return `Hi DJ JRIP! Interested in the ${selectedPackage.label} package (${depShort}) \u2014 are you available?`;
+    }
+
+    function copyTextSummaryToast(messageText) {
+      const phoneDisplay = getDirectPhone().display;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(messageText).then(() => {
+          showToast(`Text copied! Opening Messages (or paste to ${phoneDisplay})`);
+        }).catch(() => {
+          showToast(`Message ready for ${phoneDisplay}`);
+        });
+      } else {
+        showToast(`Message ready for ${phoneDisplay}`);
+      }
+    }
+
+    function updateSubmitButtonLabel() {
+      const btn = document.getElementById('submitMasterBtn');
+      const quickLink = document.getElementById('quickStripeDirectLink');
+      const isCustom = selectedPackage.deposit === 'Custom';
+      const dep = selectedPackage.deposit;
+      if (quickLink) {
+        quickLink.href = buildPrefilledStripeUrl();
+        quickLink.textContent = isCustom
+          ? 'Already confirmed details? Skip to Stripe \u2192'
+          : `Already confirmed details? Skip to Stripe ($${dep}) \u2192`;
+      }
+      if (!btn || hasSubmittedBooking || btn.disabled) return;
+      if (selectedPaymentMethod === 'stripe') {
+        btn.textContent = isCustom
+          ? 'Send Details & Go to Stripe ($100 Suggested) \u2192'
+          : `Send Details & Pay $${dep} Deposit \u2192`;
+      } else if (selectedPaymentMethod === 'ach') {
+        btn.textContent = isCustom
+          ? 'Request Custom ACH Bank Invoice \u2192'
+          : `Request $${dep} ACH Bank Invoice \u2192`;
+      } else {
+        btn.textContent = 'Request Date Hold & Quote (No Deposit Yet) \u2192';
+      }
+    }
+
+    function selectPkgCard(card, opts = {}) {
+      const fromUser = Boolean(opts && opts.fromUser);
+      if (fromUser) hasSubmittedBooking = false;
       document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('active'));
       card.classList.add('active');
-      const presetMap = { bar_lounge: 'club', debut_vip: 'debut', wedding_gala: 'wedding', custom_quote: 'custom' };
-      const mappedPreset = presetMap[card.dataset.pkg];
-      if (mappedPreset) {
-        document.querySelectorAll('.preset-pill').forEach(b => b.classList.toggle('active', b.dataset.preset === mappedPreset));
-      }
       const dep = card.dataset.deposit === 'Custom' ? 'Custom' : Number(card.dataset.deposit);
       selectedPackage = {
         id: card.dataset.pkg,
@@ -3894,24 +4233,42 @@
         deposit: dep,
         stripeUrl: card.dataset.stripe
       };
+      if (fromUser && !userPickedEventType) {
+        const formatByPkg = {
+          bar_lounge: 'Bar / Lounge / Rooftop',
+          debut_vip: 'Private VIP / Birthday Party',
+          wedding_gala: 'Wedding Ceremony & Reception',
+          custom_quote: 'Corporate / Campus Event'
+        };
+        if (formatByPkg[selectedPackage.id]) {
+          document.getElementById('eventType').value = formatByPkg[selectedPackage.id];
+        }
+      }
       const isCustom = dep === 'Custom';
-      const depText = isCustom ? '$100 Preset' : `$${dep}.00`;
+      const depText = isCustom ? '$100 Suggested' : `$${dep}.00`;
       const remAmt = !isCustom && selectedPackage.total > 0 ? Math.max(0, selectedPackage.total - Number(dep)) : null;
       const pct = !isCustom && selectedPackage.total > 0 ? Math.round((Number(dep) / selectedPackage.total) * 100) : null;
+      const pkgShort = selectedPackage.label.split('(')[0].trim();
       document.getElementById('overviewPkgSummary').textContent = isCustom
-        ? `${selectedPackage.label} ($25+ Stripe hold) \u2193`
-        : `${selectedPackage.label} ($${dep} retainer / $${remAmt} due before soundcheck) \u2193`;
+        ? `${pkgShort} ($100 suggested deposit / $25 min)`
+        : `${pkgShort} ($${dep} deposit / $${remAmt} due before soundcheck)`;
       document.getElementById('ledgerPkgName').textContent = selectedPackage.label;
-      document.getElementById('ledgerDeposit').textContent = depText;
+      const depEl = document.getElementById('ledgerDeposit');
+      depEl.textContent = depText;
+      depEl.classList.remove('ledger-pop');
+      void depEl.offsetWidth;
+      depEl.classList.add('ledger-pop');
+
       const mathEl = document.getElementById('ledgerMathLine');
       const remSmallEl = document.getElementById('ledgerRemainingSmall');
       if (isCustom) {
-        if (mathEl) mathEl.textContent = 'Custom Quoted Rate \u2022 Stripe Preset: $100.00 ($25.00 min agreed) \u2022 Balance per Written Quote';
+        if (mathEl) mathEl.textContent = 'Custom Quoted Rate \u2022 Suggested Stripe Deposit: $100.00 ($25.00 min) \u2022 Balance per Written Quote';
         if (remSmallEl) remSmallEl.textContent = '$25.00 min on Stripe';
       } else {
-        if (mathEl) mathEl.textContent = `Total: $${selectedPackage.total.toLocaleString()}.00 \u2022 Retainer Today: $${dep}.00 (${pct}%) \u2022 Balance Before Soundcheck: $${remAmt.toLocaleString()}.00`;
+        if (mathEl) mathEl.textContent = `Total: $${selectedPackage.total.toLocaleString()}.00 \u2022 Deposit Today: $${dep}.00 (${pct}%) \u2022 Due Before Soundcheck: $${remAmt.toLocaleString()}.00`;
         if (remSmallEl) remSmallEl.textContent = `$${remAmt.toLocaleString()}.00 due before soundcheck`;
       }
+      updateSubmitButtonLabel();
       updateCounters();
       saveState();
     }
@@ -3919,7 +4276,6 @@
     function applyPreset(key, showMsg = true) {
       const pr = PRESETS[key];
       if (!pr) return;
-      document.querySelectorAll('.preset-pill').forEach(b => b.classList.toggle('active', b.dataset.preset === key));
       document.getElementById('eventType').value = pr.eventType;
       document.getElementById('mcNeed').value = pr.mcNeed;
       document.getElementById('cleanPolicy').value = pr.cleanPolicy;
@@ -3992,6 +4348,19 @@
       }
     }
 
+    function unlockDirectLine(customSmsBody = '') {
+      const box = document.getElementById('directLineBox');
+      const disp = document.getElementById('directLineDisplay');
+      const smsEl = document.getElementById('textReceiptBtn');
+      const callEl = document.getElementById('callDirectBtn');
+      const p = getDirectPhone();
+      const bodyMsg = customSmsBody || buildShortTextSummary();
+      if (disp) disp.textContent = p.display;
+      if (smsEl) smsEl.href = `sms:${p.e164}?body=${encodeURIComponent(bodyMsg)}`;
+      if (callEl) callEl.href = `tel:${p.e164}`;
+      if (box) box.style.display = 'block';
+    }
+
     function updateBookSummary() {
       const name = document.getElementById('clientName').value.trim();
       const phone = document.getElementById('clientPhone').value.trim();
@@ -4002,16 +4371,16 @@
       acts.innerHTML = '';
 
       const missing = [];
-      if (!date) missing.push({ label: '+ Event Date', tab: 'book', sel: '#bookDateMirror' });
-      if (!name) missing.push({ label: '+ Name', tab: 'book', sel: '#clientName' });
-      if (!phone) missing.push({ label: '+ Phone', tab: 'book', sel: '#clientPhone' });
+      if (!date) missing.push({ label: '+ Event Date', tab: 'book', sel: '#eventDate' });
+      if (!name) missing.push({ label: '+ Your Name', tab: 'book', sel: '#clientName' });
+      if (!phone) missing.push({ label: '+ Mobile Phone', tab: 'book', sel: '#clientPhone' });
 
       if (!missing.length) {
         bar.classList.add('ready');
-        txt.innerHTML = '<strong style="color:var(--mint);">Ready to submit</strong> &mdash; required contact &amp; date fields are filled.';
+        txt.innerHTML = '<strong style="color:var(--mint);">Step 2 ready</strong> &mdash; choose how you want to lock your date below.';
       } else {
         bar.classList.remove('ready');
-        txt.innerHTML = 'Required to lock date:';
+        txt.innerHTML = 'Required to send inquiry:';
         missing.forEach(m => {
           const b = document.createElement('button');
           b.type = 'button';
@@ -4022,13 +4391,52 @@
         });
       }
 
+      const step1El = document.getElementById('bookStep1');
+      const step2El = document.getElementById('bookStep2');
+      const step3El = document.getElementById('bookStep3');
+      const step2Num = document.getElementById('bookStep2Num');
+      const step3Num = document.getElementById('bookStep3Num');
+      if (step1El) step1El.className = 'book-step done';
+      if (step2El && step3El && step2Num && step3Num) {
+        const contactReady = !missing.length;
+        step2El.className = contactReady ? 'book-step done' : 'book-step active';
+        step2Num.textContent = contactReady ? '\u2713' : '2';
+        if (hasSubmittedBooking) {
+          step3El.className = 'book-step done';
+          step3Num.textContent = '\u2713';
+        } else if (contactReady) {
+          step3El.className = 'book-step active';
+          step3Num.textContent = '3';
+        } else {
+          step3El.className = 'book-step';
+          step3Num.textContent = '3';
+        }
+      }
+
+      const cuesHint = document.getElementById('cuesSummaryHint');
+      if (cuesHint) {
+        const mcSel = document.getElementById('mcNeed');
+        const cleanSel = document.getElementById('cleanPolicy');
+        const mcShort = mcSel?.selectedOptions[0]?.textContent || 'DJ JRIP MCs';
+        const cleanShort = cleanSel?.selectedOptions[0]?.textContent || 'Clean edits';
+        const hasCueText = Boolean(
+          document.getElementById('entranceSong').value.trim() ||
+          document.getElementById('slowSongs').value.trim() ||
+          document.getElementById('specialNotes').value.trim()
+        );
+        cuesHint.textContent = hasCueText
+          ? `Song cues added \u2022 ${mcShort}`
+          : `${mcShort} \u2022 ${cleanShort}`;
+      }
+
       const urls = getPlaylistUrls();
       document.getElementById('ledgerMeta').textContent = `${date || 'Date TBD'} \u2022 ${selectedVibes.size} vibes \u2022 ${urls.length} playlists \u2022 ${mustPlay.length} queued songs`;
       const stripeBtn = document.getElementById('stripeDirectBtn');
       stripeBtn.href = buildPrefilledStripeUrl();
       stripeBtn.textContent = selectedPackage.deposit === 'Custom'
-        ? 'Complete Custom Quoted Deposit on Stripe \u2192'
-        : `Complete $${selectedPackage.deposit} Retainer on Stripe \u2192`;
+        ? 'Complete Custom Deposit on Stripe ($100 Suggested) \u2192'
+        : `Complete $${selectedPackage.deposit} Deposit on Stripe \u2192`;
+      updateSubmitButtonLabel();
     }
 
     function buildCuratedDefaultList(tracks) {
@@ -4268,7 +4676,17 @@
 
     function updateFallbackLinks() {
       const p = buildPayload();
-      document.getElementById('smsFallbackLink').href = `sms:+14693718556?body=${encodeURIComponent(`Hi DJ JRIP! Booking request for ${p.name} (${p.type} on ${p.date}) \u2014 ${p.depStr}. Playlists: ${p.urls.length}, Songs: ${mustPlay.length}.`)}`;
+      const subj = p.date && p.date !== 'TBD'
+        ? `DJ JRIP Booking Inquiry (${p.date})`
+        : `DJ JRIP Booking Inquiry - ${selectedPackage.label}`;
+      const emailLink = document.getElementById('emailInquiryLink');
+      if (emailLink) {
+        emailLink.href = `mailto:jquindao1@icloud.com?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(p.text)}`;
+      }
+      if (hasSubmittedBooking) {
+        const smsEl = document.getElementById('textReceiptBtn');
+        if (smsEl) smsEl.href = `sms:${getDirectPhone().e164}?body=${encodeURIComponent(buildShortTextSummary())}`;
+      }
     }
 
     function saveState() {
@@ -4311,10 +4729,13 @@
         });
         if (st.chatName) document.getElementById('chatNameInput').value = st.chatName;
         if (st.activeRoom) activeRoom = sanitizeRoomSlug(st.activeRoom);
-        if (st.eventDate) document.getElementById('bookDateMirror').value = st.eventDate;
         if (Array.isArray(st.selectedVibes)) st.selectedVibes.forEach(v => selectedVibes.add(v));
         if (Array.isArray(st.mustPlay)) mustPlay = st.mustPlay;
         if (Array.isArray(st.doNotPlay)) doNotPlay = st.doNotPlay;
+        if (st.entranceSong || st.slowSongs || st.specialNotes) {
+          const cuesAcc = document.getElementById('cuesAccordion');
+          if (cuesAcc) cuesAcc.open = true;
+        }
         if (st.pkgId) {
           const pc = document.querySelector(`.pkg-card[data-pkg="${st.pkgId}"]`);
           if (pc) selectPkgCard(pc);
@@ -4327,6 +4748,7 @@
             selectedPaymentMethod = st.payMethod;
           }
         }
+        updateSubmitButtonLabel();
         // Always start Artist-First on bare dj.html unless explicit URL params/hash override
       } catch (e) {}
     }
@@ -4344,17 +4766,17 @@
       if (qClient) document.getElementById('clientName').value = qClient;
       if (/^\d{4}-\d{2}-\d{2}$/.test(qDate)) {
         document.getElementById('eventDate').value = qDate;
-        document.getElementById('bookDateMirror').value = qDate;
       }
       if (qRoom) {
         activeRoom = sanitizeRoomSlug(qRoom);
         currentTab = 'vibe';
       }
 
-      if (qEvent === 'debut') { applyPreset('debut', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
-      else if (qEvent === 'wedding') { applyPreset('wedding', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
-      else if (qEvent === 'bar' || qEvent === 'lounge') { applyPreset('club', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
-      else if (qEvent === 'custom') { applyPreset('custom', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
+      if (qEvent === 'vip' || qEvent === 'party' || qEvent === 'milestone') { applyPreset('vip', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
+      else if (qEvent === 'debut') { applyPreset('debut', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
+      else if (qEvent === 'wedding' || qEvent === 'gala') { applyPreset('wedding', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
+      else if (qEvent === 'bar' || qEvent === 'lounge' || qEvent === 'club') { applyPreset('club', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
+      else if (qEvent === 'custom' || qEvent === 'corporate' || qEvent === 'campus' || qEvent === 'festival') { applyPreset('custom', false); if (!qTab && !window.location.hash) currentTab = 'book'; }
 
       const h = (window.location.hash || '').toLowerCase();
       let deepFocus = null;
@@ -4403,6 +4825,7 @@
     // EVENT WIRING
     document.getElementById('topHomeBtn').addEventListener('click', () => switchTab('overview'));
     document.getElementById('brandBtn').addEventListener('click', () => switchTab('overview'));
+    document.getElementById('topBookBtn').addEventListener('click', () => switchTab('book'));
     document.getElementById('heroVibeBtn').addEventListener('click', () => switchTab('vibe', '#playlistGuideSection'));
     document.getElementById('heroBookLink').addEventListener('click', () => switchTab('book'));
     document.getElementById('bridgeToBookBtn').addEventListener('click', () => switchTab('book'));
@@ -4416,17 +4839,43 @@
     document.getElementById('vibeNextBtn').addEventListener('click', () => switchTab('book'));
     document.getElementById('bookBackBtn').addEventListener('click', () => switchTab('vibe'));
 
+    document.getElementById('bookStep1').addEventListener('click', () => switchTab('book', '#ratesSection'));
+    document.getElementById('bookStep2').addEventListener('click', () => {
+      const sel = !document.getElementById('eventDate').value ? '#eventDate' : '#contactLockSection';
+      switchTab('book', sel);
+    });
+    document.getElementById('bookStep3').addEventListener('click', () => switchTab('book', '#payOptionsGrid'));
+
     document.querySelectorAll('.seg-btn').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
-    document.querySelectorAll('.preset-pill').forEach(b => b.addEventListener('click', () => applyPreset(b.dataset.preset, true)));
     document.querySelectorAll('.cat-tab').forEach(b => b.addEventListener('click', () => switchMusicCategory(b.dataset.cat)));
     document.querySelectorAll('.guide-tab').forEach(b => b.addEventListener('click', () => switchGuidePlatform(b.dataset.guide)));
-    document.querySelectorAll('.pkg-card').forEach(c => c.addEventListener('click', () => selectPkgCard(c)));
-    document.querySelectorAll('.pay-card').forEach(c => c.addEventListener('click', () => {
-      document.querySelectorAll('.pay-card').forEach(p => p.classList.remove('active'));
-      c.classList.add('active');
-      selectedPaymentMethod = c.dataset.pay;
-      saveState();
-    }));
+    document.querySelectorAll('.pkg-card').forEach(c => {
+      c.addEventListener('click', () => selectPkgCard(c, { fromUser: true }));
+      c.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectPkgCard(c, { fromUser: true });
+        }
+      });
+    });
+    document.querySelectorAll('.pay-card').forEach(c => {
+      const pickPay = () => {
+        hasSubmittedBooking = false;
+        document.querySelectorAll('.pay-card').forEach(p => p.classList.remove('active'));
+        c.classList.add('active');
+        selectedPaymentMethod = c.dataset.pay;
+        updateSubmitButtonLabel();
+        if (currentTab === 'book') updateBookSummary();
+        saveState();
+      };
+      c.addEventListener('click', pickPay);
+      c.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          pickPay();
+        }
+      });
+    });
 
     document.getElementById('togglePhaseLinksBtn').addEventListener('click', () => {
       const el = document.getElementById('phaseLinksExtra');
@@ -4436,14 +4885,15 @@
         : '+ Split playlists by phase (Warm-Up / Spotlight / Main Dancefloor)';
     });
 
-    // Two-way date sync
-    document.getElementById('eventDate').addEventListener('change', e => {
-      document.getElementById('bookDateMirror').value = e.target.value;
-      updateCounters(); saveState();
+    document.getElementById('eventDate').addEventListener('change', () => {
+      hasSubmittedBooking = false;
+      updateCounters();
+      saveState();
     });
-    document.getElementById('bookDateMirror').addEventListener('change', e => {
-      document.getElementById('eventDate').value = e.target.value;
-      updateCounters(); saveState();
+    document.getElementById('eventType').addEventListener('change', () => {
+      userPickedEventType = true;
+      updateCounters();
+      saveState();
     });
 
     document.querySelectorAll('#vibeTabs .filter-pill').forEach(b => b.addEventListener('click', () => setFilterVibe(b.dataset.vibe)));
@@ -4481,7 +4931,7 @@
       showToast(`${lines.length} blacklisted`);
     });
 
-    ['clientName','clientEmail','clientPhone','eventType','venueInfo','mcNeed','cleanPolicy','entranceSong','slowSongs','specialNotes','chatNameInput'].forEach(id => {
+    ['clientName','clientEmail','clientPhone','venueInfo','mcNeed','cleanPolicy','entranceSong','slowSongs','specialNotes','chatNameInput'].forEach(id => {
       document.getElementById(id).addEventListener('input', () => { updateCounters(); saveState(); });
     });
 
@@ -4496,16 +4946,21 @@
     document.getElementById('copyBtn').addEventListener('click', () => {
       navigator.clipboard.writeText(buildPayload().text).then(() => {
         document.getElementById('copyBtn').textContent = 'Copied \u2713';
-        showToast('Summary copied');
-        setTimeout(() => document.getElementById('copyBtn').textContent = 'Copy Summary', 1800);
+        showToast('Event brief copied');
+        setTimeout(() => document.getElementById('copyBtn').textContent = 'Copy Event Brief', 1800);
       });
     });
 
     document.getElementById('copyPhoneBtn').addEventListener('click', () => {
-      navigator.clipboard.writeText('4693718556').then(() => {
-        document.getElementById('copyPhoneBtn').textContent = 'Copied (469) 371-8556 \u2713';
-        showToast('Copied (469) 371-8556');
+      const p = getDirectPhone();
+      navigator.clipboard.writeText(p.digits).then(() => {
+        document.getElementById('copyPhoneBtn').textContent = `Copied ${p.display} \u2713`;
+        showToast(`Copied ${p.display}`);
       });
+    });
+
+    document.getElementById('textReceiptBtn').addEventListener('click', () => {
+      copyTextSummaryToast(buildShortTextSummary());
     });
 
     document.getElementById('submitMasterBtn').addEventListener('click', async () => {
@@ -4513,12 +4968,13 @@
       errEl.style.display = 'none';
       const name = document.getElementById('clientName').value.trim();
       const phone = document.getElementById('clientPhone').value.trim();
+      const phoneDigits = phone.replace(/\D/g, '');
       const date = document.getElementById('eventDate').value;
       const agreed = document.getElementById('agreeTerms').checked;
 
-      if (!name || !phone || !date) {
+      if (!date || name.length < 2 || phoneDigits.length < 7) {
         updateBookSummary();
-        errEl.textContent = 'Please fill your Event Date, Name, and Mobile Phone above before submitting.';
+        errEl.textContent = 'Serious inquiries only: please enter a valid Event Date, Your Name, and a callback Mobile Number (7+ digits).';
         errEl.style.display = 'block';
         return;
       }
@@ -4530,9 +4986,10 @@
 
       const btn = document.getElementById('submitMasterBtn');
       btn.disabled = true;
-      btn.textContent = 'Sending & Triggering Phone Alarm...';
+      btn.textContent = 'Sending Serious Inquiry...';
 
       const payload = buildPayload();
+      const directPhone = getDirectPhone();
       try {
         localStorage.setItem('djjrip_last_booking_v4', JSON.stringify({
           name: payload.name,
@@ -4551,7 +5008,7 @@
       const bodyObj = {
         _subject: `[DJ JRIP BOOKING] ${payload.name} (${payload.date}) \u2014 ${payload.depStr} via ${selectedPaymentMethod.toUpperCase()}`,
         _template: 'box',
-        _autoresponse: `Thank you ${payload.name}! DJ JRIP (Jayson Quindao / GG LOOP LLC) received your event booking & playlists for ${payload.date} (${selectedPackage.label} | Retainer: ${payload.depStr} | Remaining balance before soundcheck: ${payload.balDueStr}). Your agreement timestamp (${payload.termsAcceptedAt}) under djjrip.github.io/dj-terms.html is recorded. Text or call (469) 371-8556 anytime!`,
+        _autoresponse: `Thank you ${payload.name}! DJ JRIP (Jayson Quindao / GG LOOP LLC) received your serious inquiry & playlists for ${payload.date} (${selectedPackage.label} | Deposit: ${payload.depStr} | Remaining balance before soundcheck: ${payload.balDueStr}). Your agreement timestamp (${payload.termsAcceptedAt}) under djjrip.github.io/dj-terms.html is recorded. Direct booking line: ${directPhone.display}.`,
         Client_Name: payload.name,
         Client_Phone: payload.phone,
         Client_Email: payload.email,
@@ -4591,30 +5048,33 @@
       const [formRes] = await Promise.all([formPromise, alarmPromise]);
       if (formRes.ok && (formRes.j?.success === 'true' || formRes.j?.success === true)) sentOk = true;
 
+      hasSubmittedBooking = true;
       const panel = document.getElementById('checkoutPanel');
       panel.classList.add('show');
       if (!sentOk) {
-        document.getElementById('postSubmitNote').innerHTML = `Your booking alarm fired straight to DJ JRIP&rsquo;s phone! Tap <strong>Text (469) 371-8556</strong> to send an instant SMS backup.`;
+        document.getElementById('postSubmitNote').innerHTML = `Your live phone alert fired straight to Jayson! You can also tap <strong>Copy &amp; Text Jayson</strong> below using his newly unlocked direct booking line.`;
+      } else {
+        document.getElementById('postSubmitNote').innerHTML = `Your playlists &amp; event brief are queued in Jayson&rsquo;s studio console. Complete your next step below:`;
       }
 
       const stripeBox = document.getElementById('stripePayAction');
       const manualBox = document.getElementById('manualPayAction');
       stripeBox.style.display = 'none';
       manualBox.style.display = 'none';
-      updateBookSummary();
 
       if (selectedPaymentMethod === 'stripe') {
         stripeBox.style.display = 'block';
+        unlockDirectLine(buildShortTextSummary());
         btn.textContent = 'Sent \u2713 \u2014 Complete Stripe Checkout Below';
       } else if (selectedPaymentMethod === 'ach') {
         manualBox.style.display = 'block';
-        document.getElementById('manualPayInstructions').innerHTML = `ACH / Mercury Invoice queued &mdash; GG Loop LLC will email &amp; text a 0%-fee ACH bank invoice for <strong>${escapeHtml(payload.depStr)}</strong> once ${escapeHtml(payload.date)} calendar availability is verified.`;
-        document.getElementById('textReceiptBtn').href = `sms:+14693718556?body=${encodeURIComponent(`Hi DJ JRIP! Requesting GG Loop LLC ACH invoice for ${payload.depStr} (${payload.name} - ${payload.date}).`)}`;
+        document.getElementById('manualPayInstructions').innerHTML = `ACH / Mercury Invoice queued &mdash; GG Loop LLC will email &amp; text you a 0%-fee bank invoice for <strong>${escapeHtml(payload.depStr)}</strong> once ${escapeHtml(payload.date)} calendar availability is verified.`;
+        unlockDirectLine(`Hi DJ JRIP! Requesting GG Loop LLC ACH invoice for ${payload.depStr} (${payload.name} - ${payload.date}).`);
         btn.textContent = 'Sent \u2713 \u2014 ACH Invoice Queued';
       } else {
         manualBox.style.display = 'block';
         const mEl = document.getElementById('manualPayInstructions');
-        mEl.innerHTML = `Inquiry queued &mdash; Jayson will text <strong>(469) 371-8556</strong> with your quote/agreement before payment. Want instant date lock now? Use `;
+        mEl.innerHTML = `Quote request queued &mdash; Jayson will text or call you from his booking line below with availability &amp; your written agreement before any payment. Ready to lock now? Use `;
         const sLink = document.createElement('a');
         sLink.href = buildPrefilledStripeUrl();
         sLink.target = '_blank';
@@ -4623,12 +5083,13 @@
         sLink.textContent = 'Stripe Checkout';
         mEl.appendChild(sLink);
         mEl.append('.');
-        document.getElementById('textReceiptBtn').href = `sms:+14693718556?body=${encodeURIComponent(`Hi DJ JRIP! Confirming quote hold for ${payload.name} on ${payload.date}.`)}`;
-        btn.textContent = 'Inquiry Queued \u2713';
+        unlockDirectLine(`Hi DJ JRIP! Confirming quote hold for ${payload.name} on ${payload.date}.`);
+        btn.textContent = 'Quote Hold Queued \u2713';
       }
 
+      updateBookSummary();
       btn.disabled = false;
-      showToast('DJ JRIP phone alarm fired \u2713');
+      showToast('Serious inquiry sent & direct line unlocked \u2713');
       panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
 

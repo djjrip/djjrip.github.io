@@ -442,7 +442,7 @@
       <a class="nav-link" href="https://www.tiktok.com/@jaysonbq" target="_blank" rel="noopener noreferrer">@jaysonbq</a>
       <a class="nav-link" href="https://soundcloud.com/jayson-quindao" target="_blank" rel="noopener noreferrer">SoundCloud</a>
       <a class="nav-link" href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener noreferrer">Live Set</a>
-      <a class="nav-link" href="tel:+14693718556">(469) 371-8556</a>
+      <a class="nav-link" href="mailto:jquindao1@icloud.com?subject=DJ%20JRIP%20Inquiry">Email Jayson</a>
     </div>
   </div>
 
@@ -587,7 +587,7 @@
       <button class="btn-primary" id="submitCloudBtn">🚀 Submit Playlist Directly to DJ JRIP</button>
       <button class="btn-secondary" id="copyBtn">📋 Copy Playlist Text</button>
       <a class="btn-secondary" id="emailFallbackLink" href="#">✉️ Open in Email App</a>
-      <a class="btn-secondary" id="smsFallbackLink" href="#">💬 Text Summary to (469) 371-8556</a>
+      <a class="btn-secondary" href="dj.html#book" style="border-color: rgba(245,158,11,0.45); color: #fcd34d;">Lock Event Date &amp; Rates &rarr;</a>
     </div>
 
     <div class="status-banner" id="statusBanner"></div>
@@ -873,10 +873,10 @@
       const p = buildSummaryPayload();
       const subject = encodeURIComponent(`DJ JRIP Event Playlist — ${p.name} (${p.date})`);
       const body = encodeURIComponent(p.text);
-      document.getElementById('emailFallbackLink').href = `mailto:jquindao1@icloud.com?subject=${subject}&body=${body}`;
-
-      const smsSummary = `Hi DJ JRIP! Playlist submitted for ${p.name} (${p.type} on ${p.date}). Must-Play: ${mustPlay.length} tracks. Check email for full breakdown!`;
-      document.getElementById('smsFallbackLink').href = `sms:+14693718556?body=${encodeURIComponent(smsSummary)}`;
+      const emailEl = document.getElementById('emailFallbackLink');
+      if (emailEl) {
+        emailEl.href = `mailto:jquindao1@icloud.com?subject=${subject}&body=${body}`;
+      }
     }
 
     function escapeHtml(str) {
@@ -928,14 +928,20 @@
       });
     });
 
+    function getDirectBookingPhone() {
+      const display = atob('KDQ2OSkgMzcxLTg1NTY=');
+      const digits = atob('NDY5MzcxODU1Ng==');
+      return { display, digits, e164: '+1' + digits };
+    }
+
     document.getElementById('submitCloudBtn').addEventListener('click', async () => {
       const name = document.getElementById('clientName').value.trim();
       const contact = document.getElementById('clientContact').value.trim();
       const banner = document.getElementById('statusBanner');
 
-      if (!name || !contact) {
+      if (name.length < 2 || contact.length < 5) {
         banner.className = 'status-banner status-err';
-        banner.textContent = 'Please enter your Name and Email/Phone in Step 1 before submitting.';
+        banner.textContent = 'Serious inquiries only: please enter your Name and a valid Email or Phone in Step 1 before submitting.';
         document.getElementById('clientName').focus();
         return;
       }
@@ -975,15 +981,52 @@
 
         const resJson = await response.json();
         if (response.ok && (resJson.success === 'true' || resJson.success === true)) {
+          const direct = getDirectBookingPhone();
+          const smsBody = `Hi DJ JRIP! Playlist submitted for ${payload.name} (${payload.type} on ${payload.date}). Must-Play: ${mustPlay.length} tracks.`;
           banner.className = 'status-banner status-ok';
-          banner.innerHTML = `<strong>✓ Playlist Submitted!</strong> DJ JRIP has received your vibe selection and ${mustPlay.length}-track playlist for ${escapeHtml(payload.date)}. Expect confirmation at ${escapeHtml(payload.contact)}.<br><br>Ready to lock your date? <a href="dj.html#book" style="color:#6ee7b7;font-weight:700;text-decoration:underline;">Open Book &amp; Rates (Stripe Card / Apple Pay / ACH Invoice) &rarr;</a>`;
+          banner.innerHTML = '';
+
+          const strongTitle = document.createElement('strong');
+          strongTitle.textContent = '✓ Playlist Submitted! ';
+          banner.appendChild(strongTitle);
+          banner.append(`DJ JRIP received your vibe selection and ${mustPlay.length}-track playlist for ${payload.date}. Expect confirmation at ${payload.contact}.`);
+          banner.appendChild(document.createElement('br'));
+          banner.appendChild(document.createElement('br'));
+
+          const directLine = document.createElement('div');
+          directLine.style.marginBottom = '10px';
+          directLine.textContent = `Direct Booking Line Unlocked (${direct.display}): `;
+          const smsBtn = document.createElement('a');
+          smsBtn.href = `sms:${direct.e164}?body=${encodeURIComponent(smsBody)}`;
+          smsBtn.className = 'btn-secondary';
+          smsBtn.style.cssText = 'display:inline-flex; padding:6px 12px; font-size:12.5px; margin-left:6px; border-color:#10b981; color:#6ee7b7;';
+          smsBtn.textContent = `💬 Text Jayson (${direct.display})`;
+          directLine.appendChild(smsBtn);
+          banner.appendChild(directLine);
+
+          const bookLink = document.createElement('a');
+          bookLink.href = 'dj.html#book';
+          bookLink.style.cssText = 'color:#6ee7b7;font-weight:700;text-decoration:underline;';
+          bookLink.textContent = 'Open Book & Rates (Stripe Card / Apple Pay / ACH Invoice) →';
+          banner.append('Ready to lock your date? ');
+          banner.appendChild(bookLink);
+
           btn.textContent = '✓ Sent Successfully';
         } else {
           throw new Error(resJson.message || 'Endpoint requires backup email click');
         }
       } catch (err) {
         banner.className = 'status-banner status-err';
-        banner.innerHTML = `Direct relay returned an alert (${escapeHtml(err.message)}). Click <strong>"✉️ Open in Email App"</strong> or <strong>"💬 Text Summary"</strong> right next to this button to lock it in instantly!`;
+        banner.innerHTML = '';
+        banner.append(`Direct relay returned an alert (${err.message}). Click `);
+        const strongEmail = document.createElement('strong');
+        strongEmail.textContent = '"✉️ Open in Email App"';
+        const strongCopy = document.createElement('strong');
+        strongCopy.textContent = '"📋 Copy Playlist Text"';
+        banner.appendChild(strongEmail);
+        banner.append(' or ');
+        banner.appendChild(strongCopy);
+        banner.append(' right next to this button to lock it in instantly!');
         btn.disabled = false;
         btn.textContent = '🚀 Retry Direct Submit';
       }

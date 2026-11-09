@@ -48,6 +48,11 @@
       padding: 34px 28px;
       text-align: center;
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+      animation: fadeUp 0.36s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px) scale(0.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
     .pill {
       display: inline-flex;
@@ -147,7 +152,7 @@
     <div class="box">
       <div class="box-head">Next Steps</div>
       <ul>
-        <li><strong>Calendar Lock Verification:</strong> Expect a confirmation text/email from Jayson (<strong>(469) 371-8556</strong>) confirming exclusive availability within 24 hours.</li>
+        <li><strong>Calendar Lock Verification:</strong> Expect a confirmation text/email from Jayson (<span id="confirmDirectNote">direct number in your booking email</span>) confirming exclusive availability within 24 hours.</li>
         <li><strong>Playlists &amp; Guest Booth Chat:</strong> Jump back into Playlists &amp; Booth Chat anytime to link Spotify/Apple/YouTube lists or invite guests to drop song requests.</li>
         <li><strong>Event Week Walkthrough:</strong> Quick final check of timeline cues, load-in power access &amp; remaining balance prior to soundcheck under our <a href="dj-terms.html" style="color:var(--blue); text-decoration:underline;">GG Loop LLC Performance Terms</a>.</li>
       </ul>
@@ -156,7 +161,7 @@
       <a class="btn btn-blue" href="dj.html">&larr; Artist Showcase</a>
       <a class="btn btn-primary" href="dj.html#chat">Playlists &amp; Booth Chat &rarr;</a>
       <button type="button" class="btn btn-ghost" id="printReceiptBtn">Save / Print Receipt</button>
-      <a class="btn btn-ghost" href="sms:+14693718556">Text (469) 371-8556</a>
+      <a class="btn btn-ghost" id="confirmDirectSms" href="mailto:jquindao1@icloud.com?subject=DJ%20JRIP%20Booking%20Confirmation">Email Jayson</a>
     </div>
   </div>
 
@@ -189,6 +194,18 @@
 
       if (paid) {
         document.getElementById('confirmBadge').textContent = 'Stripe Checkout Return Logged (Verify in Stripe)';
+      }
+
+      if (paid || saved) {
+        const directDisplay = atob('KDQ2OSkgMzcxLTg1NTY=');
+        const directDigits = atob('NDY5MzcxODU1Ng==');
+        const noteEl = document.getElementById('confirmDirectNote');
+        const smsEl = document.getElementById('confirmDirectSms');
+        if (noteEl) noteEl.innerHTML = `<strong>${directDisplay}</strong>`;
+        if (smsEl) {
+          smsEl.href = `sms:+1${directDigits}`;
+          smsEl.textContent = `Text ${directDisplay}`;
+        }
       }
 
       if (saved || sessionId) {

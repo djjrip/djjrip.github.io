@@ -17,19 +17,21 @@
   h1 em { font-family: 'Playfair Display', Georgia, serif; font-style: italic; color: var(--amber); }
   p.sub { color: var(--muted); margin-bottom: 20px; font-size: 15.5px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 28px; }
-  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), border-color 0.22s ease, box-shadow 0.22s ease; }
+  .card:hover { transform: translateY(-3px); border-color: rgba(245,158,11,0.48); box-shadow: 0 14px 30px rgba(0,0,0,0.45); }
   .card h2 { font-size: 17px; color: #fff; margin-bottom: 6px; }
   .price { font-size: 28px; font-weight: 800; color: var(--amber); margin: 4px 0 4px 0; }
   .dep { font-size: 12.5px; color: #34d399; font-weight: 600; margin-bottom: 12px; display: block; }
   ul { margin: 0 0 18px 18px; color: var(--muted); font-size: 13.5px; }
   li { margin-bottom: 7px; }
-  .btn { display: inline-flex; justify-content: center; align-items: center; text-align: center; background: var(--pink); color: #fff; font-weight: 700; text-decoration: none; padding: 11px 18px; border-radius: 999px; font-size: 13.5px; transition: opacity 0.15s; }
-  .btn:hover { opacity: 0.92; }
+  .btn { display: inline-flex; justify-content: center; align-items: center; text-align: center; background: var(--pink); color: #fff; font-weight: 700; text-decoration: none; padding: 11px 18px; border-radius: 999px; font-size: 13.5px; transition: transform 0.16s ease, filter 0.16s ease; }
+  .btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
   .specs { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 22px; margin-bottom: 24px; }
   .specs h3 { font-size: 17px; margin-bottom: 10px; color: var(--amber); }
-  .contact-box { background: #0d1b15; border: 1px solid rgba(245,158,11,0.4); border-radius: 16px; padding: 22px; text-align: center; }
+  .contact-box { background: #0d1b15; border: 1px solid rgba(245,158,11,0.4); border-radius: 16px; padding: 24px; text-align: center; }
   .contact-box h3 { font-size: 19px; margin-bottom: 8px; }
-  .phone-link { font-size: 24px; font-weight: 800; color: var(--amber); text-decoration: none; display: inline-block; margin: 6px 0; }
+  .email-link { font-size: 20px; font-weight: 800; color: var(--amber); text-decoration: none; display: inline-block; margin: 6px 0; }
+  .email-link:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -47,7 +49,7 @@
       <div>
         <h2>Bar, Lounge &amp; Club</h2>
         <div class="price">$400</div>
-        <span class="dep">Lock Retainer: $100 (25%) &bull; $300 due at show</span>
+        <span class="dep">$100 deposit today (25%) &bull; $300 due before soundcheck</span>
         <ul>
           <li>2 to 4-hour high-energy set</li>
           <li>Open-format BPM &amp; crowd control</li>
@@ -61,21 +63,21 @@
       <div>
         <h2>Private VIP &amp; Milestone Event</h2>
         <div class="price">$750</div>
-        <span class="dep">Lock Retainer: $150 (20%) &bull; $600 due at show</span>
+        <span class="dep">$150 deposit today (20%) &bull; $600 due before soundcheck</span>
         <ul>
           <li>4 to 5-hour full sound &amp; dancefloor</li>
           <li>Dual Bose F1 812 PA + Subs (4,000W)</li>
           <li>VIP Birthdays, 18th Debuts &amp; dual UHF wireless mics</li>
         </ul>
       </div>
-      <a class="btn" href="dj.html?event=debut#book">Book VIP / Milestone &rarr;</a>
+      <a class="btn" href="dj.html?event=vip#book">Book VIP / Milestone &rarr;</a>
     </div>
 
     <div class="card">
       <div>
         <h2>Wedding &amp; Corporate Gala</h2>
         <div class="price">$1,200</div>
-        <span class="dep">Lock Retainer: $250 (~21%) &bull; $950 due at show</span>
+        <span class="dep">$250 deposit today (~21%) &bull; $950 due before soundcheck</span>
         <ul>
           <li>5 to 6-hour ceremony, cocktail &amp; reception</li>
           <li>Full 4,000W Bose PA &amp; redundant offline backup vault</li>
@@ -89,11 +91,11 @@
       <div>
         <h2>Custom Quoted Event</h2>
         <div class="price">Flexible</div>
-        <span class="dep">Agreed Hold ($100 preset / $25 min)</span>
+        <span class="dep">$100 suggested deposit ($25 min)</span>
         <ul>
           <li>Multi-room sound &amp; extended coverage</li>
           <li>Custom travel outside Dallas-Fort Worth</li>
-          <li>Agreed custom Stripe checkout link</li>
+          <li>Balance per written quote before soundcheck</li>
         </ul>
       </div>
       <a class="btn" href="dj.html?event=custom#book">Request Custom Quote &rarr;</a>
@@ -106,15 +108,16 @@
       DJ JRIP (GG Loop LLC) performs from a curated 3,023-track archival catalog, 84 custom edits, and 134 FL Studio projects. Every client playlist dropped via Spotify, Apple Music, or YouTube is archived offline prior to soundcheck.
     </p>
     <p style="font-size: 14px; color: var(--text);">
-      <strong>Retainer &amp; Mutual Safeguards:</strong> Flat low-friction retainer ($100&ndash;$250) locks your date via Stripe (Card / Apple Pay / Google Pay) or zero-fee ACH invoice (GG Loop LLC), with the remaining balance settled before soundcheck. Includes 1 free reschedule with 14+ days&rsquo; notice, venue safety/weather equipment protection, and a mutual <strong>Right to Refuse</strong> (100% refund if declined by GG Loop LLC prior to showtime). Read full <a href="dj-terms.html" style="color:var(--blue);">Performance Terms &rarr;</a>
+      <strong>Retainer &amp; Mutual Safeguards:</strong> Flat low-friction deposit ($100&ndash;$250) locks your date via Stripe (Card / Apple Pay / Google Pay) or zero-fee ACH invoice (GG Loop LLC), with the remaining balance settled before soundcheck. Includes 1 free reschedule with 14+ days&rsquo; notice, venue safety/weather equipment protection, and a mutual <strong>Right to Refuse</strong> (100% refund if declined by GG Loop LLC prior to showtime). Read full <a href="dj-terms.html" style="color:var(--blue);">Performance Terms &rarr;</a>
     </p>
   </div>
 
   <div class="contact-box">
-    <h3>Direct Dispatch &amp; Calendar Confirmation</h3>
-    <p style="color: var(--muted); font-size: 14.5px;">Direct line for hosts, planners &amp; talent buyers:</p>
-    <a class="phone-link" href="tel:+14693718556">(469) 371-8556</a>
-    <p style="font-size: 14px; color: var(--muted);">Email: <a href="mailto:jquindao1@icloud.com" style="color:var(--amber);">jquindao1@icloud.com</a> &bull; Grand Prairie / DFW, TX</p>
+    <h3>Serious Inquiries &amp; Direct Dispatch</h3>
+    <p style="color: var(--muted); font-size: 14.5px; margin-bottom: 10px;">For hosts, planners &amp; talent buyers &mdash; submit your event date online to unlock direct mobile dispatch, or email directly:</p>
+    <a class="email-link" href="mailto:jquindao1@icloud.com?subject=DJ%20JRIP%20Serious%20Booking%20Inquiry">jquindao1@icloud.com</a>
+    <p style="font-size: 13px; color: var(--muted); margin-bottom: 14px;">Grand Prairie / Dallas&ndash;Fort Worth, TX &bull; Direct phone/text shared exclusively after inquiry submission</p>
+    <a class="btn" href="dj.html#book" style="background: linear-gradient(135deg, #f59e0b, #fb923c); color: #050a08;">Submit Date &amp; Unlock Direct Line &rarr;</a>
   </div>
 </body>
 </html>
