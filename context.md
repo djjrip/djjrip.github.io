@@ -50,7 +50,7 @@
 - **Action Taken:** Antigravity transmitted a formal email establishing that all communications, intake questionnaires, and document requests must be conducted strictly via **email** due to daytime engineering commitments, eliminating unexpected phone interruptions.
 
 ### Rail D: Commercial Revenue & DJ Bookings
-- **Bose F1 Live Audio Rig (2,000W Array):**
+- **Bose F1 Live Audio Rig (4,000W Total Array — Dual F1 812 + Dual F1 Subwoofers):**
   - **Amy Dillard (It's Your Night Entertainment):** Confirmed Jayson on overflow DJ roster.
   - **Outbounds Active:** LeForce Entertainment (Kai Torres), Virgin Hotels Dallas, The Statler Dallas, The Joule Dallas.
 - **GG Loop SaaS & Developer Tools:**

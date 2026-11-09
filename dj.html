@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>DJ J-Rip // Artist Showcase, Live Mixes, Booth Chat &amp; DFW Booking</title>
-  <meta name="description" content="DJ J-Rip (Jayson Quindao) — Dallas-Fort Worth Open-Format DJ, Remixer & Producer. Listen to live Serato sessions, SoundCloud mixes, custom edits, create event playlists, drop requests in Live Booth Chat, and book dates.">
+  <title>DJ JRIP // Artist Showcase, Live Mixes, Booth Chat &amp; DFW Booking</title>
+  <meta name="description" content="DJ JRIP (Jayson Quindao) — Dallas-Fort Worth Open-Format DJ, Remixer & Producer. Listen to live Serato sessions, SoundCloud mixes, custom edits, create event playlists, drop requests in Live Booth Chat, and book dates.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23050a08'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%2338bdf8' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23f59e0b'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Playfair+Display:ital,wght@1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Unified Artist-First Palette: Deep Forest Obsidian + Warm Amber/Gold + Crisp White + Arcane Blue & Balanced Hot Pink */
+      /* Unified Artist-First Palette: Deep Forest Obsidian + Warm Amber/Gold + Crisp White + Arcane Blue & Muted Dusty Rose */
       --bg: #050a08;
       --surface: #0a1410;
       --surface-2: #0f1f18;
@@ -27,9 +27,9 @@
       --amber-soft: rgba(245, 158, 11, 0.12);
       --blue: #38bdf8;
       --blue-soft: rgba(56, 189, 248, 0.12);
-      --pink: #ec4899;
-      --pink-hover: #f43f8e;
-      --pink-soft: rgba(236, 72, 153, 0.11);
+      --pink: #be5270;
+      --pink-hover: #a8435f;
+      --pink-soft: rgba(190, 82, 112, 0.10);
 
       --white: #f8fafc;
       --text: #e2e8f0;
@@ -41,7 +41,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 98px; background: var(--bg); }
+    html { scroll-behavior: smooth; scroll-padding-top: 98px; background: var(--bg); color-scheme: dark; }
     code {
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
@@ -58,14 +58,14 @@
         radial-gradient(ellipse 920px 560px at 12% 0%, rgba(16, 185, 129, 0.10), transparent 64%),
         radial-gradient(ellipse 760px 460px at 88% 4%, rgba(245, 158, 11, 0.065), transparent 62%),
         radial-gradient(ellipse 680px 420px at 64% 48%, rgba(56, 189, 248, 0.055), transparent 66%),
-        radial-gradient(ellipse 520px 380px at 18% 72%, rgba(236, 72, 153, 0.045), transparent 65%),
+        radial-gradient(ellipse 520px 380px at 18% 72%, rgba(190, 82, 112, 0.03), transparent 65%),
         var(--bg);
       background-attachment: fixed;
       color: var(--text);
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 15px;
       line-height: 1.55;
-      padding: 0 16px 116px 16px;
+      padding: 0 16px 56px 16px;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -89,7 +89,7 @@
     /* TOAST */
     .toast {
       position: fixed;
-      bottom: 88px;
+      bottom: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(10px) scale(0.96);
       background: rgba(10, 20, 16, 0.96);
@@ -206,7 +206,7 @@
     }
     .seg-btn[data-tab="book"].active .seg-dot {
       background: var(--pink);
-      box-shadow: 0 0 8px rgba(236, 72, 153, 0.8);
+      box-shadow: 0 0 8px rgba(190, 82, 112, 0.65);
     }
 
     .top-call {
@@ -313,7 +313,7 @@
 
     .cta-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
     .btn-primary {
-      background: linear-gradient(135deg, var(--pink), #db2777);
+      background: linear-gradient(135deg, var(--pink), var(--pink-hover));
       color: #fff;
       border: 0;
       padding: 12px 22px;
@@ -326,7 +326,7 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      box-shadow: 0 8px 24px rgba(236, 72, 153, 0.24);
+      box-shadow: 0 6px 18px rgba(190, 82, 112, 0.18);
       transition: transform 0.15s ease, filter 0.15s ease;
     }
     .btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
@@ -463,8 +463,8 @@
       border-radius: 50%;
       position: relative;
       background:
-        radial-gradient(circle at 28% 28%, rgba(236, 72, 153, 0.56), transparent 44%),
-        radial-gradient(circle at 74% 68%, rgba(56, 189, 248, 0.58), transparent 48%),
+        radial-gradient(circle at 28% 28%, rgba(190, 82, 112, 0.34), transparent 44%),
+        radial-gradient(circle at 74% 68%, rgba(56, 189, 248, 0.50), transparent 48%),
         radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.42), transparent 52%),
         radial-gradient(circle at 50% 50%, #10241d 0%, #0a1410 58%, #050a08 100%);
       box-shadow:
@@ -645,7 +645,7 @@
     .deck-stage.playing .deck-btn.play-toggle {
       background: var(--pink);
       color: #fff;
-      box-shadow: 0 0 18px rgba(236, 72, 153, 0.45);
+      box-shadow: 0 0 16px rgba(190, 82, 112, 0.32);
     }
     .deck-chip-row {
       display: flex;
@@ -1074,7 +1074,7 @@
     .chat-link-card a { color: var(--blue); text-decoration: none; font-weight: 600; word-break: break-all; }
     .chat-compose {
       display: grid;
-      grid-template-columns: 180px 1fr auto;
+      grid-template-columns: 220px 1fr auto;
       gap: 8px;
       align-items: center;
     }
@@ -1106,6 +1106,29 @@
       font-size: 14px;
       transition: border-color 0.16s ease, box-shadow 0.16s ease;
     }
+    select {
+      padding-right: 32px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    input[type="date"] {
+      color-scheme: dark;
+      padding-right: 10px;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+      padding: 5px 6px;
+      border-radius: 7px;
+      background-color: rgba(245, 158, 11, 0.16);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      opacity: 0.96;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator:hover {
+      background-color: rgba(245, 158, 11, 0.28);
+      border-color: var(--amber);
+    }
     input:focus, select:focus, textarea:focus {
       outline: none;
       border-color: var(--amber);
@@ -1113,8 +1136,8 @@
     }
     .field-pulse { animation: fieldPulse 1.4s ease; }
     @keyframes fieldPulse {
-      0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.65); border-color: var(--pink); }
-      70% { box-shadow: 0 0 0 10px rgba(236, 72, 153, 0); border-color: var(--amber); }
+      0% { box-shadow: 0 0 0 0 rgba(190, 82, 112, 0.55); border-color: var(--pink); }
+      70% { box-shadow: 0 0 0 10px rgba(190, 82, 112, 0); border-color: var(--amber); }
       100% { box-shadow: none; }
     }
 
@@ -1206,7 +1229,7 @@
     .vibe-card:hover { border-color: rgba(56, 189, 248, 0.4); }
     .vibe-card.selected {
       border-color: var(--pink);
-      background: rgba(236, 72, 153, 0.06);
+      background: rgba(190, 82, 112, 0.07);
     }
     .vibe-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; }
     .vibe-name { font-weight: 700; font-size: 14.5px; color: var(--white); }
@@ -1449,8 +1472,8 @@
     .gear-mini-grid strong { color: var(--white); display: block; margin-bottom: 2px; }
 
     .readiness-bar {
-      background: rgba(236, 72, 153, 0.08);
-      border: 1px solid rgba(236, 72, 153, 0.3);
+      background: rgba(190, 82, 112, 0.08);
+      border: 1px solid rgba(190, 82, 112, 0.28);
       border-radius: 12px;
       padding: 11px 14px;
       margin-bottom: 16px;
@@ -1490,7 +1513,7 @@
     }
     .pay-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 10px;
       margin-bottom: 16px;
     }
@@ -1540,52 +1563,27 @@
       padding: 13px 22px;
       border-radius: 999px;
       text-decoration: none;
-      box-shadow: 0 8px 24px rgba(236, 72, 153, 0.3);
+      box-shadow: 0 6px 18px rgba(190, 82, 112, 0.22);
     }
 
-    /* SLIM CONTEXT-AWARE BOTTOM DOCK */
-    .bottom-dock {
-      position: fixed;
-      bottom: 12px;
-      left: 14px;
-      right: 14px;
-      z-index: 80;
-    }
-    .bottom-dock-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      background: rgba(8, 17, 13, 0.94);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 10px 14px 11px;
+    /* CLEAN IN-FLOW TAB FOOTER BAR (REPLACES FLOATING EMPTY DOCK) */
+    .tab-footer-bar {
+      margin-top: 20px;
+      background: linear-gradient(145deg, rgba(16, 185, 129, 0.06), rgba(10, 20, 16, 0.94));
+      border: 1px solid var(--border-emerald);
+      border-radius: 18px;
+      padding: 16px 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 10px;
-      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.65);
-      position: relative;
-      overflow: hidden;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
     }
-    .dock-progress {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 2.5px;
-      width: 33.3%;
-      background: linear-gradient(90deg, var(--mint), var(--amber), var(--pink));
-      transition: width 0.35s var(--ease-expo);
-    }
-    .dock-summary {
-      font-size: 12.5px;
+    .tab-footer-meta {
+      font-size: 13px;
       color: var(--muted);
-      padding-left: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
-    .dock-summary strong { color: var(--white); }
+    .tab-footer-meta strong { color: var(--white); }
 
     /* RESPONSIVE BREAKPOINTS */
     @media (max-width: 960px) {
@@ -1597,7 +1595,7 @@
     }
     @media (max-width: 680px) {
       :root { --tt: 168px; }
-      body { padding: 0 10px 112px 10px; }
+      body { padding: 0 10px 44px 10px; }
       .topbar { margin: 8px auto 14px auto; padding: 9px 10px; border-radius: 16px; gap: 8px; }
       .brand-btn { font-size: 20px; }
       .top-call { font-size: 11.5px; padding: 6px 10px; }
@@ -1635,10 +1633,324 @@
         flex: 0 0 86%;
         scroll-snap-align: start;
       }
-      .bottom-dock { bottom: 8px; left: 8px; right: 8px; }
-      .bottom-dock-inner { border-radius: 16px; padding: 8px 10px; }
+    }
+    /* MYSPACE-STYLE ARTIST WALL, EDIT BARS & STUDIO DRAWER */
+    #artistCanvas {
+      display: flex;
+      flex-direction: column;
+    }
+    .artist-block {
+      position: relative;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .artist-block.is-hidden-public {
+      display: none;
+    }
+    body.studio-active .artist-block.is-hidden-public {
+      display: block;
+      opacity: 0.36;
+      filter: grayscale(0.5);
+    }
+    body.studio-active .artist-block {
+      outline: 1.5px dashed rgba(245, 158, 11, 0.38);
+      outline-offset: 6px;
+      border-radius: 22px;
+      margin-bottom: 18px;
+    }
+    .block-edit-bar {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: rgba(5, 10, 8, 0.94);
+      border: 1px solid var(--amber);
+      border-radius: 12px;
+      padding: 6px 12px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: var(--white);
+      z-index: 15;
+    }
+    body.studio-active .block-edit-bar {
+      display: flex;
+    }
+    @media (min-width: 1080px) {
+      body { transition: padding-right 0.28s var(--ease-expo); }
+      body.studio-active { padding-right: 458px; }
+      body.studio-active .topbar,
+      body.studio-active .main-shell { max-width: 100%; }
+    }
+    .block-edit-actions {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .block-ctrl-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 4px 9px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .block-ctrl-btn:hover { border-color: var(--amber); color: var(--amber); }
+    .block-ctrl-btn.is-off { border-color: var(--pink); color: #eab8c6; }
+
+    /* Optional Background Overlay Patterns (Controlled by dj-layout.json) */
+    body[data-pattern="scanlines"]::after,
+    body[data-pattern="grid"]::after,
+    body[data-pattern="stars"]::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body[data-pattern="scanlines"]::after {
+      background: repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 3px);
+    }
+    body[data-pattern="grid"]::after {
+      background-image:
+        linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    body[data-pattern="stars"]::after {
+      background-image:
+        radial-gradient(1.5px 1.5px at 20px 30px, rgba(255,255,255,0.28), transparent),
+        radial-gradient(1.5px 1.5px at 90px 70px, rgba(245,158,11,0.35), transparent),
+        radial-gradient(1px 1px at 140px 110px, rgba(56,189,248,0.35), transparent);
+      background-size: 180px 150px;
+    }
+    body[data-font="terminal"] { font-family: 'JetBrains Mono', monospace; }
+    body[data-font="bold"] h1, body[data-font="bold"] .sec-title { letter-spacing: -0.04em; text-transform: uppercase; }
+
+    /* MySpace Artist Space Card */
+    .myspace-card {
+      background: linear-gradient(155deg, rgba(16, 185, 129, 0.055), rgba(190, 82, 112, 0.03), var(--surface));
+      border: 1px solid var(--border-emerald);
+      border-radius: 22px;
+      padding: 22px 24px;
+      margin-bottom: 24px;
+    }
+    .ms-status-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      background: rgba(5, 10, 8, 0.78);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 9px 13px;
+      margin-bottom: 14px;
+      font-size: 13px;
+    }
+    .ms-mood-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--pink-soft);
+      border: 1px solid rgba(190, 82, 112, 0.3);
+      color: #eab8c6;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .ms-bulletin {
+      background: rgba(5, 10, 8, 0.65);
+      border-left: 3px solid var(--amber);
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-size: 13.5px;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .ms-top8-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .ms-top8-item {
+      background: rgba(5, 10, 8, 0.75);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 11px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .ms-top8-rank {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--amber);
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 6px;
+      padding: 2px 6px;
+      flex-shrink: 0;
+    }
+
+    .top-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .studio-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(190, 82, 112, 0.10);
+      border: 1px solid rgba(190, 82, 112, 0.3);
+      color: #eab8c6;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .studio-toggle-btn:hover,
+    body.studio-active .studio-toggle-btn {
+      background: var(--pink);
+      border-color: var(--pink);
+      color: #fff;
+    }
+
+    /* Slide-Out Studio Customizer Drawer */
+    .studio-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(440px, 100vw);
+      background: rgba(7, 14, 11, 0.98);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-left: 1px solid var(--amber);
+      z-index: 300;
+      transform: translateX(104%);
+      transition: transform 0.28s var(--ease-expo);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -16px 0 48px rgba(0, 0, 0, 0.78);
+    }
+    .studio-drawer.open { transform: translateX(0); }
+    .studio-head {
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      background: rgba(16, 185, 129, 0.06);
+    }
+    .studio-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 18px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .studio-group {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .studio-group-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+    .skin-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px;
+    }
+    .skin-btn {
+      background: rgba(5, 10, 8, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 10px;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .skin-btn.active { border-color: var(--amber); color: var(--white); background: var(--amber-soft); }
+    .skin-swatches { display: inline-flex; gap: 3px; }
+    .skin-swatches i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+    .color-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .color-pick-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .color-pick-item input[type="color"] {
+      width: 100%;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #050a08;
+      padding: 2px;
+      cursor: pointer;
+    }
+    .drawer-order-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: rgba(5, 10, 8, 0.78);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 7px 10px;
+      font-size: 12.5px;
+    }
+    .studio-foot {
+      padding: 12px 18px;
+      border-top: 1px solid var(--border);
+      background: rgba(5, 10, 8, 0.96);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    @media (max-width: 680px) {
+      .ms-top8-grid { grid-template-columns: repeat(2, 1fr); }
+      .studio-btn-label { display: none; }
+      .studio-toggle-btn { padding: 6px 9px; }
+      .skin-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <style id="customMySpaceCss"></style>
 </head>
 <body>
 
@@ -1647,11 +1959,11 @@
   <!-- TOP NAVIGATION: HOME + 3 CLEARLY SEPARATED CATEGORIES -->
   <header class="topbar">
     <div class="brand-group">
-      <button type="button" class="home-btn" id="topHomeBtn" title="DJ J-Rip Home">
+      <button type="button" class="home-btn" id="topHomeBtn" title="DJ JRIP Home">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
         Home
       </button>
-      <button type="button" class="brand-btn" id="brandBtn">DJ <span>J-Rip</span></button>
+      <button type="button" class="brand-btn" id="brandBtn">DJ <span>JRIP</span></button>
     </div>
 
     <nav class="seg-nav" aria-label="Site Categories">
@@ -1660,300 +1972,408 @@
       <button type="button" class="seg-btn" data-tab="book"><span class="seg-dot"></span>3. Book &amp; Rates</button>
     </nav>
 
-    <a class="top-call" href="tel:+14693718556">(469) 371-8556</a>
+    <div class="top-right-actions">
+      <button type="button" class="studio-toggle-btn" id="openStudioTopBtn" title="Customize layout, colors & bio like MySpace (Shift+E)">
+        <span>&#10022;</span><span class="studio-btn-label"> Customize</span>
+      </button>
+      <a class="top-call" href="tel:+14693718556">(469) 371-8556</a>
+    </div>
   </header>
 
   <main class="main-shell">
 
-    <!-- ==================== TAB 1: ARTIST SHOWCASE FIRST (ZERO BUSINESS CLUTTER) ==================== -->
+    <!-- ==================== TAB 1: ARTIST SHOWCASE FIRST (MYSPACE-MODULAR CANVAS) ==================== -->
     <section class="view-panel active" id="view-overview">
+      <div id="artistCanvas">
 
-      <!-- ARTIST HERO + INTERACTIVE VINYL TURNTABLE -->
-      <div class="hero-card">
-        <div>
-          <div class="hero-profile">
-            <img class="hero-avatar" src="assets/dj-jrip-headshot.jpg" alt="DJ J-Rip (Jayson Quindao)">
-            <div>
-              <div style="font-weight:700; color:var(--white); font-size:15.5px;">DJ J-Rip &bull; Jayson Quindao</div>
-              <div class="hero-kicker">Open-Format DJ, Remixer &amp; Producer &bull; Dallas&ndash;Fort Worth</div>
+        <!-- BLOCK 1: ARTIST HERO + PURE-MUSIC VINYL TURNTABLE -->
+        <div class="artist-block" data-block="hero" id="block-hero">
+          <div class="block-edit-bar">
+            <span><strong>Block:</strong> Hero &amp; Spinning Vinyl Deck</span>
+            <div class="block-edit-actions">
+              <button type="button" class="block-ctrl-btn" data-move="up">&#9650; Up</button>
+              <button type="button" class="block-ctrl-btn" data-move="down">&#9660; Down</button>
+              <button type="button" class="block-ctrl-btn" data-toggle-hide>Hide</button>
             </div>
           </div>
 
-          <h1>Rhythm, <em>Harmonic Blends</em> &amp; Live Crowd Control.</h1>
-          <p class="hero-sub">
-            From 71-minute continuous SoundCloud sets and recorded Serato booth sessions to custom FL Studio blends built track by track around every crowd. Spin the deck, preview the edits, then build your night.
-          </p>
+          <div class="hero-card">
+            <div>
+              <div class="hero-profile">
+                <img class="hero-avatar" src="assets/dj-jrip-headshot.jpg" alt="DJ JRIP (Jayson Quindao)">
+                <div>
+                  <div id="heroDisplayName" style="font-weight:700; color:var(--white); font-size:15.5px;">DJ JRIP &bull; Jayson Quindao</div>
+                  <div id="heroKickerText" class="hero-kicker">Open-Format DJ, Remixer &amp; Producer &bull; Dallas&ndash;Fort Worth</div>
+                </div>
+              </div>
 
-          <div class="sonic-stats">
-            <div class="stat-pill"><span>335.7K+</span> TikTok Transition</div>
-            <div class="stat-pill mint"><span>71m &amp; 37m</span> SoundCloud Mixes</div>
-            <div class="stat-pill blue"><span>84</span> Custom Edits</div>
-            <div class="stat-pill pink"><span>134</span> .FLP Studio Projects</div>
-          </div>
+              <h1 id="heroMainHeadline">Rhythm, <em>Harmonic Blends</em> &amp; Live Crowd Control.</h1>
+              <p class="hero-sub" id="heroBioText">
+                From 71-minute continuous SoundCloud sets and recorded Serato booth sessions to custom FL Studio blends built track by track around every crowd. Spin the deck, preview the edits, then build your night.
+              </p>
 
-          <div class="cta-row">
-            <a class="btn-artist" href="#liveWorkSection">Listen &amp; Watch Sets &darr;</a>
-            <button type="button" class="btn-secondary" id="heroVibeBtn">Playlists &amp; Booth Chat</button>
-            <button type="button" class="btn-quiet" id="heroBookLink">Private Booking &amp; Rates &rarr;</button>
-          </div>
-        </div>
+              <div class="sonic-stats">
+                <div class="stat-pill"><span>335.7K+</span> TikTok Transition</div>
+                <div class="stat-pill mint"><span>71m &amp; 37m</span> SoundCloud Mixes</div>
+                <div class="stat-pill blue"><span>84</span> Custom Edits</div>
+                <div class="stat-pill pink"><span>134</span> .FLP Studio Projects</div>
+              </div>
 
-        <!-- INTERACTIVE SPINNING VINYL DECK (TACTILE PLAYBACK + MULTI-TRACK REAL SERATO & REMIX ARCHIVE) -->
-        <div class="deck-stage" id="deckStage">
-          <div class="deck-top-meta">
-            <span class="deck-live-dot"><i></i><span id="deckStatusText">TAP VINYL TO LISTEN</span></span>
-            <span class="mono" style="color:var(--amber);" id="deckBpmText">125 BPM</span>
-          </div>
-
-          <div class="turntable-wrap" id="turntableClick" title="Tap turntable to spin & listen">
-            <div class="platter-rim"></div>
-            <div class="vinyl-disc">
-              <div class="vinyl-label">
-                <span class="vinyl-label-brand">DJ J-Rip</span>
-                <span class="vinyl-label-rpm">33&frac13; RPM</span>
-                <span class="vinyl-spindle"></span>
+              <div class="cta-row">
+                <a class="btn-artist" href="#liveWorkSection">Listen &amp; Watch Sets &darr;</a>
+                <button type="button" class="btn-secondary" id="heroVibeBtn">Playlists &amp; Booth Chat</button>
+                <button type="button" class="btn-quiet" id="heroBookLink">Private Booking &amp; Rates &rarr;</button>
               </div>
             </div>
-            <div class="vinyl-glare"></div>
-            <div class="tonearm-pivot">
-              <div class="tonearm-shaft">
-                <div class="tonearm-head"></div>
+
+            <!-- INTERACTIVE SPINNING VINYL DECK (100% PURE AUDIO MUSIC — ZERO HARDWARE/VIDEO REELS) -->
+            <div class="deck-stage" id="deckStage">
+              <div class="deck-top-meta">
+                <span class="deck-live-dot"><i></i><span id="deckStatusText">TAP VINYL TO LISTEN</span></span>
+                <span class="mono" style="color:var(--amber);" id="deckBpmText">148 BPM</span>
+              </div>
+
+              <div class="turntable-wrap" id="turntableClick" title="Tap turntable to spin & listen">
+                <div class="platter-rim"></div>
+                <div class="vinyl-disc">
+                  <div class="vinyl-label">
+                    <span class="vinyl-label-brand">DJ JRIP</span>
+                    <span class="vinyl-label-rpm">33&frac13; RPM</span>
+                    <span class="vinyl-spindle"></span>
+                  </div>
+                </div>
+                <div class="vinyl-glare"></div>
+                <div class="tonearm-pivot">
+                  <div class="tonearm-shaft">
+                    <div class="tonearm-head"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="deck-track-title" id="deckTrackTitle">Sweet Spot &times; Superhuman (JRIP Remix)</div>
+              <div class="deck-track-sub" id="deckTrackSub">Custom Vocal Chop &amp; Blend &bull; Bieber/CB &times; Keri Hilson</div>
+
+              <div class="deck-controls">
+                <button type="button" class="deck-btn" id="deckPrevBtn" aria-label="Previous mix">&lsaquo;</button>
+                <button type="button" class="deck-btn play-toggle" id="deckPlayBtn" aria-label="Play or pause preview">&#9654;</button>
+                <button type="button" class="deck-btn" id="deckNextBtn" aria-label="Next mix">&rsaquo;</button>
+              </div>
+
+              <div class="deck-chip-row" id="deckChipRow">
+                <button type="button" class="deck-chip active" data-track-idx="0">JRIP Remix</button>
+                <button type="button" class="deck-chip" data-track-idx="1">Serato IV</button>
+                <button type="button" class="deck-chip" data-track-idx="2">Don 3-Track</button>
+                <button type="button" class="deck-chip" data-track-idx="3">Serato I</button>
+                <button type="button" class="deck-chip" data-track-idx="4">Porter .FLP</button>
+              </div>
+
+              <audio id="deckAudioPlayer" playsinline preload="metadata" style="display:none;"></audio>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCK 2: VIDEO PERFORMANCES & HARDWARE REELS (SEPARATE FROM VINYL MUSIC DECK) -->
+        <div class="artist-block" data-block="videos" id="block-videos">
+          <div class="block-edit-bar">
+            <span><strong>Block:</strong> Live Video Sets &amp; Booth Reels</span>
+            <div class="block-edit-actions">
+              <button type="button" class="block-ctrl-btn" data-move="up">&#9650; Up</button>
+              <button type="button" class="block-ctrl-btn" data-move="down">&#9660; Down</button>
+              <button type="button" class="block-ctrl-btn" data-toggle-hide>Hide</button>
+            </div>
+          </div>
+
+          <div class="sec-head" id="liveWorkSection">
+            <div>
+              <div class="sec-title">Live Performances, Remixes &amp; Booth Footage</div>
+              <div class="sec-sub">Every performance &amp; console video clip captured live &mdash; swipe on mobile or tap to play in-page</div>
+            </div>
+            <div style="display:flex; gap:10px; font-size:12.5px;">
+              <a href="https://www.youtube.com/@KUYAJRIP" target="_blank" rel="noopener" style="color:var(--amber); text-decoration:none; font-weight:600;">YouTube @KUYAJRIP &nearr;</a>
+              <a href="https://www.tiktok.com/@jaysonbq" target="_blank" rel="noopener" style="color:var(--pink); text-decoration:none; font-weight:600;">TikTok @jaysonbq &nearr;</a>
+            </div>
+          </div>
+
+          <div class="media-grid-2x2">
+            <div class="media-card">
+              <div class="media-frame" id="ytFrameBox">
+                <button type="button" class="media-poster-btn" id="playYtCardBtn" aria-label="Play 4K Lake House Set">
+                  <img src="assets/yt-lakehouse-thumb.jpg" alt="DJ JRIP 4K Lake House Live Set">
+                  <span class="media-tag-float">YouTube &bull; 12:01 Live Set</span>
+                  <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
+                </button>
+              </div>
+              <div class="media-cap">
+                <div>
+                  <strong>4K Lake House Live Set</strong>
+                  <small>Continuous outdoor sunset transitions &bull; @KUYAJRIP</small>
+                </div>
+                <a href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener">Watch YT &nearr;</a>
+              </div>
+            </div>
+
+            <div class="media-card">
+              <div class="media-frame" id="sweetFrameBox">
+                <button type="button" class="media-poster-btn" id="playSweetCardBtn" aria-label="Play Sweet Spot x Superhuman Remix">
+                  <img src="assets/yt-sweetspot-thumb.jpg" alt="Sweet Spot x Superhuman JRIP Remix Visualizer">
+                  <span class="media-tag-float" style="border-color:rgba(190,82,112,0.45);">JRIP Remix &bull; 3:09</span>
+                  <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
+                </button>
+              </div>
+              <div class="media-cap">
+                <div>
+                  <strong>Sweet Spot &times; Superhuman</strong>
+                  <small>Original JRIP vocal-chop &amp; chord progression mashup</small>
+                </div>
+                <button type="button" class="cap-spin-btn" data-spin-idx="0">Spin Deck</button>
+              </div>
+            </div>
+
+            <div class="media-card">
+              <div class="media-frame" id="ttFrameBox">
+                <button type="button" class="media-poster-btn" id="playTtCardBtn" aria-label="Play @jaysonbq Live Booth Flip">
+                  <img src="assets/tiktok-clip.jpg" style="object-position:center 30%;" alt="DJ JRIP Live Booth Flip Clip">
+                  <span class="media-tag-float">TikTok @jaysonbq &bull; 335.7K+ Context</span>
+                  <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
+                </button>
+              </div>
+              <div class="media-cap">
+                <div>
+                  <strong>The 1975 &mdash; Live Booth Flip</strong>
+                  <small>Real-time deck phrasing &amp; high-energy drop</small>
+                </div>
+                <a href="https://www.tiktok.com/@jaysonbq/video/7660248370291707149" target="_blank" rel="noopener">TikTok &nearr;</a>
+              </div>
+            </div>
+
+            <div class="media-card">
+              <div class="media-frame" id="reelFrameBox">
+                <button type="button" class="media-poster-btn" id="playReelCardBtn" aria-label="Play Pioneer DDJ Console Reel">
+                  <img src="assets/reel-thumb.jpg" style="object-position:center 35%;" alt="DJ JRIP Pioneer DDJ-SB2 Console Reel">
+                  <span class="media-tag-float">Console Reel &bull; DDJ-SB2</span>
+                  <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
+                </button>
+              </div>
+              <div class="media-cap">
+                <div>
+                  <strong>Pioneer DDJ Console Reel</strong>
+                  <small>Live cueing, filter fade &amp; Serato waveform lock</small>
+                </div>
+                <button type="button" class="cap-spin-btn" id="watchReelCapBtn">Watch Video &#9654;</button>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="deck-track-title" id="deckTrackTitle">Sweet Spot &times; Superhuman (JRIP Remix)</div>
-          <div class="deck-track-sub" id="deckTrackSub">Custom Blend &bull; Bieber &amp; Chris Brown &times; Keri Hilson</div>
-
-          <div class="deck-controls">
-            <button type="button" class="deck-btn" id="deckPrevBtn" aria-label="Previous mix">&lsaquo;</button>
-            <button type="button" class="deck-btn play-toggle" id="deckPlayBtn" aria-label="Play or pause preview">&#9654;</button>
-            <button type="button" class="deck-btn" id="deckNextBtn" aria-label="Next mix">&rsaquo;</button>
+        <!-- BLOCK 3: SOUNDCLOUD MIXES & 23 PUBLIC CRATES -->
+        <div class="artist-block" data-block="soundcloud" id="block-soundcloud">
+          <div class="block-edit-bar">
+            <span><strong>Block:</strong> SoundCloud Mixes &amp; 23 Public Crates</span>
+            <div class="block-edit-actions">
+              <button type="button" class="block-ctrl-btn" data-move="up">&#9650; Up</button>
+              <button type="button" class="block-ctrl-btn" data-move="down">&#9660; Down</button>
+              <button type="button" class="block-ctrl-btn" data-toggle-hide>Hide</button>
+            </div>
           </div>
 
-          <div class="deck-chip-row" id="deckChipRow">
-            <button type="button" class="deck-chip active" data-track-idx="0">JRIP Remix</button>
-            <button type="button" class="deck-chip" data-track-idx="1">Serato IV</button>
-            <button type="button" class="deck-chip" data-track-idx="2">Serato I</button>
-            <button type="button" class="deck-chip" data-track-idx="3">1975 Flip</button>
-            <button type="button" class="deck-chip" data-track-idx="4">DDJ Reel</button>
-          </div>
-
-          <video id="deckAudioPlayer" playsinline preload="metadata" style="display:none;"></video>
-        </div>
-      </div>
-
-      <!-- VIDEO PERFORMANCES & LIVE VENUE SETS (GUARANTEED LOCAL THUMBNAILS) -->
-      <div class="sec-head" id="liveWorkSection">
-        <div>
-          <div class="sec-title">Live Performances, Remixes &amp; Booth Footage</div>
-          <div class="sec-sub">Every performance &amp; visualizers captured live &mdash; swipe on mobile or tap to play in-page</div>
-        </div>
-        <div style="display:flex; gap:10px; font-size:12.5px;">
-          <a href="https://www.youtube.com/@KUYAJRIP" target="_blank" rel="noopener" style="color:var(--amber); text-decoration:none; font-weight:600;">YouTube @KUYAJRIP &nearr;</a>
-          <a href="https://www.tiktok.com/@jaysonbq" target="_blank" rel="noopener" style="color:var(--pink); text-decoration:none; font-weight:600;">TikTok @jaysonbq &nearr;</a>
-        </div>
-      </div>
-
-      <div class="media-grid-2x2">
-        <div class="media-card">
-          <div class="media-frame" id="ytFrameBox">
-            <button type="button" class="media-poster-btn" id="playYtCardBtn" aria-label="Play 4K Lake House Set">
-              <img src="assets/yt-lakehouse-thumb.jpg" alt="DJ J-Rip 4K Lake House Live Set">
-              <span class="media-tag-float">YouTube &bull; 12:01 Live Set</span>
-              <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
-            </button>
-          </div>
-          <div class="media-cap">
+          <div class="sec-head">
             <div>
-              <strong>4K Lake House Live Set</strong>
-              <small>Continuous outdoor sunset transitions &bull; @KUYAJRIP</small>
+              <div class="sec-title">SoundCloud Mixes &amp; Curated Crates</div>
+              <div class="sec-sub">Long-form unedited blends &amp; 23 genre crates (<a href="https://soundcloud.com/jayson-quindao" target="_blank" rel="noopener" style="color:var(--mint);">soundcloud.com/jayson-quindao</a> &bull; 134 Followers)</div>
             </div>
-            <a href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener">Watch YT &nearr;</a>
+          </div>
+
+          <div class="sc-grid">
+            <div class="sc-card">
+              <div class="sc-row">
+                <img class="sc-art" src="assets/sc-wanna-nasty.jpg" alt="Wanna get nasty mix artwork">
+                <div style="flex:1; min-width:0;">
+                  <div class="mono" style="color:var(--amber); font-size:10px;">SOUNDCLOUD MIX &bull; 71 MIN 12 SEC</div>
+                  <strong style="color:var(--white); font-size:16px; display:block;">Wanna get nasty?</strong>
+                  <span style="color:var(--muted); font-size:12.5px;">Full continuous peak-hour &amp; hip-hop/club session</span>
+                </div>
+                <button type="button" class="btn-secondary" id="loadScWannaBtn" style="padding:7px 12px; font-size:12px;">Player &#9654;</button>
+              </div>
+              <div class="sc-embed-slot" id="scSlotWanna"></div>
+            </div>
+
+            <div class="sc-card">
+              <div class="sc-row">
+                <img class="sc-art" src="assets/sc-solace.jpg" alt="Solace mix artwork">
+                <div style="flex:1; min-width:0;">
+                  <div class="mono" style="color:var(--blue); font-size:10px;">SOUNDCLOUD MIX &bull; 37 MIN 48 SEC</div>
+                  <strong style="color:var(--white); font-size:16px; display:block;">Solace</strong>
+                  <span style="color:var(--muted); font-size:12.5px;">Melodic house, moody R&amp;B &amp; late-night drive textures</span>
+                </div>
+                <button type="button" class="btn-secondary" id="loadScSolaceBtn" style="padding:7px 12px; font-size:12px;">Player &#9654;</button>
+              </div>
+              <div class="sc-embed-slot" id="scSlotSolace"></div>
+            </div>
+          </div>
+
+          <div class="card-box" style="padding:18px 20px; margin-bottom:26px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+              <strong style="color:var(--white); font-size:14px;">23 Public SoundCloud Crates &amp; Vocal Cover Work</strong>
+              <a href="https://soundcloud.com/jayson-quindao/boy-pablo-everytime-cover-by" target="_blank" rel="noopener" style="color:var(--pink); font-size:12.5px; text-decoration:none; font-weight:600;">Listen: Boy Pablo &ndash; Everytime (Cover by Jayson Q) &nearr;</a>
+            </div>
+            <div class="crate-pill-row">
+              <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/tech-house" target="_blank" rel="noopener">tech house &nearr;</a>
+              <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/not-porter-000" target="_blank" rel="noopener">Not Porter ;000 &nearr;</a>
+              <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/deep-house-dance-edm" target="_blank" rel="noopener">deep house / dance edm &nearr;</a>
+              <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/homegrown-final" target="_blank" rel="noopener">homegrown final &nearr;</a>
+              <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/boots-and-cats-august" target="_blank" rel="noopener">boots and cats august &nearr;</a>
+              <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/dirty-pop" target="_blank" rel="noopener">Dirty pop &nearr;</a>
+              <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/hip-to-the-mf-hop" target="_blank" rel="noopener">hip to the mf hop &nearr;</a>
+              <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/unforgettable" target="_blank" rel="noopener">Unforgettable &nearr;</a>
+              <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/throwback" target="_blank" rel="noopener">Throwback &nearr;</a>
+              <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/vibe-that" target="_blank" rel="noopener">vibe that &nearr;</a>
+            </div>
           </div>
         </div>
 
-        <div class="media-card">
-          <div class="media-frame" id="sweetFrameBox">
-            <button type="button" class="media-poster-btn" id="playSweetCardBtn" aria-label="Play Sweet Spot x Superhuman Remix">
-              <img src="assets/yt-sweetspot-thumb.jpg" alt="Sweet Spot x Superhuman JRIP Remix Visualizer">
-              <span class="media-tag-float" style="border-color:rgba(236,72,153,0.45);">JRIP Remix &bull; 3:09</span>
-              <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
-            </button>
+        <!-- BLOCK 4: LIVE EVENTS, STUDIO PRODUCTIONS (.FLP), CUSTOM EDITS -->
+        <div class="artist-block" data-block="vault" id="block-vault">
+          <div class="block-edit-bar">
+            <span><strong>Block:</strong> Live Billings &amp; FL Studio Vault</span>
+            <div class="block-edit-actions">
+              <button type="button" class="block-ctrl-btn" data-move="up">&#9650; Up</button>
+              <button type="button" class="block-ctrl-btn" data-move="down">&#9660; Down</button>
+              <button type="button" class="block-ctrl-btn" data-toggle-hide>Hide</button>
+            </div>
           </div>
-          <div class="media-cap">
+
+          <div class="showcase-split">
+            <div class="card-box" style="margin-bottom:0;">
+              <div class="mono" style="color:var(--mint); margin-bottom:6px;">LIVE BILLINGS &amp; SERATO ARCHIVE</div>
+              <div class="sec-title" style="font-size:18px; margin-bottom:10px;">Rooms, Events &amp; Deck Sessions</div>
+
+              <div style="display:flex; gap:12px; align-items:center; background:rgba(5,10,8,0.75); border:1px solid var(--border); padding:10px; border-radius:14px; margin-bottom:10px;">
+                <img src="assets/tt-rhythm-dtx.jpg" alt="Rhythm Dance Studio Dallas Home Grown Flyer" style="width:66px; height:84px; object-fit:cover; border-radius:9px; flex-shrink:0;">
+                <div>
+                  <strong style="color:var(--white); font-size:14px; display:block;">Rhythm Dance Studio DTX &mdash; Home Grown</strong>
+                  <span style="color:var(--muted); font-size:12px; display:block; margin:2px 0 6px;">House &amp; R&amp;B Live Bill w/ Luv.Hex &amp; SuckaPunch (Dallas, TX) &bull; 7.5K+ TikTok Views</span>
+                  <a href="https://www.tiktok.com/@jaysonbq/video/7506250078944775467" target="_blank" rel="noopener" style="color:var(--amber); font-size:12px; font-weight:600; text-decoration:none;">View Flyer &amp; Event Clip &nearr;</a>
+                </div>
+              </div>
+
+              <div class="studio-list">
+                <div class="studio-item">
+                  <div><strong>BLEACH &times; EARFQUAKE Transition</strong><div style="font-size:11.5px; color:var(--muted);">Viral fan-favorite TikTok booth blend</div></div>
+                  <span class="tag">335.7K+ Views</span>
+                </div>
+                <div class="studio-item">
+                  <div><strong>Club Nights, Festivals &amp; Private Events</strong><div style="font-size:11.5px; color:var(--muted);">Open-format club flow, high-energy dancefloors &amp; bespoke timelines</div></div>
+                  <span class="tag">DFW Live</span>
+                </div>
+                <div class="studio-item">
+                  <div><strong>Serato Live Sessions I &ndash; IV &amp; Don Blend</strong><div style="font-size:11.5px; color:var(--muted);">Unedited 24-bit console sessions playable above</div></div>
+                  <button type="button" class="btn-sm" data-spin-idx="1" style="border-color:var(--mint); color:var(--mint);">Play Session</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-box" style="margin-bottom:0;">
+              <div class="mono" style="color:var(--pink); margin-bottom:6px;">84 CUSTOM CLUB EDITS &bull; 134 .FLP PROJECTS</div>
+              <div class="sec-title" style="font-size:18px; margin-bottom:10px;">Original Remixes &amp; FL Studio Vault</div>
+              <p style="font-size:13px; color:var(--muted); margin-bottom:10px;">
+                Beyond standard tracks, Jayson builds bespoke tempo switches, Afro-House flips, and clean transition stems right inside FL Studio &amp; Serato.
+              </p>
+              <div class="studio-list" id="featuredEditsList">
+                <div class="studio-item"><div><strong>Sweet Spot &times; Superhuman (JRIP Remix)</strong><div style="font-size:11.5px; color:var(--muted);">Chris Brown / Justin Bieber / Keri Hilson blend</div></div><span class="tag">Mastered MP3</span></div>
+                <div class="studio-item"><div><strong>Frank Ocean &mdash; Lost (Afro House Edit)</strong><div style="font-size:11.5px; color:var(--muted);">Rooftop groove flip in Custom Edits crate</div></div><span class="tag">320kbps Edit</span></div>
+                <div class="studio-item"><div><strong>Blond:ish &times; Jake Shore DV Hook Mashup</strong><div style="font-size:11.5px; color:var(--muted);">Peak-hour tech-house tension builder</div></div><span class="tag">Booth Exclusive</span></div>
+                <div class="studio-item"><div><strong>Porter Robinson &bull; Djo &bull; Clairo (.flp Stems)</strong><div style="font-size:11.5px; color:var(--muted);">everything goes on / end of beginning / closer to you</div></div><span class="tag">Play on Deck #5</span></div>
+              </div>
+              <div style="margin-top:12px;">
+                <button type="button" class="btn-secondary" id="browseEditsBtn" style="font-size:12.5px; padding:8px 14px;">Browse All 84 Custom Edits &amp; 3,023 Tracks &rarr;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCK 5: MYSPACE PROFILE WALL (MOOD, BULLETIN, TOP 8 INFLUENCES) -->
+        <div class="artist-block" data-block="myspace" id="block-myspace">
+          <div class="block-edit-bar">
+            <span><strong>Block:</strong> MySpace Profile Wall &amp; Top 8</span>
+            <div class="block-edit-actions">
+              <button type="button" class="block-ctrl-btn" data-move="up">&#9650; Up</button>
+              <button type="button" class="block-ctrl-btn" data-move="down">&#9660; Down</button>
+              <button type="button" class="block-ctrl-btn" data-toggle-hide>Hide</button>
+            </div>
+          </div>
+
+          <div class="myspace-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:12px;">
+              <div>
+                <div class="mono" style="color:var(--blue); margin-bottom:3px;">ARTIST SPACE // MOOD, BULLETIN &amp; TOP 8</div>
+                <div class="sec-title" style="font-size:18px;">Jayson&rsquo;s Studio Wall</div>
+              </div>
+              <button type="button" class="btn-secondary" id="openStudioWallBtn" style="padding:7px 13px; font-size:12px; border-color:rgba(190,82,112,0.4); color:#eab8c6;">&#10022; Customize Like MySpace</button>
+            </div>
+
+            <div class="ms-status-bar">
+              <span class="ms-mood-pill" id="msMoodBadge">Mood: Crate Digging / Dialed In</span>
+              <span id="msStatusText" style="color:var(--text);">Vinyl deck is 100% live mixes &amp; FL Studio blends &bull; Drop playlist links anytime in Tab 2 Booth Chat.</span>
+            </div>
+
+            <div class="ms-bulletin" id="msBulletinText">
+              Taking DFW club, rooftop, private VIP, debut &amp; wedding bookings. Watch booth/DDJ hardware clips in Videos or spin pure audio mixes on the platter above.
+            </div>
+
+            <div class="mono" style="color:var(--amber); font-size:10.5px; margin-bottom:8px;">TOP 8 SOUND INFLUENCES &amp; HEAVY ROTATION</div>
+            <div class="ms-top8-grid" id="msTopGrid"></div>
+          </div>
+        </div>
+
+        <!-- BLOCK 6: SONIC CRAFT COLLAPSIBLE -->
+        <div class="artist-block" data-block="gear" id="block-gear">
+          <div class="block-edit-bar">
+            <span><strong>Block:</strong> Sound Architecture &amp; Gear</span>
+            <div class="block-edit-actions">
+              <button type="button" class="block-ctrl-btn" data-move="up">&#9650; Up</button>
+              <button type="button" class="block-ctrl-btn" data-move="down">&#9660; Down</button>
+              <button type="button" class="block-ctrl-btn" data-toggle-hide>Hide</button>
+            </div>
+          </div>
+
+          <details class="gear-accordion">
+            <summary>
+              <span>Sound Architecture &amp; Live Booth Philosophy</span>
+              <span class="hint">Bose F1 Array (4,000W) + Pioneer Console + Offline Vault &darr;</span>
+            </summary>
+            <div class="gear-mini-grid">
+              <div><strong>Dual Bose F1 812 + Subs (4,000W)</strong>Dual 1,000W F1 812 tops + dual 1,000W F1 subwoofers = 4,000W flexible array acoustics tuned for 300&ndash;500 guests without muddying dinner tables.</div>
+              <div><strong>Pioneer DDJ-SB2 + Serato</strong>Four-deck cue layering, harmonic key locks, and tight transitions without pre-recorded autopilot.</div>
+              <div><strong>3,023-Track Lossless &amp; 320kbps Vault</strong>Every client Spotify/Apple/YouTube link is synced offline before soundcheck so dead venue Wi-Fi never stops the set.</div>
+              <div><strong>Dual UHF Wireless Mics</strong>Clean vocal projection for guest vocalists, MCs, toasts, and show cues.</div>
+            </div>
+          </details>
+        </div>
+
+        <!-- BLOCK 7: BUSINESS BRIDGE AT BOTTOM OF ARTIST PAGE -->
+        <div class="artist-block" data-block="bridge" id="block-bridge">
+          <div class="block-edit-bar">
+            <span><strong>Block:</strong> Book &amp; Rates Bridge Banner</span>
+            <div class="block-edit-actions">
+              <button type="button" class="block-ctrl-btn" data-move="up">&#9650; Up</button>
+              <button type="button" class="block-ctrl-btn" data-move="down">&#9660; Down</button>
+              <button type="button" class="block-ctrl-btn" data-toggle-hide>Hide</button>
+            </div>
+          </div>
+
+          <div class="bridge-card">
             <div>
-              <strong>Sweet Spot &times; Superhuman</strong>
-              <small>Original JRIP vocal-chop &amp; chord progression mashup</small>
+              <div class="mono" style="color:var(--amber); margin-bottom:4px;">CLUBS &bull; FESTIVALS &bull; PRIVATE EVENTS &bull; WEDDINGS</div>
+              <strong style="color:var(--white); font-size:17px; display:block;">Ready to bring DJ JRIP &amp; full 4,000W sound to your event?</strong>
+              <span style="color:var(--muted); font-size:13px;">Packages, transparent flat-rate pricing, and date locking live in their own category &mdash; or jump into Playlists &amp; Booth Chat to plan your music first.</span>
             </div>
-            <button type="button" class="cap-spin-btn" data-spin-idx="0">Spin Deck</button>
-          </div>
-        </div>
-
-        <div class="media-card">
-          <div class="media-frame" id="ttFrameBox">
-            <button type="button" class="media-poster-btn" id="playTtCardBtn" aria-label="Play @jaysonbq Live Booth Flip">
-              <img src="assets/tiktok-clip.jpg" style="object-position:center 30%;" alt="DJ J-Rip Live Booth Flip Clip">
-              <span class="media-tag-float">TikTok @jaysonbq &bull; 335.7K+ Context</span>
-              <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
-            </button>
-          </div>
-          <div class="media-cap">
-            <div>
-              <strong>The 1975 &mdash; Live Booth Flip</strong>
-              <small>Real-time deck phrasing &amp; high-energy drop</small>
-            </div>
-            <a href="https://www.tiktok.com/@jaysonbq/video/7660248370291707149" target="_blank" rel="noopener">TikTok &nearr;</a>
-          </div>
-        </div>
-
-        <div class="media-card">
-          <div class="media-frame" id="reelFrameBox">
-            <button type="button" class="media-poster-btn" id="playReelCardBtn" aria-label="Play Pioneer DDJ Console Reel">
-              <img src="assets/reel-thumb.jpg" style="object-position:center 35%;" alt="DJ J-Rip Pioneer DDJ-SB2 Console Reel">
-              <span class="media-tag-float">Console Reel &bull; DDJ-SB2</span>
-              <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
-            </button>
-          </div>
-          <div class="media-cap">
-            <div>
-              <strong>Pioneer DDJ Console Reel</strong>
-              <small>Live cueing, filter fade &amp; Serato waveform lock</small>
-            </div>
-            <button type="button" class="cap-spin-btn" data-spin-idx="4">Spin Deck</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- FULL SOUNDCLOUD MIXES & 23 PUBLIC CRATES -->
-      <div class="sec-head">
-        <div>
-          <div class="sec-title">SoundCloud Mixes &amp; Curated Crates</div>
-          <div class="sec-sub">Long-form unedited blends &amp; 23 genre crates (<a href="https://soundcloud.com/jayson-quindao" target="_blank" rel="noopener" style="color:var(--mint);">soundcloud.com/jayson-quindao</a> &bull; 134 Followers)</div>
-        </div>
-      </div>
-
-      <div class="sc-grid">
-        <div class="sc-card">
-          <div class="sc-row">
-            <img class="sc-art" src="assets/sc-wanna-nasty.jpg" alt="Wanna get nasty mix artwork">
-            <div style="flex:1; min-width:0;">
-              <div class="mono" style="color:var(--amber); font-size:10px;">SOUNDCLOUD MIX &bull; 71 MIN 12 SEC</div>
-              <strong style="color:var(--white); font-size:16px; display:block;">Wanna get nasty?</strong>
-              <span style="color:var(--muted); font-size:12.5px;">Full continuous peak-hour &amp; hip-hop/club session</span>
-            </div>
-            <button type="button" class="btn-secondary" id="loadScWannaBtn" style="padding:7px 12px; font-size:12px;">Player &#9654;</button>
-          </div>
-          <div class="sc-embed-slot" id="scSlotWanna"></div>
-        </div>
-
-        <div class="sc-card">
-          <div class="sc-row">
-            <img class="sc-art" src="assets/sc-solace.jpg" alt="Solace mix artwork">
-            <div style="flex:1; min-width:0;">
-              <div class="mono" style="color:var(--blue); font-size:10px;">SOUNDCLOUD MIX &bull; 37 MIN 48 SEC</div>
-              <strong style="color:var(--white); font-size:16px; display:block;">Solace</strong>
-              <span style="color:var(--muted); font-size:12.5px;">Melodic house, moody R&amp;B &amp; late-night drive textures</span>
-            </div>
-            <button type="button" class="btn-secondary" id="loadScSolaceBtn" style="padding:7px 12px; font-size:12px;">Player &#9654;</button>
-          </div>
-          <div class="sc-embed-slot" id="scSlotSolace"></div>
-        </div>
-      </div>
-
-      <div class="card-box" style="padding:18px 20px; margin-bottom:26px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-          <strong style="color:var(--white); font-size:14px;">23 Public SoundCloud Crates &amp; Vocal Cover Work</strong>
-          <a href="https://soundcloud.com/jayson-quindao/boy-pablo-everytime-cover-by" target="_blank" rel="noopener" style="color:var(--pink); font-size:12.5px; text-decoration:none; font-weight:600;">Listen: Boy Pablo &ndash; Everytime (Cover by Jayson Q) &nearr;</a>
-        </div>
-        <div class="crate-pill-row">
-          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/tech-house" target="_blank" rel="noopener">tech house &nearr;</a>
-          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/not-porter-000" target="_blank" rel="noopener">Not Porter ;000 &nearr;</a>
-          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/deep-house-dance-edm" target="_blank" rel="noopener">deep house / dance edm &nearr;</a>
-          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/homegrown-final" target="_blank" rel="noopener">homegrown final &nearr;</a>
-          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/boots-and-cats-august" target="_blank" rel="noopener">boots and cats august &nearr;</a>
-          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/dirty-pop" target="_blank" rel="noopener">Dirty pop &nearr;</a>
-          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/hip-to-the-mf-hop" target="_blank" rel="noopener">hip to the mf hop &nearr;</a>
-          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/unforgettable" target="_blank" rel="noopener">Unforgettable &nearr;</a>
-          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/throwback" target="_blank" rel="noopener">Throwback &nearr;</a>
-          <a class="sc-crate-link" href="https://soundcloud.com/jayson-quindao/sets/vibe-that" target="_blank" rel="noopener">vibe that &nearr;</a>
-        </div>
-      </div>
-
-      <!-- LIVE EVENTS, STUDIO PRODUCTIONS (.FLP), CUSTOM EDITS & RECORDED SERATO ARCHIVE -->
-      <div class="showcase-split">
-        <div class="card-box" style="margin-bottom:0;">
-          <div class="mono" style="color:var(--mint); margin-bottom:6px;">LIVE BILLINGS &amp; SERATO ARCHIVE</div>
-          <div class="sec-title" style="font-size:18px; margin-bottom:10px;">Rooms, Events &amp; Deck Sessions</div>
-
-          <div style="display:flex; gap:12px; align-items:center; background:rgba(5,10,8,0.75); border:1px solid var(--border); padding:10px; border-radius:14px; margin-bottom:10px;">
-            <img src="assets/tt-rhythm-dtx.jpg" alt="Rhythm Dance Studio Dallas Home Grown Flyer" style="width:66px; height:84px; object-fit:cover; border-radius:9px; flex-shrink:0;">
-            <div>
-              <strong style="color:var(--white); font-size:14px; display:block;">Rhythm Dance Studio DTX &mdash; Home Grown</strong>
-              <span style="color:var(--muted); font-size:12px; display:block; margin:2px 0 6px;">House &amp; R&amp;B Live Bill w/ Luv.Hex &amp; SuckaPunch (Dallas, TX) &bull; 7.5K+ TikTok Views</span>
-              <a href="https://www.tiktok.com/@jaysonbq/video/7506250078944775467" target="_blank" rel="noopener" style="color:var(--amber); font-size:12px; font-weight:600; text-decoration:none;">View Flyer &amp; Event Clip &nearr;</a>
-            </div>
-          </div>
-
-          <div class="studio-list">
-            <div class="studio-item">
-              <div><strong>BLEACH &times; EARFQUAKE Transition</strong><div style="font-size:11.5px; color:var(--muted);">Viral fan-favorite TikTok booth blend</div></div>
-              <span class="tag">335.7K+ Views</span>
-            </div>
-            <div class="studio-item">
-              <div><strong>Club Nights, Festivals &amp; Private Events</strong><div style="font-size:11.5px; color:var(--muted);">Open-format club flow, high-energy dancefloors &amp; bespoke timelines</div></div>
-              <span class="tag">DFW Live</span>
-            </div>
-            <div class="studio-item">
-              <div><strong>Serato Live Recordings I &amp; IV</strong><div style="font-size:11.5px; color:var(--muted);">Unedited 24-bit console sessions playable above</div></div>
-              <button type="button" class="btn-sm" data-spin-idx="1" style="border-color:var(--mint); color:var(--mint);">Play Session</button>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+              <button type="button" class="btn-primary" id="bridgeToBookBtn">Open Book &amp; Rates Category &rarr;</button>
+              <a class="btn-secondary" href="index.html">Engineering Portfolio &nearr;</a>
             </div>
           </div>
         </div>
 
-        <div class="card-box" style="margin-bottom:0;">
-          <div class="mono" style="color:var(--pink); margin-bottom:6px;">84 CUSTOM CLUB EDITS &bull; 134 .FLP PROJECTS</div>
-          <div class="sec-title" style="font-size:18px; margin-bottom:10px;">Original Remixes &amp; FL Studio Vault</div>
-          <p style="font-size:13px; color:var(--muted); margin-bottom:10px;">
-            Beyond standard tracks, Jayson builds bespoke tempo switches, Afro-House flips, and clean transition stems right inside FL Studio &amp; Serato.
-          </p>
-          <div class="studio-list" id="featuredEditsList">
-            <div class="studio-item"><div><strong>Sweet Spot &times; Superhuman (JRIP Remix)</strong><div style="font-size:11.5px; color:var(--muted);">Chris Brown / Justin Bieber / Keri Hilson blend</div></div><span class="tag">Mastered MP3</span></div>
-            <div class="studio-item"><div><strong>Frank Ocean &mdash; Lost (Afro House Edit)</strong><div style="font-size:11.5px; color:var(--muted);">Rooftop groove flip in Custom Edits crate</div></div><span class="tag">320kbps Edit</span></div>
-            <div class="studio-item"><div><strong>Blond:ish &times; Jake Shore DV Hook Mashup</strong><div style="font-size:11.5px; color:var(--muted);">Peak-hour tech-house tension builder</div></div><span class="tag">Booth Exclusive</span></div>
-            <div class="studio-item"><div><strong>Porter Robinson &bull; Djo &bull; Clairo (.flp Stems)</strong><div style="font-size:11.5px; color:var(--muted);">everything goes on / end of beginning / closer to you</div></div><span class="tag">FL Studio</span></div>
-          </div>
-          <div style="margin-top:12px;">
-            <button type="button" class="btn-secondary" id="browseEditsBtn" style="font-size:12.5px; padding:8px 14px;">Browse All 84 Custom Edits &amp; 3,023 Tracks &rarr;</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- SONIC CRAFT COLLAPSIBLE (NO PRICES) -->
-      <details class="gear-accordion">
-        <summary>
-          <span>Sound Architecture &amp; Live Booth Philosophy</span>
-          <span class="hint">Bose F1 Array + Pioneer Console + Offline Vault &darr;</span>
-        </summary>
-        <div class="gear-mini-grid">
-          <div><strong>Dual Bose F1 812 + Subs</strong>2,000W flexible array acoustics tuned to throw crystal-clear vocals without muddying dinner tables.</div>
-          <div><strong>Pioneer DDJ-SB2 + Serato</strong>Four-deck cue layering, harmonic key locks, and tight transitions without pre-recorded autopilot.</div>
-          <div><strong>3,023-Track Lossless &amp; 320kbps Vault</strong>Every client Spotify/Apple/YouTube link is synced offline before soundcheck so dead venue Wi-Fi never stops the set.</div>
-          <div><strong>Dual UHF Wireless Mics</strong>Clean vocal projection for guest vocalists, MCs, toasts, and show cues.</div>
-        </div>
-      </details>
-
-      <!-- NON-PUSHY BUSINESS BRIDGE AT BOTTOM OF ARTIST PAGE -->
-      <div class="bridge-card">
-        <div>
-          <div class="mono" style="color:var(--amber); margin-bottom:4px;">CLUBS &bull; FESTIVALS &bull; PRIVATE EVENTS &bull; WEDDINGS</div>
-          <strong style="color:var(--white); font-size:17px; display:block;">Ready to bring DJ J-Rip &amp; full sound to your event?</strong>
-          <span style="color:var(--muted); font-size:13px;">Packages, transparent flat-rate pricing, and date locking live in their own category &mdash; or jump into Playlists &amp; Booth Chat to plan your music first.</span>
-        </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-          <button type="button" class="btn-primary" id="bridgeToBookBtn">Open Book &amp; Rates Category &rarr;</button>
-          <a class="btn-secondary" href="index.html">Engineering Portfolio &nearr;</a>
-        </div>
       </div>
     </section>
 
@@ -2039,7 +2459,7 @@
           <div class="guide-step">
             <span class="step-kicker">Step 2 &bull; Visibility</span>
             <strong>Keep Set Public</strong>
-            Edit playlist details and select <b>Public</b> so DJ J-Rip can cue matching transitions before showtime.
+            Edit playlist details and select <b>Public</b> so DJ JRIP can cue matching transitions before showtime.
           </div>
           <div class="guide-step">
             <span class="step-kicker">Step 3 &bull; Share</span>
@@ -2076,7 +2496,7 @@
         </div>
 
         <form class="chat-compose" id="chatForm">
-          <input type="text" id="chatNameInput" maxlength="28" placeholder="Your name (e.g. Josephine)" required>
+          <input type="text" id="chatNameInput" maxlength="28" placeholder="Name (e.g. Josephine)" required>
           <input type="text" id="chatMsgInput" maxlength="420" placeholder="Drop a Spotify/YT/Apple playlist URL or song request..." required>
           <button type="submit" class="btn-artist" id="chatSendBtn" style="padding:11px 20px;">Send to Booth &rarr;</button>
         </form>
@@ -2193,6 +2613,16 @@
           </div>
         </div>
       </div>
+
+      <div class="tab-footer-bar">
+        <div class="tab-footer-meta" id="vibeFooterSummary">
+          Room <strong>#lobby</strong> &bull; 0 songs queued &bull; 0 playlists linked
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button type="button" class="btn-secondary" id="vibeBackBtn">&larr; Artist &amp; Sets</button>
+          <button type="button" class="btn-artist" id="vibeNextBtn">Continue to Book &amp; Rates &rarr;</button>
+        </div>
+      </div>
     </section>
 
     <!-- ==================== TAB 3: BUSINESS, RATES, LOGISTICS & BOOKING (SEPARATE CATEGORY) ==================== -->
@@ -2213,7 +2643,7 @@
           <button type="button" class="preset-pill" data-preset="club">Bar / Lounge / Club ($100 Dep)</button>
           <button type="button" class="preset-pill active" data-preset="debut">Private VIP &amp; Milestone ($150 Dep)</button>
           <button type="button" class="preset-pill" data-preset="wedding">Wedding &amp; Gala ($250 Dep)</button>
-          <button type="button" class="preset-pill" data-preset="custom">Custom Quote ($25+ Hold)</button>
+          <button type="button" class="preset-pill" data-preset="custom">Custom Quote ($100 Preset / $25+)</button>
         </div>
 
         <div class="pkg-grid" id="pkgGrid">
@@ -2222,7 +2652,7 @@
               <span class="pkg-tag">Open-Format &bull; 2&ndash;4 Hours</span>
               <div class="pkg-name">Bar, Lounge &amp; Club</div>
               <div class="pkg-price">$400</div>
-              <span class="pkg-retainer">Lock Retainer: $100 ($300 due at show)</span>
+              <span class="pkg-retainer">Lock Retainer: $100 (25%) &bull; $300 due before soundcheck</span>
               <ul>
                 <li>Open-format BPM &amp; crowd control</li>
                 <li>House system or portable tie-in</li>
@@ -2235,9 +2665,9 @@
               <span class="pkg-tag">Full Sound &bull; 4&ndash;5 Hours</span>
               <div class="pkg-name">Private VIP &amp; Milestone</div>
               <div class="pkg-price">$750</div>
-              <span class="pkg-retainer">Lock Retainer: $150 ($600 due at show)</span>
+              <span class="pkg-retainer">Lock Retainer: $150 (20%) &bull; $600 due before soundcheck</span>
               <ul>
-                <li>Dual Bose F1 PA + Subwoofers</li>
+                <li>Dual Bose F1 PA + Subs (4,000W)</li>
                 <li>Dual UHF wireless mics + MC cues</li>
                 <li>VIP Birthdays, Galas &amp; 18th Debuts</li>
               </ul>
@@ -2249,10 +2679,10 @@
               <span class="pkg-tag">Full Turnkey &bull; 5&ndash;6 Hours</span>
               <div class="pkg-name">Wedding &amp; Gala</div>
               <div class="pkg-price">$1,200</div>
-              <span class="pkg-retainer">Lock Retainer: $250 ($950 due at show)</span>
+              <span class="pkg-retainer">Lock Retainer: $250 (~21%) &bull; $950 due before soundcheck</span>
               <ul>
                 <li>Ceremony + Cocktail + Reception</li>
-                <li>Full Bose PA &amp; backup sound</li>
+                <li>Full 4,000W Bose PA &amp; backup sound</li>
               </ul>
             </div>
           </div>
@@ -2262,7 +2692,7 @@
               <span class="pkg-tag">Tailored Hours</span>
               <div class="pkg-name">Custom Quote</div>
               <div class="pkg-price">Flexible</div>
-              <span class="pkg-retainer">Agreed hold ($25 minimum)</span>
+              <span class="pkg-retainer">Stripe preset $100 ($25 minimum hold)</span>
               <ul>
                 <li>Multi-room audio &amp; extended hrs</li>
                 <li>Custom travel outside DFW</li>
@@ -2295,7 +2725,7 @@
           </summary>
           <div class="gear-mini-grid">
             <div><strong>Turnkey Sound Load-In</strong>Arrival 60&ndash;90 minutes prior to doors; full soundcheck before first guest enters.</div>
-            <div><strong>300&ndash;500 Capacity Rating</strong>Dual Bose F1 Model 812 arrays + F1 subwoofers included cleanly in VIP/Wedding tiers.</div>
+            <div><strong>300&ndash;500 Capacity Rating</strong>Dual Bose F1 Model 812 arrays + F1 subwoofers (4,000W total) included cleanly in VIP/Wedding tiers.</div>
             <div><strong>Formal Paperwork Ready</strong>Written performance agreement &amp; venue COI details handled via GG Loop LLC upon request.</div>
             <div><strong>Offline Backup Guarantee</strong>Every playlist &amp; request synced locally; zero dependence on banquet hall Wi-Fi.</div>
           </div>
@@ -2307,7 +2737,7 @@
         <div class="sec-head">
           <div>
             <div class="sec-title">2. Host Details, Cues &amp; Lock Date</div>
-            <div class="sec-sub">Submits directly to DJ J-Rip&rsquo;s live phone alarm, email (<code>jquindao1@icloud.com</code>), and studio calendar</div>
+            <div class="sec-sub">Submits directly to DJ JRIP&rsquo;s live phone alarm, email (<code>jquindao1@icloud.com</code>), and studio calendar</div>
           </div>
         </div>
 
@@ -2340,17 +2770,17 @@
           <div>
             <label class="field-label" for="mcNeed">MC / Microphone Hosting</label>
             <select id="mcNeed">
-              <option value="Need DJ J-Rip to MC & call names">Need DJ J-Rip to announce cues &amp; names</option>
-              <option value="External MC/Host - DJ runs mics & cues only">External MC/Host (DJ runs mics only)</option>
-              <option value="Music Only (No MC announcements needed)">Music Only (Club / Lounge format)</option>
+              <option value="Need DJ JRIP to MC & call names">DJ JRIP MCs &amp; cues</option>
+              <option value="External MC/Host - DJ runs mics & cues only">External MC (DJ mics only)</option>
+              <option value="Music Only (No MC announcements needed)">Music Only (No MC)</option>
             </select>
           </div>
           <div>
             <label class="field-label" for="cleanPolicy">Clean-Edit Policy</label>
             <select id="cleanPolicy">
-              <option value="Clean Radio Edits During Dinner/Formal, Club Edits Late">Clean during dinner &bull; Club edits late</option>
-              <option value="100% Clean Radio Edits All Night">100% clean radio edits all night</option>
-              <option value="Uncensored Original Versions OK All Night">Original uncensored tracks OK</option>
+              <option value="Clean Radio Edits During Dinner/Formal, Club Edits Late">Clean dinner &bull; Club late</option>
+              <option value="100% Clean Radio Edits All Night">100% clean all night</option>
+              <option value="Uncensored Original Versions OK All Night">Original uncensored OK</option>
             </select>
           </div>
           <div>
@@ -2373,29 +2803,27 @@
         <div class="ledger-card">
           <div>
             <div class="mono" style="color:var(--mint);" id="ledgerPkgName">Private VIP, Milestone &amp; Debut (4&ndash;5 hrs)</div>
-            <div style="font-size:13px; color:var(--muted); margin-top:3px;" id="ledgerMeta"></div>
+            <div style="font-size:13px; color:var(--white); font-weight:600; margin-top:4px;" id="ledgerMathLine">Total: $750.00 &bull; Retainer Today: $150.00 (20%) &bull; Balance Before Soundcheck: $600.00</div>
+            <div style="font-size:12.5px; color:var(--muted); margin-top:3px;" id="ledgerMeta"></div>
           </div>
           <div style="text-align:right;">
             <div class="mono" style="color:var(--muted);">Date-Lock Retainer Due</div>
             <div id="ledgerDeposit" style="font-size:24px; font-weight:800; color:var(--amber);">$150.00</div>
+            <div id="ledgerRemainingSmall" style="font-size:11.5px; color:var(--mint); margin-top:2px;">$600.00 due before soundcheck</div>
           </div>
         </div>
 
-        <label class="field-label" style="margin-bottom:8px;">Payment Method</label>
+        <label class="field-label" style="margin-bottom:8px;">Payment Method (Verified GG Loop LLC Rails)</label>
         <div class="pay-grid" id="payOptionsGrid">
           <div class="pay-card active" data-pay="stripe">
             <h4>Card / Apple Pay / Google Pay</h4>
             <p>Encrypted Stripe checkout (GG Loop LLC).</p>
           </div>
-          <div class="pay-card" data-pay="zelle">
-            <h4>Zelle Bank Transfer (0% Fee)</h4>
-            <p>Send directly to <strong>(469) 371-8556</strong>.</p>
+          <div class="pay-card" data-pay="ach">
+            <h4>ACH / Bank Invoice (0% Fee)</h4>
+            <p>GG Loop LLC Mercury Checking invoice sent on confirm.</p>
           </div>
-          <div class="pay-card" data-pay="venmo_cashapp">
-            <h4>Venmo / Cash App</h4>
-            <p>Submit first, confirm handle via text.</p>
-          </div>
-          <div class="pay-card" data-pay="invoice">
+          <div class="pay-card" data-pay="quote">
             <h4>Hold &amp; Review Quote First</h4>
             <p>Receive written agreement before deposit.</p>
           </div>
@@ -2403,19 +2831,19 @@
 
         <label class="agreement-check">
           <input type="checkbox" id="agreeTerms" checked>
-          <span>I agree to the <a href="dj-terms.html" target="_blank" rel="noopener" style="color:var(--blue); text-decoration:underline;">GG Loop LLC Performance Terms &amp; Right to Refuse</a>: the low flat retainer locks the date (balance due before soundcheck), includes 1 free reschedule with <strong>14+ days&rsquo; notice</strong>, covers venue safety/weather equipment protection, and guarantees a <strong>100% retainer refund</strong> if DJ J-Rip declines prior to the event with advance notice.</span>
+          <span>I agree to the <a href="dj-terms.html" target="_blank" rel="noopener" style="color:var(--blue); text-decoration:underline;">GG Loop LLC Performance Terms &amp; Right to Refuse</a>: the low flat retainer locks the date (balance due before soundcheck), includes 1 free reschedule with <strong>14+ days&rsquo; notice</strong>, covers venue safety/weather equipment protection, and guarantees a <strong>100% retainer refund</strong> if DJ JRIP declines prior to the event with advance notice.</span>
         </label>
 
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-          <button type="button" class="btn-primary" id="submitMasterBtn">Lock Date &amp; Alert DJ J-Rip &rarr;</button>
+          <button type="button" class="btn-primary" id="submitMasterBtn">Lock Date &amp; Alert DJ JRIP &rarr;</button>
           <button type="button" class="btn-secondary" id="copyBtn">Copy Summary</button>
           <a class="btn-secondary" id="smsFallbackLink" href="#">Text (469) 371-8556</a>
         </div>
 
-        <div id="errorBanner" style="display:none; margin-top:12px; padding:11px 14px; border-radius:10px; background:rgba(236,72,153,0.12); border:1px solid var(--pink); color:#fbcfe8; font-size:13px;"></div>
+        <div id="errorBanner" style="display:none; margin-top:12px; padding:11px 14px; border-radius:10px; background:rgba(190,82,112,0.12); border:1px solid var(--pink); color:#f3cdd8; font-size:13px;"></div>
 
         <div class="checkout-panel" id="checkoutPanel">
-          <h3 style="color:var(--mint); font-size:18px; margin-bottom:6px;">Sent &mdash; DJ J-Rip&rsquo;s Phone Alarm Was Alerted.</h3>
+          <h3 style="color:var(--mint); font-size:18px; margin-bottom:6px;">Sent &mdash; DJ JRIP&rsquo;s Phone Alarm Was Alerted.</h3>
           <p style="font-size:13.5px; color:var(--text); margin-bottom:14px;" id="postSubmitNote">
             Your playlists &amp; booking details are queued in Jayson&rsquo;s studio console. Complete your low date-lock retainer below:
           </p>
@@ -2424,7 +2852,7 @@
               Complete $150 Retainer on Stripe &rarr;
             </a>
           </div>
-          <div id="zellePayAction" style="display:none; background:#050a08; border:1px solid var(--border); padding:14px; border-radius:12px;">
+          <div id="manualPayAction" style="display:none; background:#050a08; border:1px solid var(--border); padding:14px; border-radius:12px;">
             <p style="font-size:13.5px; color:var(--white); margin-bottom:10px;" id="manualPayInstructions"></p>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
               <button type="button" class="btn-secondary" id="copyPhoneBtn">Copy (469) 371-8556</button>
@@ -2433,35 +2861,154 @@
           </div>
         </div>
       </div>
+
+      <div class="tab-footer-bar">
+        <div class="tab-footer-meta" id="bookFooterSummary">
+          <strong>$150 Retainer ($750 Total)</strong> &bull; $600 due before soundcheck &bull; Date TBD
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button type="button" class="btn-secondary" id="bookBackBtn">&larr; Playlists &amp; Chat</button>
+          <a class="btn-secondary" href="dj-terms.html" target="_blank" rel="noopener">Performance Terms &nearr;</a>
+        </div>
+      </div>
     </section>
 
   </main>
 
-  <!-- CONTEXT-AWARE MOBILE-FRIENDLY BOTTOM BAR -->
-  <div class="bottom-dock">
-    <div class="bottom-dock-inner">
-      <div class="dock-progress" id="dockProgress"></div>
-      <div class="dock-summary" id="dockSummary">
-        <strong>DJ J-Rip</strong> &bull; 3,023 Tracks &bull; 84 Custom Edits
+  <!-- SLIDE-OUT MYSPACE STUDIO CUSTOMIZER DRAWER -->
+  <aside class="studio-drawer" id="studioDrawer" aria-label="MySpace Page Studio Customizer">
+    <div class="studio-head">
+      <div>
+        <div class="mono" style="color:var(--pink); font-size:10px;">CREATOR STUDIO // MYSPACE MODE</div>
+        <strong style="color:var(--white); font-size:15px;">Edit Layout, Vibe, Bio &amp; CSS</strong>
       </div>
-      <div style="display:flex; gap:6px; flex-shrink:0;">
-        <button type="button" class="btn-secondary" id="dockBackBtn" style="padding:7px 12px; font-size:12px; display:none;">&larr; Back</button>
-        <button type="button" class="btn-artist" id="dockNextBtn" style="padding:8px 15px; font-size:12.5px; box-shadow:none;">Playlists &amp; Chat &rarr;</button>
+      <button type="button" class="block-ctrl-btn" id="closeStudioBtn" style="padding:6px 11px;">Done &times;</button>
+    </div>
+
+    <div class="studio-body">
+      <div class="studio-group">
+        <div class="studio-group-title">1. Skins &amp; Vibes</div>
+        <div class="skin-grid" id="skinGrid">
+          <button type="button" class="skin-btn active" data-skin="forest_obsidian"><span>Forest Obsidian</span><span class="skin-swatches"><i style="background:#050a08"></i><i style="background:#f59e0b"></i><i style="background:#34d399"></i></span></button>
+          <button type="button" class="skin-btn" data-skin="myspace_y2k"><span>Y2K MySpace Neon</span><span class="skin-swatches"><i style="background:#060718"></i><i style="background:#00e5ff"></i><i style="background:#ff4fd8"></i></span></button>
+          <button type="button" class="skin-btn" data-skin="midnight_gold"><span>Midnight Gold</span><span class="skin-swatches"><i style="background:#070605"></i><i style="background:#fbbf24"></i><i style="background:#e2e8f0"></i></span></button>
+          <button type="button" class="skin-btn" data-skin="crimson_afterhours"><span>Crimson Booth</span><span class="skin-swatches"><i style="background:#100408"></i><i style="background:#fb7185"></i><i style="background:#f59e0b"></i></span></button>
+          <button type="button" class="skin-btn" data-skin="cyber_club"><span>Laser Violet</span><span class="skin-swatches"><i style="background:#090514"></i><i style="background:#a855f7"></i><i style="background:#22d3ee"></i></span></button>
+          <button type="button" class="skin-btn" data-skin="sunset_vinyl"><span>Sunset Tape</span><span class="skin-swatches"><i style="background:#120806"></i><i style="background:#fb923c"></i><i style="background:#38bdf8"></i></span></button>
+        </div>
+
+        <div class="color-row">
+          <label class="color-pick-item">Background<input type="color" id="pkBg" value="#050a08"></label>
+          <label class="color-pick-item">Card Base<input type="color" id="pkSurface" value="#0a1410"></label>
+          <label class="color-pick-item">Gold / Warm<input type="color" id="pkAmber" value="#f59e0b"></label>
+          <label class="color-pick-item">Mint Accent<input type="color" id="pkMint" value="#34d399"></label>
+          <label class="color-pick-item">Sky Accent<input type="color" id="pkBlue" value="#38bdf8"></label>
+          <label class="color-pick-item">Rose Accent<input type="color" id="pkPink" value="#be5270"></label>
+        </div>
+
+        <div class="form-grid" style="grid-template-columns:1fr 1fr; gap:8px;">
+          <div>
+            <label class="field-label" for="edPattern">Background Texture</label>
+            <select id="edPattern">
+              <option value="none">Clean Obsidian</option>
+              <option value="stars">MySpace Sparkles</option>
+              <option value="grid">Cyber Booth Grid</option>
+              <option value="scanlines">CRT Scanlines</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label" for="edFontMode">Typography</label>
+            <select id="edFontMode">
+              <option value="editorial">Editorial Serif</option>
+              <option value="terminal">Retro Terminal</option>
+              <option value="bold">Street Uppercase</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="studio-group">
+        <div class="studio-group-title">2. Drag / Reorder &amp; Hide Blocks</div>
+        <div id="drawerOrderList" style="display:flex; flex-direction:column; gap:6px;"></div>
+      </div>
+
+      <div class="studio-group">
+        <div class="studio-group-title">3. Edit Bio, Headline, Mood &amp; Top 8</div>
+        <div>
+          <label class="field-label" for="edDisplayName">Display Name</label>
+          <input type="text" id="edDisplayName">
+        </div>
+        <div>
+          <label class="field-label" for="edKicker">Subtitle / City</label>
+          <input type="text" id="edKicker">
+        </div>
+        <div>
+          <label class="field-label" for="edHeadline">Main Headline (wrap accent in *asterisks*)</label>
+          <input type="text" id="edHeadline">
+        </div>
+        <div>
+          <label class="field-label" for="edBio">Bio Copy</label>
+          <textarea id="edBio" rows="3"></textarea>
+        </div>
+        <div class="form-grid" style="grid-template-columns:1fr 1fr; gap:8px;">
+          <div>
+            <label class="field-label" for="edMood">Mood</label>
+            <input type="text" id="edMood">
+          </div>
+          <div>
+            <label class="field-label" for="edTopArtists">Top 8 (comma-separated)</label>
+            <input type="text" id="edTopArtists">
+          </div>
+        </div>
+        <div>
+          <label class="field-label" for="edStatus">Status Ticker</label>
+          <input type="text" id="edStatus">
+        </div>
+        <div>
+          <label class="field-label" for="edBulletin">Bulletin Note</label>
+          <textarea id="edBulletin" rows="2"></textarea>
+        </div>
+      </div>
+
+      <div class="studio-group">
+        <div class="studio-group-title">4. Custom CSS (Classic MySpace Box)</div>
+        <textarea id="edCustomCss" rows="4" placeholder="/* e.g. .hero-card { border-width: 2px; } */" style="font-family:'JetBrains Mono', monospace; font-size:12px;"></textarea>
+      </div>
+
+      <div class="studio-group">
+        <div class="studio-group-title">5. Publish Live to Everyone (GitHub)</div>
+        <p style="font-size:12px; color:var(--muted); margin:0;">
+          Your tweaks preview instantly in this browser. To push <code>dj-layout.json</code> live so every visitor sees your changes (~20s rebuild), paste a repo-scoped GitHub token once:
+        </p>
+        <input type="password" id="ghPatInput" placeholder="github_pat_... (stored locally in your browser only)">
+        <div id="publishStatusText" style="font-size:12px; color:var(--mint);"></div>
       </div>
     </div>
-  </div>
+
+    <div class="studio-foot">
+      <div style="display:flex; gap:8px;">
+        <button type="button" class="btn-primary" id="publishLayoutBtn" style="flex:1; justify-content:center; padding:10px 14px; font-size:13px;">Publish Live to Site &rarr;</button>
+        <button type="button" class="btn-secondary" id="downloadLayoutBtn" style="padding:9px 12px; font-size:12px;">Download JSON</button>
+      </div>
+      <div style="display:flex; gap:8px; justify-content:space-between;">
+        <button type="button" class="btn-sm" id="copyLayoutBtn">Copy JSON</button>
+        <button type="button" class="btn-sm" id="resetDefaultLayoutBtn" style="border-color:rgba(190,82,112,0.45); color:#eab8c6;">Reset to Default</button>
+      </div>
+    </div>
+  </aside>
 
   <script>
     const STORAGE_KEY = 'djjrip_client_portal_v4';
     const NTFY_TOPIC = 'djjrip-ops-4a65fac665ec';
     const BOOTH_ROOM_PREFIX = 'djjrip-booth-v1-';
 
+    // PURE AUDIO MUSIC CRATE ONLY (ZERO VIDEO / HARDWARE REELS ON VINYL PLATTER)
     const DECK_TRACKS = [
-      { title: 'Sweet Spot \u00d7 Superhuman (JRIP Remix)', sub: 'Custom Vocal Chop & Blend \u2022 Bieber/CB \u00d7 Keri Hilson', bpm: '124 BPM', src: 'assets/mix-sweetspot-superhuman.mp3' },
+      { title: 'Sweet Spot \u00d7 Superhuman (JRIP Remix)', sub: 'Custom Vocal Chop & Blend \u2022 Bieber/CB \u00d7 Keri Hilson', bpm: '148 BPM', src: 'assets/mix-sweetspot-superhuman.mp3' },
       { title: 'Serato Live Session IV', sub: 'Unedited 24-Bit Console Recording \u2022 Sep 15', bpm: '126 BPM', src: 'assets/mix-serato-session-4.mp3' },
-      { title: 'Serato Live Session I', sub: 'Open-Format Harmonic Blend \u2022 Sep 13', bpm: '122 BPM', src: 'assets/mix-serato-session-1.mp3' },
-      { title: 'The 1975 \u2014 Live Booth Flip', sub: 'TikTok @jaysonbq \u2022 Live Transition Clip', bpm: '125 BPM', src: 'assets/tiktok-clip.mp4' },
-      { title: 'Pioneer DDJ-SB2 Cue Showcase', sub: 'Live Filter Fade & Serato Deck Control', bpm: '128 BPM', src: 'assets/dj-jrip-reel.mp4' }
+      { title: 'Don 3-Track Harmonic Blend', sub: 'Serato Live Deck Transition \u2022 Key Cm \u2022 Sep 13', bpm: '94 BPM', src: 'assets/mix-don-3track-blend.mp3' },
+      { title: 'Sweet Spot Clean Cut (Serato I)', sub: 'Radio-Safe Blend \u2022 Key Ab \u2022 Serato Archive', bpm: '148 BPM', src: 'assets/mix-serato-session-1.mp3' },
+      { title: 'Porter \u00d7 Djo \u2014 Everything Goes On (Slowed)', sub: 'Custom FL Studio Pitch & Stem Edit', bpm: 'SLOWED .FLP', src: 'assets/mix-porter-everything-slowed.mp3' }
     ];
 
     const STARTER_PACKS = {
@@ -2474,8 +3021,8 @@
     };
 
     const PRESETS = {
-      debut: { pkgId: 'debut_vip', eventType: 'Private VIP / Birthday Party', mcNeed: 'Need DJ J-Rip to MC & call names', cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late', vibes: ['debut', 'rnb', 'house'], label: 'Private VIP & Milestone preset selected' },
-      wedding: { pkgId: 'wedding_gala', eventType: 'Wedding Ceremony & Reception', mcNeed: 'Need DJ J-Rip to MC & call names', cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late', vibes: ['debut', 'rnb', 'house'], label: 'Wedding preset selected' },
+      debut: { pkgId: 'debut_vip', eventType: 'Private VIP / Birthday Party', mcNeed: 'Need DJ JRIP to MC & call names', cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late', vibes: ['debut', 'rnb', 'house'], label: 'Private VIP & Milestone preset selected' },
+      wedding: { pkgId: 'wedding_gala', eventType: 'Wedding Ceremony & Reception', mcNeed: 'Need DJ JRIP to MC & call names', cleanPolicy: 'Clean Radio Edits During Dinner/Formal, Club Edits Late', vibes: ['debut', 'rnb', 'house'], label: 'Wedding preset selected' },
       club: { pkgId: 'bar_lounge', eventType: 'Bar / Lounge / Rooftop', mcNeed: 'Music Only (No MC announcements needed)', cleanPolicy: 'Uncensored Original Versions OK All Night', vibes: ['hiphop', 'house', 'edits'], label: 'Bar / Lounge / Club preset selected' },
       custom: { pkgId: 'custom_quote', eventType: 'Corporate / Campus Event', mcNeed: 'External MC/Host - DJ runs mics & cues only', cleanPolicy: '100% Clean Radio Edits All Night', vibes: ['rnb', 'house'], label: 'Custom Event preset selected' }
     };
@@ -2642,7 +3189,7 @@
     // CLICK-TO-PLAY GUARANTEED THUMBNAILS (ZERO BROKEN THIRD-PARTY EMBEDS)
     document.getElementById('playYtCardBtn').addEventListener('click', () => {
       pauseDeck();
-      document.getElementById('ytFrameBox').innerHTML = `<iframe src="https://www.youtube.com/embed/TB8gT3tWWlo?autoplay=1&rel=0" title="DJ J-Rip Lake House 4K Set" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      document.getElementById('ytFrameBox').innerHTML = `<iframe src="https://www.youtube.com/embed/TB8gT3tWWlo?autoplay=1&rel=0" title="DJ JRIP Lake House 4K Set" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
     });
     document.getElementById('playSweetCardBtn').addEventListener('click', () => {
       pauseDeck();
@@ -2655,6 +3202,10 @@
     document.getElementById('playReelCardBtn').addEventListener('click', () => {
       pauseDeck();
       document.getElementById('reelFrameBox').innerHTML = `<video controls autoplay playsinline poster="assets/reel-thumb.jpg"><source src="assets/dj-jrip-reel.mp4" type="video/mp4"></video>`;
+    });
+    document.getElementById('watchReelCapBtn').addEventListener('click', () => {
+      document.getElementById('playReelCardBtn')?.click();
+      document.getElementById('reelFrameBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
 
     // CLICK-TO-LOAD OFFICIAL SOUNDCLOUD EMBED PLAYERS (NO HEAVY PAGE LOAD BLOAT)
@@ -2669,20 +3220,22 @@
       slot.innerHTML = `<iframe allow="autoplay" title="SoundCloud Player: Solace" src="https://w.soundcloud.com/player/?url=${encodeURIComponent('https://soundcloud.com/jayson-quindao/solace')}&color=%2338bdf8&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>`;
     });
 
-    // CONTEXT-AWARE BOTTOM DOCK TEXT (ARTIST-FIRST ON TAB 1, NO $375 DEP LEAK!)
+    // IN-FLOW FOOTER SUMMARY TEXT FOR TAB 2 & TAB 3
     function refreshDockCopy() {
       const urls = getPlaylistUrls();
-      const dock = document.getElementById('dockSummary');
-      const totalTracksText = catalogData?.total ? catalogData.total.toLocaleString() : '3,023';
-      const editsCountText = catalogData?.vibes?.edits?.count || 84;
-      if (currentTab === 'overview') {
-        dock.innerHTML = `<strong>DJ J-Rip</strong> \u2022 ${totalTracksText} Tracks \u2022 ${editsCountText} Custom Edits`;
-      } else if (currentTab === 'vibe') {
-        dock.innerHTML = `<strong>#${escapeHtml(activeRoom)}</strong> \u2022 ${mustPlay.length} queued \u2022 ${urls.length} playlists`;
-      } else {
-        const depTxt = selectedPackage.deposit === 'Custom' ? 'Custom Dep' : `$${selectedPackage.deposit} Dep`;
+      const vibeFoot = document.getElementById('vibeFooterSummary');
+      if (vibeFoot) {
+        vibeFoot.innerHTML = `Room <strong>#${escapeHtml(activeRoom)}</strong> \u2022 ${mustPlay.length} queued \u2022 ${urls.length} playlists`;
+      }
+      const bookFoot = document.getElementById('bookFooterSummary');
+      if (bookFoot) {
         const dateVal = document.getElementById('eventDate').value || 'Date TBD';
-        dock.innerHTML = `<strong>${depTxt}</strong> \u2022 ${escapeHtml(dateVal)} \u2022 ${mustPlay.length} songs`;
+        if (selectedPackage.deposit === 'Custom') {
+          bookFoot.innerHTML = `<strong>Custom Quote ($100 Stripe preset / $25 min)</strong> \u2022 ${escapeHtml(dateVal)} \u2022 ${mustPlay.length} songs`;
+        } else {
+          const bal = Math.max(0, selectedPackage.total - Number(selectedPackage.deposit));
+          bookFoot.innerHTML = `<strong>$${selectedPackage.deposit} Retainer ($${selectedPackage.total.toLocaleString()} Total)</strong> \u2022 $${bal.toLocaleString()} due before soundcheck \u2022 ${escapeHtml(dateVal)}`;
+        }
       }
     }
 
@@ -2695,23 +3248,7 @@
       document.getElementById(`view-${tab}`).classList.add('active');
       document.querySelectorAll('.seg-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
 
-      const backBtn = document.getElementById('dockBackBtn');
-      const nextBtn = document.getElementById('dockNextBtn');
-      const prog = document.getElementById('dockProgress');
-      if (tab === 'overview') {
-        backBtn.style.display = 'none';
-        nextBtn.style.display = 'inline-flex';
-        nextBtn.textContent = 'Playlists & Chat \u2192';
-        if (prog) prog.style.width = '33.3%';
-      } else if (tab === 'vibe') {
-        backBtn.style.display = 'inline-flex';
-        nextBtn.style.display = 'inline-flex';
-        nextBtn.textContent = 'Book & Rates \u2192';
-        if (prog) prog.style.width = '66.6%';
-      } else {
-        backBtn.style.display = 'inline-flex';
-        nextBtn.style.display = 'none';
-        if (prog) prog.style.width = '100%';
+      if (tab === 'book') {
         updateBookSummary();
       }
       refreshDockCopy();
@@ -3011,6 +3548,11 @@
     function selectPkgCard(card) {
       document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('active'));
       card.classList.add('active');
+      const presetMap = { bar_lounge: 'club', debut_vip: 'debut', wedding_gala: 'wedding', custom_quote: 'custom' };
+      const mappedPreset = presetMap[card.dataset.pkg];
+      if (mappedPreset) {
+        document.querySelectorAll('.preset-pill').forEach(b => b.classList.toggle('active', b.dataset.preset === mappedPreset));
+      }
       const dep = card.dataset.deposit === 'Custom' ? 'Custom' : Number(card.dataset.deposit);
       selectedPackage = {
         id: card.dataset.pkg,
@@ -3019,10 +3561,24 @@
         deposit: dep,
         stripeUrl: card.dataset.stripe
       };
-      const depText = dep === 'Custom' ? 'Custom Quote' : `$${dep}.00`;
-      document.getElementById('overviewPkgSummary').textContent = dep === 'Custom' ? `${selectedPackage.label} \u2193` : `${selectedPackage.label} ($${dep} retainer) \u2193`;
+      const isCustom = dep === 'Custom';
+      const depText = isCustom ? '$100 Preset' : `$${dep}.00`;
+      const remAmt = !isCustom && selectedPackage.total > 0 ? Math.max(0, selectedPackage.total - Number(dep)) : null;
+      const pct = !isCustom && selectedPackage.total > 0 ? Math.round((Number(dep) / selectedPackage.total) * 100) : null;
+      document.getElementById('overviewPkgSummary').textContent = isCustom
+        ? `${selectedPackage.label} ($25+ Stripe hold) \u2193`
+        : `${selectedPackage.label} ($${dep} retainer / $${remAmt} due before soundcheck) \u2193`;
       document.getElementById('ledgerPkgName').textContent = selectedPackage.label;
       document.getElementById('ledgerDeposit').textContent = depText;
+      const mathEl = document.getElementById('ledgerMathLine');
+      const remSmallEl = document.getElementById('ledgerRemainingSmall');
+      if (isCustom) {
+        if (mathEl) mathEl.textContent = 'Custom Quoted Rate \u2022 Stripe Preset: $100.00 ($25.00 min agreed) \u2022 Balance per Written Quote';
+        if (remSmallEl) remSmallEl.textContent = '$25.00 min on Stripe';
+      } else {
+        if (mathEl) mathEl.textContent = `Total: $${selectedPackage.total.toLocaleString()}.00 \u2022 Retainer Today: $${dep}.00 (${pct}%) \u2022 Balance Before Soundcheck: $${remAmt.toLocaleString()}.00`;
+        if (remSmallEl) remSmallEl.textContent = `$${remAmt.toLocaleString()}.00 due before soundcheck`;
+      }
       updateCounters();
       saveState();
     }
@@ -3327,14 +3883,14 @@
       const notes = document.getElementById('specialNotes').value.trim() || 'None';
       const urls = getPlaylistUrls();
       const vibeNames = Array.from(selectedVibes).map(k => catalogData?.vibes[k]?.name || k);
-      const depStr = selectedPackage.deposit === 'Custom' ? 'Custom Quote' : `$${selectedPackage.deposit}.00`;
+      const depStr = selectedPackage.deposit === 'Custom' ? '$100 Preset ($25 Min Agreed)' : `$${selectedPackage.deposit}.00`;
       const totalStr = selectedPackage.total > 0 ? `$${selectedPackage.total}.00` : 'Custom Quote';
       const balNum = (selectedPackage.total > 0 && typeof selectedPackage.deposit === 'number') ? Math.max(0, selectedPackage.total - selectedPackage.deposit) : null;
       const balDueStr = balNum !== null ? `$${balNum}.00` : 'Per Quote';
       const termsAcceptedAt = new Date().toISOString();
 
       const text = [
-        `DJ J-RIP \u2014 BOOKING & SPOTIFY ARCHIVE MANIFEST`,
+        `DJ JRIP \u2014 BOOKING & SPOTIFY ARCHIVE MANIFEST`,
         `==================================================`,
         `Client / Honoree: ${name}`,
         `Email: ${email} | Phone: ${phone}`,
@@ -3371,7 +3927,7 @@
 
     function updateFallbackLinks() {
       const p = buildPayload();
-      document.getElementById('smsFallbackLink').href = `sms:+14693718556?body=${encodeURIComponent(`Hi DJ J-Rip! Booking request for ${p.name} (${p.type} on ${p.date}) \u2014 ${p.depStr}. Playlists: ${p.urls.length}, Songs: ${mustPlay.length}.`)}`;
+      document.getElementById('smsFallbackLink').href = `sms:+14693718556?body=${encodeURIComponent(`Hi DJ JRIP! Booking request for ${p.name} (${p.type} on ${p.date}) \u2014 ${p.depStr}. Playlists: ${p.urls.length}, Songs: ${mustPlay.length}.`)}`;
     }
 
     function saveState() {
@@ -3442,6 +3998,7 @@
       const qTab = (params.get('tab') || '').toLowerCase();
       const qStep = params.get('step');
       const qRoom = params.get('room') || '';
+      const qStudio = params.get('studio') || params.get('edit') || '';
 
       if (qClient) document.getElementById('clientName').value = qClient;
       if (/^\d{4}-\d{2}-\d{2}$/.test(qDate)) {
@@ -3473,11 +4030,16 @@
       } else if (qTab === 'overview' || h === '#home' || h === '#overview' || qStep === '1') {
         currentTab = 'overview';
       }
+      if (qStudio === '1' || qStudio === 'true' || h === '#customize' || h === '#studio' || h === '#edit') {
+        currentTab = 'overview';
+        setTimeout(() => toggleStudioMode(true), 120);
+      }
       return deepFocus;
     }
 
     async function init() {
       loadDeckTrack(0, false);
+      await loadLayoutSystem();
       try {
         const res = await fetch('dj-catalog.json');
         catalogData = await res.json();
@@ -3509,8 +4071,9 @@
       setFilterVibe('edits');
     });
 
-    document.getElementById('dockBackBtn').addEventListener('click', () => switchTab(currentTab === 'book' ? 'vibe' : 'overview'));
-    document.getElementById('dockNextBtn').addEventListener('click', () => switchTab(currentTab === 'overview' ? 'vibe' : 'book'));
+    document.getElementById('vibeBackBtn').addEventListener('click', () => switchTab('overview'));
+    document.getElementById('vibeNextBtn').addEventListener('click', () => switchTab('book'));
+    document.getElementById('bookBackBtn').addEventListener('click', () => switchTab('vibe'));
 
     document.querySelectorAll('.seg-btn').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
     document.querySelectorAll('.preset-pill').forEach(b => b.addEventListener('click', () => applyPreset(b.dataset.preset, true)));
@@ -3645,9 +4208,9 @@
       } catch (e) {}
 
       const bodyObj = {
-        _subject: `[DJ J-RIP BOOKING] ${payload.name} (${payload.date}) \u2014 ${payload.depStr} via ${selectedPaymentMethod.toUpperCase()}`,
+        _subject: `[DJ JRIP BOOKING] ${payload.name} (${payload.date}) \u2014 ${payload.depStr} via ${selectedPaymentMethod.toUpperCase()}`,
         _template: 'box',
-        _autoresponse: `Thank you ${payload.name}! DJ J-Rip (Jayson Quindao / GG LOOP LLC) received your event booking & playlists for ${payload.date} (${selectedPackage.label} | Retainer: ${payload.depStr} | Remaining balance before soundcheck: ${payload.balDueStr}). Your agreement timestamp (${payload.termsAcceptedAt}) under djjrip.github.io/dj-terms.html is recorded. Text or call (469) 371-8556 anytime!`,
+        _autoresponse: `Thank you ${payload.name}! DJ JRIP (Jayson Quindao / GG LOOP LLC) received your event booking & playlists for ${payload.date} (${selectedPackage.label} | Retainer: ${payload.depStr} | Remaining balance before soundcheck: ${payload.balDueStr}). Your agreement timestamp (${payload.termsAcceptedAt}) under djjrip.github.io/dj-terms.html is recorded. Text or call (469) 371-8556 anytime!`,
         Client_Name: payload.name,
         Client_Phone: payload.phone,
         Client_Email: payload.email,
@@ -3676,7 +4239,7 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           topic: NTFY_TOPIC,
-          title: `DJ J-RIP BOOKING LEAD (${payload.date})`,
+          title: `DJ JRIP BOOKING LEAD (${payload.date})`,
           message: `Pkg: ${selectedPackage.label} | Dep: ${payload.depStr} (${selectedPaymentMethod.toUpperCase()}) | Links: ${payload.urls.length} | Tracks: ${mustPlay.length}`,
           priority: 5,
           tags: ['rotating_light', 'headphones', 'dollar'],
@@ -3690,11 +4253,11 @@
       const panel = document.getElementById('checkoutPanel');
       panel.classList.add('show');
       if (!sentOk) {
-        document.getElementById('postSubmitNote').innerHTML = `Your booking alarm fired straight to DJ J-Rip&rsquo;s phone! Tap <strong>Text (469) 371-8556</strong> to send an instant SMS backup.`;
+        document.getElementById('postSubmitNote').innerHTML = `Your booking alarm fired straight to DJ JRIP&rsquo;s phone! Tap <strong>Text (469) 371-8556</strong> to send an instant SMS backup.`;
       }
 
       const stripeBox = document.getElementById('stripePayAction');
-      const manualBox = document.getElementById('zellePayAction');
+      const manualBox = document.getElementById('manualPayAction');
       stripeBox.style.display = 'none';
       manualBox.style.display = 'none';
       updateBookSummary();
@@ -3702,32 +4265,429 @@
       if (selectedPaymentMethod === 'stripe') {
         stripeBox.style.display = 'block';
         btn.textContent = 'Sent \u2713 \u2014 Complete Stripe Checkout Below';
-      } else if (selectedPaymentMethod === 'zelle' || selectedPaymentMethod === 'venmo_cashapp') {
+      } else if (selectedPaymentMethod === 'ach') {
         manualBox.style.display = 'block';
-        const appLabel = selectedPaymentMethod === 'zelle' ? 'Zelle' : 'Venmo / Cash App';
-        document.getElementById('manualPayInstructions').innerHTML = selectedPaymentMethod === 'zelle'
-          ? `Open <strong>Zelle</strong> and send <strong>${payload.depStr}</strong> to <strong>(469) 371-8556</strong> (Jayson Quindao / GG Loop LLC) with memo <code>${escapeHtml(payload.name)} - ${escapeHtml(payload.date)}</code>.`
-          : `Text <strong>(469) 371-8556</strong> for handle and send <strong>${payload.depStr}</strong> with memo <code>${escapeHtml(payload.name)} - ${escapeHtml(payload.date)}</code>.`;
-        document.getElementById('textReceiptBtn').href = `sms:+14693718556?body=${encodeURIComponent(`Hi DJ J-Rip! Ready to send ${payload.depStr} via ${appLabel} for ${payload.name} (${payload.date}).`)}`;
-        btn.textContent = 'Sent \u2713 \u2014 Complete Transfer Below';
+        document.getElementById('manualPayInstructions').innerHTML = `ACH / Mercury Invoice queued &mdash; GG Loop LLC will email &amp; text a 0%-fee ACH bank invoice for <strong>${escapeHtml(payload.depStr)}</strong> once ${escapeHtml(payload.date)} calendar availability is verified.`;
+        document.getElementById('textReceiptBtn').href = `sms:+14693718556?body=${encodeURIComponent(`Hi DJ JRIP! Requesting GG Loop LLC ACH invoice for ${payload.depStr} (${payload.name} - ${payload.date}).`)}`;
+        btn.textContent = 'Sent \u2713 \u2014 ACH Invoice Queued';
       } else {
         manualBox.style.display = 'block';
         const mEl = document.getElementById('manualPayInstructions');
-        mEl.innerHTML = `Inquiry queued &mdash; Jayson will text <strong>(469) 371-8556</strong> with your quote/agreement before payment. Want instant date lock? Use `;
+        mEl.innerHTML = `Inquiry queued &mdash; Jayson will text <strong>(469) 371-8556</strong> with your quote/agreement before payment. Want instant date lock now? Use `;
         const sLink = document.createElement('a');
         sLink.href = buildPrefilledStripeUrl();
         sLink.target = '_blank';
         sLink.rel = 'noopener';
         sLink.style.cssText = 'color:var(--mint);font-weight:700;';
-        sLink.textContent = 'Stripe';
+        sLink.textContent = 'Stripe Checkout';
         mEl.appendChild(sLink);
-        mEl.append(' or Zelle.');
+        mEl.append('.');
+        document.getElementById('textReceiptBtn').href = `sms:+14693718556?body=${encodeURIComponent(`Hi DJ JRIP! Confirming quote hold for ${payload.name} on ${payload.date}.`)}`;
         btn.textContent = 'Inquiry Queued \u2713';
       }
 
       btn.disabled = false;
-      showToast('DJ J-Rip phone alarm fired \u2713');
+      showToast('DJ JRIP phone alarm fired \u2713');
       panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // ==================== MYSPACE-STYLE CREATOR STUDIO & LIVE PUBLISH ENGINE ====================
+    const LAYOUT_DRAFT_KEY = 'djjrip_myspace_draft_v1';
+    const GH_PAT_KEY = 'djjrip_gh_pat_v1';
+    const GH_CONTENTS_URL = 'https://api.github.com/repos/djjrip/djjrip.github.io/contents/dj-layout.json';
+
+    const DEFAULT_LAYOUT = {
+      version: 1,
+      themePreset: 'forest_obsidian',
+      pattern: 'none',
+      fontMode: 'editorial',
+      colors: { bg: '#050a08', surface: '#0a1410', amber: '#f59e0b', mint: '#34d399', blue: '#38bdf8', pink: '#be5270' },
+      sectionOrder: ['hero', 'videos', 'soundcloud', 'vault', 'myspace', 'gear', 'bridge'],
+      hiddenSections: [],
+      profile: {
+        displayName: 'DJ JRIP \u2022 Jayson Quindao',
+        kicker: 'Open-Format DJ, Remixer & Producer \u2022 Dallas\u2013Fort Worth',
+        headline: 'Rhythm, *Harmonic Blends* & Live Crowd Control.',
+        bio: 'From 71-minute continuous SoundCloud sets and recorded Serato booth sessions to custom FL Studio blends built track by track around every crowd. Spin the deck, preview the edits, then build your night.',
+        mood: 'Crate Digging / Dialed In',
+        statusMarquee: 'Vinyl deck is 100% live mixes & FL Studio blends \u2022 Drop playlist links anytime in Tab 2 Booth Chat.',
+        bulletin: 'Taking DFW club, rooftop, private VIP, debut & wedding bookings. Watch booth/DDJ hardware clips in Videos or spin pure audio mixes on the platter above.',
+        topArtists: ['Frank Ocean', 'Silk Sonic', 'Porter Robinson', 'SZA', 'Kaytranada', 'Fred again..', 'Bad Bunny', 'Daft Punk']
+      },
+      customCss: ''
+    };
+
+    const STUDIO_SKINS = {
+      forest_obsidian: { pattern: 'none', fontMode: 'editorial', colors: { bg: '#050a08', surface: '#0a1410', amber: '#f59e0b', mint: '#34d399', blue: '#38bdf8', pink: '#be5270' } },
+      myspace_y2k: { pattern: 'stars', fontMode: 'terminal', colors: { bg: '#060718', surface: '#0e1129', amber: '#ff4fd8', mint: '#00e5ff', blue: '#60a5fa', pink: '#e11d48' } },
+      midnight_gold: { pattern: 'none', fontMode: 'editorial', colors: { bg: '#070605', surface: '#14110c', amber: '#fbbf24', mint: '#e2e8f0', blue: '#93c5fd', pink: '#d97706' } },
+      crimson_afterhours: { pattern: 'scanlines', fontMode: 'bold', colors: { bg: '#100408', surface: '#1b0910', amber: '#fb7185', mint: '#f59e0b', blue: '#fda4af', pink: '#be123c' } },
+      cyber_club: { pattern: 'grid', fontMode: 'bold', colors: { bg: '#090514', surface: '#130b29', amber: '#c084fc', mint: '#22d3ee', blue: '#38bdf8', pink: '#c0507c' } },
+      sunset_vinyl: { pattern: 'stars', fontMode: 'editorial', colors: { bg: '#120806', surface: '#1f0f0b', amber: '#fb923c', mint: '#fbbf24', blue: '#38bdf8', pink: '#d16b86' } }
+    };
+
+    const BLOCK_LABELS = {
+      hero: 'Hero & Spinning Vinyl Deck',
+      videos: 'Live Videos & Booth Reels',
+      soundcloud: 'SoundCloud Mixes & Crates',
+      vault: 'Live Billings & FL Studio Vault',
+      myspace: 'MySpace Wall & Top 8',
+      gear: 'Sound Architecture & Gear',
+      bridge: 'Book & Rates Banner'
+    };
+
+    let liveRepoLayout = JSON.parse(JSON.stringify(DEFAULT_LAYOUT));
+    let studioLayout = JSON.parse(JSON.stringify(DEFAULT_LAYOUT));
+
+    function mergeLayout(base, incoming) {
+      const out = JSON.parse(JSON.stringify(base));
+      if (!incoming || typeof incoming !== 'object') return out;
+      if (incoming.themePreset) out.themePreset = String(incoming.themePreset);
+      if (['none', 'stars', 'grid', 'scanlines'].includes(incoming.pattern)) out.pattern = incoming.pattern;
+      if (['editorial', 'terminal', 'bold'].includes(incoming.fontMode)) out.fontMode = incoming.fontMode;
+      if (incoming.colors && typeof incoming.colors === 'object') {
+        Object.keys(out.colors).forEach(k => {
+          if (/^#[0-9a-f]{6}$/i.test(String(incoming.colors[k] || ''))) out.colors[k] = incoming.colors[k];
+        });
+      }
+      if (Array.isArray(incoming.sectionOrder)) {
+        const valid = incoming.sectionOrder.filter(k => BLOCK_LABELS[k]);
+        Object.keys(BLOCK_LABELS).forEach(k => { if (!valid.includes(k)) valid.push(k); });
+        out.sectionOrder = valid;
+      }
+      if (Array.isArray(incoming.hiddenSections)) {
+        out.hiddenSections = incoming.hiddenSections.filter(k => BLOCK_LABELS[k]);
+      }
+      if (incoming.profile && typeof incoming.profile === 'object') {
+        ['displayName', 'kicker', 'headline', 'bio', 'mood', 'statusMarquee', 'bulletin'].forEach(f => {
+          if (typeof incoming.profile[f] === 'string' && incoming.profile[f].trim()) out.profile[f] = incoming.profile[f];
+        });
+        if (Array.isArray(incoming.profile.topArtists)) {
+          out.profile.topArtists = incoming.profile.topArtists.map(x => String(x).trim()).filter(Boolean).slice(0, 8);
+        }
+      }
+      if (typeof incoming.customCss === 'string') out.customCss = incoming.customCss;
+      return out;
+    }
+
+    function renderHeadlineSafely(el, rawText) {
+      el.innerHTML = '';
+      const parts = String(rawText || '').split(/(\*[^*]+\*)/g);
+      parts.forEach(part => {
+        if (part.startsWith('*') && part.endsWith('*') && part.length > 2) {
+          const em = document.createElement('em');
+          em.textContent = part.slice(1, -1);
+          el.appendChild(em);
+        } else {
+          el.appendChild(document.createTextNode(part));
+        }
+      });
+    }
+
+    function applyLayoutConfig(cfg, saveDraft = false) {
+      studioLayout = mergeLayout(DEFAULT_LAYOUT, cfg);
+      const root = document.documentElement;
+      root.style.setProperty('--bg', studioLayout.colors.bg);
+      root.style.setProperty('--surface', studioLayout.colors.surface);
+      root.style.setProperty('--amber', studioLayout.colors.amber);
+      root.style.setProperty('--mint', studioLayout.colors.mint);
+      root.style.setProperty('--blue', studioLayout.colors.blue);
+      root.style.setProperty('--pink', studioLayout.colors.pink);
+
+      document.body.setAttribute('data-pattern', studioLayout.pattern);
+      document.body.setAttribute('data-font', studioLayout.fontMode);
+
+      const safeCss = String(studioLayout.customCss || '').replace(/<\/?style|<\/?script/gi, '');
+      document.getElementById('customMySpaceCss').textContent = safeCss;
+
+      // Reorder & show/hide Tab 1 modular blocks without losing listeners
+      const canvas = document.getElementById('artistCanvas');
+      if (canvas) {
+        const hiddenSet = new Set(studioLayout.hiddenSections);
+        studioLayout.sectionOrder.forEach(key => {
+          const blk = document.getElementById(`block-${key}`);
+          if (blk) {
+            blk.classList.toggle('is-hidden-public', hiddenSet.has(key));
+            const hBtn = blk.querySelector('[data-toggle-hide]');
+            if (hBtn) {
+              hBtn.textContent = hiddenSet.has(key) ? 'Hidden \u2022 Show' : 'Hide';
+              hBtn.classList.toggle('is-off', hiddenSet.has(key));
+            }
+            canvas.appendChild(blk);
+          }
+        });
+      }
+
+      // Render Profile & MySpace Wall fields
+      const p = studioLayout.profile;
+      const dn = document.getElementById('heroDisplayName');
+      const kk = document.getElementById('heroKickerText');
+      const hl = document.getElementById('heroMainHeadline');
+      const hb = document.getElementById('heroBioText');
+      if (dn) dn.textContent = p.displayName;
+      if (kk) kk.textContent = p.kicker;
+      if (hl) renderHeadlineSafely(hl, p.headline);
+      if (hb) hb.textContent = p.bio;
+
+      const msMood = document.getElementById('msMoodBadge');
+      const msStatus = document.getElementById('msStatusText');
+      const msBull = document.getElementById('msBulletinText');
+      const msGrid = document.getElementById('msTopGrid');
+      if (msMood) msMood.textContent = `Mood: ${p.mood}`;
+      if (msStatus) msStatus.textContent = p.statusMarquee;
+      if (msBull) msBull.textContent = p.bulletin;
+      if (msGrid) {
+        msGrid.innerHTML = '';
+        (p.topArtists || []).slice(0, 8).forEach((artist, i) => {
+          const item = document.createElement('div');
+          item.className = 'ms-top8-item';
+          item.innerHTML = `<span class="ms-top8-rank">#${i + 1}</span><span></span>`;
+          item.lastElementChild.textContent = artist;
+          msGrid.appendChild(item);
+        });
+      }
+
+      syncStudioDrawerInputs();
+      if (saveDraft) {
+        try { localStorage.setItem(LAYOUT_DRAFT_KEY, JSON.stringify(studioLayout)); } catch (e) {}
+      }
+    }
+
+    function syncStudioDrawerInputs() {
+      document.querySelectorAll('#skinGrid .skin-btn').forEach(b => b.classList.toggle('active', b.dataset.skin === studioLayout.themePreset));
+      document.getElementById('pkBg').value = studioLayout.colors.bg;
+      document.getElementById('pkSurface').value = studioLayout.colors.surface;
+      document.getElementById('pkAmber').value = studioLayout.colors.amber;
+      document.getElementById('pkMint').value = studioLayout.colors.mint;
+      document.getElementById('pkBlue').value = studioLayout.colors.blue;
+      document.getElementById('pkPink').value = studioLayout.colors.pink;
+      document.getElementById('edPattern').value = studioLayout.pattern;
+      document.getElementById('edFontMode').value = studioLayout.fontMode;
+
+      const p = studioLayout.profile;
+      document.getElementById('edDisplayName').value = p.displayName;
+      document.getElementById('edKicker').value = p.kicker;
+      document.getElementById('edHeadline').value = p.headline;
+      document.getElementById('edBio').value = p.bio;
+      document.getElementById('edMood').value = p.mood;
+      document.getElementById('edTopArtists').value = (p.topArtists || []).join(', ');
+      document.getElementById('edStatus').value = p.statusMarquee;
+      document.getElementById('edBulletin').value = p.bulletin;
+      document.getElementById('edCustomCss').value = studioLayout.customCss || '';
+
+      const list = document.getElementById('drawerOrderList');
+      list.innerHTML = '';
+      const hiddenSet = new Set(studioLayout.hiddenSections);
+      studioLayout.sectionOrder.forEach((key, idx) => {
+        const row = document.createElement('div');
+        row.className = 'drawer-order-row';
+        row.innerHTML = `
+          <span style="color:${hiddenSet.has(key) ? 'var(--muted)' : 'var(--white)'}; font-weight:600;">${escapeHtml(BLOCK_LABELS[key] || key)}</span>
+          <div style="display:flex; gap:4px;">
+            <button type="button" class="block-ctrl-btn" ${idx === 0 ? 'disabled style="opacity:0.35;"' : ''}>&#9650;</button>
+            <button type="button" class="block-ctrl-btn" ${idx === studioLayout.sectionOrder.length - 1 ? 'disabled style="opacity:0.35;"' : ''}>&#9660;</button>
+            <button type="button" class="block-ctrl-btn ${hiddenSet.has(key) ? 'is-off' : ''}">${hiddenSet.has(key) ? 'Show' : 'Hide'}</button>
+          </div>
+        `;
+        const btns = row.querySelectorAll('button');
+        btns[0].addEventListener('click', () => moveBlockOrder(key, -1));
+        btns[1].addEventListener('click', () => moveBlockOrder(key, 1));
+        btns[2].addEventListener('click', () => toggleBlockHide(key));
+        list.appendChild(row);
+      });
+    }
+
+    function moveBlockOrder(key, delta) {
+      const ord = [...studioLayout.sectionOrder];
+      const idx = ord.indexOf(key);
+      const next = idx + delta;
+      if (idx < 0 || next < 0 || next >= ord.length) return;
+      [ord[idx], ord[next]] = [ord[next], ord[idx]];
+      studioLayout.sectionOrder = ord;
+      applyLayoutConfig(studioLayout, true);
+    }
+
+    function toggleBlockHide(key) {
+      const set = new Set(studioLayout.hiddenSections);
+      if (set.has(key)) set.delete(key);
+      else set.add(key);
+      studioLayout.hiddenSections = Array.from(set);
+      applyLayoutConfig(studioLayout, true);
+    }
+
+    function toggleStudioMode(forceState = null) {
+      const drawer = document.getElementById('studioDrawer');
+      const nextOpen = forceState !== null ? Boolean(forceState) : !drawer.classList.contains('open');
+      drawer.classList.toggle('open', nextOpen);
+      document.body.classList.toggle('studio-active', nextOpen);
+      if (nextOpen && currentTab !== 'overview') switchTab('overview');
+    }
+
+    async function loadLayoutSystem() {
+      try {
+        const res = await fetch(`dj-layout.json?v=${Date.now()}`);
+        if (res.ok) liveRepoLayout = mergeLayout(DEFAULT_LAYOUT, await res.json());
+      } catch (e) {}
+
+      let initial = liveRepoLayout;
+      try {
+        const rawDraft = localStorage.getItem(LAYOUT_DRAFT_KEY);
+        if (rawDraft) initial = mergeLayout(liveRepoLayout, JSON.parse(rawDraft));
+      } catch (e) {}
+
+      try {
+        const savedPat = localStorage.getItem(GH_PAT_KEY);
+        if (savedPat) document.getElementById('ghPatInput').value = savedPat;
+      } catch (e) {}
+
+      applyLayoutConfig(initial, false);
+    }
+
+    async function publishLayoutToGitHub() {
+      const statusEl = document.getElementById('publishStatusText');
+      const pat = (document.getElementById('ghPatInput').value || '').trim();
+      if (!pat) {
+        statusEl.style.color = '#fca5a5';
+        statusEl.textContent = 'Paste a repo-scoped GitHub PAT above first (or use Download JSON).';
+        return;
+      }
+      try { localStorage.setItem(GH_PAT_KEY, pat); } catch (e) {}
+
+      const btn = document.getElementById('publishLayoutBtn');
+      btn.disabled = true;
+      btn.textContent = 'Pushing dj-layout.json...';
+      statusEl.style.color = 'var(--amber)';
+      statusEl.textContent = 'Connecting to GitHub API...';
+
+      try {
+        let sha = null;
+        const getRes = await fetch(`${GH_CONTENTS_URL}?ref=main`, {
+          headers: { 'Authorization': `Bearer ${pat}`, 'Accept': 'application/vnd.github+json' }
+        });
+        if (getRes.ok) {
+          const meta = await getRes.json();
+          sha = meta.sha;
+        }
+        const jsonStr = JSON.stringify(studioLayout, null, 2) + '\n';
+        const utf8Bytes = new TextEncoder().encode(jsonStr);
+        let bin = '';
+        utf8Bytes.forEach(b => { bin += String.fromCharCode(b); });
+        const b64 = btoa(bin);
+
+        const putBody = { message: 'style(myspace): update live dj-layout.json from Studio Customizer', content: b64, branch: 'main' };
+        if (sha) putBody.sha = sha;
+
+        const putRes = await fetch(GH_CONTENTS_URL, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${pat}`,
+            'Accept': 'application/vnd.github+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(putBody)
+        });
+        const putData = await putRes.json();
+        if (!putRes.ok) {
+          throw new Error(putData.message || `HTTP ${putRes.status}`);
+        }
+        liveRepoLayout = JSON.parse(JSON.stringify(studioLayout));
+        try { localStorage.removeItem(LAYOUT_DRAFT_KEY); } catch (e) {}
+        statusEl.style.color = 'var(--mint)';
+        statusEl.innerHTML = `Published live! Commit <code>${escapeHtml((putData.commit?.sha || '').slice(0, 7))}</code> deploying to Pages (~20s).`;
+        showToast('Published live to site!');
+      } catch (err) {
+        statusEl.style.color = '#fca5a5';
+        statusEl.textContent = `Publish failed: ${err.message}`;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Publish Live to Site \u2192';
+      }
+    }
+
+    // Wire Studio Controls
+    document.getElementById('openStudioTopBtn').addEventListener('click', () => toggleStudioMode());
+    document.getElementById('openStudioWallBtn').addEventListener('click', () => toggleStudioMode(true));
+    document.getElementById('closeStudioBtn').addEventListener('click', () => toggleStudioMode(false));
+
+    document.addEventListener('keydown', e => {
+      if (e.shiftKey && (e.key === 'E' || e.key === 'e') && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) {
+        e.preventDefault();
+        toggleStudioMode();
+      }
+    });
+
+    document.querySelectorAll('.artist-block').forEach(blk => {
+      const key = blk.dataset.block;
+      blk.querySelector('[data-move="up"]')?.addEventListener('click', () => moveBlockOrder(key, -1));
+      blk.querySelector('[data-move="down"]')?.addEventListener('click', () => moveBlockOrder(key, 1));
+      blk.querySelector('[data-toggle-hide]')?.addEventListener('click', () => toggleBlockHide(key));
+    });
+
+    document.querySelectorAll('#skinGrid .skin-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const s = STUDIO_SKINS[btn.dataset.skin];
+        if (!s) return;
+        studioLayout.themePreset = btn.dataset.skin;
+        studioLayout.pattern = s.pattern;
+        studioLayout.fontMode = s.fontMode;
+        studioLayout.colors = { ...s.colors };
+        applyLayoutConfig(studioLayout, true);
+        showToast(`Theme: ${btn.firstElementChild.textContent}`);
+      });
+    });
+
+    [['pkBg', 'bg'], ['pkSurface', 'surface'], ['pkAmber', 'amber'], ['pkMint', 'mint'], ['pkBlue', 'blue'], ['pkPink', 'pink']].forEach(([elId, cKey]) => {
+      document.getElementById(elId).addEventListener('input', e => {
+        studioLayout.themePreset = 'custom';
+        studioLayout.colors[cKey] = e.target.value;
+        applyLayoutConfig(studioLayout, true);
+      });
+    });
+
+    document.getElementById('edPattern').addEventListener('change', e => { studioLayout.pattern = e.target.value; applyLayoutConfig(studioLayout, true); });
+    document.getElementById('edFontMode').addEventListener('change', e => { studioLayout.fontMode = e.target.value; applyLayoutConfig(studioLayout, true); });
+
+    [
+      ['edDisplayName', 'displayName'],
+      ['edKicker', 'kicker'],
+      ['edHeadline', 'headline'],
+      ['edBio', 'bio'],
+      ['edMood', 'mood'],
+      ['edStatus', 'statusMarquee'],
+      ['edBulletin', 'bulletin']
+    ].forEach(([elId, pKey]) => {
+      document.getElementById(elId).addEventListener('input', e => {
+        studioLayout.profile[pKey] = e.target.value;
+        applyLayoutConfig(studioLayout, true);
+      });
+    });
+
+    document.getElementById('edTopArtists').addEventListener('input', e => {
+      studioLayout.profile.topArtists = e.target.value.split(',').map(s => s.trim()).filter(Boolean).slice(0, 8);
+      applyLayoutConfig(studioLayout, true);
+    });
+
+    document.getElementById('edCustomCss').addEventListener('input', e => {
+      studioLayout.customCss = e.target.value;
+      applyLayoutConfig(studioLayout, true);
+    });
+
+    document.getElementById('publishLayoutBtn').addEventListener('click', publishLayoutToGitHub);
+    document.getElementById('downloadLayoutBtn').addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify(studioLayout, null, 2) + '\n'], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'dj-layout.json';
+      a.click();
+      showToast('Downloaded dj-layout.json');
+    });
+    document.getElementById('copyLayoutBtn').addEventListener('click', () => {
+      navigator.clipboard.writeText(JSON.stringify(studioLayout, null, 2) + '\n').then(() => showToast('Copied dj-layout.json'));
+    });
+    document.getElementById('resetDefaultLayoutBtn').addEventListener('click', () => {
+      try { localStorage.removeItem(LAYOUT_DRAFT_KEY); } catch (e) {}
+      applyLayoutConfig(DEFAULT_LAYOUT, false);
+      showToast('Reset to clean default');
     });
 
     init();

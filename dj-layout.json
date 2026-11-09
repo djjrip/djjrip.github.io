@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "themePreset": "forest_obsidian",
+  "pattern": "none",
+  "fontMode": "editorial",
+  "colors": {
+    "bg": "#050a08",
+    "surface": "#0a1410",
+    "amber": "#f59e0b",
+    "mint": "#34d399",
+    "blue": "#38bdf8",
+    "pink": "#be5270"
+  },
+  "sectionOrder": [
+    "hero",
+    "videos",
+    "soundcloud",
+    "vault",
+    "myspace",
+    "gear",
+    "bridge"
+  ],
+  "hiddenSections": [],
+  "profile": {
+    "displayName": "DJ JRIP • Jayson Quindao",
+    "kicker": "Open-Format DJ, Remixer & Producer • Dallas–Fort Worth",
+    "headline": "Rhythm, *Harmonic Blends* & Live Crowd Control.",
+    "bio": "From 71-minute continuous SoundCloud sets and recorded Serato booth sessions to custom FL Studio blends built track by track around every crowd. Spin the deck, preview the edits, then build your night.",
+    "mood": "Crate Digging / Dialed In",
+    "statusMarquee": "Vinyl deck is 100% live mixes & FL Studio blends • Drop playlist links anytime in Tab 2 Booth Chat.",
+    "bulletin": "Taking DFW club, rooftop, private VIP, debut & wedding bookings. Watch booth/DDJ hardware clips in Videos or spin pure audio mixes on the platter above.",
+    "topArtists": [
+      "Frank Ocean",
+      "Silk Sonic",
+      "Porter Robinson",
+      "SZA",
+      "Kaytranada",
+      "Fred again..",
+      "Bad Bunny",
+      "Daft Punk"
+    ]
+  },
+  "customCss": ""
+}
