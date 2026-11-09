@@ -35,6 +35,11 @@ DEPRECATED_TERMS = (
     "bookDateMirror",
     "preset-pill",
     "smsFallbackLink",
+    "topBookBtn",
+    "brandBtn",
+    "tt-rhythm-dtx",
+    "dj-jrip-headshot",
+    "serif-accent",
 )
 
 
@@ -198,6 +203,14 @@ def check_dj_funnel_consistency_and_privacy():
             errors.append("dj.html hero does not reference assets/dj-jrip-profile.jpg")
         if "headshot" in dj_txt.lower():
             errors.append("Deprecated placeholder image reference 'headshot' found in dj.html")
+        if 'id="lockStepSection"' not in dj_txt:
+            errors.append("dj.html missing Step 3 card container #lockStepSection")
+        if 'id="directLineBox"' not in dj_txt:
+            errors.append("dj.html missing #directLineBox gate")
+
+    for dead_asset in ("dj-jrip-headshot.jpg", "tt-rhythm-dtx.jpg"):
+        if os.path.exists(os.path.join(SITE_DIR, "assets", dead_asset)):
+            errors.append(f"Redundant/dead asset still present on disk: assets/{dead_asset}")
 
     return errors
 

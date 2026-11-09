@@ -58,7 +58,8 @@
       color: var(--mint);
       padding: 1px 6px;
       border-radius: 6px;
-      word-break: break-all;
+      overflow-wrap: break-word;
+      word-break: normal;
     }
     .card-box, .chat-box, .guide-tab, .sec-head { scroll-margin-top: 98px; }
     body {
@@ -81,12 +82,6 @@
       *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
     }
 
-    .serif-accent {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
     .mono {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
@@ -138,35 +133,46 @@
       box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
     }
 
-    .brand-group { display: flex; align-items: center; gap: 10px; }
-    .home-btn {
+    .brand-group { display: flex; align-items: center; }
+    .home-brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 3px 6px 3px 3px;
+      border-radius: 999px;
+      transition: transform 0.18s var(--ease-expo);
+    }
+    .home-brand-link:hover { transform: translateY(-1px); }
+    .home-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       padding: 7px 12px;
       border-radius: 999px;
       border: 1px solid var(--border-emerald);
-      background: rgba(16, 185, 129, 0.08);
+      background: rgba(16, 185, 129, 0.09);
       color: var(--white);
       font-size: 12.5px;
       font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      transition: border-color 0.15s ease, color 0.15s ease;
+      transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
     }
-    .home-btn:hover { border-color: var(--amber); color: var(--amber); }
-    .brand-btn {
-      background: none;
-      border: 0;
-      cursor: pointer;
+    .home-brand-link:hover .home-pill {
+      border-color: var(--amber);
+      color: var(--amber);
+      background: rgba(245, 158, 11, 0.10);
+    }
+    .brand-wordmark {
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
       font-weight: 700;
       font-size: 22px;
       color: var(--white);
       letter-spacing: -0.02em;
+      line-height: 1;
     }
-    .brand-btn span { color: var(--amber); }
+    .brand-wordmark span { color: var(--amber); }
 
     /* 3 STRICTLY SEPARATED CATEGORIES */
     .seg-nav {
@@ -218,21 +224,16 @@
       box-shadow: 0 0 8px rgba(190, 82, 112, 0.65);
     }
 
-    .top-call {
-      text-decoration: none;
-      font-family: inherit;
-      font-size: 12.5px;
-      font-weight: 700;
-      color: var(--amber);
-      padding: 7px 13px;
-      border-radius: 999px;
-      border: 1px solid rgba(245, 158, 11, 0.34);
-      background: rgba(245, 158, 11, 0.10);
-      white-space: nowrap;
-      cursor: pointer;
-      transition: all 0.18s var(--ease-expo);
+    .seg-btn[data-tab="book"]:not(.active) {
+      color: #f8d7e1;
+      border: 1px solid rgba(190, 82, 112, 0.28);
+      background: rgba(190, 82, 112, 0.08);
     }
-    .top-call:hover { border-color: var(--amber); background: rgba(245, 158, 11, 0.18); transform: translateY(-1px); }
+    .seg-btn[data-tab="book"]:not(.active):hover {
+      border-color: var(--pink);
+      background: rgba(190, 82, 112, 0.16);
+      color: #fff;
+    }
 
     /* SHELL SECTIONS */
     .main-shell { max-width: 1120px; margin: 0 auto; }
@@ -1956,10 +1957,31 @@
 
     .book-cta-row {
       display: flex;
-      gap: 10px;
+      gap: 12px 16px;
       flex-wrap: wrap;
       align-items: center;
     }
+    .cta-utility-links {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .link-util {
+      background: transparent;
+      border: 0;
+      padding: 4px 2px;
+      font-family: inherit;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(148, 163, 184, 0.32);
+      cursor: pointer;
+      transition: color 0.16s ease;
+    }
+    .link-util:hover { color: var(--white); }
     .text-helper-line {
       margin-top: 10px;
       font-size: 12.5px;
@@ -2038,8 +2060,7 @@
       :root { --tt: 168px; }
       body { padding: 0 10px 44px 10px; }
       .topbar { margin: 8px auto 14px auto; padding: 9px 10px; border-radius: 16px; gap: 8px; }
-      .brand-btn { font-size: 20px; }
-      .top-call { font-size: 11.5px; padding: 6px 10px; }
+      .brand-wordmark { font-size: 20px; }
       .seg-nav { order: 3; width: 100%; justify-content: space-between; }
       .seg-btn { flex: 1; justify-content: center; padding: 7px 6px; font-size: 11.5px; gap: 5px; }
 
@@ -2403,14 +2424,16 @@
 
   <div class="toast" id="toastMsg">Saved</div>
 
-  <!-- TOP NAVIGATION: HOME + 3 CLEARLY SEPARATED CATEGORIES -->
+  <!-- TOP NAVIGATION: UNIFIED HOME BRAND + 3 STRICTLY SEPARATED CATEGORIES -->
   <header class="topbar">
     <div class="brand-group">
-      <a class="home-btn" id="topHomeBtn" href="dj.html" title="DJ JRIP Home">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
-        Home
+      <a class="home-brand-link" id="topHomeBtn" href="dj.html" title="DJ JRIP Home">
+        <span class="home-pill">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+          Home
+        </span>
+        <span class="brand-wordmark">DJ <span>JRIP</span></span>
       </a>
-      <button type="button" class="brand-btn" id="brandBtn">DJ <span>JRIP</span></button>
     </div>
 
     <nav class="seg-nav" aria-label="Site Categories">
@@ -2423,7 +2446,6 @@
       <button type="button" class="studio-toggle-btn" id="openStudioTopBtn" title="Customize layout, colors & bio like MySpace (Shift+E)">
         <span>&#10022;</span><span class="studio-btn-label"> Customize</span>
       </button>
-      <button type="button" class="top-call" id="topBookBtn">Book Date &rarr;</button>
     </div>
   </header>
 
@@ -2453,9 +2475,9 @@
                 </button>
                 <div>
                   <div id="heroDisplayName" style="font-weight:700; color:var(--white); font-size:17px; letter-spacing:-0.01em;">DJ JRIP &bull; Jayson Quindao</div>
-                  <div id="heroKickerText" class="hero-kicker">Open-Format DJ, Remixer &amp; Producer &bull; Dallas&ndash;Fort Worth</div>
+                  <div id="heroKickerText" class="hero-kicker">Open-Format DJ, Remixer &amp; Producer</div>
                   <div class="hero-verified-row">
-                    <span class="hero-mini-chip">DFW Live Bookings</span>
+                    <span class="hero-mini-chip">Dallas&ndash;Fort Worth Live</span>
                     <span class="hero-mini-chip" style="color:var(--mint); border-color:rgba(52,211,153,0.32); background:rgba(16,185,129,0.09);">GG Loop LLC</span>
                   </div>
                 </div>
@@ -2808,27 +2830,21 @@
             <div class="card-box" style="margin-bottom:0;">
               <div class="mono" style="color:var(--mint); margin-bottom:6px;">LIVE BILLINGS &amp; SERATO ARCHIVE</div>
               <div class="sec-title" style="font-size:18px; margin-bottom:10px;">Rooms, Events &amp; Deck Sessions</div>
-
-              <div style="display:flex; gap:12px; align-items:center; background:rgba(5,10,8,0.75); border:1px solid var(--border); padding:10px; border-radius:14px; margin-bottom:10px;">
-                <img src="assets/tt-rhythm-dtx.jpg" alt="Rhythm Dance Studio Dallas Home Grown Flyer" style="width:66px; height:84px; object-fit:cover; border-radius:9px; flex-shrink:0;">
-                <div>
-                  <strong style="color:var(--white); font-size:14px; display:block;">Rhythm Dance Studio DTX &mdash; Home Grown</strong>
-                  <span style="color:var(--muted); font-size:12px; display:block; margin:2px 0 6px;">House &amp; R&amp;B Live Bill w/ Luv.Hex &amp; SuckaPunch (Dallas, TX) &bull; 7.5K+ TikTok Views</span>
-                  <a href="https://www.tiktok.com/@jaysonbq/video/7506250078944775467" target="_blank" rel="noopener noreferrer" style="color:var(--amber); font-size:12px; font-weight:600; text-decoration:none;">View Flyer &amp; Event Clip &nearr;</a>
-                </div>
-              </div>
+              <p style="font-size:13px; color:var(--muted); margin-bottom:10px;">
+                Live club energy, collective showcases across Dallas&ndash;Fort Worth, and unedited console recordings ready to audition.
+              </p>
 
               <div class="studio-list">
                 <div class="studio-item">
-                  <div><strong>BLEACH &times; EARFQUAKE Transition</strong><div style="font-size:11.5px; color:var(--muted);">Viral fan-favorite TikTok booth blend</div></div>
-                  <span class="tag">335.7K+ Views</span>
+                  <div><strong>Rhythm Dance Studio &mdash; Home Grown Bill</strong><div style="font-size:11.5px; color:var(--muted);">House &amp; R&amp;B collective w/ Luv.Hex &amp; SuckaPunch (7.5K+ TikTok reel)</div></div>
+                  <a class="btn-sm" href="https://www.tiktok.com/@jaysonbq/video/7506250078944775467" target="_blank" rel="noopener noreferrer" style="border-color:var(--amber); color:var(--amber); text-decoration:none;">Clip &nearr;</a>
                 </div>
                 <div class="studio-item">
-                  <div><strong>Club Nights, Festivals &amp; Private Events</strong><div style="font-size:11.5px; color:var(--muted);">Open-format club flow, high-energy dancefloors &amp; bespoke timelines</div></div>
+                  <div><strong>Clubs, Rooftops, Private VIP &amp; Galas</strong><div style="font-size:11.5px; color:var(--muted);">Open-format beatmatching, MC hosting &amp; bespoke timelines</div></div>
                   <span class="tag">DFW Live</span>
                 </div>
                 <div class="studio-item">
-                  <div><strong>Serato Live Sessions I &ndash; IV &amp; Don Blend</strong><div style="font-size:11.5px; color:var(--muted);">Unedited 24-bit console sessions playable above</div></div>
+                  <div><strong>Serato Live Sessions I &ndash; IV &amp; Don Blend</strong><div style="font-size:11.5px; color:var(--muted);">Unedited 24-bit console sessions playable on platter above</div></div>
                   <button type="button" class="btn-sm" data-spin-idx="1" style="border-color:var(--mint); color:var(--mint);">Play Session</button>
                 </div>
               </div>
@@ -3274,7 +3290,7 @@
         <details class="gear-accordion">
           <summary>
             <span>What&rsquo;s Included (Load-In, Sound Capacity &amp; Venue COI)</span>
-            <span class="hint"><span id="overviewPkgSummary">Private VIP ($150 deposit / $600 due before soundcheck)</span> <span class="chev">&#9662;</span></span>
+            <span class="hint"><span id="overviewPkgSummary">4,000W Bose F1 Array &bull; 60&ndash;90m Load-In &bull; COI</span> <span class="chev">&#9662;</span></span>
           </summary>
           <div class="gear-mini-grid">
             <div><strong>Turnkey Sound Load-In</strong>Arrival 60&ndash;90 minutes prior to doors; full soundcheck before first guest enters.</div>
@@ -3285,12 +3301,12 @@
         </details>
       </div>
 
-      <!-- STEP 2 & 3: DATE, CONTACT, PAYMENT & LOCK -->
+      <!-- STEP 2: DATE, CONTACT & OPTIONAL CUES -->
       <div class="card-box" id="contactLockSection">
         <div class="sec-head">
           <div>
-            <div class="sec-title">2. Event Date, Your Contact Info &amp; Lock Date</div>
-            <div class="sec-sub">Takes 30 seconds &mdash; sends straight to Jayson&rsquo;s phone alarm &amp; email (<code>jquindao1@icloud.com</code>), then opens payment if selected</div>
+            <div class="sec-title">2. Event Date &amp; Your Contact Info</div>
+            <div class="sec-sub">Takes 30 seconds &mdash; required before locking your date or unlocking Jayson&rsquo;s direct line</div>
           </div>
         </div>
 
@@ -3332,7 +3348,7 @@
           </div>
         </div>
 
-        <details class="gear-accordion" id="cuesAccordion" style="margin-top:0; margin-bottom:16px;">
+        <details class="gear-accordion" id="cuesAccordion" style="margin-top:0; margin-bottom:0;">
           <summary>
             <span>Optional: MC Hosting, Clean-Edit Policy &amp; Special Song Cues</span>
             <span class="hint"><span id="cuesSummaryHint">DJ JRIP MCs &bull; Clean dinner / Club late</span> <span class="chev">&#9662;</span></span>
@@ -3368,11 +3384,21 @@
             </div>
           </div>
         </details>
+      </div>
 
-        <div class="ledger-card" id="ledgerCard">
+      <!-- STEP 3: REVIEW DEPOSIT, PAYMENT PREFERENCE & LOCK DATE -->
+      <div class="card-box" id="lockStepSection">
+        <div class="sec-head" style="margin-bottom:14px;">
+          <div>
+            <div class="sec-title">3. Review Deposit, Payment &amp; Lock Date</div>
+            <div class="sec-sub">Submitting sends your brief straight to Jayson&rsquo;s phone alarm &amp; console (<code>jquindao1@icloud.com</code>) &amp; unlocks his direct line</div>
+          </div>
+        </div>
+
+        <div class="ledger-card" id="ledgerCard" style="margin-top:0;">
           <div>
             <div class="mono" style="color:var(--mint);" id="ledgerPkgName">Private VIP, Milestone &amp; Debut (4&ndash;5 hrs)</div>
-            <div style="font-size:13px; color:var(--white); font-weight:600; margin-top:4px;" id="ledgerMathLine">Total: $750.00 &bull; Deposit Today: $150.00 (20%) &bull; Due Before Soundcheck: $600.00</div>
+            <div style="font-size:13px; color:var(--white); font-weight:600; margin-top:4px;" id="ledgerMathLine">Package Total: $750.00 (20% deposit to lock)</div>
             <div style="font-size:12.5px; color:var(--muted); margin-top:3px;" id="ledgerMeta"></div>
           </div>
           <div style="text-align:right;">
@@ -3382,7 +3408,7 @@
           </div>
         </div>
 
-        <label class="field-label" style="margin-bottom:8px;">3. How Would You Like to Lock Your Date?</label>
+        <label class="field-label" style="margin-bottom:8px;">Payment Preference</label>
         <div class="pay-grid" id="payOptionsGrid">
           <div class="pay-card active" role="button" tabindex="0" data-pay="stripe">
             <h4>Card / Apple Pay / Google Pay</h4>
@@ -3405,12 +3431,14 @@
 
         <div class="book-cta-row">
           <button type="button" class="btn-primary" id="submitMasterBtn">Send Details &amp; Pay $150 Deposit &rarr;</button>
-          <button type="button" class="btn-secondary" id="copyBtn">Copy Event Brief</button>
-          <a class="btn-secondary" id="emailInquiryLink" href="mailto:jquindao1@icloud.com?subject=DJ%20JRIP%20Booking%20Inquiry">Email Inquiry</a>
+          <div class="cta-utility-links">
+            <button type="button" class="link-util" id="copyBtn">Copy Event Brief</button>
+            <a class="link-util" id="emailInquiryLink" href="mailto:jquindao1@icloud.com?subject=DJ%20JRIP%20Booking%20Inquiry">Open in Mail App</a>
+            <a class="quick-direct-link" id="quickStripeDirectLink" href="https://buy.stripe.com/9B6fZjgIcc2t1QvcFq0Fi0d" target="_blank" rel="noopener noreferrer">Skip to Stripe ($150) &rarr;</a>
+          </div>
         </div>
         <div class="text-helper-line">
-          <span><strong>Serious inquiries only:</strong> Submitting above alerts Jayson directly &amp; unlocks his personal text/call line.</span>
-          <a class="quick-direct-link" id="quickStripeDirectLink" href="https://buy.stripe.com/9B6fZjgIcc2t1QvcFq0Fi0d" target="_blank" rel="noopener noreferrer">Already confirmed details? Skip to Stripe ($150) &rarr;</a>
+          <span><strong>Serious inquiries only:</strong> Submitting alerts Jayson immediately &amp; reveals his personal text/call line below.</span>
         </div>
 
         <div id="errorBanner" style="display:none; margin-top:12px; padding:11px 14px; border-radius:10px; background:rgba(190,82,112,0.12); border:1px solid var(--pink); color:#f3cdd8; font-size:13px;"></div>
@@ -3444,7 +3472,7 @@
 
       <div class="tab-footer-bar">
         <div class="tab-footer-meta" id="bookFooterSummary">
-          <strong>$150 Deposit ($750 Total)</strong> &bull; $600 due before soundcheck &bull; Date TBD
+          <strong>Private VIP &amp; Milestone</strong> &bull; Date TBD &bull; 0 playlists &bull; 0 songs
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
           <button type="button" class="btn-secondary" id="bookBackBtn">&larr; Playlists &amp; Chat</button>
@@ -3832,12 +3860,8 @@
       const bookFoot = document.getElementById('bookFooterSummary');
       if (bookFoot) {
         const dateVal = document.getElementById('eventDate').value || 'Date TBD';
-        if (selectedPackage.deposit === 'Custom') {
-          bookFoot.innerHTML = `<strong>Custom Quote ($100 suggested deposit / $25 min)</strong> \u2022 ${escapeHtml(dateVal)} \u2022 ${mustPlay.length} songs`;
-        } else {
-          const bal = Math.max(0, selectedPackage.total - Number(selectedPackage.deposit));
-          bookFoot.innerHTML = `<strong>$${selectedPackage.deposit} Deposit ($${selectedPackage.total.toLocaleString()} Total)</strong> \u2022 $${bal.toLocaleString()} due before soundcheck \u2022 ${escapeHtml(dateVal)}`;
-        }
+        const pkgShort = selectedPackage.label.split('(')[0].trim();
+        bookFoot.innerHTML = `<strong>${escapeHtml(pkgShort)}</strong> \u2022 ${escapeHtml(dateVal)} \u2022 ${urls.length} playlists \u2022 ${mustPlay.length} songs`;
       }
     }
 
@@ -4242,8 +4266,8 @@
       if (quickLink) {
         quickLink.href = buildPrefilledStripeUrl();
         quickLink.textContent = isCustom
-          ? 'Already confirmed details? Skip to Stripe \u2192'
-          : `Already confirmed details? Skip to Stripe ($${dep}) \u2192`;
+          ? 'Skip to Stripe \u2192'
+          : `Skip to Stripe ($${dep}) \u2192`;
       }
       if (!btn || hasSubmittedBooking || btn.disabled) return;
       if (selectedPaymentMethod === 'stripe') {
@@ -4259,8 +4283,17 @@
       }
     }
 
+    const PKG_INCLUSION_SUMMARY = {
+      bar_lounge: 'House Sound or Portable Rig \u2022 60m Load-In',
+      debut_vip: '4,000W Bose F1 Array \u2022 60\u201390m Load-In & COI',
+      wedding_gala: 'Ceremony + Reception Rig \u2022 Backup Audio & COI',
+      custom_quote: 'Multi-Room PA & Custom Production Quote'
+    };
+
     function selectPkgCard(card, opts = {}) {
       const fromUser = Boolean(opts && opts.fromUser);
+      const skipSave = Boolean(opts && opts.skipSave);
+      const skipCounters = Boolean(opts && opts.skipCounters);
       if (fromUser) hasSubmittedBooking = false;
       document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('active'));
       card.classList.add('active');
@@ -4287,10 +4320,7 @@
       const depText = isCustom ? '$100 Suggested' : `$${dep}.00`;
       const remAmt = !isCustom && selectedPackage.total > 0 ? Math.max(0, selectedPackage.total - Number(dep)) : null;
       const pct = !isCustom && selectedPackage.total > 0 ? Math.round((Number(dep) / selectedPackage.total) * 100) : null;
-      const pkgShort = selectedPackage.label.split('(')[0].trim();
-      document.getElementById('overviewPkgSummary').textContent = isCustom
-        ? `${pkgShort} ($100 suggested deposit / $25 min)`
-        : `${pkgShort} ($${dep} deposit / $${remAmt} due before soundcheck)`;
+      document.getElementById('overviewPkgSummary').textContent = PKG_INCLUSION_SUMMARY[selectedPackage.id] || '60\u201390m Load-In & Venue COI';
       document.getElementById('ledgerPkgName').textContent = selectedPackage.label;
       const depEl = document.getElementById('ledgerDeposit');
       depEl.textContent = depText;
@@ -4301,15 +4331,15 @@
       const mathEl = document.getElementById('ledgerMathLine');
       const remSmallEl = document.getElementById('ledgerRemainingSmall');
       if (isCustom) {
-        if (mathEl) mathEl.textContent = 'Custom Quoted Rate \u2022 Suggested Stripe Deposit: $100.00 ($25.00 min) \u2022 Balance per Written Quote';
+        if (mathEl) mathEl.textContent = 'Custom Quoted Rate \u2022 Suggested Deposit: $100.00 \u2022 Balance per Written Quote';
         if (remSmallEl) remSmallEl.textContent = '$25.00 min on Stripe';
       } else {
-        if (mathEl) mathEl.textContent = `Total: $${selectedPackage.total.toLocaleString()}.00 \u2022 Deposit Today: $${dep}.00 (${pct}%) \u2022 Due Before Soundcheck: $${remAmt.toLocaleString()}.00`;
+        if (mathEl) mathEl.textContent = `Package Total: $${selectedPackage.total.toLocaleString()}.00 (${pct}% deposit to lock)`;
         if (remSmallEl) remSmallEl.textContent = `$${remAmt.toLocaleString()}.00 due before soundcheck`;
       }
-      updateSubmitButtonLabel();
-      updateCounters();
-      saveState();
+      if (!skipCounters) updateCounters();
+      if (skipCounters || currentTab !== 'book') updateSubmitButtonLabel();
+      if (!skipSave) saveState();
     }
 
     function applyPreset(key, showMsg = true) {
@@ -4319,7 +4349,7 @@
       document.getElementById('mcNeed').value = pr.mcNeed;
       document.getElementById('cleanPolicy').value = pr.cleanPolicy;
       const pc = document.querySelector(`.pkg-card[data-pkg="${pr.pkgId}"]`);
-      if (pc) selectPkgCard(pc);
+      if (pc) selectPkgCard(pc, { skipSave: true, skipCounters: true });
       pr.vibes.forEach(v => selectedVibes.add(v));
       if (catalogData) renderVibes();
       updateCounters();
@@ -4777,7 +4807,7 @@
         }
         if (st.pkgId) {
           const pc = document.querySelector(`.pkg-card[data-pkg="${st.pkgId}"]`);
-          if (pc) selectPkgCard(pc);
+          if (pc) selectPkgCard(pc, { skipSave: true, skipCounters: true });
         }
         if (st.payMethod) {
           const pm = document.querySelector(`.pay-card[data-pay="${st.payMethod}"]`);
@@ -4877,11 +4907,6 @@
       if (document.getElementById('studioDrawer').classList.contains('open')) toggleStudioMode(false);
       switchTab('overview', null, { updateUrl: 'push' });
     });
-    document.getElementById('brandBtn').addEventListener('click', () => {
-      if (document.getElementById('studioDrawer').classList.contains('open')) toggleStudioMode(false);
-      switchTab('overview', null, { updateUrl: 'push' });
-    });
-    document.getElementById('topBookBtn').addEventListener('click', () => switchTab('book'));
     document.getElementById('heroVibeBtn').addEventListener('click', () => switchTab('vibe', '#playlistGuideSection'));
     document.getElementById('heroBookLink').addEventListener('click', () => switchTab('book'));
     document.getElementById('bridgeToBookBtn').addEventListener('click', () => switchTab('book'));
@@ -4900,7 +4925,7 @@
       const sel = !document.getElementById('eventDate').value ? '#eventDate' : '#contactLockSection';
       switchTab('book', sel);
     });
-    document.getElementById('bookStep3').addEventListener('click', () => switchTab('book', '#payOptionsGrid'));
+    document.getElementById('bookStep3').addEventListener('click', () => switchTab('book', '#lockStepSection'));
 
     document.querySelectorAll('.seg-btn').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
     document.querySelectorAll('.cat-tab').forEach(b => b.addEventListener('click', () => switchMusicCategory(b.dataset.cat)));
@@ -5164,7 +5189,7 @@
       hiddenSections: [],
       profile: {
         displayName: 'DJ JRIP \u2022 Jayson Quindao',
-        kicker: 'Open-Format DJ, Remixer & Producer \u2022 Dallas\u2013Fort Worth',
+        kicker: 'Open-Format DJ, Remixer & Producer',
         headline: 'Rhythm, *Harmonic Blends* & Live Crowd Control.',
         bio: 'From 71-minute continuous SoundCloud sets and recorded Serato booth sessions to custom FL Studio blends built track by track around every crowd. Spin the deck, preview the edits, then build your night.',
         mood: 'Crate Digging / Dialed In',
