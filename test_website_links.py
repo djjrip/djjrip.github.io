@@ -166,23 +166,54 @@ def check_profile_portrait():
     portrait_path = os.path.join(SITE_DIR, "assets", "dj-jrip-profile.jpg")
     if not os.path.exists(portrait_path):
         return ["Missing required portrait asset: assets/dj-jrip-profile.jpg"]
-    size = os.path.getsize(portrait_path)
-    if size < 10_000:
-        errors.append(f"Portrait assets/dj-jrip-profile.jpg unexpectedly small ({size} bytes)")
-    with open(portrait_path, "rb") as f:
-        raw = f.read()
-    if _jpeg_has_exif_marker(raw):
-        errors.append("Portrait assets/dj-jrip-profile.jpg contains EXIF metadata (strip EXIF before publishing)")
     try:
         from PIL import Image
         with Image.open(portrait_path) as im:
-            if len(im.getexif()) > 0:
-                errors.append("Portrait assets/dj-jrip-profile.jpg has non-empty PIL EXIF tags")
             w, h = im.size
             if w < 400 or h < 400:
                 errors.append(f"Portrait resolution too small: {w}x{h} (expected >= 400x400)")
     except ImportError:
         pass
+
+    # Verify all published JPEGs are >= 10KB and 100% EXIF-clean (GPS/timestamp privacy)
+    assets_dir = os.path.join(SITE_DIR, "assets")
+    jpgs = [f for f in sorted(os.listdir(assets_dir)) if f.lower().endswith(".jpg")]
+    for fname in jpgs:
+        fpath = os.path.join(assets_dir, fname)
+        size = os.path.getsize(fpath)
+        if size < 10_000:
+            errors.append(f"JPEG assets/{fname} unexpectedly small ({size} bytes)")
+        with open(fpath, "rb") as f:
+            raw = f.read()
+        if _jpeg_has_exif_marker(raw):
+            errors.append(f"JPEG assets/{fname} contains EXIF metadata (strip EXIF before publishing)")
+        try:
+            from PIL import Image
+            with Image.open(fpath) as im:
+                if len(im.getexif()) > 0:
+                    errors.append(f"JPEG assets/{fname} has non-empty PIL EXIF tags")
+        except ImportError:
+            pass
+
+    # Verify all DJ live performance MP4 assets exist, play-ready size, and within GitHub file bounds
+    expected_videos = (
+        "dj-jrip-homegrown-live.mp4",
+        "dj-jrip-crowd-floor-2024.mp4",
+        "dj-jrip-love-flip-reel.mp4",
+        "dj-jrip-reel.mp4",
+        "tiktok-clip.mp4",
+    )
+    for vname in expected_videos:
+        vpath = os.path.join(assets_dir, vname)
+        if not os.path.exists(vpath):
+            errors.append(f"Missing live video asset: assets/{vname}")
+            continue
+        vsize = os.path.getsize(vpath)
+        if vsize < 100_000:
+            errors.append(f"Video assets/{vname} unexpectedly small ({vsize} bytes)")
+        if vsize > 50 * 1024 * 1024:
+            errors.append(f"Video assets/{vname} exceeds 50MB repo safety budget ({vsize / (1024*1024):.1f} MB)")
+
     return errors
 
 
@@ -240,9 +271,39 @@ def check_dj_funnel_consistency_and_privacy():
         if os.path.exists(os.path.join(SITE_DIR, "assets", dead_asset)):
             errors.append(f"Redundant/dead asset still present on disk: assets/{dead_asset}")
 
-    origin_photo = os.path.join(SITE_DIR, "assets", "dj-jrip-trunk-or-treat-2019.jpg")
-    if not os.path.exists(origin_photo):
-        errors.append("Missing 2019 origin event photo: assets/dj-jrip-trunk-or-treat-2019.jpg")
+    for req_photo in (
+        "dj-jrip-trunk-or-treat-2019.jpg",
+        "dj-jrip-trunk-or-treat-night-2019.jpg",
+        "dj-jrip-fort-worth-booth-2024.jpg",
+    ):
+        if not os.path.exists(os.path.join(SITE_DIR, "assets", req_photo)):
+            errors.append(f"Missing live proof photo: assets/{req_photo}")
+
+    # Verify GALLERY_ITEMS length matches lightbox trigger indices and block layout parity
+    if os.path.exists(dj_path):
+        m_gal = re.search(r"const\s+GALLERY_ITEMS\s*=\s*\[(.*?)\];", dj_txt, re.S)
+        if not m_gal:
+            errors.append("Could not locate GALLERY_ITEMS array in dj.html")
+        else:
+            gal_srcs = re.findall(r"src:\s*['\"]([^'\"]+)['\"]", m_gal.group(1))
+            if len(gal_srcs) != 7:
+                errors.append(f"Expected 7 GALLERY_ITEMS in dj.html, found {len(gal_srcs)}")
+            for gsrc in gal_srcs:
+                if not os.path.exists(os.path.normpath(os.path.join(SITE_DIR, gsrc))):
+                    errors.append(f"Missing GALLERY_ITEMS file: {gsrc}")
+            lb_indices = {int(x) for x in re.findall(r'data-lightbox-open="(\d+)"', dj_txt)}
+            expected_indices = set(range(len(gal_srcs)))
+            if lb_indices != expected_indices:
+                errors.append(f"Gallery trigger index mismatch: {sorted(lb_indices)} vs {sorted(expected_indices)}")
+        if "media-frame vertical" not in dj_txt:
+            errors.append("dj.html missing .media-frame.vertical aspect-ratio container for portrait reels")
+        for req_vid in (
+            "assets/dj-jrip-homegrown-live.mp4",
+            "assets/dj-jrip-crowd-floor-2024.mp4",
+            "assets/dj-jrip-love-flip-reel.mp4",
+        ):
+            if req_vid not in dj_txt:
+                errors.append(f"dj.html missing organizer video integration: {req_vid}")
 
     return errors
 

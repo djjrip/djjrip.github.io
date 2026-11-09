@@ -822,9 +822,29 @@
     .sec-sub { font-size: 13px; color: var(--muted); }
 
     /* ARTIST WORK SHOWCASE GRIDS */
-    .media-grid-2x2 {
+    .media-grid-wide {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .media-shelf-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 4px 0 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--mint);
+    }
+    .media-shelf-head span.sub-note { color: var(--muted); }
+    .media-grid-vertical {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 14px;
       margin-bottom: 26px;
     }
@@ -848,6 +868,9 @@
       aspect-ratio: 16 / 9;
       background: #040806;
       overflow: hidden;
+    }
+    .media-frame.vertical {
+      aspect-ratio: 9 / 16;
     }
     .media-poster-btn {
       position: relative;
@@ -908,12 +931,18 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
-    .media-frame video,
     .media-frame iframe {
       width: 100%;
       height: 100%;
       border: 0;
-      object-fit: cover;
+      display: block;
+    }
+    .media-frame video {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      object-fit: contain;
+      background: #040806;
       display: block;
     }
     .media-cap {
@@ -924,6 +953,13 @@
       gap: 8px;
       border-top: 1px solid var(--border);
       font-size: 13px;
+      flex: 1;
+    }
+    .media-grid-vertical .media-cap {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
     }
     .media-cap strong { color: var(--white); font-weight: 700; display: block; }
     .media-cap small { color: var(--muted); font-size: 12px; display: block; margin-top: 2px; }
@@ -944,7 +980,13 @@
     /* LIVE EVENT PHOTOGRAPHY & FLYER SHOWCASE */
     .gallery-row-landscape {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .gallery-row-diptych {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
       margin-bottom: 14px;
     }
@@ -975,6 +1017,9 @@
       cursor: zoom-in;
       overflow: hidden;
       aspect-ratio: 3 / 2;
+    }
+    .gallery-row-diptych .gallery-photo-btn {
+      aspect-ratio: 4 / 3;
     }
     .gallery-row-portrait .gallery-photo-btn {
       aspect-ratio: 4 / 5;
@@ -2090,8 +2135,12 @@
       .deck-stage { order: -1; }
       .showcase-split, .sc-grid { grid-template-columns: 1fr; }
       .guide-panel.active { grid-template-columns: 1fr; }
+      .media-grid-wide { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .media-grid-wide .media-card:first-child { grid-column: 1 / -1; }
+      .media-grid-vertical { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .gallery-row-landscape { grid-template-columns: repeat(2, 1fr); }
       .gallery-row-landscape .gallery-card:nth-child(3) { grid-column: 1 / -1; }
+      .gallery-row-landscape .gallery-card:nth-child(3) .gallery-photo-btn { aspect-ratio: 16 / 9; }
       .gallery-row-portrait { grid-template-columns: repeat(2, 1fr); }
       .gallery-spotlight-card { grid-column: 1 / -1; }
     }
@@ -2122,23 +2171,33 @@
       .chat-compose { grid-template-columns: 1fr; }
       .gallery-row-landscape { grid-template-columns: 1fr; }
       .gallery-row-landscape .gallery-card:nth-child(3) { grid-column: auto; }
+      .gallery-row-landscape .gallery-card:nth-child(3) .gallery-photo-btn { aspect-ratio: 4 / 3; }
+      .gallery-row-diptych { grid-template-columns: 1fr; }
       .gallery-row-portrait { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .gallery-row-portrait .media-cap { flex-direction: column; align-items: flex-start; padding: 10px 11px; gap: 7px; }
       .gallery-zoom-pill { display: none; }
       .lightbox-nav-btn { width: 34px; height: 34px; font-size: 17px; }
 
-      /* Crisp horizontal swipe deck for live videos on mobile */
-      .media-grid-2x2 {
+      /* Crisp horizontal swipe decks separated by native aspect ratio on mobile */
+      .media-grid-wide,
+      .media-grid-vertical {
         display: flex;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         gap: 10px;
         padding-bottom: 6px;
         -webkit-overflow-scrolling: touch;
+        max-width: 100%;
       }
-      .media-grid-2x2::-webkit-scrollbar { display: none; }
-      .media-card {
-        flex: 0 0 86%;
+      .media-grid-wide::-webkit-scrollbar,
+      .media-grid-vertical::-webkit-scrollbar { display: none; }
+      .media-grid-wide .media-card {
+        flex: 0 0 88%;
+        scroll-snap-align: start;
+      }
+      .media-grid-wide .media-card:first-child { grid-column: auto; }
+      .media-grid-vertical .media-card {
+        flex: 0 0 64%;
         scroll-snap-align: start;
       }
     }
@@ -2628,11 +2687,33 @@
             </div>
           </div>
 
-          <div class="media-grid-2x2">
+          <div class="media-shelf-head">
+            <span>WIDESCREEN LIVE SETS &amp; REMIXES // 16:9 FULL FRAME</span>
+            <span class="sub-note">Studio &amp; lakehouse sessions</span>
+          </div>
+
+          <div class="media-grid-wide">
+            <div class="media-card">
+              <div class="media-frame" id="hgFrameBox">
+                <button type="button" class="media-poster-btn" id="playHgCardBtn" aria-label="Play Home Grown Summer Vol Live Set">
+                  <img src="assets/homegrown-live-thumb.jpg" width="1280" height="720" loading="lazy" alt="DJ JRIP performing live at Home Grown Summer Vol. inside Rhythm Dance Studio">
+                  <span class="media-tag-float" style="border-color:rgba(52,211,153,0.45);">Live HD Set &bull; 3:35</span>
+                  <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
+                </button>
+              </div>
+              <div class="media-cap">
+                <div>
+                  <strong>Home Grown: Summer Vol. Live Set</strong>
+                  <small>Rhythm Dance Studio &bull; Live red-room crowd &amp; deck cam</small>
+                </div>
+                <button type="button" class="cap-spin-btn" id="watchHgCapBtn">Watch Set &#9654;</button>
+              </div>
+            </div>
+
             <div class="media-card">
               <div class="media-frame" id="ytFrameBox">
                 <button type="button" class="media-poster-btn" id="playYtCardBtn" aria-label="Play 4K Lake House Set">
-                  <img src="assets/yt-lakehouse-thumb.jpg" alt="DJ JRIP 4K Lake House Live Set">
+                  <img src="assets/yt-lakehouse-thumb.jpg" width="1280" height="720" loading="lazy" alt="DJ JRIP 4K Lake House Live Set">
                   <span class="media-tag-float">YouTube &bull; 12:01 Live Set</span>
                   <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
                 </button>
@@ -2649,7 +2730,7 @@
             <div class="media-card">
               <div class="media-frame" id="sweetFrameBox">
                 <button type="button" class="media-poster-btn" id="playSweetCardBtn" aria-label="Play Sweet Spot x Superhuman Remix">
-                  <img src="assets/yt-sweetspot-thumb.jpg" alt="Sweet Spot x Superhuman JRIP Remix Visualizer">
+                  <img src="assets/yt-sweetspot-thumb.jpg" width="1280" height="720" loading="lazy" alt="Sweet Spot x Superhuman JRIP Remix Visualizer">
                   <span class="media-tag-float" style="border-color:rgba(190,82,112,0.45);">JRIP Remix &bull; 3:09</span>
                   <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
                 </button>
@@ -2662,12 +2743,53 @@
                 <button type="button" class="cap-spin-btn" data-spin-idx="0">Spin Deck</button>
               </div>
             </div>
+          </div>
+
+          <div class="media-shelf-head">
+            <span>VERTICAL BOOTH &amp; CROWD REELS // 9:16 FULL FRAME</span>
+            <span class="sub-note">Unfiltered booth &amp; floor POV</span>
+          </div>
+
+          <div class="media-grid-vertical">
+            <div class="media-card">
+              <div class="media-frame vertical" id="crowdFrameBox">
+                <button type="button" class="media-poster-btn" id="playCrowdCardBtn" aria-label="Play Fort Worth Dancefloor and Serato Booth Clip">
+                  <img src="assets/crowd-floor-thumb.jpg" width="720" height="1280" loading="lazy" style="object-position:center 35%;" alt="DJ JRIP Serato booth POV over a packed clapping crowd in Fort Worth">
+                  <span class="media-tag-float" style="border-color:rgba(52,211,153,0.45);">Live Crowd &bull; 0:23</span>
+                  <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
+                </button>
+              </div>
+              <div class="media-cap">
+                <div>
+                  <strong>Fort Worth Dancefloor &amp; Booth POV</strong>
+                  <small>Live clapping floor right over the Serato decks</small>
+                </div>
+                <button type="button" class="cap-spin-btn" id="watchCrowdCapBtn">Watch Clip &#9654;</button>
+              </div>
+            </div>
 
             <div class="media-card">
-              <div class="media-frame" id="ttFrameBox">
+              <div class="media-frame vertical" id="loveFlipFrameBox">
+                <button type="button" class="media-poster-btn" id="playLoveFlipBtn" aria-label="Play Pioneer DDJ Live Cue Flip">
+                  <img src="assets/love-flip-thumb.jpg" width="608" height="1080" loading="lazy" style="object-position:center 28%;" alt="DJ JRIP performing live cue flips on a Pioneer DDJ-SB2 deck">
+                  <span class="media-tag-float" style="border-color:rgba(190,82,112,0.45);">@djjrip &bull; 0:59 Cue Flip</span>
+                  <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
+                </button>
+              </div>
+              <div class="media-cap">
+                <div>
+                  <strong>Pioneer DDJ Live Cue Flip</strong>
+                  <small>Hands-on performance pads &amp; filter phrasing (@djjrip)</small>
+                </div>
+                <button type="button" class="cap-spin-btn" id="watchLoveFlipCapBtn">Watch Clip &#9654;</button>
+              </div>
+            </div>
+
+            <div class="media-card">
+              <div class="media-frame vertical" id="ttFrameBox">
                 <button type="button" class="media-poster-btn" id="playTtCardBtn" aria-label="Play @jaysonbq Live Booth Flip">
-                  <img src="assets/tiktok-clip.jpg" style="object-position:center 30%;" alt="DJ JRIP Live Booth Flip Clip">
-                  <span class="media-tag-float">TikTok @jaysonbq &bull; 2K+ Followers</span>
+                  <img src="assets/tiktok-clip.jpg" width="540" height="960" loading="lazy" style="object-position:center 20%;" alt="DJ JRIP Live Booth Flip Clip">
+                  <span class="media-tag-float">TikTok @jaysonbq &bull; 1:15</span>
                   <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
                 </button>
               </div>
@@ -2681,10 +2803,10 @@
             </div>
 
             <div class="media-card">
-              <div class="media-frame" id="reelFrameBox">
+              <div class="media-frame vertical" id="reelFrameBox">
                 <button type="button" class="media-poster-btn" id="playReelCardBtn" aria-label="Play Pioneer DDJ Console Reel">
-                  <img src="assets/reel-thumb.jpg" style="object-position:center 35%;" alt="DJ JRIP Pioneer DDJ-SB2 Console Reel">
-                  <span class="media-tag-float">Console Reel &bull; DDJ-SB2</span>
+                  <img src="assets/reel-thumb.jpg" width="720" height="1280" loading="lazy" style="object-position:center 22%;" alt="DJ JRIP Pioneer DDJ-SB2 Console Reel">
+                  <span class="media-tag-float">Console Reel &bull; 0:31</span>
                   <div class="play-overlay"><span class="play-badge">&#9654;</span></div>
                 </button>
               </div>
@@ -2713,9 +2835,9 @@
           <div class="sec-head" id="liveGallerySection">
             <div>
               <div class="sec-title">In The Booth: Live Event Gallery &amp; Flyers</div>
-              <div class="sec-sub">From outdoor lakefront pop-ups (Since 2019) to Rhythm Dance Studio in Dallas &mdash; click any photo or flyer to expand full-screen</div>
+              <div class="sec-sub">From outdoor lakefront pop-ups (Since 2019) to Rhythm Dance Studio &amp; Fort Worth nights &mdash; click any photo to expand full-screen</div>
             </div>
-            <button type="button" class="btn-secondary" data-lightbox-open="0" style="padding:7px 13px; font-size:12px;">Open Gallery Viewer &nearr;</button>
+            <button type="button" class="btn-secondary" data-lightbox-open="0" style="padding:7px 13px; font-size:12px;">Open Gallery Viewer (7) &nearr;</button>
           </div>
 
           <div class="gallery-row-landscape">
@@ -2750,24 +2872,56 @@
             </div>
 
             <div class="gallery-card">
-              <button type="button" class="gallery-photo-btn" data-lightbox-open="2" aria-label="Expand photo: DJ JRIP spinning outdoor generator-powered Halloween Trunk-or-Treat booth on Nov 2, 2019">
-                <img src="assets/dj-jrip-trunk-or-treat-2019.jpg" width="960" height="640" loading="lazy" alt="DJ JRIP running an outdoor Halloween Trunk-or-Treat Pioneer DJ booth off generator power on November 2, 2019">
-                <span class="media-tag-float" style="border-color:rgba(52,211,153,0.45);">Nov 2019 &bull; Outdoor Pop-Up</span>
+              <button type="button" class="gallery-photo-btn" data-lightbox-open="2" aria-label="Expand photo: DJ JRIP and guest behind the Pioneer DDJ-SB2 booth in Fort Worth">
+                <img src="assets/dj-jrip-fort-worth-booth-2024.jpg" width="1200" height="900" loading="lazy" style="object-position:center 22%;" alt="DJ JRIP smiling with a guest behind the Pioneer DDJ-SB2 booth at a Fort Worth night event in May 2024">
+                <span class="media-tag-float" style="border-color:rgba(56,189,248,0.45);">May 2024 &bull; Fort Worth</span>
                 <span class="gallery-zoom-pill">Expand &#10530;</span>
               </button>
               <div class="media-cap">
                 <div>
-                  <strong>2019 Outdoor Trunk-or-Treat Booth</strong>
-                  <small>Pioneer decks + generator power by the lake &bull; Live DFW since 2019</small>
+                  <strong>Fort Worth Live Lounge Booth</strong>
+                  <small>Compact Pioneer DDJ-SB2 setup &amp; guest booth energy (May 2024)</small>
                 </div>
                 <button type="button" class="cap-spin-btn" data-lightbox-open="2">View</button>
               </div>
             </div>
           </div>
 
+          <div class="gallery-row-diptych">
+            <div class="gallery-card">
+              <button type="button" class="gallery-photo-btn" data-lightbox-open="3" aria-label="Expand photo: Halloween Trunk-or-Treat Night POV over Serato booth and crowd on Oct 31, 2019">
+                <img src="assets/dj-jrip-trunk-or-treat-night-2019.jpg" width="1200" height="900" loading="lazy" alt="DJ JRIP Serato laptop, mixer, dual PA speakers, trophies, and costumed crowd under papel picado banners on October 31, 2019">
+                <span class="media-tag-float" style="border-color:rgba(245,158,11,0.5);">Oct 31, 2019 &bull; Crowd POV</span>
+                <span class="gallery-zoom-pill">Expand &#10530;</span>
+              </button>
+              <div class="media-cap">
+                <div>
+                  <strong>2019 Halloween Night Trunk-or-Treat POV</strong>
+                  <small>Behind Serato, mixer &amp; dual PA speakers facing costumed crowd</small>
+                </div>
+                <button type="button" class="cap-spin-btn" data-lightbox-open="3">View</button>
+              </div>
+            </div>
+
+            <div class="gallery-card">
+              <button type="button" class="gallery-photo-btn" data-lightbox-open="4" aria-label="Expand photo: DJ JRIP spinning outdoor generator-powered Halloween Trunk-or-Treat booth on Nov 2, 2019">
+                <img src="assets/dj-jrip-trunk-or-treat-2019.jpg" width="960" height="640" loading="lazy" alt="DJ JRIP running an outdoor Halloween Trunk-or-Treat Pioneer DJ booth off generator power on November 2, 2019">
+                <span class="media-tag-float" style="border-color:rgba(52,211,153,0.45);">Nov 2, 2019 &bull; Outdoor Pop-Up</span>
+                <span class="gallery-zoom-pill">Expand &#10530;</span>
+              </button>
+              <div class="media-cap">
+                <div>
+                  <strong>2019 Outdoor Generator Pop-Up Rig</strong>
+                  <small>Pioneer decks + portable generator power by the lake &bull; Since 2019</small>
+                </div>
+                <button type="button" class="cap-spin-btn" data-lightbox-open="4">View</button>
+              </div>
+            </div>
+          </div>
+
           <div class="gallery-row-portrait">
             <div class="gallery-card">
-              <button type="button" class="gallery-photo-btn" data-lightbox-open="3" aria-label="Expand photo: DJ JRIP and guest by the Pioneer DDJ booth">
+              <button type="button" class="gallery-photo-btn" data-lightbox-open="5" aria-label="Expand photo: DJ JRIP and guest by the Pioneer DDJ booth">
                 <img src="assets/dj-jrip-rhythm-crowd.jpg" width="768" height="1024" loading="lazy" style="object-position:center 15%;" alt="DJ JRIP with guest beside the Pioneer DDJ booth during Home Grown at Rhythm Dance Studio">
                 <span class="gallery-zoom-pill">Expand &#10530;</span>
               </button>
@@ -2777,12 +2931,12 @@
                   <strong>Crowd &amp; Booth Energy</strong>
                   <small>Open dancefloor vibes next to the Serato &amp; DDJ setup</small>
                 </div>
-                <button type="button" class="cap-spin-btn" data-lightbox-open="3">Expand</button>
+                <button type="button" class="cap-spin-btn" data-lightbox-open="5">Expand</button>
               </div>
             </div>
 
             <div class="gallery-card">
-              <button type="button" class="gallery-photo-btn" data-lightbox-open="4" aria-label="Expand flyer: Rhythm Dance Studio presents Home Grown Summer Vol.">
+              <button type="button" class="gallery-photo-btn" data-lightbox-open="6" aria-label="Expand flyer: Rhythm Dance Studio presents Home Grown Summer Vol.">
                 <img src="assets/flyer-home-grown-rhythm.jpg" width="396" height="497" loading="lazy" alt="Rhythm Dance Studio Presents Home Grown Summer Vol. flyer featuring DJ JRIP, LUV.HEX, and SUCKAPUNCH">
                 <span class="gallery-zoom-pill">Expand &#10530;</span>
               </button>
@@ -2792,7 +2946,7 @@
                   <strong>Home Grown: Summer Vol.</strong>
                   <small>House &amp; R&amp;B &bull; Sounds by DJ JRIP, Luv.Hex &amp; SuckaPunch</small>
                 </div>
-                <button type="button" class="cap-spin-btn" data-lightbox-open="4">Expand</button>
+                <button type="button" class="cap-spin-btn" data-lightbox-open="6">Expand</button>
               </div>
             </div>
 
@@ -2811,7 +2965,7 @@
                 </div>
               </div>
               <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;">
-                <button type="button" class="btn-artist" data-lightbox-open="0" style="padding:9px 16px; font-size:13px;">Browse Photos (5) &#10530;</button>
+                <button type="button" class="btn-artist" data-lightbox-open="0" style="padding:9px 16px; font-size:13px;">Browse Photos (7) &#10530;</button>
                 <a class="btn-secondary" href="dj-events.html" style="padding:9px 15px; font-size:13px;">Upcoming Events &amp; Pop-Ups &rarr;</a>
                 <button type="button" class="btn-secondary" id="galleryBookBtn" style="padding:9px 15px; font-size:13px;">Book This Vibe &rarr;</button>
               </div>
@@ -3587,7 +3741,7 @@
           <strong id="lightboxTitle">Live Deck Control &amp; Booth Cueing</strong>
           <small id="lightboxSub">DJ JRIP mixing hands-on at Rhythm Dance Studio (Dallas, TX)</small>
         </div>
-        <span class="mono" id="lightboxCounter" style="color:var(--amber);">1 / 4</span>
+        <span class="mono" id="lightboxCounter" style="color:var(--amber);">1 / 7</span>
       </div>
     </div>
   </div>
@@ -3951,20 +4105,58 @@
     deckAudio.addEventListener('ended', () => loadDeckTrack(deckIdx + 1, true));
 
     // CLICK-TO-PLAY GUARANTEED THUMBNAILS (ZERO BROKEN THIRD-PARTY EMBEDS)
+    function pauseOtherVideos(activeBoxId) {
+      document.querySelectorAll('#block-videos video').forEach(v => {
+        if (!activeBoxId || !v.closest(`#${activeBoxId}`)) {
+          try { v.pause(); } catch (e) {}
+        }
+      });
+    }
+    document.getElementById('playHgCardBtn').addEventListener('click', () => {
+      pauseDeck();
+      pauseOtherVideos('hgFrameBox');
+      document.getElementById('hgFrameBox').innerHTML = `<video controls autoplay playsinline poster="assets/homegrown-live-thumb.jpg"><source src="assets/dj-jrip-homegrown-live.mp4" type="video/mp4"></video>`;
+    });
+    document.getElementById('watchHgCapBtn').addEventListener('click', () => {
+      document.getElementById('playHgCardBtn')?.click();
+      document.getElementById('hgFrameBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
     document.getElementById('playYtCardBtn').addEventListener('click', () => {
       pauseDeck();
+      pauseOtherVideos();
       document.getElementById('ytFrameBox').innerHTML = `<iframe src="https://www.youtube.com/embed/TB8gT3tWWlo?autoplay=1&rel=0" title="DJ JRIP Lake House 4K Set" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
     });
     document.getElementById('playSweetCardBtn').addEventListener('click', () => {
       pauseDeck();
+      pauseOtherVideos();
       document.getElementById('sweetFrameBox').innerHTML = `<iframe src="https://www.youtube.com/embed/oAxQBNKZgSE?autoplay=1&rel=0" title="Sweet Spot x Superhuman JRIP Remix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    });
+    document.getElementById('playCrowdCardBtn').addEventListener('click', () => {
+      pauseDeck();
+      pauseOtherVideos('crowdFrameBox');
+      document.getElementById('crowdFrameBox').innerHTML = `<video controls autoplay playsinline poster="assets/crowd-floor-thumb.jpg"><source src="assets/dj-jrip-crowd-floor-2024.mp4" type="video/mp4"></video>`;
+    });
+    document.getElementById('watchCrowdCapBtn').addEventListener('click', () => {
+      document.getElementById('playCrowdCardBtn')?.click();
+      document.getElementById('crowdFrameBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    document.getElementById('playLoveFlipBtn').addEventListener('click', () => {
+      pauseDeck();
+      pauseOtherVideos('loveFlipFrameBox');
+      document.getElementById('loveFlipFrameBox').innerHTML = `<video controls autoplay playsinline poster="assets/love-flip-thumb.jpg"><source src="assets/dj-jrip-love-flip-reel.mp4" type="video/mp4"></video>`;
+    });
+    document.getElementById('watchLoveFlipCapBtn').addEventListener('click', () => {
+      document.getElementById('playLoveFlipBtn')?.click();
+      document.getElementById('loveFlipFrameBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
     document.getElementById('playTtCardBtn').addEventListener('click', () => {
       pauseDeck();
+      pauseOtherVideos('ttFrameBox');
       document.getElementById('ttFrameBox').innerHTML = `<video controls autoplay playsinline poster="assets/tiktok-clip.jpg"><source src="assets/tiktok-clip.mp4" type="video/mp4"></video>`;
     });
     document.getElementById('playReelCardBtn').addEventListener('click', () => {
       pauseDeck();
+      pauseOtherVideos('reelFrameBox');
       document.getElementById('reelFrameBox').innerHTML = `<video controls autoplay playsinline poster="assets/reel-thumb.jpg"><source src="assets/dj-jrip-reel.mp4" type="video/mp4"></video>`;
     });
     document.getElementById('watchReelCapBtn').addEventListener('click', () => {
@@ -5770,9 +5962,21 @@
         sub: 'DJ JRIP alongside the Home Grown studio lineup in magenta booth lighting'
       },
       {
+        src: 'assets/dj-jrip-fort-worth-booth-2024.jpg',
+        alt: 'DJ JRIP smiling with a guest behind the Pioneer DDJ-SB2 booth at a Fort Worth night event in May 2024',
+        title: 'Fort Worth Live Lounge Booth',
+        sub: 'May 2024 \u2022 Compact Pioneer DDJ-SB2 lounge setup & booth energy'
+      },
+      {
+        src: 'assets/dj-jrip-trunk-or-treat-night-2019.jpg',
+        alt: 'DJ JRIP Serato laptop, mixer, dual PA speakers, trophies, and costumed crowd under papel picado banners on October 31, 2019',
+        title: '2019 Halloween Night Trunk-or-Treat POV',
+        sub: 'Oct 31, 2019 \u2022 Serato MacBook, mixer & dual PA speakers facing costumed crowd'
+      },
+      {
         src: 'assets/dj-jrip-trunk-or-treat-2019.jpg',
         alt: 'DJ JRIP running an outdoor Halloween Trunk-or-Treat Pioneer DJ booth off generator power on November 2, 2019',
-        title: '2019 Outdoor Trunk-or-Treat Booth',
+        title: '2019 Outdoor Generator Pop-Up Rig',
         sub: 'Nov 2, 2019 \u2022 Pioneer DDJ + generator power by the lake \u2014 live DFW events since 2019'
       },
       {
