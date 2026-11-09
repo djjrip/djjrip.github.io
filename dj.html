@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DJ J-Rip (Jayson Quindao) // Official DFW Booking, Vibe Studio & Deposit Portal</title>
-  <meta name="description" content="Book DJ J-Rip for 18th Debuts, Weddings, Private Events & Clubs in DFW. Watch live footage, browse 3,023 tracks by vibe, build your custom playlist, and lock your date online.">
+  <meta name="description" content="Book DJ J-Rip for 18th Debuts, Weddings, Private Events & Clubs in DFW. Watch live 4K DJ footage, sync your Spotify playlists, customize Must-Play tracks, and lock your date online.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -13,6 +13,7 @@
       --bg: #070910;
       --surface: #111524;
       --surface-2: #171d31;
+      --surface-3: #0b0f1b;
       --border: #262e49;
       --accent: #a855f7;
       --cyan: #06b6d4;
@@ -30,18 +31,20 @@
       color: var(--text);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.55;
-      padding: 20px 16px 120px 16px;
-      max-width: 1120px;
+      padding: 18px 14px 115px 14px;
+      max-width: 1100px;
       margin: 0 auto;
     }
+
+    /* TOP BAR */
     .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 10px;
-      padding-bottom: 16px;
-      margin-bottom: 24px;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
       border-bottom: 1px solid var(--border);
     }
     .brand-tag {
@@ -57,7 +60,7 @@
       font-size: 12px;
       font-weight: 600;
     }
-    .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .top-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
     .nav-link {
       color: var(--muted);
       text-decoration: none;
@@ -70,127 +73,102 @@
     }
     .nav-link:hover { color: #fff; border-color: var(--cyan); }
 
-    /* HERO INTRO */
-    .hero {
-      background: linear-gradient(145deg, rgba(168, 85, 247, 0.12), rgba(6, 182, 212, 0.08));
+    /* WIZARD PROGRESS BAR */
+    .wizard-stepper {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 22px;
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 28px;
-      display: grid;
-      grid-template-columns: 1.35fr 0.9fr;
-      gap: 28px;
-      align-items: center;
-      margin-bottom: 24px;
+      border-radius: 14px;
+      padding: 10px;
     }
-    @media (max-width: 820px) {
-      .hero { grid-template-columns: 1fr; padding: 20px; }
+    @media (max-width: 780px) {
+      .wizard-stepper {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 4px;
+        padding: 6px;
+      }
     }
-    .hero-profile {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-    .hero-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--cyan);
-    }
-    .hero h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 10px;
-    }
-    .hero-sub {
-      color: #cbd5e1;
-      font-size: 15.5px;
-      margin-bottom: 18px;
-    }
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    @media (max-width: 600px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
-    .stat-pill {
-      background: rgba(11, 14, 24, 0.8);
+    .step-tab {
+      background: var(--surface-3);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 10px 8px;
-      text-align: center;
-    }
-    .stat-pill strong {
-      display: block;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 19px;
-      color: var(--cyan);
-    }
-    .stat-pill span { font-size: 11px; color: var(--muted); text-transform: uppercase; font-weight: 600; }
-    .reel-box {
-      background: #05070e;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-      text-align: center;
-    }
-    .reel-box video {
-      width: 100%;
-      max-height: 390px;
-      display: block;
-      background: #000;
-    }
-    .reel-caption {
-      padding: 8px 12px;
-      font-size: 12px;
+      cursor: pointer;
+      text-align: left;
       color: var(--muted);
-      font-family: 'JetBrains Mono', monospace;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+    }
+    .step-tab:hover { border-color: var(--accent); color: #fff; }
+    .step-tab.active {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(6, 182, 212, 0.18));
+      border-color: var(--cyan);
+      color: #fff;
+      box-shadow: 0 0 0 1px var(--cyan);
+    }
+    .step-tab.completed {
+      border-color: rgba(16, 185, 129, 0.5);
+      color: #cbd5e1;
+    }
+    .step-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.08);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+    .step-tab.active .step-dot { background: var(--cyan); color: #051319; }
+    .step-tab.completed .step-dot { background: var(--green); color: #032016; }
+    .step-tab-label { font-size: 12px; font-weight: 700; line-height: 1.2; }
+    .step-tab-sub { font-size: 10.5px; color: var(--muted); display: block; margin-top: 2px; }
+    @media (max-width: 780px) {
+      .step-tab { flex-direction: column; text-align: center; padding: 7px 4px; gap: 4px; }
+      .step-tab-sub { display: none; }
+      .step-tab-label { font-size: 10.5px; }
+    }
+
+    /* WIZARD PAGES */
+    .wizard-step { display: none; animation: fadeIn 0.2s ease-out; }
+    .wizard-step.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .step-nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+      padding-top: 18px;
       border-top: 1px solid var(--border);
     }
 
-    /* ROADMAP STRIP */
-    .roadmap {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-bottom: 26px;
-    }
-    @media (max-width: 760px) { .roadmap { grid-template-columns: repeat(2, 1fr); } }
-    .road-step {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
-    }
-    .road-step span {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--cyan);
-      margin-bottom: 4px;
-    }
-    .road-step h4 { font-size: 14px; margin-bottom: 3px; }
-    .road-step p { font-size: 12.5px; color: var(--muted); }
-
-    /* STEP CARDS */
+    /* CARDS */
     .step-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 24px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
+    @media (max-width: 600px) { .step-card { padding: 18px 15px; } }
     .step-header {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .step-num {
       background: linear-gradient(135deg, var(--accent), var(--pink));
@@ -208,7 +186,125 @@
     }
     .step-title { font-family: 'Space Grotesk', sans-serif; font-size: 21px; font-weight: 700; }
 
-    /* RIG STRIP */
+    /* STEP 1 HERO & DUAL MEDIA */
+    .hero-banner {
+      background: linear-gradient(145deg, rgba(168, 85, 247, 0.14), rgba(6, 182, 212, 0.08));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px;
+      margin-bottom: 20px;
+    }
+    .hero-profile {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .hero-avatar {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--cyan);
+      flex-shrink: 0;
+    }
+    .hero-banner h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(26px, 3.8vw, 39px);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .hero-sub { color: #cbd5e1; font-size: 15px; margin-bottom: 18px; max-width: 820px; }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    @media (max-width: 640px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
+    .stat-pill {
+      background: rgba(11, 14, 24, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+    .stat-pill strong {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 19px;
+      color: var(--cyan);
+    }
+    .stat-pill span { font-size: 11px; color: var(--muted); text-transform: uppercase; font-weight: 600; }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 0.9fr 0.9fr;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: stretch;
+    }
+    .bulk-search-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 860px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .bulk-search-wrap { grid-template-columns: 1fr; }
+    }
+    .media-card {
+      background: #06080f;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .yt-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: #000;
+    }
+    .yt-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .reel-wrap {
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+    .reel-wrap video {
+      width: 100%;
+      max-height: 360px;
+      display: block;
+      background: #000;
+    }
+    .media-cap {
+      padding: 10px 14px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
     .gear-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -223,12 +319,12 @@
     .gear-item h4 { font-size: 14px; color: #d8b4fe; margin-bottom: 4px; }
     .gear-item p { font-size: 12.5px; color: var(--muted); }
 
-    /* PACKAGE SELECTOR */
+    /* STEP 2 PACKAGES */
     .pkg-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     .pkg-card {
       background: var(--surface-2);
@@ -265,7 +361,7 @@
     /* FORMS */
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
       gap: 14px;
     }
     label {
@@ -279,7 +375,7 @@
     }
     input, select, textarea {
       width: 100%;
-      background: #0d101c;
+      background: #0c101d;
       border: 1px solid var(--border);
       color: var(--text);
       padding: 10px 12px;
@@ -290,12 +386,73 @@
     }
     input:focus, select:focus, textarea:focus { border-color: var(--cyan); }
 
-    /* VIBE & CATALOG */
+    /* STEP 4 INTUITIVE SPOTIFY + PLAYLIST STUDIO */
+    .spotify-sync-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.08));
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+    .spotify-badge {
+      display: inline-block;
+      background: #10b981;
+      color: #032016;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .playlist-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .oembed-card {
+      background: #0a0e18;
+      border: 1px solid var(--green);
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .oembed-card img {
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .starter-packs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .starter-btn {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 11px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .starter-btn:hover { border-color: var(--cyan); background: rgba(6, 182, 212, 0.1); }
+    .starter-btn strong { display: block; font-size: 13px; margin-bottom: 3px; }
+    .starter-btn span { display: block; font-size: 11.5px; color: var(--muted); }
+
     .vibe-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     .vibe-card {
       background: var(--surface-2);
@@ -340,7 +497,7 @@
     }
     .tab-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
     .track-list {
-      max-height: 360px;
+      max-height: 330px;
       overflow-y: auto;
       border: 1px solid var(--border);
       border-radius: 10px;
@@ -370,6 +527,7 @@
     }
     .btn-add.added, .btn-add:hover { background: var(--green); border-color: var(--green); color: #042f2e; }
     .btn-ban.banned, .btn-ban:hover { background: var(--red); border-color: var(--red); color: #fff; }
+
     .playlist-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
     @media (max-width: 720px) { .playlist-columns { grid-template-columns: 1fr; } }
     .list-box {
@@ -392,7 +550,7 @@
     }
     .pill-rm { background: none; border: none; color: var(--muted); cursor: pointer; font-weight: 700; }
 
-    /* PAYMENT METHODS */
+    /* STEP 5 PAYMENT */
     .pay-options-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -426,17 +584,27 @@
     }
 
     .summary-ledger {
-      background: #0b0f1b;
+      background: var(--surface-3);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 16px;
       margin-bottom: 16px;
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
     }
+    @media (max-width: 640px) { .summary-ledger { grid-template-columns: 1fr; } }
+    .review-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .review-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      background: rgba(255,255,255,0.06);
+      padding: 4px 9px;
+      border-radius: 7px;
+      color: #e2e8f0;
+    }
+
     .agreement-check {
       display: flex;
       gap: 10px;
@@ -448,13 +616,14 @@
     }
     .agreement-check input { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; }
 
+    /* BUTTONS */
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--pink));
       color: #fff;
       border: none;
-      padding: 14px 26px;
+      padding: 13px 22px;
       border-radius: 10px;
-      font-size: 15.5px;
+      font-size: 15px;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
@@ -475,12 +644,13 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      cursor: pointer;
     }
     .btn-secondary {
       background: var(--surface-2);
       color: #fff;
       border: 1px solid var(--border);
-      padding: 12px 16px;
+      padding: 11px 16px;
       border-radius: 10px;
       font-size: 13.5px;
       font-weight: 600;
@@ -490,6 +660,7 @@
       align-items: center;
       gap: 6px;
     }
+    .btn-secondary:hover { border-color: var(--cyan); }
 
     .checkout-panel {
       margin-top: 18px;
@@ -512,21 +683,22 @@
     }
     .status-err.show { display: block; }
 
+    /* STICKY FOOTER */
     .sticky-footer {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(10, 13, 23, 0.95);
+      background: rgba(10, 13, 23, 0.96);
       backdrop-filter: blur(10px);
       border-top: 1px solid var(--border);
-      padding: 10px 18px;
+      padding: 10px 16px;
       display: flex;
       justify-content: center;
       z-index: 50;
     }
     .sticky-inner {
-      max-width: 1120px;
+      max-width: 1100px;
       width: 100%;
       display: flex;
       justify-content: space-between;
@@ -539,401 +711,607 @@
 <body>
 
   <div class="topbar">
-    <div class="brand-tag">● DJ J-RIP // END-TO-END CLIENT BOOKING &amp; VIBE STUDIO</div>
-    <div class="nav-links">
-      <a class="nav-link" href="#packages">1. Packages</a>
-      <a class="nav-link" href="#event">2. Details</a>
-      <a class="nav-link" href="#vibes">3. Vibe &amp; Music</a>
-      <a class="nav-link" href="#pay">4. Payment</a>
+    <div class="brand-tag">● DJ J-RIP // 5-STEP EVENT BOOKING &amp; PLAYLIST STUDIO</div>
+    <div class="top-actions">
+      <a class="nav-link" href="https://www.tiktok.com/@jaysonbq" target="_blank" rel="noopener">📱 TikTok @jaysonbq</a>
+      <a class="nav-link" href="https://soundcloud.com/jayson-quindao" target="_blank" rel="noopener">☁️ SoundCloud</a>
+      <a class="nav-link" href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener">▶ YouTube Set</a>
       <a class="nav-link" href="tel:+14693718556">📞 (469) 371-8556</a>
     </div>
   </div>
 
-  <!-- HERO INTRO -->
-  <section class="hero" id="intro">
-    <div>
+  <!-- STEP-BY-STEP WIZARD PROGRESS BAR -->
+  <nav class="wizard-stepper" aria-label="Booking Steps">
+    <button type="button" class="step-tab active" data-step="1">
+      <span class="step-dot">1</span>
+      <div>
+        <div class="step-tab-label">Intro &amp; Video</div>
+        <span class="step-tab-sub">Live sets &amp; rig</span>
+      </div>
+    </button>
+    <button type="button" class="step-tab" data-step="2">
+      <span class="step-dot">2</span>
+      <div>
+        <div class="step-tab-label">Package &amp; Date</div>
+        <span class="step-tab-sub">Rates &amp; retainer</span>
+      </div>
+    </button>
+    <button type="button" class="step-tab" data-step="3">
+      <span class="step-dot">3</span>
+      <div>
+        <div class="step-tab-label">Event &amp; Mics</div>
+        <span class="step-tab-sub">18 Roses / Cues</span>
+      </div>
+    </button>
+    <button type="button" class="step-tab" data-step="4">
+      <span class="step-dot">4</span>
+      <div>
+        <div class="step-tab-label">Vibe &amp; Spotify</div>
+        <span class="step-tab-sub">Sync playlists</span>
+      </div>
+    </button>
+    <button type="button" class="step-tab" data-step="5">
+      <span class="step-dot">5</span>
+      <div>
+        <div class="step-tab-label">Pay &amp; Lock</div>
+        <span class="step-tab-sub">Instant alert</span>
+      </div>
+    </button>
+  </nav>
+
+  <!-- ==================== STEP 1: INTRO, LIVE SETS & GEAR ==================== -->
+  <section class="wizard-step active" id="step1">
+    <div class="hero-banner">
       <div class="hero-profile">
         <img class="hero-avatar" src="assets/dj-jrip-headshot.jpg" alt="DJ J-Rip (Jayson Quindao)">
         <div>
-          <div style="font-weight:700; font-size:15px; color:#fff;">Jayson Quindao &bull; Dallas-Fort Worth, TX</div>
-          <div style="font-size:12.5px; color:var(--cyan); font-family:'JetBrains Mono',monospace;">GG LOOP LLC &bull; Open-Format DJ, MC &amp; Live Sound</div>
+          <div style="font-weight:700; font-size:15.5px; color:#fff;">Jayson Quindao (DJ J-Rip) &bull; Dallas-Fort Worth, TX</div>
+          <div style="font-size:12.5px; color:var(--cyan); font-family:'JetBrains Mono',monospace;">GG LOOP LLC &bull; Open-Format DJ, MC &amp; Turnkey Event Audio</div>
         </div>
       </div>
-      <h1>Your Full Event Audio, Vibe &amp; Booking Hub — All in One Place.</h1>
+
+      <h1>Watch Live Booth Sets, Preview Gear, Sync Spotify &amp; Lock Your Date in 5 Simple Steps.</h1>
       <p class="hero-sub">
-        First time hiring DJ J-Rip? Everything happens cleanly on this single page: watch real booth footage, check what gear comes with your booking, pick your event vibe and custom playlist from 3,023 audited tracks, and lock your date via Card, Apple Pay, Zelle, or Apple Cash.
+        Whether you're planning an <strong>18th Birthday Debut</strong>, wedding reception, or private VIP party, this guided portal lets you check my real mixes first, pick a flat package, drop your own Spotify/YouTube playlists straight into my studio downloader, and lock your date online.
       </p>
+
       <div class="stats-row">
-        <div class="stat-pill"><strong>300K+</strong><span>TikTok Views</span></div>
-        <div class="stat-pill"><strong>3,023</strong><span>Live Tracks</span></div>
-        <div class="stat-pill"><strong>2 Sets</strong><span>Bose F1 PA</span></div>
-        <div class="stat-pill"><strong>DFW</strong><span>On-Site Ready</span></div>
+        <div class="stat-pill"><strong>335.7K+</strong><span>TikTok @jaysonbq</span></div>
+        <div class="stat-pill"><strong>4K Set</strong><span>Lake House Live Mix</span></div>
+        <div class="stat-pill"><strong>3,023</strong><span>Offline Audited Tracks</span></div>
+        <div class="stat-pill"><strong>Dual F1</strong><span>Bose Array + Subs</span></div>
       </div>
-      <div style="display:flex; gap:12px; flex-wrap:wrap;">
-        <a class="btn-primary" href="#packages">Start Booking &amp; Pick Your Vibe &darr;</a>
-        <a class="btn-secondary" href="https://soundcloud.com/jaysonquindao" target="_blank" rel="noopener">☁️ SoundCloud</a>
-        <a class="btn-secondary" href="https://tiktok.com/@jaysonquindao" target="_blank" rel="noopener">📱 TikTok @jaysonquindao</a>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button type="button" class="btn-primary next-step-btn" data-next="2">Start Step 2: Choose Package &amp; Date &rarr;</button>
+        <a class="btn-secondary" href="https://www.tiktok.com/@jaysonbq" target="_blank" rel="noopener">📱 TikTok @jaysonbq (335.7K Video)</a>
+        <a class="btn-secondary" href="https://soundcloud.com/jayson-quindao" target="_blank" rel="noopener">☁️ SoundCloud Mixes</a>
+        <a class="btn-secondary" href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener">▶ Watch on YouTube</a>
       </div>
     </div>
 
-    <div class="reel-box">
-      <video controls playsinline preload="metadata" poster="assets/dj-jrip-headshot.jpg">
-        <source src="assets/dj-jrip-reel.mp4" type="video/mp4">
-      </video>
-      <div class="reel-caption">▶ LIVE PERFORMANCE REEL // PIONEER DDJ CONTROL</div>
+    <!-- 3-VIDEO LIVE SHOWCASE -->
+    <div class="media-grid">
+      <div class="media-card">
+        <div class="yt-wrap" style="min-height: 290px;">
+          <iframe
+            src="https://www.youtube.com/embed/TB8gT3tWWlo?rel=0"
+            title="DJ J-Rip — Lake house set :D (4K Live Set)"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+        <div class="media-cap">
+          <span>▶ LIVE 4K SET: "Lake house set :D" (12:01)</span>
+          <a href="https://www.youtube.com/watch?v=TB8gT3tWWlo" target="_blank" rel="noopener" style="color:var(--cyan); text-decoration:none; font-weight:700;">YouTube &nearr;</a>
+        </div>
+      </div>
+
+      <div class="media-card">
+        <div style="background:#000; flex:1; display:flex; align-items:center; justify-content:center; min-height: 360px;">
+          <iframe
+            src="https://www.tiktok.com/player/v1/7660248370291707149?music_info=1&description=1&autoplay=0"
+            title="DJ J-Rip (@jaysonbq) — The 1975 a hood classic"
+            style="width:100%; height:360px; border:0;"
+            allow="autoplay; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="media-cap">
+          <span>📱 @JAYSONBQ TIKTOK</span>
+          <a href="https://www.tiktok.com/@jaysonbq/video/7660248370291707149" target="_blank" rel="noopener" style="color:var(--pink); text-decoration:none; font-weight:700;">TikTok Clip &nearr;</a>
+        </div>
+      </div>
+
+      <div class="media-card">
+        <div class="reel-wrap">
+          <video controls playsinline preload="metadata" poster="assets/dj-jrip-headshot.jpg">
+            <source src="assets/dj-jrip-reel.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="media-cap">
+          <span>🎛️ PIONEER DDJ REEL</span>
+          <span>Live Cue Control</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT'S INCLUDED GEAR -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-num">✓</span>
+        <h2 class="step-title">Production Equipment Included With Your Booking</h2>
+      </div>
+      <div class="gear-grid">
+        <div class="gear-item">
+          <h4>🔊 Dual Bose F1 812 + Subwoofers</h4>
+          <p>2 full powered 1,000W flexible-array PA stacks + dedicated subs covering 300–500 guest DFW halls cleanly.</p>
+        </div>
+        <div class="gear-item">
+          <h4>🎛️ Pioneer DDJ-SB2 Console</h4>
+          <p>Tactile live mixing, harmonic key transitions, quick-cuts &amp; stem mashups with zero dead air.</p>
+        </div>
+        <div class="gear-item">
+          <h4>🎤 Dual Wireless UHF Mics</h4>
+          <p>Feedback-resistant wireless handheld mics for Grand Entrances, 18 Roses/Candles, toasts &amp; vows.</p>
+        </div>
+        <div class="gear-item">
+          <h4>🛡️ 3,023-Track Offline Vault</h4>
+          <p>Every song + your submitted Spotify playlist downloads offline at 320kbps prior to showtime—zero Wi-Fi risk.</p>
+        </div>
+      </div>
+
+      <div class="step-nav-bar">
+        <span style="font-size:13px; color:var(--muted);">Ready to see pricing? Everything is flat-rate with 50% retainer deposit.</span>
+        <button type="button" class="btn-primary next-step-btn" data-next="2">Next Step 2: Choose Package &amp; Date &rarr;</button>
+      </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS FOR FIRST-TIME CLIENTS -->
-  <div class="roadmap">
-    <div class="road-step">
-      <span>STEP 01</span>
-      <h4>Pick Package &amp; Date</h4>
-      <p>See flat pricing and exact 50% retainer deposit upfront—zero hidden surprise fees.</p>
-    </div>
-    <div class="road-step">
-      <span>STEP 02</span>
-      <h4>Enter Event &amp; MC Cues</h4>
-      <p>Tell us your venue, Grand Entrance, 18 Roses, or clean-edit preferences.</p>
-    </div>
-    <div class="road-step">
-      <span>STEP 03</span>
-      <h4>Pick Vibe &amp; Playlist</h4>
-      <p>Browse 3,023 tracks, tap Must-Play / Do-Not-Play, or paste Spotify links.</p>
-    </div>
-    <div class="road-step">
-      <span>STEP 04</span>
-      <h4>Submit &amp; Lock Date</h4>
-      <p>Send straight to my booth &amp; lock via Stripe Card, Apple Pay, Zelle, or Invoice.</p>
-    </div>
-  </div>
+  <!-- ==================== STEP 2: PACKAGE & DATE ==================== -->
+  <section class="wizard-step" id="step2">
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-num">2</span>
+        <h2 class="step-title">Choose Your Package, Event Type &amp; Date</h2>
+      </div>
 
-  <!-- WHAT'S INCLUDED HARDWARE -->
-  <div class="step-card" id="rig">
-    <div class="step-header">
-      <span class="step-num">✓</span>
-      <h2 class="step-title">Self-Contained Production Gear Included With Full Packages</h2>
-    </div>
-    <div class="gear-grid">
-      <div class="gear-item">
-        <h4>🔊 Dual Bose F1 812 + Subwoofers</h4>
-        <p>1,000W powered flexible-array speakers + dedicated subwoofers covering 300–500 guest venues cleanly.</p>
-      </div>
-      <div class="gear-item">
-        <h4>🎛️ Pioneer DDJ-SB2 Console</h4>
-        <p>Tactile live mixing, harmonic key transitions, hot-cue drops, and custom edits with zero dead air.</p>
-      </div>
-      <div class="gear-item">
-        <h4>🎤 Dual Wireless UHF Mics</h4>
-        <p>Feedback-resistant wireless handheld mics for Grand Entrances, 18 Roses/Candles, toasts &amp; vows.</p>
-      </div>
-      <div class="gear-item">
-        <h4>🛡️ Offline Fail-Safe Library</h4>
-        <p>All 3,023 tracks stored offline on local SSD + secondary aux backup—never depends on venue Wi-Fi.</p>
-      </div>
-    </div>
-  </div>
+      <div class="pkg-grid" id="pkgGrid">
+        <div class="pkg-card" data-pkg="bar_lounge" data-label="Bar / Lounge / Club Set (2–4 hrs)" data-total="400" data-deposit="200" data-stripe="https://buy.stripe.com/aFa8wR1Ni9Ul0Mr48U0Fi08">
+          <div>
+            <div class="pkg-name">Bar, Lounge &amp; Club Set</div>
+            <div class="pkg-price">$400 <span style="font-size:13px;font-weight:500;color:var(--muted);">/ 2–4 hrs</span></div>
+            <span class="pkg-retainer">50% Deposit: $200 to Lock</span>
+            <ul>
+              <li>High-energy open-format set</li>
+              <li>House sound tie-in or portable rig</li>
+              <li>Seamless BPM &amp; vibe control</li>
+            </ul>
+          </div>
+        </div>
 
-  <!-- STEP 1: PACKAGE SELECTOR -->
-  <div class="step-card" id="packages">
-    <div class="step-header">
-      <span class="step-num">1</span>
-      <h2 class="step-title">Choose Your Event Package (Tap One)</h2>
-    </div>
-    <div class="pkg-grid" id="pkgGrid">
-      <div class="pkg-card" data-pkg="bar_lounge" data-label="Bar / Lounge / Club Set (2–4 hrs)" data-total="400" data-deposit="200" data-stripe="https://buy.stripe.com/aFa8wR1Ni9Ul0Mr48U0Fi08">
+        <div class="pkg-card active" data-pkg="debut_vip" data-label="18th Debut, Milestone & VIP Event (4–5 hrs)" data-total="750" data-deposit="375" data-stripe="https://buy.stripe.com/bJedRb1Ni1nPfHl20M0Fi09">
+          <div>
+            <div class="pkg-name">18th Debut &amp; Private VIP</div>
+            <div class="pkg-price">$750 <span style="font-size:13px;font-weight:500;color:var(--muted);">/ 4–5 hrs</span></div>
+            <span class="pkg-retainer">50% Deposit: $375 to Lock</span>
+            <ul>
+              <li>Dual Bose F1 PA arrays + Subwoofers</li>
+              <li>Dual UHF Wireless Mics &amp; MC cueing</li>
+              <li>Grand Entrance, 18 Roses &amp; Candles timing</li>
+              <li>Spotify Archive playlist pre-download</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pkg-card" data-pkg="wedding_gala" data-label="Wedding Ceremony, Reception & Gala (5–6 hrs)" data-total="1200" data-deposit="600" data-stripe="https://buy.stripe.com/5kQ5kF8bG5E5an134Q0Fi0a">
+          <div>
+            <div class="pkg-name">Full Wedding &amp; Gala</div>
+            <div class="pkg-price">$1,200 <span style="font-size:13px;font-weight:500;color:var(--muted);">/ 5–6 hrs</span></div>
+            <span class="pkg-retainer">50% Deposit: $600 to Lock</span>
+            <ul>
+              <li>Ceremony + Cocktail + Reception audio</li>
+              <li>Full PA, Wireless Mics &amp; Backup systems</li>
+              <li>Timeline coordination &amp; agreement</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pkg-card" data-pkg="custom_quote" data-label="Custom Quoted Event / Retainer" data-total="0" data-deposit="Custom" data-stripe="https://buy.stripe.com/cNicN72Rm1nPdzd5cY0Fi0b">
+          <div>
+            <div class="pkg-name">Custom Quote / Extended Set</div>
+            <div class="pkg-price">Flexible</div>
+            <span class="pkg-retainer">Pay Quoted Retainer Online</span>
+            <ul>
+              <li>Multi-stage or custom hour blocks</li>
+              <li>Special travel outside DFW</li>
+              <li>Enter any agreed amount at checkout</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-grid" style="margin-bottom: 16px;">
         <div>
-          <div class="pkg-name">Bar, Lounge &amp; Club Set</div>
-          <div class="pkg-price">$400 <span style="font-size:13px;font-weight:500;color:var(--muted);">/ 2–4 hrs</span></div>
-          <span class="pkg-retainer">50% Deposit: $200 to Lock</span>
-          <ul>
-            <li>High-energy open-format set</li>
-            <li>House sound tie-in or portable rig</li>
-            <li>Seamless BPM &amp; vibe control</li>
-          </ul>
+          <label for="eventDate">Target Event Date *</label>
+          <input type="date" id="eventDate">
         </div>
-      </div>
-
-      <div class="pkg-card active" data-pkg="debut_vip" data-label="18th Debut, Milestone & VIP Event (4–5 hrs)" data-total="750" data-deposit="375" data-stripe="https://buy.stripe.com/bJedRb1Ni1nPfHl20M0Fi09">
         <div>
-          <div class="pkg-name">18th Debut &amp; Private VIP</div>
-          <div class="pkg-price">$750 <span style="font-size:13px;font-weight:500;color:var(--muted);">/ 4–5 hrs</span></div>
-          <span class="pkg-retainer">50% Deposit: $375 to Lock</span>
-          <ul>
-            <li>Dual Bose F1 PA arrays + Subwoofers</li>
-            <li>Dual UHF Wireless Mics &amp; MC cueing</li>
-            <li>Grand Entrance, 18 Roses &amp; Candles timing</li>
-            <li>Custom Debut Vibe &amp; Playlist studio</li>
-          </ul>
+          <label for="eventType">Event Type</label>
+          <select id="eventType">
+            <option value="18th Birthday Debut">18th Birthday Debut / Milestone</option>
+            <option value="Wedding Ceremony & Reception">Wedding Ceremony &amp; Reception</option>
+            <option value="Private VIP / Birthday Party">Private VIP / Birthday Party</option>
+            <option value="Bar / Lounge / Rooftop">Bar / Lounge / Rooftop</option>
+            <option value="Corporate / Campus Event">Corporate / Campus Event</option>
+          </select>
         </div>
       </div>
 
-      <div class="pkg-card" data-pkg="wedding_gala" data-label="Wedding Ceremony, Reception & Gala (5–6 hrs)" data-total="1200" data-deposit="600" data-stripe="https://buy.stripe.com/5kQ5kF8bG5E5an134Q0Fi0a">
+      <div class="summary-ledger">
         <div>
-          <div class="pkg-name">Full Wedding &amp; Gala</div>
-          <div class="pkg-price">$1,200 <span style="font-size:13px;font-weight:500;color:var(--muted);">/ 5–6 hrs</span></div>
-          <span class="pkg-retainer">50% Deposit: $600 to Lock</span>
-          <ul>
-            <li>Ceremony + Cocktail + Reception audio</li>
-            <li>Full PA, Wireless Mics &amp; Backup systems</li>
-            <li>Timeline coordination &amp; agreement</li>
-          </ul>
+          <div style="font-size:11.5px; color:var(--muted); text-transform:uppercase; font-weight:700;">Selected Tier</div>
+          <div id="step2PkgLabel" style="font-size:16px; font-weight:700;">18th Debut, Milestone &amp; VIP Event (4–5 hrs)</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:11.5px; color:var(--muted); text-transform:uppercase; font-weight:700;">50% Retainer to Lock Calendar</div>
+          <div id="step2DepositLabel" style="font-size:22px; font-weight:800; color:var(--green);">$375.00</div>
         </div>
       </div>
 
-      <div class="pkg-card" data-pkg="custom_quote" data-label="Custom Quoted Event / Retainer" data-total="0" data-deposit="Custom" data-stripe="https://buy.stripe.com/cNicN72Rm1nPdzd5cY0Fi0b">
+      <div class="step-nav-bar">
+        <button type="button" class="btn-secondary prev-step-btn" data-prev="1">&larr; Back: Live Videos &amp; Gear</button>
+        <button type="button" class="btn-primary next-step-btn" data-next="3">Next Step 3: Event Info &amp; Mics &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STEP 3: EVENT DETAILS & CEREMONIAL CUES ==================== -->
+  <section class="wizard-step" id="step3">
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-num">3</span>
+        <h2 class="step-title">Contact Info, Venue &amp; Ceremonial Cues</h2>
+      </div>
+
+      <div class="form-grid" style="margin-bottom: 14px;">
         <div>
-          <div class="pkg-name">Custom Quote / Extended Set</div>
-          <div class="pkg-price">Flexible</div>
-          <span class="pkg-retainer">Pay Quoted Retainer Online</span>
-          <ul>
-            <li>Multi-stage or custom hour blocks</li>
-            <li>Special travel outside DFW</li>
-            <li>Enter any agreed amount at checkout</li>
-          </ul>
+          <label for="clientName">Your Name / Honoree Name *</label>
+          <input type="text" id="clientName" placeholder="e.g. Maria / Debutante Name">
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- STEP 2: EVENT & CEREMONIAL DETAILS -->
-  <div class="step-card" id="event">
-    <div class="step-header">
-      <span class="step-num">2</span>
-      <h2 class="step-title">Your Event Details &amp; Special Moments</h2>
-    </div>
-    <div class="form-grid" style="margin-bottom: 14px;">
-      <div>
-        <label for="clientName">Your Name / Honoree Name *</label>
-        <input type="text" id="clientName" placeholder="e.g. Maria / Debutante Name">
-      </div>
-      <div>
-        <label for="clientEmail">Your Email (For Receipt Copy)</label>
-        <input type="email" id="clientEmail" placeholder="you@email.com">
-      </div>
-      <div>
-        <label for="clientPhone">Mobile Phone Number *</label>
-        <input type="tel" id="clientPhone" placeholder="(214) 555-0199">
-      </div>
-      <div>
-        <label for="eventDate">Event Date *</label>
-        <input type="date" id="eventDate">
-      </div>
-      <div>
-        <label for="eventType">Event Type</label>
-        <select id="eventType">
-          <option value="18th Birthday Debut">18th Birthday Debut / Milestone</option>
-          <option value="Wedding Ceremony & Reception">Wedding Ceremony &amp; Reception</option>
-          <option value="Private VIP / Birthday Party">Private VIP / Birthday Party</option>
-          <option value="Bar / Lounge / Rooftop">Bar / Lounge / Rooftop</option>
-          <option value="Corporate / Campus Event">Corporate / Campus Event</option>
-        </select>
-      </div>
-      <div>
-        <label for="venueInfo">Venue Name / City &amp; Start Time</label>
-        <input type="text" id="venueInfo" placeholder="e.g. Arlington Hall, 6:00 PM - 11:00 PM">
-      </div>
-    </div>
-
-    <div class="form-grid" style="margin-bottom: 14px;">
-      <div>
-        <label for="mcNeed">MC / Microphone Hosting Duty</label>
-        <select id="mcNeed">
-          <option value="Need DJ J-Rip to MC & call names">Need DJ J-Rip to announce cues / names</option>
-          <option value="External MC/Host - DJ runs mics & cues only">We have our own MC (DJ runs sound &amp; cues)</option>
-          <option value="Music Only (No MC announcements needed)">Music Only (Club / Lounge format)</option>
-        </select>
-      </div>
-      <div>
-        <label for="cleanPolicy">Clean-Edit Music Policy</label>
-        <select id="cleanPolicy">
-          <option value="Clean Radio Edits During Dinner/Formal, Club Edits Late">Clean Edits Early / Uncensored Dancefloor Late</option>
-          <option value="100% Clean Radio Edits All Night">100% Clean Radio Edits All Night (Family Safe)</option>
-          <option value="Uncensored Original Versions OK All Night">Uncensored Original Tracks OK All Night</option>
-        </select>
-      </div>
-      <div>
-        <label for="playlistLink">Your Spotify / Apple / YouTube Link</label>
-        <input type="url" id="playlistLink" placeholder="Paste playlist link (optional)">
-      </div>
-    </div>
-
-    <div class="form-grid" style="margin-bottom: 14px;">
-      <div>
-        <label for="entranceSong">Grand Entrance / Walkout Song</label>
-        <input type="text" id="entranceSong" placeholder="Song + Artist for Grand Entrance">
-      </div>
-      <div>
-        <label for="slowSongs">18 Roses / Waltz / Father-Daughter Song(s)</label>
-        <input type="text" id="slowSongs" placeholder="Songs for formal dances or 18 Roses">
-      </div>
-    </div>
-
-    <div>
-      <label for="specialNotes">Timeline Notes, 18 Candles / Treasures Cues, or Special Requests</label>
-      <textarea id="specialNotes" rows="3" placeholder="Tell us about key timings (dinner time, 18 Roses / Candles / Treasures, cotillion rehearsal cues, or must-have moments)..."></textarea>
-    </div>
-  </div>
-
-  <!-- STEP 3: VIBE & 3,023-TRACK PLAYLIST STUDIO -->
-  <div class="step-card" id="vibes">
-    <div class="step-header">
-      <span class="step-num">3</span>
-      <h2 class="step-title">Pick Your Vibes &amp; Build Custom Playlist (<span id="totalVaultCount">3,023</span> Tracks)</h2>
-    </div>
-
-    <div class="vibe-grid" id="vibeGrid">
-      <div style="color:var(--muted); font-size:14px;">Loading music catalog...</div>
-    </div>
-
-    <div class="tab-row" id="vibeTabs">
-      <button type="button" class="tab-btn active" data-vibe="all">All Vibes</button>
-      <button type="button" class="tab-btn" data-vibe="debut">✨ Debut &amp; Formal</button>
-      <button type="button" class="tab-btn" data-vibe="rnb">🍸 R&amp;B &amp; Neo-Soul</button>
-      <button type="button" class="tab-btn" data-vibe="hiphop">🔥 Hip-Hop &amp; Party</button>
-      <button type="button" class="tab-btn" data-vibe="latin">💃 Latin &amp; Fiesta</button>
-      <button type="button" class="tab-btn" data-vibe="house">⚡ House, Pop &amp; Dance</button>
-      <button type="button" class="tab-btn" data-vibe="edits">🎛️ Custom Edits</button>
-    </div>
-
-    <div style="margin-bottom: 12px;">
-      <input type="text" id="trackSearch" placeholder="Search 3,023 tracks by artist or song title (SZA, Drake, Bad Bunny, Bruno Mars, Coldplay)...">
-    </div>
-
-    <div class="track-list" id="trackList"></div>
-    <div style="margin-top:8px; display:flex; justify-content:space-between; align-items:center;">
-      <span id="showingCount" style="font-size:12px; color:var(--muted);">Loading tracks...</span>
-      <button type="button" class="btn-sm" id="loadMoreBtn" style="display:none;">Show More Tracks</button>
-    </div>
-
-    <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
-      <input type="text" id="customSongInput" style="flex:2; min-width:220px;" placeholder="Song not listed above? Type Song & Artist (e.g. 'Tyla - Water')...">
-      <button type="button" class="btn-sm btn-add" id="addCustomMustBtn" style="padding:10px 14px;">+ Add Must-Play</button>
-      <button type="button" class="btn-sm btn-ban" id="addCustomBanBtn" style="padding:10px 14px;">🚫 Do-Not-Play</button>
-    </div>
-
-    <div class="playlist-columns">
-      <div class="list-box">
-        <h4><span style="color:var(--green);">✅ Must-Play List</span><span id="mustCountBadge">0 songs</span></h4>
-        <div id="mustListDisplay"><span style="color:var(--muted); font-size:12.5px;">Tap songs above or type custom requests.</span></div>
-      </div>
-      <div class="list-box">
-        <h4><span style="color:var(--red);">🚫 Do-Not-Play Blacklist</span><span id="banCountBadge">0 songs</span></h4>
-        <div id="banListDisplay"><span style="color:var(--muted); font-size:12.5px;">No blacklisted songs yet.</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- STEP 4: PAYMENT OPTIONS & DATE LOCK -->
-  <div class="step-card" id="pay">
-    <div class="step-header">
-      <span class="step-num">4</span>
-      <h2 class="step-title">Select Payment Option, Submit &amp; Lock Your Date</h2>
-    </div>
-
-    <div class="summary-ledger">
-      <div>
-        <div style="font-size:12px; color:var(--muted); text-transform:uppercase; font-weight:700;">Selected Package</div>
-        <div id="ledgerPkgName" style="font-size:17px; font-weight:700; color:#fff;">18th Debut, Milestone &amp; VIP Event (4–5 hrs)</div>
-      </div>
-      <div style="text-align:right;">
-        <div style="font-size:12px; color:var(--muted); text-transform:uppercase; font-weight:700;">50% Retainer Due to Lock Date</div>
-        <div id="ledgerDeposit" style="font-size:24px; font-weight:800; color:var(--green);">$375.00 <span style="font-size:13px; color:var(--muted); font-weight:500;">(Balance due day of event)</span></div>
-      </div>
-    </div>
-
-    <label style="margin-bottom:10px;">Choose How You Prefer to Pay Your Retainer:</label>
-    <div class="pay-options-grid" id="payOptionsGrid">
-      <div class="pay-card active" data-pay="stripe">
-        <h4>💳 Card / Apple Pay / Google Pay</h4>
-        <p>Instant secured checkout via Stripe (GG LOOP LLC). Receive automated receipt immediately.</p>
-        <span class="pay-fee-tag">Instant Online Checkout</span>
-      </div>
-      <div class="pay-card" data-pay="zelle">
-        <h4>⚡ Zelle Instant Transfer</h4>
-        <p>Zero-fee direct bank transfer to mobile <strong>(469) 371-8556</strong> (Jayson Quindao).</p>
-        <span class="pay-fee-tag" style="color:var(--green);">0% Fee • Most Popular</span>
-      </div>
-      <div class="pay-card" data-pay="applecash">
-        <h4>🍏 Apple Cash (iMessage Pay)</h4>
-        <p>Tap &amp; send directly in Messages to <strong>(469) 371-8556</strong> with zero processing fee.</p>
-        <span class="pay-fee-tag" style="color:var(--green);">0% Fee • Instant</span>
-      </div>
-      <div class="pay-card" data-pay="invoice">
-        <h4>📄 Quote &amp; Agreement First</h4>
-        <p>Submit your event details &amp; playlist now, review official contract PDF, then pay deposit.</p>
-        <span class="pay-fee-tag">Hold Inquiry / Quote First</span>
-      </div>
-    </div>
-
-    <label class="agreement-check">
-      <input type="checkbox" id="agreeTerms" checked>
-      <span>I understand that submitting my event profile holds an inquiry, and paying the <strong>50% non-refundable retainer</strong> officially locks my event date on DJ J-Rip's calendar (remaining 50% settled prior to soundcheck).</span>
-    </label>
-
-    <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
-      <button type="button" class="btn-primary" id="submitMasterBtn">🚀 Submit Event, Playlist &amp; Open Payment Step</button>
-      <button type="button" class="btn-secondary" id="copyBtn">📋 Copy Full Summary</button>
-      <a class="btn-secondary" id="smsFallbackLink" href="#">💬 Text (469) 371-8556</a>
-      <a class="btn-secondary" id="emailFallbackLink" href="#">✉️ Email App</a>
-    </div>
-
-    <div class="status-err" id="errorBanner"></div>
-
-    <!-- POST-SUBMIT INSTANT PAYMENT PANEL -->
-    <div class="checkout-panel" id="checkoutPanel">
-      <h3 style="color:var(--green); font-family:'Space Grotesk',sans-serif; font-size:20px; margin-bottom:8px;">
-        ✅ Event Info &amp; Custom Playlist Submitted to DJ J-Rip!
-      </h3>
-      <p style="font-size:14px; color:#e2e8f0; margin-bottom:14px;" id="postSubmitNote">
-        Your details and track list have been dispatched straight to Jayson's booking inbox. Complete your retainer below to lock your date:
-      </p>
-
-      <div id="stripePayAction" style="display:none; margin-bottom:12px;">
-        <a id="stripeDirectBtn" class="btn-pay-green" href="https://buy.stripe.com/bJedRb1Ni1nPfHl20M0Fi09" target="_blank" rel="noopener">
-          💳 Complete Retainer Deposit on Stripe ($375) &rarr;
-        </a>
-        <div style="font-size:12px; color:var(--muted); margin-top:6px;">
-          Accepts Visa, Mastercard, Amex, Apple Pay &amp; Google Pay &bull; Enter matching Name &amp; Event Date at checkout.
+        <div>
+          <label for="clientPhone">Mobile Phone Number *</label>
+          <input type="tel" id="clientPhone" placeholder="(214) 555-0199">
+        </div>
+        <div>
+          <label for="clientEmail">Your Email (For Automated Receipt)</label>
+          <input type="email" id="clientEmail" placeholder="you@email.com">
+        </div>
+        <div>
+          <label for="venueInfo">Venue Name / City &amp; Hours</label>
+          <input type="text" id="venueInfo" placeholder="e.g. Arlington Hall, 6:00 PM - 11:00 PM">
         </div>
       </div>
 
-      <div id="zellePayAction" style="display:none; background:#0b111e; border:1px solid var(--border); padding:14px; border-radius:10px; margin-bottom:12px;">
-        <strong style="color:#fff;">Instant Zero-Fee Transfer Instructions:</strong>
-        <p style="font-size:13.5px; color:#cbd5e1; margin:6px 0 10px 0;" id="manualPayInstructions"></p>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <button type="button" class="btn-secondary" id="copyPhoneBtn">📋 Copy (469) 371-8556</button>
-          <a class="btn-pay-green" id="textReceiptBtn" href="sms:+14693718556">💬 Text Screenshot When Sent</a>
+      <div class="form-grid" style="margin-bottom: 14px;">
+        <div>
+          <label for="mcNeed">MC / Microphone Hosting Duty</label>
+          <select id="mcNeed">
+            <option value="Need DJ J-Rip to MC & call names">Need DJ J-Rip to announce cues / names</option>
+            <option value="External MC/Host - DJ runs mics & cues only">We have our own MC (DJ runs sound &amp; cues)</option>
+            <option value="Music Only (No MC announcements needed)">Music Only (Club / Lounge format)</option>
+          </select>
+        </div>
+        <div>
+          <label for="cleanPolicy">Clean-Edit Music Policy</label>
+          <select id="cleanPolicy">
+            <option value="Clean Radio Edits During Dinner/Formal, Club Edits Late">Clean Edits Early / Uncensored Dancefloor Late</option>
+            <option value="100% Clean Radio Edits All Night">100% Clean Radio Edits All Night (Family Safe)</option>
+            <option value="Uncensored Original Versions OK All Night">Uncensored Original Tracks OK All Night</option>
+          </select>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- STICKY BOTTOM PROGRESS BAR -->
+      <div class="form-grid" style="margin-bottom: 14px;">
+        <div>
+          <label for="entranceSong">Grand Entrance / Walkout Song</label>
+          <input type="text" id="entranceSong" placeholder="Song + Artist for Grand Entrance">
+        </div>
+        <div>
+          <label for="slowSongs">18 Roses / Waltz / Father-Daughter Song(s)</label>
+          <input type="text" id="slowSongs" placeholder="Song(s) for formal dances or 18 Roses">
+        </div>
+      </div>
+
+      <div>
+        <label for="specialNotes">Timeline Notes, 18 Candles / Treasures Cues, or Special Requests</label>
+        <textarea id="specialNotes" rows="3" placeholder="Example: Keep dinner acoustic/R&B until 8:15 PM, then 18 Roses, then hip-hop/throwback party at 9:30 PM..."></textarea>
+      </div>
+
+      <div class="step-nav-bar">
+        <button type="button" class="btn-secondary prev-step-btn" data-prev="2">&larr; Back: Package &amp; Date</button>
+        <button type="button" class="btn-primary next-step-btn" data-next="4">Next Step 4: Spotify Playlists &amp; Vibe &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STEP 4: INTUITIVE SPOTIFY & VIBE PLAYLIST STUDIO ==================== -->
+  <section class="wizard-step" id="step4">
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-num">4</span>
+        <h2 class="step-title">Setup Your Event Playlists &amp; Musical Vibe</h2>
+      </div>
+
+      <!-- A: SPOTIFY ARCHIVE PLAYLIST LINK SYNC -->
+      <div class="spotify-sync-box">
+        <span class="spotify-badge">⚡ DIRECT SPOTIFY ARCHIVE DOWNLOAD SYNC</span>
+        <h3 style="font-family:'Space Grotesk',sans-serif; font-size:18px; margin-bottom:6px;">
+          Already have a Spotify, Apple Music, or YouTube playlist? Paste links below.
+        </h3>
+        <p style="font-size:13.5px; color:#d1fae5; margin-bottom:14px;">
+          No need to add songs one by one! Paste your playlist links by event phase—my studio Spotify Archiver automatically pulls every song in high-res 320kbps MP3 offline into your private event crate before showtime.
+        </p>
+
+        <div class="form-grid">
+          <div>
+            <label for="plDinner">🍸 Arrival / Cocktail / Dinner Link</label>
+            <input type="url" id="plDinner" class="pl-url-input" placeholder="https://open.spotify.com/playlist/...">
+          </div>
+          <div>
+            <label for="plFormal">✨ 18 Roses / Formal / Slow Dances Link</label>
+            <input type="url" id="plFormal" class="pl-url-input" placeholder="https://open.spotify.com/playlist/...">
+          </div>
+          <div>
+            <label for="plParty">🔥 Main Dancefloor / After-Party Link</label>
+            <input type="url" id="plParty" class="pl-url-input" placeholder="https://open.spotify.com/playlist/...">
+          </div>
+        </div>
+        <div class="playlist-preview-grid" id="playlistPreviews"></div>
+      </div>
+
+      <!-- B: OVERALL EVENT VIBES -->
+      <label style="margin-bottom:8px;">1. Tap the Overall Vibes You Want Throughout the Night:</label>
+      <div class="vibe-grid" id="vibeGrid">
+        <div style="color:var(--muted); font-size:14px;">Loading vibe catalog...</div>
+      </div>
+
+      <!-- C: 1-TAP CURATED STARTER PACKS -->
+      <label style="margin-bottom:8px;">2. 1-Tap Essential Starter Packs (Adds 5 Crowd-Tested Classics Instantly):</label>
+      <div class="starter-packs-grid" id="starterPacksGrid">
+        <button type="button" class="starter-btn" data-pack="debut_formal">
+          <strong>✨ 18th Debut &amp; Formal Pack</strong>
+          <span>Bruno Major, Benson Boone, Billie Eilish, John Legend, Stevie Wonder</span>
+        </button>
+        <button type="button" class="starter-btn" data-pack="cocktail_rnb">
+          <strong>🍸 Cocktail Hour R&amp;B Pack</strong>
+          <span>Silk Sonic, Frank Ocean, Daniel Caesar, Doja Cat/SZA, Bill Withers</span>
+        </button>
+        <button type="button" class="starter-btn" data-pack="throwbacks">
+          <strong>🎉 Multi-Gen Family Classics</strong>
+          <span>Earth Wind &amp; Fire, Whitney Houston, Michael Jackson, Backstreet Boys, Bruno Mars</span>
+        </button>
+        <button type="button" class="starter-btn" data-pack="peak_party">
+          <strong>🔥 Peak Hip-Hop &amp; Club Energy</strong>
+          <span>Drake, Kendrick/Baby Keem, 50 Cent, Daft Punk, Avicii</span>
+        </button>
+        <button type="button" class="starter-btn" data-pack="latin_fiesta">
+          <strong>💃 Latin &amp; Fiesta Favorites</strong>
+          <span>Bad Bunny, Elvis Crespo, Caballo Dorado, Cardi B/J Balvin</span>
+        </button>
+      </div>
+
+      <!-- D: BULK PASTE OR SEARCH VAULT -->
+      <div class="bulk-search-wrap">
+        <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:14px;">
+          <label for="bulkSongsInput">3. Paste Multiple Songs at Once (One Per Line)</label>
+          <textarea id="bulkSongsInput" rows="4" placeholder="SZA - Kill Bill&#10;Bruno Mars - Finesse&#10;NewJeans - Super Shy"></textarea>
+          <div style="display:flex; gap:8px; margin-top:8px;">
+            <button type="button" class="btn-sm btn-add" id="bulkAddMustBtn" style="flex:1; padding:8px;">+ Add All to Must-Play</button>
+            <button type="button" class="btn-sm btn-ban" id="bulkAddBanBtn" style="padding:8px;">🚫 Blacklist</button>
+          </div>
+        </div>
+
+        <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:14px;">
+          <label for="trackSearch">4. Browse &amp; Search My <span id="totalVaultCount">3,023</span> Offline Tracks</label>
+          <div class="tab-row" id="vibeTabs" style="margin-bottom:8px;">
+            <button type="button" class="tab-btn active" data-vibe="all">All</button>
+            <button type="button" class="tab-btn" data-vibe="debut">✨ Debut</button>
+            <button type="button" class="tab-btn" data-vibe="rnb">🍸 R&amp;B</button>
+            <button type="button" class="tab-btn" data-vibe="hiphop">🔥 Hip-Hop</button>
+            <button type="button" class="tab-btn" data-vibe="latin">💃 Latin</button>
+            <button type="button" class="tab-btn" data-vibe="house">⚡ House/Pop</button>
+            <button type="button" class="tab-btn" data-vibe="edits">🎛️ Edits</button>
+          </div>
+          <input type="text" id="trackSearch" placeholder="Search artist or song (e.g. SZA, Drake, Bad Bunny, Coldplay)...">
+          <div class="track-list" id="trackList" style="margin-top:8px; max-height:230px;"></div>
+          <div style="margin-top:6px; display:flex; justify-content:space-between; align-items:center;">
+            <span id="showingCount" style="font-size:11.5px; color:var(--muted);">Loading tracks...</span>
+            <button type="button" class="btn-sm" id="loadMoreBtn" style="display:none;">Show More</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MUST PLAY / BAN DISPLAY -->
+      <div class="playlist-columns">
+        <div class="list-box">
+          <h4><span style="color:var(--green);">✅ Must-Play Queue</span><span id="mustCountBadge">0 songs</span></h4>
+          <div id="mustListDisplay"><span style="color:var(--muted); font-size:12.5px;">Tap Starter Packs, search tracks, or paste Spotify links above.</span></div>
+        </div>
+        <div class="list-box">
+          <h4><span style="color:var(--red);">🚫 Do-Not-Play Blacklist</span><span id="banCountBadge">0 songs</span></h4>
+          <div id="banListDisplay"><span style="color:var(--muted); font-size:12.5px;">No blacklisted songs yet.</span></div>
+        </div>
+      </div>
+
+      <div class="step-nav-bar">
+        <button type="button" class="btn-secondary prev-step-btn" data-prev="3">&larr; Back: Event &amp; Cues</button>
+        <button type="button" class="btn-primary next-step-btn" data-next="5">Next Step 5: Payment &amp; Lock Date &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STEP 5: PAYMENT & INSTANT BOOKING LOCK ==================== -->
+  <section class="wizard-step" id="step5">
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-num">5</span>
+        <h2 class="step-title">Review Booking, Choose Payment &amp; Lock Your Date</h2>
+      </div>
+
+      <div class="summary-ledger">
+        <div>
+          <div style="font-size:11.5px; color:var(--muted); text-transform:uppercase; font-weight:700;">Booking Summary</div>
+          <div id="ledgerPkgName" style="font-size:17px; font-weight:700; color:#fff;">18th Debut, Milestone &amp; VIP Event (4–5 hrs)</div>
+          <div class="review-chips" id="reviewChips"></div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:11.5px; color:var(--muted); text-transform:uppercase; font-weight:700;">50% Retainer Due to Lock</div>
+          <div id="ledgerDeposit" style="font-size:23px; font-weight:800; color:var(--green);">$375.00 <span style="font-size:12px; color:var(--muted); font-weight:500;">(Balance due day of event)</span></div>
+        </div>
+      </div>
+
+      <label style="margin-bottom:10px;">Select Payment Option:</label>
+      <div class="pay-options-grid" id="payOptionsGrid">
+        <div class="pay-card active" data-pay="stripe">
+          <h4>💳 Card / Apple Pay / Google Pay</h4>
+          <p>Secured Stripe checkout (GG LOOP LLC). Works with all phones &amp; credit cards with instant email receipt.</p>
+          <span class="pay-fee-tag">Instant Online Checkout</span>
+        </div>
+        <div class="pay-card" data-pay="zelle">
+          <h4>⚡ Zelle Bank Transfer</h4>
+          <p>Zero-fee direct bank transfer to mobile <strong>(469) 371-8556</strong> (Jayson Quindao).</p>
+          <span class="pay-fee-tag" style="color:var(--green);">0% Fee • Most Popular</span>
+        </div>
+        <div class="pay-card" data-pay="venmo_cashapp">
+          <h4>📲 Venmo / Cash App / Direct</h4>
+          <p>Submit now and coordinate instant transfer directly via text to <strong>(469) 371-8556</strong>.</p>
+          <span class="pay-fee-tag" style="color:var(--green);">0% Fee • Quick Confirm</span>
+        </div>
+        <div class="pay-card" data-pay="invoice">
+          <h4>📄 Contract / Quote First</h4>
+          <p>Send your details &amp; Spotify playlists now, review official performance agreement PDF, then send retainer.</p>
+          <span class="pay-fee-tag">Hold Inquiry / Quote First</span>
+        </div>
+      </div>
+
+      <label class="agreement-check">
+        <input type="checkbox" id="agreeTerms" checked>
+        <span>I understand that submitting holds an inquiry, and completing the <strong>50% non-refundable retainer</strong> officially locks my event date on DJ J-Rip's calendar (remaining 50% settled prior to soundcheck).</span>
+      </label>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+        <button type="button" class="btn-primary" id="submitMasterBtn">🚀 Submit Booking &amp; Trigger Live Payment Step</button>
+        <button type="button" class="btn-secondary" id="copyBtn">📋 Copy Full Summary</button>
+        <a class="btn-secondary" id="smsFallbackLink" href="#">💬 Text (469) 371-8556</a>
+        <a class="btn-secondary" id="emailFallbackLink" href="#">✉️ Email App</a>
+      </div>
+
+      <div class="status-err" id="errorBanner"></div>
+
+      <!-- POST-SUBMIT PAYMENT BOX -->
+      <div class="checkout-panel" id="checkoutPanel">
+        <h3 style="color:var(--green); font-family:'Space Grotesk',sans-serif; font-size:20px; margin-bottom:8px;">
+          ✅ Submitted! DJ J-Rip's Phone Alarm &amp; Booth Inbox Were Alerted Immediately.
+        </h3>
+        <p style="font-size:14px; color:#e2e8f0; margin-bottom:14px;" id="postSubmitNote">
+          Your event profile, vibes, and Spotify playlists are in Jayson's queue. Complete your retainer below to lock your calendar date:
+        </p>
+
+        <div id="stripePayAction" style="display:none; margin-bottom:12px;">
+          <a id="stripeDirectBtn" class="btn-pay-green" href="https://buy.stripe.com/bJedRb1Ni1nPfHl20M0Fi09" target="_blank" rel="noopener">
+            💳 Complete Retainer Deposit on Stripe ($375) &rarr;
+          </a>
+          <div style="font-size:12px; color:var(--muted); margin-top:6px;">
+            Accepts Visa, Mastercard, Amex, Apple Pay &amp; Google Pay &bull; Please enter matching Name &amp; Event Date at checkout.
+          </div>
+        </div>
+
+        <div id="zellePayAction" style="display:none; background:#0b111e; border:1px solid var(--border); padding:14px; border-radius:10px; margin-bottom:12px;">
+          <strong style="color:#fff;">Instant Transfer Instructions:</strong>
+          <p style="font-size:13.5px; color:#cbd5e1; margin:6px 0 10px 0;" id="manualPayInstructions"></p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button type="button" class="btn-secondary" id="copyPhoneBtn">📋 Copy (469) 371-8556</button>
+            <a class="btn-pay-green" id="textReceiptBtn" href="sms:+14693718556">💬 Text Screenshot When Sent</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-nav-bar">
+        <button type="button" class="btn-secondary prev-step-btn" data-prev="4">&larr; Back: Edit Playlists</button>
+        <span style="font-size:12.5px; color:var(--muted);">Questions? Text/Call Jayson directly: <a href="tel:+14693718556" style="color:var(--cyan);">(469) 371-8556</a></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY BOTTOM STATUS FOOTER -->
   <div class="sticky-footer">
     <div class="sticky-inner">
-      <div style="font-size:13px; color:var(--muted);">
-        <strong id="footerPkg" style="color:#fff;">$375 Deposit</strong> &bull;
-        Vibes: <strong id="footerVibes" style="color:var(--cyan);">0</strong> &bull;
-        Must-Play: <strong id="footerMust" style="color:var(--green);">0</strong>
+      <div style="font-size:12.5px; color:var(--muted);">
+        <strong id="footerStepBadge" style="color:var(--cyan);">Step 1/5</strong> &bull;
+        <strong id="footerPkg" style="color:#fff;">$375 Dep</strong> &bull;
+        Links: <strong id="footerLinks" style="color:var(--green);">0</strong> &bull;
+        Songs: <strong id="footerMust" style="color:var(--green);">0</strong>
       </div>
       <div style="display:flex; gap:8px;">
-        <a class="btn-secondary" style="padding:8px 14px; font-size:12.5px;" href="#pay">Go to Payment &darr;</a>
+        <button type="button" class="btn-secondary" id="footerPrevBtn" style="padding:7px 12px; font-size:12.5px; display:none;">&larr; Back</button>
+        <button type="button" class="btn-primary" id="footerNextBtn" style="padding:7px 14px; font-size:12.5px;">Next Step &rarr;</button>
       </div>
     </div>
   </div>
 
   <script>
     const VIBE_ICONS = { rnb:'🍸', debut:'✨', hiphop:'🔥', latin:'💃', house:'⚡', edits:'🎛️' };
-    const STORAGE_KEY = 'djjrip_client_portal_v1';
+    const STORAGE_KEY = 'djjrip_client_portal_v2';
+    const NTFY_TOPIC = 'djjrip-ops-4a65fac665ec';
 
+    const STARTER_PACKS = {
+      debut_formal: [
+        'nothing::brunomajor',
+        'beautifulthings::bensonb',
+        'birdsofafeather::billiee',
+        'youinobodyintheworld::jo',
+        'isntshelovely::steviewon'
+      ],
+      cocktail_rnb: [
+        'leavethedooropen::brunom',
+        'pinkwhite::frankocean',
+        'japanesedenim::danielcae',
+        'kissmemorefeatsza::dojac',
+        'lovelyday::billwithers'
+      ],
+      throwbacks: [
+        'september::earthwindfire',
+        'howwilliknow::whitneyhou',
+        'pytprettyyoungthing::mic',
+        'iwantitthatway::backstre',
+        'treasure::brunomars'
+      ],
+      peak_party: [
+        'nokia::drake',
+        'familytieswithkendrickla',
+        'indaclub::50cent',
+        'daftpunkonemoretime::daf',
+        'wakemeup::avicii'
+      ],
+      latin_fiesta: [
+        'titmepregunt::badbunny',
+        'suavemente::elviscrespo',
+        'payasoderodeo::caballodo',
+        'ilikeit::cardibbadbunnyj',
+        'callaita::badbunnytainy'
+      ]
+    };
+
+    let currentStep = 1;
     let catalogData = null;
+    let trackById = new Map();
     let selectedVibes = new Set();
     let activeFilterVibe = 'all';
     let searchQuery = '';
-    let visibleLimit = 50;
+    let visibleLimit = 40;
     let mustPlay = [];
     let doNotPlay = [];
+    let oembedCache = {};
 
     let selectedPackage = {
       id: 'debut_vip',
@@ -948,6 +1326,32 @@
       return String(str).replace(/[&<>"']/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[m]));
     }
 
+    function goToStep(stepNum) {
+      const target = Math.max(1, Math.min(5, Number(stepNum)));
+      currentStep = target;
+      document.querySelectorAll('.wizard-step').forEach((sec, idx) => {
+        sec.classList.toggle('active', idx + 1 === target);
+      });
+      document.querySelectorAll('.step-tab').forEach(btn => {
+        const s = Number(btn.dataset.step);
+        btn.classList.toggle('active', s === target);
+        btn.classList.toggle('completed', s < target);
+      });
+      document.getElementById('footerStepBadge').textContent = `Step ${target}/5`;
+      const prevBtn = document.getElementById('footerPrevBtn');
+      const nextBtn = document.getElementById('footerNextBtn');
+      prevBtn.style.display = target > 1 ? 'inline-flex' : 'none';
+      if (target < 5) {
+        nextBtn.style.display = 'inline-flex';
+        nextBtn.textContent = `Next Step ${target + 1} →`;
+      } else {
+        nextBtn.style.display = 'none';
+      }
+      if (target === 5) renderReviewChips();
+      saveState();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     function selectPkgCard(card) {
       document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('active'));
       card.classList.add('active');
@@ -959,11 +1363,14 @@
         deposit: dep,
         stripeUrl: card.dataset.stripe
       };
+      const depHtml = dep === 'Custom'
+        ? 'Custom Quote <span style="font-size:12.5px;color:var(--muted);font-weight:500;">(Agreed amount)</span>'
+        : `$${dep}.00 <span style="font-size:12.5px;color:var(--muted);font-weight:500;">($${selectedPackage.total} total)</span>`;
+      document.getElementById('step2PkgLabel').textContent = selectedPackage.label;
+      document.getElementById('step2DepositLabel').innerHTML = dep === 'Custom' ? 'Custom Quote' : `$${dep}.00`;
       document.getElementById('ledgerPkgName').textContent = selectedPackage.label;
-      document.getElementById('ledgerDeposit').innerHTML = dep === 'Custom'
-        ? 'Custom Quote <span style="font-size:13px;color:var(--muted);font-weight:500;">(Enter agreed amount)</span>'
-        : `$${dep}.00 <span style="font-size:13px;color:var(--muted);font-weight:500;">($${selectedPackage.total} total • balance due day of event)</span>`;
-      document.getElementById('footerPkg').textContent = dep === 'Custom' ? 'Custom Deposit' : `$${dep} Deposit`;
+      document.getElementById('ledgerDeposit').innerHTML = depHtml;
+      document.getElementById('footerPkg').textContent = dep === 'Custom' ? 'Custom Dep' : `$${dep} Dep`;
       updateCheckoutActionBoxes();
       saveState();
     }
@@ -984,12 +1391,64 @@
         : `💳 Complete $${selectedPackage.deposit} Retainer Deposit on Stripe →`;
     }
 
-    function applyUrlParams() {
+    function getPlaylistUrls() {
+      return [
+        { phase: 'Arrival / Dinner', url: document.getElementById('plDinner').value.trim() },
+        { phase: '18 Roses / Formal', url: document.getElementById('plFormal').value.trim() },
+        { phase: 'Dancefloor / Party', url: document.getElementById('plParty').value.trim() }
+      ].filter(x => x.url.length > 0);
+    }
+
+    async function refreshPlaylistPreviews() {
+      const container = document.getElementById('playlistPreviews');
+      const items = getPlaylistUrls();
+      document.getElementById('footerLinks').textContent = items.length;
+      if (items.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+      container.innerHTML = '';
+      for (const item of items) {
+        const card = document.createElement('div');
+        card.className = 'oembed-card';
+        const isSpotify = item.url.includes('open.spotify.com');
+        if (isSpotify) {
+          if (!oembedCache[item.url]) {
+            try {
+              const r = await fetch(`https://open.spotify.com/oembed?url=${encodeURIComponent(item.url)}`);
+              if (r.ok) oembedCache[item.url] = await r.json();
+            } catch (e) {}
+          }
+          const meta = oembedCache[item.url];
+          if (meta) {
+            card.innerHTML = `
+              ${meta.thumbnail_url ? `<img src="${escapeHtml(meta.thumbnail_url)}" alt="Spotify Cover">` : ''}
+              <div style="min-width:0;">
+                <div style="font-size:11px; color:var(--green); font-weight:700;">✓ SPOTIFY ARCHIVE LINKED (${escapeHtml(item.phase)})</div>
+                <div style="font-size:13px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(meta.title || 'Spotify Playlist')}</div>
+              </div>
+            `;
+            container.appendChild(card);
+            continue;
+          }
+        }
+        card.innerHTML = `
+          <div style="min-width:0;">
+            <div style="font-size:11px; color:var(--cyan); font-weight:700;">✓ QUEUED FOR DOWNLOAD (${escapeHtml(item.phase)})</div>
+            <div style="font-size:12px; color:#cbd5e1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(item.url)}</div>
+          </div>
+        `;
+        container.appendChild(card);
+      }
+    }
+
+    function applyUrlParamsAndHash() {
       const params = new URLSearchParams(window.location.search);
       const qEvent = (params.get('event') || '').toLowerCase();
       const qDate = params.get('date') || '';
       const qClient = params.get('client') || '';
       const qVibe = (params.get('vibe') || '').toLowerCase();
+      const qStep = params.get('step');
 
       if (qClient) document.getElementById('clientName').value = qClient;
       if (/^\d{4}-\d{2}-\d{2}$/.test(qDate)) document.getElementById('eventDate').value = qDate;
@@ -1020,21 +1479,33 @@
           }
         });
       }
+
+      const h = (window.location.hash || '').toLowerCase();
+      if (qStep && Number(qStep) >= 1 && Number(qStep) <= 5) currentStep = Number(qStep);
+      else if (h === '#step4' || h === '#vibes') currentStep = 4;
+      else if (h === '#step5' || h === '#pay') currentStep = 5;
+      else if (h === '#step3' || h === '#event') currentStep = 3;
+      else if (h === '#step2' || h === '#packages') currentStep = 2;
     }
 
     function saveState() {
       try {
         const st = {
+          currentStep,
           clientName: document.getElementById('clientName').value,
           clientEmail: document.getElementById('clientEmail').value,
           clientPhone: document.getElementById('clientPhone').value,
           eventDate: document.getElementById('eventDate').value,
           eventType: document.getElementById('eventType').value,
           venueInfo: document.getElementById('venueInfo').value,
+          mcNeed: document.getElementById('mcNeed').value,
+          cleanPolicy: document.getElementById('cleanPolicy').value,
           entranceSong: document.getElementById('entranceSong').value,
           slowSongs: document.getElementById('slowSongs').value,
-          playlistLink: document.getElementById('playlistLink').value,
           specialNotes: document.getElementById('specialNotes').value,
+          plDinner: document.getElementById('plDinner').value,
+          plFormal: document.getElementById('plFormal').value,
+          plParty: document.getElementById('plParty').value,
           selectedVibes: Array.from(selectedVibes),
           mustPlay,
           doNotPlay,
@@ -1050,7 +1521,7 @@
         const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) return;
         const st = JSON.parse(raw);
-        ['clientName','clientEmail','clientPhone','eventDate','eventType','venueInfo','entranceSong','slowSongs','playlistLink','specialNotes'].forEach(id => {
+        ['clientName','clientEmail','clientPhone','eventDate','eventType','venueInfo','mcNeed','cleanPolicy','entranceSong','slowSongs','specialNotes','plDinner','plFormal','plParty'].forEach(id => {
           if (st[id]) document.getElementById(id).value = st[id];
         });
         if (Array.isArray(st.selectedVibes)) st.selectedVibes.forEach(v => selectedVibes.add(v));
@@ -1064,6 +1535,7 @@
           const pm = document.querySelector(`.pay-card[data-pay="${st.payMethod}"]`);
           if (pm) selectPayCard(pm);
         }
+        if (st.currentStep) currentStep = st.currentStep;
       } catch (e) {}
     }
 
@@ -1071,15 +1543,18 @@
       try {
         const res = await fetch('dj-catalog.json');
         catalogData = await res.json();
+        catalogData.tracks.forEach(t => trackById.set(t.id, t));
         document.getElementById('totalVaultCount').textContent = catalogData.total.toLocaleString();
       } catch (e) {
-        document.getElementById('trackList').innerHTML = '<div style="padding:16px;color:#fca5a5;">Catalog busy loading — refresh or type custom songs below.</div>';
+        document.getElementById('trackList').innerHTML = '<div style="padding:14px;color:#fca5a5;">Catalog busy loading — paste your Spotify URLs or custom songs above!</div>';
       }
       restoreState();
-      applyUrlParams();
+      applyUrlParamsAndHash();
       renderVibes();
       setFilterVibe(activeFilterVibe);
       renderSelectedLists();
+      refreshPlaylistPreviews();
+      goToStep(currentStep);
     }
 
     function renderVibes() {
@@ -1097,7 +1572,7 @@
           <div class="vibe-desc">${info.desc}</div>
           <div class="vibe-actions">
             <span class="vibe-badge">${selectedVibes.has(key) ? '✓ Selected Vibe' : 'Tap to Select Vibe'}</span>
-            <button type="button" class="vibe-filter-btn" data-browse="${key}">Filter Songs &darr;</button>
+            <button type="button" class="vibe-filter-btn" data-browse="${key}">Filter Tracks &darr;</button>
           </div>
         `;
         card.addEventListener('click', (e) => {
@@ -1119,7 +1594,7 @@
 
     function setFilterVibe(v) {
       activeFilterVibe = v;
-      visibleLimit = 50;
+      visibleLimit = 40;
       document.querySelectorAll('#vibeTabs .tab-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.vibe === v));
       renderTracks();
     }
@@ -1138,7 +1613,7 @@
       const slice = filtered.slice(0, visibleLimit);
 
       if (slice.length === 0) {
-        listEl.innerHTML = '<div style="padding:18px;color:var(--muted);text-align:center;">No vault match — type any song below as a Custom Must-Play!</div>';
+        listEl.innerHTML = '<div style="padding:16px;color:var(--muted);text-align:center;">No exact vault match — paste it in Box 3 ("Paste Multiple Songs") and our Spotify engine will grab it!</div>';
       } else {
         const frag = document.createDocumentFragment();
         for (const t of slice) {
@@ -1168,19 +1643,27 @@
       document.getElementById('loadMoreBtn').style.display = filtered.length > visibleLimit ? 'inline-block' : 'none';
     }
 
-    function toggleMust(id, label) {
+    function toggleMust(id, label, forceAdd = false) {
       const idx = mustPlay.findIndex(x => x.id === id);
-      if (idx >= 0) mustPlay.splice(idx, 1);
-      else { mustPlay.push({ id, label }); doNotPlay = doNotPlay.filter(x => x.id !== id); }
+      if (idx >= 0) {
+        if (!forceAdd) mustPlay.splice(idx, 1);
+      } else {
+        mustPlay.push({ id, label });
+        doNotPlay = doNotPlay.filter(x => x.id !== id);
+      }
       renderTracks();
       renderSelectedLists();
       saveState();
     }
 
-    function toggleBan(id, label) {
+    function toggleBan(id, label, forceAdd = false) {
       const idx = doNotPlay.findIndex(x => x.id === id);
-      if (idx >= 0) doNotPlay.splice(idx, 1);
-      else { doNotPlay.push({ id, label }); mustPlay = mustPlay.filter(x => x.id !== id); }
+      if (idx >= 0) {
+        if (!forceAdd) doNotPlay.splice(idx, 1);
+      } else {
+        doNotPlay.push({ id, label });
+        mustPlay = mustPlay.filter(x => x.id !== id);
+      }
       renderTracks();
       renderSelectedLists();
       saveState();
@@ -1189,7 +1672,7 @@
     function renderSelectedLists() {
       const mustDiv = document.getElementById('mustListDisplay');
       const banDiv = document.getElementById('banListDisplay');
-      mustDiv.innerHTML = mustPlay.length === 0 ? '<span style="color:var(--muted);font-size:12.5px;">Tap songs above or type custom requests.</span>' : '';
+      mustDiv.innerHTML = mustPlay.length === 0 ? '<span style="color:var(--muted);font-size:12.5px;">Tap Starter Packs, search tracks, or paste Spotify links above.</span>' : '';
       mustPlay.forEach(item => {
         const el = document.createElement('div');
         el.className = 'pill-item';
@@ -1212,9 +1695,23 @@
     function updateCounters() {
       document.getElementById('mustCountBadge').textContent = `${mustPlay.length} songs`;
       document.getElementById('banCountBadge').textContent = `${doNotPlay.length} songs`;
-      document.getElementById('footerVibes').textContent = selectedVibes.size;
       document.getElementById('footerMust').textContent = mustPlay.length;
+      document.getElementById('footerLinks').textContent = getPlaylistUrls().length;
       updateFallbackLinks();
+    }
+
+    function renderReviewChips() {
+      const chipsEl = document.getElementById('reviewChips');
+      const p = buildPayload();
+      const urls = getPlaylistUrls();
+      chipsEl.innerHTML = `
+        <span class="review-chip">👤 ${escapeHtml(p.name)}</span>
+        <span class="review-chip">📅 ${escapeHtml(p.date)}</span>
+        <span class="review-chip">✨ ${selectedVibes.size} Vibes</span>
+        <span class="review-chip">🔗 ${urls.length} Playlist Links</span>
+        <span class="review-chip">🎵 ${mustPlay.length} Must-Play</span>
+        <span class="review-chip">🚫 ${doNotPlay.length} Banned</span>
+      `;
     }
 
     function buildPayload() {
@@ -1228,13 +1725,13 @@
       const clean = document.getElementById('cleanPolicy').value;
       const entrance = document.getElementById('entranceSong').value.trim() || 'None specified';
       const slow = document.getElementById('slowSongs').value.trim() || 'None specified';
-      const extUrl = document.getElementById('playlistLink').value.trim() || 'None';
       const notes = document.getElementById('specialNotes').value.trim() || 'None';
+      const urls = getPlaylistUrls();
       const vibeNames = Array.from(selectedVibes).map(k => catalogData?.vibes[k]?.name || k);
       const depStr = selectedPackage.deposit === 'Custom' ? 'Custom Quote' : `$${selectedPackage.deposit}.00`;
 
       const text = [
-        `DJ J-RIP — END-TO-END BOOKING & PLAYLIST MANIFEST`,
+        `DJ J-RIP — 5-STEP BOOKING & SPOTIFY ARCHIVE MANIFEST`,
         `==================================================`,
         `Client / Honoree: ${name}`,
         `Email: ${email} | Phone: ${phone}`,
@@ -1248,50 +1745,85 @@
         `  Clean Edits: ${clean}`,
         `  Grand Entrance: ${entrance}`,
         `  18 Roses / Slow / Waltz: ${slow}`,
-        `  External Playlist URL: ${extUrl}`,
         `  Notes: ${notes}`,
+        ``,
+        `EXTERNAL SPOTIFY / YOUTUBE / APPLE PLAYLIST URLS (${urls.length}):`,
+        urls.length ? urls.map(u => `  - [${u.phase}] ${u.url}`).join('\n') : '  - (None pasted)',
         ``,
         `SELECTED VIBES (${vibeNames.length}):`,
         vibeNames.length ? vibeNames.map(v => `  - ${v}`).join('\n') : '  - Open Format / DJ Choice',
         ``,
-        `MUST-PLAY (${mustPlay.length} tracks):`,
-        mustPlay.length ? mustPlay.map((t, i) => `  ${i+1}. ${t.label}`).join('\n') : '  (None specified)',
+        `MUST-PLAY QUEUE (${mustPlay.length} tracks):`,
+        mustPlay.length ? mustPlay.map((t, i) => `  ${i + 1}. ${t.label}`).join('\n') : '  (None specified)',
         ``,
-        `DO-NOT-PLAY (${doNotPlay.length} tracks):`,
-        doNotPlay.length ? doNotPlay.map((t, i) => `  ${i+1}. ${t.label}`).join('\n') : '  (None)'
+        `DO-NOT-PLAY BLACKLIST (${doNotPlay.length} tracks):`,
+        doNotPlay.length ? doNotPlay.map((t, i) => `  ${i + 1}. ${t.label}`).join('\n') : '  (None)'
       ].join('\n');
 
-      return { name, email, phone, date, type, venue, depStr, text };
+      return { name, email, phone, date, type, venue, depStr, urls, vibeNames, text };
     }
 
     function updateFallbackLinks() {
       const p = buildPayload();
       document.getElementById('emailFallbackLink').href = `mailto:jquindao1@icloud.com?subject=${encodeURIComponent(`DJ J-Rip Booking — ${p.name} (${p.date})`)}&body=${encodeURIComponent(p.text)}`;
-      document.getElementById('smsFallbackLink').href = `sms:+14693718556?body=${encodeURIComponent(`Hi DJ J-Rip! Booking & Vibe submitted for ${p.name} (${p.type} on ${p.date}) - ${p.depStr} via ${selectedPaymentMethod.toUpperCase()}.`)}`;
+      document.getElementById('smsFallbackLink').href = `sms:+14693718556?body=${encodeURIComponent(`Hi DJ J-Rip! Booking submitted for ${p.name} (${p.type} on ${p.date}) - ${p.depStr} via ${selectedPaymentMethod.toUpperCase()}. Playlists linked: ${p.urls.length}, Songs: ${mustPlay.length}.`)}`;
     }
 
-    // Listeners
+    // Navigation listeners
+    document.querySelectorAll('.step-tab').forEach(btn => btn.addEventListener('click', () => goToStep(btn.dataset.step)));
+    document.querySelectorAll('.next-step-btn').forEach(btn => btn.addEventListener('click', () => goToStep(btn.dataset.next)));
+    document.querySelectorAll('.prev-step-btn').forEach(btn => btn.addEventListener('click', () => goToStep(btn.dataset.prev)));
+    document.getElementById('footerPrevBtn').addEventListener('click', () => goToStep(currentStep - 1));
+    document.getElementById('footerNextBtn').addEventListener('click', () => goToStep(currentStep + 1));
+
+    // Package, Payment, Catalog Listeners
     document.querySelectorAll('.pkg-card').forEach(c => c.addEventListener('click', () => selectPkgCard(c)));
     document.querySelectorAll('.pay-card').forEach(c => c.addEventListener('click', () => selectPayCard(c)));
     document.querySelectorAll('#vibeTabs .tab-btn').forEach(btn => btn.addEventListener('click', () => setFilterVibe(btn.dataset.vibe)));
 
-    document.getElementById('trackSearch').addEventListener('input', e => { searchQuery = e.target.value; visibleLimit = 50; renderTracks(); });
-    document.getElementById('loadMoreBtn').addEventListener('click', () => { visibleLimit += 80; renderTracks(); });
-    document.getElementById('addCustomMustBtn').addEventListener('click', () => {
-      const inp = document.getElementById('customSongInput');
-      if (!inp.value.trim()) return;
-      toggleMust('cm_' + Date.now(), `[Custom] ${inp.value.trim()}`);
-      inp.value = '';
-    });
-    document.getElementById('addCustomBanBtn').addEventListener('click', () => {
-      const inp = document.getElementById('customSongInput');
-      if (!inp.value.trim()) return;
-      toggleBan('cb_' + Date.now(), `[Custom] ${inp.value.trim()}`);
-      inp.value = '';
+    document.getElementById('trackSearch').addEventListener('input', e => { searchQuery = e.target.value; visibleLimit = 40; renderTracks(); });
+    document.getElementById('loadMoreBtn').addEventListener('click', () => { visibleLimit += 60; renderTracks(); });
+
+    // Starter Packs
+    document.querySelectorAll('.starter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const ids = STARTER_PACKS[btn.dataset.pack] || [];
+        let addedCount = 0;
+        ids.forEach(tid => {
+          const t = trackById.get(tid);
+          if (t) {
+            toggleMust(t.id, `${t.a} — ${t.t}`, true);
+            addedCount++;
+          }
+        });
+        const orig = btn.innerHTML;
+        btn.style.borderColor = 'var(--green)';
+        if (addedCount > 0) setTimeout(() => { btn.style.borderColor = ''; }, 1400);
+      });
     });
 
-    ['clientName','clientEmail','clientPhone','eventDate','eventType','venueInfo','mcNeed','cleanPolicy','entranceSong','slowSongs','playlistLink','specialNotes'].forEach(id => {
+    // Bulk Add
+    document.getElementById('bulkAddMustBtn').addEventListener('click', () => {
+      const box = document.getElementById('bulkSongsInput');
+      const lines = box.value.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+      if (!lines.length) return;
+      lines.forEach((line, i) => toggleMust(`cm_${Date.now()}_${i}`, `[Custom] ${line}`, true));
+      box.value = '';
+    });
+    document.getElementById('bulkAddBanBtn').addEventListener('click', () => {
+      const box = document.getElementById('bulkSongsInput');
+      const lines = box.value.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+      if (!lines.length) return;
+      lines.forEach((line, i) => toggleBan(`cb_${Date.now()}_${i}`, `[Custom] ${line}`, true));
+      box.value = '';
+    });
+
+    // Inputs & Spotify Preview
+    ['clientName','clientEmail','clientPhone','eventDate','eventType','venueInfo','mcNeed','cleanPolicy','entranceSong','slowSongs','specialNotes'].forEach(id => {
       document.getElementById(id).addEventListener('input', () => { updateFallbackLinks(); saveState(); });
+    });
+    document.querySelectorAll('.pl-url-input').forEach(inp => {
+      inp.addEventListener('input', () => { refreshPlaylistPreviews(); updateFallbackLinks(); saveState(); });
     });
 
     document.getElementById('copyBtn').addEventListener('click', () => {
@@ -1318,26 +1850,25 @@
       const agreed = document.getElementById('agreeTerms').checked;
 
       if (!name || !phone || !date) {
-        errEl.textContent = 'Please complete Name, Mobile Phone, and Event Date in Step 2 before submitting.';
+        errEl.textContent = 'Missing required details! Please enter Client Name, Mobile Phone (Step 3), and Event Date (Step 2) before locking.';
         errEl.classList.add('show');
-        document.getElementById('clientName').scrollIntoView({ behavior: 'smooth' });
         return;
       }
       if (!agreed) {
-        errEl.textContent = 'Please check the 50% retainer policy box before submitting.';
+        errEl.textContent = 'Please confirm the 50% retainer policy checkbox above.';
         errEl.classList.add('show');
         return;
       }
 
       const btn = document.getElementById('submitMasterBtn');
       btn.disabled = true;
-      btn.textContent = '⏳ Dispatching Booking & Playlist to DJ J-Rip...';
+      btn.textContent = '⏳ Dispatching to DJ J-Rip & Ringing Booth Alarm...';
 
       const payload = buildPayload();
       const bodyObj = {
         _subject: `[DJ J-RIP BOOKING + VIBE] ${payload.name} (${payload.date}) — ${payload.depStr} via ${selectedPaymentMethod.toUpperCase()}`,
         _template: 'box',
-        _autoresponse: `Thank you ${payload.name}! DJ J-Rip (Jayson Quindao / GG LOOP LLC) has received your event booking details & custom playlist for ${payload.date}. Selected deposit: ${payload.depStr} (${selectedPaymentMethod.toUpperCase()}). For instant questions or Zelle/Apple Cash screenshot confirmation, call/text (469) 371-8556.`,
+        _autoresponse: `Thank you ${payload.name}! DJ J-Rip (Jayson Quindao / GG LOOP LLC) received your booking details, vibes, and playlists for ${payload.date}. Selected retainer: ${payload.depStr} (${selectedPaymentMethod.toUpperCase()}). Call/text (469) 371-8556 anytime!`,
         Client_Name: payload.name,
         Client_Phone: payload.phone,
         Client_Email: payload.email,
@@ -1345,27 +1876,42 @@
         Package: selectedPackage.label,
         Deposit_Amount: payload.depStr,
         Payment_Option: selectedPaymentMethod.toUpperCase(),
+        Playlist_Links: payload.urls.map(u => `${u.phase}: ${u.url}`).join(' | ') || 'None',
         Full_Manifest: payload.text
       };
       if (payload.email.includes('@')) bodyObj.email = payload.email;
 
+      // Dispatch FormSubmit email relay + instant <1s Priority-5 ntfy alarm in parallel
       let sentOk = false;
-      try {
-        const res = await fetch('https://formsubmit.co/ajax/jquindao1@icloud.com', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(bodyObj)
-        });
-        const j = await res.json();
-        if (res.ok && (j.success === 'true' || j.success === true)) sentOk = true;
-      } catch (e) {}
+      const formPromise = fetch('https://formsubmit.co/ajax/jquindao1@icloud.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(bodyObj)
+      }).then(r => r.json().then(j => ({ ok: r.ok, j }))).catch(() => ({ ok: false }));
+
+      // Zero-PII instant Priority-5 alarm so Android + Desktop ring immediately
+      const alarmPromise = fetch('https://ntfy.sh', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          topic: NTFY_TOPIC,
+          title: `DJ J-RIP LEAD SUBMITTED (${payload.date})`,
+          message: `Package: ${selectedPackage.label} | Retainer: ${payload.depStr} (${selectedPaymentMethod.toUpperCase()}) | Playlist Links: ${payload.urls.length} | Tracks: ${mustPlay.length}. Open iCloud Email & sync_client_playlist.py now!`,
+          priority: 5,
+          tags: ['rotating_light', 'headphones', 'dollar'],
+          click: 'https://github.com/djjrip/agentic-career-engine/blob/master/DJ_DELEGATION_BOARD.md'
+        })
+      }).catch(() => {});
+
+      const [formRes] = await Promise.all([formPromise, alarmPromise]);
+      if (formRes.ok && (formRes.j?.success === 'true' || formRes.j?.success === true)) sentOk = true;
 
       const panel = document.getElementById('checkoutPanel');
       panel.classList.add('show');
 
       if (!sentOk) {
         document.getElementById('postSubmitNote').innerHTML =
-          `Your browser relay had a hiccup, so tap <strong>💬 Text (469) 371-8556</strong> or <strong>✉️ Email App</strong> above after sending your deposit so Jayson gets your song list immediately.`;
+          `Note: Form relay hit a network blocker, so please tap <strong>💬 Text (469) 371-8556</strong> or <strong>✉️ Email App</strong> above after paying your retainer so Jayson receives your song manifest.`;
       }
 
       const stripeBox = document.getElementById('stripePayAction');
@@ -1375,18 +1921,19 @@
 
       if (selectedPaymentMethod === 'stripe') {
         stripeBox.style.display = 'block';
-        btn.textContent = '✓ Sent! Click Green Stripe Button Below to Pay';
-      } else if (selectedPaymentMethod === 'zelle' || selectedPaymentMethod === 'applecash') {
+        btn.textContent = '✓ Sent! Tap Green Stripe Checkout Below';
+      } else if (selectedPaymentMethod === 'zelle' || selectedPaymentMethod === 'venmo_cashapp') {
         manualBox.style.display = 'block';
-        const appLabel = selectedPaymentMethod === 'zelle' ? 'Zelle' : 'Apple Cash';
-        document.getElementById('manualPayInstructions').innerHTML =
-          `Open your <strong>${appLabel}</strong> app and send <strong>${payload.depStr}</strong> to mobile <strong>(469) 371-8556</strong> (Jayson Quindao / GG LOOP LLC). Include memo: <code>${escapeHtml(payload.name)} - ${escapeHtml(payload.date)}</code>.`;
-        document.getElementById('textReceiptBtn').href = `sms:+14693718556?body=${encodeURIComponent(`Hi DJ J-Rip! I just submitted my playlist and sent the ${payload.depStr} ${appLabel} deposit for ${payload.name} (${payload.date}).`)}`;
+        const appLabel = selectedPaymentMethod === 'zelle' ? 'Zelle' : 'Venmo / Cash App';
+        document.getElementById('manualPayInstructions').innerHTML = selectedPaymentMethod === 'zelle'
+          ? `Open <strong>Zelle</strong> and send <strong>${payload.depStr}</strong> to mobile <strong>(469) 371-8556</strong> (Jayson Quindao / GG LOOP LLC). Memo: <code>${escapeHtml(payload.name)} - ${escapeHtml(payload.date)}</code>.`
+          : `Text <strong>(469) 371-8556</strong> for your instant Venmo/Cash App handle and send <strong>${payload.depStr}</strong> with memo <code>${escapeHtml(payload.name)} - ${escapeHtml(payload.date)}</code>.`;
+        document.getElementById('textReceiptBtn').href = `sms:+14693718556?body=${encodeURIComponent(`Hi DJ J-Rip! Submitted my playlist and ready to send ${payload.depStr} via ${appLabel} for ${payload.name} (${payload.date}).`)}`;
         btn.textContent = '✓ Sent! Follow Transfer Box Below';
       } else {
         manualBox.style.display = 'block';
         document.getElementById('manualPayInstructions').innerHTML =
-          `Your inquiry & playlist have been queued for review! Expect a text or call from <strong>(469) 371-8556</strong> with your PDF performance agreement before you pay <strong>${payload.depStr}</strong>. Need fast hold? You can also pay now via <a href="${selectedPackage.stripeUrl}" target="_blank" style="color:var(--green);font-weight:700;">Stripe Card Checkout</a> or Zelle <strong>(469) 371-8556</strong>.`;
+          `Your inquiry & Spotify playlists have been queued! Expect a text/call from <strong>(469) 371-8556</strong> with your PDF performance agreement before paying <strong>${payload.depStr}</strong>. Need fast hold? Pay now via <a href="${selectedPackage.stripeUrl}" target="_blank" style="color:var(--green);font-weight:700;">Stripe Checkout</a> or Zelle <strong>(469) 371-8556</strong>.`;
         btn.textContent = '✓ Inquiry Queued — We Will Follow Up Soon';
       }
 
