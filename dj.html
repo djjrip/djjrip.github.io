@@ -6,6 +6,13 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>DJ JRIP // Artist Showcase, Live Mixes, Booth Chat &amp; DFW Booking</title>
   <meta name="description" content="DJ JRIP (Jayson Quindao) — Dallas-Fort Worth Open-Format DJ, Remixer & Producer. Listen to live Serato sessions, SoundCloud mixes, custom edits, create event playlists, drop requests in Live Booth Chat, and book dates.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DJ JRIP // Artist Showcase, Live Mixes &amp; DFW Booking">
+  <meta property="og:description" content="Open-format DFW DJ, remixer &amp; producer. Live event sets, SoundCloud mixes, 84 custom edits, Booth Chat &amp; instant booking.">
+  <meta property="og:url" content="https://djjrip.github.io/dj.html">
+  <meta property="og:image" content="https://djjrip.github.io/assets/dj-jrip-rhythm-action.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://djjrip.github.io/assets/dj-jrip-rhythm-action.jpg">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23050a08'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%2338bdf8' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23f59e0b'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -804,6 +811,189 @@
     }
     .cap-spin-btn:hover, .media-cap a:hover { border-color: var(--amber); background: rgba(245, 158, 11, 0.12); }
 
+    /* LIVE EVENT PHOTOGRAPHY & FLYER SHOWCASE */
+    .gallery-row-landscape {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .gallery-row-portrait {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: 14px;
+      margin-bottom: 26px;
+      align-items: stretch;
+    }
+    .gallery-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s var(--ease-expo), transform 0.2s var(--ease-expo);
+    }
+    .gallery-card:hover { border-color: rgba(245, 158, 11, 0.48); }
+    .gallery-photo-btn {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: #040806;
+      cursor: zoom-in;
+      overflow: hidden;
+      aspect-ratio: 3 / 2;
+    }
+    .gallery-row-portrait .gallery-photo-btn {
+      aspect-ratio: 4 / 5;
+    }
+    .gallery-photo-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s var(--ease-expo);
+    }
+    .gallery-card:hover .gallery-photo-btn img { transform: scale(1.03); }
+    .gallery-card .media-tag-float {
+      opacity: 0.92;
+      transition: opacity 0.2s ease;
+    }
+    .gallery-zoom-pill {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      background: rgba(5, 10, 8, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: var(--white);
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s var(--ease-expo);
+    }
+    .gallery-card:hover .gallery-zoom-pill,
+    .gallery-photo-btn:focus-visible .gallery-zoom-pill {
+      opacity: 1;
+    }
+    .gallery-spotlight-card {
+      background: linear-gradient(155deg, rgba(16, 185, 129, 0.075), rgba(190, 82, 112, 0.05), var(--surface));
+      border: 1px solid var(--border-emerald);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .gallery-meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .gallery-meta-pill {
+      background: rgba(5, 10, 8, 0.78);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 600;
+    }
+    .gallery-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 450;
+      background: rgba(3, 7, 5, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+    .gallery-lightbox.open { display: flex; }
+    .lightbox-dialog {
+      position: relative;
+      max-width: 960px;
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border-emerald);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.8);
+    }
+    .lightbox-stage {
+      position: relative;
+      background: #030605;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: 76vh;
+      overflow: hidden;
+    }
+    .lightbox-stage img {
+      max-width: 100%;
+      max-height: 76vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .lightbox-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(5, 10, 8, 0.85);
+      color: var(--white);
+      font-size: 20px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-nav-btn:hover { border-color: var(--amber); color: var(--amber); }
+    .lightbox-prev { left: 12px; }
+    .lightbox-next { right: 12px; }
+    .lightbox-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 5;
+      background: rgba(5, 10, 8, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: var(--white);
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .lightbox-close:hover { border-color: var(--pink); color: #f8d7e1; }
+    .lightbox-caption {
+      padding: 13px 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .lightbox-caption strong { color: var(--white); font-size: 14.5px; display: block; }
+    .lightbox-caption small { color: var(--muted); font-size: 12.5px; display: block; }
+
     /* SOUNDCLOUD & LIVE VENUES GRID */
     .sc-grid {
       display: grid;
@@ -1593,6 +1783,8 @@
       .pkg-grid { grid-template-columns: 1fr 1fr; }
       .showcase-split, .sc-grid { grid-template-columns: 1fr; }
       .guide-panel.active { grid-template-columns: 1fr; }
+      .gallery-row-portrait { grid-template-columns: repeat(2, 1fr); }
+      .gallery-spotlight-card { grid-column: 1 / -1; }
     }
     @media (max-width: 680px) {
       :root { --tt: 168px; }
@@ -1619,6 +1811,11 @@
       .pkg-grid { grid-template-columns: 1fr; gap: 10px; }
       .crate-boxes { grid-template-columns: 1fr; }
       .chat-compose { grid-template-columns: 1fr; }
+      .gallery-row-landscape { grid-template-columns: 1fr; }
+      .gallery-row-portrait { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .gallery-row-portrait .media-cap { flex-direction: column; align-items: flex-start; padding: 10px 11px; gap: 7px; }
+      .gallery-zoom-pill { display: none; }
+      .lightbox-nav-btn { width: 34px; height: 34px; font-size: 17px; }
 
       /* Crisp horizontal swipe deck for live videos on mobile */
       .media-grid-2x2 {
@@ -2161,6 +2358,110 @@
                   <small>Live cueing, filter fade &amp; Serato waveform lock</small>
                 </div>
                 <button type="button" class="cap-spin-btn" id="watchReelCapBtn">Watch Video &#9654;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCK 2B: LIVE EVENT PHOTOGRAPHY & FLYER SHOWCASE -->
+        <div class="artist-block" data-block="gallery" id="block-gallery">
+          <div class="block-edit-bar">
+            <span><strong>Block:</strong> Live Event Gallery &amp; Flyers</span>
+            <div class="block-edit-actions">
+              <button type="button" class="block-ctrl-btn" data-move="up">&#9650; Up</button>
+              <button type="button" class="block-ctrl-btn" data-move="down">&#9660; Down</button>
+              <button type="button" class="block-ctrl-btn" data-toggle-hide>Hide</button>
+            </div>
+          </div>
+
+          <div class="sec-head" id="liveGallerySection">
+            <div>
+              <div class="sec-title">In The Booth: Live Event Gallery &amp; Flyers</div>
+              <div class="sec-sub">Captured on stage at Rhythm Dance Studio (Home Grown) &mdash; click any photo or flyer to expand full-screen</div>
+            </div>
+            <button type="button" class="btn-secondary" data-lightbox-open="0" style="padding:7px 13px; font-size:12px;">Open Gallery Viewer &nearr;</button>
+          </div>
+
+          <div class="gallery-row-landscape">
+            <div class="gallery-card">
+              <button type="button" class="gallery-photo-btn" data-lightbox-open="0" aria-label="Expand photo: DJ JRIP live mixing on Pioneer decks at Rhythm Dance Studio">
+                <img src="assets/dj-jrip-rhythm-action.jpg" width="1024" height="682" loading="lazy" alt="DJ JRIP mixing live on a Pioneer DJ controller at Rhythm Dance Studio with Audio-Technica headphones">
+                <span class="media-tag-float">Live Booth Action</span>
+                <span class="gallery-zoom-pill">Expand &#10530;</span>
+              </button>
+              <div class="media-cap">
+                <div>
+                  <strong>Live Deck Control &amp; Booth Cueing</strong>
+                  <small>DJ JRIP mixing hands-on at Rhythm Dance Studio (Dallas, TX)</small>
+                </div>
+                <button type="button" class="cap-spin-btn" data-lightbox-open="0">View</button>
+              </div>
+            </div>
+
+            <div class="gallery-card">
+              <button type="button" class="gallery-photo-btn" data-lightbox-open="1" aria-label="Expand photo: Home Grown DJ crew behind dual decks under pink lighting">
+                <img src="assets/dj-jrip-rhythm-crew.jpg" width="1024" height="682" loading="lazy" alt="DJ JRIP and fellow Home Grown DJs behind dual Pioneer booth setups under pink studio lighting">
+                <span class="media-tag-float" style="border-color:rgba(190,82,112,0.45);">Home Grown Crew</span>
+                <span class="gallery-zoom-pill">Expand &#10530;</span>
+              </button>
+              <div class="media-cap">
+                <div>
+                  <strong>Dual-Deck Collective Session</strong>
+                  <small>DJ JRIP alongside the Home Grown studio lineup in magenta booth lighting</small>
+                </div>
+                <button type="button" class="cap-spin-btn" data-lightbox-open="1">View</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-row-portrait">
+            <div class="gallery-card">
+              <button type="button" class="gallery-photo-btn" data-lightbox-open="2" aria-label="Expand photo: DJ JRIP and guest by the Pioneer DDJ booth">
+                <img src="assets/dj-jrip-rhythm-crowd.jpg" width="768" height="1024" loading="lazy" style="object-position:center 15%;" alt="DJ JRIP with guest beside the Pioneer DDJ booth during Home Grown at Rhythm Dance Studio">
+                <span class="gallery-zoom-pill">Expand &#10530;</span>
+              </button>
+              <div class="media-cap">
+                <div>
+                  <span class="mono" style="color:var(--mint); font-size:10px; display:block; margin-bottom:2px;">BOOTH &amp; DANCEFLOOR</span>
+                  <strong>Crowd &amp; Booth Energy</strong>
+                  <small>Open dancefloor vibes next to the Serato &amp; DDJ setup</small>
+                </div>
+                <button type="button" class="cap-spin-btn" data-lightbox-open="2">Expand</button>
+              </div>
+            </div>
+
+            <div class="gallery-card">
+              <button type="button" class="gallery-photo-btn" data-lightbox-open="3" aria-label="Expand flyer: Rhythm Dance Studio presents Home Grown Summer Vol.">
+                <img src="assets/flyer-home-grown-rhythm.jpg" width="396" height="497" loading="lazy" alt="Rhythm Dance Studio Presents Home Grown Summer Vol. flyer featuring DJ JRIP, LUV.HEX, and SUCKAPUNCH">
+                <span class="gallery-zoom-pill">Expand &#10530;</span>
+              </button>
+              <div class="media-cap">
+                <div>
+                  <span class="mono" style="color:var(--blue); font-size:10px; display:block; margin-bottom:2px;">EVENT FLYER</span>
+                  <strong>Home Grown: Summer Vol.</strong>
+                  <small>House &amp; R&amp;B &bull; Sounds by DJ JRIP, Luv.Hex &amp; SuckaPunch</small>
+                </div>
+                <button type="button" class="cap-spin-btn" data-lightbox-open="3">Expand</button>
+              </div>
+            </div>
+
+            <div class="gallery-spotlight-card">
+              <div>
+                <div class="mono" style="color:var(--mint); margin-bottom:6px;">LIVE ROOM SPOTLIGHT // DALLAS, TX</div>
+                <div class="sec-title" style="font-size:19px; margin-bottom:8px;">Rhythm Dance Studio &mdash; Home Grown</div>
+                <p style="font-size:13px; color:var(--muted); margin-bottom:12px;">
+                  Full House &amp; R&amp;B community showcase on an open studio dancefloor &mdash; billed alongside <strong>LUV.HEX</strong> and <strong>SUCKAPUNCH</strong> with dual booth decks, custom transition cues, and live 360 camera capture.
+                </p>
+                <div class="gallery-meta-pills">
+                  <span class="gallery-meta-pill" style="color:var(--amber); border-color:rgba(245,158,11,0.35);">House &amp; R&amp;B</span>
+                  <span class="gallery-meta-pill">Dual Booth Decks</span>
+                  <span class="gallery-meta-pill">18+ Open Floor</span>
+                  <span class="gallery-meta-pill">Dallas Local Bill</span>
+                </div>
+              </div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;">
+                <button type="button" class="btn-artist" data-lightbox-open="0" style="padding:9px 16px; font-size:13px;">Browse Photos (4) &#10530;</button>
+                <button type="button" class="btn-secondary" id="galleryBookBtn" style="padding:9px 15px; font-size:13px;">Book This Vibe &rarr;</button>
               </div>
             </div>
           </div>
@@ -2875,6 +3176,25 @@
     </section>
 
   </main>
+
+  <!-- ACCESSIBLE GALLERY LIGHTBOX MODAL -->
+  <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Live Event Photo Viewer">
+    <div class="lightbox-dialog">
+      <div class="lightbox-stage">
+        <button type="button" class="lightbox-close" id="lightboxCloseBtn" aria-label="Close photo viewer">Close &times;</button>
+        <button type="button" class="lightbox-nav-btn lightbox-prev" id="lightboxPrevBtn" aria-label="Previous photo">&lsaquo;</button>
+        <img id="lightboxImg" src="assets/dj-jrip-rhythm-action.jpg" alt="DJ JRIP Live Event Photo">
+        <button type="button" class="lightbox-nav-btn lightbox-next" id="lightboxNextBtn" aria-label="Next photo">&rsaquo;</button>
+      </div>
+      <div class="lightbox-caption">
+        <div>
+          <strong id="lightboxTitle">Live Deck Control &amp; Booth Cueing</strong>
+          <small id="lightboxSub">DJ JRIP mixing hands-on at Rhythm Dance Studio (Dallas, TX)</small>
+        </div>
+        <span class="mono" id="lightboxCounter" style="color:var(--amber);">1 / 4</span>
+      </div>
+    </div>
+  </div>
 
   <!-- SLIDE-OUT MYSPACE STUDIO CUSTOMIZER DRAWER -->
   <aside class="studio-drawer" id="studioDrawer" aria-label="MySpace Page Studio Customizer">
@@ -4323,7 +4643,7 @@
       pattern: 'none',
       fontMode: 'editorial',
       colors: { bg: '#050a08', surface: '#0a1410', amber: '#f59e0b', mint: '#34d399', blue: '#38bdf8', pink: '#be5270' },
-      sectionOrder: ['hero', 'videos', 'soundcloud', 'vault', 'myspace', 'gear', 'bridge'],
+      sectionOrder: ['hero', 'videos', 'gallery', 'soundcloud', 'vault', 'myspace', 'gear', 'bridge'],
       hiddenSections: [],
       profile: {
         displayName: 'DJ JRIP \u2022 Jayson Quindao',
@@ -4350,6 +4670,7 @@
     const BLOCK_LABELS = {
       hero: 'Hero & Spinning Vinyl Deck',
       videos: 'Live Videos & Booth Reels',
+      gallery: 'Live Event Gallery & Flyers',
       soundcloud: 'SoundCloud Mixes & Crates',
       vault: 'Live Billings & FL Studio Vault',
       myspace: 'MySpace Wall & Top 8',
@@ -4373,6 +4694,11 @@
       }
       if (Array.isArray(incoming.sectionOrder)) {
         const valid = incoming.sectionOrder.filter(k => BLOCK_LABELS[k]);
+        if (!valid.includes('gallery')) {
+          const vidIdx = valid.indexOf('videos');
+          if (vidIdx >= 0) valid.splice(vidIdx + 1, 0, 'gallery');
+          else valid.push('gallery');
+        }
         Object.keys(BLOCK_LABELS).forEach(k => { if (!valid.includes(k)) valid.push(k); });
         out.sectionOrder = valid;
       }
@@ -4711,6 +5037,83 @@
       applyLayoutConfig(DEFAULT_LAYOUT, false);
       showToast('Reset to clean default');
     });
+
+    // ==================== LIVE EVENT GALLERY LIGHTBOX ====================
+    const GALLERY_ITEMS = [
+      {
+        src: 'assets/dj-jrip-rhythm-action.jpg',
+        alt: 'DJ JRIP mixing live on a Pioneer DJ controller at Rhythm Dance Studio with Audio-Technica headphones',
+        title: 'Live Deck Control & Booth Cueing',
+        sub: 'DJ JRIP mixing hands-on at Rhythm Dance Studio (Dallas, TX)'
+      },
+      {
+        src: 'assets/dj-jrip-rhythm-crew.jpg',
+        alt: 'DJ JRIP and fellow Home Grown DJs behind dual Pioneer booth setups under pink studio lighting',
+        title: 'Dual-Deck Collective Session',
+        sub: 'DJ JRIP alongside the Home Grown studio lineup in magenta booth lighting'
+      },
+      {
+        src: 'assets/dj-jrip-rhythm-crowd.jpg',
+        alt: 'DJ JRIP with guest beside the Pioneer DDJ booth during Home Grown at Rhythm Dance Studio',
+        title: 'Crowd & Booth Energy',
+        sub: 'Open dancefloor vibes next to the Serato & DDJ setup'
+      },
+      {
+        src: 'assets/flyer-home-grown-rhythm.jpg',
+        alt: 'Rhythm Dance Studio Presents Home Grown Summer Vol. flyer featuring DJ JRIP, LUV.HEX, and SUCKAPUNCH',
+        title: 'Home Grown: Summer Vol. Official Flyer',
+        sub: 'House & R&B showcase presented by Rhythm Dance Studio • Sounds by DJ JRIP, Luv.Hex & SuckaPunch'
+      }
+    ];
+    let galleryIdx = 0;
+    let lastGalleryTrigger = null;
+    const lightboxEl = document.getElementById('galleryLightbox');
+    const lightboxImgEl = document.getElementById('lightboxImg');
+    const lightboxTitleEl = document.getElementById('lightboxTitle');
+    const lightboxSubEl = document.getElementById('lightboxSub');
+    const lightboxCounterEl = document.getElementById('lightboxCounter');
+
+    function renderLightboxFrame(idx) {
+      galleryIdx = (idx + GALLERY_ITEMS.length) % GALLERY_ITEMS.length;
+      const item = GALLERY_ITEMS[galleryIdx];
+      lightboxImgEl.setAttribute('src', item.src);
+      lightboxImgEl.setAttribute('alt', item.alt);
+      lightboxTitleEl.textContent = item.title;
+      lightboxSubEl.textContent = item.sub;
+      lightboxCounterEl.textContent = `${galleryIdx + 1} / ${GALLERY_ITEMS.length}`;
+    }
+
+    function openLightbox(idx, triggerEl = null) {
+      lastGalleryTrigger = triggerEl || document.activeElement;
+      renderLightboxFrame(idx);
+      lightboxEl.classList.add('open');
+      lightboxEl.setAttribute('aria-hidden', 'false');
+      document.getElementById('lightboxCloseBtn').focus();
+    }
+
+    function closeLightbox() {
+      lightboxEl.classList.remove('open');
+      lightboxEl.setAttribute('aria-hidden', 'true');
+      if (lastGalleryTrigger && typeof lastGalleryTrigger.focus === 'function') {
+        lastGalleryTrigger.focus();
+      }
+      lastGalleryTrigger = null;
+    }
+
+    document.querySelectorAll('[data-lightbox-open]').forEach(btn => {
+      btn.addEventListener('click', () => openLightbox(Number(btn.dataset.lightboxOpen) || 0, btn));
+    });
+    document.getElementById('lightboxCloseBtn').addEventListener('click', closeLightbox);
+    document.getElementById('lightboxPrevBtn').addEventListener('click', () => renderLightboxFrame(galleryIdx - 1));
+    document.getElementById('lightboxNextBtn').addEventListener('click', () => renderLightboxFrame(galleryIdx + 1));
+    lightboxEl.addEventListener('click', e => { if (e.target === lightboxEl) closeLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (!lightboxEl.classList.contains('open')) return;
+      if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); renderLightboxFrame(galleryIdx - 1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); renderLightboxFrame(galleryIdx + 1); }
+    });
+    document.getElementById('galleryBookBtn').addEventListener('click', () => switchTab('book'));
 
     init();
   </script>
