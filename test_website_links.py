@@ -59,6 +59,15 @@ DEPRECATED_TERMS = (
     "data-pay=\"ach\"",
     "zelle",
     "venmo",
+    "dj-jrip-fort-worth-booth-2024",
+    "fort worth booth",
+    "fort worth live room",
+    "fort worth live lounge",
+    "fort worth dancefloor",
+    "remixer & producer",
+    "remixer &amp; producer",
+    "fl studio producer",
+    "original remixes",
 )
 
 
@@ -262,6 +271,7 @@ def check_dj_funnel_consistency_and_privacy():
     for dead_asset in (
         "dj-jrip-headshot.jpg",
         "tt-rhythm-dtx.jpg",
+        "dj-jrip-fort-worth-booth-2024.jpg",
         "mix-serato-session-1.mp3",
         "mix-don-3track-blend.mp3",
         "mix-serato-session-4.mp3",
@@ -274,7 +284,7 @@ def check_dj_funnel_consistency_and_privacy():
     for req_photo in (
         "dj-jrip-trunk-or-treat-2019.jpg",
         "dj-jrip-trunk-or-treat-night-2019.jpg",
-        "dj-jrip-fort-worth-booth-2024.jpg",
+        "dj-jrip-monkey-bar-rooftop-2024.jpg",
     ):
         if not os.path.exists(os.path.join(SITE_DIR, "assets", req_photo)):
             errors.append(f"Missing live proof photo: assets/{req_photo}")
