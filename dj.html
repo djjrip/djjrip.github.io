@@ -4204,19 +4204,37 @@
       connectBoothRoom(slug || 'lobby');
       showToast(`Joined #${activeRoom}`);
     });
+    function safeCopyText(text, okMsg, failMsg = 'Copy manually from box below') {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text).then(() => {
+          if (okMsg) showToast(okMsg);
+          return true;
+        }).catch(() => {
+          showToast(failMsg);
+          return false;
+        });
+      }
+      showToast(failMsg);
+      return Promise.resolve(false);
+    }
+
     document.getElementById('copyRoomInviteBtn').addEventListener('click', () => {
       const url = `${window.location.origin}${window.location.pathname}?room=${encodeURIComponent(activeRoom)}#chat`;
-      navigator.clipboard.writeText(url).then(() => showToast(`Copied #${activeRoom} guest link \u2713`)).catch(() => showToast(url));
+      safeCopyText(url, `Copied #${activeRoom} guest link \u2713`, url);
     });
 
     // ==================== PACKAGES, PRESETS & PLAYLISTS ====================
+    function isValidEmailFormat(val) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(val || '').trim());
+    }
+
     function buildPrefilledStripeUrl() {
       const base = selectedPackage.stripeUrl;
       const email = document.getElementById('clientEmail').value.trim();
       const name = (document.getElementById('clientName').value.trim() || 'Client').replace(/[^A-Za-z0-9]/g, '').slice(0, 24) || 'Client';
       const date = document.getElementById('eventDate').value || 'TBD';
       const qs = new URLSearchParams();
-      if (email.includes('@')) qs.set('prefilled_email', email);
+      if (isValidEmailFormat(email)) qs.set('prefilled_email', email);
       qs.set('client_reference_id', `${date}_${name}`.slice(0, 64));
       return `${base}?${qs.toString()}`;
     }
@@ -4247,15 +4265,11 @@
 
     function copyTextSummaryToast(messageText) {
       const phoneDisplay = getDirectPhone().display;
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(messageText).then(() => {
-          showToast(`Text copied! Opening Messages (or paste to ${phoneDisplay})`);
-        }).catch(() => {
-          showToast(`Message ready for ${phoneDisplay}`);
-        });
-      } else {
-        showToast(`Message ready for ${phoneDisplay}`);
-      }
+      safeCopyText(
+        messageText,
+        `Text copied! Opening Messages (or paste to ${phoneDisplay})`,
+        `Message ready for ${phoneDisplay}`
+      );
     }
 
     function updateSubmitButtonLabel() {
@@ -5025,18 +5039,17 @@
     });
 
     document.getElementById('copyBtn').addEventListener('click', () => {
-      navigator.clipboard.writeText(buildPayload().text).then(() => {
+      safeCopyText(buildPayload().text, 'Event brief copied', 'Use Open in Mail App to copy brief').then(ok => {
+        if (!ok) return;
         document.getElementById('copyBtn').textContent = 'Copied \u2713';
-        showToast('Event brief copied');
         setTimeout(() => document.getElementById('copyBtn').textContent = 'Copy Event Brief', 1800);
       });
     });
 
     document.getElementById('copyPhoneBtn').addEventListener('click', () => {
       const p = getDirectPhone();
-      navigator.clipboard.writeText(p.digits).then(() => {
-        document.getElementById('copyPhoneBtn').textContent = `Copied ${p.display} \u2713`;
-        showToast(`Copied ${p.display}`);
+      safeCopyText(p.digits, `Copied ${p.display}`, `Direct line: ${p.display}`).then(ok => {
+        if (ok) document.getElementById('copyPhoneBtn').textContent = `Copied ${p.display} \u2713`;
       });
     });
 
@@ -5104,7 +5117,7 @@
         Playlist_Links: payload.urls.map(u => `${u.phase}: ${u.url}`).join(' | ') || 'None',
         Full_Manifest: payload.text
       };
-      if (payload.email.includes('@')) bodyObj.email = payload.email;
+      if (isValidEmailFormat(payload.email)) bodyObj.email = payload.email;
 
       let sentOk = false;
       const formPromise = fetch('https://formsubmit.co/ajax/jquindao1@icloud.com', {
@@ -5584,7 +5597,7 @@
       showToast('Downloaded dj-layout.json');
     });
     document.getElementById('copyLayoutBtn').addEventListener('click', () => {
-      navigator.clipboard.writeText(JSON.stringify(studioLayout, null, 2) + '\n').then(() => showToast('Copied dj-layout.json'));
+      safeCopyText(JSON.stringify(studioLayout, null, 2) + '\n', 'Copied dj-layout.json', 'Use Download JSON instead');
     });
     document.getElementById('resetDefaultLayoutBtn').addEventListener('click', () => {
       try { localStorage.removeItem(LAYOUT_DRAFT_KEY); } catch (e) {}
