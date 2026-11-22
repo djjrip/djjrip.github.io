@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /snap/
+Disallow: /snap/*
+Disallow: /*.pdf$
