@@ -22,6 +22,12 @@ DJ_FUNNEL_FILES = (
     "vibe.html",
 )
 
+PHONE_PRIVACY_FILES = DJ_FUNNEL_FILES + (
+    "index.html",
+    "hire-now.html",
+    "audit.html",
+)
+
 STRIPE_ONLY_CHECK_FILES = DJ_FUNNEL_FILES + (
     "hire-now.html",
     "index.html",
@@ -230,7 +236,7 @@ def check_dj_funnel_consistency_and_privacy():
     errors = []
     phone_cand_re = re.compile(r'(?:\+?1[-.\s]?)?(?:\(\d{3}\)|\d{3})[-.\s]?\d{3}[-.\s]?\d{4}|\b\d{10}\b')
 
-    for fname in STRIPE_ONLY_CHECK_FILES:
+    for fname in set(STRIPE_ONLY_CHECK_FILES) | set(PHONE_PRIVACY_FILES):
         fpath = os.path.join(SITE_DIR, fname)
         if not os.path.exists(fpath):
             errors.append(f"Missing expected site file: {fname}")
@@ -238,8 +244,8 @@ def check_dj_funnel_consistency_and_privacy():
         with open(fpath, "r", encoding="utf-8", errors="ignore") as f:
             txt = f.read()
 
-        # Check phone privacy only on gated DJ funnel pages (never expose raw digits in public DJ HTML)
-        if fname in DJ_FUNNEL_FILES:
+        # Check phone privacy across public portfolio & DJ funnel pages (Rule 15)
+        if fname in PHONE_PRIVACY_FILES:
             for match in phone_cand_re.findall(txt):
                 digits = re.sub(r"\D", "", match)
                 if len(digits) == 11 and digits.startswith("1"):
@@ -248,9 +254,10 @@ def check_dj_funnel_consistency_and_privacy():
                     errors.append(f"Phone privacy breach in {fname}: raw booking number exposed ({match})")
 
         # Check deprecated/removed UI copy or off-Stripe payment tokens
-        for term in DEPRECATED_TERMS:
-            if re.search(re.escape(term), txt, re.IGNORECASE):
-                errors.append(f"Deprecated token '{term}' found in {fname}")
+        if fname in STRIPE_ONLY_CHECK_FILES:
+            for term in DEPRECATED_TERMS:
+                if re.search(re.escape(term), txt, re.IGNORECASE):
+                    errors.append(f"Deprecated token '{term}' found in {fname}")
 
     dj_path = os.path.join(SITE_DIR, "dj.html")
     if os.path.exists(dj_path):

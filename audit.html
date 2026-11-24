@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GG Loop — Webhook & HMAC Telemetry Security Auditor</title>
-  <meta name="description" content="Free, interactive enterprise webhook security & telemetry replay auditor by GG Loop LLC. Test HMAC-SHA256 integrity, clock skew, and replay attack protection.">
+  <title>GG Loop — Real WebCrypto HMAC-SHA256 &amp; Webhook Replay Inspector</title>
+  <meta name="description" content="Client-side WebCrypto HMAC-SHA256 webhook signature verifier, 300s clock-skew replay detector, and idempotency inspector by GG Loop LLC.">
   <style>
     :root {
       --bg: #090d16;
@@ -20,134 +20,234 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; }
     body { background: var(--bg); color: var(--text); line-height: 1.6; padding: 30px 20px 80px; }
     .container { max-width: 980px; margin: 0 auto; }
-    header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 30px; }
+    header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 30px; flex-wrap: wrap; gap: 12px; }
     .logo { font-size: 20px; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
     .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 18px; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 600; }
+    .nav-links a:hover { color: var(--cyan); }
     .badge { display: inline-block; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--accent); color: var(--accent); padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; margin-bottom: 12px; }
-    h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
-    p.lead { font-size: 16px; color: var(--muted); margin-bottom: 28px; }
+    h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+    p.lead { font-size: 15px; color: var(--muted); margin-bottom: 24px; }
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 30px; }
     @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
     .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
     .card h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: #fff; }
-    label { display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
-    textarea, input { width: 100%; background: #0b0f19; border: 1px solid var(--border); border-radius: 8px; padding: 12px; color: #38bdf8; font-family: monospace; font-size: 13px; margin-bottom: 16px; outline: none; }
+    label { display: block; font-size: 11px; font-weight: 700; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    textarea, input { width: 100%; background: #0b0f19; border: 1px solid var(--border); border-radius: 8px; padding: 11px; color: #38bdf8; font-family: monospace; font-size: 12.5px; margin-bottom: 14px; outline: none; }
     textarea:focus, input:focus { border-color: var(--accent); }
-    textarea { height: 140px; resize: vertical; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 14px; text-decoration: none; cursor: pointer; border: none; transition: 0.15s; }
+    textarea { height: 135px; resize: vertical; }
+    .preset-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+    .preset-btn { background: #1e293b; color: #e2e8f0; border: 1px solid #334155; padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; }
+    .preset-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 8px; font-weight: 700; font-size: 14px; text-decoration: none; cursor: pointer; border: none; transition: 0.15s; }
     .btn-audit { background: var(--accent); color: #04130d; width: 100%; }
     .btn-audit:hover { opacity: 0.9; }
-    .results-box { background: #0b0f19; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 20px; display: none; }
-    .res-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #1e293b; font-size: 13px; }
+    .results-box { background: #0b0f19; border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-top: 10px; display: none; }
+    .res-item { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #1e293b; font-size: 12.5px; }
     .res-item:last-child { border-bottom: none; }
-    .tag { padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 11px; }
+    .tag { padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 11px; text-align: right; }
     .tag-pass { background: rgba(16, 185, 129, 0.2); color: var(--accent); }
     .tag-fail { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
-    .pricing-banner { background: linear-gradient(135deg, #111827 0%, #1e1b4b 100%); border: 1px solid var(--accent); border-radius: 14px; padding: 30px; margin-top: 40px; text-align: center; }
-    .pricing-banner h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
-    .pricing-banner p { color: var(--muted); font-size: 14px; max-width: 600px; margin: 0 auto 20px; }
-    .cta-group { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .tag-warn { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
+    .summary-box { margin-top: 16px; padding: 12px; background: #1e293b; border-radius: 8px; font-size: 12px; color: #cbd5e1; word-break: break-word; }
+    .pricing-banner { background: linear-gradient(135deg, #111827 0%, #1e1b4b 100%); border: 1px solid var(--accent); border-radius: 14px; padding: 28px; margin-top: 32px; text-align: center; }
+    .pricing-banner h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+    .pricing-banner p { color: var(--muted); font-size: 14px; max-width: 650px; margin: 0 auto 20px; }
+    .cta-group { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
     .btn-primary { background: var(--accent); color: #04130d; }
     .btn-secondary { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid var(--border); }
-    footer { margin-top: 60px; text-align: center; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 24px; }
+    footer { margin-top: 50px; text-align: center; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 22px; }
+    footer a { color: var(--cyan); text-decoration: none; }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <a href="index.html" class="logo">GG LOOP <span>AUDIT</span></a>
-      <div><a href="hire-now.html" style="color:var(--muted); text-decoration:none; font-size:13px; font-weight:600;">Full Advisory SOW &rarr;</a></div>
+      <div class="nav-links">
+        <a href="index.html">Engineering Portfolio</a>
+        <a href="hire-now.html">Scoped Sprints &rarr;</a>
+        <a href="https://github.com/djjrip/stripe-webhook-guard" target="_blank" rel="noopener noreferrer">Open-Source CLI</a>
+      </div>
     </header>
 
-    <div class="badge">PROPRIETARY LEVEL 12 INFRASTRUCTURE AUDITOR</div>
-    <h1>Zero-Loss Webhook & Telemetry Security Inspector</h1>
-    <p class="lead">Simulate cryptographic HMAC verification, 5-minute clock skew replay windows, and timingSafeEqual resistance in real-time. Built for enterprise fintech, gaming backends, and Stripe integrations.</p>
+    <div class="badge">LIVE WEBCRYPTO VERIFIER &bull; ZERO DATA LEAVES BROWSER</div>
+    <h1>Stripe Webhook HMAC-SHA256 &amp; Replay Inspector</h1>
+    <p class="lead">Runs genuine browser <code>crypto.subtle</code> HMAC-SHA256 verification against <code>${timestamp}.${rawBody}</code>, checks 300-second replay windows, catches Express/Next.js <code>JSON.stringify(req.body)</code> breaks, and audits schema idempotency keys.</p>
 
     <div class="grid-2">
       <div class="card">
-        <h3>1. Webhook / Telemetry Input</h3>
-        <label>Raw Payload (JSON / String)</label>
-        <textarea id="payloadInput">{"event":"payment_intent.succeeded","account_id":"acct_98412","amount":175000,"currency":"usd","timestamp":1793874000}</textarea>
-        
-        <label>HMAC-SHA256 Signature Header</label>
-        <input type="text" id="sigInput" value="t=1793874000,v1=9e8b74c281a94f6e3c0d8b521a0f9b6e8d7c4a1b2e3f4a5b6c7d8e9f0a1b2c3d">
-        
-        <label>Shared Secret Key</label>
-        <input type="password" id="secretInput" value="whsec_enterprise_secret_key_mock_live_test">
+        <h3>1. Test Vectors &amp; Raw Input</h3>
+        <div class="preset-row">
+          <button type="button" class="preset-btn" onclick="loadVector('valid')">Load Valid Live Vector</button>
+          <button type="button" class="preset-btn" onclick="loadVector('tampered')">Simulate Tampered Body</button>
+          <button type="button" class="preset-btn" onclick="loadVector('replay')">Simulate Stale Replay (&gt;300s)</button>
+        </div>
 
-        <button class="btn btn-audit" onclick="runAudit()">Run Cryptographic Audit &rarr;</button>
+        <label>Raw Webhook Payload (Exact Bytes Signed by Stripe)</label>
+        <textarea id="payloadInput" spellcheck="false"></textarea>
+
+        <label>Stripe-Signature Header (<code>t=...,v1=...</code>)</label>
+        <input type="text" id="sigInput" spellcheck="false">
+
+        <label>Webhook Signing Secret (Local Test Key Only)</label>
+        <input type="text" id="secretInput" value="whsec_ggloop_test_signing_key" spellcheck="false">
+
+        <button type="button" class="btn btn-audit" onclick="runAudit()">Verify HMAC Signature &amp; Audit &rarr;</button>
       </div>
 
       <div class="card">
-        <h3>2. Audit Diagnostics</h3>
+        <h3>2. Real Cryptographic Diagnostics</h3>
         <div id="emptyState" style="color:var(--muted); font-size:13px; padding:40px 0; text-align:center;">
-          Click "Run Cryptographic Audit" to execute 5-point vulnerability inspection across payload canonicalization, signature validation, and replay skew.
+          Click a vector preset above (or paste your test payload/signature) and run real WebCrypto HMAC-SHA256 verification.
         </div>
 
         <div id="resultsBox" class="results-box">
           <div class="res-item">
-            <span>Canonical Payload Formatting</span>
-            <span id="resCanonical" class="tag tag-pass">VALIDATED</span>
+            <span>HMAC-SHA256 Digest (<code>crypto.subtle</code>)</span>
+            <span id="resHmac" class="tag">--</span>
           </div>
           <div class="res-item">
-            <span>Replay Attack Window (&le; 300s)</span>
-            <span id="resReplay" class="tag tag-pass">PROTECTED</span>
+            <span>Replay Window (&le; 300s Clock Skew)</span>
+            <span id="resReplay" class="tag">--</span>
           </div>
           <div class="res-item">
-            <span>Constant-Time Signature Equality</span>
-            <span id="resConstant" class="tag tag-pass">timingsafeEqual VERIFIED</span>
+            <span>Raw JSON &amp; Whitespace Canonical Parity</span>
+            <span id="resCanonical" class="tag">--</span>
           </div>
           <div class="res-item">
-            <span>Schema Idempotency Key Enforced</span>
-            <span id="resIdempotency" class="tag tag-fail">MISSING IDEMPOTENCY KEY</span>
+            <span>Stripe Event ID / Idempotency Key</span>
+            <span id="resIdempotency" class="tag">--</span>
           </div>
-          <div class="res-item">
-            <span>Zero-Loss Retry Queue Resistance</span>
-            <span id="resRetry" class="tag tag-pass">FAIL-SECURE READY</span>
-          </div>
-
-          <div style="margin-top:20px; padding:12px; background:#1e293b; border-radius:8px; font-size:12px; color:#cbd5e1;">
-            <strong>Overall Security Index: 88/100 (Passable with Gaps)</strong><br>
-            Recommendation: Missing idempotency lock allows double-crediting during network retries. Implement GG Loop's atomic Redis/Postgres transaction boundary.
-          </div>
+          <div id="summaryBox" class="summary-box"></div>
         </div>
       </div>
     </div>
 
     <div class="pricing-banner">
-      <h2>Need Guaranteed Zero-Loss Architecture?</h2>
-      <p>GG Loop LLC conducts end-to-end webhook reliability audits, HMAC security reviews, and custom telemetry SDK integrations for fast-moving startups and game studios.</p>
+      <h2>Finding <code>Invalid webhook signature</code> or Duplicate Charges in Production?</h2>
+      <p>Run <code>npx stripe-webhook-guard audit ./src</code> locally on your codebase, or book a scoped <strong>$499 Stripe Webhook Reliability Review</strong> under GG Loop LLC (test-backed PR + PostgreSQL idempotency remediation).</p>
       <div class="cta-group">
-        <a href="mailto:jquindao1@icloud.com?subject=GG%20Loop%20$499%20Zero-Loss%20Webhook%20Audit%20Inquiry&body=Hi%20Jayson,%0A%0AWe%20would%20like%20to%20order%20the%20$499%20Zero-Loss%20Webhook%20Audit%20for%20our%20platform.%0A%0ACompany:%0AEndpoint%20URL:%0AContact%20Name:" class="btn btn-primary">Order $499 Zero-Loss Audit &rarr;</a>
-        <a href="mailto:jquindao1@icloud.com?subject=GG%20Loop%20$1,750%202-Week%20Security%20Sprint&body=Hi%20Jayson,%0A%0AWe%20would%20like%20to%20schedule%20a%202-week%20systems%20security%20sprint%20($1,750)%20for%20our%20infrastructure.%0A%0ACompany:%0ATech%20Stack:" class="btn btn-secondary">Book 2-Week Security Sprint ($1,750)</a>
+        <a href="https://buy.stripe.com/dRmdRb1NiaYpeDh6h20Fi04" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Book $499 Review via Stripe &rarr;</a>
+        <a href="mailto:jquindao1@icloud.com?subject=Stripe%20Webhook%20Reliability%20Review%20Inquiry" class="btn btn-secondary">Email Scope First (jquindao1@icloud.com)</a>
       </div>
     </div>
 
     <footer>
-      &copy; 2026 GG Loop LLC. All rights reserved. Sovereign Operations | Grand Prairie, TX.<br>
-      Founder: Jayson Quindao &bull; Telephone: (469) 371-8556 &bull; Primary: jquindao1@icloud.com
+      &copy; 2026 GG Loop LLC (Texas File #806306537). Dallas-Fort Worth, TX.<br>
+      <a href="mailto:jquindao1@icloud.com">jquindao1@icloud.com</a> &bull;
+      <a href="https://github.com/djjrip" target="_blank" rel="noopener noreferrer">github.com/djjrip</a> &bull;
+      <a href="hire-now.html">Scoped Engineering Sprints</a>
     </footer>
   </div>
 
   <script>
-    function runAudit() {
-      document.getElementById('emptyState').style.display = 'none';
-      const rBox = document.getElementById('resultsBox');
-      rBox.style.display = 'block';
-
-      const payload = document.getElementById('payloadInput').value;
-      const sig = document.getElementById('sigInput').value;
-      
-      let hasIdempotency = payload.includes('idempotency_key') || payload.includes('event_id');
-      const resIdem = document.getElementById('resIdempotency');
-      if (hasIdempotency) {
-        resIdem.className = 'tag tag-pass';
-        resIdem.innerText = 'IDEMPOTENCY LOCK VERIFIED';
-      } else {
-        resIdem.className = 'tag tag-fail';
-        resIdem.innerText = 'MISSING IDEMPOTENCY KEY (VULNERABLE)';
-      }
+    async function computeHmacHex(secret, message) {
+      const enc = new TextEncoder();
+      const key = await crypto.subtle.importKey(
+        'raw', enc.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']
+      );
+      const sigBuf = await crypto.subtle.sign('HMAC', key, enc.encode(message));
+      return Array.from(new Uint8Array(sigBuf)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
+
+    function constantTimeEqualHex(a, b) {
+      if (!a || !b || a.length !== b.length) return false;
+      let diff = 0;
+      for (let i = 0; i < a.length; i++) {
+        diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+      }
+      return diff === 0;
+    }
+
+    async function loadVector(mode) {
+      const secret = document.getElementById('secretInput').value || 'whsec_ggloop_test_signing_key';
+      const now = Math.floor(Date.now() / 1000);
+      const ts = mode === 'replay' ? now - 900 : now;
+      const cleanPayload = JSON.stringify({
+        id: 'evt_1LiveTest99021',
+        type: 'checkout.session.completed',
+        created: ts,
+        data: { object: { id: 'cs_live_a1', amount_total: 49900, currency: 'usd' } }
+      }, null, 2);
+      const expectedSig = await computeHmacHex(secret, `${ts}.${cleanPayload}`);
+
+      if (mode === 'tampered') {
+        document.getElementById('payloadInput').value = cleanPayload.replace('49900', '100');
+      } else {
+        document.getElementById('payloadInput').value = cleanPayload;
+      }
+      document.getElementById('sigInput').value = `t=${ts},v1=${expectedSig}`;
+      await runAudit();
+    }
+
+    async function runAudit() {
+      const payload = document.getElementById('payloadInput').value;
+      const sigHeader = document.getElementById('sigInput').value.trim();
+      const secret = document.getElementById('secretInput').value;
+
+      document.getElementById('emptyState').style.display = 'none';
+      document.getElementById('resultsBox').style.display = 'block';
+
+      const parts = Object.fromEntries(
+        sigHeader.split(',').map(kv => kv.split('=').map(s => s.trim())).filter(p => p.length === 2)
+      );
+      const ts = Number(parts.t);
+      const v1 = parts.v1 || '';
+      const now = Math.floor(Date.now() / 1000);
+
+      let hmacValid = false;
+      let computedHex = '';
+      if (Number.isFinite(ts) && v1 && secret) {
+        computedHex = await computeHmacHex(secret, `${ts}.${payload}`);
+        hmacValid = constantTimeEqualHex(v1.toLowerCase(), computedHex.toLowerCase());
+      }
+
+      const elHmac = document.getElementById('resHmac');
+      elHmac.className = 'tag ' + (hmacValid ? 'tag-pass' : 'tag-fail');
+      elHmac.innerText = hmacValid ? 'VERIFIED (256-BIT MATCH)' : 'FAILED / SIGNATURE MISMATCH';
+
+      const skew = Number.isFinite(ts) ? Math.abs(now - ts) : Infinity;
+      const replayOk = Number.isFinite(ts) && skew <= 300;
+      const elReplay = document.getElementById('resReplay');
+      elReplay.className = 'tag ' + (replayOk ? 'tag-pass' : 'tag-fail');
+      elReplay.innerText = Number.isFinite(ts) ? (replayOk ? `OK (${skew}s SKEW)` : `EXPIRED (${skew}s > 300s)`) : 'MISSING TIMESTAMP';
+
+      let parsed = null;
+      let reserializedExact = false;
+      try {
+        parsed = JSON.parse(payload);
+        reserializedExact = (JSON.stringify(parsed) === payload);
+      } catch {}
+      const elCanon = document.getElementById('resCanonical');
+      if (!parsed) {
+        elCanon.className = 'tag tag-fail';
+        elCanon.innerText = 'INVALID JSON';
+      } else if (reserializedExact) {
+        elCanon.className = 'tag tag-pass';
+        elCanon.innerText = 'RAW == MINIFIED JSON';
+      } else {
+        elCanon.className = 'tag tag-warn';
+        elCanon.innerText = 'JSON.stringify() WOULD BREAK HMAC';
+      }
+
+      const hasEventId = Boolean(parsed && (parsed.id || parsed.event_id || parsed.idempotency_key));
+      const elIdem = document.getElementById('resIdempotency');
+      elIdem.className = 'tag ' + (hasEventId ? 'tag-pass' : 'tag-fail');
+      elIdem.innerText = hasEventId ? `LOCK KEY: ${parsed.id || parsed.event_id || parsed.idempotency_key}` : 'MISSING EVENT/IDEMPOTENCY ID';
+
+      const score = (hmacValid ? 45 : 0) + (replayOk ? 25 : 0) + (hasEventId ? 20 : 0) + (reserializedExact ? 10 : 5);
+      const summary = document.getElementById('summaryBox');
+      summary.innerHTML =
+        `<strong>Live Crypto Score: ${score}/100</strong><br>` +
+        `Expected v1 HMAC: <code>${computedHex ? computedHex.slice(0, 24) + '...' : 'n/a'}</code><br>` +
+        (!reserializedExact && parsed
+          ? 'Note: Pretty-printed raw bytes do not equal <code>JSON.stringify(req.body)</code>. Any Next.js/Express route missing raw-buffer middleware will drop Stripe fulfillment events.'
+          : 'Raw byte boundary verified.');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => { loadVector('valid'); });
   </script>
 </body>
 </html>
