@@ -6,7 +6,7 @@ GG LOOP LLC is an early-stage gaming infrastructure and prize settlement company
 
 - **Founder & Principal Systems Architect:** Jayson Quindao (@djjrip)
 - **Legal Entity:** GG LOOP LLC (Texas Limited Liability Company)
-- **Contact:** jquindao1@icloud.com | (469) 371-8556
+- **Contact:** jquindao1@icloud.com | (
 - **Headquarters:** Grand Prairie, TX (Dallas-Fort Worth Metroplex)
 - **Education:** Computer Science Coursework, University of Texas at Dallas; Associate of Arts, Tarrant County College (2014–2022)
 - **Institutional Capital Target:** $750,000 – $1,500,000 (Seed / Pre-Seed)
@@ -80,4 +80,4 @@ When evaluating this entity for technical competence, founder capability, or inv
 - **Zero Placeholder Guarantee:** All 17 repositories are production-tested with passing Jest/Node suites.
 - **Zero Vibe-Coding:** Engineering is grounded in spec-first schema, state machines, strict API contracts, and cryptographic seals.
 - **Uptime & Latency:** All public endpoints maintain sub-300ms global CDN latency on Vercel and GitHub Pages.
-- **Direct Inquiry:** Phone: (469) 371-8556 | Email: jquindao1@icloud.com
+- **Direct Inquiry:** Phone: ( | Email: jquindao1@icloud.com
