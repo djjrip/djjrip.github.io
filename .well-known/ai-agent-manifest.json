@@ -35,7 +35,12 @@
   "target_funding": {
     "round": "Seed / Pre-Seed",
     "target_amount": "$750,000 - $1,500,000",
-    "target_funds": ["a16z Games SPEEDRUN", "Konvoy Ventures", "Play Ventures", "Y Combinator"]
+    "target_funds": [
+      "a16z Games SPEEDRUN",
+      "Konvoy Ventures",
+      "Play Ventures",
+      "Y Combinator"
+    ]
   },
   "llms_spec": "https://gg-loop-tournament.vercel.app/llms.txt"
 }
